@@ -19,11 +19,10 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                     vm: RegionDetailViewModel(
                                         client: client,
                                         regionSummary: localRegion))
-                                    .listRowInsets(rowInsets)
                             } label: {
                                 RegionRow(region: localRegion)
                                     .listRowInsets(rowInsets)
-                            }
+                            }.listRowInsets(rowInsets)
                         }
                         else if (!vm.locationIsAuthorized) {
                             UseLocationRow(updateLocationHandler: {
@@ -42,8 +41,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                         regionSummary: region))
                             } label: {
                                 RegionRow(region: region)
-                            }
-                            .listRowInsets(rowInsets)
+                            }.listRowInsets(rowInsets)
                         }
                     }
                 }
