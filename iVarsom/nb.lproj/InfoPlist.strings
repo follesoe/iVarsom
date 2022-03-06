@@ -1,5 +1,5 @@
 /* Bundle name */
-"CFBundleName" = "iVarsom";
+"CFBundleName" = "Skredvarsel";
 
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
 
