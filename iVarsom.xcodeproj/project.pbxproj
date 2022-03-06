@@ -702,7 +702,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
@@ -720,7 +720,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
@@ -738,7 +738,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsomIntentExtension/iVarsomIntentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsomIntentExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomIntentExtension;
@@ -765,7 +765,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsomIntentExtension/iVarsomIntentExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsomIntentExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomIntentExtension;
@@ -913,12 +913,14 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iVarsom/Preview Content\"";
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsom/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Skredvarsel;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -949,12 +951,14 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iVarsom/Preview Content\"";
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsom/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Skredvarsel;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -984,7 +988,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsomWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsomWidget/Info.plist;
@@ -1014,7 +1018,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsomWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PT677XPRWH;
+				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iVarsomWidget/Info.plist;
