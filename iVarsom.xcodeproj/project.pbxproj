@@ -160,7 +160,7 @@
 		AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerLevel.swift; sourceTree = "<group>"; };
 		AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerIcon.swift; sourceTree = "<group>"; };
 		AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DangerLevelAssets.xcassets; sourceTree = "<group>"; };
-		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD172AC2795F8F8009AB089 /* iVarsom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVarsom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 		AAD172AD2795F8F8009AB089 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAD172AC2795F8F8009AB089 /* Skredvarsel.app */,
+				AAD172AC2795F8F8009AB089 /* iVarsom.app */,
 				AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */,
 				AA80948D279E234200A2F192 /* iVarsomIntentExtension.appex */,
 				AA18420927B1A3860097174D /* iVarsomTests.xctest */,
@@ -452,7 +452,7 @@
 				AA1C7051279C21C600FE3317 /* DynamicColor */,
 			);
 			productName = iVarsom;
-			productReference = AAD172AC2795F8F8009AB089 /* Skredvarsel.app */;
+			productReference = AAD172AC2795F8F8009AB089 /* iVarsom.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AAD172E527960938009AB089 /* iVarsomWidgetExtension */ = {
@@ -934,7 +934,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
-				PRODUCT_NAME = Skredvarsel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -972,7 +972,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
-				PRODUCT_NAME = Skredvarsel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
