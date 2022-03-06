@@ -14,7 +14,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 List {
                     Section(header: Text("Local Warnings")) {
                         if let localRegion = vm.localRegion {
-                            NavigationLink(tag: localRegion.Id, selection: $vm.selectedRegionId) {
+                            NavigationLink() {
                                 RegionDetail(
                                     vm: RegionDetailViewModel(
                                         client: client,
@@ -34,7 +34,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                     }
                     Section(header: Text("A-Regions")) {
                         ForEach(vm.filteredRegions) { region in
-                            NavigationLink(tag: region.Id, selection: $vm.selectedRegionId) {
+                            NavigationLink() {
                                 RegionDetail(
                                     vm: RegionDetailViewModel(
                                         client: client,
