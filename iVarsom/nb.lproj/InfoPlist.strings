@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "iVarsom";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
+
+"NSLocationWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";

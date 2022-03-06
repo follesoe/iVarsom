@@ -1,0 +1,32 @@
+/* Region header */
+"Regions" = "Regions";
+
+/* List group header for A-regions */
+"A-Regions" = "A-Regions";
+
+/* List group header for location based warnings */
+"Local Warnings" = "Local Warnings";
+
+/* Button text to use location based warnings */
+"Use current location" = "Use current location";
+
+/* Button description for location based warnings */
+"Will enable location based warnings in Widgets" = "Will enable location based warnings in Widgets";
+
+/* Data source description and link */
+"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Data from the The Norwegian Avalanche Warning Service and www.varsom.no.";
+
+/* Widget Config Display Name */
+"Today's Avalanche Danger Level" = "Today's Avalanche Danger Level";
+
+/* Widget Config Description */
+"Display today's avalanche danger level for selected regions in Norway." = "Display today's avalanche danger level for selected regions in Norway.";
+
+/* Error loading widget */
+"Error" = "Error";
+
+/* Error loading widget */
+"There was an error updating the widget" = "There was an error updating the widget";
+
+/* Link to Varsom.no */
+"Read full warning on Varsom.no" = "Read full warning on Varsom.no";

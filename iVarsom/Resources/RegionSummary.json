@@ -1,0 +1,2302 @@
+[
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard øst",
+        "RegionId" : 3001,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard øst",
+        "RegionId" : 3001,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard øst",
+        "RegionId" : 3001,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Svalbard øst",
+    "TypeId" : 20,
+    "Id" : 3001
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard vest",
+        "RegionId" : 3002,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard vest",
+        "RegionId" : 3002,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard vest",
+        "RegionId" : 3002,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Svalbard vest",
+    "TypeId" : 20,
+    "Id" : 3002
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285124,
+        "LangKey" : 1,
+        "RegionName" : "Nordenskiöld Land",
+        "RegionId" : 3003,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:49.307",
+        "MainText" : "Vær varsom i områder med fersk fokksnø. Gamle svake lag i snøfylte forsenkninger er vanskelig å påvirke, men skredene kan bli store. ",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285321,
+        "LangKey" : 1,
+        "RegionName" : "Nordenskiöld Land",
+        "RegionId" : 3003,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:01.213",
+        "MainText" : "Vær varsom i områder med fersk fokksnø. Gamle svake lag i snøfylte forsenkninger er vanskelig å påvirke, men skredene kan bli store. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285381,
+        "LangKey" : 1,
+        "RegionName" : "Nordenskiöld Land",
+        "RegionId" : 3003,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:02.213",
+        "MainText" : "Økende skredfare når vinden tiltar utover dagen. Vær svært varsom i områder med fersk fokksnø. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Nordenskiöld Land",
+    "TypeId" : 10,
+    "Id" : 3003
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard sør",
+        "RegionId" : 3004,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard sør",
+        "RegionId" : 3004,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Svalbard sør",
+        "RegionId" : 3004,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Svalbard sør",
+    "TypeId" : 20,
+    "Id" : 3004
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Øst-Finnmark",
+        "RegionId" : 3005,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Øst-Finnmark",
+        "RegionId" : 3005,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Øst-Finnmark",
+        "RegionId" : 3005,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Øst-Finnmark",
+    "TypeId" : 20,
+    "Id" : 3005
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285125,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarkskysten",
+        "RegionId" : 3006,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:50.047",
+        "MainText" : "Vær forsiktig i leområder med fersk fokksnø. Det finnes også områder med vedvarende svake lag. ",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285322,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarkskysten",
+        "RegionId" : 3006,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:02.413",
+        "MainText" : "Vær forsiktig i leområder med fersk fokksnø. Det finnes også områder med vedvarende svake lag. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285433,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarkskysten",
+        "RegionId" : 3006,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:02.587",
+        "MainText" : "Faren øker når regnet kommer. Unngå potensielle løsneområder og utløpsområder for skred. Høyere til fjells vil det legge seg opp ustabile nysnøflak i leområder.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Finnmarkskysten",
+    "TypeId" : 10,
+    "Id" : 3006
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285126,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Finnmark",
+        "RegionId" : 3007,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:50.877",
+        "MainText" : "Ustabile fokksnøflak i leområder. Vedvarende svake lag kan påvirkes der snødekket er tynt. ",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285323,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Finnmark",
+        "RegionId" : 3007,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:02.807",
+        "MainText" : "Ustabile fokksnøflak i leområder. Vedvarende svake lag kan påvirkes der snødekket er tynt. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285422,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Finnmark",
+        "RegionId" : 3007,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:02.99",
+        "MainText" : "Faren øker når regnet kommer. Unngå potensielle løsneområder og utløpsområder for skred. Høyere til fjells vil det legge seg opp ustabile nysnøflak i leområder.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Vest-Finnmark",
+    "TypeId" : 10,
+    "Id" : 3007
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarksvidda",
+        "RegionId" : 3008,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarksvidda",
+        "RegionId" : 3008,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Finnmarksvidda",
+        "RegionId" : 3008,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Finnmarksvidda",
+    "TypeId" : 20,
+    "Id" : 3008
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285355,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Troms",
+        "RegionId" : 3009,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:57.983",
+        "MainText" : "Vind og snø gir økt skredfare. Unngå leområder der det samlear seg fersk fokksnø. Naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285324,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Troms",
+        "RegionId" : 3009,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:03.18",
+        "MainText" : "Krevende forhold. Vær spesielt forsiktig rundt skoggrensen, samt i områder med fersk fokksnø. Enkelte naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285409,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Troms",
+        "RegionId" : 3009,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:03.37",
+        "MainText" : "Faren øker når regnet kommer. Unngå potensielle løsneområder og utløpsområder for skred. Høyere til fjells vil det legge seg opp ustabile nysnøflak i leområder.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Nord-Troms",
+    "TypeId" : 10,
+    "Id" : 3009
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285354,
+        "LangKey" : 1,
+        "RegionName" : "Lyngen",
+        "RegionId" : 3010,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:58.247",
+        "MainText" : "Vind og snø gir økt skredfare. Unngå leområder der det samlear seg fersk fokksnø. Naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285325,
+        "LangKey" : 1,
+        "RegionName" : "Lyngen",
+        "RegionId" : 3010,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:03.57",
+        "MainText" : "Krevende forhold. Vær spesielt forsiktig rundt skoggrensen, samt i områder med fersk fokksnø. Enkelte naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285394,
+        "LangKey" : 1,
+        "RegionName" : "Lyngen",
+        "RegionId" : 3010,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:03.813",
+        "MainText" : "Mildvær fører til økende skredfare. Flak av ustabil fokksnø i høyden. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Lyngen",
+    "TypeId" : 10,
+    "Id" : 3010
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285353,
+        "LangKey" : 1,
+        "RegionName" : "Tromsø",
+        "RegionId" : 3011,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:58.457",
+        "MainText" : "Vind og snø gir økt skredfare. Unngå leområder der det samlear seg fersk fokksnø. Naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285326,
+        "LangKey" : 1,
+        "RegionName" : "Tromsø",
+        "RegionId" : 3011,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:04.043",
+        "MainText" : "Krevende forhold. Vær spesielt forsiktig rundt skoggrensen, samt i områder med fersk fokksnø. Enkelte naturlig utløste skred kan forekomme.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285382,
+        "LangKey" : 1,
+        "RegionName" : "Tromsø",
+        "RegionId" : 3011,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:04.26",
+        "MainText" : "Mildvær fører til økende skredfare. Flak av ustabil fokksnø i høyden. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Tromsø",
+    "TypeId" : 10,
+    "Id" : 3011
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285351,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Troms",
+        "RegionId" : 3012,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:58.677",
+        "MainText" : "Generelt ustabile forhold. Naturlig utløste skred ventes. Stigende temperatur fører til midlertidig svekkelse av snødekket.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285375,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Troms",
+        "RegionId" : 3012,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:04.47",
+        "MainText" : "Naturlig utløste skred ventes. Vær svært varsom i områder med fersk fokksnø over skoggrensen. Snødekket i lavlandet vil raskt stabilisere seg. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285376,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Troms",
+        "RegionId" : 3012,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:04.673",
+        "MainText" : "Omfattende ustabile forhold. Nedbør som regn høyt til fjells. Det er fare for store naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Sør-Troms",
+    "TypeId" : 10,
+    "Id" : 3012
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285131,
+        "LangKey" : 1,
+        "RegionName" : "Indre Troms",
+        "RegionId" : 3013,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:53.513",
+        "MainText" : "Generelt ustabile forhold. Naturlig utløste våte snøskred ventes i lavlandet, mens i høyden må man unngå ferske og ustabile nysnøflak.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285328,
+        "LangKey" : 1,
+        "RegionName" : "Indre Troms",
+        "RegionId" : 3013,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:04.89",
+        "MainText" : "Naturlig utløste skred. Vær svært varsom i og nært områder med fersk fokksnø. Forholdene endre seg raskt, også i skoggrensen.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285372,
+        "LangKey" : 1,
+        "RegionName" : "Indre Troms",
+        "RegionId" : 3013,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:05.103",
+        "MainText" : "Store naturlig utløste skred ventes når mildværet treffer. Unngå skredterreng. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Indre Troms",
+    "TypeId" : 10,
+    "Id" : 3013
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285352,
+        "LangKey" : 1,
+        "RegionName" : "Lofoten og Vesterålen",
+        "RegionId" : 3014,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:58.867",
+        "MainText" : "Generelt ustabile forhold. Det er fare for naturlig utløste skred, særlig mot kvelden. Stigende temperatur fører til midlertidig svekkelse av snødekket.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285329,
+        "LangKey" : 1,
+        "RegionName" : "Lofoten og Vesterålen",
+        "RegionId" : 3014,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:05.293",
+        "MainText" : "Naturlig utløste skred ventes. Vær svært varsom i områder med fersk fokksnø over skoggrensen. Snødekket i lavlandet vil raskt stabilisere seg. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285369,
+        "LangKey" : 1,
+        "RegionName" : "Lofoten og Vesterålen",
+        "RegionId" : 3014,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:05.48",
+        "MainText" : "Omfattende ustabile forhold. Nedbør som regn høyt til fjells. Det er fare for store naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Lofoten og Vesterålen",
+    "TypeId" : 10,
+    "Id" : 3014
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285350,
+        "LangKey" : 1,
+        "RegionName" : "Ofoten",
+        "RegionId" : 3015,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T08:49:59.063",
+        "MainText" : "Omfattende ustabile forhold. Mange store og noen svært store naturlig utløste skred ventes. Unngå ferdsel i skredterreng og utløpsområde.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285463,
+        "LangKey" : 1,
+        "RegionName" : "Ofoten",
+        "RegionId" : 3015,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:41:03.76",
+        "MainText" : "Generelt ustabile forhold. Unngå leområder og utløpsområde under heng hvor det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285380,
+        "LangKey" : 1,
+        "RegionName" : "Ofoten",
+        "RegionId" : 3015,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:05.98",
+        "MainText" : "Mildvær og regn høyt til fjells gir økt fare for naturlige våte flakskred. Unngå bratt terreng! I høyfjellet vil fersk fokksnø være skredproblemet.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Ofoten",
+    "TypeId" : 10,
+    "Id" : 3015
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285134,
+        "LangKey" : 1,
+        "RegionName" : "Salten",
+        "RegionId" : 3016,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T13:44:01.9",
+        "MainText" : "Omfattende ustabile forhold. Mange store og noen svært store naturlig utløste skred forventes. Stigende temperatur fører til svekkelse av snødekket.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285331,
+        "LangKey" : 1,
+        "RegionName" : "Salten",
+        "RegionId" : 3016,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:06.78",
+        "MainText" : "Generelt ustabile forhold. Unngå leområder hvor det samler seg fersk fokksnø. Naturlig utløste skred kan forekomme der pålagring er størst.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285385,
+        "LangKey" : 1,
+        "RegionName" : "Salten",
+        "RegionId" : 3016,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:07.033",
+        "MainText" : "Mildvær fører til økende skredfare. Flak av ustabil fokksnø i høyden. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Salten",
+    "TypeId" : 10,
+    "Id" : 3016
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285135,
+        "LangKey" : 1,
+        "RegionName" : "Svartisen",
+        "RegionId" : 3017,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T13:44:02.403",
+        "MainText" : "Omfattende ustabile forhold. Mange store og noen svært store naturlig utløste skred forventes. Hold avstand fra utløsnings- og utløpsområder for snøskred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285332,
+        "LangKey" : 1,
+        "RegionName" : "Svartisen",
+        "RegionId" : 3017,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:07.24",
+        "MainText" : "Generelt ustabile forhold. Unngå leområder hvor det samler seg fersk fokksnø. Naturlig utløste skred kan forekomme der pålagring er størst.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285387,
+        "LangKey" : 1,
+        "RegionName" : "Svartisen",
+        "RegionId" : 3017,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:07.44",
+        "MainText" : "Mildvær fører til økende skredfare. Flak av ustabil fokksnø i høyden. Gamle svake lag kan vekkes til live og øke faren for naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Svartisen",
+    "TypeId" : 10,
+    "Id" : 3017
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285204,
+        "LangKey" : 1,
+        "RegionName" : "Helgeland",
+        "RegionId" : 3018,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T13:46:40.697",
+        "MainText" : "Omfattende ustabile forhold. Mange store og noen svært store naturlig utløste skred kan ventes. Hold avstand fra utløsnings- og utløpsområder for snøskred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285205,
+        "LangKey" : 1,
+        "RegionName" : "Helgeland",
+        "RegionId" : 3018,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-15T13:46:40.86",
+        "MainText" : "Ustabile forhold. Unngå leområde med fersk fokksnø høyt til fjells. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285390,
+        "LangKey" : 1,
+        "RegionName" : "Helgeland",
+        "RegionId" : 3018,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:43.27",
+        "MainText" : "Økende snøskredfare grunnet rask temperaturstigning og nedbør som regn. Naturlig utløste snøskred er sannsynlig. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Helgeland",
+    "TypeId" : 20,
+    "Id" : 3018
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Trøndelag",
+        "RegionId" : 3019,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Trøndelag",
+        "RegionId" : 3019,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285398,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Trøndelag",
+        "RegionId" : 3019,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:43.443",
+        "MainText" : "Økende snøskredfare grunnet rask temperaturstigning og nedbør som regn. Naturlig utløste snøskred sannsynlig. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Nord-Trøndelag",
+    "TypeId" : 20,
+    "Id" : 3019
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Trøndelag",
+        "RegionId" : 3020,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Trøndelag",
+        "RegionId" : 3020,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Sør-Trøndelag",
+        "RegionId" : 3020,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Sør-Trøndelag",
+    "TypeId" : 20,
+    "Id" : 3020
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Nordmøre",
+        "RegionId" : 3021,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Nordmøre",
+        "RegionId" : 3021,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Nordmøre",
+        "RegionId" : 3021,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Ytre Nordmøre",
+    "TypeId" : 20,
+    "Id" : 3021
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285136,
+        "LangKey" : 1,
+        "RegionName" : "Trollheimen",
+        "RegionId" : 3022,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T13:44:02.78",
+        "MainText" : "Omfattende ustabile forhold pga. store nysnømengder og vind. Naturlig utløste skred forventes. Unngå skredterreng.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285333,
+        "LangKey" : 1,
+        "RegionName" : "Trollheimen",
+        "RegionId" : 3022,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:07.673",
+        "MainText" : "Omfattende ustabile forhold pga. store nysnømengder og vind. Naturlig utløste skred forventes. Unngå skredterreng.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285361,
+        "LangKey" : 1,
+        "RegionName" : "Trollheimen",
+        "RegionId" : 3022,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:07.89",
+        "MainText" : "Vi venter våte naturlig utløste flakskred. Fokksnøflak er problemet i høyden. Unngå potensielle løsneområder og utløpsområder for skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Trollheimen",
+    "TypeId" : 10,
+    "Id" : 3022
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285137,
+        "LangKey" : 1,
+        "RegionName" : "Romsdal",
+        "RegionId" : 3023,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:54.873",
+        "MainText" : "Ferske fokksnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285334,
+        "LangKey" : 1,
+        "RegionName" : "Romsdal",
+        "RegionId" : 3023,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:08.11",
+        "MainText" : "Vind og nysnø i fjellet. Skred kan løes ut både naturlig og av skiløper. Unngå leområder hvor det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285362,
+        "LangKey" : 1,
+        "RegionName" : "Romsdal",
+        "RegionId" : 3023,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:08.303",
+        "MainText" : "Ferske fokksnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Romsdal",
+    "TypeId" : 10,
+    "Id" : 3023
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285138,
+        "LangKey" : 1,
+        "RegionName" : "Sunnmøre",
+        "RegionId" : 3024,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:55.33",
+        "MainText" : "Vind og nysnø i fjellet. Skred kan løes ut både naturlig og av skiløper. Unngå leområder hvor det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285335,
+        "LangKey" : 1,
+        "RegionName" : "Sunnmøre",
+        "RegionId" : 3024,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:08.503",
+        "MainText" : "Vind og nysnø i fjellet. Skred kan løes ut både naturlig og av skiløper. Unngå leområder hvor det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285411,
+        "LangKey" : 1,
+        "RegionName" : "Sunnmøre",
+        "RegionId" : 3024,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:08.72",
+        "MainText" : "Ferske fokksnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Sunnmøre",
+    "TypeId" : 10,
+    "Id" : 3024
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Gudbrandsdalen",
+        "RegionId" : 3025,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Gudbrandsdalen",
+        "RegionId" : 3025,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Nord-Gudbrandsdalen",
+        "RegionId" : 3025,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Nord-Gudbrandsdalen",
+    "TypeId" : 20,
+    "Id" : 3025
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Fjordane",
+        "RegionId" : 3026,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Fjordane",
+        "RegionId" : 3026,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Fjordane",
+        "RegionId" : 3026,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Ytre Fjordane",
+    "TypeId" : 20,
+    "Id" : 3026
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285139,
+        "LangKey" : 1,
+        "RegionName" : "Indre Fjordane",
+        "RegionId" : 3027,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:55.76",
+        "MainText" : "Omfattende ustabile forhold pga. store nysnømengder og vind. Naturlig utløste skred forventes. Unngå skredterreng.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285336,
+        "LangKey" : 1,
+        "RegionName" : "Indre Fjordane",
+        "RegionId" : 3027,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:09.433",
+        "MainText" : "Vind og nysnø i fjellet. Skred kan løes ut både naturlig og av skiløper. Unngå leområder hvor det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285365,
+        "LangKey" : 1,
+        "RegionName" : "Indre Fjordane",
+        "RegionId" : 3027,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:09.643",
+        "MainText" : "Faren øker når nedbøren kommer. Unngå løsneområder og utløpsområder for skred.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Indre Fjordane",
+    "TypeId" : 10,
+    "Id" : 3027
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285140,
+        "LangKey" : 1,
+        "RegionName" : "Jotunheimen",
+        "RegionId" : 3028,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T13:44:03.167",
+        "MainText" : "Kraftig vindøkning vil føre til stor vindtransport av snø inn i leheng. Skred kan utløses både naturlig og av skiløper. Unngå alt skredterreng.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285337,
+        "LangKey" : 1,
+        "RegionName" : "Jotunheimen",
+        "RegionId" : 3028,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "4",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:09.85",
+        "MainText" : "Skredfaren er størt første dal av dagen. Skred kan utløses både naturlig og av skiløper. Unngå alt skredterreng.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285373,
+        "LangKey" : 1,
+        "RegionName" : "Jotunheimen",
+        "RegionId" : 3028,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:10.07",
+        "MainText" : "Komplekse forhold med flere svake lag. Vær spesielt forsiktig i vindbeskyttede leformasjoner hvor snøoverflaten er myk.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Jotunheimen",
+    "TypeId" : 10,
+    "Id" : 3028
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285141,
+        "LangKey" : 1,
+        "RegionName" : "Indre Sogn",
+        "RegionId" : 3029,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:56.223",
+        "MainText" : "Kraftig vind og snø gir økt skredfare. Unngå leområder der det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285338,
+        "LangKey" : 1,
+        "RegionName" : "Indre Sogn",
+        "RegionId" : 3029,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:10.31",
+        "MainText" : "Kraftig vind og snø gir økt skredfare. Unngå leområder der det samler seg fersk fokksnø.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285386,
+        "LangKey" : 1,
+        "RegionName" : "Indre Sogn",
+        "RegionId" : 3029,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:10.527",
+        "MainText" : "Unngå leområde der det samler seg fokksnø, feks. bak rygger, i søkk og renneformasjonar. Lettest å løyse ut skred der fokksnølaget er tynt eller mykt.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Indre Sogn",
+    "TypeId" : 10,
+    "Id" : 3029
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Sogn",
+        "RegionId" : 3030,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Sogn",
+        "RegionId" : 3030,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Ytre Sogn",
+        "RegionId" : 3030,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Ytre Sogn",
+    "TypeId" : 20,
+    "Id" : 3030
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285142,
+        "LangKey" : 1,
+        "RegionName" : "Voss",
+        "RegionId" : 3031,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:56.72",
+        "MainText" : "Ferske fokksnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285339,
+        "LangKey" : 1,
+        "RegionName" : "Voss",
+        "RegionId" : 3031,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:10.757",
+        "MainText" : "Unngå leområder der det samler seg fokksnø, f.eks. bak rygger, i søkk og renneformasjoner. Det er lettest å løse ut skred der fokksnølaget er tynt eller mykt.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285429,
+        "LangKey" : 1,
+        "RegionName" : "Voss",
+        "RegionId" : 3031,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:10.97",
+        "MainText" : "Faren øker når nedbøren kommer. Unngå potensielle løsneområder og utløpsområder for skred. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Voss",
+    "TypeId" : 10,
+    "Id" : 3031
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285143,
+        "LangKey" : 1,
+        "RegionName" : "Hallingdal",
+        "RegionId" : 3032,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:57.66",
+        "MainText" : "Lokalt ustabile forhold. Vær forsiktig i leområder med fersk fokksnø. Det finst også områder med vedvarende svake lag i høyt til fjells. ",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285340,
+        "LangKey" : 1,
+        "RegionName" : "Hallingdal",
+        "RegionId" : 3032,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:11.193",
+        "MainText" : "Lokalt ustabile forhold. Vær forsiktig i leområder med fersk fokksnø. Det finst også områder med vedvarende svake lag i høyt til fjells. ",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285423,
+        "LangKey" : 1,
+        "RegionName" : "Hallingdal",
+        "RegionId" : 3032,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:11.41",
+        "MainText" : "Lokalt ustabile forhold. Vær forsiktig i leområder med fersk fokksnø. Det finst også områder med vedvarende svake lag i høyt til fjells. ",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Hallingdal",
+    "TypeId" : 10,
+    "Id" : 3032
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hordalandskysten",
+        "RegionId" : 3033,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hordalandskysten",
+        "RegionId" : 3033,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hordalandskysten",
+        "RegionId" : 3033,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Hordalandskysten",
+    "TypeId" : 20,
+    "Id" : 3033
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285144,
+        "LangKey" : 1,
+        "RegionName" : "Hardanger",
+        "RegionId" : 3034,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:58.59",
+        "MainText" : "Ferske nysnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285341,
+        "LangKey" : 1,
+        "RegionName" : "Hardanger",
+        "RegionId" : 3034,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:11.62",
+        "MainText" : "Det ligger fersk fokksnø i leformasjonar i terrenget. Skred er lettest å løse ut der fokksnøflakene er tynne eller myke.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285434,
+        "LangKey" : 1,
+        "RegionName" : "Hardanger",
+        "RegionId" : 3034,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:11.817",
+        "MainText" : "Naturlig utløste våte snøskred kan forekomme i lavlandet, mens i høyden må man unngå ferske og ustabile nysnøflak.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Hardanger",
+    "TypeId" : 10,
+    "Id" : 3034
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285145,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Telemark",
+        "RegionId" : 3035,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:59.507",
+        "MainText" : "Vær varsom der det ligger fersk fokksnø, ellers stabile forhold.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285342,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Telemark",
+        "RegionId" : 3035,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:12.083",
+        "MainText" : "Vær varsom der det ligger fersk fokksnø, ellers stabile forhold.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285430,
+        "LangKey" : 1,
+        "RegionName" : "Vest-Telemark",
+        "RegionId" : 3035,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "1",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:12.273",
+        "MainText" : "Vær varsom der det ligger fersk fokksnø, ellers stabile forhold.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Vest-Telemark",
+    "TypeId" : 10,
+    "Id" : 3035
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Rogalandskysten",
+        "RegionId" : 3036,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Rogalandskysten",
+        "RegionId" : 3036,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Rogalandskysten",
+        "RegionId" : 3036,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Rogalandskysten",
+    "TypeId" : 20,
+    "Id" : 3036
+  },
+  {
+    "TypeName" : "A",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 285146,
+        "LangKey" : 1,
+        "RegionName" : "Heiane",
+        "RegionId" : 3037,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "3",
+        "NextWarningTime" : "2022-01-17T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-15T15:31:59.947",
+        "MainText" : "Ferske nysnøflak er problemet i høyden, under snøgrensa kan temperaturstigning og regn føre til naturlig utløste skred.",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 285343,
+        "LangKey" : 1,
+        "RegionName" : "Heiane",
+        "RegionId" : 3037,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-18T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:12.467",
+        "MainText" : "Det ligger fersk fokksnø i leformasjonar i terrenget. Skred er lettest å løse ut der fokksnøflakene er tynne eller myke.",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 285437,
+        "LangKey" : 1,
+        "RegionName" : "Heiane",
+        "RegionId" : 3037,
+        "RegionTypeName" : "Ikke gitt",
+        "DangerLevel" : "2",
+        "NextWarningTime" : "2022-01-19T16:00:00",
+        "RegionTypeId" : 0,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-16T15:20:12.657",
+        "MainText" : "Naturlig utløste våte snøskred kan forekomme i lavlandet, mens i høyden i områder hvor det kommer snø må man unngå ferske og ustabile nysnøflak.",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Heiane",
+    "TypeId" : 10,
+    "Id" : 3037
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Agder sør",
+        "RegionId" : 3038,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Agder sør",
+        "RegionId" : 3038,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Agder sør",
+        "RegionId" : 3038,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Agder sør",
+    "TypeId" : 20,
+    "Id" : 3038
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Telemark sør",
+        "RegionId" : 3039,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Telemark sør",
+        "RegionId" : 3039,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Telemark sør",
+        "RegionId" : 3039,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Telemark sør",
+    "TypeId" : 20,
+    "Id" : 3039
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Vestfold",
+        "RegionId" : 3040,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Vestfold",
+        "RegionId" : 3040,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Vestfold",
+        "RegionId" : 3040,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Vestfold",
+    "TypeId" : 20,
+    "Id" : 3040
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Buskerud sør",
+        "RegionId" : 3041,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Buskerud sør",
+        "RegionId" : 3041,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Buskerud sør",
+        "RegionId" : 3041,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Buskerud sør",
+    "TypeId" : 20,
+    "Id" : 3041
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oppland sør",
+        "RegionId" : 3042,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oppland sør",
+        "RegionId" : 3042,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oppland sør",
+        "RegionId" : 3042,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Oppland sør",
+    "TypeId" : 20,
+    "Id" : 3042
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hedmark",
+        "RegionId" : 3043,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hedmark",
+        "RegionId" : 3043,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Hedmark",
+        "RegionId" : 3043,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Hedmark",
+    "TypeId" : 20,
+    "Id" : 3043
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Akershus",
+        "RegionId" : 3044,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Akershus",
+        "RegionId" : 3044,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Akershus",
+        "RegionId" : 3044,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Akershus",
+    "TypeId" : 20,
+    "Id" : 3044
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oslo",
+        "RegionId" : 3045,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oslo",
+        "RegionId" : 3045,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Oslo",
+        "RegionId" : 3045,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Oslo",
+    "TypeId" : 20,
+    "Id" : 3045
+  },
+  {
+    "TypeName" : "B",
+    "AvalancheWarningList" : [
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Østfold",
+        "RegionId" : 3046,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-15T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-16T23:59:59",
+        "PublishTime" : "2022-01-16T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-16T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Østfold",
+        "RegionId" : 3046,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-17T23:59:59",
+        "PublishTime" : "2022-01-17T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-17T00:00:00"
+      },
+      {
+        "RegId" : 0,
+        "LangKey" : 1,
+        "RegionName" : "Østfold",
+        "RegionId" : 3046,
+        "RegionTypeName" : "B",
+        "DangerLevel" : "0",
+        "NextWarningTime" : "2022-01-17T17:00:00",
+        "RegionTypeId" : 20,
+        "ValidTo" : "2022-01-18T23:59:59",
+        "PublishTime" : "2022-01-18T00:00:00",
+        "MainText" : "Ikke vurdert",
+        "ValidFrom" : "2022-01-18T00:00:00"
+      }
+    ],
+    "Name" : "Østfold",
+    "TypeId" : 20,
+    "Id" : 3046
+  }
+]

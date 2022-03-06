@@ -1,0 +1,32 @@
+/* Region header */
+"Regions" = "Regioner";
+
+/* List group header for A-regions */
+"A-Regions" = "A-Regioner";
+
+/* List group header for location based warnings */
+"Local Warnings" = "Lokalt Skredvarsel";
+
+/* Button text to use location based warnings */
+"Use current location" = "Bruk min posisjon";
+
+/* Button description for location based warnings */
+"Will enable location based warnings in Widgets" = "Lar deg bruke posisjonsbasert skredvarsel i Widgets";
+
+/* Data source description and link */
+"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Varsler fra Snøskredvarslingen i Norge og www.varsom.no.";
+
+/* Widget Config Display Name */
+"Today's Avalanche Danger Level" = "Dagens skredfare";
+
+/* Widget Config Description */
+"Display today's avalanche danger level for selected regions in Norway." = "Se dagens faregrad for valgt varslingsregion.";
+
+/* Error loading widget */
+"Error" = "Feil";
+
+/* Error loading widget */
+"There was an error updating the widget" = "Det oppstod en feil under oppdatering av Widget";
+
+/* Link to Varsom.no */
+"Read complete warning on Varsom.no" = "Se komplett skredvarsel på Varsom.no";
