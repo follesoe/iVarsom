@@ -32,6 +32,6 @@ struct RegionOption: Codable, Identifiable {
     ]
     
     public static let allOptions = [currentPositionOption] + aRegions
-    public static let currentPositionOption = RegionOption(id: 1, name: "Current position")
+    public static let currentPositionOption = RegionOption(id: 1, name: String(localized: "Current position"))
     public static let defaultOption = RegionOption(id: 3022, name: "Trollheimen")
 }
