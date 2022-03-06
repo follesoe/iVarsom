@@ -36,6 +36,7 @@
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
 		AA6386052797514E00FD52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AA63860B2797592700FD52DA /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
+		AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172F02796093A009AB089 /* Assets.xcassets */; };
 		AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
 		AA71615027CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614F27CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift */; };
 		AA71615227CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71615127CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift */; };
@@ -74,7 +75,6 @@
 		AAD172E927960939009AB089 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172E827960939009AB089 /* WidgetKit.framework */; };
 		AAD172EB27960939009AB089 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172EA27960939009AB089 /* SwiftUI.framework */; };
 		AAD172EE27960939009AB089 /* iVarsomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172ED27960939009AB089 /* iVarsomWidget.swift */; };
-		AAD172F12796093A009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172F02796093A009AB089 /* Assets.xcassets */; };
 		AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F72796093A009AB089 /* iVarsomWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -560,8 +560,8 @@
 			files = (
 				AA839D15279D830400DF7ACF /* DangerLevelAssets.xcassets in Resources */,
 				AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */,
-				AAD172F12796093A009AB089 /* Assets.xcassets in Resources */,
 				AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */,
+				AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
