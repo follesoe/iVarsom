@@ -1,6 +1,8 @@
 /* Bundle name */
 "CFBundleName" = "Skredvarsel";
 
+"CFBundleDisplayName" = "Skredvarsel";
+
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
 
 "NSLocationWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
