@@ -6,3 +6,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
 
 "NSLocationWhenInUseUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
+
+"NSLocationUsageDescription" = "The app use location to display avalanche warnings from your nearest region";

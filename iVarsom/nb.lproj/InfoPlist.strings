@@ -6,3 +6,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
 
 "NSLocationWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
+
+"NSLocationUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
