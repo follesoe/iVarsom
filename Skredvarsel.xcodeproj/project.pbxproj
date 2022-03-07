@@ -48,7 +48,7 @@
 		AA809486279E221D00A2F192 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AA80948F279E234200A2F192 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA80948E279E234200A2F192 /* Intents.framework */; };
 		AA809492279E234200A2F192 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809491279E234200A2F192 /* IntentHandler.swift */; };
-		AA8094A8279E234200A2F192 /* iVarsomIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA80948D279E234200A2F192 /* iVarsomIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA8094A8279E234200A2F192 /* SkredvarselIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA839D07279D7E9700DF7ACF /* DangerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D06279D7E9700DF7ACF /* DangerGradient.swift */; };
 		AA839D09279D7EFF00DF7ACF /* DangerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D06279D7E9700DF7ACF /* DangerGradient.swift */; };
 		AA839D0B279D7FCE00DF7ACF /* DangerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */; };
@@ -77,7 +77,7 @@
 		AAD172EE27960939009AB089 /* iVarsomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172ED27960939009AB089 /* iVarsomWidget.swift */; };
 		AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
-		AAD172F72796093A009AB089 /* iVarsomWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AAD172F72796093A009AB089 /* SkredvarselWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
 		AAF74A7727CC09CD00B02166 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
 		AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
@@ -116,8 +116,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AA8094A8279E234200A2F192 /* iVarsomIntentExtension.appex in Embed App Extensions */,
-				AAD172F72796093A009AB089 /* iVarsomWidgetExtension.appex in Embed App Extensions */,
+				AA8094A8279E234200A2F192 /* SkredvarselIntentExtension.appex in Embed App Extensions */,
+				AAD172F72796093A009AB089 /* SkredvarselWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +127,7 @@
 /* Begin PBXFileReference section */
 		AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSymbolLevel.swift; sourceTree = "<group>"; };
 		AA102E06279DAF0200B6492D /* RegionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSummary.swift; sourceTree = "<group>"; };
-		AA18420927B1A3860097174D /* iVarsomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iVarsomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA18420927B1A3860097174D /* SkredvarselTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkredvarselTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarsomApiClientTests.swift; sourceTree = "<group>"; };
 		AA18421227B1A9530097174D /* JsonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtensions.swift; sourceTree = "<group>"; };
 		AA18421627B1A9A30097174D /* FormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterExtensions.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		AA7358D727C23154009E3DA1 /* RegionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailViewModel.swift; sourceTree = "<group>"; };
 		AA809485279E221D00A2F192 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		AA809488279E222900A2F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AA80948D279E234200A2F192 /* iVarsomIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iVarsomIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkredvarselIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80948E279E234200A2F192 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		AA809491279E234200A2F192 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		AA809493279E234200A2F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerLevel.swift; sourceTree = "<group>"; };
 		AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerIcon.swift; sourceTree = "<group>"; };
 		AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DangerLevelAssets.xcassets; sourceTree = "<group>"; };
-		AAD172AC2795F8F8009AB089 /* iVarsom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVarsom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		AAD172D52795FCC2009AB089 /* RegionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionList.swift; sourceTree = "<group>"; };
 		AAD172DD2795FEDF009AB089 /* RegionSummary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RegionSummary.json; sourceTree = "<group>"; };
 		AAD172E0279605B4009AB089 /* WarningSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSummary.swift; sourceTree = "<group>"; };
-		AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iVarsomWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkredvarselWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172E827960939009AB089 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		AAD172EA27960939009AB089 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		AAD172ED27960939009AB089 /* iVarsomWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomWidget.swift; sourceTree = "<group>"; };
@@ -294,10 +294,10 @@
 		AAD172AD2795F8F8009AB089 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAD172AC2795F8F8009AB089 /* iVarsom.app */,
-				AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */,
-				AA80948D279E234200A2F192 /* iVarsomIntentExtension.appex */,
-				AA18420927B1A3860097174D /* iVarsomTests.xctest */,
+				AAD172AC2795F8F8009AB089 /* Skredvarsel.app */,
+				AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */,
+				AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */,
+				AA18420927B1A3860097174D /* SkredvarselTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -397,9 +397,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA18420827B1A3860097174D /* iVarsomTests */ = {
+		AA18420827B1A3860097174D /* SkredvarselTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA18420F27B1A3860097174D /* Build configuration list for PBXNativeTarget "iVarsomTests" */;
+			buildConfigurationList = AA18420F27B1A3860097174D /* Build configuration list for PBXNativeTarget "SkredvarselTests" */;
 			buildPhases = (
 				AA18420527B1A3860097174D /* Sources */,
 				AA18420627B1A3860097174D /* Frameworks */,
@@ -410,14 +410,14 @@
 			dependencies = (
 				AA18420E27B1A3860097174D /* PBXTargetDependency */,
 			);
-			name = iVarsomTests;
+			name = SkredvarselTests;
 			productName = iVarsomTests;
-			productReference = AA18420927B1A3860097174D /* iVarsomTests.xctest */;
+			productReference = AA18420927B1A3860097174D /* SkredvarselTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AA80948C279E234200A2F192 /* iVarsomIntentExtension */ = {
+		AA80948C279E234200A2F192 /* SkredvarselIntentExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA8094AD279E234200A2F192 /* Build configuration list for PBXNativeTarget "iVarsomIntentExtension" */;
+			buildConfigurationList = AA8094AD279E234200A2F192 /* Build configuration list for PBXNativeTarget "SkredvarselIntentExtension" */;
 			buildPhases = (
 				AA809489279E234200A2F192 /* Sources */,
 				AA80948A279E234200A2F192 /* Frameworks */,
@@ -427,14 +427,14 @@
 			);
 			dependencies = (
 			);
-			name = iVarsomIntentExtension;
+			name = SkredvarselIntentExtension;
 			productName = iVarsomIntentExtension;
-			productReference = AA80948D279E234200A2F192 /* iVarsomIntentExtension.appex */;
+			productReference = AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		AAD172AB2795F8F8009AB089 /* iVarsom */ = {
+		AAD172AB2795F8F8009AB089 /* Skredvarsel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAD172BA2795F8F9009AB089 /* Build configuration list for PBXNativeTarget "iVarsom" */;
+			buildConfigurationList = AAD172BA2795F8F9009AB089 /* Build configuration list for PBXNativeTarget "Skredvarsel" */;
 			buildPhases = (
 				AAD172A82795F8F8009AB089 /* Sources */,
 				AAD172A92795F8F8009AB089 /* Frameworks */,
@@ -447,17 +447,17 @@
 				AAD172F62796093A009AB089 /* PBXTargetDependency */,
 				AA8094A7279E234200A2F192 /* PBXTargetDependency */,
 			);
-			name = iVarsom;
+			name = Skredvarsel;
 			packageProductDependencies = (
 				AA1C7051279C21C600FE3317 /* DynamicColor */,
 			);
 			productName = iVarsom;
-			productReference = AAD172AC2795F8F8009AB089 /* iVarsom.app */;
+			productReference = AAD172AC2795F8F8009AB089 /* Skredvarsel.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AAD172E527960938009AB089 /* iVarsomWidgetExtension */ = {
+		AAD172E527960938009AB089 /* SkredvarselWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAD172F92796093A009AB089 /* Build configuration list for PBXNativeTarget "iVarsomWidgetExtension" */;
+			buildConfigurationList = AAD172F92796093A009AB089 /* Build configuration list for PBXNativeTarget "SkredvarselWidgetExtension" */;
 			buildPhases = (
 				AAD172E227960938009AB089 /* Sources */,
 				AAD172E327960938009AB089 /* Frameworks */,
@@ -467,12 +467,12 @@
 			);
 			dependencies = (
 			);
-			name = iVarsomWidgetExtension;
+			name = SkredvarselWidgetExtension;
 			packageProductDependencies = (
 				AADD6BA0279C832A007737B6 /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
-			productReference = AAD172E627960938009AB089 /* iVarsomWidgetExtension.appex */;
+			productReference = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -500,7 +500,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AAD172A72795F8F8009AB089 /* Build configuration list for PBXProject "iVarsom" */;
+			buildConfigurationList = AAD172A72795F8F8009AB089 /* Build configuration list for PBXProject "Skredvarsel" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -517,10 +517,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAD172AB2795F8F8009AB089 /* iVarsom */,
-				AAD172E527960938009AB089 /* iVarsomWidgetExtension */,
-				AA80948C279E234200A2F192 /* iVarsomIntentExtension */,
-				AA18420827B1A3860097174D /* iVarsomTests */,
+				AAD172AB2795F8F8009AB089 /* Skredvarsel */,
+				AAD172E527960938009AB089 /* SkredvarselWidgetExtension */,
+				AA80948C279E234200A2F192 /* SkredvarselIntentExtension */,
+				AA18420827B1A3860097174D /* SkredvarselTests */,
 			);
 		};
 /* End PBXProject section */
@@ -659,17 +659,17 @@
 /* Begin PBXTargetDependency section */
 		AA18420E27B1A3860097174D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAD172AB2795F8F8009AB089 /* iVarsom */;
+			target = AAD172AB2795F8F8009AB089 /* Skredvarsel */;
 			targetProxy = AA18420D27B1A3860097174D /* PBXContainerItemProxy */;
 		};
 		AA8094A7279E234200A2F192 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AA80948C279E234200A2F192 /* iVarsomIntentExtension */;
+			target = AA80948C279E234200A2F192 /* SkredvarselIntentExtension */;
 			targetProxy = AA8094A6279E234200A2F192 /* PBXContainerItemProxy */;
 		};
 		AAD172F62796093A009AB089 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAD172E527960938009AB089 /* iVarsomWidgetExtension */;
+			target = AAD172E527960938009AB089 /* SkredvarselWidgetExtension */;
 			targetProxy = AAD172F52796093A009AB089 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -710,7 +710,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iVarsom.app/iVarsom";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skredvarsel.app/Skredvarsel";
 			};
 			name = Debug;
 		};
@@ -728,7 +728,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iVarsom.app/iVarsom";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skredvarsel.app/Skredvarsel";
 			};
 			name = Release;
 		};
@@ -1043,7 +1043,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA18420F27B1A3860097174D /* Build configuration list for PBXNativeTarget "iVarsomTests" */ = {
+		AA18420F27B1A3860097174D /* Build configuration list for PBXNativeTarget "SkredvarselTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA18421027B1A3860097174D /* Debug */,
@@ -1052,7 +1052,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA8094AD279E234200A2F192 /* Build configuration list for PBXNativeTarget "iVarsomIntentExtension" */ = {
+		AA8094AD279E234200A2F192 /* Build configuration list for PBXNativeTarget "SkredvarselIntentExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA8094AE279E234200A2F192 /* Debug */,
@@ -1061,7 +1061,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAD172A72795F8F8009AB089 /* Build configuration list for PBXProject "iVarsom" */ = {
+		AAD172A72795F8F8009AB089 /* Build configuration list for PBXProject "Skredvarsel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAD172B82795F8F9009AB089 /* Debug */,
@@ -1070,7 +1070,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAD172BA2795F8F9009AB089 /* Build configuration list for PBXNativeTarget "iVarsom" */ = {
+		AAD172BA2795F8F9009AB089 /* Build configuration list for PBXNativeTarget "Skredvarsel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAD172BB2795F8F9009AB089 /* Debug */,
@@ -1079,7 +1079,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAD172F92796093A009AB089 /* Build configuration list for PBXNativeTarget "iVarsomWidgetExtension" */ = {
+		AAD172F92796093A009AB089 /* Build configuration list for PBXNativeTarget "SkredvarselWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAD172FA2796093A009AB089 /* Debug */,
