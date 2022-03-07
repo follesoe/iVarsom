@@ -33,3 +33,6 @@
 
 /* Current position option */
 "Current position" = "Current position";
+
+/* When no region is selected */
+"Select a region" = "Select a region";

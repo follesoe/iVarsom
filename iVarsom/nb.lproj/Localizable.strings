@@ -33,3 +33,6 @@
 
 /* Current position option */
 "Current position" = "Min posisjon";
+
+/* When no region is selected */
+"Select a region" = "Velg en region";
