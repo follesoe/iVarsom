@@ -11,20 +11,14 @@ struct WarningSymbolLevel: View {
         VStack(alignment: .leading) {
             Spacer()
             HStack(alignment: .center) {
-                Spacer()
                 DangerIcon(dangerLevel: dangerLevel)
                     .frame(width: 54, height: 54)
-                Spacer()
-            }
-            //Spacer()
-            HStack(alignment: .center) {
-                Spacer()
-                Text("\(dangerLevel.description)")
-                    .font(.system(size: 54))
-                    .fontWeight(.heavy)
-                    .foregroundColor(textColor)
-                Spacer()
-            }
+            }.frame(maxWidth: .infinity)
+            Text("\(dangerLevel.description)")
+                .font(.system(size: 54))
+                .fontWeight(.heavy)
+                .foregroundColor(textColor)
+                .frame(maxWidth: .infinity)
             Spacer()
         }
     }

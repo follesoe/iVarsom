@@ -15,8 +15,9 @@ struct WarningSummary: View {
             DangerGradient(dangerLevel: warning.DangerLevel)
             HStack {
                 WarningSymbolLevel(dangerLevel: warning.DangerLevel)
-                    .frame(width: 56)
-                    .padding()
+                    .frame(width: 90)
+                    .padding(.top, 8)
+                    .padding(.bottom, 8)
                 VStack(alignment: .leading) {
                     Spacer()
                     //.formatted(.dateTime.day(.twoDigits).month(.twoDigits)
@@ -43,6 +44,8 @@ struct WarningSummary: View {
                         .lineLimit(mainTextLineLimit)
                     Spacer()
                 }
+                .padding(.top, 12)
+                .padding(.bottom, 12)
                 Spacer()
                 DangerScale(dangerLevel: warning.DangerLevel)
                     .frame(width: 12)
