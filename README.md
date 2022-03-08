@@ -12,9 +12,17 @@ The app is also a learning exercise for myself to learn how to build and distrib
 
 <img src="images/iPhoneiPadDeviceScreenshot.webp" alt="App running on iPhone 13 and iPad Pro 12.9" />
 
+<a href="https://apps.apple.com/app/skredvarsel/id1613060787">
+    <img src="images/DownloadOnTheAppStore.svg" alt="Download on the App Store" />
+</a>
+
 ## macOS
 
 <img src="images/macBookScreenshot.webp" alt="App running on macOS" />
+
+<a href="https://apps.apple.com/app/skredvarsel/id1613060787">
+    <img src="images/DownloadOnTheMacAppStore.svg" alt="Download on the Mac App Store" />
+</a>
 
 ## Beta testing
 

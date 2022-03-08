@@ -6,4 +6,4 @@ If you give the app permission to access your location, it will only request a l
 
 For more information about the Varsom.no API hosted by the the Norwegian Avalanche Warning Service please see http://api.nve.no/doc/snoeskredvarsel/.
 
-All the source code for the application is available as open source and can be received to verify that no data is collected by this app.
+All the source code for the application is available as open source and can be reviewed to verify that no data is collected by this app.
