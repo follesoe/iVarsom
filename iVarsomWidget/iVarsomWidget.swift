@@ -111,8 +111,11 @@ struct Provider: IntentTimelineProvider {
     
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegionIntent) -> Timeline<Entry> {
         var entries: [WarningEntry] = []
+    
+        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date(), toGranularity: .day) }!
         
-        let currentWarning = warnings.filter { Calendar.current.isDate($0.ValidFrom, equalTo: Date(), toGranularity: .day) }.first!
+        let currentWarning = warnings[currentIndex]
+        let prevWarning = currentIndex > 0 ? warnings[currentIndex - 1] : currentWarning
         
         let entry = WarningEntry(
             date: currentWarning.ValidFrom,
@@ -122,8 +125,10 @@ struct Provider: IntentTimelineProvider {
             relevance: TimelineEntryRelevance(score: currentWarning.DangerLevelNumeric))
         entries.append(entry)
         
-        return Timeline(entries: entries, policy: .after(currentWarning.NextWarningTime))
-    }
+        let afterDate = getNextUpdateTime(prevWarning: prevWarning, currentWarning: currentWarning)
+        print("Update policy after \(afterDate)")
+        return Timeline(entries: entries, policy: .after(afterDate))
+    }    
 }
 
 class WidgetLocationManager: NSObject, CLLocationManagerDelegate {

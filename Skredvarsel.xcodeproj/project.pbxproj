@@ -33,6 +33,7 @@
 		AA2410BD27BAE5390028FA6D /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */; };
 		AA461CFE27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA461CFF27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
+		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
 		AA6386052797514E00FD52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AA63860B2797592700FD52DA /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
@@ -135,6 +136,7 @@
 		AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModel.swift; sourceTree = "<group>"; };
 		AA461CFD27B0082000425270 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePolicy.swift; sourceTree = "<group>"; };
 		AA6386032797511E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA6386062797514E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA6386082797518E00FD52DA /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD172ED27960939009AB089 /* iVarsomWidget.swift */,
+				AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */,
 				AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */,
 				AAD172F02796093A009AB089 /* Assets.xcassets */,
 				AAD172F22796093A009AB089 /* Info.plist */,
@@ -648,6 +651,7 @@
 				AA18421827B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AA102E01279DA2AB00B6492D /* VarsomData.swift in Sources */,
 				AA839D09279D7EFF00DF7ACF /* DangerGradient.swift in Sources */,
+				AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */,
 				AA102E02279DA2C200B6492D /* VarsomApiClient.swift in Sources */,
 				AAD172EE27960939009AB089 /* iVarsomWidget.swift in Sources */,
 				AA102E00279DA27800B6492D /* WarningSummary.swift in Sources */,
@@ -932,7 +936,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -970,7 +974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
