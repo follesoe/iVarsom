@@ -12,7 +12,11 @@ final class LocationManager: NSObject {
     private var locationCheckedThrowingContinuation: LocationCheckedThrowingContinuation?
     
     public var isAuthorizedForWidgetUpdates: Bool {
+#if os(watchOS)
+        return false
+#else
         return locationManager.isAuthorizedForWidgetUpdates
+#endif
     }
     
     public var isAuthorized: Bool {

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
-            .padding()
+        ZStack {
+            DangerGradient(dangerLevel: .level3)
+            VStack {
+                DangerIcon(dangerLevel: .level3)
+                    .padding()
+            }
+        }
     }
 }
 
