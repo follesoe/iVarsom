@@ -70,6 +70,17 @@
 		AA839D15279D830400DF7ACF /* DangerLevelAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */; };
 		AAA89050280C53BC00A80394 /* DangerLevelAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */; };
 		AAA89051280C540500A80394 /* DangerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */; };
+		AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA89053280C586000A80394 /* SelectRegionListView.swift */; };
+		AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA89055280C60BA00A80394 /* RegionWatchRow.swift */; };
+		AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */; };
+		AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D127BD93C8009E3DA1 /* RegionListViewModelProtocol.swift */; };
+		AAA89059280C6D0B00A80394 /* RegionDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614F27CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift */; };
+		AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */; };
+		AAA8905B280C6D1200A80394 /* RegionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D727C23154009E3DA1 /* RegionDetailViewModel.swift */; };
+		AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */; };
+		AAA8905D280C6D1200A80394 /* DesignTimeRegionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71615127CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift */; };
+		AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
+		AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA89060280D699A00A80394 /* RegionDetailView.swift */; };
 		AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AAAE5108279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AAAE5109279E2E55008B2311 /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
@@ -237,6 +248,9 @@
 		AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerLevel.swift; sourceTree = "<group>"; };
 		AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerIcon.swift; sourceTree = "<group>"; };
 		AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DangerLevelAssets.xcassets; sourceTree = "<group>"; };
+		AAA89053280C586000A80394 /* SelectRegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionListView.swift; sourceTree = "<group>"; };
+		AAA89055280C60BA00A80394 /* RegionWatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionWatchRow.swift; sourceTree = "<group>"; };
+		AAA89060280D699A00A80394 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -348,6 +362,9 @@
 			children = (
 				AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */,
 				AA345DCD28085B4700B78BDB /* ContentView.swift */,
+				AAA89055280C60BA00A80394 /* RegionWatchRow.swift */,
+				AAA89060280D699A00A80394 /* RegionDetailView.swift */,
+				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
 				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
 				AA345DD128085B4700B78BDB /* NotificationView.swift */,
 				AA345DD328085B4700B78BDB /* ComplicationController.swift */,
@@ -718,6 +735,7 @@
 				AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */,
 				AAA89050280C53BC00A80394 /* DangerLevelAssets.xcassets in Resources */,
 				AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */,
+				AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,17 +793,27 @@
 				AA345DCE28085B4700B78BDB /* ContentView.swift in Sources */,
 				AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */,
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
+				AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */,
 				AAF054CA280C502B000BCADD /* DangerLevel.swift in Sources */,
 				AA345DD428085B4700B78BDB /* ComplicationController.swift in Sources */,
 				AAF054CC280C504B000BCADD /* VarsomApiClient.swift in Sources */,
+				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
+				AAA8905B280C6D1200A80394 /* RegionDetailViewModel.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
+				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
+				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
 				AAA89051280C540500A80394 /* DangerIcon.swift in Sources */,
 				AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */,
 				AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */,
+				AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */,
 				AAF054C8280C502B000BCADD /* AvalancheWarningSimple.swift in Sources */,
 				AAF054CB280C504B000BCADD /* LocationManager.swift in Sources */,
+				AAA8905D280C6D1200A80394 /* DesignTimeRegionDetailViewModel.swift in Sources */,
 				AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */,
 				AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */,
+				AAA89059280C6D0B00A80394 /* RegionDetailViewModelProtocol.swift in Sources */,
+				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
+				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
 				AAF054C9280C502B000BCADD /* VarsomData.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
 				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,
@@ -971,7 +999,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -979,7 +1007,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -997,7 +1025,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1005,7 +1033,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -1029,7 +1057,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1037,7 +1065,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
@@ -1061,7 +1089,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1069,7 +1097,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};

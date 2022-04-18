@@ -1,26 +1,43 @@
-//
-//  ContentView.swift
-//  iVarsomWatch WatchKit Extension
-//
-//  Created by Jonas Follesø on 14/04/2022.
-//
-
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView<ViewModelType: RegionListViewModelProtocol>: View {
+    @StateObject var vm: ViewModelType
+    let client = VarsomApiClient()
+
     var body: some View {
-        ZStack {
-            DangerGradient(dangerLevel: .level3)
-            VStack {
-                DangerIcon(dangerLevel: .level3)
-                    .padding()
-            }
+        VStack {
+            List {
+                ForEach(vm.filteredRegions) { region in
+                    let vm = RegionDetailViewModel(
+                        client: client,
+                        regionSummary: region)
+                    NavigationLink() {
+                        RegionDetailView(vm: vm)
+                    } label: {
+                        RegionWatchRow(warning: region.AvalancheWarningList[0])
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .cornerRadius(14)
+                }                
+                NavigationLink(destination: SelectRegionListView()) {
+                    Text("Add Region")
+                        .padding()
+                }
+            }.listStyle(.carousel)
+        }.navigationTitle("Skredvarsel")
+        .task {
+            await vm.loadRegions()
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView(vm: DesignTimeRegionListViewModel(
+                state: .loaded,
+                locationIsAuthorized: false,
+                filteredRegions: testARegions))
+        }
     }
 }

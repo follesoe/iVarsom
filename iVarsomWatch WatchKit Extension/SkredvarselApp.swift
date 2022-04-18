@@ -1,19 +1,16 @@
-//
-//  SkredvarselApp.swift
-//  iVarsomWatch WatchKit Extension
-//
-//  Created by Jonas Follesø on 14/04/2022.
-//
-
 import SwiftUI
 
 @main
 struct SkredvarselApp: App {
+    @StateObject var vm = RegionListViewModel(
+        client: VarsomApiClient(),
+        locationManager: LocationManager())
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
-            }
+                ContentView<RegionListViewModel>(vm: vm)
+            }.tint(Color("DangerLevel3"))
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")
