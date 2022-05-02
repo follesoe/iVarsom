@@ -57,7 +57,7 @@ struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
         .navigationTitle(vm.regionSummary.Name)
         .navigationBarTitleDisplayMode(.large)
         .task {
-            await self.vm.loadWarnings()
+            await self.vm.loadWarnings(from: -5, to: 2)
         }
     }
 }

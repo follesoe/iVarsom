@@ -43,6 +43,10 @@
 		AA345DDE28085B4800B78BDB /* iVarsomWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* iVarsomWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA461CFE27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA461CFF27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
+		AA5168852820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
+		AA5168862820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
+		AA5168872820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
+		AA5168882820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
 		AA6386052797514E00FD52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
@@ -222,6 +226,7 @@
 		AA345DDA28085B4800B78BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		AA461CFD27B0082000425270 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AA5168842820695700F86D87 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePolicy.swift; sourceTree = "<group>"; };
 		AA6386032797511E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA6386062797514E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -345,6 +350,7 @@
 				AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */,
 				AA18421227B1A9530097174D /* JsonExtensions.swift */,
 				AA18421627B1A9A30097174D /* FormatterExtensions.swift */,
+				AA5168842820695700F86D87 /* StringExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -778,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5168872820695700F86D87 /* StringExtensions.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
 				AA18421527B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
@@ -800,6 +807,7 @@
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAA8905B280C6D1200A80394 /* RegionDetailViewModel.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
+				AA5168882820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
 				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
 				AAA89051280C540500A80394 /* DangerIcon.swift in Sources */,
@@ -858,6 +866,7 @@
 				AA7358D627C16169009E3DA1 /* WarningLevelCell.swift in Sources */,
 				AA63860B2797592700FD52DA /* VarsomData.swift in Sources */,
 				AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */,
+				AA5168852820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */,
 				AA7358CF27BD8DCF009E3DA1 /* UseLocationRow.swift in Sources */,
@@ -884,6 +893,7 @@
 				AA839D0C279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
 				AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
+				AA5168862820695700F86D87 /* StringExtensions.swift in Sources */,
 				AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */,
 				AA1C67C0279D8A1B0039F8E0 /* DateExtensions.swift in Sources */,
 				AA102E08279DAF0200B6492D /* RegionSummary.swift in Sources */,

@@ -13,6 +13,6 @@ class DesignTimeRegionDetailViewModel: RegionDetailViewModelProtocol {
         self.warnings = regionSummary.AvalancheWarningList
     }
     
-    func loadWarnings() async {
+    func loadWarnings(from: Int = -5, to: Int = 2) async {
     }
 }
