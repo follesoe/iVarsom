@@ -10,7 +10,8 @@ struct SkredvarselApp: App {
         WindowGroup {
             NavigationView {
                 ContentView<RegionListViewModel>(vm: vm)
-            }.tint(Color("DangerLevel3"))
+            }
+            .environmentObject(vm)
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")

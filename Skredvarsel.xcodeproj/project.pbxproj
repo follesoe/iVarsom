@@ -40,7 +40,7 @@
 		AA345DD428085B4700B78BDB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD328085B4700B78BDB /* ComplicationController.swift */; };
 		AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD528085B4800B78BDB /* Assets.xcassets */; };
 		AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD828085B4800B78BDB /* Preview Assets.xcassets */; };
-		AA345DDE28085B4800B78BDB /* SkredvarselWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* SkredvarselWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA345DDE28085B4800B78BDB /* Skredvarsel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* Skredvarsel.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA461CFE27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA461CFF27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA5168852820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
@@ -173,7 +173,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				AA345DDE28085B4800B78BDB /* SkredvarselWatch.app in Embed Watch Content */,
+				AA345DDE28085B4800B78BDB /* Skredvarsel.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +213,7 @@
 		AA1C67BA279D860B0039F8E0 /* DangerScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerScale.swift; sourceTree = "<group>"; };
 		AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModel.swift; sourceTree = "<group>"; };
-		AA345DBE28085B4600B78BDB /* SkredvarselWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkredvarselWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA345DBE28085B4600B78BDB /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA345DC028085B4700B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DC628085B4700B78BDB /* SkredvarselWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SkredvarselWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkredvarselApp.swift; sourceTree = "<group>"; };
@@ -440,7 +440,7 @@
 				AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */,
 				AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */,
 				AA18420927B1A3860097174D /* SkredvarselTests.xctest */,
-				AA345DBE28085B4600B78BDB /* SkredvarselWatch.app */,
+				AA345DBE28085B4600B78BDB /* Skredvarsel.app */,
 				AA345DC628085B4700B78BDB /* SkredvarselWatch WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -574,7 +574,7 @@
 			);
 			name = SkredvarselWatch;
 			productName = iVarsomWatch;
-			productReference = AA345DBE28085B4600B78BDB /* SkredvarselWatch.app */;
+			productReference = AA345DBE28085B4600B78BDB /* Skredvarsel.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		AA345DC528085B4700B78BDB /* SkredvarselWatch WatchKit Extension */ = {
@@ -1010,7 +1010,7 @@
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp;
-				PRODUCT_NAME = SkredvarselWatch;
+				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1035,7 +1035,7 @@
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchkitapp;
-				PRODUCT_NAME = SkredvarselWatch;
+				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

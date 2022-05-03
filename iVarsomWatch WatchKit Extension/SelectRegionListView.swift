@@ -1,15 +1,23 @@
 import SwiftUI
 
-struct SelectRegionListView: View {
+struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var vm: ViewModelType
 
     var body: some View {
         List {
             ForEach(RegionOption.allOptions) { option in
                 Text(option.name)
                     .onTapGesture {
-                        print(option.name)
-                        self.presentationMode.wrappedValue.dismiss()
+                        Task {
+                            print(option.name)
+                            if (option.id == RegionOption.currentPositionOption.id) {
+                                await vm.updateLocation()
+                            }
+                            
+                            vm.addFavorite(id: option.id)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }
             }
         }
@@ -18,6 +26,6 @@ struct SelectRegionListView: View {
 
 struct SelectRegionListView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectRegionListView()
+        SelectRegionListView<RegionListViewModel>()
     }
 }

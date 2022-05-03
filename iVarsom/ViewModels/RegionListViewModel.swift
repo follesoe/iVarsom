@@ -18,7 +18,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
     @Published private(set) var locationIsAuthorized = false
     @Published private(set) var regions = [RegionSummary]()
     @Published private(set) var localRegion: RegionSummary? = nil
+    @Published var favoriteRegionIds: [Int]
     @Published var filteredRegions = [RegionSummary]()
+    @Published var favoriteRegions = [RegionSummary]()
     @Published var searchTerm = ""
     @Published var selectedRegionId: Int? = nil
     
@@ -30,6 +32,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
         self.locationManager = locationManager
         self.locationIsAuthorized = locationManager.isAuthorized
         
+        self.favoriteRegionIds = UserDefaults.standard.object(forKey: "favoriteRegionIds") as? [Int] ?? [Int]()
+        
         Publishers.CombineLatest($regions, $searchTerm)
             .map { regions, searchTerm in
                 regions.filter { region in
@@ -37,6 +41,35 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 }
             }
             .assign(to: &$filteredRegions)
+        
+        Publishers.CombineLatest($filteredRegions, $favoriteRegionIds)
+            .map { regions, ids in
+                var filteredReg = regions.filter { region in
+                    ids.contains(region.id)
+                }
+                if let localRegion = self.localRegion {
+                    if (ids.contains(RegionOption.currentPositionOption.id)) {
+                        filteredReg.insert(localRegion, at: 0)
+                    }
+                }
+                return filteredReg
+            }
+            .assign(to: &$favoriteRegions)
+    }
+    
+    func addFavorite(id: Int) {
+        if (!favoriteRegionIds.contains(id)) {
+            favoriteRegionIds.append(id)
+            UserDefaults.standard.set(favoriteRegionIds, forKey: "favoriteRegionIds")
+        }
+    }
+
+    func removeFavorite(id: Int) {
+        if (favoriteRegionIds.contains(id)) {
+            let index = favoriteRegionIds.firstIndex(of: id)
+            favoriteRegionIds.remove(at: index!)
+            UserDefaults.standard.set(favoriteRegionIds, forKey: "favoriteRegionIds")
+        }
     }
     
     func loadRegions() async {

@@ -6,6 +6,8 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     @Published var localRegion: RegionSummary? = nil
     @Published var locationIsAuthorized = false
     @Published var filteredRegions = [RegionSummary]()
+    @Published var favoriteRegionIds = [Int]()
+    @Published var favoriteRegions = [RegionSummary]()
     @Published var searchTerm = ""
     @Published var selectedRegionId: Int? = nil
     
@@ -22,5 +24,11 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     }
     
     func updateLocation() async {
+    }
+    
+    func addFavorite(id: Int) {
+    }
+
+    func removeFavorite(id: Int) {
     }
 }

@@ -36,3 +36,6 @@
 
 /* When no region is selected */
 "Select a region" = "Velg en region";
+
+/* To add a region to list */
+"Add Region" = "Legg til region";
