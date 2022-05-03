@@ -26,13 +26,14 @@ class RegionListViewModel: RegionListViewModelProtocol {
     
     private let client: VarsomApiClient
     private let locationManager: LocationManager
+    private let favoriteRegionIdsKey = "favoriteRegionIds"
     
     init(client: VarsomApiClient, locationManager: LocationManager) {
         self.client = client
         self.locationManager = locationManager
         self.locationIsAuthorized = locationManager.isAuthorized
-        
-        self.favoriteRegionIds = UserDefaults.standard.object(forKey: "favoriteRegionIds") as? [Int] ?? [Int]()
+        self.favoriteRegionIds = UserDefaults.standard.object(forKey: favoriteRegionIdsKey) as? [Int] ?? [Int]()
+        print("Loaded favorite regions", favoriteRegionIds)
         
         Publishers.CombineLatest($regions, $searchTerm)
             .map { regions, searchTerm in
@@ -42,14 +43,15 @@ class RegionListViewModel: RegionListViewModelProtocol {
             }
             .assign(to: &$filteredRegions)
         
-        Publishers.CombineLatest($filteredRegions, $favoriteRegionIds)
-            .map { regions, ids in
+        
+        Publishers.CombineLatest3($filteredRegions, $localRegion, $favoriteRegionIds)
+            .map { regions, localRegion, ids in
                 var filteredReg = regions.filter { region in
                     ids.contains(region.id)
                 }
-                if let localRegion = self.localRegion {
+                if let localReg = localRegion {
                     if (ids.contains(RegionOption.currentPositionOption.id)) {
-                        filteredReg.insert(localRegion, at: 0)
+                        filteredReg.insert(localReg, at: 0)
                     }
                 }
                 return filteredReg
@@ -60,7 +62,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
     func addFavorite(id: Int) {
         if (!favoriteRegionIds.contains(id)) {
             favoriteRegionIds.append(id)
-            UserDefaults.standard.set(favoriteRegionIds, forKey: "favoriteRegionIds")
+            print("Updating favorite regions", favoriteRegionIds)
+            UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
         }
     }
 
@@ -68,8 +71,13 @@ class RegionListViewModel: RegionListViewModelProtocol {
         if (favoriteRegionIds.contains(id)) {
             let index = favoriteRegionIds.firstIndex(of: id)
             favoriteRegionIds.remove(at: index!)
-            UserDefaults.standard.set(favoriteRegionIds, forKey: "favoriteRegionIds")
+            
+        } else if (id == localRegion?.id) {
+            let index = favoriteRegionIds.firstIndex(of: RegionOption.currentPositionOption.id)
+            favoriteRegionIds.remove(at: index!)
         }
+        print("Updating favorite regions", favoriteRegionIds)
+        UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
     }
     
     func loadRegions() async {

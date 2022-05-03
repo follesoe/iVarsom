@@ -48,8 +48,13 @@ struct RegionDetailView<ViewModelType: RegionDetailViewModelProtocol>: View {
                     }
                     .padding()
                 }.cornerRadius(14)
-                Divider()
-                ForEach(vm.warnings.filter { $0.id > 0 }) { warning in
+                
+                let filteredWarnings = vm.warnings.filter { $0.id > 0 }
+                if (filteredWarnings.count > 0) {
+                    Divider()
+                }
+
+                ForEach(filteredWarnings) { warning in
                     HStack(alignment: .center) {
                         Text(formatWarningDay(date: warning.ValidFrom))
                         Spacer()
