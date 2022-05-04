@@ -106,6 +106,7 @@
 		AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F72796093A009AB089 /* SkredvarselWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AAD613862822D88B00ABA680 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAD613882822D88B00ABA680 /* InfoPlist.strings */; };
 		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
@@ -278,6 +279,8 @@
 		AAD172F02796093A009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD172F22796093A009AB089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD172F82796093A009AB089 /* iVarsomWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iVarsomWidgetExtension.entitlements; sourceTree = "<group>"; };
+		AAD613872822D88B00ABA680 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAD613892822D89300ABA680 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +381,7 @@
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
 				AA345DD728085B4800B78BDB /* Preview Content */,
+				AAD613882822D88B00ABA680 /* InfoPlist.strings */,
 			);
 			path = "iVarsomWatch WatchKit Extension";
 			sourceTree = "<group>";
@@ -738,6 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */,
+				AAD613862822D88B00ABA680 /* InfoPlist.strings in Resources */,
 				AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */,
 				AAA89050280C53BC00A80394 /* DangerLevelAssets.xcassets in Resources */,
 				AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */,
@@ -954,6 +959,15 @@
 				AA6386082797518E00FD52DA /* nb */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AAD613882822D88B00ABA680 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD613872822D88B00ABA680 /* en */,
+				AAD613892822D89300ABA680 /* nb */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
