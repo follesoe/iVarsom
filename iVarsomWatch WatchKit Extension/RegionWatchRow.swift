@@ -21,11 +21,12 @@ struct RegionWatchRow: View {
                         .foregroundColor(textColor)
                         .textCase(.uppercase)
                         .font(.caption2)
-                    Text(warning.RegionName)
+                    Text(RegionOption.getName(id: warning.RegionId, def: warning.RegionName))
                         .foregroundColor(textColor)
                         .font(.title3)
                         .fontWeight(.bold)
                         .lineLimit(3)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 4))
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer()
