@@ -11,11 +11,11 @@ struct RegionWatchRow: View {
         ZStack {
             DangerGradient(dangerLevel: warning.DangerLevel)
             HStack {
-                WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: 48.0)
-                    .frame(width: 60)
+                WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: 46.0)
+                    .frame(width: 56)
                     .padding(.top, 8)
                     .padding(.bottom, 8)
-                    .padding(.leading, 8)
+                    .padding(.leading, 5)
                 VStack(alignment: .leading) {
                     Text(warning.ValidFrom.getDayName())
                         .foregroundColor(textColor)
@@ -25,7 +25,7 @@ struct RegionWatchRow: View {
                         .foregroundColor(textColor)
                         .font(.title3)
                         .fontWeight(.bold)
-                        .lineLimit(2)
+                        .lineLimit(3)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer()

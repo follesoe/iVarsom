@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
-    @Published var state = RegionListViewModel.State.loading
+    @Published var state = LoadState.loading
     @Published var localRegion: RegionSummary? = nil
     @Published var locationIsAuthorized = false
     @Published var filteredRegions = [RegionSummary]()
@@ -14,10 +14,14 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     init() {
     }
 
-    init(state: RegionListViewModel.State, locationIsAuthorized: Bool, filteredRegions: [RegionSummary]) {
+    init(state: LoadState, locationIsAuthorized: Bool, filteredRegions: [RegionSummary]) {
         self.state = state
         self.locationIsAuthorized = locationIsAuthorized
         self.filteredRegions = filteredRegions
+    }
+     
+    func needsRefresh() -> Bool {
+        return true
     }
     
     func loadRegions() async {

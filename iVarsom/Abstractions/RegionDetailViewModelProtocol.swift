@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor
 protocol RegionDetailViewModelProtocol: ObservableObject {
+    var state: LoadState { get }
     var regionSummary:RegionSummary { get }
     var selectedWarning:AvalancheWarningSimple { get set }
     var warnings:[AvalancheWarningSimple] { get set }

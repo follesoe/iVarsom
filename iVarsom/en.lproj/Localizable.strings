@@ -39,3 +39,15 @@
 
 /* To add a region to list */
 "Add Region" = "Add Region";
+
+/* Loading text on list view */
+"Loading Regions" = "Loading Regions";
+
+/* Loading text on details view */
+"Loading Details" = "Loading Details";
+
+/* Error message */
+"Error Loading Regions" = "Error Loading Regions";
+
+/* Try loading data after error */
+"Try Again" = "Try Again";

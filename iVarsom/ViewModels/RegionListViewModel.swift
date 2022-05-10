@@ -2,19 +2,12 @@ import Foundation
 import Combine
 
 @MainActor
-class RegionListViewModel: RegionListViewModelProtocol {
-    enum State {
-        case idle
-        case loading
-        case failed(Error)
-        case loaded
-    }
-    
+class RegionListViewModel: RegionListViewModelProtocol {    
     private var language: VarsomApiClient.Language {
         return Locale.current.languageCode == "nb" ? .norwegian : .english
     }
     
-    @Published private(set) var state = State.idle
+    @Published private(set) var state = LoadState.idle
     @Published private(set) var locationIsAuthorized = false
     @Published private(set) var regions = [RegionSummary]()
     @Published private(set) var localRegion: RegionSummary? = nil
@@ -80,6 +73,16 @@ class RegionListViewModel: RegionListViewModelProtocol {
         UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
     }
     
+    func needsRefresh() -> Bool {
+        if (regions.isEmpty) {
+            return true
+        } else if (regions[0].AvalancheWarningList.isEmpty) {
+            return true;
+        } else {
+            return regions[0].AvalancheWarningList[0].ValidTo < Date.now
+        }
+    }
+    
     func loadRegions() async {
         do {
             self.state = .loading
@@ -94,7 +97,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
 
             self.state = .loaded
         } catch {
-            self.state = .failed(error)
+            self.state = .failed
             print(error)
         }
     }

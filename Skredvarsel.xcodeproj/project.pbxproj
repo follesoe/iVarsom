@@ -34,7 +34,7 @@
 		AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DC028085B4700B78BDB /* Assets.xcassets */; };
 		AA345DC728085B4700B78BDB /* SkredvarselWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA345DC628085B4700B78BDB /* SkredvarselWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */; };
-		AA345DCE28085B4700B78BDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* ContentView.swift */; };
+		AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* RegionListView.swift */; };
 		AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCF28085B4700B78BDB /* NotificationController.swift */; };
 		AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD128085B4700B78BDB /* NotificationView.swift */; };
 		AA345DD428085B4700B78BDB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD328085B4700B78BDB /* ComplicationController.swift */; };
@@ -107,6 +107,9 @@
 		AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AAD172F72796093A009AB089 /* SkredvarselWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAD613862822D88B00ABA680 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAD613882822D88B00ABA680 /* InfoPlist.strings */; };
+		AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138A282AEF8500ABA680 /* DataSourceView.swift */; };
+		AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
+		AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
@@ -218,7 +221,7 @@
 		AA345DC028085B4700B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DC628085B4700B78BDB /* SkredvarselWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SkredvarselWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkredvarselApp.swift; sourceTree = "<group>"; };
-		AA345DCD28085B4700B78BDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA345DCD28085B4700B78BDB /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
 		AA345DCF28085B4700B78BDB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AA345DD128085B4700B78BDB /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		AA345DD328085B4700B78BDB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 		AAD172F82796093A009AB089 /* iVarsomWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iVarsomWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AAD613872822D88B00ABA680 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD613892822D89300ABA680 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
+		AAD6138C282AF46F00ABA680 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +348,7 @@
 				AA7358D727C23154009E3DA1 /* RegionDetailViewModel.swift */,
 				AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */,
 				AA71615127CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift */,
+				AAD6138C282AF46F00ABA680 /* LoadState.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -369,8 +375,9 @@
 		AA345DCA28085B4700B78BDB /* iVarsomWatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AAD6138A282AEF8500ABA680 /* DataSourceView.swift */,
 				AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */,
-				AA345DCD28085B4700B78BDB /* ContentView.swift */,
+				AA345DCD28085B4700B78BDB /* RegionListView.swift */,
 				AAA89055280C60BA00A80394 /* RegionWatchRow.swift */,
 				AAA89060280D699A00A80394 /* RegionDetailView.swift */,
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
@@ -802,7 +809,7 @@
 			files = (
 				AAF054C7280C502B000BCADD /* RegionSummary.swift in Sources */,
 				AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */,
-				AA345DCE28085B4700B78BDB /* ContentView.swift in Sources */,
+				AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */,
 				AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */,
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
 				AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */,
@@ -811,12 +818,14 @@
 				AAF054CC280C504B000BCADD /* VarsomApiClient.swift in Sources */,
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAA8905B280C6D1200A80394 /* RegionDetailViewModel.swift in Sources */,
+				AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
 				AA5168882820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
 				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
 				AAA89051280C540500A80394 /* DangerIcon.swift in Sources */,
 				AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */,
+				AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */,
 				AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */,
 				AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */,
 				AAF054C8280C502B000BCADD /* AvalancheWarningSimple.swift in Sources */,
@@ -850,6 +859,7 @@
 				AA18421327B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA102DFE279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
 				AAD172CD2795FCA3009AB089 /* DataLoader.swift in Sources */,
+				AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AA839D0E279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
 				AA809486279E221D00A2F192 /* Intents.intentdefinition in Sources */,
 				AA7358D827C23154009E3DA1 /* RegionDetailViewModel.swift in Sources */,

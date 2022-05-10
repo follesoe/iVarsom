@@ -9,7 +9,7 @@ struct SkredvarselApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView<RegionListViewModel>(vm: vm)
+                RegionListView<RegionListViewModel>(vm: vm)
             }
             .environmentObject(vm)
         }

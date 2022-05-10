@@ -3,6 +3,7 @@ import SwiftUI
 
 @MainActor
 class RegionDetailViewModel: RegionDetailViewModelProtocol {
+    @Published private(set) var state = LoadState.idle
     @Published var regionSummary:RegionSummary
     @Published var selectedWarning:AvalancheWarningSimple
     @Published var warnings = [AvalancheWarningSimple]()
@@ -17,6 +18,7 @@ class RegionDetailViewModel: RegionDetailViewModelProtocol {
 
     func loadWarnings(from: Int = -5, to: Int = 2) async {
         do {
+            self.state = .loading
             let from = Calendar.current.date(byAdding: .day, value: from, to: Date())!
             let to = Calendar.current.date(byAdding: .day, value: to, to: Date())!
             self.warnings = try await client.loadWarnings(
@@ -24,7 +26,9 @@ class RegionDetailViewModel: RegionDetailViewModelProtocol {
                 regionId: regionSummary.Id,
                 from: from,
                 to: to)
+            self.state = .loaded
         } catch {
+            self.state = .failed
             print(error)
         }
     }

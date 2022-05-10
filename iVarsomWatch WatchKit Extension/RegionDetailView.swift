@@ -54,20 +54,29 @@ struct RegionDetailView<ViewModelType: RegionDetailViewModelProtocol>: View {
                     Divider()
                 }
 
-                ForEach(filteredWarnings) { warning in
-                    HStack(alignment: .center) {
-                        Text(formatWarningDay(date: warning.ValidFrom))
-                        Spacer()
-                        DangerIcon(dangerLevel: warning.DangerLevel)
-                            .frame(width: 34, height: 34)
-                            .padding(.trailing, 8)
-                        Text("\(warning.DangerLevel.rawValue)")
-                            .font(.system(size: 26))
-                            .fontWeight(.heavy)
+                if (vm.state == .loading) {
+                    VStack {
+                        ProgressView();
+                        Text("Loading Details")
+                    }.padding()
+                } else {
+                    ForEach(filteredWarnings) { warning in
+                        HStack(alignment: .center) {
+                            Text(formatWarningDay(date: warning.ValidFrom))
+                            Spacer()
+                            DangerIcon(dangerLevel: warning.DangerLevel)
+                                .frame(width: 34, height: 34)
+                                .padding(.trailing, 8)
+                            Text("\(warning.DangerLevel.rawValue)")
+                                .font(.system(size: 26))
+                                .fontWeight(.heavy)
+                        }
+                        Divider()
                     }
-                    Divider()
                 }
+                DataSourceView()
             }
+            .scenePadding()
         }
         .navigationTitle(vm.regionSummary.Name)
         .navigationBarTitleDisplayMode(.inline)

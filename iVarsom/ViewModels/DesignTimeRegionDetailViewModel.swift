@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor
 class DesignTimeRegionDetailViewModel: RegionDetailViewModelProtocol {
+    @Published var state = LoadState.loading
     @Published var regionSummary: RegionSummary
     @Published var selectedWarning: AvalancheWarningSimple
     @Published var warnings = [AvalancheWarningSimple]()

@@ -39,3 +39,15 @@
 
 /* To add a region to list */
 "Add Region" = "Legg til region";
+
+/* Loading text on list */
+"Loading Regions" = "Laster regioner";
+
+/* Loading text on details view */
+"Loading Details" = "Laster detaljer";
+
+/* Error message */
+"Error Loading Regions" = "Feil under lasting av regioner";
+
+/* Try loading data after error */
+"Try Again" = "Prøv igjen";
