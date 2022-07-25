@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor
 class DesignTimeRegionDetailViewModel: RegionDetailViewModelProtocol {
+    @Published var state = LoadState.loading
     @Published var regionSummary: RegionSummary
     @Published var selectedWarning: AvalancheWarningSimple
     @Published var warnings = [AvalancheWarningSimple]()
@@ -13,6 +14,6 @@ class DesignTimeRegionDetailViewModel: RegionDetailViewModelProtocol {
         self.warnings = regionSummary.AvalancheWarningList
     }
     
-    func loadWarnings() async {
+    func loadWarnings(from: Int = -5, to: Int = 2) async {
     }
 }

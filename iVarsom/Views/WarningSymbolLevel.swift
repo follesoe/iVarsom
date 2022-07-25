@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WarningSymbolLevel: View {
     var dangerLevel: DangerLevel
+    var size = 54.0
     
     var textColor: Color {
         return dangerLevel == .level2 ? .black : .white;
@@ -12,10 +13,10 @@ struct WarningSymbolLevel: View {
             Spacer()
             HStack(alignment: .center) {
                 DangerIcon(dangerLevel: dangerLevel)
-                    .frame(width: 54, height: 54)
+                    .frame(width: size, height: size)
             }.frame(maxWidth: .infinity)
             Text("\(dangerLevel.description)")
-                .font(.system(size: 54))
+                .font(.system(size: size))
                 .fontWeight(.heavy)
                 .foregroundColor(textColor)
                 .frame(maxWidth: .infinity)
