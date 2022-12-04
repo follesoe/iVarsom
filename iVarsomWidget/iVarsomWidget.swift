@@ -5,6 +5,18 @@ import CoreLocation
 import DynamicColor
 
 struct Provider: IntentTimelineProvider {
+    func recommendations() -> [IntentRecommendation<SelectRegionIntent>] {
+        RegionOption.allOptions.map { region in
+            let regionOption = RegionConfigOption(
+                identifier: "\(region.id)",
+                display: region.name)
+            regionOption.regionId = NSNumber(value: region.id)
+            let intent = SelectRegionIntent()
+            intent.region = regionOption
+            return IntentRecommendation(intent: intent, description: region.name)
+        }
+    }
+    
     func placeholder(in context: Context) -> WarningEntry {
         return WarningEntry(
             date: Date(),
@@ -256,6 +268,20 @@ struct WarningWidgetView: View {
             MediumWarningWidgetView(entry: entry)
         case .systemLarge:
             LargeWarningWidgetView(entry: entry)
+        case .accessoryCircular:
+            Gauge(value: 3, in: 1...5) {
+            } currentValueLabel: {
+                Text("3")
+            } minimumValueLabel: {
+                Text("1")
+            } maximumValueLabel: {
+                Text("5")
+            }
+            .gaugeStyle(.accessoryCircular)
+        case .accessoryInline:
+            VStack {
+                Text("Hello World")
+            }
         default:
             SmallWarningWidgetView(entry: entry)
         }
@@ -275,18 +301,38 @@ struct iVarsomWidget: Widget {
         }
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        #if os(watchOS)
+        .supportedFamilies([.accessoryInline, .accessoryCircular])
+        #else
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular])
+        #endif
     }
 }
 
 struct iVarsomWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SmallWarningWidgetView(entry: Provider().errorEntry())
+            WarningWidgetView(entry: Provider().errorEntry())
+                .previewDisplayName("Inline")
+                .previewContext(WidgetPreviewContext(family: .accessoryInline))
+
+            WarningWidgetView(entry: Provider().errorEntry())
+                .previewDisplayName("Circle")
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            
+#if os(watchOS)                    
+            WarningWidgetView(entry: Provider().errorEntry())
+                .previewDevice("Apple Watch Series 8 (45mm)")
+                .previewDisplayName("Circle Watch")
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+#endif
+            
+#if os(iOS)
+            WarningWidgetView(entry: Provider().errorEntry())
                 .previewDisplayName("Error State Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            SmallWarningWidgetView(entry: WarningEntry(
+            WarningWidgetView(entry: WarningEntry(
                     date: Date(),
                     currentWarning: testWarningLevel2,
                     warnings: [testWarningLevel2],
@@ -295,7 +341,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                 .previewDisplayName("Level 2 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            SmallWarningWidgetView(entry: WarningEntry(
+            WarningWidgetView(entry: WarningEntry(
                     date: Date(),
                     currentWarning: testWarningLevel3,
                     warnings: [testWarningLevel3],
@@ -304,7 +350,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                 .previewDisplayName("Level 3 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-            MediumWarningWidgetView(entry: WarningEntry(
+            WarningWidgetView(entry: WarningEntry(
                     date: Date(),
                     currentWarning: testWarningLevel4,
                     warnings: [testWarningLevel4],
@@ -313,7 +359,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                 .previewDisplayName("Level 4 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            MediumWarningWidgetView(entry: WarningEntry(
+            WarningWidgetView(entry: WarningEntry(
                     date: Date(),
                     currentWarning: testWarningLevel0,
                     warnings: [testWarningLevel0],
@@ -322,7 +368,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                 .previewDisplayName("Level 0 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            LargeWarningWidgetView(entry: WarningEntry(
+            WarningWidgetView(entry: WarningEntry(
                     date: Date(),
                     currentWarning: testWarningLevel2,
                     warnings: [
@@ -335,6 +381,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                     relevance: TimelineEntryRelevance(score: 1.0)))
                 .previewDisplayName("Large")
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
+#endif
         }
     }
 }
