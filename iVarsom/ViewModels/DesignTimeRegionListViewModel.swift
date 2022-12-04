@@ -18,6 +18,7 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
         self.state = state
         self.locationIsAuthorized = locationIsAuthorized
         self.filteredRegions = filteredRegions
+        self.favoriteRegions = filteredRegions
     }
      
     func needsRefresh() -> Bool {
