@@ -283,6 +283,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SmallWarningWidgetView(entry: Provider().errorEntry())
+                .previewDisplayName("Error State Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
             SmallWarningWidgetView(entry: WarningEntry(
@@ -291,6 +292,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                     warnings: [testWarningLevel2],
                     configuration: SelectRegionIntent(),
                     relevance: TimelineEntryRelevance(score: 1.0)))
+                .previewDisplayName("Level 2 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
             SmallWarningWidgetView(entry: WarningEntry(
@@ -299,6 +301,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                     warnings: [testWarningLevel3],
                     configuration: SelectRegionIntent(),
                     relevance: TimelineEntryRelevance(score: 1.0)))
+                .previewDisplayName("Level 3 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
             MediumWarningWidgetView(entry: WarningEntry(
@@ -307,6 +310,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                     warnings: [testWarningLevel4],
                     configuration: SelectRegionIntent(),
                     relevance: TimelineEntryRelevance(score: 1.0)))
+                .previewDisplayName("Level 4 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             MediumWarningWidgetView(entry: WarningEntry(
@@ -315,6 +319,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                     warnings: [testWarningLevel0],
                     configuration: SelectRegionIntent(),
                     relevance: TimelineEntryRelevance(score: 1.0)))
+                .previewDisplayName("Level 0 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             LargeWarningWidgetView(entry: WarningEntry(
@@ -328,6 +333,7 @@ struct iVarsomWidget_Previews: PreviewProvider {
                         testWarningLevel4],
                     configuration: SelectRegionIntent(),
                     relevance: TimelineEntryRelevance(score: 1.0)))
+                .previewDisplayName("Large")
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
