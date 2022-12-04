@@ -6,7 +6,7 @@ class VarsomData: ObservableObject {
     @Published var days = [String]()
 
     var language: VarsomApiClient.Language {
-        return Locale.current.languageCode == "nb" ? .norwegian : .english
+        return Locale.current.identifier == "nb" ? .norwegian : .english
     }
     
     private let apiClient = VarsomApiClient()

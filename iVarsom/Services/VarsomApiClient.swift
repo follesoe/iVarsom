@@ -4,7 +4,7 @@ import CoreLocation
 class VarsomApiClient {
     
     public static func currentLang() -> Language {
-        return Locale.current.languageCode == "nb" ? .norwegian : .english
+        return Locale.current.identifier == "nb" ? .norwegian : .english
     }
 
     public enum Language: CustomStringConvertible {

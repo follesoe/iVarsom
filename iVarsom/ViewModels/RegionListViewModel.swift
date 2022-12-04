@@ -4,7 +4,7 @@ import Combine
 @MainActor
 class RegionListViewModel: RegionListViewModelProtocol {    
     private var language: VarsomApiClient.Language {
-        return Locale.current.languageCode == "nb" ? .norwegian : .english
+        return Locale.current.identifier == "nb" ? .norwegian : .english
     }
     
     @Published private(set) var state = LoadState.idle
