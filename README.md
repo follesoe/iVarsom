@@ -59,6 +59,7 @@ Widgets is the key feature of the app, so I spent quite some time learning about
 * [WWDC20: Widgets Code-along, part 3](https://developer.apple.com/wwdc20/10036)
 * [WWDC21: Principles of great widgets](https://developer.apple.com/wwdc21/10048)
 * [WWDC20: Add configuration and intelligence to your widgets](https://developer.apple.com/wwdc20/10194)
+* [WWDC22: Complications and widgets: Reloaded](https://developer.apple.com/wwdc22/10050)
 
 ### Localization
 
