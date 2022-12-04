@@ -719,11 +719,11 @@
 			projectRoot = "";
 			targets = (
 				AAD172AB2795F8F8009AB089 /* Skredvarsel */,
+				AA345DBD28085B4600B78BDB /* SkredvarselWatch */,
 				AAD172E527960938009AB089 /* SkredvarselWidgetExtension */,
 				AA80948C279E234200A2F192 /* SkredvarselIntentExtension */,
-				AA18420827B1A3860097174D /* SkredvarselTests */,
-				AA345DBD28085B4600B78BDB /* SkredvarselWatch */,
 				AA345DC528085B4700B78BDB /* SkredvarselWatch WatchKit Extension */,
+				AA18420827B1A3860097174D /* SkredvarselTests */,
 			);
 		};
 /* End PBXProject section */
