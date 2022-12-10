@@ -280,7 +280,7 @@ struct WarningWidgetView: View {
             .gaugeStyle(.accessoryCircular)
         case .accessoryInline:
             VStack {
-                Text("Hello World")
+                Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
             }
         default:
             SmallWarningWidgetView(entry: entry)
@@ -312,7 +312,12 @@ struct iVarsomWidget: Widget {
 struct iVarsomWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            WarningWidgetView(entry: Provider().errorEntry())
+            WarningWidgetView(entry: WarningEntry(
+                date: Date(),
+                currentWarning: testWarningLevel3,
+                warnings: [testWarningLevel3],
+                configuration: SelectRegionIntent(),
+                relevance: TimelineEntryRelevance(score: 1.0)))
                 .previewDisplayName("Inline")
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
 
