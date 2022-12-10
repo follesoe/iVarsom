@@ -26,7 +26,9 @@ struct WarningSummary: View {
                         .font(.caption2)
                         .foregroundColor(textColor)
                         .padding(.top, 6)
+                    #if os(iOS)
                         .textSelection(.enabled)
+                    #endif
                     Text(warning.RegionName)
                         .font(.title3)
                         .fontWeight(.bold)
@@ -34,13 +36,17 @@ struct WarningSummary: View {
                         .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 2)
+                    #if os(iOS)
                         .textSelection(.enabled)
+                    #endif
                     Text(warning.MainText)
                         .font(mainTextFont)
                         .foregroundColor(textColor)
                         .padding(.bottom, 6)
                         .padding(.trailing, 4)
+                    #if os(iOS)
                         .textSelection(.enabled)
+                    #endif
                         .lineLimit(mainTextLineLimit)
                     Spacer()
                 }
