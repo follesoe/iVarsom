@@ -18,6 +18,17 @@ struct AvalancheWarningSimple: Codable {
         return Float(DangerLevel.rawValue) ?? 0
     }
     
+    var DangerLevelName: String {
+        switch DangerLevel {
+        case .unknown: return "Not assessed"
+        case .level1: return "Low"
+        case .level2: return "Moderate"
+        case .level3: return "Considerable"
+        case .level4: return "High"
+        case .level5: return "Very high"
+        }
+    }
+    
     var VarsomUrl: URL {
         let argumentDateFormatter = DateFormatter()
         argumentDateFormatter.dateFormat = "yyyy-MM-dd"
