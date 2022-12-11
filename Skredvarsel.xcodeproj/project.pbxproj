@@ -68,7 +68,6 @@
 		AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* RegionListView.swift */; };
 		AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCF28085B4700B78BDB /* NotificationController.swift */; };
 		AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD128085B4700B78BDB /* NotificationView.swift */; };
-		AA345DD428085B4700B78BDB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD328085B4700B78BDB /* ComplicationController.swift */; };
 		AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD528085B4800B78BDB /* Assets.xcassets */; };
 		AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD828085B4800B78BDB /* Preview Assets.xcassets */; };
 		AA345DDE28085B4800B78BDB /* Skredvarsel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* Skredvarsel.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -256,7 +255,6 @@
 		AA345DCD28085B4700B78BDB /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
 		AA345DCF28085B4700B78BDB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AA345DD128085B4700B78BDB /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		AA345DD328085B4700B78BDB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		AA345DD528085B4800B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DD828085B4800B78BDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA345DDA28085B4800B78BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
 				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
 				AA345DD128085B4700B78BDB /* NotificationView.swift */,
-				AA345DD328085B4700B78BDB /* ComplicationController.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
@@ -902,7 +899,6 @@
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
 				AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */,
 				AAF054CA280C502B000BCADD /* DangerLevel.swift in Sources */,
-				AA345DD428085B4700B78BDB /* ComplicationController.swift in Sources */,
 				AAF054CC280C504B000BCADD /* VarsomApiClient.swift in Sources */,
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAA8905B280C6D1200A80394 /* RegionDetailViewModel.swift in Sources */,
