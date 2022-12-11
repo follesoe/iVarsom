@@ -62,7 +62,7 @@
 		AA2ABD842944FD06008819DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AA2ABD852944FD06008819DB /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
 		AA2ABD862944FD06008819DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172F02796093A009AB089 /* Assets.xcassets */; };
-		AA2ABD8C2944FD33008819DB /* SkredvarselWidgetExtension watch.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA2ABD8A2944FD06008819DB /* SkredvarselWidgetExtension watch.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA2ABD8C2944FD33008819DB /* SkredvarselWatchWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DC028085B4700B78BDB /* Assets.xcassets */; };
 		AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */; };
 		AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* RegionListView.swift */; };
@@ -208,7 +208,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AA2ABD8C2944FD33008819DB /* SkredvarselWidgetExtension watch.appex in Embed Foundation Extensions */,
+				AA2ABD8C2944FD33008819DB /* SkredvarselWatchWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +248,7 @@
 		AA1C67BA279D860B0039F8E0 /* DangerScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerScale.swift; sourceTree = "<group>"; };
 		AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModel.swift; sourceTree = "<group>"; };
-		AA2ABD8A2944FD06008819DB /* SkredvarselWidgetExtension watch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SkredvarselWidgetExtension watch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkredvarselWatchWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2ABD92294503E7008819DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA345DBE28085B4600B78BDB /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA345DC028085B4700B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 				AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */,
 				AA18420927B1A3860097174D /* SkredvarselTests.xctest */,
 				AA345DBE28085B4600B78BDB /* Skredvarsel.app */,
-				AA2ABD8A2944FD06008819DB /* SkredvarselWidgetExtension watch.appex */,
+				AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -623,9 +623,9 @@
 			productReference = AA18420927B1A3860097174D /* SkredvarselTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AA2ABD632944FD06008819DB /* SkredvarselWidgetExtension watch */ = {
+		AA2ABD632944FD06008819DB /* SkredvarselWatchWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA2ABD872944FD06008819DB /* Build configuration list for PBXNativeTarget "SkredvarselWidgetExtension watch" */;
+			buildConfigurationList = AA2ABD872944FD06008819DB /* Build configuration list for PBXNativeTarget "SkredvarselWatchWidgetExtension" */;
 			buildPhases = (
 				AA2ABD662944FD06008819DB /* Sources */,
 				AA2ABD7E2944FD06008819DB /* Frameworks */,
@@ -635,12 +635,12 @@
 			);
 			dependencies = (
 			);
-			name = "SkredvarselWidgetExtension watch";
+			name = SkredvarselWatchWidgetExtension;
 			packageProductDependencies = (
 				AA2ABD642944FD06008819DB /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
-			productReference = AA2ABD8A2944FD06008819DB /* SkredvarselWidgetExtension watch.appex */;
+			productReference = AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		AA345DBD28085B4600B78BDB /* SkredvarselWatch */ = {
@@ -777,7 +777,7 @@
 				AAD172E527960938009AB089 /* SkredvarselWidgetExtension */,
 				AA80948C279E234200A2F192 /* SkredvarselIntentExtension */,
 				AA18420827B1A3860097174D /* SkredvarselTests */,
-				AA2ABD632944FD06008819DB /* SkredvarselWidgetExtension watch */,
+				AA2ABD632944FD06008819DB /* SkredvarselWatchWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1020,7 +1020,7 @@
 		};
 		AA2ABD8E2944FD33008819DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AA2ABD632944FD06008819DB /* SkredvarselWidgetExtension watch */;
+			target = AA2ABD632944FD06008819DB /* SkredvarselWatchWidgetExtension */;
 			targetProxy = AA2ABD8D2944FD33008819DB /* PBXContainerItemProxy */;
 		};
 		AA345DDD28085B4800B78BDB /* PBXTargetDependency */ = {
@@ -1136,7 +1136,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1169,7 +1168,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1578,7 +1576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA2ABD872944FD06008819DB /* Build configuration list for PBXNativeTarget "SkredvarselWidgetExtension watch" */ = {
+		AA2ABD872944FD06008819DB /* Build configuration list for PBXNativeTarget "SkredvarselWatchWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA2ABD882944FD06008819DB /* Debug */,
