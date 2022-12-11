@@ -134,11 +134,16 @@ struct WarningWidgetView: View {
             } currentValueLabel: {
                 Text(entry.currentWarning.DangerLevel.description)
             } minimumValueLabel: {
-                Text("1")
+                Text("1").foregroundColor(Color("DangerLevel1"))
             } maximumValueLabel: {
-                Text("5")
+                Text("5").foregroundColor(Color("DangerLevel4"))
             }
+            #if os(watchOS)
+            .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
+                Color("DangerLevel1"), Color("DangerLevel2"), Color("DangerLevel3"), Color("DangerLevel4"), Color("DangerLevel4")])))
+            #else
             .gaugeStyle(.accessoryCircular)
+            #endif
         case .accessoryInline:
             ViewThatFits {
                 Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
