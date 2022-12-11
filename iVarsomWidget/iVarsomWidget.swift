@@ -116,6 +116,20 @@ struct LargeWarningWidgetView: View {
     }
 }
 
+struct InlineWidgetView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        ViewThatFits {
+            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
+            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
+                .truncationMode(.middle)
+            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
+                .truncationMode(.middle)
+        }
+    }
+}
+
 struct WarningWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     var entry: Provider.Entry
@@ -145,13 +159,7 @@ struct WarningWidgetView: View {
             .gaugeStyle(.accessoryCircular)
             #endif
         case .accessoryInline:
-            ViewThatFits {
-                Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
-                Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
-                    .truncationMode(.middle)
-                Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
-                    .truncationMode(.middle)
-            }
+            InlineWidgetView(entry: entry)
         default:
             SmallWarningWidgetView(entry: entry)
         }
