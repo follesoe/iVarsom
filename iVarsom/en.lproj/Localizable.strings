@@ -51,3 +51,21 @@
 
 /* Try loading data after error */
 "Try Again" = "Try Again";
+
+/* Not assessed */
+"Not assessed" = "Not assessed";
+
+/* Low */
+"Low" = "Low";
+
+/* Moderate */
+"Moderate" = "Moderate";
+
+/* Considerable */
+"Considerable" = "Considerable";
+
+/* High */
+"High" = "High";
+
+/* Very high */
+"Very high" = "Very high";
