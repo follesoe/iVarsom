@@ -35,7 +35,7 @@ struct AvalancheWarningSimple: Codable {
         let warningDate = argumentDateFormatter.string(from: ValidFrom)
         let encodedName = RegionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        if (Locale.current.identifier == "nb") {
+        if (Locale.current.identifier.starts(with: "nb")) {
             return URL(string: "https://varsom.no/snoskredvarsling/varsel/\(encodedName)/\(warningDate)")!
         } else {
             return URL(string: "https://varsom.no/en/avalanche-bulletins/forecast/\(encodedName)/\(warningDate)")!

@@ -121,11 +121,57 @@ struct InlineWidgetView: View {
 
     var body: some View {
         ViewThatFits {
-            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
-            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
-                .truncationMode(.middle)
-            Text("\(Image(systemName: "mountain.2")) \(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
-                .truncationMode(.middle)
+            Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
+            Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
+        }
+    }
+}
+
+struct CircleWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    
+    var body: some View {
+        Gauge(value: entry.currentWarning.DangerLevelNumeric, in: 1...5) {
+        } currentValueLabel: {
+            if (widgetRenderingMode == .fullColor) {
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+            } else {
+                Image(systemName: "mountain.2.fill")
+                    .font(.system(size: 18))
+            }
+        } minimumValueLabel: {
+            Text("1").foregroundColor(Color("DangerLevel1"))
+        } maximumValueLabel: {
+            Text("5").foregroundColor(Color("DangerLevel4"))
+        }
+        #if os(watchOS)
+        .widgetLabel {
+            Text(entry.currentWarning.RegionName)
+        }
+        .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
+            Color("DangerLevel1"), Color("DangerLevel2"), Color("DangerLevel3"), Color("DangerLevel4"), Color("DangerLevel4")])))
+        #else
+        .gaugeStyle(.accessoryCircular)
+        #endif
+    }
+}
+
+struct CornerWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    
+    var body: some View {
+        ZStack {
+            AccessoryWidgetBackground()
+            if (widgetRenderingMode == .fullColor) {
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+            } else {
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+            }
+        }.widgetLabel {
+            Text(entry.currentWarning.RegionName)
+                .widgetAccentable()
         }
     }
 }
@@ -144,22 +190,13 @@ struct WarningWidgetView: View {
         case .systemLarge:
             LargeWarningWidgetView(entry: entry)
         case .accessoryCircular:
-            Gauge(value: entry.currentWarning.DangerLevelNumeric, in: 1...5) {
-            } currentValueLabel: {
-                Text(entry.currentWarning.DangerLevel.description)
-            } minimumValueLabel: {
-                Text("1").foregroundColor(Color("DangerLevel1"))
-            } maximumValueLabel: {
-                Text("5").foregroundColor(Color("DangerLevel4"))
-            }
-            #if os(watchOS)
-            .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
-                Color("DangerLevel1"), Color("DangerLevel2"), Color("DangerLevel3"), Color("DangerLevel4"), Color("DangerLevel4")])))
-            #else
-            .gaugeStyle(.accessoryCircular)
-            #endif
+            CircleWidgetView(entry: entry)
         case .accessoryInline:
             InlineWidgetView(entry: entry)
+#if os(watchOS)
+        case .accessoryCorner:
+            CornerWidgetView(entry: entry)
+#endif
         default:
             SmallWarningWidgetView(entry: entry)
         }
@@ -180,7 +217,7 @@ struct iVarsomWidget: Widget {
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
         #if os(watchOS)
-        .supportedFamilies([.accessoryInline, .accessoryCircular])
+        .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner])
         #else
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular])
         #endif
