@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DangerIcon: View {
     var dangerLevel: DangerLevel
+    var useTintable: Bool = false
     
     var iconName: String {
         switch dangerLevel {
@@ -19,7 +20,8 @@ struct DangerIcon: View {
     }
     
     var body: some View {
-        Image(iconName)
+        let icon = useTintable ? iconName + "Tintable" : iconName
+        Image(icon)
             .resizable()
             .scaledToFit()
     }

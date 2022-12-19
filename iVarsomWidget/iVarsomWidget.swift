@@ -134,12 +134,9 @@ struct CircleWidgetView: View {
     var body: some View {
         Gauge(value: entry.currentWarning.DangerLevelNumeric, in: 1...5) {
         } currentValueLabel: {
-            if (widgetRenderingMode == .fullColor) {
-                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
-            } else {
-                Image(systemName: "mountain.2.fill")
-                    .font(.system(size: 18))
-            }
+            DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
+                       useTintable: widgetRenderingMode != .fullColor)
+            .padding(1)
         } minimumValueLabel: {
             Text("1").foregroundColor(Color("DangerLevel1"))
         } maximumValueLabel: {
@@ -164,11 +161,8 @@ struct CornerWidgetView: View {
     var body: some View {
         ZStack {
             AccessoryWidgetBackground()
-            if (widgetRenderingMode == .fullColor) {
-                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
-            } else {
-                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
-            }
+            DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
+                       useTintable: widgetRenderingMode != .fullColor)
         }.widgetLabel {
             Text(entry.currentWarning.RegionName)
                 .widgetAccentable()
