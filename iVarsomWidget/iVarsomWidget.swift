@@ -174,7 +174,9 @@ struct RectangleWidgetView: View {
                 Text(entry.errorMessage ?? entry.currentWarning.MainText)
                     .font(.system(size: 14))
             } else {
-                Text(entry.currentWarning.RegionName)
+                Text(entry.configuration.region?.regionId == 1 ?
+                     "\(Image(systemName: "location.fill")) \(entry.currentWarning.RegionName)" :
+                        "\(entry.currentWarning.RegionName)")
                     .font(.system(size: 11))
                     .fontWeight(.bold)
                     .widgetAccentable()
