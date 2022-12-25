@@ -26,13 +26,15 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
             } else {
                 List {
                     ForEach(vm.favoriteRegions) { region in
+                        let isLocalRegion = region.Id == vm.localRegion?.Id
                         let vm = RegionDetailViewModel(
                             client: client,
-                            regionSummary: region)
+                            regionSummary: region,
+                            isLocalRegion: isLocalRegion)
                         NavigationLink() {
                             RegionDetailView(vm: vm)
                         } label: {
-                            RegionWatchRow(warning: region.AvalancheWarningList[0])
+                            RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
                         }
                         .listRowInsets(EdgeInsets(top: -0.1, leading: 0, bottom: -0.1, trailing: 0))
                         .listRowBackground(Color.clear)

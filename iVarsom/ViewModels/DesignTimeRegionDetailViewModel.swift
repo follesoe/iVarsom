@@ -5,8 +5,8 @@ class DesignTimeRegionDetailViewModel: RegionDetailViewModelProtocol {
     @Published var state = LoadState.loading
     @Published var regionSummary: RegionSummary
     @Published var selectedWarning: AvalancheWarningSimple
-    @Published var warnings = [AvalancheWarningSimple]()
-    
+    @Published var warnings = [AvalancheWarningSimple]()    
+    @Published var isLocalRegion = false
     
     init(regionSummary: RegionSummary) {
         self.regionSummary = regionSummary

@@ -8,7 +8,7 @@ struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
         ScrollView {
             VStack(alignment: .leading) {
                 if let warning = vm.selectedWarning {
-                    WarningSummary(warning: warning)
+                    WarningSummary(warning: warning, includeLocationIcon: vm.isLocalRegion)
                         .frame(maxWidth: 600)
                         .cornerRadius(10)
                         .padding()

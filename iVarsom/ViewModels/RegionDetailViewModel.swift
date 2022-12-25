@@ -7,13 +7,15 @@ class RegionDetailViewModel: RegionDetailViewModelProtocol {
     @Published var regionSummary:RegionSummary
     @Published var selectedWarning:AvalancheWarningSimple
     @Published var warnings = [AvalancheWarningSimple]()
+    @Published var isLocalRegion: Bool
     
     private let client: VarsomApiClient
     
-    init(client: VarsomApiClient, regionSummary: RegionSummary) {
+    init(client: VarsomApiClient, regionSummary: RegionSummary, isLocalRegion: Bool) {
         self.client = client
         self.regionSummary = regionSummary
         self.selectedWarning = regionSummary.AvalancheWarningList.first!
+        self.isLocalRegion = isLocalRegion
     }
 
     func loadWarnings(from: Int = -5, to: Int = 2) async {

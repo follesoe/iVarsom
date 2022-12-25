@@ -6,6 +6,7 @@ protocol RegionDetailViewModelProtocol: ObservableObject {
     var regionSummary:RegionSummary { get }
     var selectedWarning:AvalancheWarningSimple { get set }
     var warnings:[AvalancheWarningSimple] { get set }
+    var isLocalRegion:Bool { get set}
     
     /**
      Load detailed warnings for selected region.

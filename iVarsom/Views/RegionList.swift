@@ -18,7 +18,8 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                 RegionDetail(
                                     vm: RegionDetailViewModel(
                                         client: client,
-                                        regionSummary: localRegion))
+                                        regionSummary: localRegion,
+                                        isLocalRegion: true))
                             } label: {
                                 RegionRow(region: localRegion)
                                     .listRowInsets(rowInsets)
@@ -38,7 +39,8 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                 RegionDetail(
                                     vm: RegionDetailViewModel(
                                         client: client,
-                                        regionSummary: region))
+                                        regionSummary: region,
+                                        isLocalRegion: false))
                             } label: {
                                 RegionRow(region: region)
                             }.listRowInsets(rowInsets)
