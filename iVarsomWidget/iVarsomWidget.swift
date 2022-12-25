@@ -43,6 +43,14 @@ struct WarningEntry: TimelineEntry {
     let errorMessage: String?
 }
 
+func getWidgetURL(entry: Provider.Entry) -> URL? {
+#if os(watchOS)
+    return URL(string: "no.follesoe.iVarsom.watchkitapp://region?id=\(entry.currentWarning.RegionId)")
+#else
+    return URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)")
+#endif
+}
+
 struct LocationIconText: View {
     var text: String
     var config: SelectRegionIntent
@@ -88,7 +96,7 @@ struct SmallWarningWidgetView: View {
 
             }.padding()
         }
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -101,7 +109,7 @@ struct MediumWarningWidgetView: View {
             mainTextFont: .system(size: 13),
             mainTextLineLimit: 4,
             includeLocationIcon: entry.configuration.region?.regionId == 1)
-            .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -127,7 +135,7 @@ struct LargeWarningWidgetView: View {
             }
             Spacer()
         }
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -139,7 +147,7 @@ struct InlineWidgetView: View {
             Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
             Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
         }
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -171,7 +179,7 @@ struct CircleWidgetView: View {
         #else
         .gaugeStyle(.accessoryCircular)
         #endif
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -216,7 +224,7 @@ struct RectangleWidgetView: View {
                 }
             }
         }
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
