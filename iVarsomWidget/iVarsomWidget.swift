@@ -75,7 +75,8 @@ struct SmallWarningWidgetView: View {
                     .fixedSize(horizontal: false, vertical: true)
 
             }.padding()
-        }.widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        }
+        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
     }
 }
 
@@ -124,6 +125,7 @@ struct InlineWidgetView: View {
             Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
             Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
         }
+        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
     }
 }
 
@@ -136,7 +138,7 @@ struct CircleWidgetView: View {
         } currentValueLabel: {
             DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
                        useTintable: widgetRenderingMode != .fullColor)
-            .padding(1)
+            .padding(2)
         } minimumValueLabel: {
             Text("1").foregroundColor(Color("DangerLevel1"))
         } maximumValueLabel: {
@@ -147,10 +149,53 @@ struct CircleWidgetView: View {
             Text(entry.currentWarning.RegionName)
         }
         .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
-            Color("DangerLevel1"), Color("DangerLevel2"), Color("DangerLevel3"), Color("DangerLevel4"), Color("DangerLevel4")])))
+            Color("DangerLevel1"),
+            Color("DangerLevel2"),
+            Color("DangerLevel3"),
+            Color("DangerLevel4"),
+            Color("DangerLevel4")])))
         #else
         .gaugeStyle(.accessoryCircular)
         #endif
+        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+    }
+}
+
+struct RectangleWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(entry.currentWarning.RegionName)
+                .font(.system(size: 11))
+                .fontWeight(.bold)
+                .widgetAccentable()
+            HStack(spacing: 0) {
+                let filteredWarnings = entry.warnings.filter {
+                    let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
+                    return daysBetween >= -1 && daysBetween <= 2;
+                }
+                
+                ForEach(filteredWarnings) { warning in
+                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
+                    VStack(spacing: 0) {
+                        Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+                            .font(.system(size: 9))
+                            .fontWeight(isToday ? .heavy : .regular)
+                        DangerIcon(dangerLevel: warning.DangerLevel, useTintable: widgetRenderingMode != .fullColor)
+                            .padding(2)
+                        Text(warning.DangerLevel.description)
+                            .font(.system(size: 11))
+                            .fontWeight(isToday ? .heavy : .regular)
+                    }
+                    .frame(maxWidth: .infinity)
+                    if (warning.RegId != filteredWarnings.last?.RegId) {
+                        Divider()
+                    }
+                }
+            }
+        }
+        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
     }
 }
 
@@ -160,7 +205,6 @@ struct CornerWidgetView: View {
     
     var body: some View {
         ZStack {
-            AccessoryWidgetBackground()
             DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
                        useTintable: widgetRenderingMode != .fullColor)
         }.widgetLabel {
@@ -187,6 +231,8 @@ struct WarningWidgetView: View {
             CircleWidgetView(entry: entry)
         case .accessoryInline:
             InlineWidgetView(entry: entry)
+        case .accessoryRectangular:
+            RectangleWidgetView(entry: entry)
 #if os(watchOS)
         case .accessoryCorner:
             CornerWidgetView(entry: entry)
@@ -211,9 +257,9 @@ struct iVarsomWidget: Widget {
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
         #if os(watchOS)
-        .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner])
+        .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
         #else
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
         #endif
     }
 }

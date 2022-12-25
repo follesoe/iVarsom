@@ -16,6 +16,7 @@ struct DayCell: View {
                 .cornerRadius(8)
             Text(date.formatted(.dateTime.day(.twoDigits).month(.twoDigits)))
                 .font(.system(size: 13))
+                .fontWeight(isSelected ? .heavy : .regular)
                 .foregroundColor(.primary)
         }
     }

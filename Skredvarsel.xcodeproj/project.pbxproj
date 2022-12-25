@@ -86,6 +86,11 @@
 		AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
 		AA71615027CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614F27CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift */; };
 		AA71615227CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71615127CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift */; };
+		AA73188729586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
+		AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
+		AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
+		AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
+		AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
 		AA7358CF27BD8DCF009E3DA1 /* UseLocationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358CE27BD8DCF009E3DA1 /* UseLocationRow.swift */; };
 		AA7358D227BD93C8009E3DA1 /* RegionListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D127BD93C8009E3DA1 /* RegionListViewModelProtocol.swift */; };
 		AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */; };
@@ -275,6 +280,7 @@
 		AA71614D27CBBF9600E0CFD0 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		AA71614F27CBC60D00E0CFD0 /* RegionDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		AA71615127CBCB1B00E0CFD0 /* DesignTimeRegionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTimeRegionDetailViewModel.swift; sourceTree = "<group>"; };
+		AA73188629586F9500CC0C2A /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		AA7358CE27BD8DCF009E3DA1 /* UseLocationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseLocationRow.swift; sourceTree = "<group>"; };
 		AA7358D127BD93C8009E3DA1 /* RegionListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModelProtocol.swift; sourceTree = "<group>"; };
 		AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTimeRegionListViewModel.swift; sourceTree = "<group>"; };
@@ -408,6 +414,7 @@
 				AA18421227B1A9530097174D /* JsonExtensions.swift */,
 				AA18421627B1A9A30097174D /* FormatterExtensions.swift */,
 				AA5168842820695700F86D87 /* StringExtensions.swift */,
+				AA73188629586F9500CC0C2A /* CalendarExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -861,6 +868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AA5168872820695700F86D87 /* StringExtensions.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
 				AA18421527B1A9530097174D /* JsonExtensions.swift in Sources */,
@@ -879,6 +887,7 @@
 				AA2ABD6B2944FD06008819DB /* WarningSymbolLevel.swift in Sources */,
 				AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA2ABD6C2944FD06008819DB /* JsonExtensions.swift in Sources */,
+				AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
@@ -933,6 +942,7 @@
 				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
 				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
 				AAF054C9280C502B000BCADD /* VarsomData.swift in Sources */,
+				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
 				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,
 			);
@@ -961,6 +971,7 @@
 				AA7358D827C23154009E3DA1 /* RegionDetailViewModel.swift in Sources */,
 				AA2410BD27BAE5390028FA6D /* RegionListViewModel.swift in Sources */,
 				AAD172E1279605B4009AB089 /* WarningSummary.swift in Sources */,
+				AA73188729586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AA18421727B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AAD172D72795FCC2009AB089 /* RegionRow.swift in Sources */,
 				AAD172CF2795FCA3009AB089 /* AvalancheWarningSimple.swift in Sources */,
@@ -999,6 +1010,7 @@
 				AA102DFF279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
 				AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */,
+				AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,

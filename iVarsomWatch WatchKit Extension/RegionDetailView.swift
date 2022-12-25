@@ -67,7 +67,7 @@ struct RegionDetailView<ViewModelType: RegionDetailViewModelProtocol>: View {
                             DangerIcon(dangerLevel: warning.DangerLevel)
                                 .frame(width: 34, height: 34)
                                 .padding(.trailing, 8)
-                            Text("\(warning.DangerLevel.rawValue)")
+                            Text(warning.DangerLevel.description)
                                 .font(.system(size: 26))
                                 .fontWeight(.heavy)
                         }

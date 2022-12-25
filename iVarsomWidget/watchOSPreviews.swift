@@ -13,18 +13,30 @@ struct iVarsomWidget_watchOS_Previews: PreviewProvider {
             configuration: SelectRegionIntent(),
             relevance: TimelineEntryRelevance(score: 1.0))
         
+        let testWarnings = createTestWarnings()
+        let fullWarning = WarningEntry(
+                date: Date(),
+                currentWarning: testWarnings[1],
+                warnings: testWarnings,
+                configuration: SelectRegionIntent(),
+                relevance: TimelineEntryRelevance(score: 1.0))
+        
         Group {
             WarningWidgetView(entry: level3)
             .previewDisplayName("Inline")
             .previewContext(WidgetPreviewContext(family: .accessoryInline))
             
             WarningWidgetView(entry: level3)
-                .previewDisplayName("Circle")
+                .previewDisplayName("Circular")
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
             
             WarningWidgetView(entry: level3)
                 .previewDisplayName("Corner")
                 .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+            
+            WarningWidgetView(entry: fullWarning)
+                .previewDisplayName("Rectangular")
+                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
         }
     }
 }

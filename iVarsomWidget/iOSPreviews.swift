@@ -6,19 +6,33 @@ import DynamicColor
 
 struct iVarsomWidget_iOS_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            WarningWidgetView(entry: WarningEntry(
+        let level3 = WarningEntry(
+            date: Date(),
+            currentWarning: testWarningLevel3,
+            warnings: [testWarningLevel3],
+            configuration: SelectRegionIntent(),
+            relevance: TimelineEntryRelevance(score: 1.0));
+        
+        let testWarnings = createTestWarnings()
+        let fullWarning = WarningEntry(
                 date: Date(),
-                currentWarning: testWarningLevel3,
-                warnings: [testWarningLevel3],
+                currentWarning: testWarnings[1],
+                warnings: testWarnings,
                 configuration: SelectRegionIntent(),
-                relevance: TimelineEntryRelevance(score: 1.0)))
+                relevance: TimelineEntryRelevance(score: 1.0))
+            
+        Group {
+            WarningWidgetView(entry: level3)
             .previewDisplayName("Inline")
             .previewContext(WidgetPreviewContext(family: .accessoryInline))
             
             WarningWidgetView(entry: Provider().errorEntry())
-                .previewDisplayName("Circle")
+                .previewDisplayName("Circular")
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            
+            WarningWidgetView(entry: fullWarning)
+            .previewDisplayName("Rectangular")
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
             
             WarningWidgetView(entry: Provider().errorEntry())
                 .previewDisplayName("Error State Small")
@@ -60,17 +74,7 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                 .previewDisplayName("Level 0 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            WarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel2,
-                    warnings: [
-                        testWarningLevel0,
-                        testWarningLevel1,
-                        testWarningLevel2,
-                        testWarningLevel3,
-                        testWarningLevel4],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
+            WarningWidgetView(entry: fullWarning)
                 .previewDisplayName("Large")
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
