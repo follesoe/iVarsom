@@ -25,7 +25,7 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                 relevance: TimelineEntryRelevance(score: 1.0),
                 hasError: false,
                 errorMessage: nil)
-            
+                
         Group {
             WarningWidgetView(entry: level3)
             .previewDisplayName("Inline")

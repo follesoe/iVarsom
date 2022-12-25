@@ -43,6 +43,15 @@ struct WarningEntry: TimelineEntry {
     let errorMessage: String?
 }
 
+struct RegionNameText: View {
+    var entry: Provider.Entry
+    var body: some View {
+        Text(entry.configuration.region?.regionId == 1 ?
+            "\(Image(systemName: "location.fill")) \(entry.currentWarning.RegionName)" :
+            "\(entry.currentWarning.RegionName)")
+    }
+}
+
 struct SmallWarningWidgetView: View {
     var entry: Provider.Entry
     
@@ -69,7 +78,7 @@ struct SmallWarningWidgetView: View {
                     .textCase(.uppercase)
                     .font(.caption2)
                     .foregroundColor(textColor)
-                Text(entry.currentWarning.RegionName)
+                RegionNameText(entry: entry)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
                     .foregroundColor(textColor)
@@ -89,7 +98,8 @@ struct MediumWarningWidgetView: View {
         WarningSummary(
             warning: entry.currentWarning,
             mainTextFont: .system(size: 13),
-            mainTextLineLimit: 4)
+            mainTextLineLimit: 4,
+            includeLocationIcon: entry.configuration.region?.regionId == 1)
             .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
     }
 }
@@ -101,7 +111,8 @@ struct LargeWarningWidgetView: View {
         VStack {
             WarningSummary(
                 warning: entry.currentWarning,
-                mainTextFont: .system(size: 15))
+                mainTextFont: .system(size: 15),
+                includeLocationIcon: entry.configuration.region?.regionId == 1)
                 .frame(height: 274)
             Spacer()
             HStack {
@@ -174,9 +185,7 @@ struct RectangleWidgetView: View {
                 Text(entry.errorMessage ?? entry.currentWarning.MainText)
                     .font(.system(size: 14))
             } else {
-                Text(entry.configuration.region?.regionId == 1 ?
-                     "\(Image(systemName: "location.fill")) \(entry.currentWarning.RegionName)" :
-                        "\(entry.currentWarning.RegionName)")
+                RegionNameText(entry: entry)
                     .font(.system(size: 11))
                     .fontWeight(.bold)
                     .widgetAccentable()
