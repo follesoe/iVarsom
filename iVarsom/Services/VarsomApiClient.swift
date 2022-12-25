@@ -54,14 +54,24 @@ class VarsomApiClient {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByRegion/Simple/\(regionId)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
-        return try await getData(url: url);
+        return try await getData(url: url)
     }
     
     public func loadWarnings(lang: Language, coordinate:CLLocationCoordinate2D, from:Date, to:Date) async throws -> [AvalancheWarningSimple] {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByCoordinates/Simple/\(coordinate.latitude)/\(coordinate.longitude)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
-        return try await getData(url: url);
+        var warnings: [AvalancheWarningSimple] = try await getData(url: url)
+        
+        // Ensure no duplicate RegId as regions without assessment generates
+        // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
+        for (index, warning) in warnings.enumerated() {
+            if (warning.RegId == 0) {
+                warnings[index].RegId = index
+            }
+        }
+        
+        return warnings
     }
     
     private func getData<T>(url: URL) async throws -> T where T : Codable {
