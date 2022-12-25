@@ -11,7 +11,9 @@ struct iVarsomWidget_watchOS_Previews: PreviewProvider {
             currentWarning: testWarningLevel3,
             warnings: [testWarningLevel3],
             configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 1.0))
+            relevance: TimelineEntryRelevance(score: 1.0),
+            hasError: false,
+            errorMessage: nil)
         
         let testWarnings = createTestWarnings()
         let fullWarning = WarningEntry(
@@ -19,7 +21,11 @@ struct iVarsomWidget_watchOS_Previews: PreviewProvider {
                 currentWarning: testWarnings[1],
                 warnings: testWarnings,
                 configuration: SelectRegionIntent(),
-                relevance: TimelineEntryRelevance(score: 1.0))
+                relevance: TimelineEntryRelevance(score: 1.0),
+                hasError: false,
+                errorMessage: nil)
+        
+        let error = Provider().errorEntry(errorMessage: "Some error message")
         
         Group {
             WarningWidgetView(entry: level3)
@@ -36,6 +42,10 @@ struct iVarsomWidget_watchOS_Previews: PreviewProvider {
             
             WarningWidgetView(entry: fullWarning)
                 .previewDisplayName("Rectangular")
+                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            
+            WarningWidgetView(entry: error)
+                .previewDisplayName("Rectangular Error")
                 .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
         }
     }

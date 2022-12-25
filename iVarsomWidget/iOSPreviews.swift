@@ -6,12 +6,15 @@ import DynamicColor
 
 struct iVarsomWidget_iOS_Previews: PreviewProvider {
     static var previews: some View {
+        
         let level3 = WarningEntry(
             date: Date(),
             currentWarning: testWarningLevel3,
             warnings: [testWarningLevel3],
             configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 1.0));
+            relevance: TimelineEntryRelevance(score: 1.0),
+            hasError: false,
+            errorMessage: nil);
         
         let testWarnings = createTestWarnings()
         let fullWarning = WarningEntry(
@@ -19,14 +22,16 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                 currentWarning: testWarnings[1],
                 warnings: testWarnings,
                 configuration: SelectRegionIntent(),
-                relevance: TimelineEntryRelevance(score: 1.0))
+                relevance: TimelineEntryRelevance(score: 1.0),
+                hasError: false,
+                errorMessage: nil)
             
         Group {
             WarningWidgetView(entry: level3)
             .previewDisplayName("Inline")
             .previewContext(WidgetPreviewContext(family: .accessoryInline))
             
-            WarningWidgetView(entry: Provider().errorEntry())
+            WarningWidgetView(entry: Provider().errorEntry(errorMessage: "Error message"))
                 .previewDisplayName("Circular")
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
             
@@ -34,7 +39,7 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
             .previewDisplayName("Rectangular")
             .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
             
-            WarningWidgetView(entry: Provider().errorEntry())
+            WarningWidgetView(entry: Provider().errorEntry(errorMessage: "Error message"))
                 .previewDisplayName("Error State Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
@@ -43,7 +48,9 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                     currentWarning: testWarningLevel2,
                     warnings: [testWarningLevel2],
                     configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
+                    relevance: TimelineEntryRelevance(score: 1.0),
+                    hasError: false,
+                    errorMessage: nil))
                 .previewDisplayName("Level 2 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
@@ -52,7 +59,9 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                     currentWarning: testWarningLevel3,
                     warnings: [testWarningLevel3],
                     configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
+                    relevance: TimelineEntryRelevance(score: 1.0),
+                    hasError: false,
+                    errorMessage: nil))
                 .previewDisplayName("Level 3 Small")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
 
@@ -61,7 +70,9 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                     currentWarning: testWarningLevel4,
                     warnings: [testWarningLevel4],
                     configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
+                    relevance: TimelineEntryRelevance(score: 1.0),
+                    hasError: false,
+                    errorMessage: nil))
                 .previewDisplayName("Level 4 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
@@ -70,7 +81,9 @@ struct iVarsomWidget_iOS_Previews: PreviewProvider {
                     currentWarning: testWarningLevel0,
                     warnings: [testWarningLevel0],
                     configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
+                    relevance: TimelineEntryRelevance(score: 1.0),
+                    hasError: false,
+                    errorMessage: nil))
                 .previewDisplayName("Level 0 Medium")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             

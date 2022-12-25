@@ -23,10 +23,12 @@ struct Provider: IntentTimelineProvider {
             currentWarning: testWarningLevel0,
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 0.0))
+            relevance: TimelineEntryRelevance(score: 0.0),
+            hasError: false,
+            errorMessage: nil)
     }
     
-    func errorEntry() -> WarningEntry {
+    func errorEntry(errorMessage: String) -> WarningEntry {
         let errorWarning = AvalancheWarningSimple(
             RegId: 1,
             RegionId: 0,
@@ -45,7 +47,9 @@ struct Provider: IntentTimelineProvider {
             currentWarning: errorWarning,
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 0.0))
+            relevance: TimelineEntryRelevance(score: 0.0),
+            hasError: true,
+            errorMessage: errorMessage)
     }
     
     func getSnapshot(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (WarningEntry) -> ()) {
@@ -69,14 +73,16 @@ struct Provider: IntentTimelineProvider {
                         currentWarning: warnings[0],
                         warnings: warnings,
                         configuration: configuration,
-                        relevance: TimelineEntryRelevance(score: warnings[0].DangerLevelNumeric))
+                        relevance: TimelineEntryRelevance(score: warnings[0].DangerLevelNumeric),
+                        hasError: false,
+                        errorMessage: nil)
                     completion(entry)
                 } else {
-                    completion(errorEntry())
+                    completion(errorEntry(errorMessage: "No warnings available"))
                 }
             } catch {
                 print("Unexpected error: \(error).")
-                completion(errorEntry())
+                completion(errorEntry(errorMessage: "\(error)"))
             }
         }
     }
@@ -95,13 +101,19 @@ struct Provider: IntentTimelineProvider {
                 let from = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
                 let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
                 
-                if (configuration.region?.regionId == 1 && locationManager.isAuthorizedForWidgetUpdates) {
-                    let location = try await locationManager.updateLocation()
-                    warnings = try await apiClient.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        coordinate: location,
-                        from: from,
-                        to: to)
+                let isAuthorized = locationManager.isAuthorizedForWidgetUpdates
+                
+                if (configuration.region?.regionId == 1) {
+                    if (isAuthorized) {
+                        let location = try await locationManager.updateLocation()
+                        warnings = try await apiClient.loadWarnings(
+                            lang: VarsomApiClient.currentLang(),
+                            coordinate: location,
+                            from: from,
+                            to: to)
+                    } else {
+                        throw "Missing location authorization"
+                    }
                 } else {
                     warnings = try await apiClient.loadWarnings(
                         lang: VarsomApiClient.currentLang(),
@@ -115,7 +127,7 @@ struct Provider: IntentTimelineProvider {
             } catch {
                 print("Unexpected error: \(error).")
                 let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
-                let errorTimeline = Timeline(entries: [errorEntry()], policy: .after(afterDate))
+                let errorTimeline = Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
                 completion(errorTimeline)
             }
         }
@@ -134,7 +146,9 @@ struct Provider: IntentTimelineProvider {
             currentWarning: currentWarning,
             warnings: warnings,
             configuration: configuration,
-            relevance: TimelineEntryRelevance(score: currentWarning.DangerLevelNumeric))
+            relevance: TimelineEntryRelevance(score: currentWarning.DangerLevelNumeric),
+            hasError: false,
+            errorMessage: nil)
         entries.append(entry)
         
         let afterDate = getNextUpdateTime(prevWarning: prevWarning, currentWarning: currentWarning)

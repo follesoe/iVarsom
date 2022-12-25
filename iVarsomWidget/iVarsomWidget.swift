@@ -39,6 +39,8 @@ struct WarningEntry: TimelineEntry {
     let warnings: [AvalancheWarningSimple]
     let configuration: SelectRegionIntent
     var relevance: TimelineEntryRelevance?
+    let hasError: Bool
+    let errorMessage: String?
 }
 
 struct SmallWarningWidgetView: View {
@@ -166,31 +168,38 @@ struct RectangleWidgetView: View {
     var entry: Provider.Entry
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(entry.currentWarning.RegionName)
-                .font(.system(size: 11))
-                .fontWeight(.bold)
-                .widgetAccentable()
-            HStack(spacing: 0) {
-                let filteredWarnings = entry.warnings.filter {
-                    let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
-                    return daysBetween >= -1 && daysBetween <= 2;
-                }
-                
-                ForEach(filteredWarnings) { warning in
-                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
-                    VStack(spacing: 0) {
-                        Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
-                            .font(.system(size: 9))
-                            .fontWeight(isToday ? .heavy : .regular)
-                        DangerIcon(dangerLevel: warning.DangerLevel, useTintable: widgetRenderingMode != .fullColor)
-                            .padding(2)
-                        Text(warning.DangerLevel.description)
-                            .font(.system(size: 11))
-                            .fontWeight(isToday ? .heavy : .regular)
+            if (entry.hasError){
+                Text("Error")
+                    .font(.caption2)
+                Text(entry.errorMessage ?? entry.currentWarning.MainText)
+                    .font(.system(size: 14))
+            } else {
+                Text(entry.currentWarning.RegionName)
+                    .font(.system(size: 11))
+                    .fontWeight(.bold)
+                    .widgetAccentable()
+                HStack(spacing: 0) {
+                    let filteredWarnings = entry.warnings.filter {
+                        let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
+                        return daysBetween >= -1 && daysBetween <= 2;
                     }
-                    .frame(maxWidth: .infinity)
-                    if (warning.RegId != filteredWarnings.last?.RegId) {
-                        Divider()
+                    
+                    ForEach(filteredWarnings) { warning in
+                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
+                        VStack(spacing: 0) {
+                            Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+                                .font(.system(size: 9))
+                                .fontWeight(isToday ? .heavy : .regular)
+                            DangerIcon(dangerLevel: warning.DangerLevel, useTintable: widgetRenderingMode != .fullColor)
+                                .padding(2)
+                            Text(warning.DangerLevel.description)
+                                .font(.system(size: 11))
+                                .fontWeight(isToday ? .heavy : .regular)
+                        }
+                        .frame(maxWidth: .infinity)
+                        if (warning.RegId != filteredWarnings.last?.RegId) {
+                            Divider()
+                        }
                     }
                 }
             }
