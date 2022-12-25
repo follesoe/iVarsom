@@ -43,12 +43,13 @@ struct WarningEntry: TimelineEntry {
     let errorMessage: String?
 }
 
-struct RegionNameText: View {
-    var entry: Provider.Entry
+struct LocationIconText: View {
+    var text: String
+    var config: SelectRegionIntent
     var body: some View {
-        Text(entry.configuration.region?.regionId == 1 ?
-            "\(Image(systemName: "location.fill")) \(entry.currentWarning.RegionName)" :
-            "\(entry.currentWarning.RegionName)")
+        Text(config.region?.regionId == 1 ?
+            "\(Image(systemName: "location.fill")) \(text)" :
+            "\(text)")
     }
 }
 
@@ -74,11 +75,11 @@ struct SmallWarningWidgetView: View {
 
                 }
                 Spacer()
-                Text(entry.date.getDayName())
+                LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
                     .textCase(.uppercase)
                     .font(.caption2)
                     .foregroundColor(textColor)
-                RegionNameText(entry: entry)
+                Text(entry.currentWarning.RegionName)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
                     .foregroundColor(textColor)
@@ -185,7 +186,7 @@ struct RectangleWidgetView: View {
                 Text(entry.errorMessage ?? entry.currentWarning.MainText)
                     .font(.system(size: 14))
             } else {
-                RegionNameText(entry: entry)
+                LocationIconText(text: entry.currentWarning.RegionName, config: entry.configuration)
                     .font(.system(size: 11))
                     .fontWeight(.bold)
                     .widgetAccentable()

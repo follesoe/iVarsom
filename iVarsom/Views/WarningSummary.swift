@@ -11,8 +11,8 @@ struct WarningSummary: View {
         return warning.DangerLevel == .level2 ? .black : .white;
     }
     
-    var body: some View {
-        let icon = Text(Image(systemName: "location.fill")).font(.system(size: 16))
+    var body: some View {        
+        let warningDate = warning.ValidFrom.formatted(date: .complete, time: .omitted)
         
         ZStack {
             DangerGradient(dangerLevel: warning.DangerLevel)
@@ -23,7 +23,9 @@ struct WarningSummary: View {
                     .padding(.bottom, 8)
                 VStack(alignment: .leading) {
                     Spacer()
-                    Text(warning.ValidFrom.formatted(date: .complete, time: .omitted))
+                    Text(includeLocationIcon ?
+                         "\(Image(systemName: "location.fill")) \(warningDate)" :
+                            "\(warningDate)")
                         .textCase(.uppercase)
                         .font(.caption2)
                         .foregroundColor(textColor)
@@ -31,9 +33,7 @@ struct WarningSummary: View {
                     #if os(iOS)
                         .textSelection(.enabled)
                     #endif
-                    (includeLocationIcon ?
-                     (icon + Text("\(warning.RegionName)")) :
-                        Text("\(warning.RegionName)"))
+                    Text("\(warning.RegionName)")
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(textColor)
