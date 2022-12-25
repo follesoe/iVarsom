@@ -113,7 +113,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     
     func updateLocation() async {
         do {
-            let _ = try await locationManager.updateLocation()
+            let _ = try await locationManager.requestPermission()
             self.locationIsAuthorized = locationManager.isAuthorized
             await loadLocalRegion()
         } catch {

@@ -6,10 +6,12 @@ public typealias Location = CLLocationCoordinate2D
 
 final class LocationManager: NSObject {
     private typealias LocationCheckedThrowingContinuation = CheckedContinuation<Location, Error>
+    private typealias BoolCheckedThrowingContinuation = CheckedContinuation<Bool, Error>
 
     fileprivate lazy var locationManager = CLLocationManager()
     
     private var locationCheckedThrowingContinuation: LocationCheckedThrowingContinuation?
+    private var boolCheckedThrowingContinuation: BoolCheckedThrowingContinuation?
     
     public var isAuthorizedForWidgetUpdates: Bool {
 #if os(watchOS)
@@ -28,6 +30,25 @@ final class LocationManager: NSObject {
             @unknown default:
                 return false
         }
+    }
+    
+    func requestPermission() async throws -> Bool {
+        print("LocationManager.requestPermission")
+        return try await withCheckedThrowingContinuation({ [weak self] (continuation: BoolCheckedThrowingContinuation) in
+            guard let self = self else {
+                return
+            }
+            
+            self.boolCheckedThrowingContinuation = continuation
+            
+            if (self.isAuthorized) {
+                boolCheckedThrowingContinuation?.resume(returning: true)
+            } else {
+                print("requestWhenInUseAuthorization is notDetermined: \(locationManager.authorizationStatus == .notDetermined)")
+                self.locationManager.delegate = self
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        })
     }
 
     func updateLocation() async throws -> Location {
@@ -66,8 +87,13 @@ extension LocationManager: CLLocationManagerDelegate {
     }
 
     func locationManager(_: CLLocationManager, didFailWithError error: Error) {
-        print("LocationManager.didFailWithError")
+        print("LocationManager.didFailWithError: \(error)")
         locationCheckedThrowingContinuation?.resume(throwing: error)
         locationCheckedThrowingContinuation = nil
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("LocationManager.locationManagerDidChangeAuthorization: \(manager.authorizationStatus)")
+        boolCheckedThrowingContinuation?.resume(returning: isAuthorized)
     }
 }
