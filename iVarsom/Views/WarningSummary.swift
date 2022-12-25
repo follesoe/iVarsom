@@ -33,7 +33,7 @@ struct WarningSummary: View {
                     #endif
                     (includeLocationIcon ?
                      (icon + Text("\(warning.RegionName)")) :
-                        Text("\(warning.RegionName))"))
+                        Text("\(warning.RegionName)"))
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(textColor)
