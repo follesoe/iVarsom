@@ -44,6 +44,7 @@ struct RegionDetailView<ViewModelType: RegionDetailViewModelProtocol>: View {
                             .fontWeight(.bold)
                             .foregroundColor(textColor)
                         Text(vm.selectedWarning.MainText)
+                            .font(.system(size: 15))
                             .foregroundColor(textColor)
                     }
                     .padding()
