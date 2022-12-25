@@ -13,7 +13,7 @@ final class LocationManager: NSObject {
     
     public var isAuthorizedForWidgetUpdates: Bool {
 #if os(watchOS)
-        return false
+        return isAuthorized
 #else
         return locationManager.isAuthorizedForWidgetUpdates
 #endif
