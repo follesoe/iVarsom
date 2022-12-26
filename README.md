@@ -47,6 +47,7 @@ The Introducing SwiftUI tutorial from Apple is also a great way to get familiar 
 * [WWDC20: Structure your app for SwiftUI previews](https://developer.apple.com/wwdc20/10149)
 * [WWDC21: Add rich graphics to your SwiftUI app](https://developer.apple.com/wwdc21/10021)
 * [WWDC20: Data Essentials in SwiftUI](https://developer.apple.com/wwdc20/10040)
+* [WWDC22: The SwiftUI cookbook for navigation](https://developer.apple.com/wwdc22/10054)
 
 ### WidgetKit
 
@@ -79,4 +80,4 @@ The app uses the open source package [DynamicColor](https://github.com/yannickl/
 The app uses `async/await` for network operations in the `VarsomApiClient.swift` file.
 
 * [WWDC21: Meet async/await in Swift](https://developer.apple.com/wwdc21/10132)
-* [WWDC2!: Discover concurrency in SwiftUI](https://developer.apple.com/wwdc21/10019)
+* [WWDC21: Discover concurrency in SwiftUI](https://developer.apple.com/wwdc21/10019)
