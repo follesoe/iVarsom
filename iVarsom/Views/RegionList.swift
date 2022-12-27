@@ -4,25 +4,17 @@ import CoreLocationUI
 
 struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     @StateObject var vm: ViewModelType
-    let client = VarsomApiClient()
 
     let rowInsets = EdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 14)
     
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             VStack {
-                List {
+                List(selection: $vm.selectedRegion) {
                     Section(header: Text("Local Warnings")) {
                         if let localRegion = vm.localRegion {
-                            NavigationLink() {
-                                RegionDetail(
-                                    vm: RegionDetailViewModel(
-                                        client: client,
-                                        regionSummary: localRegion,
-                                        isLocalRegion: true))
-                            } label: {
+                            NavigationLink(value: localRegion) {
                                 RegionRow(region: localRegion)
-                                    .listRowInsets(rowInsets)
                             }.listRowInsets(rowInsets)
                         }
                         else if (!vm.locationIsAuthorized) {
@@ -35,26 +27,40 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                     }
                     Section(header: Text("A-Regions")) {
                         ForEach(vm.filteredRegions) { region in
-                            NavigationLink() {
-                                RegionDetail(
-                                    vm: RegionDetailViewModel(
-                                        client: client,
-                                        regionSummary: region,
-                                        isLocalRegion: false))
-                            } label: {
+                            NavigationLink(value: region) {
                                 RegionRow(region: region)
                             }.listRowInsets(rowInsets)
                         }
                     }
                 }
+                .navigationTitle("Regions")
                 .listStyle(.insetGrouped)
                 .searchable(text: $vm.searchTerm)
-                .navigationTitle("Regions")
+                .onChange(of: vm.selectedRegion) { newSelectedRegion in
+                    if let region = newSelectedRegion {
+                        print("New selected region: \(region.Name)")
+                        vm.selectedWarning = vm.selectedRegion?.AvalancheWarningList[0]
+                        Task {
+                            await vm.loadWarnings(from: -5, to: 2)
+                        }
+                    } else {
+                        print("Selected region set to nil")
+                    }
+                }
                 Text("Data from the The Norwegian Avalanche Warning Service and www.varsom.no.")
                     .font(.caption2)
                     .padding()
             }
-            Text("Select a region")
+        } detail: {
+            if  vm.selectedRegion != nil {
+                RegionDetail(
+                    selectedRegion: $vm.selectedRegion,
+                    selectedWarning: $vm.selectedWarning,
+                    warnings: $vm.warnings
+                )
+            } else {
+                Text("Select a region")
+            }
         }
         .refreshable {
             await vm.loadRegions()

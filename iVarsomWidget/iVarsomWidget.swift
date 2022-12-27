@@ -4,35 +4,6 @@ import Intents
 import CoreLocation
 import DynamicColor
 
-class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
-    private var handler: ((CLLocation) -> Void)?
-    
-    override init() {
-        super.init()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        self.locationManager.delegate = self
-    }
-    
-    func fetchLocation(handler: @escaping (CLLocation) -> Void) {
-        self.handler = handler
-        if let loc = self.locationManager.location {
-            self.handler!(loc)
-        } else {
-            self.locationManager.requestLocation()
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("\(locations)")
-        self.handler!(locations.last!)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
-
 struct WarningEntry: TimelineEntry {
     let date: Date
     let currentWarning: AvalancheWarningSimple

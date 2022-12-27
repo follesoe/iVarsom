@@ -8,10 +8,7 @@ struct SkredvarselApp: App {
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            NavigationView {
-                RegionListView<RegionListViewModel>(vm: vm)
-            }
-            .environmentObject(vm)
+            RegionListView<RegionListViewModel>(vm: vm).environmentObject(vm)
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")

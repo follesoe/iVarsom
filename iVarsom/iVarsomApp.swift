@@ -21,7 +21,9 @@ struct iVarsomApp: App {
             if let queryItems = components.queryItems {
                 for queryItem in queryItems {
                     if queryItem.name == "id" && queryItem.value != nil {
-                        self.vm.selectedRegionId = Int(queryItem.value ?? "0")
+                        if let regionId = Int(queryItem.value ?? "0") {
+                            print("Navigate to region \(regionId)")
+                        }
                     }
                 }
             }
