@@ -20,6 +20,7 @@ protocol RegionListViewModelProtocol: ObservableObject {
     
     func addFavorite(id: Int) -> ()
     func removeFavorite(id: Int) -> ()
+    func selectRegionById(regionId: Int) async -> ()
     
     /**
      Load detailed warnings for selected region.

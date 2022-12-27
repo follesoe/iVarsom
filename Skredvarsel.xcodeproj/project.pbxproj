@@ -144,6 +144,11 @@
 		AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
+		AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172C92795FCA3009AB089 /* DataLoader.swift */; };
@@ -320,6 +325,7 @@
 		AAD613892822D89300ABA680 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
 		AAD6138C282AF46F00ABA680 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		AAE572DE295B294800DAB74E /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +410,7 @@
 				AA18421627B1A9A30097174D /* FormatterExtensions.swift */,
 				AA5168842820695700F86D87 /* StringExtensions.swift */,
 				AA73188629586F9500CC0C2A /* CalendarExtensions.swift */,
+				AAE572DE295B294800DAB74E /* UrlUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -861,6 +868,7 @@
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
 				AA18421527B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
+				AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +884,7 @@
 				AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA2ABD6C2944FD06008819DB /* JsonExtensions.swift in Sources */,
 				AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
@@ -930,6 +939,7 @@
 				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
 				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,
+				AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +970,7 @@
 				AAD172D72795FCC2009AB089 /* RegionRow.swift in Sources */,
 				AAD172CF2795FCA3009AB089 /* AvalancheWarningSimple.swift in Sources */,
 				AA102E07279DAF0200B6492D /* RegionSummary.swift in Sources */,
+				AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AAD172D02795FCA3009AB089 /* VarsomApiClient.swift in Sources */,
 				AAD172D82795FCC2009AB089 /* RegionList.swift in Sources */,
 				AA839D0B279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
@@ -993,6 +1004,7 @@
 				AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,

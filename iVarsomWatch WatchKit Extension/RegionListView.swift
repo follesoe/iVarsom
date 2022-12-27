@@ -7,9 +7,10 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     }
     
     @StateObject var vm: ViewModelType
+    @State private var path: [Route] = []
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack {
                 if (vm.regionLoadState == .loading) {
                     VStack {
@@ -79,6 +80,17 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
             .task {
                 if (vm.needsRefresh()) {
                     await vm.loadRegions()
+                }
+            }
+            .onOpenURL { url in
+                let regionId = UrlUtils.extractParam(url: url, name: "id")
+                if let regionId = regionId {
+                    Task {
+                        await vm.selectRegionById(regionId: regionId)
+                        if let selectedRegion = vm.selectedRegion {
+                            path = [Route.region(selectedRegion)]
+                        }
+                    }
                 }
             }
         }

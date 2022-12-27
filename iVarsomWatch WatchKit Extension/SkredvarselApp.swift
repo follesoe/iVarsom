@@ -10,7 +10,5 @@ struct SkredvarselApp: App {
         WindowGroup {
             RegionListView<RegionListViewModel>(vm: vm).environmentObject(vm)
         }
-
-        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }

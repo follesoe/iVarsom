@@ -10,23 +10,13 @@ struct iVarsomApp: App {
         WindowGroup {
             RegionList<RegionListViewModel>(vm: vm)
                 .onOpenURL { url in
-                    setSelectedRegion(url: url)
-                }
-        }
-    }
-    
-    func setSelectedRegion(url: URL) {
-        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        if let components = components {
-            if let queryItems = components.queryItems {
-                for queryItem in queryItems {
-                    if queryItem.name == "id" && queryItem.value != nil {
-                        if let regionId = Int(queryItem.value ?? "0") {
-                            print("Navigate to region \(regionId)")
+                    let regionId = UrlUtils.extractParam(url: url, name: "id")
+                    if let regionId = regionId {
+                        Task {
+                            await vm.selectRegionById(regionId: regionId)
                         }
                     }
                 }
-            }
         }
     }
 }

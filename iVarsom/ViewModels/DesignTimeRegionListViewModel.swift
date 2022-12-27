@@ -42,4 +42,7 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     
     func loadWarnings(from: Int = -5, to: Int = 2) async {
     }
+    
+    func selectRegionById(regionId: Int) async {
+    }
 }

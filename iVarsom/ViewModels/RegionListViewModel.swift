@@ -149,4 +149,21 @@ class RegionListViewModel: RegionListViewModelProtocol {
             print(error)
         }
     }
+    
+    func selectRegionById(regionId: Int) async {
+        if (regions.count == 0) {
+            await loadRegions()
+        }
+
+        let region = regions.first(where: { $0.Id == regionId})
+        if let region = region {
+            print("Navigate to region \(region.Name)")
+            selectedRegion = region
+        } else if localRegion?.Id == regionId {
+            print("Navigate to local region")
+            selectedRegion = localRegion
+        } else {
+            print("Region not found, unable to navigate to \(regionId), total \(regions.count) regions loaded, local region: \(localRegion?.Id ?? 0)")
+        }
+    }
 }
