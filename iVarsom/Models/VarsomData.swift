@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 class VarsomData: ObservableObject {
@@ -6,7 +7,7 @@ class VarsomData: ObservableObject {
     @Published var days = [String]()
 
     var language: VarsomApiClient.Language {
-        return Locale.current.languageCode == "nb" ? .norwegian : .english
+        return Locale.current.identifier == "nb" ? .norwegian : .english
     }
     
     private let apiClient = VarsomApiClient()
@@ -92,3 +93,29 @@ let testWarningLevel3 = (testARegions.filter { reg in
 let testWarningLevel4 = (testARegions.filter { reg in
     reg.Id == 3015
 })[0].AvalancheWarningList[0]
+
+func createTestWarnings() -> [AvalancheWarningSimple] {
+    let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    
+    var warnings: [AvalancheWarningSimple] = []
+    let levels: [DangerLevel] = [.level2, .level3, .level4, .level3, .level2]
+    for i in 0...4 {
+        let warningDate = Calendar.current.date(byAdding: .day, value: i, to: startDate)!
+
+        print(warningDate)
+        let warning = AvalancheWarningSimple(
+            RegId: i,
+            RegionId: 1,
+            RegionName: "Vest-Finnmark",
+            RegionTypeName: "A",
+            ValidFrom: warningDate,
+            ValidTo: warningDate,
+            NextWarningTime: warningDate,
+            PublishTime: warningDate,
+            DangerLevel: levels[i],
+            MainText: "No Rating",
+            LangKey: 2)
+        warnings.append(warning)
+    }
+    return warnings
+}

@@ -1,63 +1,85 @@
 import SwiftUI
 
 struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
+    enum Route: Hashable {
+        case region(RegionSummary)
+        case addRegion
+    }
+    
     @StateObject var vm: ViewModelType
-    let client = VarsomApiClient()
 
     var body: some View {
-        VStack {
-            if (vm.state == .loading) {
-                VStack {
-                    ProgressView()
-                    Text("Loading Regions")
-                        .font(.caption2)
-                }
-            } else if (vm.state == .failed) {
-                VStack {
-                    Text("Error Loading Regions")
-                        .font(.caption2)
-                        .padding()
-                    Button("Try Again") {
-                        Task {
-                            await vm.loadRegions()
-                        }
-                    }.padding()
-                }
-            } else {
-                List {
-                    ForEach(vm.favoriteRegions) { region in
-                        let vm = RegionDetailViewModel(
-                            client: client,
-                            regionSummary: region)
-                        NavigationLink() {
-                            RegionDetailView(vm: vm)
-                        } label: {
-                            RegionWatchRow(warning: region.AvalancheWarningList[0])
-                        }
-                        .listRowInsets(EdgeInsets(top: -0.1, leading: 0, bottom: -0.1, trailing: 0))
-                        .listRowBackground(Color.clear)
-                        .cornerRadius(20)
+        NavigationStack {
+            VStack {
+                if (vm.regionLoadState == .loading) {
+                    VStack {
+                        ProgressView()
+                        Text("Loading Regions")
+                            .font(.caption2)
                     }
-                    .onDelete(perform: removeFavorite)
-                    NavigationLink(destination: SelectRegionListView<ViewModelType>()) {
-                        HStack {
-                            Spacer()
-                            Text("Add Region")
-                            Spacer()
-                        }
+                } else if (vm.regionLoadState == .failed) {
+                    VStack {
+                        Text("Error Loading Regions")
+                            .font(.caption2)
+                            .padding()
+                        Button("Try Again") {
+                            Task {
+                                await vm.loadRegions()
+                            }
+                        }.padding()
                     }
-                    .listRowInsets(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
-                    DataSourceView()
+                } else {
+                    List {
+                        ForEach(vm.favoriteRegions) { region in
+                            let isLocalRegion = region.Id == vm.localRegion?.Id
+                            NavigationLink(value: Route.region(region)) {
+                                RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+                            }
+                            .listRowInsets(EdgeInsets(top: -0.1, leading: 0, bottom: -0.1, trailing: 0))
+                            .listRowBackground(Color.clear)
+                            .cornerRadius(20)
+                        }
+                        .onDelete(perform: removeFavorite)
+                        NavigationLink(value: Route.addRegion) {
+                            HStack {
+                                Spacer()
+                                Text("Add Region")
+                                Spacer()
+                            }
+                        }
+                        .listRowInsets(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
+                        DataSourceView()
                         
+                    }
+                    .listStyle(.carousel)
                 }
-                .listStyle(.carousel)
             }
-        }
-        .navigationTitle("Skredvarsel")
-        .navigationBarTitleDisplayMode(.inline)
-        .task {
-            if (vm.needsRefresh()) {
-                await vm.loadRegions()
+            .navigationTitle("Skredvarsel")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case let .region(region):
+                    RegionDetailView(
+                        loadingState: vm.warningLoadState,
+                        selectedRegion: region,
+                        selectedWarning: region.AvalancheWarningList[0],
+                        warnings: $vm.warnings
+                    )
+                    .onAppear() {
+                        vm.selectedRegion = region
+                        vm.warnings.removeAll()
+                        Task {
+                            await vm.loadWarnings(from: -1, to: 1)
+                        }
+                    }
+                case .addRegion:
+                    SelectRegionListView<ViewModelType>()
+                }
+            }
+            .task {
+                if (vm.needsRefresh()) {
+                    await vm.loadRegions()
+                }
             }
         }
     }

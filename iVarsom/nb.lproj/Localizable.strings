@@ -51,3 +51,21 @@
 
 /* Try loading data after error */
 "Try Again" = "Prøv igjen";
+
+/* Not assessed */
+"Not assessed" = "Ikke vurdert";
+
+/* Low */
+"Low" = "Liten";
+
+/* Moderate */
+"Moderate" = "Moderat";
+
+/* Considerable */
+"Considerable" = "Betydelig";
+
+/* High */
+"High" = "Stor";
+
+/* Very high */
+"Very high" = "Meget stor";

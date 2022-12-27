@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RegionWatchRow: View {
     var warning: AvalancheWarningSimple
+    var isLocalRegion:Bool
     
     var textColor: Color {
         return warning.DangerLevel == .level2 ? .black : .white;
@@ -17,7 +18,10 @@ struct RegionWatchRow: View {
                     .padding(.bottom, 8)
                     .padding(.leading, 5)
                 VStack(alignment: .leading) {
-                    Text(warning.ValidFrom.getDayName())
+                    let warningDate = warning.ValidFrom.getDayName()
+                    Text(isLocalRegion ?
+                         "\(Image(systemName: "location.fill")) \(warningDate)" :
+                            "\(warningDate)")
                         .foregroundColor(textColor)
                         .textCase(.uppercase)
                         .font(.caption2)
@@ -38,8 +42,8 @@ struct RegionWatchRow: View {
 struct RegionWatchRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RegionWatchRow(warning: testWarningLevel4)
-            RegionWatchRow(warning: testWarningLevel2)
+            RegionWatchRow(warning: testWarningLevel4, isLocalRegion: false)
+            RegionWatchRow(warning: testWarningLevel2, isLocalRegion: true)
         }
     }
 }

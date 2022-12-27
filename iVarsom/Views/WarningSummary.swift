@@ -5,12 +5,15 @@ struct WarningSummary: View {
     var warning: AvalancheWarningSimple
     var mainTextFont: Font = .body
     var mainTextLineLimit: Int = .max
+    var includeLocationIcon: Bool = false
     
     var textColor: Color {
         return warning.DangerLevel == .level2 ? .black : .white;
     }
     
-    var body: some View {
+    var body: some View {        
+        let warningDate = warning.ValidFrom.formatted(date: .complete, time: .omitted)
+        
         ZStack {
             DangerGradient(dangerLevel: warning.DangerLevel)
             HStack {
@@ -20,27 +23,34 @@ struct WarningSummary: View {
                     .padding(.bottom, 8)
                 VStack(alignment: .leading) {
                     Spacer()
-                    //.formatted(.dateTime.day(.twoDigits).month(.twoDigits)
-                    Text(warning.ValidFrom.formatted(date: .complete, time: .omitted))
+                    Text(includeLocationIcon ?
+                         "\(Image(systemName: "location.fill")) \(warningDate)" :
+                            "\(warningDate)")
                         .textCase(.uppercase)
                         .font(.caption2)
                         .foregroundColor(textColor)
                         .padding(.top, 6)
+                    #if os(iOS)
                         .textSelection(.enabled)
-                    Text(warning.RegionName)
+                    #endif
+                    Text("\(warning.RegionName)")
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(textColor)
                         .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 2)
+                    #if os(iOS)
                         .textSelection(.enabled)
+                    #endif
                     Text(warning.MainText)
                         .font(mainTextFont)
                         .foregroundColor(textColor)
                         .padding(.bottom, 6)
                         .padding(.trailing, 4)
+                    #if os(iOS)
                         .textSelection(.enabled)
+                    #endif
                         .lineLimit(mainTextLineLimit)
                     Spacer()
                 }
@@ -60,7 +70,7 @@ struct WarningSummary_Previews: PreviewProvider {
             WarningSummary(warning: testWarningLevel0)
                 .previewLayout(.fixed(width: 340, height: 180))
             
-            WarningSummary(warning: testWarningLevel1)
+            WarningSummary(warning: testWarningLevel1, includeLocationIcon: true)
                 .previewLayout(.fixed(width: 340, height: 180))
             
             WarningSummary(warning: testWarningLevel2)

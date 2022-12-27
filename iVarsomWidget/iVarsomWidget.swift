@@ -4,168 +4,32 @@ import Intents
 import CoreLocation
 import DynamicColor
 
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> WarningEntry {
-        return WarningEntry(
-            date: Date(),
-            currentWarning: testWarningLevel0,
-            warnings: [AvalancheWarningSimple](),
-            configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 0.0))
-    }
-    
-    func errorEntry() -> WarningEntry {
-        let errorWarning = AvalancheWarningSimple(
-            RegId: 1,
-            RegionId: 0,
-            RegionName: "Error",
-            RegionTypeName: "A",
-            ValidFrom: Date(),
-            ValidTo: Date(),
-            NextWarningTime: Date(),
-            PublishTime: Date(),
-            DangerLevel: .unknown,
-            MainText: "There was an error updating the widget",
-            LangKey: 2)
-        
-        return WarningEntry(
-            date: Date(),
-            currentWarning: errorWarning,
-            warnings: [AvalancheWarningSimple](),
-            configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 0.0))
-    }
-    
-    func getSnapshot(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (WarningEntry) -> ()) {
-        
-        let regId = Int(truncating: configuration.region?.regionId ??
-                        NSNumber(value: RegionOption.defaultOption.id))
-        
-        let from = Date()
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
-        
-        Task {
-            do {
-                let warnings = try await VarsomApiClient().loadWarnings(
-                    lang: VarsomApiClient.currentLang(),
-                    regionId: regId,
-                    from: from,
-                    to: to)
-                if (warnings.count > 0) {
-                    let entry = WarningEntry(
-                        date: Date(),
-                        currentWarning: warnings[0],
-                        warnings: warnings,
-                        configuration: configuration,
-                        relevance: TimelineEntryRelevance(score: warnings[0].DangerLevelNumeric))
-                    completion(entry)
-                } else {
-                    completion(errorEntry())
-                }
-            } catch {
-                print("Unexpected error: \(error).")
-                completion(errorEntry())
-            }
-        }
-    }
-    
-    func getTimeline(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        
-        let regionId = Int(truncating: configuration.region?.regionId ??
-                        NSNumber(value: RegionOption.defaultOption.id))
-        
-        let locationManager = LocationManager()
-        let apiClient = VarsomApiClient()
-        
-        Task {
-            do {
-                var warnings:[AvalancheWarningSimple]
-                let from = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
-                let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
-                
-                if (configuration.region?.regionId == 1 && locationManager.isAuthorizedForWidgetUpdates) {
-                    let location = try await locationManager.updateLocation()
-                    warnings = try await apiClient.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        coordinate: location,
-                        from: from,
-                        to: to)
-                } else {
-                    warnings = try await apiClient.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        regionId: regionId,
-                        from: from,
-                        to: to)
-                }
-                
-                let timeline = createTimeline(warnings: warnings, configuration: configuration)
-                completion(timeline)
-            } catch {
-                print("Unexpected error: \(error).")
-                let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
-                let errorTimeline = Timeline(entries: [errorEntry()], policy: .after(afterDate))
-                completion(errorTimeline)
-            }
-        }
-    }
-    
-    func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegionIntent) -> Timeline<Entry> {
-        var entries: [WarningEntry] = []
-    
-        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date(), toGranularity: .day) }!
-        
-        let currentWarning = warnings[currentIndex]
-        let prevWarning = currentIndex > 0 ? warnings[currentIndex - 1] : currentWarning
-        
-        let entry = WarningEntry(
-            date: currentWarning.ValidFrom,
-            currentWarning: currentWarning,
-            warnings: warnings,
-            configuration: configuration,
-            relevance: TimelineEntryRelevance(score: currentWarning.DangerLevelNumeric))
-        entries.append(entry)
-        
-        let afterDate = getNextUpdateTime(prevWarning: prevWarning, currentWarning: currentWarning)
-        print("Update policy after \(afterDate)")
-        return Timeline(entries: entries, policy: .after(afterDate))
-    }    
-}
-
-class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
-    private var handler: ((CLLocation) -> Void)?
-    
-    override init() {
-        super.init()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        self.locationManager.delegate = self
-    }
-    
-    func fetchLocation(handler: @escaping (CLLocation) -> Void) {
-        self.handler = handler
-        if let loc = self.locationManager.location {
-            self.handler!(loc)
-        } else {
-            self.locationManager.requestLocation()
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("\(locations)")
-        self.handler!(locations.last!)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}
-
 struct WarningEntry: TimelineEntry {
     let date: Date
     let currentWarning: AvalancheWarningSimple
     let warnings: [AvalancheWarningSimple]
     let configuration: SelectRegionIntent
     var relevance: TimelineEntryRelevance?
+    let hasError: Bool
+    let errorMessage: String?
+}
+
+func getWidgetURL(entry: Provider.Entry) -> URL? {
+#if os(watchOS)
+    return URL(string: "no.follesoe.iVarsom.watchkitapp://region?id=\(entry.currentWarning.RegionId)")
+#else
+    return URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)")
+#endif
+}
+
+struct LocationIconText: View {
+    var text: String
+    var config: SelectRegionIntent
+    var body: some View {
+        Text(config.region?.regionId == 1 ?
+            "\(Image(systemName: "location.fill")) \(text)" :
+            "\(text)")
+    }
 }
 
 struct SmallWarningWidgetView: View {
@@ -190,7 +54,7 @@ struct SmallWarningWidgetView: View {
 
                 }
                 Spacer()
-                Text(entry.date.getDayName())
+                LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
                     .textCase(.uppercase)
                     .font(.caption2)
                     .foregroundColor(textColor)
@@ -202,7 +66,8 @@ struct SmallWarningWidgetView: View {
                     .fixedSize(horizontal: false, vertical: true)
 
             }.padding()
-        }.widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        }
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -213,8 +78,9 @@ struct MediumWarningWidgetView: View {
         WarningSummary(
             warning: entry.currentWarning,
             mainTextFont: .system(size: 13),
-            mainTextLineLimit: 4)
-            .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+            mainTextLineLimit: 4,
+            includeLocationIcon: entry.configuration.region?.regionId == 1)
+        .widgetURL(getWidgetURL(entry: entry))
     }
 }
 
@@ -225,7 +91,8 @@ struct LargeWarningWidgetView: View {
         VStack {
             WarningSummary(
                 warning: entry.currentWarning,
-                mainTextFont: .system(size: 15))
+                mainTextFont: .system(size: 15),
+                includeLocationIcon: entry.configuration.region?.regionId == 1)
                 .frame(height: 274)
             Spacer()
             HStack {
@@ -239,7 +106,111 @@ struct LargeWarningWidgetView: View {
             }
             Spacer()
         }
-        .widgetURL(URL(string: "no.follesoe.iVarsom://region?id=\(entry.currentWarning.RegionId)"))
+        .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+struct InlineWidgetView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        ViewThatFits {
+            Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
+            Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
+        }
+        .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+struct CircleWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    
+    var body: some View {
+        Gauge(value: entry.currentWarning.DangerLevelNumeric, in: 1...5) {
+        } currentValueLabel: {
+            DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
+                       useTintable: widgetRenderingMode != .fullColor)
+            .padding(2)
+        } minimumValueLabel: {
+            Text("1").foregroundColor(Color("DangerLevel1"))
+        } maximumValueLabel: {
+            Text("5").foregroundColor(Color("DangerLevel4"))
+        }
+        #if os(watchOS)
+        .widgetLabel {
+            Text(entry.currentWarning.RegionName)
+        }
+        .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
+            Color("DangerLevel1"),
+            Color("DangerLevel2"),
+            Color("DangerLevel3"),
+            Color("DangerLevel4"),
+            Color("DangerLevel4")])))
+        #else
+        .gaugeStyle(.accessoryCircular)
+        #endif
+        .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+struct RectangleWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if (entry.hasError){
+                Text("Error")
+                    .font(.caption2)
+                Text(entry.errorMessage ?? entry.currentWarning.MainText)
+                    .font(.system(size: 14))
+            } else {
+                LocationIconText(text: entry.currentWarning.RegionName, config: entry.configuration)
+                    .font(.system(size: 11))
+                    .fontWeight(.bold)
+                    .widgetAccentable()
+                HStack(spacing: 0) {
+                    let filteredWarnings = entry.warnings.filter {
+                        let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
+                        return daysBetween >= -1 && daysBetween <= 2;
+                    }
+                    
+                    ForEach(filteredWarnings) { warning in
+                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
+                        VStack(spacing: 0) {
+                            Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+                                .font(.system(size: 9))
+                                .fontWeight(isToday ? .heavy : .regular)
+                            DangerIcon(dangerLevel: warning.DangerLevel, useTintable: widgetRenderingMode != .fullColor)
+                                .padding(2)
+                            Text(warning.DangerLevel.description)
+                                .font(.system(size: 11))
+                                .fontWeight(isToday ? .heavy : .regular)
+                        }
+                        .frame(maxWidth: .infinity)
+                        if (warning.RegId != filteredWarnings.last?.RegId) {
+                            Divider()
+                        }
+                    }
+                }
+            }
+        }
+        .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+struct CornerWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    var entry: Provider.Entry
+    
+    var body: some View {
+        ZStack {
+            DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
+                       useTintable: widgetRenderingMode != .fullColor)
+        }.widgetLabel {
+            Text(entry.currentWarning.RegionName)
+                .widgetAccentable()
+        }
     }
 }
 
@@ -256,6 +227,16 @@ struct WarningWidgetView: View {
             MediumWarningWidgetView(entry: entry)
         case .systemLarge:
             LargeWarningWidgetView(entry: entry)
+        case .accessoryCircular:
+            CircleWidgetView(entry: entry)
+        case .accessoryInline:
+            InlineWidgetView(entry: entry)
+        case .accessoryRectangular:
+            RectangleWidgetView(entry: entry)
+#if os(watchOS)
+        case .accessoryCorner:
+            CornerWidgetView(entry: entry)
+#endif
         default:
             SmallWarningWidgetView(entry: entry)
         }
@@ -275,60 +256,10 @@ struct iVarsomWidget: Widget {
         }
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
-    }
-}
-
-struct iVarsomWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SmallWarningWidgetView(entry: Provider().errorEntry())
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
-            SmallWarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel2,
-                    warnings: [testWarningLevel2],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
-            SmallWarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel3,
-                    warnings: [testWarningLevel3],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-
-            MediumWarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel4,
-                    warnings: [testWarningLevel4],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            MediumWarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel0,
-                    warnings: [testWarningLevel0],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            LargeWarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel2,
-                    warnings: [
-                        testWarningLevel0,
-                        testWarningLevel1,
-                        testWarningLevel2,
-                        testWarningLevel3,
-                        testWarningLevel4],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0)))
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
-        }
+        #if os(watchOS)
+        .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
+        #else
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
+        #endif
     }
 }

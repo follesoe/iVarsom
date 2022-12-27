@@ -4,10 +4,11 @@ import Combine
 @MainActor
 class RegionListViewModel: RegionListViewModelProtocol {    
     private var language: VarsomApiClient.Language {
-        return Locale.current.languageCode == "nb" ? .norwegian : .english
+        return Locale.current.identifier.starts(with: "nb") ? .norwegian : .english
     }
     
-    @Published private(set) var state = LoadState.idle
+    @Published private(set) var regionLoadState = LoadState.idle
+    @Published private(set) var warningLoadState = LoadState.idle
     @Published private(set) var locationIsAuthorized = false
     @Published private(set) var regions = [RegionSummary]()
     @Published private(set) var localRegion: RegionSummary? = nil
@@ -15,7 +16,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
     @Published var filteredRegions = [RegionSummary]()
     @Published var favoriteRegions = [RegionSummary]()
     @Published var searchTerm = ""
-    @Published var selectedRegionId: Int? = nil
+    @Published var selectedRegion: RegionSummary? = nil
+    @Published var warnings = [AvalancheWarningSimple]()
+    @Published var selectedWarning: AvalancheWarningSimple? = nil
     
     private let client: VarsomApiClient
     private let locationManager: LocationManager
@@ -85,19 +88,22 @@ class RegionListViewModel: RegionListViewModelProtocol {
     
     func loadRegions() async {
         do {
-            self.state = .loading
+            self.regionLoadState = .loading
 
+            print("Loading regions")
             self.regions = try await client.loadRegions(lang: language).filter { region in
                 return region.TypeName == "A"
             }
-                        
+                    
+            print("Loading local region")
             if (locationManager.isAuthorized) {
                 await loadLocalRegion()
             }
 
-            self.state = .loaded
+            print("Done loading")
+            self.regionLoadState = .loaded
         } catch {
-            self.state = .failed
+            self.regionLoadState = .failed
             print(error)
         }
     }
@@ -105,19 +111,41 @@ class RegionListViewModel: RegionListViewModelProtocol {
     func loadLocalRegion() async {
         do {
             let location = try await locationManager.updateLocation()
-            self.localRegion = try await client.loadRegions(lang: language, coordinate: location)
+            let region = try await client.loadRegions(lang: language, coordinate: location)
+            self.localRegion = region
         } catch {
-            print(error)
+            print("Error loading local region: \(error)")
         }
     }
     
     func updateLocation() async {
         do {
-            let _ = try await locationManager.updateLocation()
+            let _ = try await locationManager.requestPermission()
             self.locationIsAuthorized = locationManager.isAuthorized
             await loadLocalRegion()
         } catch {
             self.locationIsAuthorized = false
+            print(error)
+        }
+    }
+    
+    func loadWarnings(from: Int = -5, to: Int = 2) async {
+        do {
+            if let selectedRegion {
+                self.warningLoadState = .loading
+                let from = Calendar.current.date(byAdding: .day, value: from, to: Date())!
+                let to = Calendar.current.date(byAdding: .day, value: to, to: Date())!
+                self.warnings = try await client.loadWarnings(
+                    lang: VarsomApiClient.currentLang(),
+                    regionId: selectedRegion.Id,
+                    from: from,
+                    to: to)
+                self.warningLoadState = .loaded
+            } else {
+                print("Warning: Can't load warnings as no region is selected")
+            }
+        } catch {
+            self.warningLoadState = .failed
             print(error)
         }
     }
