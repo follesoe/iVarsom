@@ -1,14 +1,17 @@
 import SwiftUI
 
-struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
-    @StateObject var vm: ViewModelType
-    @Environment(\.openURL) var openURL
+struct RegionDetail: View {
+    @Binding var selectedRegion: RegionSummary?
+    @Binding var selectedWarning: AvalancheWarningSimple?
+    @Binding var warnings: [AvalancheWarningSimple]
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                if let warning = vm.selectedWarning {
-                    WarningSummary(warning: warning, includeLocationIcon: vm.isLocalRegion)
+                if let selectedWarning = selectedWarning {
+                    WarningSummary(
+                        warning: selectedWarning,
+                        includeLocationIcon: false)
                         .frame(maxWidth: 600)
                         .cornerRadius(10)
                         .padding()
@@ -17,15 +20,16 @@ struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     ScrollViewReader { value in
                         HStack(spacing: 8) {
-                            ForEach(vm.warnings.filter { $0.id > 0 }) { warning in
+                            ForEach(warnings) { warning in
                                 let action = {
                                     withAnimation {
-                                        self.vm.selectedWarning = warning
+                                        self.selectedWarning = warning
                                         value.scrollTo(warning.id)
                                     }
                                 }
                                 
-                                let isSelected = vm.selectedWarning.id == warning.id
+                                let isSelected = selectedWarning?.RegId == warning.RegId
+                                
                                 let cell = DayCell(
                                     dangerLevel: warning.DangerLevel,
                                     date: warning.ValidFrom,
@@ -33,14 +37,15 @@ struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
                                         .padding(.top, 5)
                                         .id(warning.id)
                                 
+                                
                                 if (isSelected) {
                                     Button(action: action) { cell }.buttonStyle(.borderedProminent)
                                 } else {
                                     Button(action: action) { cell }.buttonStyle(.bordered)
-                                }                                
+                                }
                             }
                             .onAppear {
-                                if let lastWarning = vm.warnings.filter({ $0.id > 0 }).last {
+                                if let lastWarning = warnings.filter({ $0.id > 0 }).last {
                                     print("Scroll to \(lastWarning.id)")
                                     value.scrollTo(lastWarning.id)
                                 }
@@ -49,16 +54,14 @@ struct RegionDetail<ViewModelType: RegionDetailViewModelProtocol>: View {
                     }
                 }
                 .padding()
-                                
-                Link("Read complete warning on Varsom.no", destination: vm.selectedWarning.VarsomUrl)
-                    .padding()
+                if let selectedWarning = selectedWarning {
+                    Link("Read complete warning on Varsom.no", destination: selectedWarning.VarsomUrl)
+                        .padding()
+                }
             }
         }
-        .navigationTitle(vm.regionSummary.Name)
+        .navigationTitle(selectedRegion?.Name ?? "Region")
         .navigationBarTitleDisplayMode(.large)
-        .task {
-            await self.vm.loadWarnings(from: -5, to: 2)
-        }
     }
 }
 
@@ -66,8 +69,9 @@ struct RegionDetail_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             RegionDetail(
-                vm: DesignTimeRegionDetailViewModel(
-                    regionSummary: testVarsomData.regions[2]))
+                selectedRegion: .constant(testRegions[1]),
+                selectedWarning: .constant(testWarningLevel2),
+                warnings: .constant([AvalancheWarningSimple]()))
         }
     }
 }

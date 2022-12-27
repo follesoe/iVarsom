@@ -54,7 +54,7 @@ struct Provider: IntentTimelineProvider {
     
     func getSnapshot(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (WarningEntry) -> ()) {
         
-        let regId = Int(truncating: configuration.region?.regionId ??
+        let regionId = Int(truncating: configuration.region?.regionId ??
                         NSNumber(value: RegionOption.defaultOption.id))
         
         let from = Date()
@@ -62,11 +62,7 @@ struct Provider: IntentTimelineProvider {
         
         Task {
             do {
-                let warnings = try await VarsomApiClient().loadWarnings(
-                    lang: VarsomApiClient.currentLang(),
-                    regionId: regId,
-                    from: from,
-                    to: to)
+                let warnings = try await getWarnings(regionId: regionId, from: from, to: to)                
                 if (warnings.count > 0) {
                     let entry = WarningEntry(
                         date: Date(),
@@ -91,37 +87,12 @@ struct Provider: IntentTimelineProvider {
         
         let regionId = Int(truncating: configuration.region?.regionId ??
                         NSNumber(value: RegionOption.defaultOption.id))
-        
-        let locationManager = LocationManager()
-        let apiClient = VarsomApiClient()
-        
+                
         Task {
             do {
-                var warnings:[AvalancheWarningSimple]
                 let from = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
                 let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
-                
-                let isAuthorized = locationManager.isAuthorizedForWidgetUpdates
-                
-                if (configuration.region?.regionId == 1) {
-                    if (isAuthorized) {
-                        let location = try await locationManager.updateLocation()
-                        warnings = try await apiClient.loadWarnings(
-                            lang: VarsomApiClient.currentLang(),
-                            coordinate: location,
-                            from: from,
-                            to: to)
-                    } else {
-                        throw "Missing location authorization"
-                    }
-                } else {
-                    warnings = try await apiClient.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        regionId: regionId,
-                        from: from,
-                        to: to)
-                }
-                
+                let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
                 let timeline = createTimeline(warnings: warnings, configuration: configuration)
                 completion(timeline)
             } catch {
@@ -131,6 +102,34 @@ struct Provider: IntentTimelineProvider {
                 completion(errorTimeline)
             }
         }
+    }
+    
+    func getWarnings(regionId: Int, from: Date, to: Date) async throws -> [AvalancheWarningSimple] {
+        let locationManager = LocationManager()
+        let apiClient = VarsomApiClient()
+        var warnings:[AvalancheWarningSimple]
+        let isAuthorized = locationManager.isAuthorizedForWidgetUpdates
+        
+        if (regionId == 1) {
+            if (isAuthorized) {
+                let location = try await locationManager.updateLocation()
+                warnings = try await apiClient.loadWarnings(
+                    lang: VarsomApiClient.currentLang(),
+                    coordinate: location,
+                    from: from,
+                    to: to)
+            } else {
+                throw "Missing location authorization"
+            }
+        } else {
+            warnings = try await apiClient.loadWarnings(
+                lang: VarsomApiClient.currentLang(),
+                regionId: regionId,
+                from: from,
+                to: to)
+        }
+        
+        return warnings
     }
     
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegionIntent) -> Timeline<Entry> {

@@ -35,7 +35,13 @@ class VarsomApiClient {
     
     public func loadRegions(lang: Language) async throws -> [RegionSummary] {
         guard let url = URL(string: "\(baseUrl)/RegionSummary/Simple/\(lang)/") else { throw VarsomError.invalidUrlError }
-        return try await getData(url: url);
+        var regions: [RegionSummary] = try await getData(url: url);
+        
+        for (index, region) in regions.enumerated() {
+            regions[index].AvalancheWarningList = setUniqueRegId(warnings: region.AvalancheWarningList)
+        }
+        
+        return regions
     }
     
     public func loadRegions(lang: Language, coordinate:CLLocationCoordinate2D) async throws -> RegionSummary {
@@ -54,24 +60,28 @@ class VarsomApiClient {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByRegion/Simple/\(regionId)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
-        return try await getData(url: url)
+        let warnings: [AvalancheWarningSimple] = try await getData(url: url)
+        return setUniqueRegId(warnings: warnings)
     }
     
     public func loadWarnings(lang: Language, coordinate:CLLocationCoordinate2D, from:Date, to:Date) async throws -> [AvalancheWarningSimple] {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByCoordinates/Simple/\(coordinate.latitude)/\(coordinate.longitude)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
-        var warnings: [AvalancheWarningSimple] = try await getData(url: url)
-        
+        let warnings: [AvalancheWarningSimple] = try await getData(url: url)
+        return setUniqueRegId(warnings: warnings)
+    }
+    
+    private func setUniqueRegId(warnings: [AvalancheWarningSimple]) -> [AvalancheWarningSimple] {
         // Ensure no duplicate RegId as regions without assessment generates
         // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
-        for (index, warning) in warnings.enumerated() {
+        var array = warnings
+        for (index, warning) in array.enumerated() {
             if (warning.RegId == 0) {
-                warnings[index].RegId = index
+                array[index].RegId = warning.RegionId + (index + 1)
             }
         }
-        
-        return warnings
+        return array
     }
     
     private func getData<T>(url: URL) async throws -> T where T : Codable {
