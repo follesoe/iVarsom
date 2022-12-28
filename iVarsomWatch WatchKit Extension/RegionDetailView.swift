@@ -29,7 +29,9 @@ struct RegionDetailView: View {
                             Date.FormatStyle()
                                 .day(.defaultDigits)
                                 .weekday(.wide)
-                                .month(.abbreviated)))
+                                .month(.abbreviated))
+                            .firstUppercased
+                        )
                         .fontWeight(.bold)
                         .foregroundColor(textColor)
                         Text(selectedWarning.MainText)
