@@ -16,6 +16,14 @@ The app is also a learning exercise for myself to learn how to build and distrib
     <img src="images/DownloadOnTheAppStore.svg" alt="Download on the App Store" />
 </a>
 
+## watchOS
+
+<img src="images/watchOSDeviceScreenshot.webp" alt="App running on the Apple Watch" />
+
+<a href="https://apps.apple.com/app/skredvarsel/id1613060787">
+    <img src="images/DownloadOnTheAppStore.svg" alt="Download on the App Store" />
+</a>
+
 ## macOS
 
 <img src="images/macBookScreenshot.webp" alt="App running on macOS" />
