@@ -32,6 +32,10 @@ The app is also a learning exercise for myself to learn how to build and distrib
     <img src="images/DownloadOnTheMacAppStore.svg" alt="Download on the Mac App Store" />
 </a>
 
+## Video Demo
+
+[![Video Demo](https://img.youtube.com/vi/9gNlAR0sUzc/0.jpg)](https://www.youtube.com/watch?v=9gNlAR0sUzc)
+
 ## Beta testing
 
 Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8IeX64AS).
