@@ -25,7 +25,7 @@ class VarsomApiClient {
         case invalidUrlError
     }
     
-    private let baseUrl = "https://api01.nve.no/hydrology/forecast/avalanche/v6.0.1/api"
+    private let baseUrl = "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/api"
     private let argumentDateFormatter:DateFormatter
     
     init() {
