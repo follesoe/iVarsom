@@ -1,8 +1,16 @@
 import Foundation
+import AppIntents
 
-struct RegionOption: Codable, Identifiable {
+struct RegionOption: AppEntity, Codable, Identifiable {
     var id: Int
     var name: String
+    
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Region"
+      var displayRepresentation: DisplayRepresentation {
+        .init(stringLiteral: name)
+      }
+
+    static var defaultQuery = RegionQuery()
     
     public static let aRegions = [
         RegionOption(id: 3003, name: "Norden​skiöld Land"),

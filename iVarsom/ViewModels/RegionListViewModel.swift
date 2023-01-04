@@ -2,11 +2,7 @@ import Foundation
 import Combine
 
 @MainActor
-class RegionListViewModel: RegionListViewModelProtocol {    
-    private var language: VarsomApiClient.Language {
-        return Locale.current.identifier.starts(with: "nb") ? .norwegian : .english
-    }
-    
+class RegionListViewModel: RegionListViewModelProtocol {
     @Published private(set) var regionLoadState = LoadState.idle
     @Published private(set) var warningLoadState = LoadState.idle
     @Published private(set) var locationIsAuthorized = false
@@ -91,7 +87,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
             self.regionLoadState = .loading
 
             print("Loading regions")
-            self.regions = try await client.loadRegions(lang: language).filter { region in
+            self.regions = try await client.loadRegions(lang: Language.fromLocale()).filter { region in
                 return region.TypeName == "A"
             }
                     
@@ -111,7 +107,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     func loadLocalRegion() async {
         do {
             let location = try await locationManager.updateLocation()
-            let region = try await client.loadRegions(lang: language, coordinate: location)
+            let region = try await client.loadRegions(lang: Language.fromLocale(), coordinate: location)
             self.localRegion = region
         } catch {
             print("Error loading local region: \(error)")

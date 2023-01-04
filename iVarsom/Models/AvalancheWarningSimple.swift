@@ -20,12 +20,12 @@ struct AvalancheWarningSimple: Codable {
     
     var DangerLevelName: String {
         switch DangerLevel {
-        case .unknown: return "Not assessed"
-        case .level1: return "Low"
-        case .level2: return "Moderate"
-        case .level3: return "Considerable"
-        case .level4: return "High"
-        case .level5: return "Very high"
+        case .unknown: return NSLocalizedString("Not assessed", comment: "")
+        case .level1: return NSLocalizedString("Low", comment: "")
+        case .level2: return NSLocalizedString("Moderate", comment: "")
+        case .level3: return NSLocalizedString("Considerable", comment: "")
+        case .level4: return NSLocalizedString("High", comment: "")
+        case .level5: return NSLocalizedString("Very high", comment: "")
         }
     }
     

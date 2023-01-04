@@ -6,10 +6,6 @@ class VarsomData: ObservableObject {
     @Published var warnings = [AvalancheWarningSimple]()
     @Published var days = [String]()
 
-    var language: VarsomApiClient.Language {
-        return Locale.current.identifier == "nb" ? .norwegian : .english
-    }
-    
     private let apiClient = VarsomApiClient()
     
     init(regions: [RegionSummary] = []) {
@@ -17,7 +13,7 @@ class VarsomData: ObservableObject {
     }
     
     func loadRegions() async throws {
-        let regions = try await apiClient.loadRegions(lang: language)
+        let regions = try await apiClient.loadRegions(lang: Language.fromLocale())
         
         if (regions.count > 0) {
             let dayFormatter = DateFormatter()
@@ -46,7 +42,7 @@ class VarsomData: ObservableObject {
         let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
         
         let warnings = try await apiClient.loadWarnings(
-            lang: language,
+            lang: Language.fromLocale(),
             regionId: id,
             from: from,
             to: to)
