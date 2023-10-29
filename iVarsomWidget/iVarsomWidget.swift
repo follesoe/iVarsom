@@ -64,7 +64,9 @@ struct SmallWarningWidgetView: View {
 
         }
         .padding()
-        .background(DangerGradient(dangerLevel: entry.currentWarning.DangerLevel))
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
+        }
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -78,6 +80,9 @@ struct MediumWarningWidgetView: View {
             mainTextFont: .system(size: 13),
             mainTextLineLimit: 4,
             includeLocationIcon: entry.configuration.region?.regionId == 1)
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
+        }
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -103,6 +108,9 @@ struct LargeWarningWidgetView: View {
                 }
             }
             Spacer()
+        }
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
         .widgetURL(getWidgetURL(entry: entry))
     }
@@ -149,13 +157,25 @@ struct CircleWidgetView: View {
         .gaugeStyle(.accessoryCircular)
         #endif
         .widgetURL(getWidgetURL(entry: entry))
+        .containerBackground(for: .widget) {}
     }
 }
 
 struct RectangleWidgetView: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    @Environment(\.widgetContentMargins) var widgetContentMargins
+    
     var entry: Provider.Entry
     var body: some View {
+        let filteredWarnings = entry.warnings.filter {
+            let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
+            return daysBetween >= -1 && daysBetween <= 2;
+        }
+        
+        let todayWarning = filteredWarnings.first(where: {
+            Calendar.current.isDate($0.ValidFrom, equalTo: Date(), toGranularity: .day)
+        })
+
         VStack(alignment: .leading, spacing: 0) {
             if (entry.hasError){
                 Text("Error")
@@ -168,11 +188,6 @@ struct RectangleWidgetView: View {
                     .fontWeight(.bold)
                     .widgetAccentable()
                 HStack(spacing: 0) {
-                    let filteredWarnings = entry.warnings.filter {
-                        let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
-                        return daysBetween >= -1 && daysBetween <= 2;
-                    }
-                    
                     ForEach(filteredWarnings) { warning in
                         let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
                         VStack(spacing: 0) {
@@ -193,6 +208,14 @@ struct RectangleWidgetView: View {
                 }
             }
         }
+        .containerBackground(for: .widget) {
+            if let level = todayWarning?.DangerLevel {
+                DangerGradient(dangerLevel: level)
+            } else {
+                DangerGradient(dangerLevel: DangerLevel.unknown)
+            }
+        }
+        .padding(widgetContentMargins)
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -209,6 +232,7 @@ struct CornerWidgetView: View {
             Text(entry.currentWarning.RegionName)
                 .widgetAccentable()
         }
+        .containerBackground(for: .widget) {}
     }
 }
 
@@ -254,6 +278,7 @@ struct iVarsomWidget: Widget {
         }
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
+        .contentMarginsDisabled()
         #if os(watchOS)
         .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
         #else

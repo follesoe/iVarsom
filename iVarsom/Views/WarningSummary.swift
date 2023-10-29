@@ -56,7 +56,7 @@ struct WarningSummary: View {
             DangerScale(dangerLevel: warning.DangerLevel)
                 .frame(width: 12)
         }
-        .background(Rectangle().fill(warning.DangerLevel.color.gradient))
+        .background(DangerGradient(dangerLevel: warning.DangerLevel))
     }
 }
 
