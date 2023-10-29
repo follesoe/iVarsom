@@ -59,10 +59,18 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
             SelectRegionListView<ViewModelType>()
         })
         .task {
-           if (vm.needsRefresh()) {
-               await vm.loadRegions()
-           }
-       }
+            if (vm.needsRefresh()) {
+                await vm.loadRegions()
+            }
+        }
+        .onOpenURL { url in
+            let regionId = UrlUtils.extractParam(url: url, name: "id")
+            if let regionId = regionId {
+                Task {
+                    await vm.selectRegionById(regionId: regionId)
+                }
+            }
+        }
     }
     
     func removeFavorite(at offsets: IndexSet) {

@@ -40,33 +40,32 @@ struct SmallWarningWidgetView: View {
     }
 
     var body: some View {
-        ZStack {
-            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
-            VStack(alignment: .leading) {
-                HStack {
-                    DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
-                        .frame(width: 54, height: 54)
-                    Spacer()
-                    Text("\(entry.currentWarning.DangerLevel.description)")
-                        .font(.system(size: 54))
-                        .fontWeight(.heavy)
-                        .foregroundColor(textColor)
-
-                }
+        VStack(alignment: .leading) {
+            HStack {
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+                    .frame(width: 54, height: 54)
                 Spacer()
-                LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
-                    .textCase(.uppercase)
-                    .font(.caption2)
+                Text("\(entry.currentWarning.DangerLevel.description)")
+                    .font(.system(size: 54))
+                    .fontWeight(.heavy)
                     .foregroundColor(textColor)
-                Text(entry.currentWarning.RegionName)
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .foregroundColor(textColor)
-                    .lineLimit(2)
-                    .fixedSize(horizontal: false, vertical: true)
 
-            }.padding()
+            }
+            Spacer()
+            LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
+                .textCase(.uppercase)
+                .font(.caption2)
+                .foregroundColor(textColor)
+            Text(entry.currentWarning.RegionName)
+                .font(.system(size: 18))
+                .fontWeight(.bold)
+                .foregroundColor(textColor)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+
         }
+        .padding()
+        .background(DangerGradient(dangerLevel: entry.currentWarning.DangerLevel))
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -133,20 +132,20 @@ struct CircleWidgetView: View {
                        useTintable: widgetRenderingMode != .fullColor)
             .padding(2)
         } minimumValueLabel: {
-            Text("1").foregroundColor(Color("DangerLevel1"))
+            Text("1").foregroundColor(DangerLevel.level1.color)
         } maximumValueLabel: {
-            Text("5").foregroundColor(Color("DangerLevel4"))
+            Text("5").foregroundColor(DangerLevel.level4.color)
         }
         #if os(watchOS)
         .widgetLabel {
             Text(entry.currentWarning.RegionName)
         }
         .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
-            Color("DangerLevel1"),
-            Color("DangerLevel2"),
-            Color("DangerLevel3"),
-            Color("DangerLevel4"),
-            Color("DangerLevel4")])))
+            DangerLevel.level1.color,
+            DangerLevel.level2.color,
+            DangerLevel.level3.color,
+            DangerLevel.level4.color,
+            DangerLevel.level4.color])))
         #else
         .gaugeStyle(.accessoryCircular)
         #endif

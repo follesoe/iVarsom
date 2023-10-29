@@ -31,9 +31,7 @@
 		AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AA1C67BF279D8A1B0039F8E0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
 		AA1C67C0279D8A1B0039F8E0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
-		AA1C7052279C21C600FE3317 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA1C7051279C21C600FE3317 /* DynamicColor */; };
 		AA2410BD27BAE5390028FA6D /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */; };
-		AA2ABD622944FCB7008819DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA613A512944FC3D00D69D5D /* DynamicColor */; };
 		AA2ABD672944FD06008819DB /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
 		AA2ABD682944FD06008819DB /* DangerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */; };
 		AA2ABD692944FD06008819DB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
@@ -57,7 +55,6 @@
 		AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */; };
 		AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172E0279605B4009AB089 /* WarningSummary.swift */; };
 		AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172EA27960939009AB089 /* SwiftUI.framework */; };
-		AA2ABD802944FD06008819DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA2ABD642944FD06008819DB /* DynamicColor */; };
 		AA2ABD812944FD06008819DB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172E827960939009AB089 /* WidgetKit.framework */; };
 		AA2ABD832944FD06008819DB /* DangerLevelAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */; };
 		AA2ABD842944FD06008819DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
@@ -143,7 +140,6 @@
 		AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138A282AEF8500ABA680 /* DataSourceView.swift */; };
 		AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
-		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
 		AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
@@ -162,7 +158,6 @@
 		AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
 		AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421627B1A9A30097174D /* FormatterExtensions.swift */; };
 		AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D06279D7E9700DF7ACF /* DangerGradient.swift */; };
-		AAF054D2280C5270000BCADD /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AAF054D1280C5270000BCADD /* DynamicColor */; };
 		AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AAF74A7727CC09CD00B02166 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
 		AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
@@ -341,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */,
-				AA2ABD802944FD06008819DB /* DynamicColor in Frameworks */,
 				AA2ABD812944FD06008819DB /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,8 +344,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2ABD622944FCB7008819DB /* DynamicColor in Frameworks */,
-				AAF054D2280C5270000BCADD /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +359,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1C7052279C21C600FE3317 /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD172EB27960939009AB089 /* SwiftUI.framework in Frameworks */,
-				AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */,
 				AAD172E927960939009AB089 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,7 +636,6 @@
 			);
 			name = SkredvarselWatchWidgetExtension;
 			packageProductDependencies = (
-				AA2ABD642944FD06008819DB /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */;
@@ -668,7 +657,6 @@
 			);
 			name = SkredvarselWatch;
 			packageProductDependencies = (
-				AA613A512944FC3D00D69D5D /* DynamicColor */,
 			);
 			productName = iVarsomWatch;
 			productReference = AA345DBE28085B4600B78BDB /* Skredvarsel.app */;
@@ -710,7 +698,6 @@
 			);
 			name = Skredvarsel;
 			packageProductDependencies = (
-				AA1C7051279C21C600FE3317 /* DynamicColor */,
 			);
 			productName = iVarsom;
 			productReference = AAD172AC2795F8F8009AB089 /* Skredvarsel.app */;
@@ -730,7 +717,6 @@
 			);
 			name = SkredvarselWidgetExtension;
 			packageProductDependencies = (
-				AADD6BA0279C832A007737B6 /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */;
@@ -775,7 +761,6 @@
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
-				AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = AAD172AD2795F8F8009AB089 /* Products */;
 			projectDirPath = "";
@@ -1647,53 +1632,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		AA2ABD652944FD06008819DB /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		AA1C7051279C21C600FE3317 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AA2ABD642944FD06008819DB /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA2ABD652944FD06008819DB /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AA613A512944FC3D00D69D5D /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AADD6BA0279C832A007737B6 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AAF054D1280C5270000BCADD /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAD172A42795F8F8009AB089 /* Project object */;
 }
