@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 public enum DangerLevel: String, Codable, CustomStringConvertible {
     case unknown = "0"
@@ -13,5 +14,9 @@ public enum DangerLevel: String, Codable, CustomStringConvertible {
         case .unknown: return "?"
         default: return rawValue
         }
+    }
+    
+    public var color: Color {
+        return Color("DangerLevel\(self.rawValue)")
     }
 }

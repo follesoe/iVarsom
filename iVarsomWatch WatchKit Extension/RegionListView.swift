@@ -1,16 +1,11 @@
 import SwiftUI
 
 struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
-    enum Route: Hashable {
-        case region(RegionSummary)
-        case addRegion
-    }
-    
     @StateObject var vm: ViewModelType
-    @State private var path: [Route] = []
+    @State private var showAddRegion = false
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationSplitView {
             VStack {
                 if (vm.regionLoadState == .loading) {
                     VStack {
@@ -18,82 +13,56 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                         Text("Loading Regions")
                             .font(.caption2)
                     }
-                } else if (vm.regionLoadState == .failed) {
-                    VStack {
-                        Text("Error Loading Regions")
-                            .font(.caption2)
-                            .padding()
-                        Button("Try Again") {
-                            Task {
-                                await vm.loadRegions()
-                            }
-                        }.padding()
-                    }
                 } else {
-                    List {
+                    List(selection: $vm.selectedRegion) { 
                         ForEach(vm.favoriteRegions) { region in
                             let isLocalRegion = region.Id == vm.localRegion?.Id
-                            NavigationLink(value: Route.region(region)) {
+                            NavigationLink(value: region) {
                                 RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
                             }
-                            .listRowInsets(EdgeInsets(top: -0.1, leading: 0, bottom: -0.1, trailing: 0))
+                            .listRowInsets(EdgeInsets())
                             .listRowBackground(Color.clear)
                             .cornerRadius(20)
                         }
                         .onDelete(perform: removeFavorite)
-                        NavigationLink(value: Route.addRegion) {
-                            HStack {
-                                Spacer()
-                                Text("Add Region")
-                                Spacer()
-                            }
-                        }
-                        .listRowInsets(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0))
-                        DataSourceView()
                         
+                        HStack {
+                            Spacer()
+                            Text("Add Region")
+                            Spacer()
+                        }.onTapGesture {
+                            showAddRegion = true
+                        }
+                        DataSourceView()
                     }
                     .listStyle(.carousel)
                 }
             }
-            .navigationTitle("Skredvarsel")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case let .region(region):
-                    RegionDetailView(
-                        loadingState: vm.warningLoadState,
-                        selectedRegion: region,
-                        selectedWarning: region.AvalancheWarningList[0],
-                        warnings: $vm.warnings
-                    )
-                    .onAppear() {
-                        vm.selectedRegion = region
-                        vm.warnings.removeAll()
-                        Task {
-                            await vm.loadWarnings(from: -1, to: 1)
-                        }
-                    }
-                case .addRegion:
-                    SelectRegionListView<ViewModelType>()
-                }
-            }
-            .task {
-                if (vm.needsRefresh()) {
-                    await vm.loadRegions()
-                }
-            }
-            .onOpenURL { url in
-                let regionId = UrlUtils.extractParam(url: url, name: "id")
-                if let regionId = regionId {
+        } detail: {
+            if  let selectedRegion = vm.selectedRegion {
+                RegionDetailView(
+                    loadingState: vm.warningLoadState,
+                    selectedRegion: selectedRegion,
+                    selectedWarning: selectedRegion.AvalancheWarningList[0],
+                    warnings: $vm.warnings)
+                .onAppear() {
+                    vm.warnings.removeAll()
                     Task {
-                        await vm.selectRegionById(regionId: regionId)
-                        if let selectedRegion = vm.selectedRegion {
-                            path = [Route.region(selectedRegion)]
-                        }
+                        await vm.loadWarnings(from: -1, to: 1)
                     }
                 }
+            } else {
+                Text("No selected region")
             }
         }
+        .sheet(isPresented: $showAddRegion, content: {
+            SelectRegionListView<ViewModelType>()
+        })
+        .task {
+           if (vm.needsRefresh()) {
+               await vm.loadRegions()
+           }
+       }
     }
     
     func removeFavorite(at offsets: IndexSet) {
