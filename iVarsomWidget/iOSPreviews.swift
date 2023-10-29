@@ -2,7 +2,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
 
 struct iVarsomWidget_iOS_Previews: PreviewProvider {
     static var previews: some View {

@@ -2,7 +2,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
 
 struct WarningEntry: TimelineEntry {
     let date: Date

@@ -1,5 +1,4 @@
 import SwiftUI
-import DynamicColor
 
 struct WarningSummary: View {
     var warning: AvalancheWarningSimple

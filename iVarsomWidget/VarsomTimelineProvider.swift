@@ -2,7 +2,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
 
 struct Provider: IntentTimelineProvider {
     func recommendations() -> [IntentRecommendation<SelectRegionIntent>] {
