@@ -36,8 +36,8 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 .navigationTitle("Regions")
                 .listStyle(.insetGrouped)
                 .searchable(text: $vm.searchTerm)
-                .onChange(of: vm.selectedRegion) { newSelectedRegion in
-                    if let region = newSelectedRegion {
+                .onChange(of: vm.selectedRegion) {
+                    if let region = vm.selectedRegion {
                         print("New selected region: \(region.Name)")
                         vm.selectedWarning = vm.selectedRegion?.AvalancheWarningList[0]
                         Task {
