@@ -79,10 +79,22 @@ class VarsomApiClient {
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByRegion/Detail/\(regionId)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
         let warnings: [AvalancheWarningDetailed] = try await getData(url: url)
-        return warnings
+        return setUniqueRegId(warnings: warnings)
     }
     
     private func setUniqueRegId(warnings: [AvalancheWarningSimple]) -> [AvalancheWarningSimple] {
+        // Ensure no duplicate RegId as regions without assessment generates
+        // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
+        var array = warnings
+        for (index, warning) in array.enumerated() {
+            if (warning.RegId == 0) {
+                array[index].RegId = warning.RegionId + (index + 1)
+            }
+        }
+        return array
+    }
+    
+    private func setUniqueRegId(warnings: [AvalancheWarningDetailed]) -> [AvalancheWarningDetailed] {
         // Ensure no duplicate RegId as regions without assessment generates
         // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
         var array = warnings
