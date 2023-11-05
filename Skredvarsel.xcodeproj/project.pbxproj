@@ -162,6 +162,11 @@
 		AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */; };
 		AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
 		AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
+		AAEC4F232AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F242AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172C92795FCA3009AB089 /* DataLoader.swift */; };
@@ -341,6 +346,7 @@
 		AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningDetailed.swift; sourceTree = "<group>"; };
 		AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblem.swift; sourceTree = "<group>"; };
 		AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheAdvice.swift; sourceTree = "<group>"; };
+		AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +592,7 @@
 				AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */,
 				AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */,
 				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
+				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -873,6 +880,7 @@
 			files = (
 				AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAEC4F102AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
+				AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
 				AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */,
@@ -903,6 +911,7 @@
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
+				AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA2ABD702944FD06008819DB /* DangerLevel.swift in Sources */,
 				AA2ABD712944FD06008819DB /* Intents.intentdefinition in Sources */,
 				AA2ABD722944FD06008819DB /* RegionOption.swift in Sources */,
@@ -946,6 +955,7 @@
 				AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */,
 				AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */,
 				AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */,
+				AAEC4F242AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */,
 				AAF054C8280C502B000BCADD /* AvalancheWarningSimple.swift in Sources */,
 				AAF054CB280C504B000BCADD /* LocationManager.swift in Sources */,
@@ -978,6 +988,7 @@
 			files = (
 				AA18421327B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA102DFE279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
+				AAEC4F232AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAD172CD2795FCA3009AB089 /* DataLoader.swift in Sources */,
 				AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AA839D0E279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
@@ -1032,6 +1043,7 @@
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,
+				AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA839D0C279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
 				AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
