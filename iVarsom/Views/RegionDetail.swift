@@ -2,8 +2,8 @@ import SwiftUI
 
 struct RegionDetail: View {
     @Binding var selectedRegion: RegionSummary?
-    @Binding var selectedWarning: AvalancheWarningSimple?
-    @Binding var warnings: [AvalancheWarningSimple]
+    @Binding var selectedWarning: AvalancheWarningDetailed?
+    @Binding var warnings: [AvalancheWarningDetailed]
     
     var body: some View {
         ScrollView {
@@ -70,8 +70,8 @@ struct RegionDetail_Previews: PreviewProvider {
         NavigationView {
             RegionDetail(
                 selectedRegion: .constant(testRegions[1]),
-                selectedWarning: .constant(testWarningLevel2),
-                warnings: .constant([AvalancheWarningSimple]()))
+                selectedWarning: .constant(nil),
+                warnings: .constant([AvalancheWarningDetailed]()))
         }
     }
 }

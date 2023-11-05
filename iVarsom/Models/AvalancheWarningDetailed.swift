@@ -11,7 +11,7 @@ struct AvalancheWarningDetailed: Codable, AvalancheWarningProtocol {
     var AvalancheDanger: String
     var EmergencyWarning: String
     var SnowSurface: String
-    var CurrentWeaklayers: String
+    var CurrentWeaklayers: String?
     var LatestAvalancheActivity: String?
     var LatestObservations: String?
     var ExposedHeightFill: Int

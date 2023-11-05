@@ -167,6 +167,7 @@
 		AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
 		AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
 		AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F292AF7D34B00FA1373 /* WarningSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172C92795FCA3009AB089 /* DataLoader.swift */; };
@@ -347,6 +348,7 @@
 		AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblem.swift; sourceTree = "<group>"; };
 		AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheAdvice.swift; sourceTree = "<group>"; };
 		AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningProtocol.swift; sourceTree = "<group>"; };
+		AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +465,7 @@
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
 				AA345DD728085B4800B78BDB /* Preview Content */,
 				AAD613882822D88B00ABA680 /* InfoPlist.strings */,
+				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 			);
 			path = "iVarsomWatch WatchKit Extension";
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				AAA89051280C540500A80394 /* DangerIcon.swift in Sources */,
 				AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */,
 				AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */,
+				AAEC4F292AF7D34B00FA1373 /* WarningSummary.swift in Sources */,
 				AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */,
 				AAEC4F242AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */,

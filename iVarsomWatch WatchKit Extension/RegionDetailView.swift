@@ -3,38 +3,23 @@ import SwiftUI
 struct RegionDetailView: View {
     var loadingState: LoadState
     var selectedRegion: RegionSummary
-    var selectedWarning: AvalancheWarningSimple
-    @Binding var warnings: [AvalancheWarningSimple]
+    var selectedWarning: AvalancheWarningDetailed?
+    @Binding var warnings: [AvalancheWarningDetailed]
     
     var body: some View {
         TabView {
-            VStack(alignment: .leading) {
-                HStack {
-                    DangerIcon(dangerLevel: selectedWarning.DangerLevel)
-                        .frame(width: 36, height: 36)
-                    Spacer()
-                    Text("\(selectedWarning.DangerLevel.description)")
-                        .font(.system(size: 36))
-                        .fontWeight(.heavy)
-                        .foregroundColor(.white)
-                }
-                Text(selectedWarning.ValidFrom.formatted(
-                    Date.FormatStyle()
-                        .day(.defaultDigits)
-                        .weekday(.wide)
-                        .month(.abbreviated))
-                    .firstUppercased
-                )
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                Text(selectedWarning.MainText)
-                    .font(.system(size: 15))
-                    .foregroundColor(.white)
+            if let selectedWarning = selectedWarning {
+                WarningSummary(selectedWarning: selectedWarning)
+                    .padding()
+                    .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
+                    .cornerRadius(14)
+                    .navigationTitle(selectedRegion.Name)
+            } else {
+                VStack {
+                    ProgressView();
+                    Text("Loading Details")
+                }.padding()
             }
-            .padding()
-            .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
-            .cornerRadius(14)
-            .navigationTitle(selectedRegion.Name)
             
             ScrollView {
                 VStack {
@@ -83,7 +68,7 @@ struct RegionDetailView: View {
 struct RegionDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: testWarningLevel2, warnings: .constant([AvalancheWarningSimple]()))
+            RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: nil, warnings: .constant([AvalancheWarningDetailed]()))
         }
     }
 }

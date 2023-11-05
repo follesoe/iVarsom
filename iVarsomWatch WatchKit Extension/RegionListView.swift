@@ -43,7 +43,7 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                 RegionDetailView(
                     loadingState: vm.warningLoadState,
                     selectedRegion: selectedRegion,
-                    selectedWarning: selectedRegion.AvalancheWarningList[0],
+                    selectedWarning: vm.selectedWarning,
                     warnings: $vm.warnings)
                 .onAppear() {
                     vm.warnings.removeAll()

@@ -39,7 +39,6 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 .onChange(of: vm.selectedRegion) {
                     if let region = vm.selectedRegion {
                         print("New selected region: \(region.Name)")
-                        vm.selectedWarning = vm.selectedRegion?.AvalancheWarningList[0]
                         Task {
                             await vm.loadWarnings(from: -5, to: 2)
                         }

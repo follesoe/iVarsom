@@ -11,8 +11,8 @@ protocol RegionListViewModelProtocol: ObservableObject {
     var favoriteRegions: [RegionSummary] { get }
     var searchTerm: String { get set }
     var selectedRegion: RegionSummary? { get set }    
-    var warnings: [AvalancheWarningSimple] { get set }
-    var selectedWarning: AvalancheWarningSimple? { get set }
+    var warnings: [AvalancheWarningDetailed] { get set }
+    var selectedWarning: AvalancheWarningDetailed? { get set }
     
     func needsRefresh() -> Bool
     func loadRegions() async -> ()
