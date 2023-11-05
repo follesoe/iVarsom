@@ -2,8 +2,8 @@ import Foundation
 import SwiftUI
 
 let testRegions: [RegionSummary] = load("RegionSummary.json")
-let testARegions = testRegions.filter { sum in
-    sum.TypeName == "A"
+let testARegions = testRegions.filter { region in
+    region.TypeName == "A"
 }
 
 let testWarning = testARegions[0].AvalancheWarningList[0]
