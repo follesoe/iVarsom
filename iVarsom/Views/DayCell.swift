@@ -25,15 +25,15 @@ struct DayCell: View {
 struct DayCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DayCell(dangerLevel: .level1, date: Date(), isSelected: false)
+            DayCell(dangerLevel: .level1, date: Date.now(), isSelected: false)
                 .padding()
                 .previewLayout(.sizeThatFits)
             
-            DayCell(dangerLevel: .level2, date: Date(), isSelected: true)
+            DayCell(dangerLevel: .level2, date: Date.now(), isSelected: true)
                 .padding()
                 .previewLayout(.sizeThatFits)
             
-            DayCell(dangerLevel: .level3, date: Date(), isSelected: true)
+            DayCell(dangerLevel: .level3, date: Date.now(), isSelected: true)
                 .preferredColorScheme(.dark)
                 .padding()
                 .previewLayout(.sizeThatFits)

@@ -1,5 +1,5 @@
 import XCTest
-@testable import iVarsom
+@testable import Skredvarsel
 
 class VarsomApiClientTests: XCTestCase {
     
@@ -17,8 +17,8 @@ class VarsomApiClientTests: XCTestCase {
     
     func testLoadWarnings() async throws {
         let client = VarsomApiClient()
-        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date())!
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.now())!
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
         
         let warnings = try await client.loadWarnings(
             lang: .english,

@@ -133,8 +133,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
         do {
             if let selectedRegion {
                 self.warningLoadState = .loading
-                let from = Calendar.current.date(byAdding: .day, value: from, to: Date())!
-                let to = Calendar.current.date(byAdding: .day, value: to, to: Date())!
+                let from = Calendar.current.date(byAdding: .day, value: from, to: Date.now())!
+                let to = Calendar.current.date(byAdding: .day, value: to, to: Date.now())!
                 self.warnings = try await client.loadWarnings(
                     lang: VarsomApiClient.currentLang(),
                     regionId: selectedRegion.Id,

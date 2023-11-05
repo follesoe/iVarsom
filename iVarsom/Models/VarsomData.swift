@@ -42,8 +42,8 @@ class VarsomData: ObservableObject {
     }
     
     func loadWarnings(id: Int) async throws {
-        let from = Date()
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let from = Date.now()
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         
         let warnings = try await apiClient.loadWarnings(
             lang: language,
@@ -70,10 +70,10 @@ let testWarningLevel0 = AvalancheWarningSimple(
     RegionId: 3020,
     RegionName: "Sør Trøndelag",
     RegionTypeName: "B",
-    ValidFrom: Date(),
-    ValidTo: Date(),
-    NextWarningTime: Date(),
-    PublishTime: Date(),
+    ValidFrom: Date.now(),
+    ValidTo: Date.now(),
+    NextWarningTime: Date.now(),
+    PublishTime: Date.now(),
     DangerLevel: .unknown,
     MainText: "No Rating",
     LangKey: 2)
@@ -95,7 +95,7 @@ let testWarningLevel4 = (testARegions.filter { reg in
 })[0].AvalancheWarningList[0]
 
 func createTestWarnings() -> [AvalancheWarningSimple] {
-    let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date.now())!
     
     var warnings: [AvalancheWarningSimple] = []
     let levels: [DangerLevel] = [.level2, .level3, .level4, .level3, .level2]
