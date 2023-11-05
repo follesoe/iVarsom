@@ -5,10 +5,6 @@ struct RegionDetailView: View {
     var selectedRegion: RegionSummary
     var selectedWarning: AvalancheWarningSimple
     @Binding var warnings: [AvalancheWarningSimple]
-        
-    var textColor: Color {
-        return selectedWarning.DangerLevel == .level2 ? .black : .white;
-    }
     
     var body: some View {
         TabView {
@@ -20,7 +16,7 @@ struct RegionDetailView: View {
                     Text("\(selectedWarning.DangerLevel.description)")
                         .font(.system(size: 36))
                         .fontWeight(.heavy)
-                        .foregroundColor(textColor)
+                        .foregroundColor(.white)
                 }
                 Text(selectedWarning.ValidFrom.formatted(
                     Date.FormatStyle()
@@ -30,10 +26,10 @@ struct RegionDetailView: View {
                     .firstUppercased
                 )
                 .fontWeight(.bold)
-                .foregroundColor(textColor)
+                .foregroundColor(.white)
                 Text(selectedWarning.MainText)
                     .font(.system(size: 15))
-                    .foregroundColor(textColor)
+                    .foregroundColor(.white)
             }
             .padding()
             .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
