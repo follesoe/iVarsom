@@ -560,6 +560,7 @@
 		AAD172B52795F8F9009AB089 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				AAD172DD2795FEDF009AB089 /* RegionSummary.json */,
 				AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -603,7 +604,6 @@
 		AAD172DF2795FEE6009AB089 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AAD172DD2795FEDF009AB089 /* RegionSummary.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1482,7 +1482,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1523,7 +1523,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
