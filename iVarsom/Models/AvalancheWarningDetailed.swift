@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 struct AvalancheWarningDetailed: Codable, AvalancheWarningProtocol {
-    var PreviousWarningRegId: Int
+    var PreviousWarningRegId: Int?
     var DangerLevelName: String
     var UtmZone: Int
     var UtmEast: Int
