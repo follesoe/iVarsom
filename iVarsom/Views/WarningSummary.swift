@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WarningSummary: View {
-    var warning: AvalancheWarningSimple
+    var warning: any AvalancheWarningProtocol
     var mainTextFont: Font = .body
     var mainTextLineLimit: Int = .max
     var includeLocationIcon: Bool = false
