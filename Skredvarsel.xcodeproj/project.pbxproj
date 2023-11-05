@@ -73,7 +73,6 @@
 		AA461CFF27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA5168852820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168862820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
-		AA5168872820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168882820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
@@ -145,6 +144,24 @@
 		AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAEC4F0E2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F0F2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F102AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F112AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F122AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F152AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F172AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F182AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1B2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */; };
+		AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
+		AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172C92795FCA3009AB089 /* DataLoader.swift */; };
@@ -321,6 +338,9 @@
 		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
 		AAD6138C282AF46F00ABA680 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		AAE572DE295B294800DAB74E /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
+		AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningDetailed.swift; sourceTree = "<group>"; };
+		AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblem.swift; sourceTree = "<group>"; };
+		AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheAdvice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,6 +583,9 @@
 				AA102E06279DAF0200B6492D /* RegionSummary.swift */,
 				AA63860A2797592700FD52DA /* VarsomData.swift */,
 				AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */,
+				AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */,
+				AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */,
+				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -849,9 +872,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
-				AA5168872820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAEC4F102AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
+				AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
+				AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */,
+				AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */,
+				AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */,
 				AA18421527B1A9530097174D /* JsonExtensions.swift in Sources */,
+				AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
@@ -863,12 +891,14 @@
 			files = (
 				AA2ABD672944FD06008819DB /* WarningLevelCell.swift in Sources */,
 				AA2ABD682944FD06008819DB /* DangerIcon.swift in Sources */,
+				AAEC4F112AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AA2ABD692944FD06008819DB /* LocationManager.swift in Sources */,
 				AA2ABD6A2944FD06008819DB /* DayCell.swift in Sources */,
 				AA2ABD6B2944FD06008819DB /* WarningSymbolLevel.swift in Sources */,
 				AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA2ABD6C2944FD06008819DB /* JsonExtensions.swift in Sources */,
 				AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
@@ -878,6 +908,7 @@
 				AA2ABD722944FD06008819DB /* RegionOption.swift in Sources */,
 				AA2ABD732944FD06008819DB /* StringExtensions.swift in Sources */,
 				AA2ABD742944FD06008819DB /* DangerScale.swift in Sources */,
+				AAEC4F172AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA2ABD752944FD06008819DB /* DateExtensions.swift in Sources */,
 				AA2ABD762944FD06008819DB /* RegionSummary.swift in Sources */,
 				AA2ABD772944FD06008819DB /* FormatterExtensions.swift in Sources */,
@@ -900,7 +931,9 @@
 				AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */,
 				AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */,
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
+				AAEC4F152AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */,
+				AAEC4F0F2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AAF054CA280C502B000BCADD /* DangerLevel.swift in Sources */,
 				AAF054CC280C504B000BCADD /* VarsomApiClient.swift in Sources */,
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
@@ -920,6 +953,7 @@
 				AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */,
 				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
 				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
+				AAEC4F1B2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAF054C9280C502B000BCADD /* VarsomData.swift in Sources */,
 				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
@@ -955,6 +989,7 @@
 				AAD172D72795FCC2009AB089 /* RegionRow.swift in Sources */,
 				AAD172CF2795FCA3009AB089 /* AvalancheWarningSimple.swift in Sources */,
 				AA102E07279DAF0200B6492D /* RegionSummary.swift in Sources */,
+				AAEC4F0E2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AAD172D02795FCA3009AB089 /* VarsomApiClient.swift in Sources */,
 				AAD172D82795FCC2009AB089 /* RegionList.swift in Sources */,
@@ -966,6 +1001,7 @@
 				AA7358D627C16169009E3DA1 /* WarningLevelCell.swift in Sources */,
 				AA63860B2797592700FD52DA /* VarsomData.swift in Sources */,
 				AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */,
+				AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA5168852820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */,
@@ -974,6 +1010,7 @@
 				AA7358D227BD93C8009E3DA1 /* RegionListViewModelProtocol.swift in Sources */,
 				AAD172CE2795FCA3009AB089 /* RegionOption.swift in Sources */,
 				AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */,
+				AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,12 +1020,14 @@
 			files = (
 				AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */,
 				AA839D0F279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
+				AAEC4F122AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AA461CFF27B0082000425270 /* LocationManager.swift in Sources */,
 				AAF74A7727CC09CD00B02166 /* DayCell.swift in Sources */,
 				AA102DFF279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
 				AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
@@ -998,6 +1037,7 @@
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
 				AA7D7467294618F200AB5155 /* iOSPreviews.swift in Sources */,
 				AA5168862820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAEC4F182AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */,
 				AA1C67C0279D8A1B0039F8E0 /* DateExtensions.swift in Sources */,
 				AA102E08279DAF0200B6492D /* RegionSummary.swift in Sources */,

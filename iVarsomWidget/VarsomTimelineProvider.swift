@@ -3,6 +3,12 @@ import SwiftUI
 import Intents
 import CoreLocation
 
+struct MissingLocationAuthorizationError: Error, LocalizedError {
+    public var errorDescription: String? {
+        return "Missing location authorization"
+    }
+}
+
 struct Provider: IntentTimelineProvider {
     func recommendations() -> [IntentRecommendation<SelectRegionIntent>] {
         RegionOption.allOptions.map { region in
@@ -118,7 +124,7 @@ struct Provider: IntentTimelineProvider {
                     from: from,
                     to: to)
             } else {
-                throw "Missing location authorization"
+                throw MissingLocationAuthorizationError();
             }
         } else {
             warnings = try await apiClient.loadWarnings(

@@ -27,4 +27,18 @@ class VarsomApiClientTests: XCTestCase {
             to: to)
         XCTAssertGreaterThan(warnings.count, 0)
     }
+    
+    func testLoadWarningsDetailed() async throws {
+        let client = VarsomApiClient()
+        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.now())!
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
+        
+        let warnings = try await client.loadWarningsDetailed(
+            lang: .english,
+            regionId: RegionOption.defaultOption.id,
+            from: from,
+            to: to)
+        
+        XCTAssertGreaterThan(warnings.count, 0)
+    }
 }
