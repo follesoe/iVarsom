@@ -1,67 +1,10 @@
 import Foundation
 import SwiftUI
 
-class VarsomData: ObservableObject {
-    @Published var regions = [RegionSummary]()
-    @Published var warnings = [AvalancheWarningSimple]()
-    @Published var days = [String]()
-
-    var language: VarsomApiClient.Language {
-        return Locale.current.identifier == "nb" ? .norwegian : .english
-    }
-    
-    private let apiClient = VarsomApiClient()
-    
-    init(regions: [RegionSummary] = []) {
-        self.regions = regions
-    }
-    
-    func loadRegions() async throws {
-        let regions = try await apiClient.loadRegions(lang: language)
-        
-        if (regions.count > 0) {
-            let dayFormatter = DateFormatter()
-            dayFormatter.locale = Locale.current
-            dayFormatter.dateFormat = "EEE"
-            let days = regions[0].AvalancheWarningList.map {
-                dayFormatter.string(from: $0.ValidFrom)
-            }
-            
-            DispatchQueue.main.async {
-                self.days = days
-            }
-        }
-                    
-        let aRegions = regions.filter { reg in
-            reg.TypeName == "A"
-        }
-        
-        DispatchQueue.main.async {
-            self.regions = aRegions
-        }
-    }
-    
-    func loadWarnings(id: Int) async throws {
-        let from = Date.now()
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
-        
-        let warnings = try await apiClient.loadWarnings(
-            lang: language,
-            regionId: id,
-            from: from,
-            to: to)
-        DispatchQueue.main.async {
-            self.warnings = warnings
-        }
-    }
-}
-
 let testRegions: [RegionSummary] = load("RegionSummary.json")
 let testARegions = testRegions.filter { sum in
     sum.TypeName == "A"
 }
-
-let testVarsomData = VarsomData(regions: testARegions)
 
 let testWarning = testARegions[0].AvalancheWarningList[0]
 
