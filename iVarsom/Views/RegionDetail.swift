@@ -55,6 +55,12 @@ struct RegionDetail: View {
                 }
                 .padding()
                 if let selectedWarning = selectedWarning {
+                    if let problems = selectedWarning.AvalancheProblems {
+                        ForEach(problems) { problem in
+                            AvalancheProblemView(problem: problem)
+                                .padding()
+                        }
+                    }
                     Link("Read complete warning on Varsom.no", destination: selectedWarning.VarsomUrl)
                         .padding()
                 }
@@ -67,11 +73,12 @@ struct RegionDetail: View {
 
 struct RegionDetail_Previews: PreviewProvider {
     static var previews: some View {
+        let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
         NavigationView {
             RegionDetail(
                 selectedRegion: .constant(testRegions[1]),
-                selectedWarning: .constant(nil),
-                warnings: .constant([AvalancheWarningDetailed]()))
+                selectedWarning: .constant(warningDetailed[0]),
+                warnings: .constant(warningDetailed))
         }
     }
 }

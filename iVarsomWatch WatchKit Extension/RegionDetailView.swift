@@ -12,8 +12,15 @@ struct RegionDetailView: View {
                 WarningSummary(selectedWarning: selectedWarning)
                     .padding()
                     .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
-                    .cornerRadius(14)
                     .navigationTitle(selectedRegion.Name)
+                
+                if let problems = selectedWarning.AvalancheProblems {
+                    ForEach(problems) { problem in
+                        AvalancheProblemView(problem: problem)
+                            .containerBackground(problem.DangerLevelEnum.color.gradient, for: .tabView)
+                            .navigationTitle("Avalanche problems")
+                    }
+                }
             } else {
                 VStack {
                     ProgressView();
@@ -67,8 +74,9 @@ struct RegionDetailView: View {
 
 struct RegionDetailView_Previews: PreviewProvider {
     static var previews: some View {
+        let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
         NavigationView {
-            RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: nil, warnings: .constant([AvalancheWarningDetailed]()))
+            RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: warningDetailed[0], warnings: .constant(warningDetailed))
         }
     }
 }
