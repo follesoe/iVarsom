@@ -32,6 +32,10 @@ struct AvalancheProblem: Codable {
     var DangerLevelEnum: DangerLevelEnumType {
         return DangerLevelEnumType(rawValue: String(DangerLevel)) ?? .unknown
     }
+    
+    var ValidExpositionsBool: [Bool] {
+        return Array(ValidExpositions).map { $0 == "1" ? true : false }
+    }
 }
 
 extension AvalancheProblem: Identifiable {

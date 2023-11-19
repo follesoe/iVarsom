@@ -5,21 +5,35 @@ struct RegionDetailView: View {
     var selectedRegion: RegionSummary
     var selectedWarning: AvalancheWarningDetailed?
     @Binding var warnings: [AvalancheWarningDetailed]
+    @State private var showWarningText = false
     
     var body: some View {
         TabView {
             if let selectedWarning = selectedWarning {
                 WarningSummary(selectedWarning: selectedWarning)
-                    .padding()
+                    .padding(.horizontal)
                     .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
                     .navigationTitle(selectedRegion.Name)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            Spacer()
+                            Button {
+                                showWarningText = true
+                            } label: {
+                                Label("Details", systemImage: "plus.magnifyingglass")
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $showWarningText, content: {
+                        MainWarningTextView(selectedWarning: selectedWarning)
+                    })
                 
                 if let problems = selectedWarning.AvalancheProblems {
                     ForEach(problems) { problem in
                         AvalancheProblemView(problem: problem)
                             .containerBackground(problem.DangerLevelEnum.color.gradient, for: .tabView)
-                            .navigationTitle("Avalanche problems")
                     }
+                    .navigationTitle("Avalanche problems")
                 }
             } else {
                 VStack {

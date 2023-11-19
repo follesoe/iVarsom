@@ -36,8 +36,7 @@ struct RegionDetail: View {
                                     isSelected: isSelected)
                                         .padding(.top, 5)
                                         .id(warning.id)
-                                
-                                
+
                                 if (isSelected) {
                                     Button(action: action) { cell }.buttonStyle(.borderedProminent)
                                 } else {

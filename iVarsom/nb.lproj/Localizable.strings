@@ -69,3 +69,6 @@
 
 /* Very high */
 "Very high" = "Meget stor";
+
+/* Published date/time format */
+"Published: %@" = "Publisert: %@

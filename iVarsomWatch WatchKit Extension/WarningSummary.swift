@@ -2,6 +2,14 @@ import SwiftUI
 
 struct WarningSummary: View {
     var selectedWarning: AvalancheWarningDetailed
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

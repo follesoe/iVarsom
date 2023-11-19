@@ -6,8 +6,12 @@ struct AvalancheProblemView: View {
     var body: some View {
         VStack {
             Text(problem.AvalancheProblemTypeName)
-            ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
-                .frame(width: 64, height: 64)
+            HStack {
+                ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
+                    .frame(width: 128, height: 128)
+                Expositions(sectors: problem.ValidExpositionsBool)
+                    .frame(width: 128, height: 128)
+            }
         }
     }
 }

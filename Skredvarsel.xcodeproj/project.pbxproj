@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA059A6C2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6D2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6E2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6F2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
 		AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CB2795FCA3009AB089 /* AvalancheWarningSimple.swift */; };
 		AA102DFE279D97A800B6492D /* WarningSymbolLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */; };
 		AA102DFF279D97A800B6492D /* WarningSymbolLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */; };
@@ -120,6 +124,7 @@
 		AAAE5109279E2E55008B2311 /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */; };
 		AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */; };
+		AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */; };
 		AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */; };
 		AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B32795F8F9009AB089 /* Assets.xcassets */; };
 		AAD172B72795F8F9009AB089 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */; };
@@ -274,6 +279,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA059A6B2AF82D4F00E91768 /* Expositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expositions.swift; sourceTree = "<group>"; };
 		AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSymbolLevel.swift; sourceTree = "<group>"; };
 		AA102E06279DAF0200B6492D /* RegionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSummary.swift; sourceTree = "<group>"; };
 		AA18420927B1A3860097174D /* SkredvarselTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkredvarselTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +335,7 @@
 		AAA89060280D699A00A80394 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
 		AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
+		AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -475,12 +482,13 @@
 				AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */,
 				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
 				AA345DD128085B4700B78BDB /* NotificationView.swift */,
+				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
 				AA345DD728085B4800B78BDB /* Preview Content */,
 				AAD613882822D88B00ABA680 /* InfoPlist.strings */,
-				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
+				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
 			);
 			path = "iVarsomWatch WatchKit Extension";
 			sourceTree = "<group>";
@@ -598,6 +606,7 @@
 				AA71614D27CBBF9600E0CFD0 /* DayCell.swift */,
 				AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */,
 				AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */,
+				AA059A6B2AF82D4F00E91768 /* Expositions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -934,6 +943,7 @@
 				AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
+				AA059A6E2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
 				AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
@@ -975,6 +985,7 @@
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
+				AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */,
 				AA5168882820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
 				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
@@ -988,6 +999,7 @@
 				AAF054C8280C502B000BCADD /* AvalancheWarningSimple.swift in Sources */,
 				AAF054CB280C504B000BCADD /* LocationManager.swift in Sources */,
 				AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */,
+				AA059A6D2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */,
 				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
 				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
@@ -1042,6 +1054,7 @@
 				AAEC4F302AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				AA7358D627C16169009E3DA1 /* WarningLevelCell.swift in Sources */,
 				AA63860B2797592700FD52DA /* VarsomData.swift in Sources */,
+				AA059A6C2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA5168852820695700F86D87 /* StringExtensions.swift in Sources */,
@@ -1072,6 +1085,7 @@
 				AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
+				AA059A6F2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,
 				AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
