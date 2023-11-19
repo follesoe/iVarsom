@@ -48,7 +48,7 @@ struct RegionDetailView: View {
                             })
                         
                     }
-                    .navigationTitle("Avalanche problems")
+                    .navigationTitle("Avalanche problem")
                 }
             } else {
                 VStack {

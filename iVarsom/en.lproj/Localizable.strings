@@ -72,3 +72,6 @@
 
 /* Published date/time format */
 "Published: %@" = "Published: %@";
+
+/* Avalanche problem */
+"Avalanche problem" = "Avalanche problem";

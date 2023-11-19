@@ -6,16 +6,25 @@ struct AvalancheProblemView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(problem.AvalancheProblemTypeName)
-                .padding()
+                .padding(.horizontal)
             HStack(alignment: .center) {
                 ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
-                    .frame(width: 48, height: 48)
-                Expositions(
-                    sectors: problem.ValidExpositionsBool)
+                    .frame(width: 42, height: 42)
+                ExposedHeightArrow(
+                    exposedHeight1: problem.ExposedHeight1,
+                    exposedHeight2: problem.ExposedHeight2,
+                    exposedHeightFill: problem.ExposedHeightFill)
+                    .padding(.trailing, 10)
+                Expositions(sectors: problem.ValidExpositionsBool)
             }
             .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
+}
+
+#Preview {
+    let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
+    return AvalancheProblemView(problem: warningDetailed[0].AvalancheProblems![0])
 }

@@ -8,6 +8,10 @@ struct MainWarningTextView: View {
             VStack(alignment: .leading) {
                 Text(selectedWarning.MainText)
                     .padding()
+                if let danger = selectedWarning.AvalancheDanger {
+                    Text(danger)
+                        .padding()
+                }
                 Text("Published: \(pubTime)")
                     .font(.system(size: 11))
                     .padding()

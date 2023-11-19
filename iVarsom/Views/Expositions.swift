@@ -3,9 +3,7 @@ import Foundation
 
 struct Expositions: View {
     let sectors: [Bool]
-    
-    let headings = ["N", "Ø", "S", "V"]
-    
+        
     var body: some View {
         let strokeColor = Color("LightStroke")
         
@@ -30,37 +28,34 @@ struct Expositions: View {
             }
             
             pieContext.rotate(by: .degrees(90))
-            
-            for heading in headings {
-                let headingRadius = radius / 5
-                let path = Path { p in
-                    p.addEllipse(in: CGRect(
-                        x: -headingRadius,
-                        y: -(size.height / 2) + 2,
-                        width: headingRadius * 2,
-                        height: headingRadius * 2))
-                }
-                pieContext.fill(path, with: .color(.white))
-                pieContext.stroke(path, with: .color(strokeColor), lineWidth: 1)
-                
-                pieContext.draw(
-                    Text(heading)
-                        .font(.system(size: headingRadius * 1.4))
-                        .foregroundStyle(.black),
-                    at: CGPoint(x: 0, y: -(size.height / 2) + headingRadius * 1.05))
-
-                pieContext.rotate(by: .degrees(90))
+        
+            let headingRadius = radius / 4
+            let path = Path { p in
+                p.addEllipse(in: CGRect(
+                    x: -headingRadius,
+                    y: -(size.height / 2) + 2,
+                    width: headingRadius * 2,
+                    height: headingRadius * 2))
             }
+            pieContext.fill(path, with: .color(.white))
+            pieContext.stroke(path, with: .color(strokeColor), lineWidth: 1)
+            
+            pieContext.draw(
+                Text("N")
+                    .font(.system(size: headingRadius * 1.4))
+                    .bold()
+                    .foregroundStyle(.black),
+                at: CGPoint(x: 0, y: -(size.height / 2) + headingRadius))
+
+            pieContext.rotate(by: .degrees(90))
             
         }
         .aspectRatio(1, contentMode: .fit)
     }
 }
 
-struct Expositions_Previews: PreviewProvider {
-    static var previews: some View {
-        Expositions(sectors: [
-            true, true, true, false, false, false, false, false
-        ])
-    }
+#Preview {
+    Expositions(sectors: [
+        true, true, true, false, false, false, false, false
+    ])
 }

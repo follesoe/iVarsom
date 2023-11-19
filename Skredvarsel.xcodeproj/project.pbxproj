@@ -202,6 +202,10 @@
 		AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
 		AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF74A7A27D3C45000B02166 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
+		AAFA2CB02B0A857200CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB22B0A857E00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +376,7 @@
 		AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSummary.swift; sourceTree = "<group>"; };
 		AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DetailedWarning.json; sourceTree = "<group>"; };
 		AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeight.swift; sourceTree = "<group>"; };
+		AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeightArrow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +613,7 @@
 				AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */,
 				AA71614D27CBBF9600E0CFD0 /* DayCell.swift */,
 				AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */,
+				AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */,
 				AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */,
 				AA059A6B2AF82D4F00E91768 /* Expositions.swift */,
 			);
@@ -943,6 +949,7 @@
 				AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA2ABD6C2944FD06008819DB /* JsonExtensions.swift in Sources */,
 				AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
@@ -989,6 +996,7 @@
 				AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
 				AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */,
+				AAFA2CB22B0A857E00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AA5168882820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
 				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
@@ -1062,6 +1070,7 @@
 				AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA5168852820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAFA2CB02B0A857200CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */,
 				AA7358CF27BD8DCF009E3DA1 /* UseLocationRow.swift in Sources */,
@@ -1086,6 +1095,7 @@
 				AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
