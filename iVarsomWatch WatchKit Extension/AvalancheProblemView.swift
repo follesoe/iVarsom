@@ -10,11 +10,10 @@ struct AvalancheProblemView: View {
             HStack(alignment: .center) {
                 ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
                     .frame(width: 48, height: 48)
-                    .padding()
                 Expositions(
                     sectors: problem.ValidExpositionsBool)
-                    .padding()
             }
+            .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

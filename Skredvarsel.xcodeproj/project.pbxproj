@@ -125,6 +125,7 @@
 		AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */; };
 		AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */; };
 		AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */; };
+		AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */; };
 		AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */; };
 		AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B32795F8F9009AB089 /* Assets.xcassets */; };
 		AAD172B72795F8F9009AB089 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */; };
@@ -336,6 +337,7 @@
 		AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
+		AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemDetailsView.swift; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -480,15 +482,16 @@
 				AAA89060280D699A00A80394 /* RegionDetailView.swift */,
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
 				AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */,
+				AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */,
 				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
 				AA345DD128085B4700B78BDB /* NotificationView.swift */,
 				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
+				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
 				AA345DD728085B4800B78BDB /* Preview Content */,
 				AAD613882822D88B00ABA680 /* InfoPlist.strings */,
-				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
 			);
 			path = "iVarsomWatch WatchKit Extension";
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				AAEC4F1B2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAF054C9280C502B000BCADD /* VarsomData.swift in Sources */,
 				AAEC4F312AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
+				AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */,
 				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
 				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,

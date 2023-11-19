@@ -6,6 +6,7 @@ struct RegionDetailView: View {
     var selectedWarning: AvalancheWarningDetailed?
     @Binding var warnings: [AvalancheWarningDetailed]
     @State private var showWarningText = false
+    @State private var showProblemDetails = false
     
     var body: some View {
         TabView {
@@ -32,6 +33,20 @@ struct RegionDetailView: View {
                     ForEach(problems) { problem in
                         AvalancheProblemView(problem: problem)
                             .containerBackground(problem.DangerLevelEnum.color.gradient, for: .tabView)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .bottomBar) {
+                                    Spacer()
+                                    Button {
+                                        showProblemDetails = true
+                                    } label: {
+                                        Label("Details", systemImage: "plus.magnifyingglass")
+                                    }
+                                }
+                            }
+                            .sheet(isPresented: $showProblemDetails, content: {
+                                AvalancheProblemDetailsView(problem: problem)
+                            })
+                        
                     }
                     .navigationTitle("Avalanche problems")
                 }

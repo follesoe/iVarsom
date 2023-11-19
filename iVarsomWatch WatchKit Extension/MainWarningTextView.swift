@@ -5,17 +5,16 @@ struct MainWarningTextView: View {
     var body: some View {
         ScrollView {
             let pubTime = selectedWarning.PublishTime.formatted(date: .abbreviated, time: .shortened)
-            VStack {
+            VStack(alignment: .leading) {
                 Text(selectedWarning.MainText)
+                    .padding()
                 Text("Published: \(pubTime)")
                     .font(.system(size: 11))
-                    .foregroundColor(.white)
-                    .padding(.vertical)
-            }.padding()
+                    .padding()
+            }
         }
     }
 }
-
 
 #Preview {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
