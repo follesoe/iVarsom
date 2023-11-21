@@ -68,8 +68,6 @@
 		AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DC028085B4700B78BDB /* Assets.xcassets */; };
 		AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */; };
 		AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* RegionListView.swift */; };
-		AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCF28085B4700B78BDB /* NotificationController.swift */; };
-		AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD128085B4700B78BDB /* NotificationView.swift */; };
 		AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD528085B4800B78BDB /* Assets.xcassets */; };
 		AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD828085B4800B78BDB /* Preview Assets.xcassets */; };
 		AA345DDE28085B4800B78BDB /* Skredvarsel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* Skredvarsel.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -301,8 +299,6 @@
 		AA345DC028085B4700B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkredvarselApp.swift; sourceTree = "<group>"; };
 		AA345DCD28085B4700B78BDB /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
-		AA345DCF28085B4700B78BDB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		AA345DD128085B4700B78BDB /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		AA345DD528085B4800B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DD828085B4800B78BDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA345DDA28085B4800B78BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -488,8 +484,6 @@
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
 				AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */,
 				AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */,
-				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
-				AA345DD128085B4700B78BDB /* NotificationView.swift */,
 				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
@@ -983,7 +977,6 @@
 			files = (
 				AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */,
 				AAF054C7280C502B000BCADD /* RegionSummary.swift in Sources */,
-				AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */,
 				AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */,
 				AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */,
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
@@ -1020,7 +1013,6 @@
 				AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */,
 				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
-				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,
 				AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
