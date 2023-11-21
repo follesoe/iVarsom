@@ -36,3 +36,8 @@ struct WarningSummary: View {
         }
     }
 }
+
+#Preview("Warning Summary") {
+    let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
+    return WarningSummary(selectedWarning: warningDetailed[0])
+}

@@ -24,8 +24,6 @@ struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     }
 }
 
-struct SelectRegionListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectRegionListView<RegionListViewModel>()
-    }
+#Preview("Select Region List View") {
+    return SelectRegionListView<RegionListViewModel>()
 }

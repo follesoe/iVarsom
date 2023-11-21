@@ -14,7 +14,7 @@ struct AvalancheProblemDetailsView: View {
     }
 }
 
-#Preview {
+#Preview("Avalanche Problem Details") {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
     return AvalancheProblemDetailsView(problem: warningDetailed[0].AvalancheProblems![0])
 }

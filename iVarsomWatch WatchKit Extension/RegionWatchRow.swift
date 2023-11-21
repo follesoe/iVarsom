@@ -37,11 +37,10 @@ struct RegionWatchRow: View {
     }
 }
 
-struct RegionWatchRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            RegionWatchRow(warning: testWarningLevel4, isLocalRegion: false)
-            RegionWatchRow(warning: testWarningLevel2, isLocalRegion: true)
-        }
-    }
+#Preview("Level 4 Row") {
+    return RegionWatchRow(warning: testWarningLevel4, isLocalRegion: false)
+}
+
+#Preview("Level 2 Local Row") {
+    return RegionWatchRow(warning: testWarningLevel2, isLocalRegion: true)
 }

@@ -20,7 +20,7 @@ struct MainWarningTextView: View {
     }
 }
 
-#Preview {
+#Preview("Main Warning Text View") {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
     return MainWarningTextView(selectedWarning: warningDetailed[0])
 }

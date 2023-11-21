@@ -3,6 +3,12 @@ import SwiftUI
 struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     @StateObject var vm: ViewModelType
     @State private var showAddRegion = false
+    
+    // Load warnings from yesterday
+    let fromDays = -1
+    
+    // ... and three days ahead
+    let toDays = 3
 
     var body: some View {
         NavigationSplitView {
@@ -48,7 +54,7 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                 .onAppear() {
                     vm.warnings.removeAll()
                     Task {
-                        await vm.loadWarnings(from: -1, to: 1)
+                        await vm.loadWarnings(from: fromDays, to: toDays)
                     }
                 }
             } else {
@@ -79,29 +85,9 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     }
 }
 
-struct RegionListView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            RegionListView(vm: DesignTimeRegionListViewModel(
-                    state: .loaded,
-                    locationIsAuthorized: false,
-                    filteredRegions: testARegions))
-            .previewDisplayName("41 mm")
-            .previewDevice("Apple Watch Series 8 (41mm)")
-            
-            RegionListView(vm: DesignTimeRegionListViewModel(
-                    state: .loaded,
-                    locationIsAuthorized: false,
-                    filteredRegions: testARegions))
-            .previewDisplayName("45 mm")
-            .previewDevice("Apple Watch Series 8 (45mm)")
-            
-            RegionListView(vm: DesignTimeRegionListViewModel(
-                    state: .loaded,
-                    locationIsAuthorized: false,
-                    filteredRegions: testARegions))
-            .previewDisplayName("49 mm")
-            .previewDevice("Apple Watch Ultra (49mm)")
-        }
-    }
+#Preview("Region List") {
+    return RegionListView(vm: DesignTimeRegionListViewModel(
+        state: .loaded,
+        locationIsAuthorized: false,
+        filteredRegions: testARegions))
 }
