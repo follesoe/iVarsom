@@ -70,14 +70,12 @@ struct RegionDetail: View {
     }
 }
 
-struct RegionDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
-        NavigationView {
-            RegionDetail(
-                selectedRegion: .constant(testRegions[1]),
-                selectedWarning: .constant(warningDetailed[0]),
-                warnings: .constant(warningDetailed))
-        }
+#Preview {
+    let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
+    return NavigationView {
+        RegionDetail(
+            selectedRegion: .constant(testRegions[1]),
+            selectedWarning: .constant(warningDetailed[0]),
+            warnings: .constant(warningDetailed))
     }
 }
