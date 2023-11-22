@@ -70,21 +70,23 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     }
 }
 
-struct RegionList_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            RegionList(vm: DesignTimeRegionListViewModel())
-            RegionList(vm: DesignTimeRegionListViewModel(
-                state: .loaded,
-                locationIsAuthorized: false,
-                filteredRegions: testARegions))
-                .preferredColorScheme(.dark)
-            RegionList(vm: DesignTimeRegionListViewModel(
-                state: .loaded,
-                locationIsAuthorized: false,
-                filteredRegions: testARegions))
-                .preferredColorScheme(.dark)
-                .environment(\.locale, Locale(identifier: "no"))
-        }
-    }
+#Preview("Region List Empty") {
+    RegionList(vm: DesignTimeRegionListViewModel())
+}
+
+#Preview("Region List Dark") {
+    RegionList(vm: DesignTimeRegionListViewModel(
+        state: .loaded,
+        locationIsAuthorized: false,
+        filteredRegions: testARegions))
+        .preferredColorScheme(.dark)
+}
+
+#Preview("Region List Dark Norwegian") {
+    RegionList(vm: DesignTimeRegionListViewModel(
+        state: .loaded,
+        locationIsAuthorized: false,
+        filteredRegions: testARegions))
+        .preferredColorScheme(.dark)
+        .environment(\.locale, Locale(identifier: "no"))
 }
