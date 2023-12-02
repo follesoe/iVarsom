@@ -13,7 +13,8 @@ struct AvalancheProblemView: View {
                 ExposedHeightArrow(
                     exposedHeight1: problem.ExposedHeight1,
                     exposedHeight2: problem.ExposedHeight2,
-                    exposedHeightFill: problem.ExposedHeightFill)
+                    exposedHeightFill: problem.ExposedHeightFill,
+                    fontSize: 16)
                     .padding(.trailing, 10)
                 Expositions(sectors: problem.ValidExpositionsBool)
             }

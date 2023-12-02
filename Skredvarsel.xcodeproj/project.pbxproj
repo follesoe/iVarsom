@@ -22,6 +22,9 @@
 		AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
 		AA102E07279DAF0200B6492D /* RegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102E06279DAF0200B6492D /* RegionSummary.swift */; };
 		AA102E08279DAF0200B6492D /* RegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102E06279DAF0200B6492D /* RegionSummary.swift */; };
+		AA119DB52B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
+		AA119DB72B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
+		AA119DB82B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
 		AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */; };
 		AA18421327B1A9530097174D /* JsonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421227B1A9530097174D /* JsonExtensions.swift */; };
 		AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421227B1A9530097174D /* JsonExtensions.swift */; };
@@ -285,6 +288,7 @@
 		AA059A6B2AF82D4F00E91768 /* Expositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expositions.swift; sourceTree = "<group>"; };
 		AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSymbolLevel.swift; sourceTree = "<group>"; };
 		AA102E06279DAF0200B6492D /* RegionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSummary.swift; sourceTree = "<group>"; };
+		AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
 		AA18420927B1A3860097174D /* SkredvarselTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkredvarselTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarsomApiClientTests.swift; sourceTree = "<group>"; };
 		AA18421227B1A9530097174D /* JsonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtensions.swift; sourceTree = "<group>"; };
@@ -484,8 +488,8 @@
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
 				AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */,
 				AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */,
-				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
+				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
@@ -563,7 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				AA809488279E222900A2F192 /* Info.plist */,
-				AAD172DF2795FEE6009AB089 /* Resources */,
 				AA7358D027BD932F009E3DA1 /* Abstractions */,
 				AA1C67BD279D8A0E0039F8E0 /* Utils */,
 				AA461CFC27B007FC00425270 /* Services */,
@@ -610,6 +613,7 @@
 				AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */,
 				AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */,
 				AA059A6B2AF82D4F00E91768 /* Expositions.swift */,
+				AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -629,13 +633,6 @@
 				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		AAD172DF2795FEE6009AB089 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		AAD172E727960939009AB089 /* Frameworks */ = {
@@ -946,6 +943,7 @@
 				AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AA119DB72B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
 				AA059A6E2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
@@ -1051,6 +1049,7 @@
 				AAD172D02795FCA3009AB089 /* VarsomApiClient.swift in Sources */,
 				AAD172D82795FCC2009AB089 /* RegionList.swift in Sources */,
 				AA839D0B279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
+				AA119DB52B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AAD172D62795FCC2009AB089 /* RegionDetail.swift in Sources */,
 				AA461CFE27B0082000425270 /* LocationManager.swift in Sources */,
 				AA1C67BF279D8A1B0039F8E0 /* DateExtensions.swift in Sources */,
@@ -1090,6 +1089,7 @@
 				AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AA119DB82B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
 				AA059A6F2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,

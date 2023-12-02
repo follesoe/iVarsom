@@ -4,6 +4,7 @@ struct RegionDetail: View {
     @Binding var selectedRegion: RegionSummary?
     @Binding var selectedWarning: AvalancheWarningDetailed?
     @Binding var warnings: [AvalancheWarningDetailed]
+    @State private var showWarningText = false
     
     var body: some View {
         ScrollView {
@@ -15,6 +16,14 @@ struct RegionDetail: View {
                         .frame(maxWidth: 600)
                         .cornerRadius(10)
                         .padding()
+                        .sheet(isPresented: $showWarningText, content: {
+                            MainWarningTextView(
+                                selectedWarning: selectedWarning,
+                                isShowingSheet: $showWarningText)
+                        })
+                        .onTapGesture(perform: {
+                            showWarningText = true
+                        })
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -55,12 +64,17 @@ struct RegionDetail: View {
                 .padding()
                 if let selectedWarning = selectedWarning {
                     if let problems = selectedWarning.AvalancheProblems {
-                        ForEach(problems) { problem in
-                            AvalancheProblemView(problem: problem)
-                                .padding()
+                        VStack(alignment: .leading) {
+                            Text("Avalanche problems").font(.headline)
+                                .padding(.horizontal)
+                            ForEach(problems) { problem in
+                                AvalancheProblemView(problem: problem)
+                                    .padding()
+                            }
                         }
+                        .frame(maxWidth: 600)
                     }
-                    Link("Read complete warning on Varsom.no", destination: selectedWarning.VarsomUrl)
+                    Link("Read complete warning on Varsom.no.", destination: selectedWarning.VarsomUrl)
                         .padding()
                 }
             }
@@ -70,7 +84,7 @@ struct RegionDetail: View {
     }
 }
 
-#Preview {
+#Preview("Region Detail") {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
     return NavigationView {
         RegionDetail(
