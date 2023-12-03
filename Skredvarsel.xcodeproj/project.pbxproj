@@ -1135,7 +1135,7 @@
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,
 				AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA839D0C279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
-				AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
+				AAAE21512B1CF04900830090 /* Intents.intentdefinition in Sources */,
 				AACAB74D2961FEDF008D6B07 /* RegionQuery.swift in Sources */,
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
 				AA7D7467294618F200AB5155 /* iOSPreviews.swift in Sources */,
