@@ -11,8 +11,8 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     @Published var favoriteRegions = [RegionSummary]()
     @Published var searchTerm = ""
     @Published var selectedRegion: RegionSummary? = nil
-    @Published var warnings = [AvalancheWarningSimple]()
-    @Published var selectedWarning: AvalancheWarningSimple? = nil
+    @Published var warnings = [AvalancheWarningDetailed]()
+    @Published var selectedWarning: AvalancheWarningDetailed? = nil
     
     init() {
     }

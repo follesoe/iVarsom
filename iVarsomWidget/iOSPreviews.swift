@@ -2,94 +2,81 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
 
-struct iVarsomWidget_iOS_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let level3 = WarningEntry(
-            date: Date(),
-            currentWarning: testWarningLevel3,
-            warnings: [testWarningLevel3],
-            configuration: SelectRegionIntent(),
-            relevance: TimelineEntryRelevance(score: 1.0),
-            hasError: false,
-            errorMessage: nil);
-        
-        let testWarnings = createTestWarnings()
-        let fullWarning = WarningEntry(
-                date: Date(),
-                currentWarning: testWarnings[1],
-                warnings: testWarnings,
-                configuration: SelectRegionIntent(),
-                relevance: TimelineEntryRelevance(score: 1.0),
-                hasError: false,
-                errorMessage: nil)
-                
-        Group {
-            WarningWidgetView(entry: level3)
-            .previewDisplayName("Inline")
-            .previewContext(WidgetPreviewContext(family: .accessoryInline))
-            
-            WarningWidgetView(entry: Provider().errorEntry(errorMessage: "Error message"))
-                .previewDisplayName("Circular")
-                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-            
-            WarningWidgetView(entry: fullWarning)
-            .previewDisplayName("Rectangular")
-            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            
-            WarningWidgetView(entry: Provider().errorEntry(errorMessage: "Error message"))
-                .previewDisplayName("Error State Small")
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
-            WarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel2,
-                    warnings: [testWarningLevel2],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0),
-                    hasError: false,
-                    errorMessage: nil))
-                .previewDisplayName("Level 2 Small")
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
-            WarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel3,
-                    warnings: [testWarningLevel3],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0),
-                    hasError: false,
-                    errorMessage: nil))
-                .previewDisplayName("Level 3 Small")
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
+let testWarnings = createTestWarnings()
 
-            WarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel4,
-                    warnings: [testWarningLevel4],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0),
-                    hasError: false,
-                    errorMessage: nil))
-                .previewDisplayName("Level 4 Medium")
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            WarningWidgetView(entry: WarningEntry(
-                    date: Date(),
-                    currentWarning: testWarningLevel0,
-                    warnings: [testWarningLevel0],
-                    configuration: SelectRegionIntent(),
-                    relevance: TimelineEntryRelevance(score: 1.0),
-                    hasError: false,
-                    errorMessage: nil))
-                .previewDisplayName("Level 0 Medium")
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            WarningWidgetView(entry: fullWarning)
-                .previewDisplayName("Large")
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
-        }
-    }
+let errorEntry = Provider().errorEntry(errorMessage: "Error message")
+
+func createEntry(currentWarning: AvalancheWarningSimple,
+                 allWarnings: [AvalancheWarningSimple]) -> WarningEntry {
+    return WarningEntry(
+        date: Date.now(),
+        currentWarning: currentWarning,
+        warnings: allWarnings,
+        configuration: SelectRegionIntent(),
+        relevance: TimelineEntryRelevance(score: 1.0),
+        hasError: false,
+        errorMessage: nil);
+}
+
+#Preview("Inline", as: .accessoryInline) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel3,
+                allWarnings: [testWarningLevel3])
+}
+
+#Preview("Circular", as: .accessoryCircular) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel3,
+                allWarnings: [testWarningLevel3])
+}
+
+#Preview("Rectangular", as: .accessoryRectangular) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarnings[0],
+                allWarnings: testWarnings)
+}
+
+#Preview("Error State Small", as: .systemSmall) {
+    iVarsomWidget()
+} timeline: {
+    errorEntry
+}
+
+#Preview("Level 2 Small", as: .systemSmall) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel2,
+                allWarnings: [testWarningLevel2])
+}
+
+#Preview("Level 3 Small", as: .systemSmall) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel3,
+                allWarnings: [testWarningLevel3])
+}
+
+#Preview("Level 4 Medium", as: .systemMedium) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel4,
+                allWarnings: [testWarningLevel4])
+}
+
+#Preview("Level 0 Medium", as: .systemMedium) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel0,
+                allWarnings: [testWarningLevel0])
+}
+
+#Preview("Large", as: .systemLarge) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarnings[0],
+                allWarnings: testWarnings)
 }

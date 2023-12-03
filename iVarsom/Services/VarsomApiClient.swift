@@ -22,7 +22,9 @@ class VarsomApiClient {
     }
     
     public func loadRegions(lang: Language) async throws -> [RegionSummary] {
-        guard let url = URL(string: "\(baseUrl)/RegionSummary/Simple/\(lang)/") else { throw VarsomError.invalidUrlError }
+        let from = Date.now()
+        let fromArg = argumentDateFormatter.string(from: from)
+        guard let url = URL(string: "\(baseUrl)/RegionSummary/Simple/\(lang)/\(fromArg)") else { throw VarsomError.invalidUrlError }
         var regions: [RegionSummary] = try await getData(url: url);
         
         for (index, region) in regions.enumerated() {
@@ -32,8 +34,8 @@ class VarsomApiClient {
         return regions
     }
     
-    public func loadRegions(lang: Language, coordinate:CLLocationCoordinate2D) async throws -> RegionSummary {
-        let from = Date()
+    public func loadRegions(lang: Language, coordinate: CLLocationCoordinate2D) async throws -> RegionSummary {
+        let from = Date.now()
         let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         let warnings = try await loadWarnings(lang: lang, coordinate: coordinate, from: from, to: to)
         let region = RegionSummary(
@@ -44,7 +46,7 @@ class VarsomApiClient {
         return region
     }
     
-    public func loadWarnings(lang: Language, regionId: Int, from:Date, to:Date) async throws -> [AvalancheWarningSimple] {
+    public func loadWarnings(lang: Language, regionId: Int, from: Date, to: Date) async throws -> [AvalancheWarningSimple] {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByRegion/Simple/\(regionId)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
@@ -52,7 +54,7 @@ class VarsomApiClient {
         return setUniqueRegId(warnings: warnings)
     }
     
-    public func loadWarnings(lang: Language, coordinate:CLLocationCoordinate2D, from:Date, to:Date) async throws -> [AvalancheWarningSimple] {
+    public func loadWarnings(lang: Language, coordinate: CLLocationCoordinate2D, from: Date, to: Date) async throws -> [AvalancheWarningSimple] {
         let fromArg = argumentDateFormatter.string(from: from)
         let toArg = argumentDateFormatter.string(from: to)
         guard let url = URL(string: "\(baseUrl)/AvalancheWarningByCoordinates/Simple/\(coordinate.latitude)/\(coordinate.longitude)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
@@ -60,7 +62,27 @@ class VarsomApiClient {
         return setUniqueRegId(warnings: warnings)
     }
     
+    public func loadWarningsDetailed(lang: Language, regionId: Int, from: Date, to: Date) async throws -> [AvalancheWarningDetailed] {
+        let fromArg = argumentDateFormatter.string(from: from)
+        let toArg = argumentDateFormatter.string(from: to)
+        guard let url = URL(string: "\(baseUrl)/AvalancheWarningByRegion/Detail/\(regionId)/\(lang)/\(fromArg)/\(toArg)") else { throw VarsomError.invalidUrlError }
+        let warnings: [AvalancheWarningDetailed] = try await getData(url: url)
+        return setUniqueRegId(warnings: warnings)
+    }
+    
     private func setUniqueRegId(warnings: [AvalancheWarningSimple]) -> [AvalancheWarningSimple] {
+        // Ensure no duplicate RegId as regions without assessment generates
+        // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
+        var array = warnings
+        for (index, warning) in array.enumerated() {
+            if (warning.RegId == 0) {
+                array[index].RegId = warning.RegionId + (index + 1)
+            }
+        }
+        return array
+    }
+    
+    private func setUniqueRegId(warnings: [AvalancheWarningDetailed]) -> [AvalancheWarningDetailed] {
         // Ensure no duplicate RegId as regions without assessment generates
         // multiple warnings with RegId = 0, which causes problems with duplicate Identifiable id.
         var array = warnings

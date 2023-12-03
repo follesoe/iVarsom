@@ -3,75 +3,91 @@ import SwiftUI
 struct RegionDetailView: View {
     var loadingState: LoadState
     var selectedRegion: RegionSummary
-    var selectedWarning: AvalancheWarningSimple
-    @Binding var warnings: [AvalancheWarningSimple]
-        
-    var textColor: Color {
-        return selectedWarning.DangerLevel == .level2 ? .black : .white;
-    }
+    var selectedWarning: AvalancheWarningDetailed?
+    @Binding var warnings: [AvalancheWarningDetailed]
+    @State private var showWarningText = false
+    @State private var showProblemDetails = false
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack {
-                    DangerGradient(dangerLevel: selectedWarning.DangerLevel)
-                    VStack(alignment: .leading) {
-                        HStack {
-                            DangerIcon(dangerLevel: selectedWarning.DangerLevel)
-                                .frame(width: 36, height: 36)
+        TabView {
+            if let selectedWarning = selectedWarning {
+                WarningSummary(selectedWarning: selectedWarning)
+                    .padding(.horizontal)
+                    .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
+                    .navigationTitle(selectedRegion.Name)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
                             Spacer()
-                            Text("\(selectedWarning.DangerLevel.description)")
-                                .font(.system(size: 36))
-                                .fontWeight(.heavy)
-                                .foregroundColor(textColor)
+                            Button {
+                                showWarningText = true
+                            } label: {
+                                Label("Details", systemImage: "plus.magnifyingglass")
+                            }
                         }
-                        Text(selectedWarning.ValidFrom.formatted(
-                            Date.FormatStyle()
-                                .day(.defaultDigits)
-                                .weekday(.wide)
-                                .month(.abbreviated))
-                            .firstUppercased
-                        )
-                        .fontWeight(.bold)
-                        .foregroundColor(textColor)
-                        Text(selectedWarning.MainText)
-                            .font(.system(size: 15))
-                            .foregroundColor(textColor)
                     }
-                    .padding()
-                }.cornerRadius(14)
+                    .sheet(isPresented: $showWarningText, content: {
+                        MainWarningTextView(selectedWarning: selectedWarning)
+                    })
                 
-                let filteredWarnings = warnings.filter { $0.id > 0 }
-                if (filteredWarnings.count > 0) {
-                    Divider()
-                }
-
-                if (loadingState == .loading) {
-                    VStack {
-                        ProgressView();
-                        Text("Loading Details")
-                    }.padding()
-                } else {
-                    ForEach(filteredWarnings) { warning in
-                        HStack(alignment: .center) {
-                            Text(formatWarningDay(date: warning.ValidFrom))
-                            Spacer()
-                            DangerIcon(dangerLevel: warning.DangerLevel)
-                                .frame(width: 34, height: 34)
-                                .padding(.trailing, 8)
-                            Text(warning.DangerLevel.description)
-                                .font(.system(size: 26))
-                                .fontWeight(.heavy)
-                        }
-                        Divider()
+                if let problems = selectedWarning.AvalancheProblems {
+                    ForEach(problems) { problem in
+                        AvalancheProblemView(problem: problem)
+                            .containerBackground(problem.DangerLevelEnum.color.gradient, for: .tabView)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .bottomBar) {
+                                    Spacer()
+                                    Button {
+                                        showProblemDetails = true
+                                    } label: {
+                                        Label("Details", systemImage: "plus.magnifyingglass")
+                                    }
+                                }
+                            }
+                            .sheet(isPresented: $showProblemDetails, content: {
+                                AvalancheProblemDetailsView(problem: problem)
+                            })
+                        
                     }
+                    .navigationTitle("Avalanche problem")
                 }
-                DataSourceView()
+            } else {
+                VStack {
+                    ProgressView();
+                    Text("Loading Details")
+                }.padding()
             }
-            .scenePadding()
+            
+            ScrollView {
+                VStack {
+                    let filteredWarnings = warnings.filter { $0.id > 0 }
+                    if (loadingState == .loading) {
+                        VStack {
+                            ProgressView();
+                            Text("Loading Details")
+                        }.padding()
+                    } else {
+                        ForEach(filteredWarnings) { warning in
+                            HStack(alignment: .center) {
+                                Text(formatWarningDay(date: warning.ValidFrom))
+                                Spacer()
+                                DangerIcon(dangerLevel: warning.DangerLevel)
+                                    .frame(width: 34, height: 34)
+                                    .padding(.trailing, 8)
+                                Text(warning.DangerLevel.description)
+                                    .font(.system(size: 26))
+                                    .fontWeight(.heavy)
+                            }
+                            Divider()
+                        }
+                    }
+                    DataSourceView()
+                }
+                .scenePadding()
+            }
+            .navigationTitle("Forecast")
         }
-        .navigationTitle(selectedRegion.Name)
-        .navigationBarTitleDisplayMode(.inline)
+        .tabViewStyle(.verticalPage)
+        .navigationBarTitleDisplayMode(.automatic)
     }
     
     func formatWarningDay(date: Date) -> String {        
@@ -85,10 +101,9 @@ struct RegionDetailView: View {
     }
 }
 
-struct RegionDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: testWarningLevel2, warnings: .constant([AvalancheWarningSimple]()))
-        }
+#Preview("Region Detail") {
+    let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
+    return NavigationView {
+        RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: warningDetailed[0], warnings: .constant(warningDetailed))
     }
 }

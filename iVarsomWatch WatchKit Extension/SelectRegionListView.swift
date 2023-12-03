@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var vm: ViewModelType
 
     var body: some View {
@@ -16,7 +16,7 @@ struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                             }
                             
                             vm.addFavorite(id: option.id)
-                            self.presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }
                     }
             }
@@ -24,8 +24,6 @@ struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     }
 }
 
-struct SelectRegionListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectRegionListView<RegionListViewModel>()
-    }
+#Preview("Select Region List View") {
+    return SelectRegionListView<RegionListViewModel>()
 }

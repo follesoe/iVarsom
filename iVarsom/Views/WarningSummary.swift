@@ -1,8 +1,7 @@
 import SwiftUI
-import DynamicColor
 
 struct WarningSummary: View {
-    var warning: AvalancheWarningSimple
+    var warning: any AvalancheWarningProtocol
     var mainTextFont: Font = .body
     var mainTextLineLimit: Int = .max
     var includeLocationIcon: Bool = false
@@ -13,54 +12,51 @@ struct WarningSummary: View {
     
     var body: some View {        
         let warningDate = warning.ValidFrom.formatted(date: .complete, time: .omitted)
-        
-        ZStack {
-            DangerGradient(dangerLevel: warning.DangerLevel)
-            HStack {
-                WarningSymbolLevel(dangerLevel: warning.DangerLevel)
-                    .frame(width: 90)
-                    .padding(.top, 8)
-                    .padding(.bottom, 8)
-                VStack(alignment: .leading) {
-                    Spacer()
-                    Text(includeLocationIcon ?
-                         "\(Image(systemName: "location.fill")) \(warningDate)" :
-                            "\(warningDate)")
-                        .textCase(.uppercase)
-                        .font(.caption2)
-                        .foregroundColor(textColor)
-                        .padding(.top, 6)
-                    #if os(iOS)
-                        .textSelection(.enabled)
-                    #endif
-                    Text("\(warning.RegionName)")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(textColor)
-                        .lineLimit(nil)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 2)
-                    #if os(iOS)
-                        .textSelection(.enabled)
-                    #endif
-                    Text(warning.MainText)
-                        .font(mainTextFont)
-                        .foregroundColor(textColor)
-                        .padding(.bottom, 6)
-                        .padding(.trailing, 4)
-                    #if os(iOS)
-                        .textSelection(.enabled)
-                    #endif
-                        .lineLimit(mainTextLineLimit)
-                    Spacer()
-                }
-                .padding(.top, 12)
-                .padding(.bottom, 12)
+        HStack {
+            WarningSymbolLevel(dangerLevel: warning.DangerLevel)
+                .frame(width: 90)
+                .padding(.top, 8)
+                .padding(.bottom, 8)
+            VStack(alignment: .leading) {
                 Spacer()
-                DangerScale(dangerLevel: warning.DangerLevel)
-                    .frame(width: 12)
+                Text(includeLocationIcon ?
+                     "\(Image(systemName: "location.fill")) \(warningDate)" :
+                        "\(warningDate)")
+                    .textCase(.uppercase)
+                    .font(.caption2)
+                    .foregroundColor(textColor)
+                    .padding(.top, 6)
+                #if os(iOS)
+                    .textSelection(.enabled)
+                #endif
+                Text("\(warning.RegionName)")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(textColor)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 2)
+                #if os(iOS)
+                    .textSelection(.enabled)
+                #endif
+                Text(warning.MainText)
+                    .font(mainTextFont)
+                    .foregroundColor(textColor)
+                    .padding(.bottom, 6)
+                    .padding(.trailing, 4)
+                #if os(iOS)
+                    .textSelection(.enabled)
+                #endif
+                    .lineLimit(mainTextLineLimit)
+                Spacer()
             }
+            .padding(.top, 12)
+            .padding(.bottom, 12)
+            Spacer()
+            DangerScale(dangerLevel: warning.DangerLevel)
+                .frame(width: 12)
         }
+        .background(DangerGradient(dangerLevel: warning.DangerLevel))
     }
 }
 

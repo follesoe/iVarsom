@@ -72,3 +72,15 @@
 
 /* Check Avalanche Warning */
 "Check Avalanche Warning" = "Sjekk skredvarsel";
+
+/* Published date/time format */
+"Published: %@" = "Publisert: %@";  
+
+/* Avalanche problem */
+"Avalanche problem" = "Skredproblem";
+
+/* Avalanche problems */
+"Avalanche problems" = "Skredproblemer";
+
+/* Link text */
+"Read complete warning on Varsom.no." = "Se komplett varsel på Varsom.no.";

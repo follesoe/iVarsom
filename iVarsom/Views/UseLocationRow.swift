@@ -21,14 +21,6 @@ struct UseLocationRow: View {
     }
 }
 
-struct UseLocationRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            UseLocationRow() {}
-            .previewLayout(.sizeThatFits)
-            UseLocationRow() {}
-            .preferredColorScheme(.dark)
-            .previewLayout(.sizeThatFits)
-        }
-    }
+#Preview("Use Location Row") {
+    return UseLocationRow() {}
 }

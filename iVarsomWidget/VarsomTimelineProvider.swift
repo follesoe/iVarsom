@@ -2,7 +2,12 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
+
+struct MissingLocationAuthorizationError: Error, LocalizedError {
+    public var errorDescription: String? {
+        return "Missing location authorization"
+    }
+}
 
 struct Provider: IntentTimelineProvider {
     func recommendations() -> [IntentRecommendation<SelectRegionIntent>] {
@@ -19,7 +24,7 @@ struct Provider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> WarningEntry {
         return WarningEntry(
-            date: Date(),
+            date: Date.now(),
             currentWarning: testWarningLevel0,
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegionIntent(),
@@ -34,16 +39,16 @@ struct Provider: IntentTimelineProvider {
             RegionId: 0,
             RegionName: "Error",
             RegionTypeName: "A",
-            ValidFrom: Date(),
-            ValidTo: Date(),
-            NextWarningTime: Date(),
-            PublishTime: Date(),
+            ValidFrom: Date.now(),
+            ValidTo: Date.now(),
+            NextWarningTime: Date.now(),
+            PublishTime: Date.now(),
             DangerLevel: .unknown,
             MainText: "There was an error updating the widget",
             LangKey: 2)
         
         return WarningEntry(
-            date: Date(),
+            date: Date.now(),
             currentWarning: errorWarning,
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegionIntent(),
@@ -57,15 +62,15 @@ struct Provider: IntentTimelineProvider {
         let regionId = Int(truncating: configuration.region?.regionId ??
                         NSNumber(value: RegionOption.defaultOption.id))
         
-        let from = Date()
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+        let from = Date.now()
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         
         Task {
             do {
                 let warnings = try await getWarnings(regionId: regionId, from: from, to: to)                
                 if (warnings.count > 0) {
                     let entry = WarningEntry(
-                        date: Date(),
+                        date: Date.now(),
                         currentWarning: warnings[0],
                         warnings: warnings,
                         configuration: configuration,
@@ -86,18 +91,18 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (Timeline<WarningEntry>) -> ()) {
         
         let regionId = Int(truncating: configuration.region?.regionId ??
-                        NSNumber(value: RegionOption.defaultOption.id))
+                           NSNumber(value: RegionOption.defaultOption.id))
                 
         Task {
             do {
-                let from = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
-                let to = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+                let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.now())!
+                let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
                 let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
                 let timeline = createTimeline(warnings: warnings, configuration: configuration)
                 completion(timeline)
             } catch {
                 print("Unexpected error: \(error).")
-                let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
+                let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date.now())!
                 let errorTimeline = Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
                 completion(errorTimeline)
             }
@@ -119,7 +124,7 @@ struct Provider: IntentTimelineProvider {
                     from: from,
                     to: to)
             } else {
-                throw "Missing location authorization"
+                throw MissingLocationAuthorizationError();
             }
         } else {
             warnings = try await apiClient.loadWarnings(
@@ -135,7 +140,7 @@ struct Provider: IntentTimelineProvider {
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegionIntent) -> Timeline<Entry> {
         var entries: [WarningEntry] = []
     
-        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date(), toGranularity: .day) }!
+        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day) }!
         
         let currentWarning = warnings[currentIndex]
         let prevWarning = currentIndex > 0 ? warnings[currentIndex - 1] : currentWarning
