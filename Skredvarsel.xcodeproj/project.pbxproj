@@ -49,7 +49,6 @@
 		AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */; };
 		AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CB2795FCA3009AB089 /* AvalancheWarningSimple.swift */; };
 		AA2ABD702944FD06008819DB /* DangerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */; };
-		AA2ABD712944FD06008819DB /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AA2ABD722944FD06008819DB /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AA2ABD732944FD06008819DB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA2ABD742944FD06008819DB /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
@@ -97,7 +96,6 @@
 		AA7D74632946185300AB5155 /* iVarsomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172ED27960939009AB089 /* iVarsomWidget.swift */; };
 		AA7D74652946187600AB5155 /* watchOSPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D74642946187600AB5155 /* watchOSPreviews.swift */; };
 		AA7D7467294618F200AB5155 /* iOSPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D7466294618F200AB5155 /* iOSPreviews.swift */; };
-		AA809486279E221D00A2F192 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AA80948F279E234200A2F192 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA80948E279E234200A2F192 /* Intents.framework */; };
 		AA809492279E234200A2F192 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA809491279E234200A2F192 /* IntentHandler.swift */; };
 		AA8094A8279E234200A2F192 /* SkredvarselIntentExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -120,8 +118,10 @@
 		AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */; };
 		AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
 		AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA89060280D699A00A80394 /* RegionDetailView.swift */; };
-		AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
-		AAAE5108279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
+		AAAE214E2B1CF04900830090 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAAE21532B1CF04900830090 /* Intents.intentdefinition */; };
+		AAAE214F2B1CF04900830090 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAAE21532B1CF04900830090 /* Intents.intentdefinition */; };
+		AAAE21502B1CF04900830090 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAAE21532B1CF04900830090 /* Intents.intentdefinition */; };
+		AAAE21512B1CF04900830090 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AAAE21532B1CF04900830090 /* Intents.intentdefinition */; };
 		AAAE5109279E2E55008B2311 /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */; };
 		AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */; };
@@ -323,7 +323,6 @@
 		AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLevelCell.swift; sourceTree = "<group>"; };
 		AA7D74642946187600AB5155 /* watchOSPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchOSPreviews.swift; sourceTree = "<group>"; };
 		AA7D7466294618F200AB5155 /* iOSPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSPreviews.swift; sourceTree = "<group>"; };
-		AA809485279E221D00A2F192 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		AA809488279E222900A2F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA80948D279E234200A2F192 /* SkredvarselIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SkredvarselIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80948E279E234200A2F192 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -338,6 +337,9 @@
 		AAA89053280C586000A80394 /* SelectRegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionListView.swift; sourceTree = "<group>"; };
 		AAA89055280C60BA00A80394 /* RegionWatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionWatchRow.swift; sourceTree = "<group>"; };
 		AAA89060280D699A00A80394 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
+		AAAE21522B1CF04900830090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		AAAE21552B1CF04D00830090 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Intents.strings; sourceTree = "<group>"; };
+		AAAE21572B1CF04E00830090 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Intents.strings; sourceTree = "<group>"; };
 		AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
@@ -580,7 +582,7 @@
 				AA6386072797514E00FD52DA /* Localizable.strings */,
 				AA6386042797511E00FD52DA /* InfoPlist.strings */,
 				AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */,
-				AA809485279E221D00A2F192 /* Intents.intentdefinition */,
+				AAAE21532B1CF04900830090 /* Intents.intentdefinition */,
 			);
 			path = iVarsom;
 			sourceTree = "<group>";
@@ -950,7 +952,7 @@
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
 				AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA2ABD702944FD06008819DB /* DangerLevel.swift in Sources */,
-				AA2ABD712944FD06008819DB /* Intents.intentdefinition in Sources */,
+				AAAE21502B1CF04900830090 /* Intents.intentdefinition in Sources */,
 				AA2ABD722944FD06008819DB /* RegionOption.swift in Sources */,
 				AA2ABD732944FD06008819DB /* StringExtensions.swift in Sources */,
 				AA2ABD742944FD06008819DB /* DangerScale.swift in Sources */,
@@ -1019,7 +1021,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAAE5108279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
+				AAAE214F2B1CF04900830090 /* Intents.intentdefinition in Sources */,
 				AAAE5109279E2E55008B2311 /* RegionOption.swift in Sources */,
 				AA809492279E234200A2F192 /* IntentHandler.swift in Sources */,
 			);
@@ -1036,7 +1038,7 @@
 				AAD172CD2795FCA3009AB089 /* DataLoader.swift in Sources */,
 				AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AA839D0E279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
-				AA809486279E221D00A2F192 /* Intents.intentdefinition in Sources */,
+				AAAE214E2B1CF04900830090 /* Intents.intentdefinition in Sources */,
 				AA2410BD27BAE5390028FA6D /* RegionListViewModel.swift in Sources */,
 				AAD172E1279605B4009AB089 /* WarningSummary.swift in Sources */,
 				AA73188729586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
@@ -1096,7 +1098,7 @@
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,
 				AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA839D0C279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
-				AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
+				AAAE21512B1CF04900830090 /* Intents.intentdefinition in Sources */,
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
 				AA7D7467294618F200AB5155 /* iOSPreviews.swift in Sources */,
 				AA5168862820695700F86D87 /* StringExtensions.swift in Sources */,
@@ -1163,6 +1165,16 @@
 				AA6386082797518E00FD52DA /* nb */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AAAE21532B1CF04900830090 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAAE21522B1CF04900830090 /* Base */,
+				AAAE21552B1CF04D00830090 /* en */,
+				AAAE21572B1CF04E00830090 /* nb */,
+			);
+			name = Intents.intentdefinition;
 			sourceTree = "<group>";
 		};
 		AAD613882822D88B00ABA680 /* InfoPlist.strings */ = {
