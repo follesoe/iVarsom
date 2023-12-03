@@ -2,7 +2,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 import CoreLocation
-import DynamicColor
 
 struct WarningEntry: TimelineEntry {
     let date: Date
@@ -40,32 +39,33 @@ struct SmallWarningWidgetView: View {
     }
 
     var body: some View {
-        ZStack {
-            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
-            VStack(alignment: .leading) {
-                HStack {
-                    DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
-                        .frame(width: 54, height: 54)
-                    Spacer()
-                    Text("\(entry.currentWarning.DangerLevel.description)")
-                        .font(.system(size: 54))
-                        .fontWeight(.heavy)
-                        .foregroundColor(textColor)
-
-                }
+        VStack(alignment: .leading) {
+            HStack {
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+                    .frame(width: 54, height: 54)
                 Spacer()
-                LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
-                    .textCase(.uppercase)
-                    .font(.caption2)
+                Text("\(entry.currentWarning.DangerLevel.description)")
+                    .font(.system(size: 54))
+                    .fontWeight(.heavy)
                     .foregroundColor(textColor)
-                Text(entry.currentWarning.RegionName)
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .foregroundColor(textColor)
-                    .lineLimit(2)
-                    .fixedSize(horizontal: false, vertical: true)
 
-            }.padding()
+            }
+            Spacer()
+            LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
+                .textCase(.uppercase)
+                .font(.caption2)
+                .foregroundColor(textColor)
+            Text(entry.currentWarning.RegionName)
+                .font(.system(size: 18))
+                .fontWeight(.bold)
+                .foregroundColor(textColor)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+
+        }
+        .padding()
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
         .widgetURL(getWidgetURL(entry: entry))
     }
@@ -80,6 +80,9 @@ struct MediumWarningWidgetView: View {
             mainTextFont: .system(size: 13),
             mainTextLineLimit: 4,
             includeLocationIcon: entry.configuration.region?.regionId == 1)
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
+        }
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -97,7 +100,7 @@ struct LargeWarningWidgetView: View {
             Spacer()
             HStack {
                 ForEach(entry.warnings) { warning in
-                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
+                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.now(), toGranularity: .day)
                     DayCell(
                         dangerLevel: warning.DangerLevel,
                         date: warning.ValidFrom,
@@ -105,6 +108,9 @@ struct LargeWarningWidgetView: View {
                 }
             }
             Spacer()
+        }
+        .containerBackground(for: .widget) {
+            DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
         .widgetURL(getWidgetURL(entry: entry))
     }
@@ -133,31 +139,43 @@ struct CircleWidgetView: View {
                        useTintable: widgetRenderingMode != .fullColor)
             .padding(2)
         } minimumValueLabel: {
-            Text("1").foregroundColor(Color("DangerLevel1"))
+            Text("1").foregroundColor(DangerLevel.level1.color)
         } maximumValueLabel: {
-            Text("5").foregroundColor(Color("DangerLevel4"))
+            Text("5").foregroundColor(DangerLevel.level4.color)
         }
         #if os(watchOS)
         .widgetLabel {
             Text(entry.currentWarning.RegionName)
         }
         .gaugeStyle(CircularGaugeStyle(tint: Gradient(colors: [
-            Color("DangerLevel1"),
-            Color("DangerLevel2"),
-            Color("DangerLevel3"),
-            Color("DangerLevel4"),
-            Color("DangerLevel4")])))
+            DangerLevel.level1.color,
+            DangerLevel.level2.color,
+            DangerLevel.level3.color,
+            DangerLevel.level4.color,
+            DangerLevel.level4.color])))
         #else
         .gaugeStyle(.accessoryCircular)
         #endif
         .widgetURL(getWidgetURL(entry: entry))
+        .containerBackground(for: .widget) {}
     }
 }
 
 struct RectangleWidgetView: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    @Environment(\.widgetContentMargins) var widgetContentMargins
+    
     var entry: Provider.Entry
     var body: some View {
+        let filteredWarnings = entry.warnings.filter {
+            let daysBetween = Calendar.current.numberOfDaysBetween(Date.now(), and: $0.ValidFrom)
+            return daysBetween >= -1 && daysBetween <= 2;
+        }
+        
+        let todayWarning = filteredWarnings.first(where: {
+            Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day)
+        })
+
         VStack(alignment: .leading, spacing: 0) {
             if (entry.hasError){
                 Text("Error")
@@ -170,13 +188,8 @@ struct RectangleWidgetView: View {
                     .fontWeight(.bold)
                     .widgetAccentable()
                 HStack(spacing: 0) {
-                    let filteredWarnings = entry.warnings.filter {
-                        let daysBetween = Calendar.current.numberOfDaysBetween(Date(), and: $0.ValidFrom)
-                        return daysBetween >= -1 && daysBetween <= 2;
-                    }
-                    
                     ForEach(filteredWarnings) { warning in
-                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date(), toGranularity: .day)
+                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.now(), toGranularity: .day)
                         VStack(spacing: 0) {
                             Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
                                 .font(.system(size: 9))
@@ -195,6 +208,14 @@ struct RectangleWidgetView: View {
                 }
             }
         }
+        .containerBackground(for: .widget) {
+            if let level = todayWarning?.DangerLevel {
+                DangerGradient(dangerLevel: level)
+            } else {
+                DangerGradient(dangerLevel: DangerLevel.unknown)
+            }
+        }
+        .padding(widgetContentMargins)
         .widgetURL(getWidgetURL(entry: entry))
     }
 }
@@ -211,6 +232,7 @@ struct CornerWidgetView: View {
             Text(entry.currentWarning.RegionName)
                 .widgetAccentable()
         }
+        .containerBackground(for: .widget) {}
     }
 }
 
@@ -256,6 +278,7 @@ struct iVarsomWidget: Widget {
         }
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
+        .contentMarginsDisabled()
         #if os(watchOS)
         .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
         #else

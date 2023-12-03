@@ -17,15 +17,7 @@ struct RegionRow: View {
     }
 }
 
-struct RegionRow_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            RegionRow(region: testVarsomData.regions[0])
-                .previewLayout(.fixed(width: 380, height: 48))
-            
-            RegionRow(region: testVarsomData.regions[10])
-                .preferredColorScheme(.dark)
-                .previewLayout(.fixed(width: 380, height: 48))
-        }
-    }
+#Preview("Region Row") {
+    RegionRow(region: testARegions[0])
+        .previewLayout(.fixed(width: 380, height: 48))
 }

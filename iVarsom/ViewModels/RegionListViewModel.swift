@@ -17,8 +17,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
     @Published var favoriteRegions = [RegionSummary]()
     @Published var searchTerm = ""
     @Published var selectedRegion: RegionSummary? = nil
-    @Published var warnings = [AvalancheWarningSimple]()
-    @Published var selectedWarning: AvalancheWarningSimple? = nil
+    @Published var warnings = [AvalancheWarningDetailed]()
+    @Published var selectedWarning: AvalancheWarningDetailed? = nil
     
     private let client: VarsomApiClient
     private let locationManager: LocationManager
@@ -133,13 +133,17 @@ class RegionListViewModel: RegionListViewModelProtocol {
         do {
             if let selectedRegion {
                 self.warningLoadState = .loading
-                let from = Calendar.current.date(byAdding: .day, value: from, to: Date())!
-                let to = Calendar.current.date(byAdding: .day, value: to, to: Date())!
-                self.warnings = try await client.loadWarnings(
+                self.selectedWarning = nil
+                self.warnings = [AvalancheWarningDetailed]()
+                let from = Calendar.current.date(byAdding: .day, value: from, to: Date.now())!
+                let to = Calendar.current.date(byAdding: .day, value: to, to: Date.now())!
+                self.warnings = try await client.loadWarningsDetailed(
                     lang: VarsomApiClient.currentLang(),
                     regionId: selectedRegion.Id,
                     from: from,
-                    to: to)
+                    to: to)                
+                let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day) }!
+                self.selectedWarning = self.warnings[currentIndex]
                 self.warningLoadState = .loaded
             } else {
                 print("Warning: Can't load warnings as no region is selected")

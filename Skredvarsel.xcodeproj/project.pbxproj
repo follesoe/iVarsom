@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA059A6C2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6D2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6E2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
+		AA059A6F2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
 		AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CB2795FCA3009AB089 /* AvalancheWarningSimple.swift */; };
 		AA102DFE279D97A800B6492D /* WarningSymbolLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */; };
 		AA102DFF279D97A800B6492D /* WarningSymbolLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */; };
@@ -18,6 +22,9 @@
 		AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
 		AA102E07279DAF0200B6492D /* RegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102E06279DAF0200B6492D /* RegionSummary.swift */; };
 		AA102E08279DAF0200B6492D /* RegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA102E06279DAF0200B6492D /* RegionSummary.swift */; };
+		AA119DB52B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
+		AA119DB72B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
+		AA119DB82B1A3626004F2E88 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */; };
 		AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */; };
 		AA18421327B1A9530097174D /* JsonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421227B1A9530097174D /* JsonExtensions.swift */; };
 		AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421227B1A9530097174D /* JsonExtensions.swift */; };
@@ -31,9 +38,7 @@
 		AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AA1C67BF279D8A1B0039F8E0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
 		AA1C67C0279D8A1B0039F8E0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
-		AA1C7052279C21C600FE3317 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA1C7051279C21C600FE3317 /* DynamicColor */; };
 		AA2410BD27BAE5390028FA6D /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2410BC27BAE5390028FA6D /* RegionListViewModel.swift */; };
-		AA2ABD622944FCB7008819DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA613A512944FC3D00D69D5D /* DynamicColor */; };
 		AA2ABD672944FD06008819DB /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
 		AA2ABD682944FD06008819DB /* DangerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0D279D81EB00DF7ACF /* DangerIcon.swift */; };
 		AA2ABD692944FD06008819DB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
@@ -57,7 +62,6 @@
 		AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */; };
 		AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172E0279605B4009AB089 /* WarningSummary.swift */; };
 		AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172EA27960939009AB089 /* SwiftUI.framework */; };
-		AA2ABD802944FD06008819DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AA2ABD642944FD06008819DB /* DynamicColor */; };
 		AA2ABD812944FD06008819DB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172E827960939009AB089 /* WidgetKit.framework */; };
 		AA2ABD832944FD06008819DB /* DangerLevelAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */; };
 		AA2ABD842944FD06008819DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
@@ -67,8 +71,6 @@
 		AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DC028085B4700B78BDB /* Assets.xcassets */; };
 		AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */; };
 		AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCD28085B4700B78BDB /* RegionListView.swift */; };
-		AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DCF28085B4700B78BDB /* NotificationController.swift */; };
-		AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA345DD128085B4700B78BDB /* NotificationView.swift */; };
 		AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD528085B4800B78BDB /* Assets.xcassets */; };
 		AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA345DD828085B4800B78BDB /* Preview Assets.xcassets */; };
 		AA345DDE28085B4800B78BDB /* Skredvarsel.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AA345DBE28085B4600B78BDB /* Skredvarsel.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -76,7 +78,6 @@
 		AA461CFF27B0082000425270 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA461CFD27B0082000425270 /* LocationManager.swift */; };
 		AA5168852820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168862820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
-		AA5168872820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168882820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
@@ -122,6 +123,10 @@
 		AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AAAE5108279E2DC7008B2311 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = AA809485279E221D00A2F192 /* Intents.intentdefinition */; };
 		AAAE5109279E2E55008B2311 /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
+		AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */; };
+		AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */; };
+		AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */; };
+		AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */; };
 		AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */; };
 		AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B32795F8F9009AB089 /* Assets.xcassets */; };
 		AAD172B72795F8F9009AB089 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */; };
@@ -143,12 +148,43 @@
 		AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138A282AEF8500ABA680 /* DataSourceView.swift */; };
 		AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
-		AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AADD6BA0279C832A007737B6 /* DynamicColor */; };
 		AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
+		AAEC4F0E2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F0F2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F102AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F112AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F122AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */; };
+		AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F152AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F172AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F182AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */; };
+		AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1B2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */; };
+		AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */; };
+		AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
+		AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
+		AAEC4F232AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F242AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */; };
+		AAEC4F292AF7D34B00FA1373 /* WarningSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */; };
+		AAEC4F2B2AF7DD7600FA1373 /* DetailedWarning.json in Resources */ = {isa = PBXBuildFile; fileRef = AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */; };
+		AAEC4F2C2AF7DD7600FA1373 /* DetailedWarning.json in Resources */ = {isa = PBXBuildFile; fileRef = AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */; };
+		AAEC4F2D2AF7DD7600FA1373 /* DetailedWarning.json in Resources */ = {isa = PBXBuildFile; fileRef = AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */; };
+		AAEC4F2E2AF7DD7600FA1373 /* DetailedWarning.json in Resources */ = {isa = PBXBuildFile; fileRef = AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */; };
+		AAEC4F302AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */; };
+		AAEC4F312AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */; };
+		AAEC4F322AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */; };
+		AAEC4F332AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */; };
 		AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CA2795FCA3009AB089 /* RegionOption.swift */; };
 		AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172C92795FCA3009AB089 /* DataLoader.swift */; };
@@ -162,12 +198,15 @@
 		AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
 		AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421627B1A9A30097174D /* FormatterExtensions.swift */; };
 		AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D06279D7E9700DF7ACF /* DangerGradient.swift */; };
-		AAF054D2280C5270000BCADD /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = AAF054D1280C5270000BCADD /* DynamicColor */; };
 		AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AAF74A7727CC09CD00B02166 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
 		AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */; };
 		AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AAF74A7A27D3C45000B02166 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
+		AAFA2CB02B0A857200CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB22B0A857E00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
+		AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,8 +285,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA059A6B2AF82D4F00E91768 /* Expositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expositions.swift; sourceTree = "<group>"; };
 		AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSymbolLevel.swift; sourceTree = "<group>"; };
 		AA102E06279DAF0200B6492D /* RegionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSummary.swift; sourceTree = "<group>"; };
+		AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
 		AA18420927B1A3860097174D /* SkredvarselTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkredvarselTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarsomApiClientTests.swift; sourceTree = "<group>"; };
 		AA18421227B1A9530097174D /* JsonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonExtensions.swift; sourceTree = "<group>"; };
@@ -262,8 +303,6 @@
 		AA345DC028085B4700B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkredvarselApp.swift; sourceTree = "<group>"; };
 		AA345DCD28085B4700B78BDB /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
-		AA345DCF28085B4700B78BDB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		AA345DD128085B4700B78BDB /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		AA345DD528085B4800B78BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA345DD828085B4800B78BDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA345DDA28085B4800B78BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -299,6 +338,10 @@
 		AAA89053280C586000A80394 /* SelectRegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionListView.swift; sourceTree = "<group>"; };
 		AAA89055280C60BA00A80394 /* RegionWatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionWatchRow.swift; sourceTree = "<group>"; };
 		AAA89060280D699A00A80394 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
+		AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
+		AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
+		AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
+		AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemDetailsView.swift; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -326,6 +369,14 @@
 		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
 		AAD6138C282AF46F00ABA680 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		AAE572DE295B294800DAB74E /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
+		AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningDetailed.swift; sourceTree = "<group>"; };
+		AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblem.swift; sourceTree = "<group>"; };
+		AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheAdvice.swift; sourceTree = "<group>"; };
+		AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningProtocol.swift; sourceTree = "<group>"; };
+		AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSummary.swift; sourceTree = "<group>"; };
+		AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DetailedWarning.json; sourceTree = "<group>"; };
+		AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeight.swift; sourceTree = "<group>"; };
+		AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeightArrow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,7 +392,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */,
-				AA2ABD802944FD06008819DB /* DynamicColor in Frameworks */,
 				AA2ABD812944FD06008819DB /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,8 +400,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2ABD622944FCB7008819DB /* DynamicColor in Frameworks */,
-				AAF054D2280C5270000BCADD /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +415,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1C7052279C21C600FE3317 /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD172EB27960939009AB089 /* SwiftUI.framework in Frameworks */,
-				AADD6BA1279C832A007737B6 /* DynamicColor in Frameworks */,
 				AAD172E927960939009AB089 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,8 +486,10 @@
 				AAA89055280C60BA00A80394 /* RegionWatchRow.swift */,
 				AAA89060280D699A00A80394 /* RegionDetailView.swift */,
 				AAA89053280C586000A80394 /* SelectRegionListView.swift */,
-				AA345DCF28085B4700B78BDB /* NotificationController.swift */,
-				AA345DD128085B4700B78BDB /* NotificationView.swift */,
+				AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */,
+				AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */,
+				AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */,
+				AAEC4F282AF7D34B00FA1373 /* WarningSummary.swift */,
 				AA345DD528085B4800B78BDB /* Assets.xcassets */,
 				AA345DDA28085B4800B78BDB /* Info.plist */,
 				AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */,
@@ -519,7 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				AA809488279E222900A2F192 /* Info.plist */,
-				AAD172DF2795FEE6009AB089 /* Resources */,
 				AA7358D027BD932F009E3DA1 /* Abstractions */,
 				AA1C67BD279D8A0E0039F8E0 /* Utils */,
 				AA461CFC27B007FC00425270 /* Services */,
@@ -541,7 +588,9 @@
 		AAD172B52795F8F9009AB089 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				AAD172DD2795FEDF009AB089 /* RegionSummary.json */,
 				AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */,
+				AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -560,6 +609,11 @@
 				AA1C67BA279D860B0039F8E0 /* DangerScale.swift */,
 				AA7358D527C16169009E3DA1 /* WarningLevelCell.swift */,
 				AA71614D27CBBF9600E0CFD0 /* DayCell.swift */,
+				AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */,
+				AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */,
+				AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */,
+				AA059A6B2AF82D4F00E91768 /* Expositions.swift */,
+				AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,16 +627,12 @@
 				AA102E06279DAF0200B6492D /* RegionSummary.swift */,
 				AA63860A2797592700FD52DA /* VarsomData.swift */,
 				AA839D0A279D7FCE00DF7ACF /* DangerLevel.swift */,
+				AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */,
+				AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */,
+				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
+				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		AAD172DF2795FEE6009AB089 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AAD172DD2795FEDF009AB089 /* RegionSummary.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		AAD172E727960939009AB089 /* Frameworks */ = {
@@ -646,7 +696,6 @@
 			);
 			name = SkredvarselWatchWidgetExtension;
 			packageProductDependencies = (
-				AA2ABD642944FD06008819DB /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */;
@@ -668,7 +717,6 @@
 			);
 			name = SkredvarselWatch;
 			packageProductDependencies = (
-				AA613A512944FC3D00D69D5D /* DynamicColor */,
 			);
 			productName = iVarsomWatch;
 			productReference = AA345DBE28085B4600B78BDB /* Skredvarsel.app */;
@@ -710,7 +758,6 @@
 			);
 			name = Skredvarsel;
 			packageProductDependencies = (
-				AA1C7051279C21C600FE3317 /* DynamicColor */,
 			);
 			productName = iVarsom;
 			productReference = AAD172AC2795F8F8009AB089 /* Skredvarsel.app */;
@@ -730,7 +777,6 @@
 			);
 			name = SkredvarselWidgetExtension;
 			packageProductDependencies = (
-				AADD6BA0279C832A007737B6 /* DynamicColor */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */;
@@ -744,7 +790,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AA18420827B1A3860097174D = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -775,7 +821,6 @@
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
-				AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = AAD172AD2795F8F8009AB089 /* Products */;
 			projectDirPath = "";
@@ -803,6 +848,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEC4F2D2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AA2ABD832944FD06008819DB /* DangerLevelAssets.xcassets in Resources */,
 				AA2ABD842944FD06008819DB /* Localizable.strings in Resources */,
 				AA2ABD852944FD06008819DB /* RegionSummary.json in Resources */,
@@ -820,6 +866,7 @@
 				AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */,
 				AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */,
 				AAA89050280C53BC00A80394 /* DangerLevelAssets.xcassets in Resources */,
+				AAEC4F2C2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,6 +887,7 @@
 				AA6386052797514E00FD52DA /* Localizable.strings in Resources */,
 				AA839D14279D830400DF7ACF /* DangerLevelAssets.xcassets in Resources */,
 				AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */,
+				AAEC4F2B2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAD172DE2795FEDF009AB089 /* RegionSummary.json in Resources */,
 				AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */,
 			);
@@ -849,6 +897,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEC4F2E2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AA839D15279D830400DF7ACF /* DangerLevelAssets.xcassets in Resources */,
 				AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */,
 				AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */,
@@ -864,9 +913,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
-				AA5168872820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAEC4F102AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
+				AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
+				AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
+				AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */,
+				AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */,
+				AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */,
 				AA18421527B1A9530097174D /* JsonExtensions.swift in Sources */,
+				AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
@@ -878,21 +933,28 @@
 			files = (
 				AA2ABD672944FD06008819DB /* WarningLevelCell.swift in Sources */,
 				AA2ABD682944FD06008819DB /* DangerIcon.swift in Sources */,
+				AAEC4F112AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AA2ABD692944FD06008819DB /* LocationManager.swift in Sources */,
 				AA2ABD6A2944FD06008819DB /* DayCell.swift in Sources */,
 				AA2ABD6B2944FD06008819DB /* WarningSymbolLevel.swift in Sources */,
 				AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA2ABD6C2944FD06008819DB /* JsonExtensions.swift in Sources */,
 				AA73188A29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
+				AAEC4F1D2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E2295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AA119DB72B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AA2ABD6D2944FD06008819DB /* DataLoader.swift in Sources */,
+				AA059A6E2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AA2ABD6E2944FD06008819DB /* iVarsomWidget.intentdefinition in Sources */,
 				AA2ABD6F2944FD06008819DB /* AvalancheWarningSimple.swift in Sources */,
+				AAEC4F262AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA2ABD702944FD06008819DB /* DangerLevel.swift in Sources */,
 				AA2ABD712944FD06008819DB /* Intents.intentdefinition in Sources */,
 				AA2ABD722944FD06008819DB /* RegionOption.swift in Sources */,
 				AA2ABD732944FD06008819DB /* StringExtensions.swift in Sources */,
 				AA2ABD742944FD06008819DB /* DangerScale.swift in Sources */,
+				AAEC4F172AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA2ABD752944FD06008819DB /* DateExtensions.swift in Sources */,
 				AA2ABD762944FD06008819DB /* RegionSummary.swift in Sources */,
 				AA2ABD772944FD06008819DB /* FormatterExtensions.swift in Sources */,
@@ -903,6 +965,7 @@
 				AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */,
 				AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */,
 				AA7D74632946185300AB5155 /* iVarsomWidget.swift in Sources */,
+				AAEC4F322AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,35 +973,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */,
 				AAF054C7280C502B000BCADD /* RegionSummary.swift in Sources */,
-				AA345DD028085B4700B78BDB /* NotificationController.swift in Sources */,
 				AA345DCE28085B4700B78BDB /* RegionListView.swift in Sources */,
 				AAF054D3280C529A000BCADD /* DangerScale.swift in Sources */,
 				AAF054C6280C502B000BCADD /* DataLoader.swift in Sources */,
+				AAEC4F152AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AAA8905A280C6D1200A80394 /* RegionListViewModel.swift in Sources */,
+				AAEC4F0F2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AAF054CA280C502B000BCADD /* DangerLevel.swift in Sources */,
 				AAF054CC280C504B000BCADD /* VarsomApiClient.swift in Sources */,
 				AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */,
 				AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AAF054CD280C5185000BCADD /* JsonExtensions.swift in Sources */,
+				AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */,
+				AAFA2CB22B0A857E00CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AA5168882820695700F86D87 /* StringExtensions.swift in Sources */,
 				AAA89057280C627E00A80394 /* WarningSymbolLevel.swift in Sources */,
 				AAA89056280C60BA00A80394 /* RegionWatchRow.swift in Sources */,
 				AAA89051280C540500A80394 /* DangerIcon.swift in Sources */,
 				AAF054CF280C518C000BCADD /* FormatterExtensions.swift in Sources */,
 				AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */,
+				AAEC4F292AF7D34B00FA1373 /* WarningSummary.swift in Sources */,
 				AA345DCC28085B4700B78BDB /* SkredvarselApp.swift in Sources */,
+				AAEC4F242AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAA89054280C586000A80394 /* SelectRegionListView.swift in Sources */,
 				AAF054C8280C502B000BCADD /* AvalancheWarningSimple.swift in Sources */,
 				AAF054CB280C504B000BCADD /* LocationManager.swift in Sources */,
 				AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */,
+				AA059A6D2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */,
 				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
 				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
+				AAEC4F1B2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAF054C9280C502B000BCADD /* VarsomData.swift in Sources */,
+				AAEC4F312AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
+				AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */,
 				AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
-				AA345DD228085B4700B78BDB /* NotificationView.swift in Sources */,
 				AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,6 +1031,8 @@
 			files = (
 				AA18421327B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA102DFE279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
+				AAEC4F232AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
+				AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */,
 				AAD172CD2795FCA3009AB089 /* DataLoader.swift in Sources */,
 				AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */,
 				AA839D0E279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
@@ -970,18 +1044,24 @@
 				AAD172D72795FCC2009AB089 /* RegionRow.swift in Sources */,
 				AAD172CF2795FCA3009AB089 /* AvalancheWarningSimple.swift in Sources */,
 				AA102E07279DAF0200B6492D /* RegionSummary.swift in Sources */,
+				AAEC4F0E2AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */,
 				AAD172D02795FCA3009AB089 /* VarsomApiClient.swift in Sources */,
 				AAD172D82795FCC2009AB089 /* RegionList.swift in Sources */,
 				AA839D0B279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
+				AA119DB52B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AAD172D62795FCC2009AB089 /* RegionDetail.swift in Sources */,
 				AA461CFE27B0082000425270 /* LocationManager.swift in Sources */,
 				AA1C67BF279D8A1B0039F8E0 /* DateExtensions.swift in Sources */,
 				AA1C67BB279D860B0039F8E0 /* DangerScale.swift in Sources */,
+				AAEC4F302AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				AA7358D627C16169009E3DA1 /* WarningLevelCell.swift in Sources */,
 				AA63860B2797592700FD52DA /* VarsomData.swift in Sources */,
+				AA059A6C2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AA7358D427BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift in Sources */,
+				AAEC4F142AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA5168852820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAFA2CB02B0A857200CF40DE /* ExposedHeightArrow.swift in Sources */,
 				AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */,
 				AA7358CF27BD8DCF009E3DA1 /* UseLocationRow.swift in Sources */,
@@ -989,6 +1069,7 @@
 				AA7358D227BD93C8009E3DA1 /* RegionListViewModelProtocol.swift in Sources */,
 				AAD172CE2795FCA3009AB089 /* RegionOption.swift in Sources */,
 				AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */,
+				AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,21 +1079,28 @@
 			files = (
 				AAF74A7827CC09D500B02166 /* WarningLevelCell.swift in Sources */,
 				AA839D0F279D81EB00DF7ACF /* DangerIcon.swift in Sources */,
+				AAEC4F122AF7B46800FA1373 /* AvalancheWarningDetailed.swift in Sources */,
 				AA461CFF27B0082000425270 /* LocationManager.swift in Sources */,
 				AAF74A7727CC09CD00B02166 /* DayCell.swift in Sources */,
 				AA102DFF279D97A800B6492D /* WarningSymbolLevel.swift in Sources */,
 				AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */,
 				AA18421427B1A9530097174D /* JsonExtensions.swift in Sources */,
 				AA73188B29586F9500CC0C2A /* CalendarExtensions.swift in Sources */,
+				AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */,
+				AAEC4F1E2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AAE572E3295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AA119DB82B1A3626004F2E88 /* MainWarningTextView.swift in Sources */,
 				AA102E04279DA2CC00B6492D /* DataLoader.swift in Sources */,
+				AA059A6F2AF82D4F00E91768 /* Expositions.swift in Sources */,
 				AAD172F32796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AA102DFC279D96F100B6492D /* AvalancheWarningSimple.swift in Sources */,
+				AAEC4F272AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AA839D0C279D7FCE00DF7ACF /* DangerLevel.swift in Sources */,
 				AAAE5107279E2DC7008B2311 /* Intents.intentdefinition in Sources */,
 				AA102E03279DA2C900B6492D /* RegionOption.swift in Sources */,
 				AA7D7467294618F200AB5155 /* iOSPreviews.swift in Sources */,
 				AA5168862820695700F86D87 /* StringExtensions.swift in Sources */,
+				AAEC4F182AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */,
 				AA1C67C0279D8A1B0039F8E0 /* DateExtensions.swift in Sources */,
 				AA102E08279DAF0200B6492D /* RegionSummary.swift in Sources */,
@@ -1023,6 +1111,7 @@
 				AA102E02279DA2C200B6492D /* VarsomApiClient.swift in Sources */,
 				AA102E00279DA27800B6492D /* WarningSummary.swift in Sources */,
 				AA91226529461402007D5093 /* iVarsomWidget.swift in Sources */,
+				AAEC4F332AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,7 +1185,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1115,7 +1204,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1147,7 +1236,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1179,7 +1268,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1210,7 +1299,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp;
 				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
@@ -1218,7 +1307,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1242,7 +1331,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp;
 				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
@@ -1250,7 +1339,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -1265,13 +1354,13 @@
 				INFOPLIST_FILE = iVarsomIntentExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomIntentExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomIntentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1293,13 +1382,13 @@
 				INFOPLIST_FILE = iVarsomIntentExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomIntentExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomIntentExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1348,6 +1437,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1362,14 +1452,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1411,6 +1501,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1419,14 +1510,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -1439,7 +1530,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1454,12 +1545,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1480,7 +1571,7 @@
 				CODE_SIGN_ENTITLEMENTS = iVarsom/iVarsom.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content iVarsom/Resources/RegionSummary.json";
+				DEVELOPMENT_ASSET_PATHS = "iVarsom/Preview\\ Content";
 				DEVELOPMENT_TEAM = 8R63YD87KZ;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1495,12 +1586,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1528,13 +1619,13 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1561,13 +1652,13 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1645,53 +1736,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		AA2ABD652944FD06008819DB /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		AA1C7051279C21C600FE3317 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AA2ABD642944FD06008819DB /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA2ABD652944FD06008819DB /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AA613A512944FC3D00D69D5D /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AADD6BA0279C832A007737B6 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		AAF054D1280C5270000BCADD /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA1C7050279C21C600FE3317 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAD172A42795F8F8009AB089 /* Project object */;
 }

@@ -1,0 +1,1769 @@
+[
+  {
+    "CountyList": [
+      {
+        "Id": "15",
+        "Name": "Møre og Romsdal"
+      },
+      {
+        "Id": "34",
+        "Name": "Innlandet"
+      },
+      {
+        "Id": "50",
+        "Name": "Trøndelag"
+      }
+    ],
+    "MunicipalityList": [
+      {
+        "Id": "1506",
+        "Name": "Molde"
+      },
+      {
+        "Id": "1557",
+        "Name": "Gjemnes"
+      },
+      {
+        "Id": "1560",
+        "Name": "Tingvoll"
+      },
+      {
+        "Id": "1563",
+        "Name": "Sunndal"
+      },
+      {
+        "Id": "1566",
+        "Name": "Surnadal"
+      },
+      {
+        "Id": "1576",
+        "Name": "Aure"
+      },
+      {
+        "Id": "3427",
+        "Name": "Tynset"
+      },
+      {
+        "Id": "3429",
+        "Name": "Folldal"
+      },
+      {
+        "Id": "3431",
+        "Name": "Dovre"
+      },
+      {
+        "Id": "3432",
+        "Name": "Lesja"
+      },
+      {
+        "Id": "5021",
+        "Name": "Oppdal"
+      },
+      {
+        "Id": "5022",
+        "Name": "Rennebu"
+      },
+      {
+        "Id": "5027",
+        "Name": "Midtre Gauldal"
+      },
+      {
+        "Id": "5028",
+        "Name": "Melhus"
+      },
+      {
+        "Id": "5055",
+        "Name": "Heim"
+      },
+      {
+        "Id": "5059",
+        "Name": "Orkland"
+      },
+      {
+        "Id": "5061",
+        "Name": "Rindal"
+      }
+    ],
+    "PreviousWarningRegId": 332047,
+    "DangerLevelName": "2 Moderate",
+    "UtmZone": 33,
+    "UtmEast": 210810,
+    "UtmNorth": 6991060,
+    "Author": "Snøskredvarslingen 227",
+    "AvalancheDanger": "I lavlandet og særlig der sola får tak i bratte fjellsider kan det være lett å løse ut små våte løssnøskred. \n\nI høyfjellet kan vinden føre til at det dannes ferske fokksnøflak i leområder, særlig mot sør og øst. \n\nVær obs på at det enkelte steder fortsatt kan være mulig å løse ut skred i et kantkornlag over et skarelag nede i snødekket. Det er usikkert hvor utbredt problemet er og om det er helt nøytralisert av mildværet. Det er antakeligvis størst sjanse for å støte på dette problemet rundt Oppdal og Dovre.\n\nVær obs på at skavler vil svekkes i varmen og lett kan knekke. ",
+    "EmergencyWarning": "Not given",
+    "SnowSurface": "Det ligger mye snø i fjellet etter en uke med mye nedbør. Snøoverflaten har vært fuktig opp til minst 1000 moh pga mildvær og tåke siden søndag. I høyfjellet består overflaten av fokksnø av varierende hardhet. ",
+    "CurrentWeaklayers": "Observasjoner fra Oppdal mandag tyder på at kantkorn under skarelag opp til ca 1100 moh nede i snødekket er i ferd med å avrundes og avtar som skredproblem.\n\nKantkornlag nederst i snødekket finnes kun høyt til fjells i indre strøk. Dette laget er i ferd med å miste de ugunstige egenskapene. ",
+    "LatestAvalancheActivity": null,
+    "LatestObservations": "I indre deler av regionen har det i perioder de siste dagene vært lettere skydekke. Der det er lite skyer og utstråling på natta kan det dannes kantkorn nær overflaten. ",
+    "ExposedHeightFill": 1,
+    "ExposedHeight1": 0,
+    "MountainWeather": {
+      "LastSavedTime": "2023-02-28T15:32:29.927",
+      "CloudCoverId": 30,
+      "CloudCoverName": "Cloudy",
+      "Comment": null,
+      "MeasurementTypes": [
+        {
+          "Id": 10,
+          "Name": "Rainfall",
+          "SortOrder": 10,
+          "MeasurementSubTypes": [
+            {
+              "Id": 60,
+              "Name": "Most exposed area",
+              "SortOrder": 20,
+              "Value": "8"
+            },
+            {
+              "Id": 70,
+              "Name": "Average",
+              "SortOrder": 10,
+              "Value": "4"
+            }
+          ]
+        },
+        {
+          "Id": 20,
+          "Name": "Wind",
+          "SortOrder": 20,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Strong breeze"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            }
+          ]
+        },
+        {
+          "Id": 30,
+          "Name": "Wind shift to",
+          "SortOrder": 30,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Fresh breeze"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "18"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "24"
+            }
+          ]
+        },
+        {
+          "Id": 40,
+          "Name": "Temperature",
+          "SortOrder": 40,
+          "MeasurementSubTypes": [
+            {
+              "Id": 30,
+              "Name": "Min",
+              "SortOrder": 30,
+              "Value": "-7"
+            },
+            {
+              "Id": 40,
+              "Name": "Max",
+              "SortOrder": 40,
+              "Value": "-1"
+            },
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1400"
+            }
+          ]
+        },
+        {
+          "Id": 50,
+          "Name": "Freezing Level",
+          "SortOrder": 50,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "700"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "12"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "18"
+            }
+          ]
+        },
+        {
+          "Id": 55,
+          "Name": "Rain/Snow Line Altitude",
+          "SortOrder": 55,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1000"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "12"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "18"
+            }
+          ]
+        }
+      ],
+      "MeasurementTexts": [
+        {
+          "SortOrder": 10,
+          "Text": "4-8 mm precipitation."
+        },
+        {
+          "SortOrder": 20,
+          "Text": "Rain up to 1000 m a.s.l during the afternoon."
+        },
+        {
+          "SortOrder": 30,
+          "Text": "Strong breeze from northwest, changing to fresh breeze from the northwest during the evening."
+        },
+        {
+          "SortOrder": 40,
+          "Text": "-7 °C to -1 °C at 1400 m a.s.l."
+        }
+      ]
+    },
+    "AvalancheProblems": [
+      {
+        "AvalancheProblemId": 1,
+        "AvalancheExtId": 20,
+        "AvalancheExtName": "Dry slab avalanche",
+        "AvalCauseId": 10,
+        "AvalCauseName": "Buried weak layer of new snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 21,
+        "AvalTriggerSimpleName": "Easy to trigger",
+        "AvalTriggerSensitivityId": 30,
+        "AvalTriggerSensitivityName": "Easy to trigger\r\n",
+        "DestructiveSizeExtId": 2,
+        "DestructiveSizeExtName": "2 - Medium",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 10,
+        "AvalancheTypeName": "Slab avalanche",
+        "AvalancheProblemTypeId": 10,
+        "AvalancheProblemTypeName": "Wind drifted snow (slab avalanches)",
+        "ValidExpositions": "00111000",
+        "ExposedHeight1": 1000,
+        "ExposedHeight2": 1000,
+        "ExposedHeightFill": 1,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "You can easily trigger avalanches on a few steep slopes.  Avalanches can get large enough to bury or even kill you (size 2).",
+        "DangerLevel": 2,
+        "DangerLevelName": "2 Moderate"
+      },
+      {
+        "AvalancheProblemId": 2,
+        "AvalancheExtId": 15,
+        "AvalancheExtName": "Loose wet avalanche",
+        "AvalCauseId": 24,
+        "AvalCauseName": "Loose snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 1,
+        "DestructiveSizeExtName": "1 - Small",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 20,
+        "AvalancheTypeName": "Loose snow avalanche",
+        "AvalancheProblemTypeId": 5,
+        "AvalancheProblemTypeName": "Wet snow (loose snow avalanches)",
+        "ValidExpositions": "11111111",
+        "ExposedHeight1": 800,
+        "ExposedHeight2": 800,
+        "ExposedHeightFill": 2,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on a few steep slopes.  Avalanches are relatively harmless to people, but can knock you off balance. Can be dangerous close to terrain traps. (size 1)",
+        "DangerLevel": 1,
+        "DangerLevelName": "1 Low"
+      }
+    ],
+    "AvalancheAdvices": [
+      {
+        "AdviceID": 0,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/11.jpg",
+        "Text": "Wet surface: Move gradually away from the fall line when skiing on large slopes to avoid to be caught by small sluffs you or someone else in your group release while skiing. "
+      },
+      {
+        "AdviceID": 1,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/3.jpg",
+        "Text": "Dry surface: Aviod terrain steeper than 30 degrees with fresh wind slabs. "
+      },
+      {
+        "AdviceID": 2,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/10.jpg",
+        "Text": "Avoid terrain traps. "
+      }
+    ],
+    "ExtremWeatherId": null,
+    "ExtremWeatherName": null,
+    "RegId": 332137,
+    "RegionId": 3022,
+    "RegionName": "Trollheimen",
+    "RegionTypeId": 10,
+    "RegionTypeName": "A",
+    "DangerLevel": "2",
+    "ValidFrom": "2023-03-01T00:00:00",
+    "ValidTo": "2023-03-01T23:59:59",
+    "NextWarningTime": "2023-03-02T16:00:00",
+    "PublishTime": "2023-02-28T15:32:29.677",
+    "DangerIncreaseTime": null,
+    "DangerDecreaseTime": "2023-03-01T12:00:00",
+    "MainText": "Be careful in sun-exposed steep slopes and in high north facing areas with dry wind slabs. Avoid cornices. ",
+    "LangKey": 2
+  },
+  {
+    "CountyList": [
+      {
+        "Id": "15",
+        "Name": "Møre og Romsdal"
+      },
+      {
+        "Id": "34",
+        "Name": "Innlandet"
+      },
+      {
+        "Id": "50",
+        "Name": "Trøndelag"
+      }
+    ],
+    "MunicipalityList": [
+      {
+        "Id": "1506",
+        "Name": "Molde"
+      },
+      {
+        "Id": "1557",
+        "Name": "Gjemnes"
+      },
+      {
+        "Id": "1560",
+        "Name": "Tingvoll"
+      },
+      {
+        "Id": "1563",
+        "Name": "Sunndal"
+      },
+      {
+        "Id": "1566",
+        "Name": "Surnadal"
+      },
+      {
+        "Id": "1576",
+        "Name": "Aure"
+      },
+      {
+        "Id": "3427",
+        "Name": "Tynset"
+      },
+      {
+        "Id": "3429",
+        "Name": "Folldal"
+      },
+      {
+        "Id": "3431",
+        "Name": "Dovre"
+      },
+      {
+        "Id": "3432",
+        "Name": "Lesja"
+      },
+      {
+        "Id": "5021",
+        "Name": "Oppdal"
+      },
+      {
+        "Id": "5022",
+        "Name": "Rennebu"
+      },
+      {
+        "Id": "5027",
+        "Name": "Midtre Gauldal"
+      },
+      {
+        "Id": "5028",
+        "Name": "Melhus"
+      },
+      {
+        "Id": "5055",
+        "Name": "Heim"
+      },
+      {
+        "Id": "5059",
+        "Name": "Orkland"
+      },
+      {
+        "Id": "5061",
+        "Name": "Rindal"
+      }
+    ],
+    "PreviousWarningRegId": 332423,
+    "DangerLevelName": "2 Moderate",
+    "UtmZone": 33,
+    "UtmEast": 210810,
+    "UtmNorth": 6991060,
+    "Author": "Snøskredvarslingen 40",
+    "AvalancheDanger": "Oppdatert varsel 02.03. kl 09:\nKraftig vind i fjellet gir ustabile fokksnøflak. Det kan være lett å løse ut middels store skred der flakene er ferske.\n \nI høyfjellet kan vinden føre til at det dannes ferske fokksnøflak i leområder, særlig mot sør og øst. \n\nI lavlandet og særlig der sola får tak i bratte fjellsider kan det være lett å løse ut små våte løssnøskred. \n\nVær obs på at det enkelte steder fortsatt kan være mulig å løse ut skred i et kantkornlag over et skarelag nede i snødekket. Det er usikkert hvor utbredt problemet er og om det er helt nøytralisert av mildværet. Det er antakeligvis størst sjanse for å støte på dette problemet rundt Oppdal og Dovre.\n\nVær obs på at skavler vil svekkes i varmen og lett kan knekke. ",
+    "EmergencyWarning": "Not given",
+    "SnowSurface": "Det ligger mye snø i fjellet etter en uke med mye nedbør. Snøoverflaten har vært fuktig opp til minst 1000 moh pga mildvær og tåke siden søndag. I høyfjellet består overflaten av fokksnø av varierende hardhet. ",
+    "CurrentWeaklayers": "Observasjoner fra Oppdal mandag tyder på at kantkorn under skarelag opp til ca 1100 moh nede i snødekket er i ferd med å avrundes og avtar som skredproblem.\n\nKantkornlag nederst i snødekket finnes kun høyt til fjells i indre strøk. Dette laget er i ferd med å miste de ugunstige egenskapene. ",
+    "LatestAvalancheActivity": null,
+    "LatestObservations": "I indre deler av regionen har det i perioder de siste dagene vært lettere skydekke. Der det er lite skyer og utstråling på natta kan det dannes kantkorn nær overflaten. ",
+    "ExposedHeightFill": 1,
+    "ExposedHeight1": 0,
+    "MountainWeather": {
+      "LastSavedTime": "2023-03-02T09:11:15.52",
+      "CloudCoverId": 20,
+      "CloudCoverName": "Partly cloudy",
+      "Comment": null,
+      "MeasurementTypes": [
+        {
+          "Id": 10,
+          "Name": "Rainfall",
+          "SortOrder": 10,
+          "MeasurementSubTypes": [
+            {
+              "Id": 60,
+              "Name": "Most exposed area",
+              "SortOrder": 20,
+              "Value": "6"
+            },
+            {
+              "Id": 70,
+              "Name": "Average",
+              "SortOrder": 10,
+              "Value": "3"
+            }
+          ]
+        },
+        {
+          "Id": 20,
+          "Name": "Wind",
+          "SortOrder": 20,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Fresh breeze"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "W"
+            }
+          ]
+        },
+        {
+          "Id": 30,
+          "Name": "Wind shift to",
+          "SortOrder": 30,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Moderate gale"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "06"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "12"
+            }
+          ]
+        },
+        {
+          "Id": 40,
+          "Name": "Temperature",
+          "SortOrder": 40,
+          "MeasurementSubTypes": [
+            {
+              "Id": 30,
+              "Name": "Min",
+              "SortOrder": 30,
+              "Value": "-8"
+            },
+            {
+              "Id": 40,
+              "Name": "Max",
+              "SortOrder": 40,
+              "Value": "-4"
+            },
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1400"
+            }
+          ]
+        },
+        {
+          "Id": 50,
+          "Name": "Freezing Level",
+          "SortOrder": 50,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "700"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "12"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "06"
+            }
+          ]
+        },
+        {
+          "Id": 55,
+          "Name": "Rain/Snow Line Altitude",
+          "SortOrder": 55,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "500"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "12"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "18"
+            }
+          ]
+        }
+      ],
+      "MeasurementTexts": [
+        {
+          "SortOrder": 10,
+          "Text": "3-6 mm precipitation."
+        },
+        {
+          "SortOrder": 20,
+          "Text": "Rain up to 500 m a.s.l during the afternoon."
+        },
+        {
+          "SortOrder": 30,
+          "Text": "Fresh breeze from west, changing to moderate gale from the northwest during renoon."
+        },
+        {
+          "SortOrder": 40,
+          "Text": "-8 °C to -4 °C at 1400 m a.s.l."
+        }
+      ]
+    },
+    "AvalancheProblems": [
+      {
+        "AvalancheProblemId": 1,
+        "AvalancheExtId": 20,
+        "AvalancheExtName": "Dry slab avalanche",
+        "AvalCauseId": 10,
+        "AvalCauseName": "Buried weak layer of new snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 21,
+        "AvalTriggerSimpleName": "Easy to trigger",
+        "AvalTriggerSensitivityId": 30,
+        "AvalTriggerSensitivityName": "Easy to trigger\r\n",
+        "DestructiveSizeExtId": 2,
+        "DestructiveSizeExtName": "2 - Medium",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 10,
+        "AvalancheTypeName": "Slab avalanche",
+        "AvalancheProblemTypeId": 10,
+        "AvalancheProblemTypeName": "Wind drifted snow (slab avalanches)",
+        "ValidExpositions": "01111000",
+        "ExposedHeight1": 1000,
+        "ExposedHeight2": 1000,
+        "ExposedHeightFill": 1,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "You can easily trigger avalanches on a few steep slopes.  Avalanches can get large enough to bury or even kill you (size 2).",
+        "DangerLevel": 2,
+        "DangerLevelName": "2 Moderate"
+      },
+      {
+        "AvalancheProblemId": 2,
+        "AvalancheExtId": 15,
+        "AvalancheExtName": "Loose wet avalanche",
+        "AvalCauseId": 24,
+        "AvalCauseName": "Loose snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 21,
+        "AvalTriggerSimpleName": "Easy to trigger",
+        "AvalTriggerSensitivityId": 30,
+        "AvalTriggerSensitivityName": "Easy to trigger\r\n",
+        "DestructiveSizeExtId": 1,
+        "DestructiveSizeExtName": "1 - Small",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 20,
+        "AvalancheTypeName": "Loose snow avalanche",
+        "AvalancheProblemTypeId": 5,
+        "AvalancheProblemTypeName": "Wet snow (loose snow avalanches)",
+        "ValidExpositions": "00011110",
+        "ExposedHeight1": 1000,
+        "ExposedHeight2": 1000,
+        "ExposedHeightFill": 2,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "You can easily trigger avalanches on a few steep slopes.  Avalanches are relatively harmless to people, but can knock you off balance. Can be dangerous close to terrain traps. (size 1)",
+        "DangerLevel": 1,
+        "DangerLevelName": "1 Low"
+      }
+    ],
+    "AvalancheAdvices": [
+      {
+        "AdviceID": 0,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/11.jpg",
+        "Text": "Wet surface: Move gradually away from the fall line when skiing on large slopes to avoid to be caught by small sluffs you or someone else in your group release while skiing. "
+      },
+      {
+        "AdviceID": 1,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/3.jpg",
+        "Text": "Dry surface: Aviod terrain steeper than 30 degrees with fresh wind slabs. "
+      },
+      {
+        "AdviceID": 2,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/10.jpg",
+        "Text": "Avoid terrain traps. "
+      }
+    ],
+    "ExtremWeatherId": null,
+    "ExtremWeatherName": null,
+    "RegId": 332657,
+    "RegionId": 3022,
+    "RegionName": "Trollheimen",
+    "RegionTypeId": 10,
+    "RegionTypeName": "A",
+    "DangerLevel": "2",
+    "ValidFrom": "2023-03-02T00:00:00",
+    "ValidTo": "2023-03-02T23:59:59",
+    "NextWarningTime": "2023-03-03T16:00:00",
+    "PublishTime": "2023-03-02T09:11:14.2",
+    "DangerIncreaseTime": null,
+    "DangerDecreaseTime": null,
+    "MainText": "Be careful in sun-exposed steep slopes and in high north facing areas with dry wind slabs. Avoid cornices. ",
+    "LangKey": 2
+  },
+  {
+    "CountyList": [
+      {
+        "Id": "15",
+        "Name": "Møre og Romsdal"
+      },
+      {
+        "Id": "34",
+        "Name": "Innlandet"
+      },
+      {
+        "Id": "50",
+        "Name": "Trøndelag"
+      }
+    ],
+    "MunicipalityList": [
+      {
+        "Id": "1506",
+        "Name": "Molde"
+      },
+      {
+        "Id": "1557",
+        "Name": "Gjemnes"
+      },
+      {
+        "Id": "1560",
+        "Name": "Tingvoll"
+      },
+      {
+        "Id": "1563",
+        "Name": "Sunndal"
+      },
+      {
+        "Id": "1566",
+        "Name": "Surnadal"
+      },
+      {
+        "Id": "1576",
+        "Name": "Aure"
+      },
+      {
+        "Id": "3427",
+        "Name": "Tynset"
+      },
+      {
+        "Id": "3429",
+        "Name": "Folldal"
+      },
+      {
+        "Id": "3431",
+        "Name": "Dovre"
+      },
+      {
+        "Id": "3432",
+        "Name": "Lesja"
+      },
+      {
+        "Id": "5021",
+        "Name": "Oppdal"
+      },
+      {
+        "Id": "5022",
+        "Name": "Rennebu"
+      },
+      {
+        "Id": "5027",
+        "Name": "Midtre Gauldal"
+      },
+      {
+        "Id": "5028",
+        "Name": "Melhus"
+      },
+      {
+        "Id": "5055",
+        "Name": "Heim"
+      },
+      {
+        "Id": "5059",
+        "Name": "Orkland"
+      },
+      {
+        "Id": "5061",
+        "Name": "Rindal"
+      }
+    ],
+    "PreviousWarningRegId": 332451,
+    "DangerLevelName": "3 Considerable",
+    "UtmZone": 33,
+    "UtmEast": 210810,
+    "UtmNorth": 6991060,
+    "Author": "Snøskredvarslingen 40",
+    "AvalancheDanger": "Store skred kan løsne naturlig som følge av store snømengder i kombinasjon med kraftig vind. Det vil raskt bygge seg store fokksnøflak i leheng som kan legge seg over løsere lag av nysnø. Der pålagringen er stor kan skred løsne naturlig. Glatt underlag gjør at skred kan få lange utløp.\n\nDet vil også være lett å løse ut skred i heng med ferske fokksnøflak.\n\nUnder mildværsgrensen vil kraftig regn i snøen gi fare for våte skred i bratt terreng første del av dagen. Spesielt der snøen ligger mot sva og annet glatt underlag.\n\nDet er størst fare for naturlig utløste skred i klassiske skredbaner med leheng mot sør og øst. Det ventes mest snø i de høye fjellene rundt Sunndal og Surnadal.",
+    "EmergencyWarning": "Natural avalanches",
+    "SnowSurface": "Det ligger mye snø i fjellet etter kraftig snøfall forrige helg. Snøoverflaten har vært fuktig opp til minst 1000 moh pga mildvær og tåke siden søndag. I høyfjellet består overflaten av fokksnø av varierende hardhet. ",
+    "CurrentWeaklayers": "Observasjoner fra Oppdal mandag tyder på at kantkorn under skarelag opp til ca 1100 moh nede i snødekket er i ferd med å avrundes og avtar som skredproblem.\n\nKantkornlag nederst i snødekket finnes kun høyt til fjells i indre strøk. Dette laget er i ferd med å miste de ugunstige egenskapene. ",
+    "LatestAvalancheActivity": null,
+    "LatestObservations": "I deler av regionen har det i perioder de siste dagene vært lettere skydekke. Der det er lite skyer og utstråling på natta kan det dannes kantkorn nær overflaten og overflaterim. ",
+    "ExposedHeightFill": 1,
+    "ExposedHeight1": 0,
+    "MountainWeather": {
+      "LastSavedTime": "2023-03-02T15:31:48.813",
+      "CloudCoverId": 30,
+      "CloudCoverName": "Cloudy",
+      "Comment": "Lavere temperatur og synkende nysnøgrense om kvelden. ",
+      "MeasurementTypes": [
+        {
+          "Id": 10,
+          "Name": "Rainfall",
+          "SortOrder": 10,
+          "MeasurementSubTypes": [
+            {
+              "Id": 60,
+              "Name": "Most exposed area",
+              "SortOrder": 20,
+              "Value": "35"
+            },
+            {
+              "Id": 70,
+              "Name": "Average",
+              "SortOrder": 10,
+              "Value": "20"
+            }
+          ]
+        },
+        {
+          "Id": 20,
+          "Name": "Wind",
+          "SortOrder": 20,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Strong gale"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "W"
+            }
+          ]
+        },
+        {
+          "Id": 30,
+          "Name": "Wind shift to",
+          "SortOrder": 30,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Moderate gale"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "06"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "12"
+            }
+          ]
+        },
+        {
+          "Id": 40,
+          "Name": "Temperature",
+          "SortOrder": 40,
+          "MeasurementSubTypes": [
+            {
+              "Id": 30,
+              "Name": "Min",
+              "SortOrder": 30,
+              "Value": "-11"
+            },
+            {
+              "Id": 40,
+              "Name": "Max",
+              "SortOrder": 40,
+              "Value": "-2"
+            },
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1400"
+            }
+          ]
+        },
+        {
+          "Id": 50,
+          "Name": "Freezing Level",
+          "SortOrder": 50,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "700"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "06"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "12"
+            }
+          ]
+        },
+        {
+          "Id": 55,
+          "Name": "Rain/Snow Line Altitude",
+          "SortOrder": 55,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "600"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "06"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "12"
+            }
+          ]
+        }
+      ],
+      "MeasurementTexts": [
+        {
+          "SortOrder": 10,
+          "Text": "20 mm precipitation, up to 35 mm in the most exposed areas."
+        },
+        {
+          "SortOrder": 20,
+          "Text": "Rain up to 600 m a.s.l during renoon."
+        },
+        {
+          "SortOrder": 30,
+          "Text": "Strong gale from west, changing to moderate gale from the northwest during renoon."
+        },
+        {
+          "SortOrder": 40,
+          "Text": "-11 °C to -2 °C at 1400 m a.s.l."
+        }
+      ]
+    },
+    "AvalancheProblems": [
+      {
+        "AvalancheProblemId": 1,
+        "AvalancheExtId": 20,
+        "AvalancheExtName": "Dry slab avalanche",
+        "AvalCauseId": 10,
+        "AvalCauseName": "Buried weak layer of new snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 3,
+        "DestructiveSizeExtName": "3 - Large",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 10,
+        "AvalancheTypeName": "Slab avalanche",
+        "AvalancheProblemTypeId": 10,
+        "AvalancheProblemTypeName": "Wind drifted snow (slab avalanches)",
+        "ValidExpositions": "01111100",
+        "ExposedHeight1": 700,
+        "ExposedHeight2": 700,
+        "ExposedHeightFill": 1,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on a few steep slopes.  Avalanches can get large enough to bury a car or destroy a small house (size 3).",
+        "DangerLevel": 3,
+        "DangerLevelName": "3 Considerable"
+      },
+      {
+        "AvalancheProblemId": 2,
+        "AvalancheExtId": 15,
+        "AvalancheExtName": "Loose wet avalanche",
+        "AvalCauseId": 24,
+        "AvalCauseName": "Loose snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 2,
+        "DestructiveSizeExtName": "2 - Medium",
+        "AvalPropagationId": 1,
+        "AvalPropagationName": "Few steep slopes",
+        "AvalancheTypeId": 20,
+        "AvalancheTypeName": "Loose snow avalanche",
+        "AvalancheProblemTypeId": 5,
+        "AvalancheProblemTypeName": "Wet snow (loose snow avalanches)",
+        "ValidExpositions": "11111111",
+        "ExposedHeight1": 500,
+        "ExposedHeight2": 500,
+        "ExposedHeightFill": 2,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on a few steep slopes.  Avalanches can get large enough to bury or even kill you (size 2).",
+        "DangerLevel": 2,
+        "DangerLevelName": "2 Moderate"
+      }
+    ],
+    "AvalancheAdvices": [
+      {
+        "AdviceID": 0,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/2.jpg",
+        "Text": "Wet surface: Avoid slopes steeper than 30 degrees with wet loose snow and runout zones. "
+      },
+      {
+        "AdviceID": 1,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/1.jpg",
+        "Text": "Dry surface: Aviod terrain steeper than 30 degrees with fresh wind slabs and runout zones. "
+      },
+      {
+        "AdviceID": 2,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/10.jpg",
+        "Text": "Avoid terrain traps. "
+      }
+    ],
+    "ExtremWeatherId": null,
+    "ExtremWeatherName": null,
+    "RegId": 332626,
+    "RegionId": 3022,
+    "RegionName": "Trollheimen",
+    "RegionTypeId": 10,
+    "RegionTypeName": "A",
+    "DangerLevel": "3",
+    "ValidFrom": "2023-03-03T00:00:00",
+    "ValidTo": "2023-03-03T23:59:59",
+    "NextWarningTime": "2023-03-04T16:00:00",
+    "PublishTime": "2023-03-02T15:31:48.56",
+    "DangerIncreaseTime": null,
+    "DangerDecreaseTime": null,
+    "MainText": "Risk of naturally triggered avalanches due to heavy snowfall and strong winds. Avoid avalanche terrain.",
+    "LangKey": 2
+  },
+  {
+    "CountyList": [
+      {
+        "Id": "15",
+        "Name": "Møre og Romsdal"
+      },
+      {
+        "Id": "34",
+        "Name": "Innlandet"
+      },
+      {
+        "Id": "50",
+        "Name": "Trøndelag"
+      }
+    ],
+    "MunicipalityList": [
+      {
+        "Id": "1506",
+        "Name": "Molde"
+      },
+      {
+        "Id": "1557",
+        "Name": "Gjemnes"
+      },
+      {
+        "Id": "1560",
+        "Name": "Tingvoll"
+      },
+      {
+        "Id": "1563",
+        "Name": "Sunndal"
+      },
+      {
+        "Id": "1566",
+        "Name": "Surnadal"
+      },
+      {
+        "Id": "1576",
+        "Name": "Aure"
+      },
+      {
+        "Id": "3427",
+        "Name": "Tynset"
+      },
+      {
+        "Id": "3429",
+        "Name": "Folldal"
+      },
+      {
+        "Id": "3431",
+        "Name": "Dovre"
+      },
+      {
+        "Id": "3432",
+        "Name": "Lesja"
+      },
+      {
+        "Id": "5021",
+        "Name": "Oppdal"
+      },
+      {
+        "Id": "5022",
+        "Name": "Rennebu"
+      },
+      {
+        "Id": "5027",
+        "Name": "Midtre Gauldal"
+      },
+      {
+        "Id": "5028",
+        "Name": "Melhus"
+      },
+      {
+        "Id": "5055",
+        "Name": "Heim"
+      },
+      {
+        "Id": "5059",
+        "Name": "Orkland"
+      },
+      {
+        "Id": "5061",
+        "Name": "Rindal"
+      }
+    ],
+    "PreviousWarningRegId": 332688,
+    "DangerLevelName": "3 Considerable",
+    "UtmZone": 33,
+    "UtmEast": 210810,
+    "UtmNorth": 6991060,
+    "Author": "Snøskredvarslingen 40",
+    "AvalancheDanger": "Store skred kan løsne naturlig som følge av store snømengder i kombinasjon med kraftig vind. \nDet ventes igjen å komme mest nedbør i Sunndalsfjella. I klassiske skredbaner med store henteområder og leheng mot øst og sør vil skred kunne bli svært store. Glatt underlag gjør at skred kan få lange utløp.\n\nI områder som får mindre snø vil faren for naturlig utløste skred være mindre, men det ventes å være lett å løse ut skred der fokksnøflakene er ferske. Skred kan bli store.",
+    "EmergencyWarning": "Natural avalanches",
+    "SnowSurface": "Det ligger mye snø i fjellet etter kraftig snøfall forrige helg. Snøoverflaten er mange steder hard og glatt opp til ca. 1300 moh etter tåke og yr med påfølgende gjenfrysing. I høyfjellet består overflaten av fokksnø av varierende hardhet. ",
+    "CurrentWeaklayers": "Kantkornlag ved bakken finnes kun høyt til fjells i indre strøk. Dette laget er i ferd med å miste de ugunstige egenskapene. ",
+    "LatestAvalancheActivity": null,
+    "LatestObservations": "I deler av regionen har det i perioder vært lettere skydekke eller klarvær. Der det er lite skyer og utstråling på natta kan det dannes overflaterim og kantkorn nær overflaten.",
+    "ExposedHeightFill": 1,
+    "ExposedHeight1": 0,
+    "MountainWeather": {
+      "LastSavedTime": "2023-03-03T15:31:16.4",
+      "CloudCoverId": 30,
+      "CloudCoverName": "Cloudy",
+      "Comment": ".",
+      "MeasurementTypes": [
+        {
+          "Id": 10,
+          "Name": "Rainfall",
+          "SortOrder": 10,
+          "MeasurementSubTypes": [
+            {
+              "Id": 60,
+              "Name": "Most exposed area",
+              "SortOrder": 20,
+              "Value": "40"
+            },
+            {
+              "Id": 70,
+              "Name": "Average",
+              "SortOrder": 10,
+              "Value": "25"
+            }
+          ]
+        },
+        {
+          "Id": 20,
+          "Name": "Wind",
+          "SortOrder": 20,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Moderate gale"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            }
+          ]
+        },
+        {
+          "Id": 30,
+          "Name": "Wind shift to",
+          "SortOrder": 30,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": null
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": null
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": null
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": null
+            }
+          ]
+        },
+        {
+          "Id": 40,
+          "Name": "Temperature",
+          "SortOrder": 40,
+          "MeasurementSubTypes": [
+            {
+              "Id": 30,
+              "Name": "Min",
+              "SortOrder": 30,
+              "Value": "-14"
+            },
+            {
+              "Id": 40,
+              "Name": "Max",
+              "SortOrder": 40,
+              "Value": "-8"
+            },
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1400"
+            }
+          ]
+        },
+        {
+          "Id": 50,
+          "Name": "Freezing Level",
+          "SortOrder": 50,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "600"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "12"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "06"
+            }
+          ]
+        },
+        {
+          "Id": 55,
+          "Name": "Rain/Snow Line Altitude",
+          "SortOrder": 55,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "0"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": null
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": null
+            }
+          ]
+        }
+      ],
+      "MeasurementTexts": [
+        {
+          "SortOrder": 10,
+          "Text": "25 mm precipitation, up to 40 mm in the most exposed areas."
+        },
+        {
+          "SortOrder": 20,
+          "Text": "Precipitation as snow."
+        },
+        {
+          "SortOrder": 30,
+          "Text": "Moderate gale from northwest."
+        },
+        {
+          "SortOrder": 40,
+          "Text": "-14 °C to -8 °C at 1400 m a.s.l."
+        }
+      ]
+    },
+    "AvalancheProblems": [
+      {
+        "AvalancheProblemId": 1,
+        "AvalancheExtId": 20,
+        "AvalancheExtName": "Dry slab avalanche",
+        "AvalCauseId": 10,
+        "AvalCauseName": "Buried weak layer of new snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 3,
+        "DestructiveSizeExtName": "3 - Large",
+        "AvalPropagationId": 2,
+        "AvalPropagationName": "Some steep slopes",
+        "AvalancheTypeId": 10,
+        "AvalancheTypeName": "Slab avalanche",
+        "AvalancheProblemTypeId": 10,
+        "AvalancheProblemTypeName": "Wind drifted snow (slab avalanches)",
+        "ValidExpositions": "01111100",
+        "ExposedHeight1": 700,
+        "ExposedHeight2": 700,
+        "ExposedHeightFill": 1,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on some steep slopes.  Avalanches can get large enough to bury a car or destroy a small house (size 3).",
+        "DangerLevel": 3,
+        "DangerLevelName": "3 Considerable"
+      }
+    ],
+    "AvalancheAdvices": [
+      {
+        "AdviceID": 0,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/1.jpg",
+        "Text": "Aviod terrain steeper than 30 degrees with fresh wind slabs and runout zones. "
+      },
+      {
+        "AdviceID": 1,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/10.jpg",
+        "Text": "Avoid terrain traps. "
+      }
+    ],
+    "ExtremWeatherId": null,
+    "ExtremWeatherName": null,
+    "RegId": 332811,
+    "RegionId": 3022,
+    "RegionName": "Trollheimen",
+    "RegionTypeId": 10,
+    "RegionTypeName": "A",
+    "DangerLevel": "3",
+    "ValidFrom": "2023-03-04T00:00:00",
+    "ValidTo": "2023-03-04T23:59:59",
+    "NextWarningTime": "2023-03-05T16:00:00",
+    "PublishTime": "2023-03-03T15:31:16.05",
+    "DangerIncreaseTime": null,
+    "DangerDecreaseTime": null,
+    "MainText": "Risk of naturally triggered avalanches due to heavy snowfall and strong winds. Avoid avalanche terrain. Avalanches may have long runout zones.",
+    "LangKey": 2
+  },
+  {
+    "CountyList": [
+      {
+        "Id": "15",
+        "Name": "Møre og Romsdal"
+      },
+      {
+        "Id": "34",
+        "Name": "Innlandet"
+      },
+      {
+        "Id": "50",
+        "Name": "Trøndelag"
+      }
+    ],
+    "MunicipalityList": [
+      {
+        "Id": "1506",
+        "Name": "Molde"
+      },
+      {
+        "Id": "1557",
+        "Name": "Gjemnes"
+      },
+      {
+        "Id": "1560",
+        "Name": "Tingvoll"
+      },
+      {
+        "Id": "1563",
+        "Name": "Sunndal"
+      },
+      {
+        "Id": "1566",
+        "Name": "Surnadal"
+      },
+      {
+        "Id": "1576",
+        "Name": "Aure"
+      },
+      {
+        "Id": "3427",
+        "Name": "Tynset"
+      },
+      {
+        "Id": "3429",
+        "Name": "Folldal"
+      },
+      {
+        "Id": "3431",
+        "Name": "Dovre"
+      },
+      {
+        "Id": "3432",
+        "Name": "Lesja"
+      },
+      {
+        "Id": "5021",
+        "Name": "Oppdal"
+      },
+      {
+        "Id": "5022",
+        "Name": "Rennebu"
+      },
+      {
+        "Id": "5027",
+        "Name": "Midtre Gauldal"
+      },
+      {
+        "Id": "5028",
+        "Name": "Melhus"
+      },
+      {
+        "Id": "5055",
+        "Name": "Heim"
+      },
+      {
+        "Id": "5059",
+        "Name": "Orkland"
+      },
+      {
+        "Id": "5061",
+        "Name": "Rindal"
+      }
+    ],
+    "PreviousWarningRegId": 332850,
+    "DangerLevelName": "3 Considerable",
+    "UtmZone": 33,
+    "UtmEast": 210810,
+    "UtmNorth": 6991060,
+    "Author": "Snøskredvarslingen 40",
+    "AvalancheDanger": "Store skred kan løsne naturlig som følge av store snømengder i kombinasjon med kraftig vind første del av dagen. \nDet ventes igjen å komme mest nedbør i Sunndalsfjella. I klassiske skredbaner med store henteområder og leheng mot øst og sør vil skred kunne bli svært store. Glatt underlag gjør at skred kan få lange utløp.\n\nI lune formasjoner der vinden ikke får tak kan det være fare for naturlig utløste løssnøskred. \n\nI områder som får mindre snø vil faren for naturlig utløste skred være mindre, men det ventes å være lett å løse ut skred der fokksnøflakene er ferske. Skred kan bli store.\n",
+    "EmergencyWarning": "Natural avalanches",
+    "SnowSurface": "Det har kommet mye ny snø med kraftig vind siden fredag. Først som regn opp til ca 600 moh, senere synkende snøgrense med snø helt til fjordnivå. Høy snøgrense fredag har gjort at den nye snøen har fått gode bindinger til gammel, glatt snøoverflate opp til ca. 800 moh. Kraftig vind har gitt flakdannelser også i lavere områder.",
+    "CurrentWeaklayers": "Kantkornlag ved bakken finnes kun høyt til fjells i indre strøk. Dette laget er i ferd med å miste de ugunstige egenskapene. ",
+    "LatestAvalancheActivity": null,
+    "LatestObservations": null,
+    "ExposedHeightFill": 1,
+    "ExposedHeight1": 0,
+    "MountainWeather": {
+      "LastSavedTime": "2023-03-04T15:37:12.88",
+      "CloudCoverId": 30,
+      "CloudCoverName": "Cloudy",
+      "Comment": null,
+      "MeasurementTypes": [
+        {
+          "Id": 10,
+          "Name": "Rainfall",
+          "SortOrder": 10,
+          "MeasurementSubTypes": [
+            {
+              "Id": 60,
+              "Name": "Most exposed area",
+              "SortOrder": 20,
+              "Value": "35"
+            },
+            {
+              "Id": 70,
+              "Name": "Average",
+              "SortOrder": 10,
+              "Value": "20"
+            }
+          ]
+        },
+        {
+          "Id": 20,
+          "Name": "Wind",
+          "SortOrder": 20,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Moderate gale"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            }
+          ]
+        },
+        {
+          "Id": 30,
+          "Name": "Wind shift to",
+          "SortOrder": 30,
+          "MeasurementSubTypes": [
+            {
+              "Id": 20,
+              "Name": "Speed",
+              "SortOrder": 20,
+              "Value": "Fresh breeze"
+            },
+            {
+              "Id": 50,
+              "Name": "Direction",
+              "SortOrder": 50,
+              "Value": "NW"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "06"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "12"
+            }
+          ]
+        },
+        {
+          "Id": 40,
+          "Name": "Temperature",
+          "SortOrder": 40,
+          "MeasurementSubTypes": [
+            {
+              "Id": 30,
+              "Name": "Min",
+              "SortOrder": 30,
+              "Value": "-14"
+            },
+            {
+              "Id": 40,
+              "Name": "Max",
+              "SortOrder": 40,
+              "Value": "-8"
+            },
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "1400"
+            }
+          ]
+        },
+        {
+          "Id": 50,
+          "Name": "Freezing Level",
+          "SortOrder": 50,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "600"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": "00"
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": "06"
+            }
+          ]
+        },
+        {
+          "Id": 55,
+          "Name": "Rain/Snow Line Altitude",
+          "SortOrder": 55,
+          "MeasurementSubTypes": [
+            {
+              "Id": 90,
+              "Name": "masl",
+              "SortOrder": 90,
+              "Value": "0"
+            },
+            {
+              "Id": 100,
+              "Name": "Timeperiode start",
+              "SortOrder": 100,
+              "Value": null
+            },
+            {
+              "Id": 110,
+              "Name": "Timeperiode end",
+              "SortOrder": 110,
+              "Value": null
+            }
+          ]
+        }
+      ],
+      "MeasurementTexts": [
+        {
+          "SortOrder": 10,
+          "Text": "20 mm precipitation, up to 35 mm in the most exposed areas."
+        },
+        {
+          "SortOrder": 20,
+          "Text": "Precipitation as snow."
+        },
+        {
+          "SortOrder": 30,
+          "Text": "Moderate gale from northwest, changing to fresh breeze from the northwest during renoon."
+        },
+        {
+          "SortOrder": 40,
+          "Text": "-14 °C to -8 °C at 1400 m a.s.l."
+        }
+      ]
+    },
+    "AvalancheProblems": [
+      {
+        "AvalancheProblemId": 1,
+        "AvalancheExtId": 20,
+        "AvalancheExtName": "Dry slab avalanche",
+        "AvalCauseId": 10,
+        "AvalCauseName": "Buried weak layer of new snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 3,
+        "DestructiveSizeExtName": "3 - Large",
+        "AvalPropagationId": 2,
+        "AvalPropagationName": "Some steep slopes",
+        "AvalancheTypeId": 10,
+        "AvalancheTypeName": "Slab avalanche",
+        "AvalancheProblemTypeId": 10,
+        "AvalancheProblemTypeName": "Wind drifted snow (slab avalanches)",
+        "ValidExpositions": "01111100",
+        "ExposedHeight1": 700,
+        "ExposedHeight2": 700,
+        "ExposedHeightFill": 1,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on some steep slopes.  Avalanches can get large enough to bury a car or destroy a small house (size 3).",
+        "DangerLevel": 3,
+        "DangerLevelName": "3 Considerable"
+      },
+      {
+        "AvalancheProblemId": 2,
+        "AvalancheExtId": 10,
+        "AvalancheExtName": "Loose dry avalanche",
+        "AvalCauseId": 24,
+        "AvalCauseName": "Loose snow",
+        "AvalProbabilityId": 3,
+        "AvalProbabilityName": "Possible",
+        "AvalTriggerSimpleId": 22,
+        "AvalTriggerSimpleName": "Spontaneous release",
+        "AvalTriggerSensitivityId": 45,
+        "AvalTriggerSensitivityName": "Spontaneous",
+        "DestructiveSizeExtId": 2,
+        "DestructiveSizeExtName": "2 - Medium",
+        "AvalPropagationId": 2,
+        "AvalPropagationName": "Some steep slopes",
+        "AvalancheTypeId": 20,
+        "AvalancheTypeName": "Loose snow avalanche",
+        "AvalancheProblemTypeId": 3,
+        "AvalancheProblemTypeName": "New snow (loose snow avalanches)",
+        "ValidExpositions": "01111000",
+        "ExposedHeight1": 1000,
+        "ExposedHeight2": 1000,
+        "ExposedHeightFill": 2,
+        "TriggerSenitivityPropagationDestuctiveSizeText": "Avalanches may release spontaneously on some steep slopes.  Avalanches can get large enough to bury or even kill you (size 2).",
+        "DangerLevel": 3,
+        "DangerLevelName": "3 Considerable"
+      }
+    ],
+    "AvalancheAdvices": [
+      {
+        "AdviceID": 0,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/1.jpg",
+        "Text": "Aviod terrain steeper than 30 degrees with fresh wind slabs and runout zones. "
+      },
+      {
+        "AdviceID": 1,
+        "ImageUrl": "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/Images/AvalancheAdvice/10.jpg",
+        "Text": "Avoid terrain traps. "
+      }
+    ],
+    "ExtremWeatherId": null,
+    "ExtremWeatherName": null,
+    "RegId": 333049,
+    "RegionId": 3022,
+    "RegionName": "Trollheimen",
+    "RegionTypeId": 10,
+    "RegionTypeName": "A",
+    "DangerLevel": "3",
+    "ValidFrom": "2023-03-05T00:00:00",
+    "ValidTo": "2023-03-05T23:59:59",
+    "NextWarningTime": "2023-03-06T16:00:00",
+    "PublishTime": "2023-03-04T15:37:12.623",
+    "DangerIncreaseTime": null,
+    "DangerDecreaseTime": null,
+    "MainText": "Risk of naturally triggered avalanches due to heavy snowfall and strong winds. Avoid avalanche terrain. Avalanches may have long runout zones.",
+    "LangKey": 2
+  }
+]

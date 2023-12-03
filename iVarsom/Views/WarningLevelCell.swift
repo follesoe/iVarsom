@@ -12,9 +12,7 @@ struct WarningLevelCell: View {
                 .shadow(color: .gray, radius: 2)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            DangerGradient(dangerLevel: dangerLevel)
-        )
+        .background(DangerGradient(dangerLevel: dangerLevel))
     }
 }
 

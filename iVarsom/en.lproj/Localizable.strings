@@ -69,3 +69,15 @@
 
 /* Very high */
 "Very high" = "Very high";
+
+/* Published date/time format */
+"Published: %@" = "Published: %@";
+
+/* Avalanche problem */
+"Avalanche problem" = "Avalanche problem";
+
+/* Avalanche problems */
+"Avalanche problems" = "Avalanche problems";
+
+/* Link text */
+"Read complete warning on Varsom.no." = "Read complete warning on Varsom.no.";
