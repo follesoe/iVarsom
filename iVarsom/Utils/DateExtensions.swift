@@ -35,6 +35,8 @@ extension Date {
     }
     
     public static func now() -> Date {
-        return Date(year: 2023, month: 3, day: 3, hour: 16, minute: 0, second: 0)
+        // Uncomment to test with a date with allot of warnings.
+        // return Date(year: 2023, month: 3, day: 3, hour: 16, minute: 0, second: 0)
+        return Date()
     }
 }

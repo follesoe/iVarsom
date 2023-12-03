@@ -8,6 +8,8 @@ struct AvalancheProblemView: View {
             Text(problem.AvalancheProblemTypeName)
                 .padding(.horizontal)
             HStack(alignment: .center) {
+                Expositions(sectors: problem.ValidExpositionsBool)
+                    .padding(.trailing, 10)
                 ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
                     .frame(width: 42, height: 42)
                 ExposedHeightArrow(
@@ -15,8 +17,6 @@ struct AvalancheProblemView: View {
                     exposedHeight2: problem.ExposedHeight2,
                     exposedHeightFill: problem.ExposedHeightFill,
                     fontSize: 16)
-                    .padding(.trailing, 10)
-                Expositions(sectors: problem.ValidExpositionsBool)
             }
             .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .center)
