@@ -81,3 +81,6 @@
 
 /* Link text */
 "Read complete warning on Varsom.no." = "Se komplett varsel på Varsom.no.";
+
+/* Navigation title */
+"Forecast" = "Varsel";
