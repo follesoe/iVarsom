@@ -7,8 +7,8 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     // Load warnings from yesterday
     let fromDays = -1
     
-    // ... and three days ahead
-    let toDays = 3
+    // ... and two days ahead
+    let toDays = 2
 
     var body: some View {
         NavigationSplitView {
