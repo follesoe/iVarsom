@@ -7,7 +7,7 @@ struct WarningEntry: TimelineEntry {
     let date: Date
     let currentWarning: AvalancheWarningSimple
     let warnings: [AvalancheWarningSimple]
-    let configuration: SelectRegionIntent
+    let configuration: SelectRegion
     var relevance: TimelineEntryRelevance?
     let hasError: Bool
     let errorMessage: String?
@@ -23,7 +23,7 @@ func getWidgetURL(entry: Provider.Entry) -> URL? {
 
 struct LocationIconText: View {
     var text: String
-    var config: SelectRegionIntent
+    var config: SelectRegion
     var body: some View {
         Text(config.region?.regionId == 1 ?
             "\(Image(systemName: "location.fill")) \(text)" :
@@ -270,9 +270,9 @@ struct iVarsomWidget: Widget {
     let kind: String = "iVarsomWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(
+        AppIntentConfiguration(
             kind: kind,
-            intent: SelectRegionIntent.self,
+            intent: SelectRegion.self,
             provider: Provider()) { entry in
                 WarningWidgetView(entry: entry)
         }

@@ -9,25 +9,17 @@ struct MissingLocationAuthorizationError: Error, LocalizedError {
     }
 }
 
-struct Provider: IntentTimelineProvider {
-    func recommendations() -> [IntentRecommendation<SelectRegionIntent>] {
-        RegionOption.allOptions.map { region in
-            let regionOption = RegionConfigOption(
-                identifier: "\(region.id)",
-                display: region.name)
-            regionOption.regionId = NSNumber(value: region.id)
-            let intent = SelectRegionIntent()
-            intent.region = regionOption
-            return IntentRecommendation(intent: intent, description: region.name)
-        }
-    }
+struct Provider: AppIntentTimelineProvider {
+    typealias Entry = WarningEntry
+    
+    typealias Intent = SelectRegion
     
     func placeholder(in context: Context) -> WarningEntry {
         return WarningEntry(
             date: Date.now(),
             currentWarning: testWarningLevel0,
             warnings: [AvalancheWarningSimple](),
-            configuration: SelectRegionIntent(),
+            configuration: SelectRegion(),
             relevance: TimelineEntryRelevance(score: 0.0),
             hasError: false,
             errorMessage: nil)
@@ -51,61 +43,64 @@ struct Provider: IntentTimelineProvider {
             date: Date.now(),
             currentWarning: errorWarning,
             warnings: [AvalancheWarningSimple](),
-            configuration: SelectRegionIntent(),
+            configuration: SelectRegion(),
             relevance: TimelineEntryRelevance(score: 0.0),
             hasError: true,
             errorMessage: errorMessage)
     }
     
-    func getSnapshot(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (WarningEntry) -> ()) {
-        
-        let regionId = Int(truncating: configuration.region?.regionId ??
-                        NSNumber(value: RegionOption.defaultOption.id))
+    func snapshot(for configuration: SelectRegion, in context: Context) async -> WarningEntry {
+        let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
         
         let from = Date.now()
         let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         
-        Task {
-            do {
-                let warnings = try await getWarnings(regionId: regionId, from: from, to: to)                
-                if (warnings.count > 0) {
-                    let entry = WarningEntry(
-                        date: Date.now(),
-                        currentWarning: warnings[0],
-                        warnings: warnings,
-                        configuration: configuration,
-                        relevance: TimelineEntryRelevance(score: warnings[0].DangerLevelNumeric),
-                        hasError: false,
-                        errorMessage: nil)
-                    completion(entry)
-                } else {
-                    completion(errorEntry(errorMessage: "No warnings available"))
-                }
-            } catch {
-                print("Unexpected error: \(error).")
-                completion(errorEntry(errorMessage: "\(error)"))
+        do {
+            let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
+            if (warnings.count > 0) {
+                let entry = WarningEntry(
+                    date: Date.now(),
+                    currentWarning: warnings[0],
+                    warnings: warnings,
+                    configuration: configuration,
+                    relevance: TimelineEntryRelevance(score: warnings[0].DangerLevelNumeric),
+                    hasError: false,
+                    errorMessage: nil)
+                return entry
+            } else {
+                return errorEntry(errorMessage: "No warnings available")
             }
+        } catch {
+            print("Unexpected error: \(error).")
+            return errorEntry(errorMessage: "\(error)")
         }
     }
     
-    func getTimeline(for configuration: SelectRegionIntent, in context: Context, completion: @escaping (Timeline<WarningEntry>) -> ()) {
-        
-        let regionId = Int(truncating: configuration.region?.regionId ??
-                           NSNumber(value: RegionOption.defaultOption.id))
-                
-        Task {
-            do {
-                let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.now())!
-                let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
-                let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
-                let timeline = createTimeline(warnings: warnings, configuration: configuration)
-                completion(timeline)
-            } catch {
-                print("Unexpected error: \(error).")
-                let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date.now())!
-                let errorTimeline = Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
-                completion(errorTimeline)
-            }
+    func timeline(for configuration: SelectRegion, in context: Context) async -> Timeline<WarningEntry> {
+        let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
+        do {
+            let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.now())!
+            let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
+            let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
+            let timeline = createTimeline(warnings: warnings, configuration: configuration)
+            return timeline
+        } catch {
+            print("Unexpected error: \(error).")
+            let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date.now())!
+            let errorTimeline = Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
+            return errorTimeline
+        }
+    }
+    
+    func recommendations() -> [AppIntentRecommendation<SelectRegion>] {
+        RegionOption.allOptions.map { region in
+            let regionOption = RegionConfigOptionAppEntity(
+                id: "\(region.id)",
+                displayString: region.name)
+            regionOption.regionId = region.id
+            let intent = SelectRegion()
+            intent.region = regionOption
+            return AppIntentRecommendation(intent: intent, description: region.name)
         }
     }
     
@@ -137,7 +132,7 @@ struct Provider: IntentTimelineProvider {
         return warnings
     }
     
-    func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegionIntent) -> Timeline<Entry> {
+    func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegion) -> Timeline<Entry> {
         var entries: [WarningEntry] = []
     
         let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day) }!

@@ -9,7 +9,6 @@ struct Expositions: View {
         let sectorDeg = 360.0 / Double(nSectors)
         let halfSectorDeg = sectorDeg / 2.0
         let lineWidth = 1.0
-        let doubleLineWidth = lineWidth * 2.0
         let strokeColor = Color("LightStroke")
         
         Canvas { context, size in

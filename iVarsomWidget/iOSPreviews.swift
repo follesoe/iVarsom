@@ -13,7 +13,7 @@ func createEntry(currentWarning: AvalancheWarningSimple,
         date: Date.now(),
         currentWarning: currentWarning,
         warnings: allWarnings,
-        configuration: SelectRegionIntent(),
+        configuration: SelectRegion(),
         relevance: TimelineEntryRelevance(score: 1.0),
         hasError: false,
         errorMessage: nil);
