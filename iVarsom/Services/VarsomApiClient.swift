@@ -26,7 +26,7 @@ class VarsomApiClient {
         case invalidUrlError
     }
     
-    private let baseUrl = "https://api01.nve.no/hydrology/forecast/avalanche/v6.2.1/api"
+    private let baseUrl = "https://api01.nve.no/hydrology/forecast/avalanche/v6.3.0/api"
     private let argumentDateFormatter:DateFormatter
     
     init() {
@@ -109,9 +109,6 @@ class VarsomApiClient {
     
     private func getData<T>(url: URL) async throws -> T where T : Codable {
         print(url.absoluteString)
-        // try await Task.sleep(nanoseconds: 4_000_000_000)
-        // throw VarsomError.requestError
-
         let (data, response) = try await URLSession.shared.data(from: url)
                 
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw VarsomError.requestError }
