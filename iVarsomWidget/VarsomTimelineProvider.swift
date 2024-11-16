@@ -17,7 +17,18 @@ struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> WarningEntry {
         return WarningEntry(
             date: Date.now(),
-            currentWarning: testWarningLevel0,
+            currentWarning: AvalancheWarningSimple(
+                RegId: 1,
+                RegionId: 3020,
+                RegionName: "Sør Trøndelag",
+                RegionTypeName: "B",
+                ValidFrom: Date.now(),
+                ValidTo: Date.now(),
+                NextWarningTime: Date.now(),
+                PublishTime: Date.now(),
+                DangerLevel: .unknown,
+                MainText: "No Rating",
+                LangKey: 2),
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegion(),
             relevance: TimelineEntryRelevance(score: 0.0),
@@ -106,18 +117,22 @@ struct Provider: AppIntentTimelineProvider {
     
     func getWarnings(regionId: Int, from: Date, to: Date) async throws -> [AvalancheWarningSimple] {
         let locationManager = LocationManager()
-        let apiClient = VarsomApiClient()
+        let apiClient = await VarsomApiClient()
         var warnings:[AvalancheWarningSimple]
         let isAuthorized = locationManager.isAuthorizedForWidgetUpdates
         
         if (regionId == 1) {
             if (isAuthorized) {
                 let location = try await locationManager.updateLocation()
-                warnings = try await apiClient.loadWarnings(
-                    lang: VarsomApiClient.currentLang(),
-                    coordinate: location,
-                    from: from,
-                    to: to)
+                if (location != nil) {
+                    warnings = try await apiClient.loadWarnings(
+                        lang: VarsomApiClient.currentLang(),
+                        coordinate: location!,
+                        from: from,
+                        to: to)
+                } else {
+                    throw MissingLocationAuthorizationError();
+                }
             } else {
                 throw MissingLocationAuthorizationError();
             }

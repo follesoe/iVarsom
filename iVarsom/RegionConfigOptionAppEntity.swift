@@ -9,8 +9,8 @@ struct RegionConfigOptionAppEntity: AppEntity {
     @Property(title: "Region Id")
     var regionId: Int?
     
-    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Region Config Option")
-    static var defaultQuery = RegionConfigOptionAppEntityQuery()
+    static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Region Config Option")
+    static let defaultQuery = RegionConfigOptionAppEntityQuery()
     
     var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(displayString)")

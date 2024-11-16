@@ -1,6 +1,6 @@
 import Foundation
 
-struct RegionSummary {
+struct RegionSummary: Sendable {
     var Id: Int
     var Name: String
     var TypeName: String

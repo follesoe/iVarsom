@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreLocation
 
+@MainActor
 class VarsomApiClient {
     
     public static func currentLang() -> Language {

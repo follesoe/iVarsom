@@ -34,6 +34,10 @@
 		AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421627B1A9A30097174D /* FormatterExtensions.swift */; };
 		AA19049129461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19049029461AAB006CF459 /* VarsomTimelineProvider.swift */; };
 		AA19049229461AAB006CF459 /* VarsomTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19049029461AAB006CF459 /* VarsomTimelineProvider.swift */; };
+		AA1AE7392CE9120900C4F5C4 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = AA1AE7382CE9120900C4F5C4 /* SwiftLocation */; };
+		AA1AE73B2CE9122100C4F5C4 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = AA1AE73A2CE9122100C4F5C4 /* SwiftLocation */; };
+		AA1AE73D2CE9122700C4F5C4 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = AA1AE73C2CE9122700C4F5C4 /* SwiftLocation */; };
+		AA1AE73F2CE9122E00C4F5C4 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = AA1AE73E2CE9122E00C4F5C4 /* SwiftLocation */; };
 		AA1C67BB279D860B0039F8E0 /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AA1C67BC279D863C0039F8E0 /* DangerScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BA279D860B0039F8E0 /* DangerScale.swift */; };
 		AA1C67BF279D8A1B0039F8E0 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1C67BE279D8A1B0039F8E0 /* DateExtensions.swift */; };
@@ -380,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */,
+				AA1AE73D2CE9122700C4F5C4 /* SwiftLocation in Frameworks */,
 				AA2ABD812944FD06008819DB /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1AE73B2CE9122100C4F5C4 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1AE7392CE9120900C4F5C4 /* SwiftLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD172EB27960939009AB089 /* SwiftUI.framework in Frameworks */,
+				AA1AE73F2CE9122E00C4F5C4 /* SwiftLocation in Frameworks */,
 				AAD172E927960939009AB089 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +673,7 @@
 			);
 			name = SkredvarselWatchWidgetExtension;
 			packageProductDependencies = (
+				AA1AE73C2CE9122700C4F5C4 /* SwiftLocation */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AA2ABD8A2944FD06008819DB /* SkredvarselWatchWidgetExtension.appex */;
@@ -686,6 +695,7 @@
 			);
 			name = SkredvarselWatch;
 			packageProductDependencies = (
+				AA1AE73A2CE9122100C4F5C4 /* SwiftLocation */,
 			);
 			productName = iVarsomWatch;
 			productReference = AA345DBE28085B4600B78BDB /* Skredvarsel.app */;
@@ -709,6 +719,7 @@
 			);
 			name = Skredvarsel;
 			packageProductDependencies = (
+				AA1AE7382CE9120900C4F5C4 /* SwiftLocation */,
 			);
 			productName = iVarsom;
 			productReference = AAD172AC2795F8F8009AB089 /* Skredvarsel.app */;
@@ -728,6 +739,7 @@
 			);
 			name = SkredvarselWidgetExtension;
 			packageProductDependencies = (
+				AA1AE73E2CE9122E00C4F5C4 /* SwiftLocation */,
 			);
 			productName = iVarsomWidgetExtension;
 			productReference = AAD172E627960938009AB089 /* SkredvarselWidgetExtension.appex */;
@@ -769,6 +781,7 @@
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
+				AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 			);
 			productRefGroup = AAD172AD2795F8F8009AB089 /* Products */;
 			projectDirPath = "";
@@ -1119,7 +1132,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skredvarsel.app/Skredvarsel";
 			};
@@ -1138,7 +1151,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skredvarsel.app/Skredvarsel";
 			};
@@ -1171,7 +1184,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
@@ -1203,7 +1216,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Release;
@@ -1234,7 +1247,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -1266,7 +1279,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -1429,7 +1442,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1469,7 +1482,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1502,7 +1515,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1535,7 +1548,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1598,6 +1611,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftLocation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA1AE7382CE9120900C4F5C4 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
+		AA1AE73A2CE9122100C4F5C4 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
+		AA1AE73C2CE9122700C4F5C4 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
+		AA1AE73E2CE9122E00C4F5C4 /* SwiftLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1AE7372CE9120900C4F5C4 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
+			productName = SwiftLocation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAD172A42795F8F8009AB089 /* Project object */;
 }

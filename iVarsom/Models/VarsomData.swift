@@ -1,13 +1,18 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 let testRegions: [RegionSummary] = load("RegionSummary.json")
+
+@MainActor
 let testARegions = testRegions.filter { region in
     region.TypeName == "A"
 }
 
+@MainActor
 let testWarning = testARegions[0].AvalancheWarningList[0]
 
+@MainActor
 let testWarningLevel0 = AvalancheWarningSimple(
     RegId: 1,
     RegionId: 3020,
@@ -21,18 +26,22 @@ let testWarningLevel0 = AvalancheWarningSimple(
     MainText: "No Rating",
     LangKey: 2)
 
+@MainActor
 let testWarningLevel1 = (testARegions.filter { reg in
     reg.Id == 3035
 })[0].AvalancheWarningList[2]
 
+@MainActor
 let testWarningLevel2 = (testARegions.filter { reg in
     reg.Id == 3003
 })[0].AvalancheWarningList[0]
 
+@MainActor
 let testWarningLevel3 = (testARegions.filter { reg in
     reg.Id == 3007
 })[0].AvalancheWarningList[0]
 
+@MainActor
 let testWarningLevel4 = (testARegions.filter { reg in
     reg.Id == 3015
 })[0].AvalancheWarningList[0]

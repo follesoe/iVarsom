@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct AvalancheWarningSimple: Codable, AvalancheWarningProtocol {
+struct AvalancheWarningSimple: Codable, Sendable, AvalancheWarningProtocol {
     var RegId: Int
     var RegionId: Int
     var RegionName: String

@@ -3,8 +3,10 @@ import SwiftUI
 import Intents
 import CoreLocation
 
+@MainActor
 let testWarnings = createTestWarnings()
 
+@MainActor
 let errorEntry = Provider().errorEntry(errorMessage: "Error message")
 
 func createEntry(currentWarning: AvalancheWarningSimple,

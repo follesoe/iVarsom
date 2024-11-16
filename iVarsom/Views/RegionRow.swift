@@ -19,5 +19,4 @@ struct RegionRow: View {
 
 #Preview("Region Row") {
     RegionRow(region: testARegions[0])
-        .previewLayout(.fixed(width: 380, height: 48))
 }

@@ -1,18 +1,14 @@
 
 import Combine
 import CoreLocation
+import SwiftLocation
 
-public typealias Location = CLLocationCoordinate2D
+public typealias Location2D = CLLocationCoordinate2D
 
 final class LocationManager: NSObject {
-    private typealias LocationCheckedThrowingContinuation = CheckedContinuation<Location, Error>
-    private typealias BoolCheckedThrowingContinuation = CheckedContinuation<Bool, Error>
-
     fileprivate lazy var locationManager = CLLocationManager()
-    
-    private var locationCheckedThrowingContinuation: LocationCheckedThrowingContinuation?
-    private var boolCheckedThrowingContinuation: BoolCheckedThrowingContinuation?
-    
+    fileprivate lazy var swiftLocation = Location(locationManager: locationManager)
+
     public var isAuthorizedForWidgetUpdates: Bool {
 #if os(watchOS)
         return isAuthorized
@@ -22,7 +18,11 @@ final class LocationManager: NSObject {
     }
     
     public var isAuthorized: Bool {
-        switch locationManager.authorizationStatus {
+        return hasPermission(status: locationManager.authorizationStatus)
+    }
+    
+    func hasPermission(status: CLAuthorizationStatus) -> Bool {
+        switch status {
             case .notDetermined, .restricted, .denied:
                 return false
             case .authorizedAlways, .authorizedWhenInUse:
@@ -34,66 +34,13 @@ final class LocationManager: NSObject {
     
     func requestPermission() async throws -> Bool {
         print("LocationManager.requestPermission")
-        return try await withCheckedThrowingContinuation({ [weak self] (continuation: BoolCheckedThrowingContinuation) in
-            guard let self = self else {
-                return
-            }
-            
-            self.boolCheckedThrowingContinuation = continuation
-            
-            if (self.isAuthorized) {
-                boolCheckedThrowingContinuation?.resume(returning: true)
-            } else {
-                print("requestWhenInUseAuthorization is notDetermined: \(locationManager.authorizationStatus == .notDetermined)")
-                self.locationManager.delegate = self
-                self.locationManager.requestWhenInUseAuthorization()
-            }
-        })
+        let permission = try await swiftLocation.requestPermission(.whenInUse)
+        return hasPermission(status: permission)
     }
 
-    func updateLocation() async throws -> Location {
+    func updateLocation() async throws -> Location2D? {
         print("LocationManager.updateLocation")
-        return try await withCheckedThrowingContinuation({ [weak self] (continuation: LocationCheckedThrowingContinuation) in
-            guard let self = self else {
-                return
-            }
-
-            self.locationCheckedThrowingContinuation = continuation
-            
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-            self.locationManager.requestWhenInUseAuthorization()
-            if (self.locationManager.location != nil) {
-                let coord = self.locationManager.location!.coordinate
-                let location = Location(latitude: coord.latitude, longitude: coord.longitude)
-                locationCheckedThrowingContinuation?.resume(returning: location)
-                locationCheckedThrowingContinuation = nil
-            } else {
-                self.locationManager.requestLocation()
-            }
-        })
-    }
-}
-
-extension LocationManager: CLLocationManagerDelegate {
-    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("LocationManager.didUpdateLocations")
-        if let locationObj = locations.last {
-            let coord = locationObj.coordinate
-            let location = Location(latitude: coord.latitude, longitude: coord.longitude)
-            locationCheckedThrowingContinuation?.resume(returning: location)
-            locationCheckedThrowingContinuation = nil
-        }
-    }
-
-    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
-        print("LocationManager.didFailWithError: \(error)")
-        locationCheckedThrowingContinuation?.resume(throwing: error)
-        locationCheckedThrowingContinuation = nil
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print("LocationManager.locationManagerDidChangeAuthorization: \(manager.authorizationStatus)")
-        boolCheckedThrowingContinuation?.resume(returning: isAuthorized)
+        let userLocation = try await swiftLocation.requestLocation()
+        return userLocation.location?.coordinate;
     }
 }

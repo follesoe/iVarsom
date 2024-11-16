@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public enum DangerLevel: String, Codable, CustomStringConvertible {
+public enum DangerLevel: String, Codable, Sendable, CustomStringConvertible {
     case unknown = "0"
     case level1 = "1"
     case level2 = "2"

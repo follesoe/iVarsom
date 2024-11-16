@@ -85,7 +85,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
             return regions[0].AvalancheWarningList[0].ValidTo < Date.now
         }
     }
-    
+
     func loadRegions() async {
         do {
             self.regionLoadState = .loading
@@ -109,23 +109,31 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
     
     func loadLocalRegion() async {
-        do {
-            let location = try await locationManager.updateLocation()
-            let region = try await client.loadRegions(lang: language, coordinate: location)
-            self.localRegion = region
-        } catch {
-            print("Error loading local region: \(error)")
+        let lm = locationManager
+        Task {
+            do {
+                let location = try await lm.updateLocation()
+                if (location != nil) {
+                    let region = try await client.loadRegions(lang: language, coordinate: location!)
+                    self.localRegion = region
+                }
+            } catch {
+                print(error)
+            }
         }
     }
     
     func updateLocation() async {
-        do {
-            let _ = try await locationManager.requestPermission()
-            self.locationIsAuthorized = locationManager.isAuthorized
-            await loadLocalRegion()
-        } catch {
-            self.locationIsAuthorized = false
-            print(error)
+        let lm = locationManager
+        Task {
+            do {
+                let _ = try await lm.requestPermission()
+                self.locationIsAuthorized = locationManager.isAuthorized
+                await loadLocalRegion()
+            } catch {
+                self.locationIsAuthorized = false
+                print(error)
+            }
         }
     }
     
