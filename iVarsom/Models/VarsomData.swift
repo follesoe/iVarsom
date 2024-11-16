@@ -18,10 +18,10 @@ let testWarningLevel0 = AvalancheWarningSimple(
     RegionId: 3020,
     RegionName: "Sør Trøndelag",
     RegionTypeName: "B",
-    ValidFrom: Date.now(),
-    ValidTo: Date.now(),
-    NextWarningTime: Date.now(),
-    PublishTime: Date.now(),
+    ValidFrom: Date.current,
+    ValidTo: Date.current,
+    NextWarningTime: Date.current,
+    PublishTime: Date.current,
     DangerLevel: .unknown,
     MainText: "No Rating",
     LangKey: 2)
@@ -47,7 +47,7 @@ let testWarningLevel4 = (testARegions.filter { reg in
 })[0].AvalancheWarningList[0]
 
 func createTestWarnings() -> [AvalancheWarningSimple] {
-    let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date.now())!
+    let startDate = Calendar.current.date(byAdding: .day, value: -1, to: Date.current)!
     
     var warnings: [AvalancheWarningSimple] = []
     let levels: [DangerLevel] = [.level2, .level3, .level4, .level3, .level2]

@@ -10,15 +10,15 @@ class VarsomApiClientTests: XCTestCase {
     }
 
     func testLoadRegions() async throws {
-        let client = VarsomApiClient()
+        let client = await VarsomApiClient()
         let regions = try await client.loadRegions(lang: .english)
         XCTAssertGreaterThan(regions.count, 0)
     }
     
     func testLoadWarnings() async throws {
-        let client = VarsomApiClient()
-        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.now())!
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
+        let client = await VarsomApiClient()
+        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.current)!
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.current)!
         
         let warnings = try await client.loadWarnings(
             lang: .english,
@@ -29,9 +29,9 @@ class VarsomApiClientTests: XCTestCase {
     }
     
     func testLoadWarningsDetailed() async throws {
-        let client = VarsomApiClient()
-        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.now())!
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
+        let client = await VarsomApiClient()
+        let from = Calendar.current.date(byAdding: .day, value: -5, to: Date.current)!
+        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.current)!
         
         let warnings = try await client.loadWarningsDetailed(
             lang: .english,

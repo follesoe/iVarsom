@@ -43,13 +43,13 @@ func getNextUpdateTime(prevWarning: AvalancheWarningSimple, currentWarning: Aval
     var afterDate = prevWarning.NextWarningTime
     
     // If the next warning time (16:00 today) has expired, then use the ValidTo for update.
-    if afterDate < Date.now() {
+    if afterDate < Date.current {
         afterDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentWarning.ValidTo)!
     }
     
     // If the ValidTo has expired, update again in one hour.
-    if afterDate < Date.now() {
-        afterDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date.now())!
+    if afterDate < Date.current {
+        afterDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date.current)!
     }
 
     return afterDate

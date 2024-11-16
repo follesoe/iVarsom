@@ -100,7 +100,7 @@ struct LargeWarningWidgetView: View {
             Spacer()
             HStack {
                 ForEach(entry.warnings) { warning in
-                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.now(), toGranularity: .day)
+                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.current, toGranularity: .day)
                     DayCell(
                         dangerLevel: warning.DangerLevel,
                         date: warning.ValidFrom,
@@ -168,12 +168,12 @@ struct RectangleWidgetView: View {
     var entry: Provider.Entry
     var body: some View {
         let filteredWarnings = entry.warnings.filter {
-            let daysBetween = Calendar.current.numberOfDaysBetween(Date.now(), and: $0.ValidFrom)
+            let daysBetween = Calendar.current.numberOfDaysBetween(Date.current, and: $0.ValidFrom)
             return daysBetween >= -1 && daysBetween <= 2;
         }
         
         let todayWarning = filteredWarnings.first(where: {
-            Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day)
+            Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day)
         })
 
         VStack(alignment: .leading, spacing: 0) {
@@ -189,7 +189,7 @@ struct RectangleWidgetView: View {
                     .widgetAccentable()
                 HStack(spacing: 0) {
                     ForEach(filteredWarnings) { warning in
-                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.now(), toGranularity: .day)
+                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.current, toGranularity: .day)
                         VStack(spacing: 0) {
                             Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
                                 .font(.system(size: 9))

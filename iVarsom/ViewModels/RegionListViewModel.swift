@@ -82,7 +82,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
         } else if (regions[0].AvalancheWarningList.isEmpty) {
             return true;
         } else {
-            return regions[0].AvalancheWarningList[0].ValidTo < Date.now
+            return regions[0].AvalancheWarningList[0].ValidTo < Date.current
         }
     }
 
@@ -143,14 +143,15 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 self.warningLoadState = .loading
                 self.selectedWarning = nil
                 self.warnings = [AvalancheWarningDetailed]()
-                let from = Calendar.current.date(byAdding: .day, value: from, to: Date.now())!
-                let to = Calendar.current.date(byAdding: .day, value: to, to: Date.now())!
+                let today = Date.current
+                let from = Calendar.current.date(byAdding: .day, value: from, to: today)!
+                let to = Calendar.current.date(byAdding: .day, value: to, to: today)!
                 self.warnings = try await client.loadWarningsDetailed(
                     lang: VarsomApiClient.currentLang(),
                     regionId: selectedRegion.Id,
                     from: from,
                     to: to)                
-                let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day) }!
+                let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day) }!
                 self.selectedWarning = self.warnings[currentIndex]
                 self.warningLoadState = .loaded
             } else {

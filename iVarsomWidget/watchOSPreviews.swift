@@ -12,7 +12,7 @@ let errorEntry = Provider().errorEntry(errorMessage: "Error message")
 func createEntry(currentWarning: AvalancheWarningSimple,
                  allWarnings: [AvalancheWarningSimple]) -> WarningEntry {
     return WarningEntry(
-        date: Date.now(),
+        date: Date.current,
         currentWarning: currentWarning,
         warnings: allWarnings,
         configuration: SelectRegion(),

@@ -16,16 +16,16 @@ struct Provider: AppIntentTimelineProvider {
     
     func placeholder(in context: Context) -> WarningEntry {
         return WarningEntry(
-            date: Date.now(),
+            date: Date.current,
             currentWarning: AvalancheWarningSimple(
                 RegId: 1,
                 RegionId: 3020,
                 RegionName: "Sør Trøndelag",
                 RegionTypeName: "B",
-                ValidFrom: Date.now(),
-                ValidTo: Date.now(),
-                NextWarningTime: Date.now(),
-                PublishTime: Date.now(),
+                ValidFrom: Date.current,
+                ValidTo: Date.current,
+                NextWarningTime: Date.current,
+                PublishTime: Date.current,
                 DangerLevel: .unknown,
                 MainText: "No Rating",
                 LangKey: 2),
@@ -42,16 +42,16 @@ struct Provider: AppIntentTimelineProvider {
             RegionId: 0,
             RegionName: "Error",
             RegionTypeName: "A",
-            ValidFrom: Date.now(),
-            ValidTo: Date.now(),
-            NextWarningTime: Date.now(),
-            PublishTime: Date.now(),
+            ValidFrom: Date.current,
+            ValidTo: Date.current,
+            NextWarningTime: Date.current,
+            PublishTime: Date.current,
             DangerLevel: .unknown,
             MainText: "There was an error updating the widget",
             LangKey: 2)
         
         return WarningEntry(
-            date: Date.now(),
+            date: Date.current,
             currentWarning: errorWarning,
             warnings: [AvalancheWarningSimple](),
             configuration: SelectRegion(),
@@ -63,14 +63,14 @@ struct Provider: AppIntentTimelineProvider {
     func snapshot(for configuration: SelectRegion, in context: Context) async -> WarningEntry {
         let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
         
-        let from = Date.now()
+        let from = Date.current
         let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         
         do {
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
             if (warnings.count > 0) {
                 let entry = WarningEntry(
-                    date: Date.now(),
+                    date: Date.current,
                     currentWarning: warnings[0],
                     warnings: warnings,
                     configuration: configuration,
@@ -90,14 +90,14 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: SelectRegion, in context: Context) async -> Timeline<WarningEntry> {
         let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
         do {
-            let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.now())!
-            let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.now())!
+            let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.current)!
+            let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.current)!
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
             let timeline = createTimeline(warnings: warnings, configuration: configuration)
             return timeline
         } catch {
             print("Unexpected error: \(error).")
-            let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date.now())!
+            let afterDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date.current)!
             let errorTimeline = Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
             return errorTimeline
         }
@@ -150,7 +150,7 @@ struct Provider: AppIntentTimelineProvider {
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegion) -> Timeline<Entry> {
         var entries: [WarningEntry] = []
     
-        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.now(), toGranularity: .day) }!
+        let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day) }!
         
         let currentWarning = warnings[currentIndex]
         let prevWarning = currentIndex > 0 ? warnings[currentIndex - 1] : currentWarning

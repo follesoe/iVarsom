@@ -131,6 +131,10 @@
 		AABE6A952CE0EC4B0022E5A7 /* SelectRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE6A8D2CE0EC4B0022E5A7 /* SelectRegion.swift */; };
 		AABE6A962CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */; };
 		AABE6A972CE0EC4B0022E5A7 /* SelectRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE6A8D2CE0EC4B0022E5A7 /* SelectRegion.swift */; };
+		AAC859312CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
+		AAC859322CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
+		AAC859332CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
+		AAC859342CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
 		AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */; };
 		AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B32795F8F9009AB089 /* Assets.xcassets */; };
 		AAD172B72795F8F9009AB089 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B62795F8F9009AB089 /* Preview Assets.xcassets */; };
@@ -334,6 +338,7 @@
 		AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemDetailsView.swift; sourceTree = "<group>"; };
 		AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionConfigOptionAppEntity.swift; sourceTree = "<group>"; };
 		AABE6A8D2CE0EC4B0022E5A7 /* SelectRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegion.swift; sourceTree = "<group>"; };
+		AAC859302CE91EFF0013594A /* Date+current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+current.swift"; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -558,6 +563,7 @@
 				AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */,
 				AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */,
 				AABE6A8D2CE0EC4B0022E5A7 /* SelectRegion.swift */,
+				AAC859302CE91EFF0013594A /* Date+current.swift */,
 			);
 			path = iVarsom;
 			sourceTree = "<group>";
@@ -917,6 +923,7 @@
 				AA2ABD7A2944FD06008819DB /* UpdatePolicy.swift in Sources */,
 				AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */,
 				AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */,
+				AAC859342CE91F120013594A /* Date+current.swift in Sources */,
 				AA7D74632946185300AB5155 /* iVarsomWidget.swift in Sources */,
 				AAEC4F322AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 			);
@@ -957,6 +964,7 @@
 				AAF054CB280C504B000BCADD /* LocationManager.swift in Sources */,
 				AAF054CE280C5189000BCADD /* DateExtensions.swift in Sources */,
 				AA059A6D2AF82D4F00E91768 /* Expositions.swift in Sources */,
+				AAC859322CE91F120013594A /* Date+current.swift in Sources */,
 				AAF054D0280C5237000BCADD /* DangerGradient.swift in Sources */,
 				AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */,
 				AAA89058280C6D0B00A80394 /* RegionListViewModelProtocol.swift in Sources */,
@@ -1011,6 +1019,7 @@
 				AAD172F42796093A009AB089 /* iVarsomWidget.intentdefinition in Sources */,
 				AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */,
 				AA7358CF27BD8DCF009E3DA1 /* UseLocationRow.swift in Sources */,
+				AAC859312CE91F120013594A /* Date+current.swift in Sources */,
 				AA839D07279D7E9700DF7ACF /* DangerGradient.swift in Sources */,
 				AA7358D227BD93C8009E3DA1 /* RegionListViewModelProtocol.swift in Sources */,
 				AAD172CE2795FCA3009AB089 /* RegionOption.swift in Sources */,
@@ -1057,6 +1066,7 @@
 				AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */,
 				AA102E02279DA2C200B6492D /* VarsomApiClient.swift in Sources */,
 				AA102E00279DA27800B6492D /* WarningSummary.swift in Sources */,
+				AAC859332CE91F120013594A /* Date+current.swift in Sources */,
 				AA91226529461402007D5093 /* iVarsomWidget.swift in Sources */,
 				AAEC4F332AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 			);

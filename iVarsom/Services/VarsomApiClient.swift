@@ -35,7 +35,7 @@ class VarsomApiClient {
     }
     
     public func loadRegions(lang: Language) async throws -> [RegionSummary] {
-        let from = Date.now()
+        let from = Date.current
         let fromArg = argumentDateFormatter.string(from: from)
         guard let url = URL(string: "\(baseUrl)/RegionSummary/Simple/\(lang)/\(fromArg)") else { throw VarsomError.invalidUrlError }
         var regions: [RegionSummary] = try await getData(url: url);
@@ -48,7 +48,7 @@ class VarsomApiClient {
     }
     
     public func loadRegions(lang: Language, coordinate: CLLocationCoordinate2D) async throws -> RegionSummary {
-        let from = Date.now()
+        let from = Date.current
         let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
         let warnings = try await loadWarnings(lang: lang, coordinate: coordinate, from: from, to: to)
         let region = RegionSummary(
