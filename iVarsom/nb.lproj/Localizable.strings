@@ -52,8 +52,17 @@
 /* Loading text on details view */
 "Loading Details" = "Laster detaljer";
 
+/* Loading text for warnings */
+"Loading warnings..." = "Laster varsler...";
+
+/* Loading text for warnings with region name */
+"Loading warnings for %@" = "Laster varsler for %@";
+
 /* Error message */
 "Error Loading Regions" = "Feil under lasting av regioner";
+
+/* Error message for warnings with region name */
+"Error loading warnings for %@" = "Feil under lasting av varsler for %@";
 
 /* Try loading data after error */
 "Try Again" = "Prøv igjen";

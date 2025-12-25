@@ -53,7 +53,7 @@ struct RegionDetail: View {
                                 }
                             }
                             .onAppear {
-                                if let lastWarning = warnings.filter({ $0.id > 0 }).last {
+                                if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {
                                     print("Scroll to \(lastWarning.id)")
                                     value.scrollTo(lastWarning.id)
                                 }

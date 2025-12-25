@@ -23,6 +23,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     private let client: VarsomApiClient
     private let locationManager: LocationManager
     private let favoriteRegionIdsKey = "favoriteRegionIds"
+    private var loadWarningsTask: Task<Void, Never>?
     
     init(client: VarsomApiClient, locationManager: LocationManager) {
         self.client = client
@@ -64,13 +65,10 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
 
     func removeFavorite(id: Int) {
-        if (favoriteRegionIds.contains(id)) {
-            let index = favoriteRegionIds.firstIndex(of: id)
-            favoriteRegionIds.remove(at: index!)
-            
-        } else if (id == localRegion?.id) {
-            let index = favoriteRegionIds.firstIndex(of: RegionOption.currentPositionOption.id)
-            favoriteRegionIds.remove(at: index!)
+        if favoriteRegionIds.contains(id), let index = favoriteRegionIds.firstIndex(of: id) {
+            favoriteRegionIds.remove(at: index)
+        } else if id == localRegion?.id, let index = favoriteRegionIds.firstIndex(of: RegionOption.currentPositionOption.id) {
+            favoriteRegionIds.remove(at: index)
         }
         print("Updating favorite regions", favoriteRegionIds)
         UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
@@ -109,58 +107,112 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
     
     func loadLocalRegion() async {
-        let lm = locationManager
-        Task {
-            do {
-                let location = try await lm.updateLocation()
-                if (location != nil) {
-                    let region = try await client.loadRegions(lang: language, coordinate: location!)
-                    self.localRegion = region
-                }
-            } catch {
-                print(error)
+        do {
+            let location = try await locationManager.updateLocation()
+            if let location = location {
+                let region = try await client.loadRegions(lang: language, coordinate: location)
+                self.localRegion = region
             }
+        } catch {
+            print("Error loading local region: \(error)")
         }
     }
     
     func updateLocation() async {
-        let lm = locationManager
-        Task {
-            do {
-                let _ = try await lm.requestPermission()
-                self.locationIsAuthorized = locationManager.isAuthorized
-                await loadLocalRegion()
-            } catch {
-                self.locationIsAuthorized = false
-                print(error)
-            }
+        do {
+            let _ = try await locationManager.requestPermission()
+            self.locationIsAuthorized = locationManager.isAuthorized
+            await loadLocalRegion()
+        } catch {
+            self.locationIsAuthorized = false
+            print("Error updating location: \(error)")
         }
     }
     
     func loadWarnings(from: Int = -5, to: Int = 2) async {
-        do {
-            if let selectedRegion {
-                self.warningLoadState = .loading
-                self.selectedWarning = nil
-                self.warnings = [AvalancheWarningDetailed]()
+        // Cancel any existing load task to prevent multiple concurrent calls
+        loadWarningsTask?.cancel()
+        
+        guard let selectedRegion = selectedRegion else {
+            print("Warning: Can't load warnings as no region is selected")
+            return
+        }
+        
+        print("Starting to load warnings for region: \(selectedRegion.Name)")
+        
+        // Set loading state immediately
+        self.warningLoadState = .loading
+        self.selectedWarning = nil
+        self.warnings = [AvalancheWarningDetailed]()
+        
+        // Create a task that we can cancel if needed
+        loadWarningsTask = Task {
+            do {
+                // Check if task was cancelled
+                try Task.checkCancellation()
+                
                 let today = Date.current
-                let from = Calendar.current.date(byAdding: .day, value: from, to: today)!
-                let to = Calendar.current.date(byAdding: .day, value: to, to: today)!
-                self.warnings = try await client.loadWarningsDetailed(
+                guard let fromDate = Calendar.current.date(byAdding: .day, value: from, to: today),
+                      let toDate = Calendar.current.date(byAdding: .day, value: to, to: today) else {
+                    await MainActor.run {
+                        self.warningLoadState = .failed
+                    }
+                    print("Error: Could not calculate date range")
+                    return
+                }
+                
+                print("Loading warnings from \(fromDate) to \(toDate)")
+                
+                // Check if task was cancelled before network call
+                try Task.checkCancellation()
+                
+                let loadedWarnings = try await client.loadWarningsDetailed(
                     lang: VarsomApiClient.currentLang(),
                     regionId: selectedRegion.Id,
-                    from: from,
-                    to: to)                
-                let currentIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day) }!
-                self.selectedWarning = self.warnings[currentIndex]
-                self.warningLoadState = .loaded
-            } else {
-                print("Warning: Can't load warnings as no region is selected")
+                    from: fromDate,
+                    to: toDate)
+                
+                print("Loaded \(loadedWarnings.count) warnings")
+                
+                // Check if task was cancelled after network call
+                try Task.checkCancellation()
+                
+                // Update UI on main actor
+                await MainActor.run {
+                    self.warnings = loadedWarnings
+                    
+                    // Find the warning for today, or use the first available warning
+                    if let currentIndex = loadedWarnings.firstIndex(where: { 
+                        Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day) 
+                    }) {
+                        self.selectedWarning = loadedWarnings[currentIndex]
+                        print("Selected warning for today at index \(currentIndex)")
+                    } else if !loadedWarnings.isEmpty {
+                        // If no warning matches today, select the first one
+                        self.selectedWarning = loadedWarnings[0]
+                        print("No warning for today, selected first warning")
+                    } else {
+                        // No warnings available
+                        self.selectedWarning = nil
+                        print("No warnings available")
+                    }
+                    
+                    self.warningLoadState = .loaded
+                    print("Warnings loaded successfully")
+                }
+            } catch is CancellationError {
+                // Task was cancelled, ignore
+                print("Load warnings task was cancelled")
+            } catch {
+                await MainActor.run {
+                    self.warningLoadState = .failed
+                }
+                print("Error loading warnings: \(error)")
             }
-        } catch {
-            self.warningLoadState = .failed
-            print(error)
         }
+        
+        // Don't await the task - let it run in the background
+        // The task will update @Published properties which will trigger UI updates automatically
     }
     
     func selectRegionById(regionId: Int) async {

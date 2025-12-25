@@ -124,11 +124,12 @@ struct Provider: AppIntentTimelineProvider {
         
         if (regionId == 1) {
             if (isAuthorized) {
+                // updateLocation() is @MainActor, Swift will automatically hop to main actor
                 let location = try await locationManager.updateLocation()
-                if (location != nil) {
+                if let location = location {
                     warnings = try await apiClient.loadWarnings(
                         lang: VarsomApiClient.currentLang(),
-                        coordinate: location!,
+                        coordinate: location,
                         from: from,
                         to: to)
                 } else {

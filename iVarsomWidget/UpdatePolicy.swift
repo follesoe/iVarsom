@@ -31,14 +31,14 @@ import Foundation
  * `2022-03-10T00:00:59` one minute after `ValidTo` for the next day
  
  - Precondition: The `prevWarning` must be for the day before `currentWarning`
- - Invariant: The return value is allways a `Date` in the future to avoid starvation of the timeline
+ - Invariant: The return value is always a `Date` in the future to avoid starvation of the timeline
  
  - Parameters:
     - prevWarning: The previous day warning
     - currentWarning: The current day warning
  
  - Returns: A new `Date` to be used for the `.after` update policy of the timeline.
-*/
+ */
 func getNextUpdateTime(prevWarning: AvalancheWarningSimple, currentWarning: AvalancheWarningSimple) -> Date {
     var afterDate = prevWarning.NextWarningTime
     

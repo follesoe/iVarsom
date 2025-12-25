@@ -52,8 +52,17 @@
 /* Loading text on details view */
 "Loading Details" = "Loading Details";
 
+/* Loading text for warnings */
+"Loading warnings..." = "Loading warnings...";
+
+/* Loading text for warnings with region name */
+"Loading warnings for %@" = "Loading warnings for %@";
+
 /* Error message */
 "Error Loading Regions" = "Error Loading Regions";
+
+/* Error message for warnings with region name */
+"Error loading warnings for %@" = "Error loading warnings for %@";
 
 /* Try loading data after error */
 "Try Again" = "Try Again";
