@@ -87,17 +87,19 @@ struct MediumWarningWidgetView: View {
     }
 }
 
-struct LargeWarningWidgetView: View {
+struct StandardWarningWidgetView: View {
     var entry: Provider.Entry
-
+    var mainTextFont: Font
+    var summaryHeight: CGFloat
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             WarningSummary(
                 warning: entry.currentWarning,
-                mainTextFont: .system(size: 15),
+                mainTextFont: mainTextFont,
                 includeLocationIcon: entry.configuration.region?.regionId == 1)
-                .frame(height: 274)
-            Spacer()
+                .frame(height: summaryHeight)
+            Spacer(minLength: 0)
             HStack {
                 ForEach(entry.warnings) { warning in
                     let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.current, toGranularity: .day)
@@ -107,12 +109,35 @@ struct LargeWarningWidgetView: View {
                         isSelected: isToday)
                 }
             }
-            Spacer()
+            .padding(.bottom, 16)
+            Spacer(minLength: 0)
         }
         .containerBackground(for: .widget) {
             DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
         .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+struct LargeWarningWidgetView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        StandardWarningWidgetView(
+            entry: entry,
+            mainTextFont: .system(size: 15),
+            summaryHeight: 274)
+    }
+}
+
+struct ExtraLargeWarningWidgetView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        StandardWarningWidgetView(
+            entry: entry,
+            mainTextFont: .system(size: 18),
+            summaryHeight: 285)
     }
 }
 
@@ -249,6 +274,10 @@ struct WarningWidgetView: View {
             MediumWarningWidgetView(entry: entry)
         case .systemLarge:
             LargeWarningWidgetView(entry: entry)
+        #if os(iOS)
+        case .systemExtraLarge:
+            ExtraLargeWarningWidgetView(entry: entry)
+        #endif
         case .accessoryCircular:
             CircleWidgetView(entry: entry)
         case .accessoryInline:
@@ -282,7 +311,7 @@ struct iVarsomWidget: Widget {
         #if os(watchOS)
         .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
         #else
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
         #endif
     }
 }

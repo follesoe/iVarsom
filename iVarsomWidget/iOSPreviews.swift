@@ -82,3 +82,10 @@ func createEntry(currentWarning: AvalancheWarningSimple,
     createEntry(currentWarning: testWarnings[0],
                 allWarnings: testWarnings)
 }
+
+#Preview("Extra Large", as: .systemExtraLarge) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarnings[0],
+                allWarnings: testWarnings)
+}
