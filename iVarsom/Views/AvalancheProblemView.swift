@@ -14,6 +14,11 @@ struct AvalancheProblemView: View {
                     .font(.subheadline)
                     .bold()
                 HStack {
+                    Image(problem.AvalancheProblemTypeImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
+                        .frame(width: 78, height: 78)
                     Expositions(sectors: problem.ValidExpositionsBool)
                         .frame(width: 78, height: 78)
                     ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)

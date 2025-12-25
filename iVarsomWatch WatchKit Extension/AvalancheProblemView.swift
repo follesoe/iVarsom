@@ -8,8 +8,14 @@ struct AvalancheProblemView: View {
             Text(problem.AvalancheProblemTypeName)
                 .padding(.horizontal)
             HStack(alignment: .center) {
+                Image(problem.AvalancheProblemTypeImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(4)
+                    .frame(width: 44, height: 44)
+                    .padding(.trailing, 4)
                 Expositions(sectors: problem.ValidExpositionsBool)
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 6)
                 ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
                     .frame(width: 42, height: 42)
                 ExposedHeightArrow(

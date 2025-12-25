@@ -20,7 +20,19 @@ struct AvalancheProblem: Codable {
     var AvalPropagationName: String
     var AvalancheTypeId: Int
     var AvalancheTypeName: String
+    
     var AvalancheProblemTypeId: Int
+    var AvalancheProblemTypeImage: String {
+        switch AvalancheProblemTypeId {
+        case 3: return "AvalancheProblemNewSnow"
+        case 5: return "AvalancheProblemWetSnow"
+        case 10: return "AvalancheProblemDriftingSnow"
+        case 30: return "AvalancheProblemOldSnow"
+        case 50: return "AvalancheProblemGlidingSnow"
+        default: return ""
+        }
+    }
+    
     var AvalancheProblemTypeName: String
     var ValidExpositions: String
     var ExposedHeight1: Int
@@ -29,6 +41,7 @@ struct AvalancheProblem: Codable {
     var TriggerSenitivityPropagationDestuctiveSizeText: String
     var DangerLevel: Int
     var DangerLevelName: String
+
     var DangerLevelEnum: DangerLevelEnumType {
         return DangerLevelEnumType(rawValue: String(DangerLevel)) ?? .unknown
     }

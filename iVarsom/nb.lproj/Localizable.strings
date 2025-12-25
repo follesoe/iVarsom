@@ -37,6 +37,12 @@
 /* When no region is selected */
 "Select a region" = "Velg en region";
 
+/* Intent title */
+"Select Region" = "Velg Region";
+
+/* Intent description */
+"Select which region you wish to view avalanche warnings from" = "Velg hvilken region du ønsker å se skredvarsel fra";
+
 /* To add a region to list */
 "Add Region" = "Legg til region";
 

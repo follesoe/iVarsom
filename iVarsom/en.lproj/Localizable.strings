@@ -37,6 +37,12 @@
 /* When no region is selected */
 "Select a region" = "Select a region";
 
+/* Intent title */
+"Select Region" = "Select Region";
+
+/* Intent description */
+"Select which region you wish to view avalanche warnings from" = "Select which region you wish to view avalanche warnings from";
+
 /* To add a region to list */
 "Add Region" = "Add Region";
 

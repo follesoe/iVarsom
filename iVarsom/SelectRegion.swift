@@ -5,7 +5,8 @@ struct SelectRegion: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedA
     static let intentClassName = "SelectRegionIntent"
 
     static let title: LocalizedStringResource = "Select Region"
-    static let description = IntentDescription("Select which region you wish to view avalanche warnings from")
+    static let description = IntentDescription(
+        LocalizedStringResource("Select which region you wish to view avalanche warnings from"))
 
     @Parameter(title: "Region")
     var region: RegionConfigOptionAppEntity?

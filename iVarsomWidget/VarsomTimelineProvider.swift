@@ -1,4 +1,5 @@
 import WidgetKit
+import AppIntents
 import SwiftUI
 import Intents
 import CoreLocation
