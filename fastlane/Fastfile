@@ -1,0 +1,59 @@
+# Fastfile for Skredvarsel (iVarsom)
+# https://docs.fastlane.tools
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Download existing metadata from App Store Connect"
+  lane :download_metadata do
+    sh("cd .. && fastlane deliver download_metadata --use_live_version true --force true")
+  end
+
+  desc "Upload metadata to App Store Connect (without submitting)"
+  lane :upload_metadata do
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
+  desc "Preview metadata changes (dry run)"
+  lane :preview_metadata do
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: false,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
+  desc "Upload screenshots to App Store Connect"
+  lane :upload_screenshots do
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: false,
+      skip_metadata: true,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
+  desc "Submit the current build for review"
+  lane :submit_for_review do
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      submit_for_review: true,
+      precheck_include_in_app_purchases: false,
+      automatic_release: false
+    )
+  end
+end
