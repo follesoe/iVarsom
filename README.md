@@ -39,3 +39,39 @@ The app is also a learning exercise for myself to learn how to build and distrib
 ## Beta testing
 
 Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8IeX64AS).
+
+## Development
+
+### Requirements
+
+- Xcode 16+
+- Swift 6
+- iOS 15+ / macOS 12+ / watchOS 8+
+
+### Building from Source
+
+```bash
+git clone https://github.com/follesoe/iVarsom.git
+cd iVarsom
+open Skredvarsel.xcodeproj
+```
+
+Dependencies (SwiftLocation) are resolved automatically via Swift Package Manager.
+
+### Running Tests
+
+```bash
+xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 16'
+```
+
+### Architecture
+
+The app uses SwiftUI with MVVM architecture. See [CLAUDE.md](CLAUDE.md) for detailed architecture documentation.
+
+## Privacy
+
+The app collects no user data. Location is used only to find your local avalanche region (3km accuracy) and is not stored or transmitted beyond the initial API query.
+
+## License
+
+[MIT License](LICENSE) © Jonas Follesø
