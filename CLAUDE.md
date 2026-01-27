@@ -77,3 +77,9 @@ URL schemes:
 - English: `en.lproj/Localizable.strings`
 - Norwegian: `nb.lproj/Localizable.strings`
 - Code defaults to Norwegian if system locale starts with "nb"
+
+## Git Workflow
+
+- Do NOT commit changes unless explicitly asked to do so
+- Do NOT push to remote unless explicitly asked to do so
+- Wait for the user to review changes before committing
