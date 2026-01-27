@@ -136,3 +136,8 @@
 "Which region do you want the avalanche warning for?" = "Which region do you want the avalanche warning for?";
 "Location unavailable" = "Location unavailable";
 "No warning available" = "No warning available";
+"Service unavailable" = "Service unavailable";
+
+/* Siri Shortcut - Network error messages */
+"No internet connection. Unable to retrieve avalanche warnings." = "No internet connection. Unable to retrieve avalanche warnings.";
+"Unable to retrieve avalanche warnings. Please try again later." = "Unable to retrieve avalanche warnings. Please try again later.";

@@ -136,3 +136,8 @@
 "Which region do you want the avalanche warning for?" = "Hvilken region vil du ha skredvarsel for?";
 "Location unavailable" = "Posisjon utilgjengelig";
 "No warning available" = "Ingen varsel tilgjengelig";
+"Service unavailable" = "Tjenesten utilgjengelig";
+
+/* Siri Shortcut - Network error messages */
+"No internet connection. Unable to retrieve avalanche warnings." = "Ingen internettforbindelse. Kan ikke hente skredvarsel.";
+"Unable to retrieve avalanche warnings. Please try again later." = "Kan ikke hente skredvarsel. Vennligst prøv igjen senere.";

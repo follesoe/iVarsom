@@ -23,37 +23,49 @@ struct GetAvalancheWarningIntent: AppIntent {
 
         let warnings: [AvalancheWarningSimple]
 
-        // Check if this is the "current position" option (id = 1)
-        if regionId == RegionOption.currentPositionOption.id {
-            let locationManager = LocationManager()
+        do {
+            // Check if this is the "current position" option (id = 1)
+            if regionId == RegionOption.currentPositionOption.id {
+                let locationManager = LocationManager()
 
-            guard locationManager.isAuthorized else {
-                return .result(
-                    dialog: IntentDialog(LocalizedStringResource("Location access is required to get warnings for your current position.")))
-                {
-                    AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location access required"))
+                guard locationManager.isAuthorized else {
+                    return .result(
+                        dialog: IntentDialog(LocalizedStringResource("Location access is required to get warnings for your current position.")))
+                    {
+                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location access required"))
+                    }
                 }
-            }
 
-            guard let location = try await locationManager.updateLocation() else {
-                return .result(
-                    dialog: IntentDialog(LocalizedStringResource("Could not determine your current location.")))
-                {
-                    AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location unavailable"))
+                guard let location = try await locationManager.updateLocation() else {
+                    return .result(
+                        dialog: IntentDialog(LocalizedStringResource("Could not determine your current location.")))
+                    {
+                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location unavailable"))
+                    }
                 }
-            }
 
-            warnings = try await client.loadWarnings(
-                lang: VarsomApiClient.currentLang(),
-                coordinate: location,
-                from: today,
-                to: today)
-        } else {
-            warnings = try await client.loadWarnings(
-                lang: VarsomApiClient.currentLang(),
-                regionId: regionId,
-                from: today,
-                to: today)
+                warnings = try await client.loadWarnings(
+                    lang: VarsomApiClient.currentLang(),
+                    coordinate: location,
+                    from: today,
+                    to: today)
+            } else {
+                warnings = try await client.loadWarnings(
+                    lang: VarsomApiClient.currentLang(),
+                    regionId: regionId,
+                    from: today,
+                    to: today)
+            }
+        } catch {
+            let dialog: IntentDialog
+            if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
+                dialog = IntentDialog(LocalizedStringResource("No internet connection. Unable to retrieve avalanche warnings."))
+            } else {
+                dialog = IntentDialog(LocalizedStringResource("Unable to retrieve avalanche warnings. Please try again later."))
+            }
+            return .result(dialog: dialog) {
+                AvalancheWarningSnippetView(warning: nil, error: String(localized: "Service unavailable"))
+            }
         }
 
         guard let todayWarning = warnings.first else {
@@ -66,7 +78,7 @@ struct GetAvalancheWarningIntent: AppIntent {
 
         let dangerLevelName = String(localized: LocalizedStringResource(stringLiteral: todayWarning.DangerLevelName))
         let actualRegionName = todayWarning.RegionName
-        let mainText = todayWarning.MainText
+        let mainText = todayWarning.MainText.trimmingCharacters(in: .whitespacesAndNewlines)
 
         let dialog: IntentDialog
         if mainText.isEmpty {
