@@ -91,8 +91,8 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: SelectRegion, in context: Context) async -> Timeline<WarningEntry> {
         let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
         do {
-            let from = Calendar.current.date(byAdding: .day, value: -3, to: Date.current)!
-            let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.current)!
+            let from = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysBefore, to: Date.current)!
+            let to = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysAfter, to: Date.current)!
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
             let timeline = createTimeline(warnings: warnings, configuration: configuration)
             return timeline

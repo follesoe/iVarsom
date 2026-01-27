@@ -2,11 +2,11 @@ import Foundation
 import Combine
 
 @MainActor
-class RegionListViewModel: RegionListViewModelProtocol {    
+class RegionListViewModel: RegionListViewModelProtocol {
     private var language: VarsomApiClient.Language {
         return Locale.current.identifier.starts(with: "nb") ? .norwegian : .english
     }
-    
+
     @Published private(set) var regionLoadState = LoadState.idle
     @Published private(set) var warningLoadState = LoadState.idle
     @Published private(set) var locationIsAuthorized = false
@@ -19,19 +19,19 @@ class RegionListViewModel: RegionListViewModelProtocol {
     @Published var selectedRegion: RegionSummary? = nil
     @Published var warnings = [AvalancheWarningDetailed]()
     @Published var selectedWarning: AvalancheWarningDetailed? = nil
-    
+
     private let client: VarsomApiClient
     private let locationManager: LocationManager
-    private let favoriteRegionIdsKey = "favoriteRegionIds"
+    private let favoritesService: FavoritesService
     private var loadWarningsTask: Task<Void, Never>?
-    
-    init(client: VarsomApiClient, locationManager: LocationManager) {
+
+    init(client: VarsomApiClient, locationManager: LocationManager, favoritesService: FavoritesService = FavoritesService()) {
         self.client = client
         self.locationManager = locationManager
+        self.favoritesService = favoritesService
         self.locationIsAuthorized = locationManager.isAuthorized
-        self.favoriteRegionIds = UserDefaults.standard.object(forKey: favoriteRegionIdsKey) as? [Int] ?? [Int]()
-        print("Loaded favorite regions", favoriteRegionIds)
-        
+        self.favoriteRegionIds = favoritesService.loadFavorites()
+
         Publishers.CombineLatest($regions, $searchTerm)
             .map { regions, searchTerm in
                 regions.filter { region in
@@ -39,8 +39,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 }
             }
             .assign(to: &$filteredRegions)
-        
-        
+
+
         Publishers.CombineLatest3($filteredRegions, $localRegion, $favoriteRegionIds)
             .map { regions, localRegion, ids in
                 var filteredReg = regions.filter { region in
@@ -55,13 +55,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
             }
             .assign(to: &$favoriteRegions)
     }
-    
+
     func addFavorite(id: Int) {
-        if (!favoriteRegionIds.contains(id)) {
-            favoriteRegionIds.append(id)
-            print("Updating favorite regions", favoriteRegionIds)
-            UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
-        }
+        favoritesService.addFavorite(id, to: &favoriteRegionIds)
     }
 
     func removeFavorite(id: Int) {
@@ -70,10 +66,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
         } else if id == localRegion?.id, let index = favoriteRegionIds.firstIndex(of: RegionOption.currentPositionOption.id) {
             favoriteRegionIds.remove(at: index)
         }
-        print("Updating favorite regions", favoriteRegionIds)
-        UserDefaults.standard.set(favoriteRegionIds, forKey: favoriteRegionIdsKey)
+        favoritesService.saveFavorites(favoriteRegionIds)
     }
-    
+
     func needsRefresh() -> Bool {
         if (regions.isEmpty) {
             return true
@@ -87,25 +82,20 @@ class RegionListViewModel: RegionListViewModelProtocol {
     func loadRegions() async {
         do {
             self.regionLoadState = .loading
-
-            print("Loading regions")
             self.regions = try await client.loadRegions(lang: language).filter { region in
                 return region.TypeName == "A"
             }
-                    
-            print("Loading local region")
+
             if (locationManager.isAuthorized) {
                 await loadLocalRegion()
             }
 
-            print("Done loading")
             self.regionLoadState = .loaded
         } catch {
             self.regionLoadState = .failed
-            print(error)
         }
     }
-    
+
     func loadLocalRegion() async {
         do {
             let location = try await locationManager.updateLocation()
@@ -114,10 +104,10 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 self.localRegion = region
             }
         } catch {
-            print("Error loading local region: \(error)")
+            // Error loading local region - silently ignore
         }
     }
-    
+
     func updateLocation() async {
         do {
             let _ = try await locationManager.requestPermission()
@@ -125,96 +115,81 @@ class RegionListViewModel: RegionListViewModelProtocol {
             await loadLocalRegion()
         } catch {
             self.locationIsAuthorized = false
-            print("Error updating location: \(error)")
         }
     }
-    
-    func loadWarnings(from: Int = -5, to: Int = 2) async {
+
+    func loadWarnings(from: Int = WarningDateRange.defaultDaysBefore, to: Int = WarningDateRange.defaultDaysAfter) async {
         // Cancel any existing load task to prevent multiple concurrent calls
         loadWarningsTask?.cancel()
-        
+
         guard let selectedRegion = selectedRegion else {
-            print("Warning: Can't load warnings as no region is selected")
             return
         }
-        
-        print("Starting to load warnings for region: \(selectedRegion.Name)")
-        
+
         // Set loading state immediately
         self.warningLoadState = .loading
         self.selectedWarning = nil
         self.warnings = [AvalancheWarningDetailed]()
-        
+
         // Create a task that we can cancel if needed
         loadWarningsTask = Task {
             do {
                 // Check if task was cancelled
                 try Task.checkCancellation()
-                
+
                 let today = Date.current
                 guard let fromDate = Calendar.current.date(byAdding: .day, value: from, to: today),
                       let toDate = Calendar.current.date(byAdding: .day, value: to, to: today) else {
                     await MainActor.run {
                         self.warningLoadState = .failed
                     }
-                    print("Error: Could not calculate date range")
                     return
                 }
-                
-                print("Loading warnings from \(fromDate) to \(toDate)")
-                
+
                 // Check if task was cancelled before network call
                 try Task.checkCancellation()
-                
+
                 let loadedWarnings = try await client.loadWarningsDetailed(
                     lang: VarsomApiClient.currentLang(),
                     regionId: selectedRegion.Id,
                     from: fromDate,
                     to: toDate)
-                
-                print("Loaded \(loadedWarnings.count) warnings")
-                
+
                 // Check if task was cancelled after network call
                 try Task.checkCancellation()
-                
+
                 // Update UI on main actor
                 await MainActor.run {
                     self.warnings = loadedWarnings
-                    
+
                     // Find the warning for today, or use the first available warning
-                    if let currentIndex = loadedWarnings.firstIndex(where: { 
-                        Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day) 
+                    if let currentIndex = loadedWarnings.firstIndex(where: {
+                        Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day)
                     }) {
                         self.selectedWarning = loadedWarnings[currentIndex]
-                        print("Selected warning for today at index \(currentIndex)")
                     } else if !loadedWarnings.isEmpty {
                         // If no warning matches today, select the first one
                         self.selectedWarning = loadedWarnings[0]
-                        print("No warning for today, selected first warning")
                     } else {
                         // No warnings available
                         self.selectedWarning = nil
-                        print("No warnings available")
                     }
-                    
+
                     self.warningLoadState = .loaded
-                    print("Warnings loaded successfully")
                 }
             } catch is CancellationError {
                 // Task was cancelled, ignore
-                print("Load warnings task was cancelled")
             } catch {
                 await MainActor.run {
                     self.warningLoadState = .failed
                 }
-                print("Error loading warnings: \(error)")
             }
         }
-        
+
         // Don't await the task - let it run in the background
         // The task will update @Published properties which will trigger UI updates automatically
     }
-    
+
     func selectRegionById(regionId: Int) async {
         if (regions.count == 0) {
             await loadRegions()
@@ -222,13 +197,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
 
         let region = regions.first(where: { $0.Id == regionId})
         if let region = region {
-            print("Navigate to region \(region.Name)")
             selectedRegion = region
         } else if localRegion?.Id == regionId {
-            print("Navigate to local region")
             selectedRegion = localRegion
-        } else {
-            print("Region not found, unable to navigate to \(regionId), total \(regions.count) regions loaded, local region: \(localRegion?.Id ?? 0)")
         }
     }
 }

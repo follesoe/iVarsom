@@ -37,13 +37,10 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 .listStyle(.insetGrouped)
                 .searchable(text: $vm.searchTerm)
                 .onChange(of: vm.selectedRegion) {
-                    if let region = vm.selectedRegion {
-                        print("New selected region: \(region.Name)")
+                    if vm.selectedRegion != nil {
                         Task {
-                            await vm.loadWarnings(from: -5, to: 2)
+                            await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
                         }
-                    } else {
-                        print("Selected region set to nil")
                     }
                 }
                 Text("Data from the The Norwegian Avalanche Warning Service and www.varsom.no.")
@@ -63,7 +60,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                         Text(String(format: NSLocalizedString("Error loading warnings for %@", comment: "Error message when loading warnings fails"), selectedRegion.Name))
                         Button(NSLocalizedString("Try Again", comment: "Button to retry loading data")) {
                             Task {
-                                await vm.loadWarnings(from: -5, to: 2)
+                                await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
                             }
                         }
                     }
