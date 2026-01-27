@@ -1,5 +1,19 @@
 # Release History
 
+## 5.0.0
+
+Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 oppdatering.
+
+Denne versjonen inneholder en modernisert kodebase og flere forbedringer for pålitelighet og brukeropplevelse.
+
+- Oppdatert for iOS 26, watchOS 26 og macOS 26
+- Ny ekstra stor widget for iPad
+- Skredproblem-grafikk viser nå representative bilder for hver problemtype
+- Forbedret pålitelighet når appen aktiveres fra bakgrunnen
+- Widgeter og komplikasjoner oppdateres automatisk når appen åpnes
+
+Med ønske om en fin og trygg topptursesong!
+
 ## 3.0.0
 
 Skredvarsel appen er nå klar for sin tredje sesong, med en stor v3.0 oppdatering.

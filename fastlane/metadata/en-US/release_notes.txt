@@ -1,10 +1,9 @@
-I am happy to announce that the Skredvarsel app is ready for its third season, with a v3.0 release.
+The Skredvarsel app is ready for its fifth season (2025/2026), with a major v5.0 update.
 
-The most significant new feature is that avalanche problems are now shown in the app, and the app has been updated to support iOS 17, watchOS 10, and macOS 14.
-
-- Avalanche problems are now included in the forecast view
-- You can read the extended warning text by tapping the warning summary on the top of the details page
-- Adds support for iOS 17 standby mode widgets
-- Updated the watchOS app to follow the new watchOS 10 design guidelines
+- Updated for iOS 26, watchOS 26, and macOS 26
+- New extra large widget size for iPad
+- Avalanche problem graphics now show representative images
+- Improved reliability when returning to the app from the background
+- Widgets and complications automatically refresh when the app is opened
 
 Stay safe, and happy season!

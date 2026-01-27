@@ -1,5 +1,19 @@
 # Release History
 
+## 5.0.0
+
+The Skredvarsel app is ready for its fifth season (2025/2026), with a major v5.0 update.
+
+This release brings a modernized codebase and several improvements to reliability and user experience.
+
+- Updated for iOS 26, watchOS 26, and macOS 26
+- New extra large widget size for iPad
+- Avalanche problem graphics now show representative images for each problem type
+- Improved reliability when returning to the app from the background
+- Widgets and complications automatically refresh when the app is opened
+
+Stay safe, and happy season!
+
 ## 3.0.0
 
 I am happy to announce that the Skredvarsel app is ready for its third season, with a v3.0 release.

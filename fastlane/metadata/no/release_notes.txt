@@ -1,10 +1,9 @@
-Skredvarsel appen er nå klar for sin tredje sesong, med en stor v3.0 oppdatering.
+Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 oppdatering.
 
-Den viktigste nyheten, er at appen nå inkluderer informasjon om konkrete skredproblemer.
-
-- Støtte for de nye Standby widgetene i iOS 17
-- Oppdatert design for å matche designspråket på watchOS 10
-- Skredproblemer er inkludert både på iOS og watchOS
-- Du kan lese den fullstendige varslingsteksten ved å trykke på skredvarslet øverst på siden
+- Oppdatert for iOS 26, watchOS 26 og macOS 26
+- Ny ekstra stor widget for iPad
+- Skredproblem-grafikk viser nå representative bilder
+- Forbedret pålitelighet når appen aktiveres fra bakgrunnen
+- Widgeter og komplikasjoner oppdateres automatisk når appen åpnes
 
 Med ønske om en fin og trygg topptursesong!
