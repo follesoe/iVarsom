@@ -44,9 +44,9 @@ Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8I
 
 ### Requirements
 
-- Xcode 16+
+- Xcode 26+
 - Swift 6
-- iOS 15+ / macOS 12+ / watchOS 8+
+- iOS 26+ / macOS 26+ / watchOS 26+
 
 ### Building from Source
 
@@ -70,7 +70,7 @@ The app uses SwiftUI with MVVM architecture. See [CLAUDE.md](CLAUDE.md) for deta
 
 ## Privacy
 
-The app collects no user data. Location is used only to find your local avalanche region (3km accuracy) and is not stored or transmitted beyond the initial API query.
+The app collects no user data. Location is used only to find your local avalanche region (3km accuracy) and is not stored or transmitted beyond the initial API query. See [PRIVACY.md](PRIVACY.md) for the full privacy policy.
 
 ## License
 
