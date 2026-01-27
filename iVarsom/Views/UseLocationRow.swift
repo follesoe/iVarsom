@@ -13,7 +13,6 @@ struct UseLocationRow: View {
                     Spacer()
                 }
             }
-            .glassEffect(.regular.interactive())
             Text("Will enable location based warnings in Widgets")
                 .font(.caption)
                 .foregroundColor(.gray)

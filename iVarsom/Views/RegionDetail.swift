@@ -46,11 +46,8 @@ struct RegionDetail: View {
                                         .padding(.top, 5)
                                         .id(warning.id)
 
-                                if (isSelected) {
-                                    Button(action: action) { cell }.buttonStyle(.borderedProminent)
-                                } else {
-                                    Button(action: action) { cell }.buttonStyle(.bordered)
-                                }
+                                Button(action: action) { cell }
+                                    .buttonStyle(.plain)
                             }
                             .onAppear {
                                 if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {
