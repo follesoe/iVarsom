@@ -1,0 +1,1 @@
+The Skredvarsel app displays up-to-date avalanche warnings from the Norwegian Avalanche Warning Service and www.varsom.no. You can access the avalanche warning for selected regions or based on your current location. A significant feature of the app is displaying the recent avalanche warning as widgets. No sign-in is required.

@@ -12,6 +12,21 @@ platform :ios do
   desc "Upload metadata to App Store Connect (without submitting)"
   lane :upload_metadata do
     deliver(
+      metadata_path: "./metadata_ios",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
+  desc "Upload metadata to macOS App Store Connect"
+  lane :upload_metadata_mac do
+    deliver(
+      platform: "osx",
+      metadata_path: "./metadata_osx",
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
@@ -23,29 +38,14 @@ platform :ios do
 
   desc "Upload metadata to both iOS and macOS App Store Connect"
   lane :upload_metadata_all do
-    deliver(
-      platform: "ios",
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      skip_metadata: false,
-      force: true,
-      precheck_include_in_app_purchases: false,
-      submit_for_review: false
-    )
-    deliver(
-      platform: "osx",
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      skip_metadata: false,
-      force: true,
-      precheck_include_in_app_purchases: false,
-      submit_for_review: false
-    )
+    upload_metadata
+    upload_metadata_mac
   end
 
   desc "Preview metadata changes (dry run)"
   lane :preview_metadata do
     deliver(
+      metadata_path: "./metadata_ios",
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
@@ -70,6 +70,7 @@ platform :ios do
   desc "Submit the current build for review"
   lane :submit_for_review do
     deliver(
+      metadata_path: "./metadata_ios",
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
