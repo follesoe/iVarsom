@@ -24,8 +24,8 @@ struct AvalancheProblem: Codable {
     var AvalancheProblemTypeId: Int
     var AvalancheProblemTypeImage: String {
         switch AvalancheProblemTypeId {
-        case 3: return "AvalancheProblemNewSnow"
-        case 5: return "AvalancheProblemWetSnow"
+        case 3, 7: return "AvalancheProblemNewSnow"
+        case 5, 45: return "AvalancheProblemWetSnow"
         case 10: return "AvalancheProblemDriftingSnow"
         case 30: return "AvalancheProblemOldSnow"
         case 50: return "AvalancheProblemGlidingSnow"
