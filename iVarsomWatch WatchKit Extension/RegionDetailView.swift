@@ -7,7 +7,7 @@ struct RegionDetailView: View {
     @Binding var warnings: [AvalancheWarningDetailed]
     @State private var showWarningText = false
     @State private var showProblemDetails = false
-    
+
     var body: some View {
         TabView {
             if let selectedWarning = selectedWarning {
@@ -22,13 +22,15 @@ struct RegionDetailView: View {
                                 showWarningText = true
                             } label: {
                                 Label("Details", systemImage: "plus.magnifyingglass")
+                                    .labelStyle(.iconOnly)
                             }
+                            .glassEffect(.regular.interactive())
                         }
                     }
                     .sheet(isPresented: $showWarningText, content: {
                         MainWarningTextView(selectedWarning: selectedWarning)
                     })
-                
+
                 if let problems = selectedWarning.AvalancheProblems {
                     ForEach(problems) { problem in
                         AvalancheProblemView(problem: problem)
@@ -40,13 +42,15 @@ struct RegionDetailView: View {
                                         showProblemDetails = true
                                     } label: {
                                         Label("Details", systemImage: "plus.magnifyingglass")
+                                            .labelStyle(.iconOnly)
                                     }
+                                    .glassEffect(.regular.interactive())
                                 }
                             }
                             .sheet(isPresented: $showProblemDetails, content: {
                                 AvalancheProblemDetailsView(problem: problem)
                             })
-                        
+
                     }
                     .navigationTitle("Avalanche problem")
                 }
@@ -56,7 +60,7 @@ struct RegionDetailView: View {
                     Text("Loading Details")
                 }.padding()
             }
-            
+
             ScrollView {
                 VStack {
                     let filteredWarnings = warnings.filter { $0.id > 0 }
@@ -89,8 +93,8 @@ struct RegionDetailView: View {
         .tabViewStyle(.verticalPage)
         .navigationBarTitleDisplayMode(.automatic)
     }
-    
-    func formatWarningDay(date: Date) -> String {        
+
+    func formatWarningDay(date: Date) -> String {
         if (Calendar.current.isDateInYesterday(date) ||
             Calendar.current.isDateInToday(date) ||
             Calendar.current.isDateInTomorrow(date)) {

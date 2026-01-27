@@ -25,36 +25,44 @@ struct WarningSymbolLevel: View {
     }
 }
 
-struct WarningSymbolLevel_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            WarningSymbolLevel(dangerLevel: .unknown)
-                .background(DangerGradient(dangerLevel: .unknown))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level1)
-                .background(DangerGradient(dangerLevel: .level1))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level2)
-                .background(DangerGradient(dangerLevel: .level2))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level3)
-                .background(DangerGradient(dangerLevel: .level3))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level4)
-                .background(DangerGradient(dangerLevel: .level4))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level5)
-                .background(DangerGradient(dangerLevel: .level5))
-                .previewLayout(.fixed(width: 150, height: 150))
-            
-            WarningSymbolLevel(dangerLevel: .level3)
-                .background(DangerGradient(dangerLevel: .level3))
-                .previewLayout(.fixed(width: 150, height: 300))
-        }
-    }
+#Preview("Unknown") {
+    WarningSymbolLevel(dangerLevel: .unknown)
+        .background(DangerGradient(dangerLevel: .unknown))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 1") {
+    WarningSymbolLevel(dangerLevel: .level1)
+        .background(DangerGradient(dangerLevel: .level1))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 2") {
+    WarningSymbolLevel(dangerLevel: .level2)
+        .background(DangerGradient(dangerLevel: .level2))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 3") {
+    WarningSymbolLevel(dangerLevel: .level3)
+        .background(DangerGradient(dangerLevel: .level3))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 4") {
+    WarningSymbolLevel(dangerLevel: .level4)
+        .background(DangerGradient(dangerLevel: .level4))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 5") {
+    WarningSymbolLevel(dangerLevel: .level5)
+        .background(DangerGradient(dangerLevel: .level5))
+        .frame(width: 150, height: 150)
+}
+
+#Preview("Level 3 Tall") {
+    WarningSymbolLevel(dangerLevel: .level3)
+        .background(DangerGradient(dangerLevel: .level3))
+        .frame(width: 150, height: 300)
 }

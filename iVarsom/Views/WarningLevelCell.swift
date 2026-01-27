@@ -16,9 +16,7 @@ struct WarningLevelCell: View {
     }
 }
 
-struct WarningLevelCell_Previews: PreviewProvider {
-    static var previews: some View {
-        WarningLevelCell(dangerLevel: .level3)
-            .previewLayout(.fixed(width: 40, height: 40))
-    }
+#Preview("Warning Level Cell") {
+    WarningLevelCell(dangerLevel: .level3)
+        .frame(width: 40, height: 40)
 }
