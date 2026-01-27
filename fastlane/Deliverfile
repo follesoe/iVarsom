@@ -1,8 +1,9 @@
 # Deliverfile configuration
 # https://docs.fastlane.tools/actions/deliver/
 
-# Metadata path
-metadata_path("./fastlane/metadata")
+# Metadata paths are set per-platform in Fastfile:
+# - iOS: ./metadata_ios
+# - macOS: ./metadata_osx
 
 # Screenshots path (create this folder if you want to manage screenshots)
 # screenshots_path("./fastlane/screenshots")

@@ -3,6 +3,11 @@
 
 default_platform(:ios)
 
+# Use absolute paths to ensure metadata is found correctly
+FASTLANE_DIR = File.expand_path(File.dirname(__FILE__))
+METADATA_IOS = File.join(FASTLANE_DIR, "metadata_ios")
+METADATA_OSX = File.join(FASTLANE_DIR, "metadata_osx")
+
 platform :ios do
   desc "Download existing metadata from App Store Connect"
   lane :download_metadata do
@@ -12,7 +17,7 @@ platform :ios do
   desc "Upload metadata to App Store Connect (without submitting)"
   lane :upload_metadata do
     deliver(
-      metadata_path: "./metadata_ios",
+      metadata_path: METADATA_IOS,
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
@@ -26,7 +31,7 @@ platform :ios do
   lane :upload_metadata_mac do
     deliver(
       platform: "osx",
-      metadata_path: "./metadata_osx",
+      metadata_path: METADATA_OSX,
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
@@ -45,7 +50,7 @@ platform :ios do
   desc "Preview metadata changes (dry run)"
   lane :preview_metadata do
     deliver(
-      metadata_path: "./metadata_ios",
+      metadata_path: METADATA_IOS,
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
@@ -70,7 +75,7 @@ platform :ios do
   desc "Submit the current build for review"
   lane :submit_for_review do
     deliver(
-      metadata_path: "./metadata_ios",
+      metadata_path: METADATA_IOS,
       skip_binary_upload: true,
       skip_screenshots: true,
       skip_metadata: false,
