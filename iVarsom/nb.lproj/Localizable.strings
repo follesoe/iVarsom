@@ -99,3 +99,40 @@
 
 /* Navigation title */
 "Forecast" = "Varsel";
+
+/* Siri Shortcut - Intent title */
+"Get Avalanche Warning" = "Hent skredvarsel";
+
+/* Siri Shortcut - Intent description */
+"Get the current avalanche danger level for a region in Norway" = "Hent gjeldende faregrad for snøskred i en region i Norge";
+
+/* Siri Shortcut - Short title */
+"Avalanche Warning" = "Skredvarsel";
+
+/* Siri Shortcut phrases - without region (Siri will prompt) */
+"Get avalanche warning in ${applicationName}" = "Hent skredvarsel i ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Skredvarsel fra ${applicationName}";
+
+/* Siri Shortcut phrases - with ${region} parameter */
+"Get avalanche warning for ${region} in ${applicationName}" = "Hent skredvarsel for ${region} i ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Hva er skredfaren i ${region} med ${applicationName}";
+
+/* Siri Shortcut - Dialog response */
+"The avalanche danger level in %@ is %@." = "Skredfaren i %@ er %@.";
+
+/* Siri Shortcut - No warning available */
+"No avalanche warning available for %@ today." = "Ingen skredvarsel tilgjengelig for %@ i dag.";
+
+/* Siri Shortcut - Location required */
+"Location access is required to get warnings for your current position." = "Tilgang til posisjon er nødvendig for å hente varsel for din posisjon.";
+
+/* Siri Shortcut - Location unavailable */
+"Could not determine your current location." = "Kunne ikke finne din posisjon.";
+
+/* Siri Shortcut - Error messages */
+"Location access required" = "Posisjonstilgang kreves";
+
+/* Siri Shortcut - Parameter request dialog */
+"Which region do you want the avalanche warning for?" = "Hvilken region vil du ha skredvarsel for?";
+"Location unavailable" = "Posisjon utilgjengelig";
+"No warning available" = "Ingen varsel tilgjengelig";
