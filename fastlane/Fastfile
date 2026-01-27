@@ -21,6 +21,28 @@ platform :ios do
     )
   end
 
+  desc "Upload metadata to both iOS and macOS App Store Connect"
+  lane :upload_metadata_all do
+    deliver(
+      platform: "ios",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+    deliver(
+      platform: "osx",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
   desc "Preview metadata changes (dry run)"
   lane :preview_metadata do
     deliver(
