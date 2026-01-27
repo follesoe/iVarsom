@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
-    @StateObject var vm: ViewModelType
+    @Bindable var vm: ViewModelType
     @State private var showAddRegion = false
-    
+
     // Load warnings from yesterday
     let fromDays = -1
-    
+
     // ... and two days ahead
     let toDays = 2
 
@@ -20,7 +20,7 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                             .font(.caption2)
                     }
                 } else {
-                    List(selection: $vm.selectedRegion) { 
+                    List(selection: $vm.selectedRegion) {
                         ForEach(vm.favoriteRegions) { region in
                             let isLocalRegion = region.Id == vm.localRegion?.Id
                             NavigationLink(value: region) {
@@ -31,7 +31,7 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                             .cornerRadius(20)
                         }
                         .onDelete(perform: removeFavorite)
-                        
+
                         HStack {
                             Spacer()
                             Text("Add Region")
@@ -78,7 +78,7 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
             }
         }
     }
-    
+
     func removeFavorite(at offsets: IndexSet) {
         let id = vm.favoriteRegions[offsets.first!].id
         vm.removeFavorite(id: id)

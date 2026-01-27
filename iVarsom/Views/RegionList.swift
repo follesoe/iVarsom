@@ -3,10 +3,10 @@ import CoreLocation
 import CoreLocationUI
 
 struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
-    @StateObject var vm: ViewModelType
+    @Bindable var vm: ViewModelType
 
     let rowInsets = EdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 14)
-    
+
     var body: some View {
         NavigationSplitView {
             VStack {

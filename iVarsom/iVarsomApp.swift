@@ -1,8 +1,8 @@
 import SwiftUI
 
 @main
-struct iVarsomApp: App {    
-    @StateObject var vm = RegionListViewModel(
+struct iVarsomApp: App {
+    @State var vm = RegionListViewModel(
         client: VarsomApiClient(),
         locationManager: LocationManager())
 

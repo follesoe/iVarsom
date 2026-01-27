@@ -1,24 +1,40 @@
 import Foundation
-import Combine
 
+@Observable
 @MainActor
 class RegionListViewModel: RegionListViewModelProtocol {
     private var language: VarsomApiClient.Language {
         return Locale.current.identifier.starts(with: "nb") ? .norwegian : .english
     }
 
-    @Published private(set) var regionLoadState = LoadState.idle
-    @Published private(set) var warningLoadState = LoadState.idle
-    @Published private(set) var locationIsAuthorized = false
-    @Published private(set) var regions = [RegionSummary]()
-    @Published private(set) var localRegion: RegionSummary? = nil
-    @Published var favoriteRegionIds: [Int]
-    @Published var filteredRegions = [RegionSummary]()
-    @Published var favoriteRegions = [RegionSummary]()
-    @Published var searchTerm = ""
-    @Published var selectedRegion: RegionSummary? = nil
-    @Published var warnings = [AvalancheWarningDetailed]()
-    @Published var selectedWarning: AvalancheWarningDetailed? = nil
+    private(set) var regionLoadState = LoadState.idle
+    private(set) var warningLoadState = LoadState.idle
+    private(set) var locationIsAuthorized = false
+    private(set) var regions = [RegionSummary]()
+    private(set) var localRegion: RegionSummary? = nil
+    var favoriteRegionIds: [Int]
+    var searchTerm = ""
+    var selectedRegion: RegionSummary? = nil
+    var warnings = [AvalancheWarningDetailed]()
+    var selectedWarning: AvalancheWarningDetailed? = nil
+
+    var filteredRegions: [RegionSummary] {
+        regions.filter { region in
+            searchTerm.isEmpty || region.Name.contains(searchTerm)
+        }
+    }
+
+    var favoriteRegions: [RegionSummary] {
+        var result = filteredRegions.filter { region in
+            favoriteRegionIds.contains(region.id)
+        }
+        if let localReg = localRegion {
+            if favoriteRegionIds.contains(RegionOption.currentPositionOption.id) {
+                result.insert(localReg, at: 0)
+            }
+        }
+        return result
+    }
 
     private let client: VarsomApiClient
     private let locationManager: LocationManager
@@ -31,29 +47,6 @@ class RegionListViewModel: RegionListViewModelProtocol {
         self.favoritesService = favoritesService
         self.locationIsAuthorized = locationManager.isAuthorized
         self.favoriteRegionIds = favoritesService.loadFavorites()
-
-        Publishers.CombineLatest($regions, $searchTerm)
-            .map { regions, searchTerm in
-                regions.filter { region in
-                    searchTerm.isEmpty ? true : region.Name.contains(searchTerm)
-                }
-            }
-            .assign(to: &$filteredRegions)
-
-
-        Publishers.CombineLatest3($filteredRegions, $localRegion, $favoriteRegionIds)
-            .map { regions, localRegion, ids in
-                var filteredReg = regions.filter { region in
-                    ids.contains(region.id)
-                }
-                if let localReg = localRegion {
-                    if (ids.contains(RegionOption.currentPositionOption.id)) {
-                        filteredReg.insert(localReg, at: 0)
-                    }
-                }
-                return filteredReg
-            }
-            .assign(to: &$favoriteRegions)
     }
 
     func addFavorite(id: Int) {
@@ -187,7 +180,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
         }
 
         // Don't await the task - let it run in the background
-        // The task will update @Published properties which will trigger UI updates automatically
+        // The task will update properties which will trigger UI updates automatically
     }
 
     func selectRegionById(regionId: Int) async {
