@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreLocation
 import CoreLocationUI
+import WidgetKit
 
 struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     @Environment(\.scenePhase) private var scenePhase
@@ -85,6 +86,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active && oldPhase == .background {
+                WidgetCenter.shared.reloadAllTimelines()
                 Task {
                     if (vm.needsRefresh()) {
                         await vm.loadRegions()
