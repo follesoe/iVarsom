@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "========================================"
+echo "Xcode Cloud Build Information"
+echo "========================================"
+echo "Build Number:    $CI_BUILD_NUMBER"
+echo "Branch:          $CI_BRANCH"
+echo "Tag:             $CI_TAG"
+echo "Commit:          $CI_COMMIT"
+echo "Workflow:        $CI_WORKFLOW"
+echo "Xcode Project:   $CI_XCODE_PROJECT"
+echo "Xcode Scheme:    $CI_XCODE_SCHEME"
+echo "Product:         $CI_PRODUCT"
+echo "Platform:        $CI_PRODUCT_PLATFORM"
+echo "========================================"
