@@ -31,6 +31,14 @@ Download existing metadata from App Store Connect
 
 Upload metadata to App Store Connect (without submitting)
 
+### ios upload_metadata_mac
+
+```sh
+[bundle exec] fastlane ios upload_metadata_mac
+```
+
+Upload metadata to macOS App Store Connect
+
 ### ios upload_metadata_all
 
 ```sh
