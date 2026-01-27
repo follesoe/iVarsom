@@ -6,6 +6,7 @@ The Skredvarsel app is ready for its fifth season (2025/2026), with a major v5.0
 
 This release brings a modernized codebase and several improvements to reliability and user experience.
 
+- Siri Shortcuts support: Ask Siri for the avalanche warning by saying "Get avalanche warning in Skredvarsel"
 - Updated for iOS 26, watchOS 26, and macOS 26
 - New extra large widget size for iPad
 - Avalanche problem graphics now show representative images for each problem type

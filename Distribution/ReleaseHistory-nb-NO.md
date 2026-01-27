@@ -6,6 +6,7 @@ Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 opp
 
 Denne versjonen inneholder en modernisert kodebase og flere forbedringer for pålitelighet og brukeropplevelse.
 
+- Siri-snarveier: Spør Siri om skredvarselet ved å si "Hent varsel i Skredvarsel"
 - Oppdatert for iOS 26, watchOS 26 og macOS 26
 - Ny ekstra stor widget for iPad
 - Skredproblem-grafikk viser nå representative bilder for hver problemtype

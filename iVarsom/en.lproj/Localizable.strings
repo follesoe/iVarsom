@@ -107,7 +107,7 @@
 "Get the current avalanche danger level for a region in Norway" = "Get the current avalanche danger level for a region in Norway";
 
 /* Siri Shortcut - Short title */
-"Avalanche Warning" = "Avalanche Warning";
+"Check warning" = "Check warning";
 
 /* Siri Shortcut phrases - without region (Siri will prompt) */
 "Get avalanche warning in ${applicationName}" = "Get avalanche warning in ${applicationName}";

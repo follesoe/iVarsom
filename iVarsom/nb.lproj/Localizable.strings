@@ -107,14 +107,14 @@
 "Get the current avalanche danger level for a region in Norway" = "Hent gjeldende faregrad for snøskred i en region i Norge";
 
 /* Siri Shortcut - Short title */
-"Avalanche Warning" = "Skredvarsel";
+"Check warning" = "Sjekk varsel";
 
 /* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Hent skredvarsel i ${applicationName}";
-"Avalanche warning from ${applicationName}" = "Skredvarsel fra ${applicationName}";
+"Get avalanche warning in ${applicationName}" = "Hent varsel i ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Varsel fra ${applicationName}";
 
 /* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Hent skredvarsel for ${region} i ${applicationName}";
+"Get avalanche warning for ${region} in ${applicationName}" = "Hent varsel for ${region} i ${applicationName}";
 "What is the avalanche danger in ${region} with ${applicationName}" = "Hva er skredfaren i ${region} med ${applicationName}";
 
 /* Siri Shortcut - Dialog response */

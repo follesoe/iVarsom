@@ -10,7 +10,7 @@ struct SkredvarselShortcuts: AppShortcutsProvider {
                 "Get avalanche warning for \(\.$region) in \(.applicationName)",
                 "What is the avalanche danger in \(\.$region) with \(.applicationName)"
             ],
-            shortTitle: LocalizedStringResource("Avalanche Warning"),
+            shortTitle: LocalizedStringResource("Check warning"),
             systemImageName: "mountain.2"
         )
     }

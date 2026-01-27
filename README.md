@@ -32,6 +32,24 @@ The app is also a learning exercise for myself to learn how to build and distrib
     <img src="images/DownloadOnTheMacAppStore.svg" alt="Download on the Mac App Store" />
 </a>
 
+## Siri Shortcuts
+
+You can ask Siri for avalanche warnings using voice commands. The app supports both English and Norwegian phrases:
+
+**English:**
+- "Get avalanche warning in Skredvarsel"
+- "Avalanche warning from Skredvarsel"
+- "Get avalanche warning for Ofoten in Skredvarsel"
+- "What is the avalanche danger in Tromsø with Skredvarsel"
+
+**Norwegian:**
+- "Hent varsel i Skredvarsel"
+- "Varsel fra Skredvarsel"
+- "Hent varsel for Ofoten i Skredvarsel"
+- "Hva er skredfaren i Tromsø med Skredvarsel"
+
+Siri will speak the danger level and warning text, and display a visual summary with the danger icon.
+
 ## Video Demo
 
 [![Video Demo](https://img.youtube.com/vi/9gNlAR0sUzc/0.jpg)](https://www.youtube.com/watch?v=9gNlAR0sUzc)

@@ -1,5 +1,6 @@
 Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 oppdatering.
 
+- Siri-snarveier: Spør Siri om skredvarselet
 - Oppdatert for iOS 26, watchOS 26 og macOS 26
 - Ny ekstra stor widget for iPad
 - Skredproblem-grafikk viser nå representative bilder
