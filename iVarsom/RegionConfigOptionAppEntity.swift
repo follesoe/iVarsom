@@ -26,7 +26,7 @@ struct RegionConfigOptionAppEntity: AppEntity {
         }
         
         func defaultResult() async -> RegionConfigOptionAppEntity? {
-            RegionConfigOptionAppEntity.allRegions().first
+            nil
         }
     }
     
