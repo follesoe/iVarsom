@@ -32,16 +32,42 @@ struct LocationIconText: View {
 }
 
 struct SmallWarningWidgetView: View {
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    @Environment(\.showsWidgetContainerBackground) var showsWidgetContainerBackground
     var entry: Provider.Entry
-    
+
+    /// Returns true when widget is in StandBy or CarPlay (background removed in fullColor mode)
+    var isStandByOrCarPlay: Bool {
+        widgetRenderingMode == .fullColor && !showsWidgetContainerBackground
+    }
+
+    /// Returns true when widget is on Lock Screen (vibrant mode with background removed)
+    var isLockScreen: Bool {
+        widgetRenderingMode == .vibrant && !showsWidgetContainerBackground
+    }
+
     var textColor: Color {
-        return entry.currentWarning.DangerLevel == .level2 ? .black : .white;
+        // In vibrant mode (Lock Screen, StandBy night), use primary color
+        if widgetRenderingMode == .vibrant {
+            return .primary
+        }
+        // In StandBy day mode or CarPlay (no background), use primary for visibility
+        if !showsWidgetContainerBackground {
+            return .primary
+        }
+        // Normal mode with background - use contrast colors
+        return entry.currentWarning.DangerLevel == .level2 ? .black : .white
+    }
+
+    var useTintableIcon: Bool {
+        widgetRenderingMode != .fullColor || !showsWidgetContainerBackground
     }
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel)
+                DangerIcon(dangerLevel: entry.currentWarning.DangerLevel,
+                           useTintable: useTintableIcon)
                     .frame(width: 54, height: 54)
                 Spacer()
                 Text("\(entry.currentWarning.DangerLevel.description)")

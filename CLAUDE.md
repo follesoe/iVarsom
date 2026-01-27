@@ -14,13 +14,13 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian ava
 
 ```bash
 # Build for iOS Simulator
-xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 16'
+xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 
 # Build watch app
-xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 10 (46mm)'
+xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm)'
 
 # Run tests
-xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 16'
+xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 ```
 
 **Xcode shortcuts**: Cmd+B (build), Cmd+U (test), Cmd+R (run)
@@ -65,6 +65,8 @@ The app follows MVVM with protocol-based abstractions for testability.
 - Uses AppIntents (iOS 17+) via `SelectRegion` for configuration
 - `VarsomTimelineProvider` manages timeline entries and update policy
 - Supports: systemSmall/Medium/Large/ExtraLarge, accessory variants for lock screen/watch
+- StandBy and CarPlay support via `widgetRenderingMode` and `showsWidgetContainerBackground` environment variables
+- Uses `containerBackground(for: .widget)` for removable backgrounds
 
 ### Deep Linking
 

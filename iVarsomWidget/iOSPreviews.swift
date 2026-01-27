@@ -89,3 +89,26 @@ func createEntry(currentWarning: AvalancheWarningSimple,
     createEntry(currentWarning: testWarnings[0],
                 allWarnings: testWarnings)
 }
+
+// MARK: - StandBy Previews
+
+#Preview("StandBy Small", as: .systemSmall) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel3,
+                allWarnings: [testWarningLevel3])
+}
+
+#Preview("StandBy Rectangular", as: .accessoryRectangular) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarnings[0],
+                allWarnings: testWarnings)
+}
+
+#Preview("StandBy Circular", as: .accessoryCircular) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarningLevel3,
+                allWarnings: [testWarningLevel3])
+}
