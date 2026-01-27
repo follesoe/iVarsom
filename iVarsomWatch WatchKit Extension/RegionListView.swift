@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Bindable var vm: ViewModelType
     @State private var showAddRegion = false
 
@@ -67,6 +68,15 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
         .task {
             if (vm.needsRefresh()) {
                 await vm.loadRegions()
+            }
+        }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            if newPhase == .active && oldPhase == .background {
+                Task {
+                    if (vm.needsRefresh()) {
+                        await vm.loadRegions()
+                    }
+                }
             }
         }
         .onOpenURL { url in

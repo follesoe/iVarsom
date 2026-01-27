@@ -3,6 +3,7 @@ import CoreLocation
 import CoreLocationUI
 
 struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Bindable var vm: ViewModelType
 
     let rowInsets = EdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 14)
@@ -81,6 +82,15 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
         }
         .task {
             await vm.loadRegions()
+        }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            if newPhase == .active && oldPhase == .background {
+                Task {
+                    if (vm.needsRefresh()) {
+                        await vm.loadRegions()
+                    }
+                }
+            }
         }
     }
 }
