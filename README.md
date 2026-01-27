@@ -86,6 +86,32 @@ xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iP
 
 The app uses SwiftUI with MVVM architecture. See [CLAUDE.md](CLAUDE.md) for detailed architecture documentation.
 
+### Fastlane
+
+Fastlane is used for managing App Store metadata. Metadata is split into platform-specific directories to avoid Apple's rejection for mentioning other platforms:
+
+- `fastlane/metadata_ios/` - iOS/watchOS metadata
+- `fastlane/metadata_osx/` - macOS metadata
+
+Available lanes:
+
+```bash
+# Upload iOS metadata
+fastlane ios upload_metadata
+
+# Upload macOS metadata
+fastlane ios upload_metadata_mac
+
+# Upload to both platforms
+fastlane ios upload_metadata_all
+
+# Preview changes (dry run)
+fastlane ios preview_metadata
+
+# Download existing metadata from App Store Connect
+fastlane ios download_metadata
+```
+
 ## Privacy
 
 The app collects no user data. Location is used only to find your local avalanche region (3km accuracy) and is not stored or transmitted beyond the initial API query. See [PRIVACY.md](PRIVACY.md) for the full privacy policy.
