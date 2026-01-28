@@ -5,7 +5,7 @@ struct RegionWatchRow: View {
     var isLocalRegion:Bool
     
     var textColor: Color {
-        return warning.DangerLevel == .level2 ? .black : .white;
+        return warning.DangerLevel == .level5 ? .white : .black
     }
     
     var body: some View {

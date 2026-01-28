@@ -7,7 +7,7 @@ struct WarningSummary: View {
     var includeLocationIcon: Bool = false
     
     var textColor: Color {
-        return warning.DangerLevel == .level2 ? .black : .white;
+        return warning.DangerLevel == .level5 ? .white : .black
     }
     
     var body: some View {        

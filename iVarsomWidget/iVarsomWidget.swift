@@ -56,7 +56,7 @@ struct SmallWarningWidgetView: View {
             return .primary
         }
         // Normal mode with background - use contrast colors
-        return entry.currentWarning.DangerLevel == .level2 ? .black : .white
+        return entry.currentWarning.DangerLevel == .level5 ? .white : .black
     }
 
     var useTintableIcon: Bool {
