@@ -2,10 +2,24 @@ import SwiftUI
 
 struct MainWarningTextView: View {
     var selectedWarning: AvalancheWarningDetailed
+
+    private var hasEmergencyWarning: Bool {
+        guard let warning = selectedWarning.EmergencyWarning else { return false }
+        return !warning.isEmpty && warning != NSLocalizedString("EmergencyWarningNotGiven", comment: "")
+    }
+
     var body: some View {
         ScrollView {
             let pubTime = selectedWarning.PublishTime.formatted(date: .abbreviated, time: .shortened)
             VStack(alignment: .leading) {
+                if hasEmergencyWarning, let emergencyWarning = selectedWarning.EmergencyWarning {
+                    HStack {
+                        Image(systemName: "exclamationmark.circle.fill")
+                        Text(emergencyWarning)
+                            .fontWeight(.bold)
+                    }
+                    .padding()
+                }
                 Text(selectedWarning.MainText)
                     .padding()
                 if let danger = selectedWarning.AvalancheDanger {

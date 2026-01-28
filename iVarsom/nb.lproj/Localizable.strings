@@ -141,3 +141,6 @@
 /* Siri Shortcut - Network error messages */
 "No internet connection. Unable to retrieve avalanche warnings." = "Ingen internettforbindelse. Kan ikke hente skredvarsel.";
 "Unable to retrieve avalanche warnings. Please try again later." = "Kan ikke hente skredvarsel. Vennligst prøv igjen senere.";
+
+/* Emergency warning not given - used to filter out placeholder values from API */
+"EmergencyWarningNotGiven" = "Ikke gitt";

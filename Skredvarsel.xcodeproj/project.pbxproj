@@ -91,6 +91,7 @@
 		AA63860B2797592700FD52DA /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
 		AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172F02796093A009AB089 /* Assets.xcassets */; };
 		AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
+		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
 		AA73188729586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
 		AA73188829586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
 		AA73188929586F9500CC0C2A /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73188629586F9500CC0C2A /* CalendarExtensions.swift */; };
@@ -328,6 +329,7 @@
 		AA6386092797518E00FD52DA /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA63860A2797592700FD52DA /* VarsomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarsomData.swift; sourceTree = "<group>"; };
 		AA71614D27CBBF9600E0CFD0 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWarningBanner.swift; sourceTree = "<group>"; };
 		AA73188629586F9500CC0C2A /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		AA7358CE27BD8DCF009E3DA1 /* UseLocationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseLocationRow.swift; sourceTree = "<group>"; };
 		AA7358D127BD93C8009E3DA1 /* RegionListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */,
 				AA059A6B2AF82D4F00E91768 /* Expositions.swift */,
 				AA119DB42B1A3626004F2E88 /* MainWarningTextView.swift */,
+				7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				AA7358D227BD93C8009E3DA1 /* RegionListViewModelProtocol.swift in Sources */,
 				AAD172CE2795FCA3009AB089 /* RegionOption.swift in Sources */,
 				AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */,
+				CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */,
 				AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */,
 				2C688DFD622C33F1DE47661B /* Constants.swift in Sources */,
