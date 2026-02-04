@@ -10,20 +10,27 @@ struct RegionDetail: View {
         ScrollView {
             VStack(alignment: .leading) {
                 if let selectedWarning = selectedWarning {
-                    WarningSummary(
-                        warning: selectedWarning,
-                        includeLocationIcon: false)
-                        .frame(maxWidth: 600)
-                        .cornerRadius(10)
-                        .padding()
-                        .sheet(isPresented: $showWarningText, content: {
-                            MainWarningTextView(
-                                selectedWarning: selectedWarning,
-                                isShowingSheet: $showWarningText)
-                        })
-                        .onTapGesture(perform: {
-                            showWarningText = true
-                        })
+                    VStack(spacing: 0) {
+                        WarningSummary(
+                            warning: selectedWarning,
+                            includeLocationIcon: false)
+                        if let emergencyWarning = selectedWarning.EmergencyWarning,
+                           !emergencyWarning.isEmpty,
+                           emergencyWarning != NSLocalizedString("EmergencyWarningNotGiven", comment: "Emergency warning not given placeholder") {
+                            EmergencyWarningBanner(message: emergencyWarning)
+                        }
+                    }
+                    .frame(maxWidth: 600)
+                    .cornerRadius(10)
+                    .padding()
+                    .sheet(isPresented: $showWarningText, content: {
+                        MainWarningTextView(
+                            selectedWarning: selectedWarning,
+                            isShowingSheet: $showWarningText)
+                    })
+                    .onTapGesture(perform: {
+                        showWarningText = true
+                    })
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false) {

@@ -2,11 +2,15 @@ import SwiftUI
 
 struct WarningLevelCell: View {
     let dangerLevel: DangerLevel
-    
+
+    var textColor: Color {
+        return dangerLevel == .level5 ? .white : .black
+    }
+
     var body: some View {
         VStack {
             Text("\(dangerLevel.description)")
-                .foregroundColor(.white)
+                .foregroundColor(textColor)
                 .font(.headline)
                 .fontWeight(.semibold)
                 .shadow(color: .gray, radius: 2)

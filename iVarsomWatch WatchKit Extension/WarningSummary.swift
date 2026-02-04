@@ -2,14 +2,19 @@ import SwiftUI
 
 struct WarningSummary: View {
     var selectedWarning: AvalancheWarningDetailed
-    
+
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter
     }()
-    
+
+    private var hasEmergencyWarning: Bool {
+        guard let warning = selectedWarning.EmergencyWarning else { return false }
+        return !warning.isEmpty && warning != NSLocalizedString("EmergencyWarningNotGiven", comment: "")
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -21,15 +26,21 @@ struct WarningSummary: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
             }
-            Text(selectedWarning.ValidFrom.formatted(
-                Date.FormatStyle()
-                    .day(.defaultDigits)
-                    .weekday(.wide)
-                    .month(.abbreviated))
-                .firstUppercased
-            )
-            .fontWeight(.bold)
-            .foregroundColor(.white)
+            HStack {
+                Text(selectedWarning.ValidFrom.formatted(
+                    Date.FormatStyle()
+                        .day(.defaultDigits)
+                        .weekday(.wide)
+                        .month(.abbreviated))
+                    .firstUppercased
+                )
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                if hasEmergencyWarning {
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .foregroundColor(.white)
+                }
+            }
             Text(selectedWarning.MainText)
                 .font(.system(size: 15))
                 .foregroundColor(.white)

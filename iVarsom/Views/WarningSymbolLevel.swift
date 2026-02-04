@@ -5,7 +5,7 @@ struct WarningSymbolLevel: View {
     var size = 54.0
     
     var textColor: Color {
-        return dangerLevel == .level2 ? .black : .white;
+        return dangerLevel == .level5 ? .white : .black
     }
     
     var body: some View {
