@@ -1,5 +1,10 @@
 # Release History
 
+## 5.1.0
+
+- Updated danger level color scheme to match the new official avalanche warning colors
+- Added emergency warning banner for critical alerts on iOS and watchOS
+
 ## 5.0.0
 
 The Skredvarsel app is ready for its fifth season (2025/2026), with a major v5.0 update.

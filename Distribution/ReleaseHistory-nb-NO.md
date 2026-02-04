@@ -1,5 +1,10 @@
 # Release History
 
+## 5.1.0
+
+- Oppdatert fargeskjema for farenivåer for å matche de nye offisielle skredvarselfargene
+- Lagt til nødvarslingsbanner for kritiske varsler på iOS og watchOS
+
 ## 5.0.0
 
 Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 oppdatering.

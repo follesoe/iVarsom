@@ -1,8 +1,9 @@
-Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor v5.0 oppdatering.
+Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdatering.
 
 - Siri-snarveier: Spør Siri om skredvarselet
 - Oppdatert for macOS 26
 - Skredproblem-grafikk viser nå representative bilder
+- Oppdaterte farenivåfarger for å matche de nye offisielle fargene
 - Forbedret pålitelighet når appen aktiveres fra bakgrunnen
 
 Med ønske om en fin og trygg topptursesong!
