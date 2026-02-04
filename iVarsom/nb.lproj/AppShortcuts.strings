@@ -1,0 +1,5 @@
+/* App Shortcuts phrases - Norwegian */
+"Get avalanche warning in ${applicationName}" = "Hent varsel i ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Varsel fra ${applicationName}";
+"Get avalanche warning for ${region} in ${applicationName}" = "Hent varsel for ${region} i ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Hva er skredfaren i ${region} med ${applicationName}";

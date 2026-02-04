@@ -1,0 +1,5 @@
+/* App Shortcuts phrases - English */
+"Get avalanche warning in ${applicationName}" = "Get avalanche warning in ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Avalanche warning from ${applicationName}";
+"Get avalanche warning for ${region} in ${applicationName}" = "Get avalanche warning for ${region} in ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "What is the avalanche danger in ${region} with ${applicationName}";

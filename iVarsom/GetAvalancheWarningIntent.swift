@@ -69,8 +69,11 @@ struct GetAvalancheWarningIntent: AppIntent {
         }
 
         guard let todayWarning = warnings.first else {
+            let noWarningText = String(
+                format: String(localized: "No avalanche warning available for %@ today."),
+                regionName)
             return .result(
-                dialog: IntentDialog(LocalizedStringResource("No avalanche warning available for \(regionName) today.")))
+                dialog: IntentDialog(stringLiteral: noWarningText))
             {
                 AvalancheWarningSnippetView(warning: nil, error: String(localized: "No warning available"))
             }
@@ -81,12 +84,15 @@ struct GetAvalancheWarningIntent: AppIntent {
         let mainText = todayWarning.MainText.trimmingCharacters(in: .whitespacesAndNewlines)
 
         let dialog: IntentDialog
+        let baseDialogText = String(
+            format: String(localized: "The avalanche danger level in %@ is %@."),
+            actualRegionName,
+            dangerLevelName)
+
         if mainText.isEmpty {
-            dialog = IntentDialog(LocalizedStringResource(
-                "The avalanche danger level in \(actualRegionName) is \(dangerLevelName)."))
+            dialog = IntentDialog(stringLiteral: baseDialogText)
         } else {
-            dialog = IntentDialog(LocalizedStringResource(
-                "The avalanche danger level in \(actualRegionName) is \(dangerLevelName). \(mainText)"))
+            dialog = IntentDialog(stringLiteral: "\(baseDialogText) \(mainText)")
         }
 
         return .result(dialog: dialog) {

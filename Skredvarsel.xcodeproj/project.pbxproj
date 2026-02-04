@@ -88,6 +88,7 @@
 		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
 		AA6386052797514E00FD52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
+		AACL00042026020400000004 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = AACL00032026020400000003 /* AppShortcuts.strings */; };
 		AA63860B2797592700FD52DA /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
 		AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172F02796093A009AB089 /* Assets.xcassets */; };
 		AA71614E27CBBF9600E0CFD0 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA71614D27CBBF9600E0CFD0 /* DayCell.swift */; };
@@ -326,6 +327,8 @@
 		AA6386032797511E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA6386062797514E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA6386082797518E00FD52DA /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AACL00012026020400000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AACL00022026020400000002 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		AA6386092797518E00FD52DA /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA63860A2797592700FD52DA /* VarsomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarsomData.swift; sourceTree = "<group>"; };
 		AA71614D27CBBF9600E0CFD0 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
@@ -580,6 +583,7 @@
 				AAD172B32795F8F9009AB089 /* Assets.xcassets */,
 				AAD172B52795F8F9009AB089 /* Preview Content */,
 				AA6386072797514E00FD52DA /* Localizable.strings */,
+				AACL00032026020400000003 /* AppShortcuts.strings */,
 				AA6386042797511E00FD52DA /* InfoPlist.strings */,
 				AA839D13279D830400DF7ACF /* DangerLevelAssets.xcassets */,
 				AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */,
@@ -868,6 +872,7 @@
 			files = (
 				AAD172B72795F8F9009AB089 /* Preview Assets.xcassets in Resources */,
 				AA6386052797514E00FD52DA /* Localizable.strings in Resources */,
+				AACL00042026020400000004 /* AppShortcuts.strings in Resources */,
 				AA839D14279D830400DF7ACF /* DangerLevelAssets.xcassets in Resources */,
 				AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */,
 				AAEC4F2B2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
@@ -1153,6 +1158,15 @@
 				AA6386082797518E00FD52DA /* nb */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AACL00032026020400000003 /* AppShortcuts.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AACL00012026020400000001 /* en */,
+				AACL00022026020400000002 /* nb */,
+			);
+			name = AppShortcuts.strings;
 			sourceTree = "<group>";
 		};
 		AAD613882822D88B00ABA680 /* InfoPlist.strings */ = {
