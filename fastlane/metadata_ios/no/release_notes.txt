@@ -1,5 +1,9 @@
 Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdatering.
 
+- Svenske snøskredvarsler fra lavinprognoser.se
+- Interaktivt kart som viser alle regioner farget etter farenivå
+- Kartvisning på Apple Watch
+- Støtte for svensk språk
 - Siri-snarveier: Spør Siri om skredvarselet
 - Oppdatert for iOS 26 og watchOS 26
 - Ny ekstra stor widget for iPad
