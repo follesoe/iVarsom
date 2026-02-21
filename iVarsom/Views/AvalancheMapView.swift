@@ -12,6 +12,20 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
     private let annotationThreshold: Double = 16
     private let zoomedInThreshold: Double = 12
 
+    static var overviewPosition: MapCameraPosition {
+        .region(MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 65, longitude: 14),
+            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
+        ))
+    }
+
+    static func userPosition(_ location: Location2D) -> MapCameraPosition {
+        .region(MKCoordinateRegion(
+            center: location,
+            span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
+        ))
+    }
+
     var body: some View {
         MapReader { proxy in
             Map(position: $cameraPosition) {
@@ -55,7 +69,6 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                 showsTraffic: false
             ))
             .mapControls {
-                MapUserLocationButton()
                 MapScaleView()
                 MapCompass()
                 MapPitchToggle()
@@ -67,6 +80,31 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                 }
                 if let tappedRegion = findRegion(at: coordinate, in: geoData) {
                     onRegionSelected?(tappedRegion)
+                }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    Task {
+                        await vm.requestLocationForMap()
+                        if let location = vm.userLocation {
+                            withAnimation {
+                                cameraPosition = Self.userPosition(location)
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "location")
+                }
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    withAnimation {
+                        cameraPosition = Self.overviewPosition
+                    }
+                } label: {
+                    Image(systemName: "globe.europe.africa")
                 }
             }
         }

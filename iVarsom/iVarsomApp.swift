@@ -18,12 +18,7 @@ private struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Bindable var vm: RegionListViewModel
     @State private var sheetRegion: RegionSummary?
-    @State private var cameraPosition: MapCameraPosition = .region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 65, longitude: 14),
-            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
-        )
-    )
+    @State private var cameraPosition: MapCameraPosition = AvalancheMapView<RegionListViewModel>.overviewPosition
 
     var body: some View {
         Group {
@@ -78,17 +73,20 @@ private struct ContentView: View {
     }
 
     private var iPhoneMapTab: some View {
-        AvalancheMapView<RegionListViewModel>(
-            vm: vm,
-            onRegionSelected: { region in
-                vm.selectedRegion = region
-                sheetRegion = region
-                Task {
-                    await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
-                }
-            },
-            cameraPosition: $cameraPosition
-        )
+        NavigationStack {
+            AvalancheMapView<RegionListViewModel>(
+                vm: vm,
+                onRegionSelected: { region in
+                    vm.selectedRegion = region
+                    sheetRegion = region
+                    Task {
+                        await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
+                    }
+                },
+                cameraPosition: $cameraPosition
+            )
+            .toolbarBackground(.hidden, for: .navigationBar)
+        }
         .sheet(item: $sheetRegion) { _ in
             NavigationStack {
                 RegionDetailContainer<RegionListViewModel>(vm: vm)
@@ -109,12 +107,7 @@ private struct ContentView: View {
             await vm.requestLocationForMap()
             if let location = vm.userLocation {
                 withAnimation {
-                    cameraPosition = .region(
-                        MKCoordinateRegion(
-                            center: location,
-                            span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)
-                        )
-                    )
+                    cameraPosition = AvalancheMapView<RegionListViewModel>.userPosition(location)
                 }
             }
         }
