@@ -240,6 +240,16 @@
 		FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
 		D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
 		AB12345678901234567890AB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP0002026022100000000 /* AvalancheMapView.swift */; };
+		AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADET0002026022100000000 /* RegionDetailContainer.swift */; };
+		AAGEO0052026022100000005 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0062026022100000006 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0072026022100000007 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0082026022100000008 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -416,6 +426,10 @@
 		CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D43B0DFF5703403492998F2E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserApiClient.swift; sourceTree = "<group>"; };
+		AAGEO0002026022100000000 /* RegionGeoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGeoData.swift; sourceTree = "<group>"; };
+		AAGEO0052026022100000050 /* regions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regions.geojson; sourceTree = "<group>"; };
+		AAMAP0002026022100000000 /* AvalancheMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheMapView.swift; sourceTree = "<group>"; };
+		AADET0002026022100000000 /* RegionDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,6 +613,7 @@
 				AA1C67BD279D8A0E0039F8E0 /* Utils */,
 				AA461CFC27B007FC00425270 /* Services */,
 				AAD172DB2795FDB3009AB089 /* Models */,
+				AAGEO00A2026022100000100 /* Resources */,
 				AA18421A27B3106B0097174D /* ViewModels */,
 				AAD172D92795FD6B009AB089 /* Views */,
 				AAD172BD2795F900009AB089 /* iVarsom.entitlements */,
@@ -632,7 +647,9 @@
 		AAD172D92795FD6B009AB089 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAMAP0002026022100000000 /* AvalancheMapView.swift */,
 				AAD172D32795FCC2009AB089 /* RegionDetail.swift */,
+				AADET0002026022100000000 /* RegionDetailContainer.swift */,
 				AAD172D52795FCC2009AB089 /* RegionList.swift */,
 				AAD172D42795FCC2009AB089 /* RegionRow.swift */,
 				AA7358CE27BD8DCF009E3DA1 /* UseLocationRow.swift */,
@@ -667,8 +684,17 @@
 				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
 				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
 				D43B0DFF5703403492998F2E /* Country.swift */,
+				AAGEO0002026022100000000 /* RegionGeoData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AAGEO00A2026022100000100 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAGEO0052026022100000050 /* regions.geojson */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AAD172E727960939009AB089 /* Frameworks */ = {
@@ -873,6 +899,7 @@
 				AA2ABD842944FD06008819DB /* Localizable.strings in Resources */,
 				AA2ABD852944FD06008819DB /* RegionSummary.json in Resources */,
 				AA2ABD862944FD06008819DB /* Assets.xcassets in Resources */,
+				AAGEO0082026022100000008 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +916,7 @@
 				AAEC4F2C2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */,
 				AABB22592F34B96200A2997C /* AppIcon.icon in Resources */,
+				AAGEO0072026022100000007 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +933,7 @@
 				AAEC4F2B2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAD172DE2795FEDF009AB089 /* RegionSummary.json in Resources */,
 				AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */,
+				AAGEO0052026022100000005 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,6 +946,7 @@
 				AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */,
 				AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */,
 				AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */,
+				AAGEO0062026022100000006 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1017,7 @@
 				E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */,
 				CC82146628254982923E5B76 /* Country.swift in Sources */,
 				EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1074,7 @@
 				B27BBF82D228E8528382CD10 /* Constants.swift in Sources */,
 				F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */,
 				DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1133,9 @@
 				2C688DFD622C33F1DE47661B /* Constants.swift in Sources */,
 				8B15BF6678764E07A2AF041C /* Country.swift in Sources */,
 				FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */,
+				AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */,
+				AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,6 +1183,7 @@
 				852C84D91368853C31BE7F92 /* Constants.swift in Sources */,
 				4B2DDF68BC76470283F1808A /* Country.swift in Sources */,
 				D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

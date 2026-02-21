@@ -166,5 +166,8 @@
 "No internet connection. Unable to retrieve avalanche warnings." = "No internet connection. Unable to retrieve avalanche warnings.";
 "Unable to retrieve avalanche warnings. Please try again later." = "Unable to retrieve avalanche warnings. Please try again later.";
 
+/* Map tab title */
+"Map" = "Map";
+
 /* Emergency warning not given - used to filter out placeholder values from API */
 "EmergencyWarningNotGiven" = "Not given";
