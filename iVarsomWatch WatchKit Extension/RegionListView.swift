@@ -63,10 +63,19 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
 
                         HStack {
                             Spacer()
-                            Text("Add Region")
+                            Label("Add Region", systemImage: "plus")
                             Spacer()
                         }.onTapGesture {
                             showAddRegion = true
+                        }
+                        NavigationLink {
+                            AvalancheWatchMapView<ViewModelType>(vm: vm)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Label("Map", systemImage: "map")
+                                Spacer()
+                            }
                         }
                         DataSourceView(source: favoriteDataSource)
                     }

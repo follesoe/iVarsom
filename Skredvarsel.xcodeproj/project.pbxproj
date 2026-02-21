@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */; };
 		10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		2C688DFD622C33F1DE47661B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		3C4F929D76D547739E19F11D /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4F929D76D547739E19F11C /* AppShortcuts.swift */; };
@@ -320,6 +321,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWatchMapView.swift; sourceTree = "<group>"; };
 		0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
 		3C4F929D76D547739E19F11C /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningSnippetView.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 		AA345DCA28085B4700B78BDB /* iVarsomWatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */,
 				AAD6138A282AEF8500ABA680 /* DataSourceView.swift */,
 				AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */,
 				AA345DCD28085B4700B78BDB /* RegionListView.swift */,
@@ -1075,6 +1078,7 @@
 				F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */,
 				DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */,
 				AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */,
+				AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
