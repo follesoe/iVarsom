@@ -374,6 +374,10 @@
 		AAC859302CE91EFF0013594A /* Date+current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+current.swift"; sourceTree = "<group>"; };
 		AACL00012026020400000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		AACL00022026020400000002 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AASV00012026022100000001 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AASV00022026022100000002 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AASV00032026022100000003 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AASV00042026022100000004 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -833,6 +837,7 @@
 				en,
 				Base,
 				nb,
+				sv,
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
@@ -1178,6 +1183,7 @@
 			children = (
 				AA6386032797511E00FD52DA /* en */,
 				AA6386092797518E00FD52DA /* nb */,
+				AASV00012026022100000001 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1187,6 +1193,7 @@
 			children = (
 				AA6386062797514E00FD52DA /* en */,
 				AA6386082797518E00FD52DA /* nb */,
+				AASV00022026022100000002 /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1196,6 +1203,7 @@
 			children = (
 				AACL00012026020400000001 /* en */,
 				AACL00022026020400000002 /* nb */,
+				AASV00032026022100000003 /* sv */,
 			);
 			name = AppShortcuts.strings;
 			sourceTree = "<group>";
@@ -1205,6 +1213,7 @@
 			children = (
 				AAD613872822D88B00ABA680 /* en */,
 				AAD613892822D89300ABA680 /* nb */,
+				AASV00042026022100000004 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

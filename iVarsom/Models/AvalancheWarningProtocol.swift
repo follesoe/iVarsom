@@ -33,7 +33,7 @@ extension AvalancheWarningProtocol {
         let warningDate = argumentDateFormatter.string(from: ValidFrom)
         let encodedName = RegionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
-        if (Locale.current.identifier.starts(with: "nb")) {
+        if (Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv")) {
             return URL(string: "https://varsom.no/snoskredvarsling/varsel/\(encodedName)/\(warningDate)")!
         } else {
             return URL(string: "https://varsom.no/en/avalanche-bulletins/forecast/\(encodedName)/\(warningDate)")!

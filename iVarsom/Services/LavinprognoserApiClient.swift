@@ -286,6 +286,8 @@ class LavinprognoserApiClient {
         // Use information descriptions for a more meaningful summary
         let triggerText = problem.information?
             .compactMap { $0.description }
+            .map { stripHtml($0) }
+            .filter { !$0.isEmpty }
             .joined(separator: " ") ?? [sensitivityName, spreadName].filter { !$0.isEmpty }.joined(separator: ", ")
 
         // Use position.content (risk management + characteristics) stripped of HTML
@@ -412,12 +414,39 @@ class LavinprognoserApiClient {
         return formatter.date(from: dateString)
     }
 
-    /// Strip HTML tags from assessment content using regex
+    /// Strip HTML tags, Word metadata, and inline styles/scripts from assessment content.
+    /// Swedish forecasters sometimes paste from MS Word, embedding conditional comments
+    /// like `<!--[if gte mso 9]><xml>...<w:View>Normal</w:View>...</xml><![endif]-->`
+    /// that leave junk text when only tags are stripped.
     private func stripHtml(_ html: String) -> String {
-        let stripped = html.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
-        return stripped
+        var result = html
+        // Remove MS Word conditional comments: <!--[if ...]>...<![endif]-->
+        result = result.replacingOccurrences(
+            of: "(?s)<!--\\[if[^\\]]*\\]>.*?<!\\[endif\\]-->",
+            with: "",
+            options: .regularExpression)
+        // Remove remaining HTML comments: <!--...-->
+        result = result.replacingOccurrences(
+            of: "(?s)<!--.*?-->",
+            with: "",
+            options: .regularExpression)
+        // Remove <style>...</style> and <script>...</script> blocks entirely
+        for tag in ["style", "script"] {
+            result = result.replacingOccurrences(
+                of: "(?s)<\(tag)[^>]*>.*?</\(tag)>",
+                with: "",
+                options: [.regularExpression, .caseInsensitive])
+        }
+        // Remove remaining HTML tags
+        result = result.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
+        return result
             .replacingOccurrences(of: "&nbsp;", with: " ")
             .replacingOccurrences(of: "&amp;", with: "&")
+            .replacingOccurrences(of: "&lt;", with: "<")
+            .replacingOccurrences(of: "&gt;", with: ">")
+            .replacingOccurrences(of: "&quot;", with: "\"")
+            .replacingOccurrences(of: "&#39;", with: "'")
+            .replacingOccurrences(of: "&#45;", with: "-")
             .replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
             .trimmingCharacters(in: .whitespacesAndNewlines)
     }

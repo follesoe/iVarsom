@@ -4,7 +4,8 @@ import Foundation
 @MainActor
 class RegionListViewModel: RegionListViewModelProtocol {
     private var language: VarsomApiClient.Language {
-        return Locale.current.identifier.starts(with: "nb") ? .norwegian : .english
+        return (Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv"))
+            ? .norwegian : .english
     }
 
     private(set) var regionLoadState = LoadState.idle
