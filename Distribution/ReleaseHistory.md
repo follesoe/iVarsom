@@ -6,6 +6,7 @@
 - Interactive map view showing all regions colored by danger level on iOS and watchOS
 - Swedish language support for the app and App Store listing
 - Location-based warnings now use GeoJSON polygon lookup for improved accuracy
+- Offline support: cached data shows instantly on launch and works without network
 
 ## 5.1.0
 

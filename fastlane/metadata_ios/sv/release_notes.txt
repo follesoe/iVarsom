@@ -10,6 +10,7 @@ Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppda
 - Lavinproblemgrafik visar nu representativa bilder
 - Uppdaterade faronivåfärger för att matcha de nya officiella färgerna
 - Nödvarningsbanner för kritiska varningar
+- Offlinestöd: cachad data visas direkt vid start, fungerar utan nätverk
 - Förbättrad tillförlitlighet när appen aktiveras från bakgrunden
 - Widgets och komplikationer uppdateras automatiskt när appen öppnas
 

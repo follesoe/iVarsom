@@ -10,6 +10,7 @@ The Skredvarsel app is ready for its fifth season (2025/2026), with a major upda
 - Avalanche problem graphics now show representative images
 - Updated danger level colors to match the new official colors
 - Emergency warning banner for critical alerts
+- Offline support: cached data shows instantly on launch, works without network
 - Improved reliability when returning to the app from the background
 - Widgets and complications automatically refresh when the app is opened
 

@@ -6,6 +6,7 @@
 - Interaktivt kart som viser alle regioner farget etter farenivå på iOS og watchOS
 - Støtte for svensk språk i appen og App Store-oppføringen
 - Posisjonsbaserte varsler bruker nå GeoJSON-polygon-oppslag for bedre nøyaktighet
+- Frakoblet støtte: bufrede data vises umiddelbart ved oppstart og fungerer uten nett
 
 ## 5.1.0
 

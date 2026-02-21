@@ -5,8 +5,8 @@
 ### Push Notifications for High Danger Levels
 Let users set a threshold (e.g., level 3+) and get notified when their favorited regions hit it. Could use background app refresh to check the API periodically.
 
-### Offline Caching
-The app currently has no local persistence of warnings. Caching the last-fetched data would make the app usable without connectivity, which is common in mountain areas.
+### ~~Offline Caching~~ (Done)
+Implemented in `CacheService.swift`. File-based JSON cache in the OS caches directory with a 4-hour freshness window. The app now loads cached data instantly on launch, skips the network when cache is fresh, and falls back to stale cache on network failure.
 
 ### Siri / App Shortcuts Integration
 `AppShortcuts.swift` and `GetAvalancheWarningIntent.swift` already exist in the codebase. Making these fully functional would let users ask "Hey Siri, what's the avalanche danger in Lofoten?"
