@@ -84,7 +84,7 @@ struct RegionDetailView: View {
                             Divider()
                         }
                     }
-                    DataSourceView()
+                    DataSourceView(source: Country.from(regionId: selectedRegion.Id) == .sweden ? .sweden : .norway)
                 }
                 .scenePadding()
             }

@@ -6,18 +6,31 @@ struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
 
     var body: some View {
         List {
-            ForEach(RegionOption.allOptions) { option in
-                Text(option.name)
-                    .onTapGesture {
-                        Task {
-                            if (option.id == RegionOption.currentPositionOption.id) {
-                                await vm.updateLocation()
-                            }
+            Section("Norway") {
+                ForEach(RegionOption.allOptions.filter { Country.from(regionId: $0.id) != .sweden }) { option in
+                    Text(option.name)
+                        .onTapGesture {
+                            Task {
+                                if (option.id == RegionOption.currentPositionOption.id) {
+                                    await vm.updateLocation()
+                                }
 
-                            vm.addFavorite(id: option.id)
-                            dismiss()
+                                vm.addFavorite(id: option.id)
+                                dismiss()
+                            }
                         }
-                    }
+                }
+            }
+            Section("Sweden") {
+                ForEach(RegionOption.swedenRegions) { option in
+                    Text(option.name)
+                        .onTapGesture {
+                            Task {
+                                vm.addFavorite(id: option.id)
+                                dismiss()
+                            }
+                        }
+                }
             }
         }
     }

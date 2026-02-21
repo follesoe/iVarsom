@@ -135,6 +135,10 @@ struct Provider: AppIntentTimelineProvider {
                 coordinate: location,
                 from: from,
                 to: to)
+        } else if Country.from(regionId: regionId) == .sweden {
+            let swedenClient = LavinprognoserApiClient()
+            let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
+            warnings = try await swedenClient.loadWarnings(regionId: regionId, daysBefore: max(daysBefore, 1))
         } else {
             warnings = try await apiClient.loadWarnings(
                 lang: VarsomApiClient.currentLang(),

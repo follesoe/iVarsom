@@ -23,12 +23,14 @@ struct AvalancheProblemView: View {
                         .frame(width: 78, height: 78)
                     ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
                         .frame(width: 54, height: 54)
-                    ExposedHeightArrow(
-                        exposedHeight1: problem.ExposedHeight1,
-                        exposedHeight2: problem.ExposedHeight2,
-                        exposedHeightFill: problem.ExposedHeightFill,
-                        fontSize: 24)
-                    .padding(.leading, 10)
+                    if problem.ExposedHeight1 != 0 || problem.ExposedHeight2 != 0 {
+                        ExposedHeightArrow(
+                            exposedHeight1: problem.ExposedHeight1,
+                            exposedHeight2: problem.ExposedHeight2,
+                            exposedHeightFill: problem.ExposedHeightFill,
+                            fontSize: 24)
+                        .padding(.leading, 10)
+                    }
                     Spacer()
                 }
                 

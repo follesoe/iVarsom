@@ -4,7 +4,7 @@ import Foundation
 struct GetAvalancheWarningIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Avalanche Warning"
     static let description = IntentDescription(
-        LocalizedStringResource("Get the current avalanche danger level for a region in Norway"))
+        LocalizedStringResource("Get the current avalanche danger level for a region in Norway or Sweden"))
 
     @Parameter(title: "Region", requestValueDialog: IntentDialog("Which region do you want the avalanche warning for?"))
     var region: RegionConfigOptionAppEntity
@@ -49,6 +49,9 @@ struct GetAvalancheWarningIntent: AppIntent {
                     coordinate: location,
                     from: today,
                     to: today)
+            } else if Country.from(regionId: regionId) == .sweden {
+                let swedenClient = LavinprognoserApiClient()
+                warnings = try await swedenClient.loadWarnings(regionId: regionId)
             } else {
                 warnings = try await client.loadWarnings(
                     lang: VarsomApiClient.currentLang(),

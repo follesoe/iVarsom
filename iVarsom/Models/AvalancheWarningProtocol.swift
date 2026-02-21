@@ -16,11 +16,23 @@ extension AvalancheWarningProtocol {
     var id: Int { RegId }
 
     var VarsomUrl: URL {
+        if Country.from(regionId: RegionId) == .sweden {
+            let slug = Country.swedishSlug(for: RegionId) ?? ""
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd"
+            let dateParam = df.string(from: ValidFrom)
+            if Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv") {
+                return URL(string: "https://lavinprognoser.se/aktuella-lavinprognoser/\(slug)/?forecast_date=\(dateParam)")!
+            } else {
+                return URL(string: "https://lavinprognoser.se/en/current-avalanche-bulletins/\(slug)/?forecast_date=\(dateParam)")!
+            }
+        }
+
         let argumentDateFormatter = DateFormatter()
         argumentDateFormatter.dateFormat = "yyyy-MM-dd"
         let warningDate = argumentDateFormatter.string(from: ValidFrom)
         let encodedName = RegionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
+
         if (Locale.current.identifier.starts(with: "nb")) {
             return URL(string: "https://varsom.no/snoskredvarsling/varsel/\(encodedName)/\(warningDate)")!
         } else {

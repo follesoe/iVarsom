@@ -11,6 +11,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     private(set) var warningLoadState = LoadState.idle
     private(set) var locationIsAuthorized = false
     private(set) var regions = [RegionSummary]()
+    private(set) var swedenRegions = [RegionSummary]()
     private(set) var localRegion: RegionSummary? = nil
     var favoriteRegionIds: [Int]
     var searchTerm = ""
@@ -24,8 +25,14 @@ class RegionListViewModel: RegionListViewModelProtocol {
         }
     }
 
+    var filteredSwedenRegions: [RegionSummary] {
+        swedenRegions.filter { region in
+            searchTerm.isEmpty || region.Name.contains(searchTerm)
+        }
+    }
+
     var favoriteRegions: [RegionSummary] {
-        var result = filteredRegions.filter { region in
+        var result = (filteredRegions + filteredSwedenRegions).filter { region in
             favoriteRegionIds.contains(region.id)
         }
         if let localReg = localRegion {
@@ -37,6 +44,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
 
     private let client: VarsomApiClient
+    private let swedenClient = LavinprognoserApiClient()
     private let locationManager: LocationManager
     private let favoritesService: FavoritesService
     private var loadWarningsTask: Task<Void, Never>?
@@ -75,8 +83,19 @@ class RegionListViewModel: RegionListViewModelProtocol {
     func loadRegions() async {
         do {
             self.regionLoadState = .loading
-            self.regions = try await client.loadRegions(lang: language).filter { region in
+
+            async let norwayResult = client.loadRegions(lang: language)
+            async let swedenResult = swedenClient.loadRegions()
+
+            self.regions = try await norwayResult.filter { region in
                 return region.TypeName == "A"
+            }
+
+            // Load Sweden gracefully - don't fail if Swedish API is down
+            do {
+                self.swedenRegions = try await swedenResult
+            } catch {
+                self.swedenRegions = []
             }
 
             if (locationManager.isAuthorized) {
@@ -142,11 +161,16 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 // Check if task was cancelled before network call
                 try Task.checkCancellation()
 
-                let loadedWarnings = try await client.loadWarningsDetailed(
-                    lang: VarsomApiClient.currentLang(),
-                    regionId: selectedRegion.Id,
-                    from: fromDate,
-                    to: toDate)
+                let loadedWarnings: [AvalancheWarningDetailed]
+                if Country.from(regionId: selectedRegion.Id) == .sweden {
+                    loadedWarnings = try await swedenClient.loadWarningsDetailed(regionId: selectedRegion.Id)
+                } else {
+                    loadedWarnings = try await client.loadWarningsDetailed(
+                        lang: VarsomApiClient.currentLang(),
+                        regionId: selectedRegion.Id,
+                        from: fromDate,
+                        to: toDate)
+                }
 
                 // Check if task was cancelled after network call
                 try Task.checkCancellation()
@@ -189,6 +213,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
         }
 
         let region = regions.first(where: { $0.Id == regionId})
+            ?? swedenRegions.first(where: { $0.Id == regionId})
         if let region = region {
             selectedRegion = region
         } else if localRegion?.Id == regionId {

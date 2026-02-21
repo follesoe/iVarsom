@@ -27,12 +27,12 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                             }).listRowInsets(rowInsets)
                         }
                     }
-                    Section(header: Text("A-Regions")) {
-                        ForEach(vm.filteredRegions) { region in
-                            NavigationLink(value: region) {
-                                RegionRow(region: region)
-                            }.listRowInsets(rowInsets)
-                        }
+                    if Locale.current.identifier.starts(with: "sv") {
+                        swedenSection
+                        norwaySection
+                    } else {
+                        norwaySection
+                        swedenSection
                     }
                 }
                 .navigationTitle("Regions")
@@ -45,7 +45,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                         }
                     }
                 }
-                Text("Data from the The Norwegian Avalanche Warning Service and www.varsom.no.")
+                Text("Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.")
                     .font(.caption2)
                     .padding()
             }
@@ -92,6 +92,25 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                         await vm.loadRegions()
                     }
                 }
+            }
+        }
+    }
+    private var norwaySection: some View {
+        Section(header: Text("Norway")) {
+            ForEach(vm.filteredRegions) { region in
+                NavigationLink(value: region) {
+                    RegionRow(region: region)
+                }.listRowInsets(rowInsets)
+            }
+        }
+    }
+
+    private var swedenSection: some View {
+        Section(header: Text("Sweden")) {
+            ForEach(vm.filteredSwedenRegions) { region in
+                NavigationLink(value: region) {
+                    RegionRow(region: region)
+                }.listRowInsets(rowInsets)
             }
         }
     }

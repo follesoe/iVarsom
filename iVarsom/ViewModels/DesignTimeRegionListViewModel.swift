@@ -8,6 +8,7 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     var localRegion: RegionSummary? = nil
     var locationIsAuthorized = false
     var regions = [RegionSummary]()
+    var swedenRegions = [RegionSummary]()
     var favoriteRegionIds = [Int]()
     var searchTerm = ""
     var selectedRegion: RegionSummary? = nil
@@ -18,6 +19,10 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
 
     var filteredRegions: [RegionSummary] {
         _filteredRegions
+    }
+
+    var filteredSwedenRegions: [RegionSummary] {
+        []
     }
 
     var favoriteRegions: [RegionSummary] {

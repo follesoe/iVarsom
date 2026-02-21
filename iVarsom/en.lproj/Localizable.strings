@@ -16,6 +16,21 @@
 /* Data source description and link */
 "Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Data from the The Norwegian Avalanche Warning Service and www.varsom.no.";
 
+/* Data source description for both services */
+"Data from varsom.no and lavinprognoser.se." = "Data from varsom.no and lavinprognoser.se.";
+
+/* Data source - Norway only */
+"Data from The Norwegian Avalanche Warning Service." = "Data from The Norwegian Avalanche Warning Service.";
+
+/* Data source - Sweden only */
+"Data from Swedish Environmental Protection Agency." = "Data from Swedish Environmental Protection Agency.";
+
+/* Data source - both countries */
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.";
+
+/* Section header for Norwegian regions */
+"Norway" = "Norway";
+
 /* Widget Config Display Name */
 "Today's Avalanche Danger Level" = "Today's Avalanche Danger Level";
 
@@ -97,6 +112,12 @@
 /* Link text */
 "Read complete warning on Varsom.no." = "Read complete warning on Varsom.no.";
 
+/* Link text for Swedish regions */
+"Read complete warning on lavinprognoser.se." = "Read complete warning on lavinprognoser.se.";
+
+/* Section header for Swedish regions */
+"Sweden" = "Sweden";
+
 /* Navigation title */
 "Forecast" = "Forecast";
 
@@ -105,6 +126,9 @@
 
 /* Siri Shortcut - Intent description */
 "Get the current avalanche danger level for a region in Norway" = "Get the current avalanche danger level for a region in Norway";
+
+/* Siri Shortcut - Intent description (with Sweden) */
+"Get the current avalanche danger level for a region in Norway or Sweden" = "Get the current avalanche danger level for a region in Norway or Sweden";
 
 /* Siri Shortcut - Short title */
 "Check warning" = "Check warning";

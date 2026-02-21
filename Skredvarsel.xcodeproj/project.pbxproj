@@ -231,6 +231,15 @@
 		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
 		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
+		CC82146628254982923E5B76 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		8B15BF6678764E07A2AF041C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		4B2DDF68BC76470283F1808A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		AB12345678901234567890AB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,6 +410,8 @@
 		AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeight.swift; sourceTree = "<group>"; };
 		AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeightArrow.swift; sourceTree = "<group>"; };
 		CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D43B0DFF5703403492998F2E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +546,7 @@
 				AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */,
 				AA461CFD27B0082000425270 /* LocationManager.swift */,
 				0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */,
+				35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -650,6 +662,7 @@
 				AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */,
 				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
 				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
+				D43B0DFF5703403492998F2E /* Country.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -864,7 +877,6 @@
 			files = (
 				AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */,
 				AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */,
-				AABB22562F34B93000A2997C /* AppIcon.icon in Resources */,
 				AAD613862822D88B00ABA680 /* InfoPlist.strings in Resources */,
 				AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */,
 				AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */,
@@ -922,6 +934,7 @@
 				AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AB12345678901234567890AB /* Country.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,6 +980,8 @@
 				AA7D74632946185300AB5155 /* iVarsomWidget.swift in Sources */,
 				AAEC4F322AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */,
+				CC82146628254982923E5B76 /* Country.swift in Sources */,
+				EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,6 +1036,8 @@
 				AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */,
 				10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */,
 				B27BBF82D228E8528382CD10 /* Constants.swift in Sources */,
+				F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */,
+				DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1094,8 @@
 				AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */,
 				2C688DFD622C33F1DE47661B /* Constants.swift in Sources */,
+				8B15BF6678764E07A2AF041C /* Country.swift in Sources */,
+				FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1141,8 @@
 				AA91226529461402007D5093 /* iVarsomWidget.swift in Sources */,
 				AAEC4F332AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				852C84D91368853C31BE7F92 /* Constants.swift in Sources */,
+				4B2DDF68BC76470283F1808A /* Country.swift in Sources */,
+				D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
