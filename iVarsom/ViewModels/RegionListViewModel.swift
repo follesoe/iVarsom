@@ -23,13 +23,13 @@ class RegionListViewModel: RegionListViewModelProtocol {
 
     var filteredRegions: [RegionSummary] {
         regions.filter { region in
-            searchTerm.isEmpty || region.Name.contains(searchTerm)
+            searchTerm.isEmpty || region.Name.localizedCaseInsensitiveContains(searchTerm)
         }
     }
 
     var filteredSwedenRegions: [RegionSummary] {
         swedenRegions.filter { region in
-            searchTerm.isEmpty || region.Name.contains(searchTerm)
+            searchTerm.isEmpty || region.Name.localizedCaseInsensitiveContains(searchTerm)
         }
     }
 
