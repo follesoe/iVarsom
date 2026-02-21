@@ -1,5 +1,12 @@
 # Release History
 
+## 5.2.0
+
+- Svenske snøskredvarsler fra lavinprognoser.se
+- Interaktivt kart som viser alle regioner farget etter farenivå på iOS og watchOS
+- Støtte for svensk språk i appen og App Store-oppføringen
+- Posisjonsbaserte varsler bruker nå GeoJSON-polygon-oppslag for bedre nøyaktighet
+
 ## 5.1.0
 
 - Oppdatert fargeskjema for farenivåer for å matche de nye offisielle skredvarselfargene

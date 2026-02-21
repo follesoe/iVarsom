@@ -1,5 +1,12 @@
 # Release History
 
+## 5.2.0
+
+- Swedish avalanche warnings from lavinprognoser.se
+- Interactive map view showing all regions colored by danger level on iOS and watchOS
+- Swedish language support for the app and App Store listing
+- Location-based warnings now use GeoJSON polygon lookup for improved accuracy
+
 ## 5.1.0
 
 - Updated danger level color scheme to match the new official avalanche warning colors

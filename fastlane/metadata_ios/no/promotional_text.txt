@@ -1,1 +1,1 @@
-Nytt i v5.0: Spør Siri om skredvarsel! Oppdatert for iOS 26 med forbedret pålitelighet og feilrettinger for skredproblem-ikoner.
+Nytt i v5.2: Svenske snøskredvarsler fra lavinprognoser.se! Interaktivt kart, kart på Apple Watch og støtte for svensk språk.

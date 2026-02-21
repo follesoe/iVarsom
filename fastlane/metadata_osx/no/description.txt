@@ -1,3 +1,5 @@
-Se dagens skredfare for valgt region eller basert på din posisjon i appen, som en widget på hjem-skjermen på din iOS eller iPadOS enhet, eller direkte på håndleddet som en app til Apple Watch.
+Se dagens skredfare for valgt region i Norge og Sverige, eller basert på din posisjon i appen, eller som en widget i varslingssenteret.
 
-Varslene er levert av Snøskredvarslingen i Norge og www.varsom.no.
+Interaktivt kart viser alle skredregioner farget etter farenivå. Trykk på en region for å se detaljert varsel med skredproblemer og anbefalinger.
+
+Varslene er levert av Snøskredvarslingen i Norge (varsom.no) og svenske lavinprognoser (lavinprognoser.se).

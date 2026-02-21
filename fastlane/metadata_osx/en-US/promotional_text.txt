@@ -1,1 +1,1 @@
-New in v5.0: Ask Siri for avalanche warnings! Updated for macOS 26 with improved reliability and bug fixes for avalanche problem icons.
+New in v5.2: Swedish avalanche warnings from lavinprognoser.se! Interactive map view and Swedish language support.
