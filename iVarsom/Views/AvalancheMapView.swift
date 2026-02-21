@@ -55,6 +55,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                 showsTraffic: false
             ))
             .mapControls {
+                MapUserLocationButton()
                 MapScaleView()
                 MapCompass()
                 MapPitchToggle()
