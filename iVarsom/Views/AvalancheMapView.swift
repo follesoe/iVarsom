@@ -4,98 +4,87 @@ import CoreLocation
 
 struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
     @Bindable var vm: ViewModelType
+    var onRegionSelected: ((RegionSummary) -> Void)?
     @State private var geoData: RegionGeoData?
-    @State private var selectedRegion: RegionSummary?
-    @State private var cameraPosition: MapCameraPosition = .region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 65, longitude: 14),
-            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
-        )
-    )
+    @Binding var cameraPosition: MapCameraPosition
     @State private var showAnnotations = false
     @State private var zoomedIn = false
     private let annotationThreshold: Double = 16
     private let zoomedInThreshold: Double = 12
 
     var body: some View {
-        NavigationStack {
-            MapReader { proxy in
-                Map(position: $cameraPosition) {
-                    if let geoData = geoData {
-                        ForEach(allRegions, id: \.Id) { region in
-                            if let feature = geoData.features.first(where: { $0.id == region.Id }) {
-                                let dangerLevel = todaysDangerLevel(for: region)
-                                let matches = matchesSearch(region)
-                                let fillOpacity = matches ? 0.4 : 0.1
-                                let strokeOpacity = matches ? 1.0 : 0.2
-                                ForEach(Array(feature.polygons.enumerated()), id: \.offset) { _, polygon in
-                                    MapPolygon(coordinates: polygon)
-                                        .foregroundStyle(dangerLevel.color.opacity(fillOpacity))
-                                        .stroke(dangerLevel.color.opacity(strokeOpacity), lineWidth: 1.5)
-                                }
-                                if matches && showAnnotations {
-                                    Annotation("", coordinate: RegionGeoData.centroid(of: feature.polygons)) {
-                                        RegionAnnotationLabel(
-                                            name: region.Name,
-                                            dangerLevel: dangerLevel,
-                                            compact: !zoomedIn
-                                        )
-                                    }
+        MapReader { proxy in
+            Map(position: $cameraPosition) {
+                if let geoData = geoData {
+                    ForEach(allRegions, id: \.Id) { region in
+                        if let feature = geoData.features.first(where: { $0.id == region.Id }) {
+                            let dangerLevel = todaysDangerLevel(for: region)
+                            let matches = matchesSearch(region)
+                            let fillOpacity = matches ? 0.4 : 0.1
+                            let strokeOpacity = matches ? 1.0 : 0.2
+                            ForEach(Array(feature.polygons.enumerated()), id: \.offset) { _, polygon in
+                                MapPolygon(coordinates: polygon)
+                                    .foregroundStyle(dangerLevel.color.opacity(fillOpacity))
+                                    .stroke(dangerLevel.color.opacity(strokeOpacity), lineWidth: 1.5)
+                            }
+                            if matches && showAnnotations {
+                                Annotation("", coordinate: RegionGeoData.centroid(of: feature.polygons)) {
+                                    RegionAnnotationLabel(
+                                        name: region.Name,
+                                        dangerLevel: dangerLevel,
+                                        compact: !zoomedIn
+                                    )
                                 }
                             }
                         }
                     }
-                    UserAnnotation()
                 }
-                .onMapCameraChange { context in
-                    let delta = context.region.span.latitudeDelta
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        showAnnotations = delta < annotationThreshold
-                        zoomedIn = delta < zoomedInThreshold
-                    }
-                }
-                .mapStyle(.standard(
-                    elevation: .flat,
-                    emphasis: .muted,
-                    pointsOfInterest: .excludingAll,
-                    showsTraffic: false
-                ))
-                .mapControls {
-                    MapScaleView()
-                    MapCompass()
-                    MapPitchToggle()
-                }
-                .onTapGesture { screenPoint in
-                    guard let geoData = geoData,
-                          let coordinate = proxy.convert(screenPoint, from: .local) else {
-                        return
-                    }
-                    if let tappedRegion = findRegion(at: coordinate, in: geoData) {
-                        selectedRegion = tappedRegion
-                        vm.selectedRegion = tappedRegion
-                        Task {
-                            await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
-                        }
-                    }
+                UserAnnotation()
+            }
+            .onMapCameraChange { context in
+                let delta = context.region.span.latitudeDelta
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    showAnnotations = delta < annotationThreshold
+                    zoomedIn = delta < zoomedInThreshold
                 }
             }
-            .toolbarVisibility(.hidden, for: .navigationBar)
-            .navigationDestination(item: $selectedRegion) { _ in
-                RegionDetailContainer<ViewModelType>(vm: vm)
+            .mapStyle(.standard(
+                elevation: .flat,
+                emphasis: .muted,
+                pointsOfInterest: .excludingAll,
+                showsTraffic: false
+            ))
+            .mapControls {
+                MapScaleView()
+                MapCompass()
+                MapPitchToggle()
+            }
+            .onTapGesture { screenPoint in
+                guard let geoData = geoData,
+                      let coordinate = proxy.convert(screenPoint, from: .local) else {
+                    return
+                }
+                if let tappedRegion = findRegion(at: coordinate, in: geoData) {
+                    onRegionSelected?(tappedRegion)
+                }
             }
         }
         .task {
             geoData = RegionGeoData.load()
-            await vm.requestLocationForMap()
-            if let location = vm.userLocation {
-                withAnimation {
-                    cameraPosition = .region(
-                        MKCoordinateRegion(
-                            center: location,
-                            span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)
-                        )
+        }
+    }
+
+    func zoomToRegion(_ region: RegionSummary) {
+        if let geoData = geoData,
+           let feature = geoData.features.first(where: { $0.id == region.Id }) {
+            let centroid = RegionGeoData.centroid(of: feature.polygons)
+            withAnimation {
+                cameraPosition = .region(
+                    MKCoordinateRegion(
+                        center: centroid,
+                        span: MKCoordinateSpan(latitudeDelta: 3, longitudeDelta: 3)
                     )
-                }
+                )
             }
         }
     }
@@ -128,7 +117,6 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         }
         return nil
     }
-
 }
 
 private struct RegionAnnotationLabel: View {
