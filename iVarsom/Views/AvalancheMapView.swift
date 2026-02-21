@@ -12,6 +12,10 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
             span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
         )
     )
+    @State private var showAnnotations = false
+    @State private var zoomedIn = false
+    private let annotationThreshold: Double = 16
+    private let zoomedInThreshold: Double = 12
 
     var body: some View {
         NavigationStack {
@@ -29,16 +33,24 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                                         .foregroundStyle(dangerLevel.color.opacity(fillOpacity))
                                         .stroke(dangerLevel.color.opacity(strokeOpacity), lineWidth: 1.5)
                                 }
-                                if matches {
+                                if matches && showAnnotations {
                                     Annotation("", coordinate: centroid(of: feature.polygons)) {
                                         RegionAnnotationLabel(
                                             name: region.Name,
-                                            dangerLevel: dangerLevel
+                                            dangerLevel: dangerLevel,
+                                            compact: !zoomedIn
                                         )
                                     }
                                 }
                             }
                         }
+                    }
+                }
+                .onMapCameraChange { context in
+                    let delta = context.region.span.latitudeDelta
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        showAnnotations = delta < annotationThreshold
+                        zoomedIn = delta < zoomedInThreshold
                     }
                 }
                 .mapStyle(.standard(
@@ -145,18 +157,21 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
 private struct RegionAnnotationLabel: View {
     let name: String
     let dangerLevel: DangerLevel
+    var compact: Bool = false
+
+    private var iconSize: CGFloat { compact ? 16 : 30 }
+    private var font: Font { compact ? .system(size: 8, weight: .semibold) : .caption.weight(.semibold) }
 
     var body: some View {
-        VStack(spacing: 2) {
+        VStack(spacing: compact ? 1 : 2) {
             DangerIcon(dangerLevel: dangerLevel)
-                .frame(width: 24, height: 24)
+                .frame(width: iconSize, height: iconSize)
             Text(name)
-                .font(.caption2)
-                .fontWeight(.semibold)
+                .font(font)
                 .foregroundStyle(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .padding(.horizontal, 4)
+                .padding(.horizontal, compact ? 2 : 4)
                 .padding(.vertical, 1)
                 .background(
                     RoundedRectangle(cornerRadius: 3)

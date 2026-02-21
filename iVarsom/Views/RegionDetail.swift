@@ -16,7 +16,8 @@ struct RegionDetail: View {
                             includeLocationIcon: false)
                         if let emergencyWarning = selectedWarning.EmergencyWarning,
                            !emergencyWarning.isEmpty,
-                           emergencyWarning != NSLocalizedString("EmergencyWarningNotGiven", comment: "Emergency warning not given placeholder") {
+                           emergencyWarning != "Not given",
+                           emergencyWarning != "Ikke gitt" {
                             EmergencyWarningBanner(message: emergencyWarning)
                         }
                     }
