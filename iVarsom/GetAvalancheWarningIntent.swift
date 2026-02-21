@@ -44,11 +44,27 @@ struct GetAvalancheWarningIntent: AppIntent {
                     }
                 }
 
-                warnings = try await client.loadWarnings(
-                    lang: VarsomApiClient.currentLang(),
-                    coordinate: location,
-                    from: today,
-                    to: today)
+                // Check if user is inside (or near) an A-region polygon
+                if let geoData = RegionGeoData.load(),
+                   let feature = geoData.findNearestRegion(at: location) {
+                    if Country.from(regionId: feature.id) == .sweden {
+                        let swedenClient = LavinprognoserApiClient()
+                        warnings = try await swedenClient.loadWarnings(regionId: feature.id)
+                    } else {
+                        warnings = try await client.loadWarnings(
+                            lang: VarsomApiClient.currentLang(),
+                            regionId: feature.id,
+                            from: today,
+                            to: today)
+                    }
+                } else {
+                    // No A-region nearby - fall back to Norwegian coordinate API
+                    warnings = try await client.loadWarnings(
+                        lang: VarsomApiClient.currentLang(),
+                        coordinate: location,
+                        from: today,
+                        to: today)
+                }
             } else if Country.from(regionId: regionId) == .sweden {
                 let swedenClient = LavinprognoserApiClient()
                 warnings = try await swedenClient.loadWarnings(regionId: regionId)

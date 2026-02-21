@@ -113,8 +113,29 @@ class RegionListViewModel: RegionListViewModelProtocol {
         do {
             let location = try await locationManager.updateLocation()
             if let location = location {
-                let region = try await client.loadRegions(lang: language, coordinate: location)
-                self.localRegion = region
+                // Check if user is inside (or near) an A-region polygon
+                if let geoData = RegionGeoData.load(),
+                   let feature = geoData.findNearestRegion(at: location) {
+                    let warnings: [AvalancheWarningSimple]
+                    if Country.from(regionId: feature.id) == .sweden {
+                        warnings = try await swedenClient.loadWarnings(regionId: feature.id)
+                    } else {
+                        warnings = try await client.loadWarnings(
+                            lang: VarsomApiClient.currentLang(),
+                            regionId: feature.id,
+                            from: Date.current,
+                            to: Date.current)
+                    }
+                    self.localRegion = RegionSummary(
+                        Id: feature.id,
+                        Name: feature.name,
+                        TypeName: "A",
+                        AvalancheWarningList: warnings)
+                } else {
+                    // No A-region nearby - fall back to Norwegian coordinate API
+                    let region = try await client.loadRegions(lang: language, coordinate: location)
+                    self.localRegion = region
+                }
             }
         } catch {
             // Error loading local region - silently ignore

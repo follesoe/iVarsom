@@ -34,7 +34,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                                         .stroke(dangerLevel.color.opacity(strokeOpacity), lineWidth: 1.5)
                                 }
                                 if matches && showAnnotations {
-                                    Annotation("", coordinate: centroid(of: feature.polygons)) {
+                                    Annotation("", coordinate: RegionGeoData.centroid(of: feature.polygons)) {
                                         RegionAnnotationLabel(
                                             name: region.Name,
                                             dangerLevel: dangerLevel,
@@ -106,27 +106,10 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         return .unknown
     }
 
-    private func centroid(of polygons: [[CLLocationCoordinate2D]]) -> CLLocationCoordinate2D {
-        var totalLat = 0.0
-        var totalLon = 0.0
-        var count = 0
-        for polygon in polygons {
-            for coord in polygon {
-                totalLat += coord.latitude
-                totalLon += coord.longitude
-                count += 1
-            }
-        }
-        guard count > 0 else {
-            return CLLocationCoordinate2D(latitude: 65, longitude: 14)
-        }
-        return CLLocationCoordinate2D(latitude: totalLat / Double(count), longitude: totalLon / Double(count))
-    }
-
     private func findRegion(at coordinate: CLLocationCoordinate2D, in geoData: RegionGeoData) -> RegionSummary? {
         for feature in geoData.features {
             for polygon in feature.polygons {
-                if pointInPolygon(point: coordinate, polygon: polygon) {
+                if RegionGeoData.pointInPolygon(point: coordinate, polygon: polygon) {
                     return allRegions.first { $0.Id == feature.id }
                 }
             }
@@ -134,24 +117,6 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         return nil
     }
 
-    private func pointInPolygon(point: CLLocationCoordinate2D, polygon: [CLLocationCoordinate2D]) -> Bool {
-        let n = polygon.count
-        guard n >= 3 else { return false }
-        var inside = false
-        var j = n - 1
-        for i in 0..<n {
-            let yi = polygon[i].latitude
-            let xi = polygon[i].longitude
-            let yj = polygon[j].latitude
-            let xj = polygon[j].longitude
-            if ((yi > point.latitude) != (yj > point.latitude)) &&
-                (point.longitude < (xj - xi) * (point.latitude - yi) / (yj - yi) + xi) {
-                inside.toggle()
-            }
-            j = i
-        }
-        return inside
-    }
 }
 
 private struct RegionAnnotationLabel: View {

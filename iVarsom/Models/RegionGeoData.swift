@@ -15,6 +15,73 @@ struct RegionGeoData: Sendable {
         features.first { $0.id == regionId }?.polygons
     }
 
+    /// Find the A-region containing the coordinate, or the nearest one within `maxDistance` meters.
+    func findNearestRegion(at coordinate: CLLocationCoordinate2D, maxDistance: CLLocationDistance = 100_000) -> Feature? {
+        // First: exact polygon hit
+        for feature in features {
+            for polygon in feature.polygons {
+                if RegionGeoData.pointInPolygon(point: coordinate, polygon: polygon) {
+                    return feature
+                }
+            }
+        }
+
+        // Fallback: nearest region by centroid distance
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        var bestFeature: Feature?
+        var bestDistance: CLLocationDistance = .greatestFiniteMagnitude
+
+        for feature in features {
+            let c = RegionGeoData.centroid(of: feature.polygons)
+            let dist = location.distance(from: CLLocation(latitude: c.latitude, longitude: c.longitude))
+            if dist < bestDistance {
+                bestDistance = dist
+                bestFeature = feature
+            }
+        }
+
+        if bestDistance <= maxDistance {
+            return bestFeature
+        }
+        return nil
+    }
+
+    static func pointInPolygon(point: CLLocationCoordinate2D, polygon: [CLLocationCoordinate2D]) -> Bool {
+        let n = polygon.count
+        guard n >= 3 else { return false }
+        var inside = false
+        var j = n - 1
+        for i in 0..<n {
+            let yi = polygon[i].latitude
+            let xi = polygon[i].longitude
+            let yj = polygon[j].latitude
+            let xj = polygon[j].longitude
+            if ((yi > point.latitude) != (yj > point.latitude)) &&
+                (point.longitude < (xj - xi) * (point.latitude - yi) / (yj - yi) + xi) {
+                inside.toggle()
+            }
+            j = i
+        }
+        return inside
+    }
+
+    static func centroid(of polygons: [[CLLocationCoordinate2D]]) -> CLLocationCoordinate2D {
+        var totalLat = 0.0
+        var totalLon = 0.0
+        var count = 0
+        for polygon in polygons {
+            for coord in polygon {
+                totalLat += coord.latitude
+                totalLon += coord.longitude
+                count += 1
+            }
+        }
+        guard count > 0 else {
+            return CLLocationCoordinate2D(latitude: 65, longitude: 14)
+        }
+        return CLLocationCoordinate2D(latitude: totalLat / Double(count), longitude: totalLon / Double(count))
+    }
+
     static func load() -> RegionGeoData? {
         guard let url = Bundle.main.url(forResource: "regions", withExtension: "geojson"),
               let data = try? Data(contentsOf: url),
