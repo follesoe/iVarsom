@@ -8,8 +8,8 @@ Let users set a threshold (e.g., level 3+) and get notified when their favorited
 ### ~~Offline Caching~~ (Done)
 Implemented in `CacheService.swift`. File-based JSON cache in the OS caches directory with a 4-hour freshness window. The app now loads cached data instantly on launch, skips the network when cache is fresh, and falls back to stale cache on network failure.
 
-### Siri / App Shortcuts Integration
-`AppShortcuts.swift` and `GetAvalancheWarningIntent.swift` already exist in the codebase. Making these fully functional would let users ask "Hey Siri, what's the avalanche danger in Lofoten?"
+### ~~Siri / App Shortcuts Integration~~ (Done)
+Fully implemented across `GetAvalancheWarningIntent.swift`, `AppShortcuts.swift`, `AvalancheWarningSnippetView.swift`, and `RegionConfigOptionAppEntity.swift`. Supports Norway, Sweden, and current-position queries with voice dialog, visual snippets, and localized Siri phrases in English, Norwegian, and Swedish.
 
 ### VoiceOver / Accessibility Improvements
 Adding proper accessibility labels to the expositions compass, danger icons, and height visualizations would help visually impaired users.

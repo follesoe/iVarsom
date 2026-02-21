@@ -81,7 +81,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
         } else if regions[0].AvalancheWarningList[0].ValidTo < Date.current {
             return true
         } else {
-            return !cacheService.isFresh(country: .norway)
+            return !cacheService.isFresh(country: .norway) || !cacheService.isFresh(country: .sweden)
         }
     }
 
@@ -95,8 +95,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
             self.swedenRegions = cachedSweden ?? []
             self.regionLoadState = .loaded
 
-            // If cache is fresh, skip network
-            if cacheService.isFresh(country: .norway) {
+            // If both caches are fresh, skip network
+            if cacheService.isFresh(country: .norway) && cacheService.isFresh(country: .sweden) {
                 if (locationManager.isAuthorized) {
                     await loadLocalRegion()
                 }
