@@ -14,6 +14,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     private(set) var regions = [RegionSummary]()
     private(set) var swedenRegions = [RegionSummary]()
     private(set) var localRegion: RegionSummary? = nil
+    private(set) var userLocation: Location2D? = nil
     var favoriteRegionIds: [Int]
     var searchTerm = ""
     var selectedRegion: RegionSummary? = nil
@@ -182,6 +183,28 @@ class RegionListViewModel: RegionListViewModelProtocol {
             await loadLocalRegion()
         } catch {
             self.locationIsAuthorized = false
+        }
+    }
+
+    func requestLocationForMap() async {
+        let wasAuthorized = locationManager.isAuthorized
+        if !wasAuthorized {
+            do {
+                let _ = try await locationManager.requestPermission()
+                self.locationIsAuthorized = locationManager.isAuthorized
+            } catch {
+                self.locationIsAuthorized = false
+                return
+            }
+        }
+        do {
+            let location = try await locationManager.updateLocation()
+            self.userLocation = location
+            if !wasAuthorized && locationManager.isAuthorized {
+                await loadLocalRegion()
+            }
+        } catch {
+            // Location unavailable - silently ignore
         }
     }
 

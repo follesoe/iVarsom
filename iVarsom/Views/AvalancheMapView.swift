@@ -45,6 +45,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                             }
                         }
                     }
+                    UserAnnotation()
                 }
                 .onMapCameraChange { context in
                     let delta = context.region.span.latitudeDelta
@@ -78,13 +79,24 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                     }
                 }
             }
-            .navigationTitle("Map")
+            .toolbarVisibility(.hidden, for: .navigationBar)
             .navigationDestination(item: $selectedRegion) { _ in
                 RegionDetailContainer<ViewModelType>(vm: vm)
             }
         }
         .task {
             geoData = RegionGeoData.load()
+            await vm.requestLocationForMap()
+            if let location = vm.userLocation {
+                withAnimation {
+                    cameraPosition = .region(
+                        MKCoordinateRegion(
+                            center: location,
+                            span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)
+                        )
+                    )
+                }
+            }
         }
     }
 

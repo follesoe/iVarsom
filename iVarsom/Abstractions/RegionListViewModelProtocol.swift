@@ -23,6 +23,9 @@ protocol RegionListViewModelProtocol: AnyObject, Observable {
     func loadRegions() async -> ()
     func updateLocation() async -> ()
 
+    var userLocation: Location2D? { get }
+    func requestLocationForMap() async
+
     func addFavorite(id: Int) -> ()
     func removeFavorite(id: Int) -> ()
     func selectRegionById(regionId: Int) async -> ()

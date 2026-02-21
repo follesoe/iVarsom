@@ -53,6 +53,7 @@ struct AvalancheWatchMapView<ViewModelType: RegionListViewModelProtocol>: View {
                         }
                     }
                 }
+                UserAnnotation()
             }
             .onMapCameraChange { context in
                 let delta = context.region.span.latitudeDelta
@@ -82,6 +83,17 @@ struct AvalancheWatchMapView<ViewModelType: RegionListViewModelProtocol>: View {
         }
         .task {
             geoData = RegionGeoData.load()
+            await vm.requestLocationForMap()
+            if let location = vm.userLocation {
+                withAnimation {
+                    cameraPosition = .region(
+                        MKCoordinateRegion(
+                            center: location,
+                            span: MKCoordinateSpan(latitudeDelta: 1.5, longitudeDelta: 1.5)
+                        )
+                    )
+                }
+            }
         }
     }
 
