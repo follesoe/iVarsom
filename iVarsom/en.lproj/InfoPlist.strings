@@ -1,7 +1,7 @@
 /* Bundle name */
-"CFBundleName" = "Skredvarsel";
+"CFBundleName" = "Avalanche Warnings";
 
-"CFBundleDisplayName" = "Skredvarsel";
+"CFBundleDisplayName" = "Avalanche Warnings";
 
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
 

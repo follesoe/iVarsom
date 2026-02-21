@@ -1,0 +1,10 @@
+/* Bundle name */
+"CFBundleName" = "Lavinprognoser";
+
+"CFBundleDisplayName" = "Lavinprognoser";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen använder plats för att visa lavinvarningar från din närmaste region";
+
+"NSLocationWhenInUseUsageDescription" = "Appen använder plats för att visa lavinvarningar från din närmaste region";
+
+"NSLocationUsageDescription" = "Appen använder plats för att visa lavinvarningar från din närmaste region";

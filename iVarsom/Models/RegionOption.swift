@@ -31,11 +31,22 @@ struct RegionOption: Codable, Identifiable {
         RegionOption(id: 3037, name: "Heiane")
     ]
     
+    public static let swedenRegions = [
+        RegionOption(id: 100001, name: "Västra Vindelfjällen"),
+        RegionOption(id: 100002, name: "Abisko/Riksgränsfjällen"),
+        RegionOption(id: 100003, name: "Södra Jämtlandsfjällen"),
+        RegionOption(id: 100007, name: "Västra Härjedalsfjällen"),
+        RegionOption(id: 100008, name: "Kebnekaisefjällen"),
+        RegionOption(id: 100009, name: "Södra Lapplandsfjällen")
+    ]
+
     public static func getName(id: Int, def: String) -> String {
-        return aRegions.first(where: { $0.id == id })?.name ?? def
+        return aRegions.first(where: { $0.id == id })?.name
+            ?? swedenRegions.first(where: { $0.id == id })?.name
+            ?? def
     }
-    
-    public static let allOptions = [currentPositionOption] + aRegions
+
+    public static let allOptions = [currentPositionOption] + aRegions + swedenRegions
     public static let currentPositionOption = RegionOption(id: 1, name: String(localized: "Current position"))
     public static let defaultOption = RegionOption(id: 3022, name: "Trollheimen")
 }

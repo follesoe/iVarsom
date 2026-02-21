@@ -32,8 +32,8 @@ struct RegionConfigOptionAppEntity: AppEntity {
     
     static func allRegions() -> [RegionConfigOptionAppEntity] {
         let options = LocationManager().isAuthorizedForWidgetUpdates ?
-            RegionOption.allOptions : RegionOption.aRegions
-        
+            RegionOption.allOptions : RegionOption.aRegions + RegionOption.swedenRegions
+
         return options.map { region in
             let option = RegionConfigOptionAppEntity(
                 id: "\(region.id)",

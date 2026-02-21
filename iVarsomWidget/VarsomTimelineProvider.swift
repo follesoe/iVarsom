@@ -130,11 +130,32 @@ struct Provider: AppIntentTimelineProvider {
                 throw MissingLocationAuthorizationError()
             }
 
-            warnings = try await apiClient.loadWarnings(
-                lang: VarsomApiClient.currentLang(),
-                coordinate: location,
-                from: from,
-                to: to)
+            // Check if user is inside (or near) an A-region polygon
+            if let geoData = RegionGeoData.load(),
+               let feature = geoData.findNearestRegion(at: location) {
+                if Country.from(regionId: feature.id) == .sweden {
+                    let swedenClient = LavinprognoserApiClient()
+                    let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
+                    warnings = try await swedenClient.loadWarnings(regionId: feature.id, daysBefore: max(daysBefore, 1))
+                } else {
+                    warnings = try await apiClient.loadWarnings(
+                        lang: VarsomApiClient.currentLang(),
+                        regionId: feature.id,
+                        from: from,
+                        to: to)
+                }
+            } else {
+                // No A-region nearby - fall back to Norwegian coordinate API
+                warnings = try await apiClient.loadWarnings(
+                    lang: VarsomApiClient.currentLang(),
+                    coordinate: location,
+                    from: from,
+                    to: to)
+            }
+        } else if Country.from(regionId: regionId) == .sweden {
+            let swedenClient = LavinprognoserApiClient()
+            let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
+            warnings = try await swedenClient.loadWarnings(regionId: regionId, daysBefore: max(daysBefore, 1))
         } else {
             warnings = try await apiClient.loadWarnings(
                 lang: VarsomApiClient.currentLang(),

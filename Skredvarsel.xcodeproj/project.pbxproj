@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AACAC0022026022100000002 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
+		AACAC0032026022100000003 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
+		AACAC0052026022100000005 /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0042026022100000004 /* CacheServiceTests.swift */; };
+		AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */; };
 		10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		2C688DFD622C33F1DE47661B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		3C4F929D76D547739E19F11D /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4F929D76D547739E19F11C /* AppShortcuts.swift */; };
@@ -231,6 +235,25 @@
 		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
 		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
+		CC82146628254982923E5B76 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		8B15BF6678764E07A2AF041C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		4B2DDF68BC76470283F1808A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		AB12345678901234567890AB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
+		AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP0002026022100000000 /* AvalancheMapView.swift */; };
+		AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADET0002026022100000000 /* RegionDetailContainer.swift */; };
+		AAGEO0052026022100000005 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0062026022100000006 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0072026022100000007 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAGEO0082026022100000008 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,7 +324,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWatchMapView.swift; sourceTree = "<group>"; };
 		0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
+		AACAC0012026022100000001 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		AACAC0042026022100000004 /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 		3C4F929D76D547739E19F11C /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningSnippetView.swift; sourceTree = "<group>"; };
 		7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWarningBanner.swift; sourceTree = "<group>"; };
@@ -365,6 +391,10 @@
 		AAC859302CE91EFF0013594A /* Date+current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+current.swift"; sourceTree = "<group>"; };
 		AACL00012026020400000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		AACL00022026020400000002 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AASV00012026022100000001 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AASV00022026022100000002 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AASV00032026022100000003 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AASV00042026022100000004 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -401,6 +431,12 @@
 		AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeight.swift; sourceTree = "<group>"; };
 		AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeightArrow.swift; sourceTree = "<group>"; };
 		CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D43B0DFF5703403492998F2E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserApiClient.swift; sourceTree = "<group>"; };
+		AAGEO0002026022100000000 /* RegionGeoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGeoData.swift; sourceTree = "<group>"; };
+		AAGEO0052026022100000050 /* regions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regions.geojson; sourceTree = "<group>"; };
+		AAMAP0002026022100000000 /* AvalancheMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheMapView.swift; sourceTree = "<group>"; };
+		AADET0002026022100000000 /* RegionDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				AA18420B27B1A3860097174D /* VarsomApiClientTests.swift */,
+				AACAC0042026022100000004 /* CacheServiceTests.swift */,
 			);
 			path = iVarsomTests;
 			sourceTree = "<group>";
@@ -502,6 +539,7 @@
 		AA345DCA28085B4700B78BDB /* iVarsomWatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */,
 				AAD6138A282AEF8500ABA680 /* DataSourceView.swift */,
 				AA345DCB28085B4700B78BDB /* SkredvarselApp.swift */,
 				AA345DCD28085B4700B78BDB /* RegionListView.swift */,
@@ -535,6 +573,8 @@
 				AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */,
 				AA461CFD27B0082000425270 /* LocationManager.swift */,
 				0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */,
+				AACAC0012026022100000001 /* CacheService.swift */,
+				35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -583,6 +623,7 @@
 				AA1C67BD279D8A0E0039F8E0 /* Utils */,
 				AA461CFC27B007FC00425270 /* Services */,
 				AAD172DB2795FDB3009AB089 /* Models */,
+				AAGEO00A2026022100000100 /* Resources */,
 				AA18421A27B3106B0097174D /* ViewModels */,
 				AAD172D92795FD6B009AB089 /* Views */,
 				AAD172BD2795F900009AB089 /* iVarsom.entitlements */,
@@ -616,7 +657,9 @@
 		AAD172D92795FD6B009AB089 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAMAP0002026022100000000 /* AvalancheMapView.swift */,
 				AAD172D32795FCC2009AB089 /* RegionDetail.swift */,
+				AADET0002026022100000000 /* RegionDetailContainer.swift */,
 				AAD172D52795FCC2009AB089 /* RegionList.swift */,
 				AAD172D42795FCC2009AB089 /* RegionRow.swift */,
 				AA7358CE27BD8DCF009E3DA1 /* UseLocationRow.swift */,
@@ -650,8 +693,18 @@
 				AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */,
 				AAEC4F192AF7B65D00FA1373 /* AvalancheAdvice.swift */,
 				AAEC4F222AF7C4A300FA1373 /* AvalancheWarningProtocol.swift */,
+				D43B0DFF5703403492998F2E /* Country.swift */,
+				AAGEO0002026022100000000 /* RegionGeoData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AAGEO00A2026022100000100 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAGEO0052026022100000050 /* regions.geojson */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AAD172E727960939009AB089 /* Frameworks */ = {
@@ -820,6 +873,7 @@
 				en,
 				Base,
 				nb,
+				sv,
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
@@ -855,6 +909,7 @@
 				AA2ABD842944FD06008819DB /* Localizable.strings in Resources */,
 				AA2ABD852944FD06008819DB /* RegionSummary.json in Resources */,
 				AA2ABD862944FD06008819DB /* Assets.xcassets in Resources */,
+				AAGEO0082026022100000008 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +919,6 @@
 			files = (
 				AA345DD928085B4800B78BDB /* Preview Assets.xcassets in Resources */,
 				AAF054C4280C4C45000BCADD /* Localizable.strings in Resources */,
-				AABB22562F34B93000A2997C /* AppIcon.icon in Resources */,
 				AAD613862822D88B00ABA680 /* InfoPlist.strings in Resources */,
 				AA345DC128085B4700B78BDB /* Assets.xcassets in Resources */,
 				AA345DD628085B4800B78BDB /* Assets.xcassets in Resources */,
@@ -872,6 +926,7 @@
 				AAEC4F2C2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */,
 				AABB22592F34B96200A2997C /* AppIcon.icon in Resources */,
+				AAGEO0072026022100000007 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +943,7 @@
 				AAEC4F2B2AF7DD7600FA1373 /* DetailedWarning.json in Resources */,
 				AAD172DE2795FEDF009AB089 /* RegionSummary.json in Resources */,
 				AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */,
+				AAGEO0052026022100000005 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +956,7 @@
 				AAF74A7927D3BEA800B02166 /* Localizable.strings in Resources */,
 				AA102E05279DA6D800B6492D /* RegionSummary.json in Resources */,
 				AA6FA72327D54C9A0080FCEF /* Assets.xcassets in Resources */,
+				AAGEO0062026022100000006 /* regions.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +972,7 @@
 				AAEC4F252AF7C4A300FA1373 /* AvalancheWarningProtocol.swift in Sources */,
 				AAEC4F1C2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				AA18420C27B1A3860097174D /* VarsomApiClientTests.swift in Sources */,
+				AACAC0052026022100000005 /* CacheServiceTests.swift in Sources */,
 				AAEC4F202AF7B93500FA1373 /* DateExtensions.swift in Sources */,
 				AAEC4F1F2AF7B91100FA1373 /* DangerLevel.swift in Sources */,
 				AAEC4F212AF7B9AD00FA1373 /* StringExtensions.swift in Sources */,
@@ -922,6 +980,7 @@
 				AAEC4F162AF7B55D00FA1373 /* AvalancheProblem.swift in Sources */,
 				AA18421927B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */,
+				AB12345678901234567890AB /* Country.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,6 +1026,9 @@
 				AA7D74632946185300AB5155 /* iVarsomWidget.swift in Sources */,
 				AAEC4F322AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */,
+				CC82146628254982923E5B76 /* Country.swift in Sources */,
+				EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,7 +1082,12 @@
 				AAF054C5280C502B000BCADD /* RegionOption.swift in Sources */,
 				AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */,
 				10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */,
+				AACAC0032026022100000003 /* CacheService.swift in Sources */,
 				B27BBF82D228E8528382CD10 /* Constants.swift in Sources */,
+				F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */,
+				DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */,
+				AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,7 +1143,13 @@
 				CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */,
 				AAEC4F1A2AF7B65D00FA1373 /* AvalancheAdvice.swift in Sources */,
 				D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */,
+				AACAC0022026022100000002 /* CacheService.swift in Sources */,
 				2C688DFD622C33F1DE47661B /* Constants.swift in Sources */,
+				8B15BF6678764E07A2AF041C /* Country.swift in Sources */,
+				FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */,
+				AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */,
+				AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1195,9 @@
 				AA91226529461402007D5093 /* iVarsomWidget.swift in Sources */,
 				AAEC4F332AF7ED9D00FA1373 /* ExposedHeight.swift in Sources */,
 				852C84D91368853C31BE7F92 /* Constants.swift in Sources */,
+				4B2DDF68BC76470283F1808A /* Country.swift in Sources */,
+				D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */,
+				AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1157,6 +1233,7 @@
 			children = (
 				AA6386032797511E00FD52DA /* en */,
 				AA6386092797518E00FD52DA /* nb */,
+				AASV00012026022100000001 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1166,6 +1243,7 @@
 			children = (
 				AA6386062797514E00FD52DA /* en */,
 				AA6386082797518E00FD52DA /* nb */,
+				AASV00022026022100000002 /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1175,6 +1253,7 @@
 			children = (
 				AACL00012026020400000001 /* en */,
 				AACL00022026020400000002 /* nb */,
+				AASV00032026022100000003 /* sv */,
 			);
 			name = AppShortcuts.strings;
 			sourceTree = "<group>";
@@ -1184,6 +1263,7 @@
 			children = (
 				AAD613872822D88B00ABA680 /* en */,
 				AAD613892822D89300ABA680 /* nb */,
+				AASV00042026022100000004 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1250,7 +1330,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1285,7 +1365,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1307,6 +1387,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
@@ -1315,7 +1396,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp;
 				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
@@ -1337,6 +1418,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
@@ -1345,7 +1427,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.watchapp;
 				PRODUCT_NAME = Skredvarsel;
 				SDKROOT = watchos;
@@ -1516,7 +1598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1557,7 +1639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1591,7 +1673,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1624,7 +1706,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.1;
+				MARKETING_VERSION = 5.2;
 				PRODUCT_BUNDLE_IDENTIFIER = no.follesoe.iVarsom.iVarsomWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

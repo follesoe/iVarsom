@@ -1,0 +1,17 @@
+Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppdatering.
+
+- Svenska lavinvarningar från lavinprognoser.se
+- Interaktiv kartvy som visar alla regioner färgade efter faronivå
+- Kartvy på Apple Watch
+- Stöd för svenska
+- Siri-genvägar: Fråga Siri om lavinvarningen
+- Uppdaterad för iOS 26 och watchOS 26
+- Ny extra stor widget för iPad
+- Lavinproblemgrafik visar nu representativa bilder
+- Uppdaterade faronivåfärger för att matcha de nya officiella färgerna
+- Nödvarningsbanner för kritiska varningar
+- Offlinestöd: cachad data visas direkt vid start, fungerar utan nätverk
+- Förbättrad tillförlitlighet när appen aktiveras från bakgrunden
+- Widgets och komplikationer uppdateras automatiskt när appen öppnas
+
+Ha en fin och säker topptursäsong!

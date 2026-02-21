@@ -7,6 +7,7 @@ protocol RegionListViewModelProtocol: AnyObject, Observable {
     var localRegion: RegionSummary? { get }
     var locationIsAuthorized: Bool { get }
     var regions: [RegionSummary] { get }
+    var swedenRegions: [RegionSummary] { get }
     var favoriteRegionIds: [Int] { get set }
     var searchTerm: String { get set }
     var selectedRegion: RegionSummary? { get set }
@@ -15,11 +16,15 @@ protocol RegionListViewModelProtocol: AnyObject, Observable {
 
     // Computed properties
     var filteredRegions: [RegionSummary] { get }
+    var filteredSwedenRegions: [RegionSummary] { get }
     var favoriteRegions: [RegionSummary] { get }
 
     func needsRefresh() -> Bool
     func loadRegions() async -> ()
     func updateLocation() async -> ()
+
+    var userLocation: Location2D? { get }
+    func requestLocationForMap() async
 
     func addFavorite(id: Int) -> ()
     func removeFavorite(id: Int) -> ()

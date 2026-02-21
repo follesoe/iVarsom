@@ -1,0 +1,173 @@
+/* Region header */
+"Regions" = "Regioner";
+
+/* List group header for A-regions */
+"A-Regions" = "A-Regioner";
+
+/* List group header for location based warnings */
+"Local Warnings" = "Lokala varningar";
+
+/* Button text to use location based warnings */
+"Use current location" = "Använd nuvarande plats";
+
+/* Button description for location based warnings */
+"Will enable location based warnings in Widgets" = "Aktiverar platsbaserade lavinvarningar i Widgets";
+
+/* Data source description and link */
+"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Data från Norska Snöskredvarslingstjänsten och www.varsom.no.";
+
+/* Data source description for both services */
+"Data from varsom.no and lavinprognoser.se." = "Data från varsom.no och lavinprognoser.se.";
+
+/* Data source - Norway only */
+"Data from The Norwegian Avalanche Warning Service." = "Data från Norska Snöskredvarslingstjänsten.";
+
+/* Data source - Sweden only */
+"Data from Swedish Environmental Protection Agency." = "Data från Naturvårdsverket.";
+
+/* Data source - both countries */
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data från Norska Snöskredvarslingstjänsten och Naturvårdsverket.";
+
+/* Section header for Norwegian regions */
+"Norway" = "Norge";
+
+/* Widget Config Display Name */
+"Today's Avalanche Danger Level" = "Dagens lavinfara";
+
+/* Widget Config Description */
+"Display today's avalanche danger level for selected regions in Norway." = "Visa dagens faronivå för vald varningsregion.";
+
+/* Error loading widget */
+"Error" = "Fel";
+
+/* Error loading widget */
+"There was an error updating the widget" = "Det uppstod ett fel vid uppdatering av Widget";
+
+/* Link to Varsom.no */
+"Read complete warning on Varsom.no" = "Se fullständig lavinvarning på Varsom.no";
+
+/* Current position option */
+"Current position" = "Min plats";
+
+/* When no region is selected */
+"Select a region" = "Välj en region";
+
+/* Intent title */
+"Select Region" = "Välj region";
+
+/* Intent description */
+"Select which region you wish to view avalanche warnings from" = "Välj vilken region du vill se lavinvarningar från";
+
+/* To add a region to list */
+"Add Region" = "Lägg till region";
+
+/* Loading text on list */
+"Loading Regions" = "Laddar regioner";
+
+/* Loading text on details view */
+"Loading Details" = "Laddar detaljer";
+
+/* Loading text for warnings */
+"Loading warnings..." = "Laddar varningar...";
+
+/* Loading text for warnings with region name */
+"Loading warnings for %@" = "Laddar varningar för %@";
+
+/* Error message */
+"Error Loading Regions" = "Fel vid laddning av regioner";
+
+/* Error message for warnings with region name */
+"Error loading warnings for %@" = "Fel vid laddning av varningar för %@";
+
+/* Try loading data after error */
+"Try Again" = "Försök igen";
+
+/* Not assessed */
+"Not assessed" = "Ej bedömd";
+
+/* Low */
+"Low" = "Liten";
+
+/* Moderate */
+"Moderate" = "Måttlig";
+
+/* Considerable */
+"Considerable" = "Betydande";
+
+/* High */
+"High" = "Stor";
+
+/* Very high */
+"Very high" = "Mycket stor";
+
+/* Published date/time format */
+"Published: %@" = "Publicerad: %@";
+
+/* Avalanche problem */
+"Avalanche problem" = "Lavinproblem";
+
+/* Avalanche problems */
+"Avalanche problems" = "Lavinproblem";
+
+/* Link text */
+"Read complete warning on Varsom.no." = "Se fullständig varning på Varsom.no.";
+
+/* Link text for Swedish regions */
+"Read complete warning on lavinprognoser.se." = "Se fullständig varning på lavinprognoser.se.";
+
+/* Section header for Swedish regions */
+"Sweden" = "Sverige";
+
+/* Navigation title */
+"Forecast" = "Prognos";
+
+/* Siri Shortcut - Intent title */
+"Get Avalanche Warning" = "Hämta lavinvarning";
+
+/* Siri Shortcut - Intent description */
+"Get the current avalanche danger level for a region in Norway" = "Hämta aktuell faronivå för laviner i en region i Norge";
+
+/* Siri Shortcut - Intent description (with Sweden) */
+"Get the current avalanche danger level for a region in Norway or Sweden" = "Hämta aktuell faronivå för laviner i en region i Norge eller Sverige";
+
+/* Siri Shortcut - Short title */
+"Check warning" = "Kolla varning";
+
+/* Siri Shortcut phrases - without region (Siri will prompt) */
+"Get avalanche warning in ${applicationName}" = "Hämta lavinvarning i ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Lavinvarning från ${applicationName}";
+
+/* Siri Shortcut phrases - with ${region} parameter */
+"Get avalanche warning for ${region} in ${applicationName}" = "Hämta lavinvarning för ${region} i ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Vad är lavinfaran i ${region} med ${applicationName}";
+
+/* Siri Shortcut - Dialog response */
+"The avalanche danger level in %@ is %@." = "Faronivån för laviner i %@ är %@.";
+
+/* Siri Shortcut - No warning available */
+"No avalanche warning available for %@ today." = "Ingen lavinvarning tillgänglig för %@ idag.";
+
+/* Siri Shortcut - Location required */
+"Location access is required to get warnings for your current position." = "Platsåtkomst krävs för att hämta varningar för din nuvarande plats.";
+
+/* Siri Shortcut - Location unavailable */
+"Could not determine your current location." = "Kunde inte fastställa din nuvarande plats.";
+
+/* Siri Shortcut - Error messages */
+"Location access required" = "Platsåtkomst krävs";
+
+/* Siri Shortcut - Parameter request dialog */
+"Which region do you want the avalanche warning for?" = "Vilken region vill du ha lavinvarning för?";
+"Location unavailable" = "Plats otillgänglig";
+"No warning available" = "Ingen varning tillgänglig";
+"Service unavailable" = "Tjänsten otillgänglig";
+
+/* Siri Shortcut - Network error messages */
+"No internet connection. Unable to retrieve avalanche warnings." = "Ingen internetanslutning. Kan inte hämta lavinvarningar.";
+"Unable to retrieve avalanche warnings. Please try again later." = "Kan inte hämta lavinvarningar. Försök igen senare.";
+
+/* Map tab title */
+"Map" = "Karta";
+
+/* Emergency warning not given - used to filter out placeholder values from API */
+"EmergencyWarningNotGiven" = "Ej utfärdad";

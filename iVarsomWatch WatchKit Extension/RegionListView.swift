@@ -12,6 +12,24 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     // ... and two days ahead
     let toDays = 2
 
+    var norwayFavorites: [RegionSummary] {
+        vm.favoriteRegions.filter { Country.from(regionId: $0.Id) == .norway }
+    }
+
+    var swedenFavorites: [RegionSummary] {
+        vm.favoriteRegions.filter { Country.from(regionId: $0.Id) == .sweden }
+    }
+
+    var hasBothCountries: Bool {
+        !norwayFavorites.isEmpty && !swedenFavorites.isEmpty
+    }
+
+    var favoriteDataSource: DataSourceType {
+        if hasBothCountries { return .both }
+        if !swedenFavorites.isEmpty { return .sweden }
+        return .norway
+    }
+
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -23,25 +41,43 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                     }
                 } else {
                     List(selection: $vm.selectedRegion) {
-                        ForEach(vm.favoriteRegions) { region in
-                            let isLocalRegion = region.Id == vm.localRegion?.Id
-                            NavigationLink(value: region) {
-                                RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+                        if hasBothCountries {
+                            Section("Norway") {
+                                favoriteRows(for: norwayFavorites)
                             }
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
-                            .cornerRadius(20)
+                            Section("Sweden") {
+                                favoriteRows(for: swedenFavorites)
+                            }
+                        } else {
+                            ForEach(vm.favoriteRegions) { region in
+                                let isLocalRegion = region.Id == vm.localRegion?.Id
+                                NavigationLink(value: region) {
+                                    RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+                                }
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color.clear)
+                                .cornerRadius(20)
+                            }
+                            .onDelete(perform: removeFavorite)
                         }
-                        .onDelete(perform: removeFavorite)
 
                         HStack {
                             Spacer()
-                            Text("Add Region")
+                            Label("Add Region", systemImage: "plus")
                             Spacer()
                         }.onTapGesture {
                             showAddRegion = true
                         }
-                        DataSourceView()
+                        NavigationLink {
+                            AvalancheWatchMapView<ViewModelType>(vm: vm)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Label("Map", systemImage: "map")
+                                Spacer()
+                            }
+                        }
+                        DataSourceView(source: favoriteDataSource)
                     }
                     .listStyle(.carousel)
                 }
@@ -88,6 +124,18 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                     await vm.selectRegionById(regionId: regionId)
                 }
             }
+        }
+    }
+
+    private func favoriteRows(for regions: [RegionSummary]) -> some View {
+        ForEach(regions) { region in
+            let isLocalRegion = region.Id == vm.localRegion?.Id
+            NavigationLink(value: region) {
+                RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
+            .cornerRadius(20)
         }
     }
 

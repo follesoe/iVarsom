@@ -1,9 +1,13 @@
 The Skredvarsel app is ready for its fifth season (2025/2026), with a major update.
 
+- Swedish avalanche warnings from lavinprognoser.se
+- Interactive map view showing all regions colored by danger level
+- Swedish language support
 - Siri Shortcuts: Ask Siri for the avalanche warning
 - Updated for macOS 26
 - Avalanche problem graphics now show representative images
 - Updated danger level colors to match the new official colors
+- Offline support: cached data shows instantly on launch, works without network
 - Improved reliability when returning to the app from the background
 
 Stay safe, and happy season!

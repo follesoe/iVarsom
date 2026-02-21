@@ -12,7 +12,7 @@ struct WarningSummary: View {
 
     private var hasEmergencyWarning: Bool {
         guard let warning = selectedWarning.EmergencyWarning else { return false }
-        return !warning.isEmpty && warning != NSLocalizedString("EmergencyWarningNotGiven", comment: "")
+        return !warning.isEmpty && warning != "Not given" && warning != "Ikke gitt"
     }
 
     var body: some View {

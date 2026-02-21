@@ -1,3 +1,5 @@
-See the daily avalanche warning level for selected regions in Norway or based on your current location in the app, as a widget on your home screen, or directly on your wrist on the Apple Watch.
+See the daily avalanche warning level for selected regions in Norway and Sweden, or based on your current location in the app, or as a widget in notification center.
 
-The data is delivered by the Norwegian Avalanche Warning Service and www.varsom.no.
+Interactive map view shows all avalanche regions colored by danger level. Tap a region to see the detailed forecast with avalanche problems and recommendations.
+
+Data is delivered by the Norwegian Avalanche Warning Service (varsom.no) and the Swedish Avalanche Warning Service (lavinprognoser.se).

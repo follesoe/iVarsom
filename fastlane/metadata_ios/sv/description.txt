@@ -1,0 +1,5 @@
+Se dagens lavinfara för valda regioner i Norge och Sverige, eller baserat på din aktuella position, i appen, som en widget på hemskärmen, eller direkt på handleden med Apple Watch.
+
+Interaktiv kartvy visar alla lavinregioner färgade efter faronivå. Tryck på en region för att se detaljerad prognos med lavinproblem och rekommendationer.
+
+Data levereras av Norges snöskredvarning (varsom.no) och svenska lavinprognoser (lavinprognoser.se).

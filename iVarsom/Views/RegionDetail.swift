@@ -16,7 +16,8 @@ struct RegionDetail: View {
                             includeLocationIcon: false)
                         if let emergencyWarning = selectedWarning.EmergencyWarning,
                            !emergencyWarning.isEmpty,
-                           emergencyWarning != NSLocalizedString("EmergencyWarningNotGiven", comment: "Emergency warning not given placeholder") {
+                           emergencyWarning != "Not given",
+                           emergencyWarning != "Ikke gitt" {
                             EmergencyWarningBanner(message: emergencyWarning)
                         }
                     }
@@ -33,39 +34,41 @@ struct RegionDetail: View {
                     })
                 }
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    ScrollViewReader { value in
-                        HStack(spacing: 8) {
-                            ForEach(warnings) { warning in
-                                let action = {
-                                    withAnimation {
-                                        self.selectedWarning = warning
-                                        value.scrollTo(warning.id)
+                if warnings.count > 1 {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        ScrollViewReader { value in
+                            HStack(spacing: 8) {
+                                ForEach(warnings) { warning in
+                                    let action = {
+                                        withAnimation {
+                                            self.selectedWarning = warning
+                                            value.scrollTo(warning.id)
+                                        }
                                     }
-                                }
-                                
-                                let isSelected = selectedWarning?.RegId == warning.RegId
-                                
-                                let cell = DayCell(
-                                    dangerLevel: warning.DangerLevel,
-                                    date: warning.ValidFrom,
-                                    isSelected: isSelected)
-                                        .padding(.top, 5)
-                                        .id(warning.id)
 
-                                Button(action: action) { cell }
-                                    .buttonStyle(.plain)
-                            }
-                            .onAppear {
-                                if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {
-                                    print("Scroll to \(lastWarning.id)")
-                                    value.scrollTo(lastWarning.id)
+                                    let isSelected = selectedWarning?.RegId == warning.RegId
+
+                                    let cell = DayCell(
+                                        dangerLevel: warning.DangerLevel,
+                                        date: warning.ValidFrom,
+                                        isSelected: isSelected)
+                                            .padding(.top, 5)
+                                            .id(warning.id)
+
+                                    Button(action: action) { cell }
+                                        .buttonStyle(.plain)
+                                }
+                                .onAppear {
+                                    if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {
+                                        print("Scroll to \(lastWarning.id)")
+                                        value.scrollTo(lastWarning.id)
+                                    }
                                 }
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
                 if let selectedWarning = selectedWarning {
                     if let problems = selectedWarning.AvalancheProblems {
                         VStack(alignment: .leading) {
@@ -78,8 +81,13 @@ struct RegionDetail: View {
                         }
                         .frame(maxWidth: 600)
                     }
-                    Link("Read complete warning on Varsom.no.", destination: selectedWarning.VarsomUrl)
-                        .padding()
+                    if Country.from(regionId: selectedWarning.RegionId) == .sweden {
+                        Link("Read complete warning on lavinprognoser.se.", destination: selectedWarning.VarsomUrl)
+                            .padding()
+                    } else {
+                        Link("Read complete warning on Varsom.no.", destination: selectedWarning.VarsomUrl)
+                            .padding()
+                    }
                 }
             }
         }

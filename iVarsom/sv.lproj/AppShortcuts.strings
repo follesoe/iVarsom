@@ -1,0 +1,5 @@
+/* App Shortcuts phrases - Swedish */
+"Get avalanche warning in ${applicationName}" = "Hämta lavinvarning i ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Lavinvarning från ${applicationName}";
+"Get avalanche warning for ${region} in ${applicationName}" = "Hämta lavinvarning för ${region} i ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Vad är lavinfaran i ${region} med ${applicationName}";

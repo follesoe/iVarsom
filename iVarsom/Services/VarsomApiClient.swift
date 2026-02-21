@@ -14,7 +14,10 @@ class VarsomApiClient {
 
     public static func currentLang() -> Language {
         let identifier = Locale.current.identifier;
-        return identifier.starts(with: "nb") ? .norwegian : .english
+        if identifier.starts(with: "nb") || identifier.starts(with: "sv") {
+            return .norwegian
+        }
+        return .english
     }
 
     public enum Language: CustomStringConvertible {
