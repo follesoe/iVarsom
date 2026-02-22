@@ -17,6 +17,8 @@ struct WarningLevelCell: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(DangerGradient(dangerLevel: dangerLevel))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))
     }
 }
 

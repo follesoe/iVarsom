@@ -20,7 +20,9 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                         if let localRegion = vm.localRegion {
                             NavigationLink(value: localRegion) {
                                 RegionRow(region: localRegion)
-                            }.listRowInsets(rowInsets)
+                            }
+                            .speechLocale(for: localRegion.Id)
+                            .listRowInsets(rowInsets)
                         }
                         else if (!vm.locationIsAuthorized) {
                             UseLocationRow(updateLocationHandler: {
@@ -112,7 +114,9 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
             ForEach(vm.filteredRegions) { region in
                 NavigationLink(value: region) {
                     RegionRow(region: region)
-                }.listRowInsets(rowInsets)
+                }
+                .speechLocale(for: region.Id)
+                .listRowInsets(rowInsets)
             }
         }
     }
@@ -122,7 +126,9 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
             ForEach(vm.filteredSwedenRegions) { region in
                 NavigationLink(value: region) {
                     RegionRow(region: region)
-                }.listRowInsets(rowInsets)
+                }
+                .speechLocale(for: region.Id)
+                .listRowInsets(rowInsets)
             }
         }
     }

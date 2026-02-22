@@ -5,7 +5,19 @@ struct ExposedHeightArrow: View {
     let exposedHeight2: Int
     let exposedHeightFill: Int
     let fontSize: CGFloat
-    
+
+    private var heightDescription: String {
+        let h1 = String(exposedHeight1)
+        let h2 = String(exposedHeight2)
+        switch exposedHeightFill {
+        case 1: return String(localized: "Above \(h1) meters")
+        case 2: return String(localized: "Below \(h1) meters")
+        case 3: return String(localized: "Above \(h1) meters") + ", " + String(localized: "Below \(h2) meters")
+        case 4: return String(localized: "Between \(h2) and \(h1) meters")
+        default: return String(localized: "Above \(h1) meters")
+        }
+    }
+
     var body: some View {
         let imageOneName = switch exposedHeightFill {
         case 1: "arrow.up"
@@ -55,6 +67,8 @@ struct ExposedHeightArrow: View {
                     #endif
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(heightDescription)
     }
 }
 

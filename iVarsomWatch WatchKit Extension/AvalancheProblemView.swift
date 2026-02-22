@@ -14,6 +14,7 @@ struct AvalancheProblemView: View {
                     .cornerRadius(4)
                     .frame(width: 44, height: 44)
                     .padding(.trailing, 4)
+                    .accessibilityHidden(true)
                 Expositions(sectors: problem.ValidExpositionsBool)
                     .padding(.trailing, 6)
                 ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)

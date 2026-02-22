@@ -19,4 +19,15 @@ public enum DangerLevel: String, Codable, Sendable, CustomStringConvertible {
     public var color: Color {
         return Color("DangerLevel\(self.rawValue)")
     }
+
+    public var localizedName: String {
+        switch self {
+        case .unknown: return String(localized: "Not assessed")
+        case .level1: return String(localized: "Low")
+        case .level2: return String(localized: "Moderate")
+        case .level3: return String(localized: "Considerable")
+        case .level4: return String(localized: "High")
+        case .level5: return String(localized: "Very high")
+        }
+    }
 }

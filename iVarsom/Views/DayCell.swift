@@ -4,7 +4,7 @@ struct DayCell: View {
     let dangerLevel: DangerLevel
     let date: Date
     let isSelected: Bool
-    
+
     var body: some View {
         VStack() {
             WarningLevelCell(dangerLevel: dangerLevel)
@@ -19,6 +19,9 @@ struct DayCell: View {
                 .fontWeight(isSelected ? .heavy : .regular)
                 .foregroundColor(.primary)
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide))), \(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

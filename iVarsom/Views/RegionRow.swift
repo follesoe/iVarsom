@@ -2,10 +2,17 @@ import SwiftUI
 
 struct RegionRow: View {
     var region: RegionSummary
-    
+
+    private var dangerLevelsSummary: String {
+        region.AvalancheWarningList.map { warning in
+            let day = warning.ValidFrom.formatted(.dateTime.weekday(.wide))
+            return "\(day) \(warning.DangerLevel.localizedName)"
+        }.joined(separator: ", ")
+    }
+
     var body: some View {
         HStack(spacing: 5) {
-            Text(region.Name.speechLanguage(for: region.Id))
+            Text(region.Name)
                 .font(.body)
             Spacer()
             ForEach(region.AvalancheWarningList) { warning in
@@ -14,6 +21,8 @@ struct RegionRow: View {
                     .cornerRadius(8)
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(region.Name), \(dangerLevelsSummary)")
     }
 }
 

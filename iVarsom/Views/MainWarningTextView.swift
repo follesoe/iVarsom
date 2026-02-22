@@ -7,17 +7,20 @@ struct MainWarningTextView: View {
         ScrollView {
             let pubTime = selectedWarning.PublishTime.formatted(date: .abbreviated, time: .shortened)
             VStack(alignment: .center, spacing: 14) {
-                Text("Avalanche risk assessment").font(.title)
-                Text("Published: \(pubTime)").font(.caption)
+                Text("Avalanche risk assessment")
+                    .font(.title)
+                    .speechLocale(selectedWarning.textLanguageCode)
+                Text("Published: \(pubTime)")
+                    .font(.caption)
                 
                 if let danger = selectedWarning.AvalancheDanger {
-                    Text("\(selectedWarning.MainText)\n\(danger)"
-                        .warningTextSpeechLanguage(selectedWarning.textLanguageCode))
+                    Text("\(selectedWarning.MainText)\n\(danger)")
+                        .speechLocale(selectedWarning.textLanguageCode)
                 } else {
-                    Text(selectedWarning.MainText
-                        .warningTextSpeechLanguage(selectedWarning.textLanguageCode))
+                    Text(selectedWarning.MainText)
+                        .speechLocale(selectedWarning.textLanguageCode)
                 }
-                Button("Dismiss", action: { isShowingSheet.toggle() })
+                Button(String(localized: "Dismiss"), action: { isShowingSheet.toggle() })
             }
             .padding()
         }

@@ -5,5 +5,6 @@ struct DangerGradient: View {
     var body: some View {
         Rectangle()
             .fill(dangerLevel.color.gradient)
+            .accessibilityHidden(true)
     }
 }

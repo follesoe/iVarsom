@@ -3,11 +3,11 @@ import SwiftUI
 struct WarningSymbolLevel: View {
     var dangerLevel: DangerLevel
     var size = 54.0
-    
+
     var textColor: Color {
         return dangerLevel == .level5 ? .white : .black
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
@@ -22,6 +22,8 @@ struct WarningSymbolLevel: View {
                 .frame(maxWidth: .infinity)
             Spacer()
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))
     }
 }
 

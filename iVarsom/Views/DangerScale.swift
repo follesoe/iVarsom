@@ -10,5 +10,6 @@ struct DangerScale: View {
             Rectangle().fill(Color("DangerLevel2").opacity(dangerLevel == .level2 ? 0 : 1))
             Rectangle().fill(Color("DangerLevel1").opacity(dangerLevel == .level1 ? 0 : 1))
         }
+        .accessibilityHidden(true)
     }
 }

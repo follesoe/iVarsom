@@ -10,20 +10,27 @@ struct AvalancheProblemView: View {
                 .fill(problem.DangerLevelEnum.color)
                 .frame(width: 8)
                 .padding(.trailing, 8)
+                .accessibilityHidden(true)
             VStack(alignment: .leading) {
-                Text(problem.AvalancheProblemTypeName.warningTextSpeechLanguage(textLanguageCode))
+                Text(problem.AvalancheProblemTypeName)
                     .font(.subheadline)
                     .bold()
+                    .speechLocale(textLanguageCode)
                 HStack {
                     Image(problem.AvalancheProblemTypeImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(15)
                         .frame(width: 78, height: 78)
+                        .accessibilityLabel(problem.AvalancheProblemTypeName)
+                        .accessibilityRemoveTraits(.isImage)
+                        .speechLocale(textLanguageCode)
                     Expositions(sectors: problem.ValidExpositionsBool)
                         .frame(width: 78, height: 78)
+                        .speechLocale(textLanguageCode)
                     ExposedHeight(exposedHeightFill: problem.ExposedHeightFill)
                         .frame(width: 54, height: 54)
+                        .speechLocale(textLanguageCode)
                     if problem.ExposedHeight1 != 0 || problem.ExposedHeight2 != 0 {
                         ExposedHeightArrow(
                             exposedHeight1: problem.ExposedHeight1,
@@ -31,11 +38,13 @@ struct AvalancheProblemView: View {
                             exposedHeightFill: problem.ExposedHeightFill,
                             fontSize: 24)
                         .padding(.leading, 10)
+                        .speechLocale(textLanguageCode)
                     }
                     Spacer()
                 }
 
-                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText.warningTextSpeechLanguage(textLanguageCode))
+                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText)
+                    .speechLocale(textLanguageCode)
             }
         }
     }

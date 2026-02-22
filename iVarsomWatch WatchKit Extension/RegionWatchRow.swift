@@ -8,6 +8,10 @@ struct RegionWatchRow: View {
         return warning.DangerLevel == .level5 ? .white : .black
     }
     
+    private var regionName: String {
+        RegionOption.getName(id: warning.RegionId, def: warning.RegionName)
+    }
+
     var body: some View {
         HStack {
             WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: 46.0)
@@ -15,6 +19,7 @@ struct RegionWatchRow: View {
                 .padding(.top, 8)
                 .padding(.bottom, 8)
                 .padding(.leading, 5)
+                .accessibilityHidden(true)
             VStack(alignment: .leading) {
                 let warningDate = warning.ValidFrom.getDayName()
                 Text(isLocalRegion ?
@@ -23,7 +28,7 @@ struct RegionWatchRow: View {
                     .foregroundColor(textColor)
                     .textCase(.uppercase)
                     .font(.caption2)
-                Text(RegionOption.getName(id: warning.RegionId, def: warning.RegionName))
+                Text(regionName)
                     .foregroundColor(textColor)
                     .font(.title3)
                     .fontWeight(.bold)
@@ -34,6 +39,9 @@ struct RegionWatchRow: View {
             Spacer()
         }
         .background(warning.DangerLevel.color.gradient)
+        .accessibilityElement(children: .combine)
+        .accessibilityValue("\(warning.ValidFrom.getDayName()), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
+        .speechLocale(for: warning.RegionId)
     }
 }
 

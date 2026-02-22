@@ -174,3 +174,55 @@
 
 /* Emergency warning not given - used to filter out placeholder values from API */
 "EmergencyWarningNotGiven" = "Ikke gitt";
+
+/* Accessibility - Danger level with number and name */
+"Danger level %@, %@" = "Faregrad %@, %@";
+
+/* Accessibility - Exposed aspects list */
+"Exposed aspects: %@" = "Utsatte retninger: %@";
+
+/* Accessibility - All aspects exposed */
+"All aspects exposed" = "Alle retninger utsatt";
+
+/* Accessibility - No aspects exposed */
+"No aspects exposed" = "Ingen retninger utsatt";
+
+/* Accessibility - Above treeline */
+"Above treeline" = "Over tregrensen";
+
+/* Accessibility - Below treeline */
+"Below treeline" = "Under tregrensen";
+
+/* Accessibility - Near treeline */
+"Near treeline" = "Nær tregrensen";
+
+/* Accessibility - Above and below treeline */
+"Above and below treeline" = "Over og under tregrensen";
+
+/* Accessibility - Above height */
+"Above %@ meters" = "Over %@ meter";
+
+/* Accessibility - Below height */
+"Below %@ meters" = "Under %@ meter";
+
+/* Accessibility - Between heights */
+"Between %@ and %@ meters" = "Mellom %@ og %@ meter";
+
+/* Accessibility - Region with danger levels */
+"%@, %@" = "%@, %@";
+
+/* Warning detail sheet - title */
+"Avalanche risk assessment" = "Snøskredvurdering";
+
+/* Warning detail sheet - dismiss button */
+"Dismiss" = "Lukk";
+
+/* Accessibility - Compass directions */
+"North" = "Nord";
+"NorthEast" = "Nordøst";
+"East" = "Øst";
+"SouthEast" = "Sørøst";
+"South" = "Sør";
+"SouthWest" = "Sørvest";
+"West" = "Vest";
+"NorthWest" = "Nordvest";

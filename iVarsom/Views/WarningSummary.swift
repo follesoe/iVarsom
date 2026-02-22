@@ -17,6 +17,7 @@ struct WarningSummary: View {
                 .frame(width: 90)
                 .padding(.top, 8)
                 .padding(.bottom, 8)
+                .speechLocale(warning.textLanguageCode)
             VStack(alignment: .leading) {
                 Spacer()
                 Text(includeLocationIcon ?
@@ -29,7 +30,7 @@ struct WarningSummary: View {
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
-                Text(warning.RegionName.speechLanguage(for: warning.RegionId))
+                Text(warning.RegionName)
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(textColor)
@@ -39,7 +40,8 @@ struct WarningSummary: View {
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
-                Text(warning.MainText.warningTextSpeechLanguage(warning.textLanguageCode))
+                    .speechLocale(for: warning.RegionId)
+                Text(warning.MainText)
                     .font(mainTextFont)
                     .foregroundColor(textColor)
                     .padding(.bottom, 6)
@@ -48,6 +50,7 @@ struct WarningSummary: View {
                     .textSelection(.enabled)
                 #endif
                     .lineLimit(mainTextLineLimit)
+                    .speechLocale(warning.textLanguageCode)
                 Spacer()
             }
             .padding(.top, 12)

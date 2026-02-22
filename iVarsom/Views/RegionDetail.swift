@@ -57,6 +57,7 @@ struct RegionDetail: View {
 
                                     Button(action: action) { cell }
                                         .buttonStyle(.plain)
+                                        .speechLocale(for: warning.RegionId)
                                 }
                                 .onAppear {
                                     if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {

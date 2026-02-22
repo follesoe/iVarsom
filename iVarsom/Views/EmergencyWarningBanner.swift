@@ -17,10 +17,11 @@ struct EmergencyWarningBanner: View {
         HStack {
             Image(systemName: "exclamationmark.circle.fill")
                 .foregroundColor(foregroundColor)
-            Text(message.warningTextSpeechLanguage(textLanguageCode))
+            Text(message)
                 .foregroundColor(foregroundColor)
                 .font(.subheadline)
                 .fontWeight(.medium)
+                .speechLocale(textLanguageCode)
             Spacer()
         }
         .padding(.horizontal, 12)

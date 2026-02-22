@@ -2,6 +2,17 @@ import SwiftUI
 
 struct ExposedHeight: View {
     let exposedHeightFill: Int
+
+    private var heightLabel: String {
+        switch exposedHeightFill {
+        case 1: return String(localized: "Above treeline")
+        case 2: return String(localized: "Below treeline")
+        case 3: return String(localized: "Above and below treeline")
+        case 4: return String(localized: "Near treeline")
+        default: return String(localized: "Above treeline")
+        }
+    }
+
     var body: some View {
         let imageName = switch exposedHeightFill {
         case 1: "ExposedTop"
@@ -13,6 +24,8 @@ struct ExposedHeight: View {
         Image(imageName)
             .resizable()
             .scaledToFit()
+            .accessibilityLabel(heightLabel)
+            .accessibilityRemoveTraits(.isImage)
     }
 }
 

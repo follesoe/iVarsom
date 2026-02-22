@@ -174,3 +174,55 @@
 
 /* Emergency warning not given - used to filter out placeholder values from API */
 "EmergencyWarningNotGiven" = "Not given";
+
+/* Accessibility - Danger level with number and name */
+"Danger level %@, %@" = "Danger level %@, %@";
+
+/* Accessibility - Exposed aspects list */
+"Exposed aspects: %@" = "Exposed aspects: %@";
+
+/* Accessibility - All aspects exposed */
+"All aspects exposed" = "All aspects exposed";
+
+/* Accessibility - No aspects exposed */
+"No aspects exposed" = "No aspects exposed";
+
+/* Accessibility - Above treeline */
+"Above treeline" = "Above treeline";
+
+/* Accessibility - Below treeline */
+"Below treeline" = "Below treeline";
+
+/* Accessibility - Near treeline" */
+"Near treeline" = "Near treeline";
+
+/* Accessibility - Above and below treeline */
+"Above and below treeline" = "Above and below treeline";
+
+/* Accessibility - Above height */
+"Above %@ meters" = "Above %@ meters";
+
+/* Accessibility - Below height */
+"Below %@ meters" = "Below %@ meters";
+
+/* Accessibility - Between heights */
+"Between %@ and %@ meters" = "Between %@ and %@ meters";
+
+/* Accessibility - Region with danger levels */
+"%@, %@" = "%@, %@";
+
+/* Warning detail sheet - title */
+"Avalanche risk assessment" = "Avalanche risk assessment";
+
+/* Warning detail sheet - dismiss button */
+"Dismiss" = "Dismiss";
+
+/* Accessibility - Compass directions */
+"North" = "North";
+"NorthEast" = "North-East";
+"East" = "East";
+"SouthEast" = "South-East";
+"South" = "South";
+"SouthWest" = "South-West";
+"West" = "West";
+"NorthWest" = "North-West";

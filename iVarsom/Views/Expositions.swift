@@ -3,7 +3,23 @@ import Foundation
 
 struct Expositions: View {
     let sectors: [Bool]
-        
+
+    private static let directionKeys = [
+        "North", "NorthEast", "East", "SouthEast",
+        "South", "SouthWest", "West", "NorthWest"
+    ]
+
+    private var exposedDirectionsLabel: String {
+        let exposed = zip(sectors, Self.directionKeys).compactMap { $0.0 ? String(localized: String.LocalizationValue($0.1)) : nil }
+        if exposed.count == sectors.count {
+            return String(localized: "All aspects exposed")
+        } else if exposed.isEmpty {
+            return String(localized: "No aspects exposed")
+        } else {
+            return String(localized: "Exposed aspects: \(exposed.joined(separator: ", "))")
+        }
+    }
+
     var body: some View {
         let nSectors = sectors.count
         let sectorDeg = 360.0 / Double(nSectors)
@@ -68,6 +84,8 @@ struct Expositions: View {
             
         }
         .aspectRatio(1, contentMode: .fit)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(exposedDirectionsLabel)
     }
 }
 

@@ -172,8 +172,9 @@ private struct RegionAnnotationLabel: View {
         VStack(spacing: compact ? 1 : 2) {
             DangerIcon(dangerLevel: dangerLevel)
                 .frame(width: iconSize, height: iconSize)
-            Text(name.speechLanguage(for: regionId))
+            Text(name)
                 .font(font)
+                .speechLocale(for: regionId)
                 .foregroundStyle(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)

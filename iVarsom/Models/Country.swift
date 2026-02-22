@@ -1,32 +1,58 @@
 import Foundation
 import SwiftUI
-#if canImport(UIKit)
-import UIKit
+
+extension View {
+    /// Sets the locale so VoiceOver pronounces text in the region's native language.
+    func speechLocale(for regionId: Int) -> some View {
+        speechLocale(Country.from(regionId: regionId).languageCode)
+    }
+
+    /// Sets the locale and UIKit accessibilityLanguage so VoiceOver pronounces
+    /// both rendered Text and String-based accessibility labels correctly.
+    func speechLocale(_ code: String) -> some View {
+        self.environment(\.locale, Locale(identifier: code))
+        #if os(iOS)
+            .background(AccessibilityLanguageBridge(language: code))
+        #endif
+    }
+}
+
+#if os(iOS)
+/// Zero-size UIView that sets `accessibilityLanguage` on its parent
+/// subtree. This bridges SwiftUI's locale environment to UIKit's
+/// accessibility system, ensuring VoiceOver uses the correct speech
+/// language for String-based accessibility labels.
+///
+/// Walks DOWN from the bridge's parent view to set language on all
+/// descendants (including the actual accessibility elements). This
+/// avoids polluting shared ancestor views in List/UICollectionView,
+/// which would cause rows with different languages to overwrite
+/// each other.
+private struct AccessibilityLanguageBridge: UIViewRepresentable {
+    let language: String
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView(frame: .zero)
+        view.isUserInteractionEnabled = false
+        view.isAccessibilityElement = false
+        return view
+    }
+
+    func updateUIView(_ view: UIView, context: Context) {
+        DispatchQueue.main.async {
+            guard let parent = view.superview else { return }
+            Self.applyLanguage(language, to: parent)
+        }
+    }
+
+    private static func applyLanguage(_ language: String, to view: UIView) {
+        view.accessibilityLanguage = language
+        for child in view.subviews {
+            applyLanguage(language, to: child)
+        }
+    }
+}
 #endif
-
-private func withSpeechLanguage(_ string: String, code: String) -> AttributedString {
-    #if canImport(UIKit)
-    let nsStr = NSMutableAttributedString(string: string)
-    nsStr.addAttribute(.accessibilitySpeechLanguage, value: code, range: NSRange(location: 0, length: nsStr.length))
-    if let result = try? AttributedString(nsStr, including: \.uiKit) {
-        return result
-    }
-    #endif
-    return AttributedString(string)
-}
-
-extension String {
-    /// For region names — always use the region's native language.
-    func speechLanguage(for regionId: Int) -> AttributedString {
-        withSpeechLanguage(self, code: Country.from(regionId: regionId).languageCode)
-    }
-
-    /// For warning text — use the language the warning was loaded in,
-    /// as stored on the model's textLanguageCode property.
-    func warningTextSpeechLanguage(_ languageCode: String) -> AttributedString {
-        withSpeechLanguage(self, code: languageCode)
-    }
-}
 
 enum Country {
     case norway

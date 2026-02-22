@@ -3,7 +3,7 @@ import SwiftUI
 struct DangerIcon: View {
     var dangerLevel: DangerLevel
     var useTintable: Bool = false
-    
+
     var iconName: String {
         switch dangerLevel {
         case .unknown:
@@ -18,11 +18,12 @@ struct DangerIcon: View {
             return "IconDangerLevel4"
         }
     }
-    
+
     var body: some View {
         let icon = useTintable ? iconName + "Tintable" : iconName
         Image(icon)
             .resizable()
             .scaledToFit()
+            .accessibilityLabel(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))
     }
 }
