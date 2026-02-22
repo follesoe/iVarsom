@@ -123,6 +123,7 @@ class LavinprognoserApiClient {
     func loadRegions() async throws -> [RegionSummary] {
         let useSwedish = VarsomApiClient.currentLang() == .norwegian
         let overviewPath = useSwedish ? "\(baseUrl)/.json" : "\(baseUrl)/en.json"
+        let langKey = useSwedish ? 3 : 2  // 3=Swedish, 2=English
         guard let url = URL(string: overviewPath) else { throw LavinError.invalidUrlError }
 
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -145,7 +146,7 @@ class LavinprognoserApiClient {
                     PublishTime: Date.current,
                     DangerLevel: dangerLevel,
                     MainText: link.riskText ?? "",
-                    LangKey: 2)
+                    LangKey: langKey)
                 return RegionSummary(
                     Id: syntheticId,
                     Name: link.areaName,
@@ -182,6 +183,7 @@ class LavinprognoserApiClient {
 
     private func loadForecast(slug: String, regionId: Int, date: Date?) async throws -> AvalancheWarningDetailed {
         let useSwedish = VarsomApiClient.currentLang() == .norwegian
+        let langKey = useSwedish ? 3 : 2  // 3=Swedish, 2=English
         let basePath = useSwedish
             ? "\(baseUrl)/oversikt-alla-omraden/\(slug)"
             : "\(baseUrl)/en/current-avalanche-bulletins/\(slug)"
@@ -251,7 +253,7 @@ class LavinprognoserApiClient {
             NextWarningTime: validTo,
             PublishTime: publishDate,
             MainText: mainText,
-            LangKey: 2)
+            LangKey: langKey)
     }
 
     func loadWarnings(regionId: Int, daysBefore: Int = 1) async throws -> [AvalancheWarningSimple] {

@@ -43,6 +43,16 @@ extension AvalancheWarningProtocol {
         return Float(DangerLevel.rawValue) ?? 0
     }
     
+    /// Language code for the warning text based on LangKey.
+    /// LangKey: 1=Norwegian, 2=English, 3=Swedish.
+    var textLanguageCode: String {
+        switch LangKey {
+        case 1: return "nb"
+        case 3: return "sv"
+        default: return "en"
+        }
+    }
+
     var DangerLevelName: String {
         switch DangerLevel {
         case .unknown: return "Not assessed"

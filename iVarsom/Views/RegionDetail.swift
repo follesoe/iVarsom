@@ -18,7 +18,7 @@ struct RegionDetail: View {
                            !emergencyWarning.isEmpty,
                            emergencyWarning != "Not given",
                            emergencyWarning != "Ikke gitt" {
-                            EmergencyWarningBanner(message: emergencyWarning)
+                            EmergencyWarningBanner(message: emergencyWarning, textLanguageCode: selectedWarning.textLanguageCode)
                         }
                     }
                     .frame(maxWidth: 600)
@@ -75,7 +75,7 @@ struct RegionDetail: View {
                             Text("Avalanche problems").font(.headline)
                                 .padding(.horizontal)
                             ForEach(problems) { problem in
-                                AvalancheProblemView(problem: problem)
+                                AvalancheProblemView(problem: problem, textLanguageCode: selectedWarning.textLanguageCode)
                                     .padding()
                             }
                         }

@@ -45,6 +45,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                                 Annotation("", coordinate: RegionGeoData.centroid(of: feature.polygons)) {
                                     RegionAnnotationLabel(
                                         name: region.Name,
+                                        regionId: region.Id,
                                         dangerLevel: dangerLevel,
                                         compact: !zoomedIn
                                     )
@@ -160,6 +161,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
 
 private struct RegionAnnotationLabel: View {
     let name: String
+    let regionId: Int
     let dangerLevel: DangerLevel
     var compact: Bool = false
 
@@ -170,7 +172,7 @@ private struct RegionAnnotationLabel: View {
         VStack(spacing: compact ? 1 : 2) {
             DangerIcon(dangerLevel: dangerLevel)
                 .frame(width: iconSize, height: iconSize)
-            Text(name)
+            Text(name.speechLanguage(for: regionId))
                 .font(font)
                 .foregroundStyle(.primary)
                 .lineLimit(1)

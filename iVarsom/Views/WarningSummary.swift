@@ -29,7 +29,7 @@ struct WarningSummary: View {
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
-                Text("\(warning.RegionName)")
+                Text(warning.RegionName.speechLanguage(for: warning.RegionId))
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(textColor)
@@ -39,7 +39,7 @@ struct WarningSummary: View {
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
-                Text(warning.MainText)
+                Text(warning.MainText.warningTextSpeechLanguage(warning.textLanguageCode))
                     .font(mainTextFont)
                     .foregroundColor(textColor)
                     .padding(.bottom, 6)

@@ -11,12 +11,11 @@ struct MainWarningTextView: View {
                 Text("Published: \(pubTime)").font(.caption)
                 
                 if let danger = selectedWarning.AvalancheDanger {
-                    Text("""
-                        \(selectedWarning.MainText)
-                        \(danger)
-                        """)
+                    Text("\(selectedWarning.MainText)\n\(danger)"
+                        .warningTextSpeechLanguage(selectedWarning.textLanguageCode))
                 } else {
-                    Text(selectedWarning.MainText)
+                    Text(selectedWarning.MainText
+                        .warningTextSpeechLanguage(selectedWarning.textLanguageCode))
                 }
                 Button("Dismiss", action: { isShowingSheet.toggle() })
             }

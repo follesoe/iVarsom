@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AvalancheProblemView: View {
     let problem: AvalancheProblem
+    var textLanguageCode: String = "nb"
 
     var body: some View {
         HStack {
@@ -10,7 +11,7 @@ struct AvalancheProblemView: View {
                 .frame(width: 8)
                 .padding(.trailing, 8)
             VStack(alignment: .leading) {
-                Text(problem.AvalancheProblemTypeName)
+                Text(problem.AvalancheProblemTypeName.warningTextSpeechLanguage(textLanguageCode))
                     .font(.subheadline)
                     .bold()
                 HStack {
@@ -33,8 +34,8 @@ struct AvalancheProblemView: View {
                     }
                     Spacer()
                 }
-                
-                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText)
+
+                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText.warningTextSpeechLanguage(textLanguageCode))
             }
         }
     }

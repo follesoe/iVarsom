@@ -3,6 +3,7 @@ import SwiftUI
 struct EmergencyWarningBanner: View {
     @Environment(\.colorScheme) private var colorScheme
     let message: String
+    var textLanguageCode: String = "nb"
 
     private var backgroundColor: Color {
         colorScheme == .dark ? .white : .black
@@ -16,7 +17,7 @@ struct EmergencyWarningBanner: View {
         HStack {
             Image(systemName: "exclamationmark.circle.fill")
                 .foregroundColor(foregroundColor)
-            Text(message)
+            Text(message.warningTextSpeechLanguage(textLanguageCode))
                 .foregroundColor(foregroundColor)
                 .font(.subheadline)
                 .fontWeight(.medium)

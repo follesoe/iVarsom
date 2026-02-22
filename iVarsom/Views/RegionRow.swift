@@ -5,7 +5,7 @@ struct RegionRow: View {
     
     var body: some View {
         HStack(spacing: 5) {
-            Text(region.Name)
+            Text(region.Name.speechLanguage(for: region.Id))
                 .font(.body)
             Spacer()
             ForEach(region.AvalancheWarningList) { warning in
