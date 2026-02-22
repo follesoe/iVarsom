@@ -166,6 +166,9 @@
 "No internet connection. Unable to retrieve avalanche warnings." = "No internet connection. Unable to retrieve avalanche warnings.";
 "Unable to retrieve avalanche warnings. Please try again later." = "Unable to retrieve avalanche warnings. Please try again later.";
 
+/* Search tab title */
+"Search" = "Search";
+
 /* Map tab title */
 "Map" = "Map";
 

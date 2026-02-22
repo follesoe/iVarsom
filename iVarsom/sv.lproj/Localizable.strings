@@ -166,6 +166,9 @@
 "No internet connection. Unable to retrieve avalanche warnings." = "Ingen internetanslutning. Kan inte hämta lavinvarningar.";
 "Unable to retrieve avalanche warnings. Please try again later." = "Kan inte hämta lavinvarningar. Försök igen senare.";
 
+/* Search tab title */
+"Search" = "Sök";
+
 /* Map tab title */
 "Map" = "Karta";
 

@@ -32,33 +32,6 @@ private struct ContentView: View {
                     Tab("Map", systemImage: "map") {
                         iPhoneMapTab
                     }
-                    Tab(role: .search) {
-                        NavigationStack {
-                            List {
-                                ForEach(vm.filteredRegions) { region in
-                                    NavigationLink(value: region) {
-                                        RegionRow(region: region)
-                                    }
-                                }
-                                ForEach(vm.filteredSwedenRegions) { region in
-                                    NavigationLink(value: region) {
-                                        RegionRow(region: region)
-                                    }
-                                }
-                            }
-                            .navigationTitle("Search")
-                            .navigationDestination(for: RegionSummary.self) { region in
-                                RegionDetailContainer<RegionListViewModel>(vm: vm)
-                                    .onAppear {
-                                        vm.selectedRegion = region
-                                        Task {
-                                            await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
-                                        }
-                                    }
-                            }
-                        }
-                        .searchable(text: $vm.searchTerm)
-                    }
                 }
             }
         }

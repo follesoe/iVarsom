@@ -166,6 +166,9 @@
 "No internet connection. Unable to retrieve avalanche warnings." = "Ingen internettforbindelse. Kan ikke hente skredvarsel.";
 "Unable to retrieve avalanche warnings. Please try again later." = "Kan ikke hente skredvarsel. Vennligst prøv igjen senere.";
 
+/* Search tab title */
+"Search" = "Søk";
+
 /* Map tab title */
 "Map" = "Kart";
 
