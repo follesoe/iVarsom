@@ -8,7 +8,6 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Bindable var vm: ViewModelType
-    @State private var navigatedRegion: RegionSummary?
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView<ViewModelType>.overviewPosition
 
     let rowInsets = EdgeInsets(top: 14, leading: 20, bottom: 14, trailing: 14)
@@ -43,10 +42,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 .searchable(text: $vm.searchTerm)
                 .listStyle(.insetGrouped)
                 .onChange(of: vm.selectedRegion) {
-                    if let region = vm.selectedRegion {
-                        if sizeClass == .regular {
-                            navigatedRegion = region
-                        }
+                    if vm.selectedRegion != nil {
                         Task {
                             await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
                         }
@@ -58,26 +54,34 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
             }
         } detail: {
             if sizeClass == .regular {
-                NavigationStack {
-                    AvalancheMapView<ViewModelType>(
-                        vm: vm,
-                        onRegionSelected: { region in
-                            vm.selectedRegion = region
-                        },
-                        cameraPosition: $cameraPosition
-                    )
-                    .toolbarBackground(.hidden, for: .navigationBar)
-                    .navigationDestination(item: $navigatedRegion) { _ in
+                Group {
+                    if vm.selectedRegion != nil {
                         RegionDetailContainer<ViewModelType>(vm: vm)
+                            .toolbar {
+                                ToolbarItem(placement: .navigation) {
+                                    Button {
+                                        vm.selectedRegion = nil
+                                    } label: {
+                                        Label("Map", systemImage: "map")
+                                    }
+                                }
+                            }
+                            .transition(.opacity)
+                    } else {
+                        AvalancheMapView<ViewModelType>(
+                            vm: vm,
+                            onRegionSelected: { region in
+                                vm.selectedRegion = region
+                            },
+                            cameraPosition: $cameraPosition
+                        )
+                        .toolbarBackground(.hidden, for: .navigationBar)
+                        .transition(.opacity)
                     }
                 }
+                .animation(.easeInOut(duration: 0.2), value: vm.selectedRegion)
             } else {
                 RegionDetailContainer<ViewModelType>(vm: vm)
-            }
-        }
-        .onChange(of: navigatedRegion) {
-            if navigatedRegion == nil && sizeClass == .regular {
-                vm.selectedRegion = nil
             }
         }
         .refreshable {
