@@ -15,7 +15,7 @@ struct GetAvalancheWarningIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog & ShowsSnippetView {
-        let regionId = region.regionId ?? RegionOption.defaultOption.id
+        let regionId = region.regionId ?? Int(region.id) ?? RegionOption.defaultOption.id
         let regionName = region.displayString
 
         let client = VarsomApiClient()

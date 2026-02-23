@@ -62,11 +62,17 @@ struct Provider: AppIntentTimelineProvider {
             errorMessage: errorMessage)
     }
     
-    func snapshot(for configuration: SelectRegion, in context: Context) async -> WarningEntry {
-        let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
+    private func regionId(for configuration: SelectRegion) -> Int {
+        configuration.region?.regionId
+            ?? Int(configuration.region?.id ?? "")
+            ?? RegionOption.defaultOption.id
+    }
 
-        let from = Date.current
-        let to = Calendar.current.date(byAdding: .day, value: 2, to: from)!
+    func snapshot(for configuration: SelectRegion, in context: Context) async -> WarningEntry {
+        let regionId = regionId(for: configuration)
+
+        let from = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysBefore, to: Date.current)!
+        let to = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysAfter, to: Date.current)!
 
         do {
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
@@ -88,7 +94,7 @@ struct Provider: AppIntentTimelineProvider {
     }
 
     func timeline(for configuration: SelectRegion, in context: Context) async -> Timeline<WarningEntry> {
-        let regionId = configuration.region?.regionId ?? RegionOption.defaultOption.id
+        let regionId = regionId(for: configuration)
         do {
             let from = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysBefore, to: Date.current)!
             let to = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysAfter, to: Date.current)!

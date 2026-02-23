@@ -218,10 +218,14 @@ struct RectangleWidgetView: View {
     
     var entry: Provider.Entry
     var body: some View {
-        let filteredWarnings = entry.warnings.filter {
-            let daysBetween = Calendar.current.numberOfDaysBetween(Date.current, and: $0.ValidFrom)
-            return daysBetween >= -1 && daysBetween <= 2;
-        }
+        let filteredWarnings = {
+            let all = entry.warnings.filter {
+                let daysBetween = Calendar.current.numberOfDaysBetween(Date.current, and: $0.ValidFrom)
+                return daysBetween >= -3 && daysBetween <= 2
+            }
+            // Show at most 4 days, preferring the most recent
+            return all.count > 4 ? Array(all.suffix(4)) : all
+        }()
         
         let todayWarning = filteredWarnings.first(where: {
             Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day)
