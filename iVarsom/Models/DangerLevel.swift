@@ -1,7 +1,12 @@
 import Foundation
 import SwiftUI
 
-public enum DangerLevel: String, Codable, Sendable, CustomStringConvertible {
+public enum DangerLevel: String, Codable, Sendable, CustomStringConvertible, Comparable {
+    public static func < (lhs: DangerLevel, rhs: DangerLevel) -> Bool {
+        let order: [DangerLevel] = [.unknown, .level1, .level2, .level3, .level4, .level5]
+        return (order.firstIndex(of: lhs) ?? 0) < (order.firstIndex(of: rhs) ?? 0)
+    }
+
     case unknown = "0"
     case level1 = "1"
     case level2 = "2"

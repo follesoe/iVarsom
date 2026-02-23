@@ -10,11 +10,21 @@ struct RegionRow: View {
         }.joined(separator: ", ")
     }
 
+    private var accessibilityDescription: String {
+        if let trend = region.dangerTrend {
+            return "\(trend.localizedDescription), \(region.Name), \(dangerLevelsSummary)"
+        }
+        return "\(region.Name), \(dangerLevelsSummary)"
+    }
+
     var body: some View {
         HStack(spacing: 5) {
             Text(region.Name)
                 .font(.body)
             Spacer()
+            if let trend = region.dangerTrend {
+                DangerTrendIndicator(trend: trend)
+            }
             ForEach(region.AvalancheWarningList) { warning in
                 WarningLevelCell(dangerLevel: warning.DangerLevel)
                     .frame(width: 32, height: 32)
@@ -22,7 +32,7 @@ struct RegionRow: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(region.Name), \(dangerLevelsSummary)")
+        .accessibilityLabel(accessibilityDescription)
     }
 }
 

@@ -47,6 +47,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                                         name: region.Name,
                                         regionId: region.Id,
                                         dangerLevel: dangerLevel,
+                                        trend: region.dangerTrend,
                                         compact: !zoomedIn
                                     )
                                 }
@@ -163,31 +164,40 @@ private struct RegionAnnotationLabel: View {
     let name: String
     let regionId: Int
     let dangerLevel: DangerLevel
+    var trend: DangerTrend? = nil
     var compact: Bool = false
 
     private var iconSize: CGFloat { compact ? 16 : 30 }
     private var font: Font { compact ? .system(size: 8, weight: .semibold) : .caption.weight(.semibold) }
+    private var trendFont: Font { compact ? .system(size: 8, weight: .heavy) : .system(size: 12, weight: .heavy) }
 
     var body: some View {
         VStack(spacing: compact ? 1 : 2) {
             DangerIcon(dangerLevel: dangerLevel)
                 .frame(width: iconSize, height: iconSize)
-            Text(name)
-                .font(font)
-                .speechLocale(for: regionId)
-                .foregroundStyle(.primary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .padding(.horizontal, compact ? 2 : 4)
-                .padding(.vertical, 1)
-                .background(
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(.ultraThinMaterial)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 3)
-                        .stroke(.white.opacity(0.7), lineWidth: 0.5)
-                )
+            HStack(spacing: 2) {
+                Text(name)
+                    .font(font)
+                    .speechLocale(for: regionId)
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                if let trend = trend {
+                    Image(systemName: trend.symbolName)
+                        .font(trendFont)
+                        .foregroundStyle(trend.color)
+                }
+            }
+            .padding(.horizontal, compact ? 2 : 4)
+            .padding(.vertical, 1)
+            .background(
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(.ultraThinMaterial)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 3)
+                    .stroke(.white.opacity(0.7), lineWidth: 0.5)
+            )
         }
         .fixedSize()
     }

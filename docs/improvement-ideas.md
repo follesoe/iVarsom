@@ -22,8 +22,8 @@ A multi-day, multi-region view where you pick a date range and a few regions to 
 ### Live Activities / Dynamic Island
 Show the current danger level as a Live Activity for a selected region during a trip day.
 
-### Avalanche Problem Trend Indicators
-Show whether danger is rising, falling, or stable compared to previous days. The data for this is already fetched by the app.
+### ~~Avalanche Problem Trend Indicators~~ (Done)
+Implemented in `RegionSummary.swift`. Shows rising/stable/falling trend arrows comparing today vs tomorrow danger levels. Displayed in region list rows and map annotation labels. Uses diagonal SF Symbol arrows (`arrow.up.right`, `arrow.right`, `arrow.down.right`) colored by the higher danger level.
 
 ## Larger Features
 

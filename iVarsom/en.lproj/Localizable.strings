@@ -217,6 +217,11 @@
 /* Warning detail sheet - dismiss button */
 "Dismiss" = "Dismiss";
 
+/* Accessibility - Danger trend */
+"Danger rising" = "Danger rising";
+"Danger stable" = "Danger stable";
+"Danger falling" = "Danger falling";
+
 /* Accessibility - Compass directions */
 "North" = "North";
 "NorthEast" = "North-East";
