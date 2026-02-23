@@ -72,7 +72,12 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                     }
                                 }
                                 ToolbarItem(placement: .primaryAction) {
-                                    detail.favoriteButton
+                                    HStack {
+                                        #if os(iOS)
+                                        detail.shareButton
+                                        #endif
+                                        detail.favoriteButton
+                                    }
                                 }
                             }
                             .transition(.opacity)
@@ -94,7 +99,12 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 detail
                     .toolbar {
                         ToolbarItem(placement: .primaryAction) {
-                            detail.favoriteButton
+                            HStack {
+                                #if os(iOS)
+                                detail.shareButton
+                                #endif
+                                detail.favoriteButton
+                            }
                         }
                     }
             }

@@ -225,6 +225,12 @@
 "Danger stable" = "Danger stable";
 "Danger falling" = "Danger falling";
 
+/* Share menu option for summary only */
+"Share summary" = "Share summary";
+
+/* Share menu option including avalanche problems */
+"Share with avalanche problems" = "Share with avalanche problems";
+
 /* Accessibility - Compass directions */
 "North" = "North";
 "NorthEast" = "North-East";

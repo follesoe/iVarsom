@@ -225,6 +225,12 @@
 "Danger stable" = "Fara stabil";
 "Danger falling" = "Fara sjunkande";
 
+/* Share menu option for summary only */
+"Share summary" = "Dela sammanfattning";
+
+/* Share menu option including avalanche problems */
+"Share with avalanche problems" = "Dela med lavinproblem";
+
 /* Accessibility - Compass directions */
 "North" = "Nord";
 "NorthEast" = "Nordost";

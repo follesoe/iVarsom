@@ -1,6 +1,17 @@
 import Foundation
 import SwiftUI
 
+private struct AccessibilityBridgeDisabledKey: EnvironmentKey {
+    static let defaultValue = false
+}
+
+extension EnvironmentValues {
+    var accessibilityBridgeDisabled: Bool {
+        get { self[AccessibilityBridgeDisabledKey.self] }
+        set { self[AccessibilityBridgeDisabledKey.self] = newValue }
+    }
+}
+
 extension View {
     /// Sets the locale so VoiceOver pronounces text in the region's native language.
     func speechLocale(for regionId: Int) -> some View {
@@ -12,12 +23,27 @@ extension View {
     func speechLocale(_ code: String) -> some View {
         self.environment(\.locale, Locale(identifier: code))
         #if os(iOS)
-            .background(AccessibilityLanguageBridge(language: code))
+            .modifier(AccessibilityBridgeModifier(language: code))
         #endif
     }
 }
 
 #if os(iOS)
+/// Conditionally applies the AccessibilityLanguageBridge, skipping it
+/// when `accessibilityBridgeDisabled` is set (e.g. inside ImageRenderer).
+private struct AccessibilityBridgeModifier: ViewModifier {
+    @Environment(\.accessibilityBridgeDisabled) private var bridgeDisabled
+    let language: String
+
+    func body(content: Content) -> some View {
+        if bridgeDisabled {
+            content
+        } else {
+            content.background(AccessibilityLanguageBridge(language: language))
+        }
+    }
+}
+
 /// Zero-size UIView that sets `accessibilityLanguage` on its parent
 /// subtree. This bridges SwiftUI's locale environment to UIKit's
 /// accessibility system, ensuring VoiceOver uses the correct speech

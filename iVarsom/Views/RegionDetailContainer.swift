@@ -50,4 +50,38 @@ struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
             Image(systemName: isFavorite ? "star.fill" : "star")
         }
     }
+
+    #if os(iOS)
+    var shareButton: some View {
+        Menu {
+            Button {
+                shareWarning(includeProblems: false)
+            } label: {
+                Label(NSLocalizedString("Share summary", comment: "Share menu option for summary only"), systemImage: "square.and.arrow.up")
+            }
+            Button {
+                shareWarning(includeProblems: true)
+            } label: {
+                Label(NSLocalizedString("Share with avalanche problems", comment: "Share menu option including avalanche problems"), systemImage: "square.and.arrow.up.fill")
+            }
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+        }
+    }
+
+    private func shareWarning(includeProblems: Bool) {
+        guard let warning = vm.selectedWarning else { return }
+        let view = ShareableWarningView(warning: warning, includeProblems: includeProblems)
+        let renderer = ImageRenderer(content: view)
+        renderer.proposedSize = ProposedViewSize(width: 390, height: nil)
+        renderer.scale = 3
+        if let image = renderer.uiImage {
+            let date = warning.ValidFrom.formatted(.iso8601.year().month().day())
+            let name = warning.RegionName
+                .replacingOccurrences(of: " ", with: "-")
+                .lowercased()
+            ActivityViewPresenter.present(image: image, filename: "\(name)-\(date).png")
+        }
+    }
+    #endif
 }
