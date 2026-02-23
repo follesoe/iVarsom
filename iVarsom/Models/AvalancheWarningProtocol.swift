@@ -22,9 +22,9 @@ extension AvalancheWarningProtocol {
             df.dateFormat = "yyyy-MM-dd"
             let dateParam = df.string(from: ValidFrom)
             if Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv") {
-                return URL(string: "https://lavinprognoser.se/aktuella-lavinprognoser/\(slug)/?forecast_date=\(dateParam)")!
+                return URL(string: "https://lavinprognoser.se/oversikt-alla-omraden/\(slug)/?forecast_date=\(dateParam)")!
             } else {
-                return URL(string: "https://lavinprognoser.se/en/current-avalanche-bulletins/\(slug)/?forecast_date=\(dateParam)")!
+                return URL(string: "https://lavinprognoser.se/en/oversikt-alla-omraden/\(slug)/?forecast_date=\(dateParam)")!
             }
         }
 
