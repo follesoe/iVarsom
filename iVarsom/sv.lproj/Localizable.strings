@@ -28,6 +28,9 @@
 /* Data source - both countries */
 "Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data från Norska Snöskredvarslingstjänsten och Naturvårdsverket.";
 
+/* Section header for favorites */
+"Favorites" = "Favoriter";
+
 /* Section header for Norwegian regions */
 "Norway" = "Norge";
 

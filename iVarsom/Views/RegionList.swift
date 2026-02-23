@@ -32,6 +32,9 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                             }).listRowInsets(rowInsets)
                         }
                     }
+                    if !vm.favoriteRegions.isEmpty {
+                        favoritesSection
+                    }
                     if Locale.current.identifier.starts(with: "sv") {
                         swedenSection
                         norwaySection
@@ -58,7 +61,8 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
             if sizeClass == .regular {
                 Group {
                     if vm.selectedRegion != nil {
-                        RegionDetailContainer<ViewModelType>(vm: vm)
+                        let detail = RegionDetailContainer<ViewModelType>(vm: vm)
+                        detail
                             .toolbar {
                                 ToolbarItem(placement: .navigation) {
                                     Button {
@@ -66,6 +70,9 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                     } label: {
                                         Label("Map", systemImage: "map")
                                     }
+                                }
+                                ToolbarItem(placement: .primaryAction) {
+                                    detail.favoriteButton
                                 }
                             }
                             .transition(.opacity)
@@ -83,7 +90,13 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 }
                 .animation(.easeInOut(duration: 0.2), value: vm.selectedRegion)
             } else {
-                RegionDetailContainer<ViewModelType>(vm: vm)
+                let detail = RegionDetailContainer<ViewModelType>(vm: vm)
+                detail
+                    .toolbar {
+                        ToolbarItem(placement: .primaryAction) {
+                            detail.favoriteButton
+                        }
+                    }
             }
         }
         .refreshable {
@@ -109,9 +122,21 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
             }
         }
     }
+    private var favoritesSection: some View {
+        Section(header: Text("Favorites")) {
+            ForEach(vm.favoriteRegions) { region in
+                NavigationLink(value: region) {
+                    RegionRow(region: region)
+                }
+                .speechLocale(for: region.Id)
+                .listRowInsets(rowInsets)
+            }
+        }
+    }
+
     private var norwaySection: some View {
         Section(header: Text("Norway")) {
-            ForEach(vm.filteredRegions) { region in
+            ForEach(vm.filteredRegions.filter { !vm.favoriteRegionIds.contains($0.id) }) { region in
                 NavigationLink(value: region) {
                     RegionRow(region: region)
                 }
@@ -123,7 +148,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
 
     private var swedenSection: some View {
         Section(header: Text("Sweden")) {
-            ForEach(vm.filteredSwedenRegions) { region in
+            ForEach(vm.filteredSwedenRegions.filter { !vm.favoriteRegionIds.contains($0.id) }) { region in
                 NavigationLink(value: region) {
                     RegionRow(region: region)
                 }

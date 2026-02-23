@@ -7,6 +7,8 @@
 - Swedish language support for the app and App Store listing
 - Location-based warnings now use GeoJSON polygon lookup for improved accuracy
 - Offline support: cached data shows instantly on launch and works without network
+- Favorite regions with iCloud sync across devices
+- Favorite toggle button on region detail view
 
 ## 5.1.0
 

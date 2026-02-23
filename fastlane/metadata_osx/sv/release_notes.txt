@@ -7,6 +7,7 @@ Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppda
 - Uppdaterad för macOS 26
 - Lavinproblemgrafik visar nu representativa bilder
 - Uppdaterade faronivåfärger för att matcha de nya officiella färgerna
+- Favoritregioner med iCloud-synkronisering mellan enheter
 - Offlinestöd: cachad data visas direkt vid start, fungerar utan nätverk
 - Förbättrad tillförlitlighet när appen aktiveras från bakgrunden
 

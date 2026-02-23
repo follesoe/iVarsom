@@ -34,8 +34,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
 
     var favoriteRegions: [RegionSummary] {
+        let localId = localRegion?.Id
         var result = (filteredRegions + filteredSwedenRegions).filter { region in
-            favoriteRegionIds.contains(region.id)
+            favoriteRegionIds.contains(region.id) && region.id != localId
         }
         if let localReg = localRegion {
             if favoriteRegionIds.contains(RegionOption.currentPositionOption.id) {
@@ -59,6 +60,11 @@ class RegionListViewModel: RegionListViewModelProtocol {
         self.cacheService = cacheService
         self.locationIsAuthorized = locationManager.isAuthorized
         self.favoriteRegionIds = favoritesService.loadFavorites()
+        favoritesService.startObservingCloudChanges { [weak self] merged in
+            MainActor.assumeIsolated {
+                self?.favoriteRegionIds = merged
+            }
+        }
     }
 
     func addFavorite(id: Int) {

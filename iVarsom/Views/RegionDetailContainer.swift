@@ -3,6 +3,11 @@ import SwiftUI
 struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
     @Bindable var vm: ViewModelType
 
+    private var isFavorite: Bool {
+        guard let selectedRegion = vm.selectedRegion else { return false }
+        return vm.favoriteRegionIds.contains(selectedRegion.Id)
+    }
+
     var body: some View {
         if let selectedRegion = vm.selectedRegion {
             if vm.warningLoadState == .loading {
@@ -30,6 +35,19 @@ struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
             }
         } else {
             Text("Select a region")
+        }
+    }
+
+    var favoriteButton: some View {
+        Button {
+            guard let selectedRegion = vm.selectedRegion else { return }
+            if isFavorite {
+                vm.removeFavorite(id: selectedRegion.Id)
+            } else {
+                vm.addFavorite(id: selectedRegion.Id)
+            }
+        } label: {
+            Image(systemName: isFavorite ? "star.fill" : "star")
         }
     }
 }

@@ -12,6 +12,7 @@ The app is also a learning exercise for myself to learn how to build and distrib
 
 - Avalanche warnings for **Norway** and **Sweden**
 - Interactive map view showing all regions colored by danger level (iOS and watchOS)
+- Favorite regions with iCloud sync across devices
 - Home screen and lock screen widgets
 - watchOS app with complications
 - Siri Shortcuts for voice-based danger queries
