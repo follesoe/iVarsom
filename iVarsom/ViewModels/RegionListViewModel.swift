@@ -259,7 +259,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
 
                 let loadedWarnings: [AvalancheWarningDetailed]
                 if Country.from(regionId: selectedRegion.Id) == .sweden {
-                    loadedWarnings = try await swedenClient.loadWarningsDetailed(regionId: selectedRegion.Id)
+                    loadedWarnings = try await swedenClient.loadWarningsDetailed(regionId: selectedRegion.Id, daysBefore: 2)
                 } else {
                     loadedWarnings = try await client.loadWarningsDetailed(
                         lang: VarsomApiClient.currentLang(),

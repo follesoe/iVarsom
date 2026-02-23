@@ -158,26 +158,25 @@ class LavinprognoserApiClient {
     func loadWarningsDetailed(regionId: Int, daysBefore: Int = 1) async throws -> [AvalancheWarningDetailed] {
         guard let slug = Country.swedishSlug(for: regionId) else { throw LavinError.invalidUrlError }
 
-        // Fetch today + previous days concurrently
-        let todayTask = Task { try await loadForecast(slug: slug, regionId: regionId, date: nil) }
-        var previousTasks = [(day: Int, task: Task<AvalancheWarningDetailed, Error>)]()
-        for day in 1...daysBefore {
+        // Fetch today + previous days by explicit date to avoid gaps.
+        // The "current" (no date) endpoint returns the active forecast which
+        // may be tomorrow's after 18:00, skipping today entirely.
+        var tasks = [(day: Int, task: Task<AvalancheWarningDetailed, Error>)]()
+        for day in 0...daysBefore {
             let date = Calendar.current.date(byAdding: .day, value: -day, to: Date.current)!
             let task = Task { try await self.loadForecast(slug: slug, regionId: regionId, date: date) }
-            previousTasks.append((day, task))
+            tasks.append((day, task))
         }
 
-        let todayWarning = try await todayTask.value
-
         var warnings = [AvalancheWarningDetailed]()
-        // Add previous days in chronological order (oldest first)
-        for (_, task) in previousTasks.reversed() {
+        // Add in chronological order (oldest first)
+        for (_, task) in tasks.reversed() {
             if let warning = try? await task.value {
                 warnings.append(warning)
             }
         }
-        warnings.append(todayWarning)
 
+        guard !warnings.isEmpty else { throw LavinError.requestError }
         return warnings
     }
 
@@ -204,12 +203,12 @@ class LavinprognoserApiClient {
         let forecast = detail.content.forecast
 
         let validTo = parseSwedishDate(forecast.validTo) ?? Calendar.current.date(byAdding: .day, value: 1, to: Date.current)!
+        // Swedish forecasts are valid from 18:00 the previous day to 18:00 the forecast day.
+        // Use validTo as the display date so the day picker shows the correct forecast day.
+        let validFrom = validTo
         let publishDate = forecast.changeDate.flatMap { parseSwedishDate($0) }
             ?? parsePublishedDate(forecast.publishedDate)
             ?? Date.current
-        // Swedish forecasts are valid from 18:00 the previous day to 18:00 the forecast day.
-        // Use validTo as the display date so the day picker shows the correct day.
-        let validFrom = validTo
 
         let dangerLevel = DangerLevel(rawValue: String(forecast.risk)) ?? .unknown
         // assessmentContent is the forecaster-written text shown on the web page.

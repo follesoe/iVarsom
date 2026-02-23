@@ -189,7 +189,7 @@ struct Provider: AppIntentTimelineProvider {
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegion) -> Timeline<Entry> {
         // Find warning for today, or fall back to first warning
         let todayIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day) }
-        let index = todayIndex ?? 0
+        let index = todayIndex ?? (warnings.count - 1)
 
         guard index < warnings.count else {
             // No warnings available - return error timeline
