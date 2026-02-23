@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct DayCell: View {
+    @Environment(\.colorScheme) private var colorScheme
     let dangerLevel: DangerLevel
     let date: Date
     let isSelected: Bool
+    var hasEmergencyWarning: Bool = false
 
     var body: some View {
         VStack() {
@@ -14,6 +16,11 @@ struct DayCell: View {
                         .stroke(Color.secondary, lineWidth: isSelected ? 4 : 0)
                 )
                 .cornerRadius(8)
+                .overlay(alignment: .topTrailing) {
+                    if hasEmergencyWarning {
+                        EmergencyWarningIcon(colorScheme: colorScheme)
+                    }
+                }
             Text(date.formatted(.dateTime.day(.twoDigits).month(.twoDigits)))
                 .font(.system(size: 13))
                 .fontWeight(isSelected ? .heavy : .regular)
@@ -22,6 +29,22 @@ struct DayCell: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide))), \(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+}
+
+struct EmergencyWarningIcon: View {
+    let colorScheme: ColorScheme
+    var size: CGFloat = 18
+
+    var body: some View {
+        Image(systemName: "exclamationmark.circle.fill")
+            .font(.system(size: size, weight: .bold))
+            .symbolRenderingMode(.palette)
+            .foregroundStyle(
+                colorScheme == .dark ? .black : .white,
+                colorScheme == .dark ? .white : .black
+            )
+            .offset(x: size * 0.2, y: size * -0.2)
     }
 }
 

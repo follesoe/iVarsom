@@ -14,10 +14,8 @@ struct RegionDetail: View {
                         WarningSummary(
                             warning: selectedWarning,
                             includeLocationIcon: false)
-                        if let emergencyWarning = selectedWarning.EmergencyWarning,
-                           !emergencyWarning.isEmpty,
-                           emergencyWarning != "Not given",
-                           emergencyWarning != "Ikke gitt" {
+                        if selectedWarning.hasActiveEmergencyWarning,
+                       let emergencyWarning = selectedWarning.EmergencyWarning {
                             EmergencyWarningBanner(message: emergencyWarning, textLanguageCode: selectedWarning.textLanguageCode)
                         }
                     }
@@ -51,7 +49,8 @@ struct RegionDetail: View {
                                     let cell = DayCell(
                                         dangerLevel: warning.DangerLevel,
                                         date: warning.ValidFrom,
-                                        isSelected: isSelected)
+                                        isSelected: isSelected,
+                                        hasEmergencyWarning: warning.hasActiveEmergencyWarning)
                                             .padding(.top, 5)
                                             .id(warning.id)
 
