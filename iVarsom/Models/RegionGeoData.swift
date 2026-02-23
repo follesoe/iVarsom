@@ -15,8 +15,8 @@ struct RegionGeoData: Sendable {
         features.first { $0.id == regionId }?.polygons
     }
 
-    /// Find the A-region containing the coordinate, or the nearest one within `maxDistance` meters.
-    func findNearestRegion(at coordinate: CLLocationCoordinate2D, maxDistance: CLLocationDistance = 100_000) -> Feature? {
+    /// Find the A-region containing the coordinate, or the nearest one by polygon edge distance.
+    func findNearestRegion(at coordinate: CLLocationCoordinate2D) -> Feature? {
         // First: exact polygon hit
         for feature in features {
             for polygon in feature.polygons {
@@ -26,24 +26,21 @@ struct RegionGeoData: Sendable {
             }
         }
 
-        // Fallback: nearest region by centroid distance
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        // Fallback: nearest region by distance to polygon edge
         var bestFeature: Feature?
         var bestDistance: CLLocationDistance = .greatestFiniteMagnitude
 
         for feature in features {
-            let c = RegionGeoData.centroid(of: feature.polygons)
-            let dist = location.distance(from: CLLocation(latitude: c.latitude, longitude: c.longitude))
-            if dist < bestDistance {
-                bestDistance = dist
-                bestFeature = feature
+            for polygon in feature.polygons {
+                let dist = RegionGeoData.minimumDistanceToEdge(from: coordinate, polygon: polygon)
+                if dist < bestDistance {
+                    bestDistance = dist
+                    bestFeature = feature
+                }
             }
         }
 
-        if bestDistance <= maxDistance {
-            return bestFeature
-        }
-        return nil
+        return bestFeature
     }
 
     static func pointInPolygon(point: CLLocationCoordinate2D, polygon: [CLLocationCoordinate2D]) -> Bool {
@@ -63,6 +60,47 @@ struct RegionGeoData: Sendable {
             j = i
         }
         return inside
+    }
+
+    /// Minimum distance in meters from a point to the nearest edge of a polygon.
+    static func minimumDistanceToEdge(from point: CLLocationCoordinate2D, polygon: [CLLocationCoordinate2D]) -> CLLocationDistance {
+        let n = polygon.count
+        guard n >= 2 else { return .greatestFiniteMagnitude }
+
+        let pointLocation = CLLocation(latitude: point.latitude, longitude: point.longitude)
+        var minDistance: CLLocationDistance = .greatestFiniteMagnitude
+
+        for i in 0..<n {
+            let j = (i + 1) % n
+            let closest = closestPointOnSegment(point: point, a: polygon[i], b: polygon[j])
+            let dist = pointLocation.distance(from: CLLocation(latitude: closest.latitude, longitude: closest.longitude))
+            if dist < minDistance {
+                minDistance = dist
+            }
+        }
+
+        return minDistance
+    }
+
+    /// Closest point on line segment AB to the given point, using cos(lat) longitude correction.
+    private static func closestPointOnSegment(
+        point: CLLocationCoordinate2D,
+        a: CLLocationCoordinate2D,
+        b: CLLocationCoordinate2D
+    ) -> CLLocationCoordinate2D {
+        let cosLat = cos(point.latitude * .pi / 180)
+        let px = (point.longitude - a.longitude) * cosLat
+        let py = point.latitude - a.latitude
+        let dx = (b.longitude - a.longitude) * cosLat
+        let dy = b.latitude - a.latitude
+
+        let lenSq = dx * dx + dy * dy
+        guard lenSq > 0 else { return a }
+
+        let t = max(0, min(1, (px * dx + py * dy) / lenSq))
+        return CLLocationCoordinate2D(
+            latitude: a.latitude + t * (b.latitude - a.latitude),
+            longitude: a.longitude + t * (b.longitude - a.longitude))
     }
 
     static func centroid(of polygons: [[CLLocationCoordinate2D]]) -> CLLocationCoordinate2D {

@@ -147,7 +147,6 @@ class RegionListViewModel: RegionListViewModelProtocol {
         do {
             let location = try await locationManager.updateLocation()
             if let location = location {
-                // Check if user is inside (or near) an A-region polygon
                 if let geoData = RegionGeoData.load(),
                    let feature = geoData.findNearestRegion(at: location) {
                     let warnings: [AvalancheWarningSimple]
@@ -165,10 +164,6 @@ class RegionListViewModel: RegionListViewModelProtocol {
                         Name: feature.name,
                         TypeName: "A",
                         AvalancheWarningList: warnings)
-                } else {
-                    // No A-region nearby - fall back to Norwegian coordinate API
-                    let region = try await client.loadRegions(lang: language, coordinate: location)
-                    self.localRegion = region
                 }
             }
         } catch {

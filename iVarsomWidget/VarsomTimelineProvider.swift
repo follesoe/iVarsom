@@ -155,7 +155,6 @@ struct Provider: AppIntentTimelineProvider {
                 throw MissingLocationAuthorizationError()
             }
 
-            // Check if user is inside (or near) an A-region polygon
             if let geoData = RegionGeoData.load(),
                let feature = geoData.findNearestRegion(at: location) {
                 if Country.from(regionId: feature.id) == .sweden {
@@ -170,12 +169,7 @@ struct Provider: AppIntentTimelineProvider {
                         to: to)
                 }
             } else {
-                // No A-region nearby - fall back to Norwegian coordinate API
-                warnings = try await apiClient.loadWarnings(
-                    lang: VarsomApiClient.currentLang(),
-                    coordinate: location,
-                    from: from,
-                    to: to)
+                throw MissingLocationAuthorizationError()
             }
         } else if Country.from(regionId: regionId) == .sweden {
             let swedenClient = LavinprognoserApiClient()

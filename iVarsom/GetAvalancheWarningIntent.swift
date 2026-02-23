@@ -44,7 +44,6 @@ struct GetAvalancheWarningIntent: AppIntent {
                     }
                 }
 
-                // Check if user is inside (or near) an A-region polygon
                 if let geoData = RegionGeoData.load(),
                    let feature = geoData.findNearestRegion(at: location) {
                     if Country.from(regionId: feature.id) == .sweden {
@@ -58,12 +57,11 @@ struct GetAvalancheWarningIntent: AppIntent {
                             to: today)
                     }
                 } else {
-                    // No A-region nearby - fall back to Norwegian coordinate API
-                    warnings = try await client.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        coordinate: location,
-                        from: today,
-                        to: today)
+                    return .result(
+                        dialog: IntentDialog(LocalizedStringResource("Unable to determine your avalanche region.")))
+                    {
+                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Region unavailable"))
+                    }
                 }
             } else if Country.from(regionId: regionId) == .sweden {
                 let swedenClient = LavinprognoserApiClient()
