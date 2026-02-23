@@ -16,7 +16,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
         NavigationSplitView {
             VStack {
                 List(selection: $vm.selectedRegion) {
-                    Section(header: Text("Local Warnings")) {
+                    Section(header: Text("Local warnings")) {
                         if let localRegion = vm.localRegion {
                             NavigationLink(value: localRegion) {
                                 RegionRow(region: localRegion)

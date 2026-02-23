@@ -5,7 +5,7 @@
 "A-Regions" = "A-Regions";
 
 /* List group header for location based warnings */
-"Local Warnings" = "Local Warnings";
+"Local warnings" = "Local warnings";
 
 /* Button text to use location based warnings */
 "Use current location" = "Use current location";

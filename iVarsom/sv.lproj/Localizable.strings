@@ -5,7 +5,7 @@
 "A-Regions" = "A-Regioner";
 
 /* List group header for location based warnings */
-"Local Warnings" = "Lokala varningar";
+"Local warnings" = "Lokala varningar";
 
 /* Button text to use location based warnings */
 "Use current location" = "Använd nuvarande plats";

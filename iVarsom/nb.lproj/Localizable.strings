@@ -5,7 +5,7 @@
 "A-Regions" = "A-Regioner";
 
 /* List group header for location based warnings */
-"Local Warnings" = "Lokalt Skredvarsel";
+"Local warnings" = "Lokalt skredvarsel";
 
 /* Button text to use location based warnings */
 "Use current location" = "Bruk min posisjon";

@@ -62,7 +62,7 @@ struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
             Button {
                 shareWarning(includeProblems: true)
             } label: {
-                Label(NSLocalizedString("Share with avalanche problems", comment: "Share menu option including avalanche problems"), systemImage: "square.and.arrow.up.fill")
+                Label(NSLocalizedString("Share with avalanche problems", comment: "Share menu option including avalanche problems"), systemImage: "square.and.arrow.up")
             }
         } label: {
             Image(systemName: "square.and.arrow.up")

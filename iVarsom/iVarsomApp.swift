@@ -40,6 +40,7 @@ private struct ContentView: View {
             if let regionId = regionId {
                 Task {
                     await vm.selectRegionById(regionId: regionId)
+                    await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
                 }
             }
         }
