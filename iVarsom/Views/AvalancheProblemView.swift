@@ -16,6 +16,9 @@ struct AvalancheProblemView: View {
                     .font(.subheadline)
                     .bold()
                     .speechLocale(textLanguageCode)
+                #if os(iOS)
+                    .textSelection(.enabled)
+                #endif
                 HStack {
                     Image(problem.AvalancheProblemTypeImage)
                         .resizable()
@@ -45,6 +48,9 @@ struct AvalancheProblemView: View {
 
                 Text(problem.TriggerSenitivityPropagationDestuctiveSizeText)
                     .speechLocale(textLanguageCode)
+                #if os(iOS)
+                    .textSelection(.enabled)
+                #endif
             }
         }
     }

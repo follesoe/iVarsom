@@ -12,13 +12,19 @@ struct MainWarningTextView: View {
                     .speechLocale(selectedWarning.textLanguageCode)
                 Text("Published: \(pubTime)")
                     .font(.caption)
-                
+
                 if let danger = selectedWarning.AvalancheDanger {
                     Text("\(selectedWarning.MainText)\n\(danger)")
                         .speechLocale(selectedWarning.textLanguageCode)
+                    #if os(iOS)
+                        .textSelection(.enabled)
+                    #endif
                 } else {
                     Text(selectedWarning.MainText)
                         .speechLocale(selectedWarning.textLanguageCode)
+                    #if os(iOS)
+                        .textSelection(.enabled)
+                    #endif
                 }
                 Button(String(localized: "Dismiss"), action: { isShowingSheet.toggle() })
             }

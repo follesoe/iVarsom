@@ -72,13 +72,14 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                                     }
                                 }
                                 ToolbarItem(placement: .primaryAction) {
-                                    HStack {
-                                        #if os(iOS)
-                                        detail.shareButton
-                                        #endif
-                                        detail.favoriteButton
-                                    }
+                                    detail.favoriteButton
                                 }
+                                #if os(iOS)
+                                ToolbarSpacer(.fixed, placement: .primaryAction)
+                                ToolbarItem(placement: .primaryAction) {
+                                    detail.shareButton
+                                }
+                                #endif
                             }
                             .transition(.opacity)
                     } else {
@@ -99,13 +100,14 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 detail
                     .toolbar {
                         ToolbarItem(placement: .primaryAction) {
-                            HStack {
-                                #if os(iOS)
-                                detail.shareButton
-                                #endif
-                                detail.favoriteButton
-                            }
+                            detail.favoriteButton
                         }
+                        #if os(iOS)
+                        ToolbarSpacer(.fixed, placement: .primaryAction)
+                        ToolbarItem(placement: .primaryAction) {
+                            detail.shareButton
+                        }
+                        #endif
                     }
             }
         }
