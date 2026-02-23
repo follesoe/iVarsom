@@ -234,6 +234,8 @@
 		B27BBF82D228E8528382CD10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
 		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
+		AAFAV0012026022300000001 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
+		AAFAV0022026022300000002 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		CC82146628254982923E5B76 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
 		F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
@@ -417,6 +419,7 @@
 		AAD172F02796093A009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD172F22796093A009AB089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD172F82796093A009AB089 /* iVarsomWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iVarsomWidgetExtension.entitlements; sourceTree = "<group>"; };
+		AAWENT0012026022300000001 /* SkredvarselWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkredvarselWatch.entitlements; sourceTree = "<group>"; };
 		AAD613872822D88B00ABA680 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD613892822D89300ABA680 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
@@ -591,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD172F82796093A009AB089 /* iVarsomWidgetExtension.entitlements */,
+				AAWENT0012026022300000001 /* SkredvarselWatch.entitlements */,
 				AAD172AE2795F8F8009AB089 /* iVarsom */,
 				AAD172EC27960939009AB089 /* iVarsomWidget */,
 				AA2ABD9129450170008819DB /* iVarsomWidgetWatch */,
@@ -1029,6 +1033,7 @@
 				CC82146628254982923E5B76 /* Country.swift in Sources */,
 				EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */,
 				AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */,
+				AAFAV0012026022300000001 /* FavoritesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1203,7 @@
 				4B2DDF68BC76470283F1808A /* Country.swift in Sources */,
 				D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */,
 				AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */,
+				AAFAV0022026022300000002 /* FavoritesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1383,6 +1389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SkredvarselWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1414,6 +1421,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SkredvarselWatch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;

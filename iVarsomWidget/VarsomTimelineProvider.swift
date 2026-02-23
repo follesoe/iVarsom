@@ -102,7 +102,26 @@ struct Provider: AppIntentTimelineProvider {
     }
     
     func recommendations() -> [AppIntentRecommendation<SelectRegion>] {
-        RegionOption.allOptions.map { region in
+        let favorites = FavoritesService().loadFavorites()
+        let regions: [RegionOption]
+        if favorites.isEmpty {
+            regions = [RegionOption.currentPositionOption]
+        } else {
+            let favoriteRegions: [RegionOption] = favorites.compactMap { id -> RegionOption? in
+                if let region = RegionOption.aRegions.first(where: { $0.id == id }) {
+                    return region
+                }
+                if let region = RegionOption.swedenRegions.first(where: { $0.id == id }) {
+                    return region
+                }
+                if id == RegionOption.currentPositionOption.id {
+                    return RegionOption.currentPositionOption
+                }
+                return nil
+            }
+            regions = favoriteRegions.isEmpty ? [RegionOption.currentPositionOption] : favoriteRegions
+        }
+        return regions.map { region in
             let regionOption = RegionConfigOptionAppEntity(
                 id: "\(region.id)",
                 displayString: region.name)

@@ -4,7 +4,22 @@ class FavoritesService {
     private let key = "favoriteRegionIds"
     private let defaults: UserDefaults
 
-    init(defaults: UserDefaults = .standard) {
+    #if os(watchOS)
+    nonisolated(unsafe) static let sharedDefaults: UserDefaults = {
+        let shared = UserDefaults(suiteName: "group.no.follesoe.iVarsom") ?? .standard
+        // Migrate favorites from .standard to shared suite on first use
+        if shared.object(forKey: "favoriteRegionIds") == nil,
+           let existing = UserDefaults.standard.object(forKey: "favoriteRegionIds") as? [Int],
+           !existing.isEmpty {
+            shared.set(existing, forKey: "favoriteRegionIds")
+        }
+        return shared
+    }()
+    #else
+    nonisolated(unsafe) static let sharedDefaults: UserDefaults = .standard
+    #endif
+
+    init(defaults: UserDefaults = sharedDefaults) {
         self.defaults = defaults
     }
 
