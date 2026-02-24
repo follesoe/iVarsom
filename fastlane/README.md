@@ -63,6 +63,22 @@ Preview metadata changes (dry run)
 
 Upload screenshots to App Store Connect
 
+### ios upload_screenshots_mac
+
+```sh
+[bundle exec] fastlane ios upload_screenshots_mac
+```
+
+Upload screenshots to macOS App Store Connect
+
+### ios upload_screenshots_all
+
+```sh
+[bundle exec] fastlane ios upload_screenshots_all
+```
+
+Upload screenshots to both iOS and macOS App Store Connect
+
 ### ios submit_for_review
 
 ```sh
