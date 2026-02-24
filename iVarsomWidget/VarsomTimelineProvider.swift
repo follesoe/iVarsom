@@ -63,9 +63,11 @@ struct Provider: AppIntentTimelineProvider {
     }
     
     private func regionId(for configuration: SelectRegion) -> Int {
-        configuration.region?.regionId
-            ?? Int(configuration.region?.id ?? "")
-            ?? RegionOption.defaultOption.id
+        if let region = configuration.region {
+            // Prefer the id (always set) over @Property regionId (may not be hydrated)
+            return Int(region.id) ?? region.regionId ?? RegionOption.defaultOption.id
+        }
+        return RegionOption.defaultOption.id
     }
 
     func snapshot(for configuration: SelectRegion, in context: Context) async -> WarningEntry {
@@ -162,11 +164,8 @@ struct Provider: AppIntentTimelineProvider {
                     let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
                     warnings = try await swedenClient.loadWarnings(regionId: feature.id, daysBefore: max(daysBefore, 1))
                 } else {
-                    warnings = try await apiClient.loadWarnings(
-                        lang: VarsomApiClient.currentLang(),
-                        regionId: feature.id,
-                        from: from,
-                        to: to)
+                    warnings = try await Self.loadDetailedAsSimple(
+                        apiClient: apiClient, regionId: feature.id, from: from, to: to)
                 }
             } else {
                 throw MissingLocationAuthorizationError()
@@ -176,14 +175,36 @@ struct Provider: AppIntentTimelineProvider {
             let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
             warnings = try await swedenClient.loadWarnings(regionId: regionId, daysBefore: max(daysBefore, 1))
         } else {
-            warnings = try await apiClient.loadWarnings(
-                lang: VarsomApiClient.currentLang(),
-                regionId: regionId,
-                from: from,
-                to: to)
+            warnings = try await Self.loadDetailedAsSimple(
+                apiClient: apiClient, regionId: regionId, from: from, to: to)
         }
 
         return warnings
+    }
+
+    private static func loadDetailedAsSimple(
+        apiClient: VarsomApiClient, regionId: Int, from: Date, to: Date
+    ) async throws -> [AvalancheWarningSimple] {
+        let detailed = try await apiClient.loadWarningsDetailed(
+            lang: VarsomApiClient.currentLang(),
+            regionId: regionId,
+            from: from,
+            to: to)
+        return detailed.map { d in
+            AvalancheWarningSimple(
+                RegId: d.RegId,
+                RegionId: d.RegionId,
+                RegionName: d.RegionName,
+                RegionTypeName: d.RegionTypeName,
+                ValidFrom: d.ValidFrom,
+                ValidTo: d.ValidTo,
+                NextWarningTime: d.NextWarningTime,
+                PublishTime: d.PublishTime,
+                DangerLevel: d.DangerLevel,
+                MainText: d.MainText,
+                LangKey: d.LangKey,
+                EmergencyWarning: d.EmergencyWarning)
+        }
     }
     
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegion) -> Timeline<Entry> {

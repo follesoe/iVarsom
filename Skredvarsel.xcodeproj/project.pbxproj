@@ -235,6 +235,8 @@
 		AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
 		B27BBF82D228E8528382CD10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
+		CEC5EC2159542796944B665A /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
+		CEC5EC2159542796944B665B /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
 		AASHR0012026022300000001 /* ShareableWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AASHR0002026022300000000 /* ShareableWarningView.swift */; };
 		AAACT0012026022300000001 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACT0002026022300000000 /* ActivityViewController.swift */; };
 		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
@@ -1044,6 +1046,7 @@
 				EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */,
 				AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */,
 				AAFAV0012026022300000001 /* FavoritesService.swift in Sources */,
+				CEC5EC2159542796944B665A /* EmergencyWarningBanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,6 +1221,7 @@
 				D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */,
 				AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */,
 				AAFAV0022026022300000002 /* FavoritesService.swift in Sources */,
+				CEC5EC2159542796944B665B /* EmergencyWarningBanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

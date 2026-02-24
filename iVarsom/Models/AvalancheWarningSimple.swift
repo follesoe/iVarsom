@@ -13,4 +13,10 @@ struct AvalancheWarningSimple: Codable, Sendable, AvalancheWarningProtocol {
     var DangerLevel: DangerLevel
     var MainText: String
     var LangKey: Int
+    var EmergencyWarning: String?
+
+    var hasActiveEmergencyWarning: Bool {
+        guard let warning = EmergencyWarning, !warning.isEmpty else { return false }
+        return warning != "Not given" && warning != "Ikke gitt"
+    }
 }

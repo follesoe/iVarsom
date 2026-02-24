@@ -3,8 +3,10 @@ import SwiftUI
 struct WarningSummary: View {
     var warning: any AvalancheWarningProtocol
     var mainTextFont: Font = .body
+    var regionNameFont: Font = .title3
     var mainTextLineLimit: Int = .max
     var includeLocationIcon: Bool = false
+    var compact: Bool = false
     
     var textColor: Color {
         return warning.DangerLevel == .level5 ? .white : .black
@@ -13,25 +15,25 @@ struct WarningSummary: View {
     var body: some View {        
         let warningDate = warning.ValidFrom.formatted(date: .complete, time: .omitted)
         HStack {
-            WarningSymbolLevel(dangerLevel: warning.DangerLevel)
-                .frame(width: 90)
-                .padding(.top, 8)
-                .padding(.bottom, 8)
+            WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: compact ? 38 : 54)
+                .frame(width: compact ? 70 : 90)
+                .padding(.top, compact ? 4 : 8)
+                .padding(.bottom, compact ? 4 : 8)
                 .speechLocale(warning.textLanguageCode)
             VStack(alignment: .leading) {
-                Spacer()
+                if !compact { Spacer() }
                 Text(includeLocationIcon ?
                      "\(Image(systemName: "location.fill")) \(warningDate)" :
                         "\(warningDate)")
                     .textCase(.uppercase)
                     .font(.caption2)
                     .foregroundColor(textColor)
-                    .padding(.top, 6)
+                    .padding(.top, compact ? 2 : 6)
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
                 Text(warning.RegionName)
-                    .font(.title3)
+                    .font(regionNameFont)
                     .fontWeight(.bold)
                     .foregroundColor(textColor)
                     .lineLimit(nil)
@@ -44,17 +46,17 @@ struct WarningSummary: View {
                 Text(warning.MainText)
                     .font(mainTextFont)
                     .foregroundColor(textColor)
-                    .padding(.bottom, 6)
+                    .padding(.bottom, compact ? 2 : 6)
                     .padding(.trailing, 4)
                 #if os(iOS)
                     .textSelection(.enabled)
                 #endif
                     .lineLimit(mainTextLineLimit)
                     .speechLocale(warning.textLanguageCode)
-                Spacer()
+                if !compact { Spacer() }
             }
-            .padding(.top, 12)
-            .padding(.bottom, 12)
+            .padding(.top, compact ? 4 : 12)
+            .padding(.bottom, compact ? 4 : 12)
             Spacer()
             DangerScale(dangerLevel: warning.DangerLevel)
                 .frame(width: 12)

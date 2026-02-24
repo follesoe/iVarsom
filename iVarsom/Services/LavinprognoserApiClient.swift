@@ -269,7 +269,8 @@ class LavinprognoserApiClient {
                 PublishTime: d.PublishTime,
                 DangerLevel: d.DangerLevel,
                 MainText: d.MainText,
-                LangKey: d.LangKey)
+                LangKey: d.LangKey,
+                EmergencyWarning: d.EmergencyWarning)
         }
     }
 

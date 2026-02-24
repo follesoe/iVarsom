@@ -34,6 +34,7 @@ struct LocationIconText: View {
 struct SmallWarningWidgetView: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
     @Environment(\.showsWidgetContainerBackground) var showsWidgetContainerBackground
+    @Environment(\.colorScheme) private var colorScheme
     var entry: Provider.Entry
 
     /// Returns true when widget is in StandBy or CarPlay (background removed in fullColor mode)
@@ -90,6 +91,13 @@ struct SmallWarningWidgetView: View {
 
         }
         .padding()
+        .overlay(alignment: .bottomTrailing) {
+            if entry.currentWarning.hasActiveEmergencyWarning {
+                EmergencyWarningIcon(colorScheme: colorScheme, size: 22)
+                    .padding(.trailing, 14)
+                    .padding(.bottom, 10)
+            }
+        }
         .containerBackground(for: .widget) {
             DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
@@ -100,12 +108,28 @@ struct SmallWarningWidgetView: View {
 struct MediumWarningWidgetView: View {
     var entry: Provider.Entry
 
+    private var hasEmergency: Bool {
+        entry.currentWarning.hasActiveEmergencyWarning
+    }
+
     var body: some View {
-        WarningSummary(
-            warning: entry.currentWarning,
-            mainTextFont: .system(size: 13),
-            mainTextLineLimit: 4,
-            includeLocationIcon: entry.configuration.region?.regionId == 1)
+        VStack(spacing: 0) {
+            WarningSummary(
+                warning: entry.currentWarning,
+                mainTextFont: .system(size: 13),
+                regionNameFont: .title3,
+                mainTextLineLimit: hasEmergency ? 3 : 4,
+                includeLocationIcon: entry.configuration.region?.regionId == 1,
+                compact: hasEmergency)
+            if entry.currentWarning.hasActiveEmergencyWarning,
+               let emergencyWarning = entry.currentWarning.EmergencyWarning {
+                EmergencyWarningBanner(message: emergencyWarning,
+                                       textLanguageCode: entry.currentWarning.textLanguageCode,
+                                       font: .system(size: 11),
+                                       verticalPadding: 4)
+                    .layoutPriority(1)
+            }
+        }
         .containerBackground(for: .widget) {
             DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
@@ -117,7 +141,7 @@ struct StandardWarningWidgetView: View {
     var entry: Provider.Entry
     var mainTextFont: Font
     var summaryHeight: CGFloat
-    
+
     var body: some View {
         VStack(spacing: 0) {
             WarningSummary(
@@ -125,6 +149,13 @@ struct StandardWarningWidgetView: View {
                 mainTextFont: mainTextFont,
                 includeLocationIcon: entry.configuration.region?.regionId == 1)
                 .frame(height: summaryHeight)
+            if entry.currentWarning.hasActiveEmergencyWarning,
+               let emergencyWarning = entry.currentWarning.EmergencyWarning {
+                EmergencyWarningBanner(message: emergencyWarning,
+                                       textLanguageCode: entry.currentWarning.textLanguageCode,
+                                       font: .caption,
+                                       verticalPadding: 6)
+            }
             Spacer(minLength: 0)
             HStack {
                 ForEach(entry.warnings) { warning in
