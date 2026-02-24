@@ -7,6 +7,8 @@ default_platform(:ios)
 FASTLANE_DIR = File.expand_path(File.dirname(__FILE__))
 METADATA_IOS = File.join(FASTLANE_DIR, "metadata_ios")
 METADATA_OSX = File.join(FASTLANE_DIR, "metadata_osx")
+SCREENSHOTS_IOS = File.join(FASTLANE_DIR, "screenshots_ios")
+SCREENSHOTS_OSX = File.join(FASTLANE_DIR, "screenshots_osx")
 
 platform :ios do
   desc "Download existing metadata from App Store Connect"
@@ -63,6 +65,7 @@ platform :ios do
   desc "Upload screenshots to App Store Connect"
   lane :upload_screenshots do
     deliver(
+      screenshots_path: SCREENSHOTS_IOS,
       skip_binary_upload: true,
       skip_screenshots: false,
       skip_metadata: true,
@@ -70,6 +73,26 @@ platform :ios do
       precheck_include_in_app_purchases: false,
       submit_for_review: false
     )
+  end
+
+  desc "Upload screenshots to macOS App Store Connect"
+  lane :upload_screenshots_mac do
+    deliver(
+      platform: "osx",
+      screenshots_path: SCREENSHOTS_OSX,
+      skip_binary_upload: true,
+      skip_screenshots: false,
+      skip_metadata: true,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submit_for_review: false
+    )
+  end
+
+  desc "Upload screenshots to both iOS and macOS App Store Connect"
+  lane :upload_screenshots_all do
+    upload_screenshots
+    upload_screenshots_mac
   end
 
   desc "Submit the current build for review"
