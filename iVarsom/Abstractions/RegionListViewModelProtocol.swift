@@ -38,4 +38,6 @@ protocol RegionListViewModelProtocol: AnyObject, Observable {
           - to: Number of days into the future to load warnings (default 2)
      */
     func loadWarnings(from: Int, to: Int) async -> ()
+
+    var reviewPromptService: ReviewPromptService { get }
 }

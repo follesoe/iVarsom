@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AACAC0022026022100000002 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
 		AACAC0032026022100000003 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
+		AAREV0012026022300000001 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
+		AAREV0022026022300000002 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
 		AACAC0052026022100000005 /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0042026022100000004 /* CacheServiceTests.swift */; };
 		AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */; };
 		10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
@@ -331,6 +333,7 @@
 		AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWatchMapView.swift; sourceTree = "<group>"; };
 		0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
 		AACAC0012026022100000001 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		AAREV0002026022300000000 /* ReviewPromptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptService.swift; sourceTree = "<group>"; };
 		AACAC0042026022100000004 /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 		3C4F929D76D547739E19F11C /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningSnippetView.swift; sourceTree = "<group>"; };
@@ -582,6 +585,7 @@
 				0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */,
 				AACAC0012026022100000001 /* CacheService.swift */,
 				35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */,
+				AAREV0002026022300000000 /* ReviewPromptService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1097,6 +1101,7 @@
 				B27BBF82D228E8528382CD10 /* Constants.swift in Sources */,
 				F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */,
 				DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */,
+				AAREV0022026022300000002 /* ReviewPromptService.swift in Sources */,
 				AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */,
 				AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */,
 			);
@@ -1163,6 +1168,7 @@
 				AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */,
 				AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */,
 				AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */,
+				AAREV0012026022300000001 /* ReviewPromptService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

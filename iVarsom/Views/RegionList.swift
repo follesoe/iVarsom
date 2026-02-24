@@ -2,11 +2,13 @@ import SwiftUI
 import CoreLocation
 import CoreLocationUI
 import MapKit
+import StoreKit
 import WidgetKit
 
 struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.requestReview) private var requestReview
     @Bindable var vm: ViewModelType
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView<ViewModelType>.overviewPosition
 
@@ -125,11 +127,24 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active && oldPhase == .background {
+                vm.reviewPromptService.recordSession()
                 WidgetCenter.shared.reloadAllTimelines()
                 Task {
                     if (vm.needsRefresh()) {
                         await vm.loadRegions()
                     }
+                }
+            }
+        }
+        .onChange(of: vm.warningLoadState) { _, newState in
+            if newState == .loaded {
+                let service = vm.reviewPromptService
+                if service.shouldPrompt(
+                    favoriteCount: vm.favoriteRegionIds.count,
+                    locationAuthorized: vm.locationIsAuthorized
+                ) {
+                    service.recordPrompt()
+                    requestReview()
                 }
             }
         }

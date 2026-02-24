@@ -15,6 +15,7 @@ class DesignTimeRegionListViewModel: RegionListViewModelProtocol {
     var selectedRegion: RegionSummary? = nil
     var warnings = [AvalancheWarningDetailed]()
     var selectedWarning: AvalancheWarningDetailed? = nil
+    var reviewPromptService = ReviewPromptService()
 
     private var _filteredRegions = [RegionSummary]()
 

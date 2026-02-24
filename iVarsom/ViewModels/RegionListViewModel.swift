@@ -46,6 +46,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
         return result
     }
 
+    let reviewPromptService: ReviewPromptService
+
     private let client: VarsomApiClient
     private let swedenClient = LavinprognoserApiClient()
     private let locationManager: LocationManager
@@ -53,11 +55,12 @@ class RegionListViewModel: RegionListViewModelProtocol {
     private let cacheService: CacheServiceProtocol
     private var loadWarningsTask: Task<Void, Never>?
 
-    init(client: VarsomApiClient, locationManager: LocationManager, favoritesService: FavoritesService = FavoritesService(), cacheService: CacheServiceProtocol = CacheService()) {
+    init(client: VarsomApiClient, locationManager: LocationManager, favoritesService: FavoritesService = FavoritesService(), cacheService: CacheServiceProtocol = CacheService(), reviewPromptService: ReviewPromptService = ReviewPromptService()) {
         self.client = client
         self.locationManager = locationManager
         self.favoritesService = favoritesService
         self.cacheService = cacheService
+        self.reviewPromptService = reviewPromptService
         self.locationIsAuthorized = locationManager.isAuthorized
         self.favoriteRegionIds = favoritesService.loadFavorites()
         favoritesService.startObservingCloudChanges { [weak self] merged in
@@ -277,6 +280,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
                     self.selectedWarning = selectTodayWarning(from: loadedWarnings)
                     self.warningLoadState = .loaded
                     cacheService.saveWarningsDetailed(loadedWarnings, regionId: selectedRegion.Id)
+                    reviewPromptService.recordRegionView(regionId: selectedRegion.Id)
                 }
             } catch is CancellationError {
                 // Task was cancelled, ignore
