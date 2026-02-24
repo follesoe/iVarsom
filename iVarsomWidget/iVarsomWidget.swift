@@ -334,6 +334,7 @@ struct iVarsomWidget: Widget {
             intent: SelectRegion.self,
             provider: Provider()) { entry in
                 WarningWidgetView(entry: entry)
+                    .environment(\.accessibilityBridgeDisabled, true)
         }
         .configurationDisplayName("Today's Avalanche Danger Level")
         .description("Display today's avalanche danger level for selected regions in Norway.")
