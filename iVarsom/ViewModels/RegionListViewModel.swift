@@ -84,15 +84,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
 
     func needsRefresh() -> Bool {
-        if (regions.isEmpty) {
-            return true
-        } else if (regions[0].AvalancheWarningList.isEmpty) {
-            return true;
-        } else if regions[0].AvalancheWarningList[0].ValidTo < Date.current {
-            return true
-        } else {
-            return !cacheService.isFresh(country: .norway) || !cacheService.isFresh(country: .sweden)
-        }
+        return true
     }
 
     func loadRegions() async {
@@ -104,14 +96,6 @@ class RegionListViewModel: RegionListViewModelProtocol {
             self.regions = cachedNorway
             self.swedenRegions = cachedSweden ?? []
             self.regionLoadState = .loaded
-
-            // If both caches are fresh, skip network
-            if cacheService.isFresh(country: .norway) && cacheService.isFresh(country: .sweden) {
-                if (locationManager.isAuthorized) {
-                    await loadLocalRegion()
-                }
-                return
-            }
         } else {
             self.regionLoadState = .loading
         }
@@ -162,11 +146,12 @@ class RegionListViewModel: RegionListViewModelProtocol {
                     if Country.from(regionId: feature.id) == .sweden {
                         warnings = try await swedenClient.loadWarnings(regionId: feature.id)
                     } else {
+                        let to = Calendar.current.date(byAdding: .day, value: 2, to: Date.current)!
                         warnings = try await client.loadWarnings(
                             lang: VarsomApiClient.currentLang(),
                             regionId: feature.id,
                             from: Date.current,
-                            to: Date.current)
+                            to: to)
                     }
                     self.localRegion = RegionSummary(
                         Id: feature.id,
@@ -227,11 +212,6 @@ class RegionListViewModel: RegionListViewModelProtocol {
             self.warnings = cachedWarnings
             self.selectedWarning = selectTodayWarning(from: cachedWarnings)
             self.warningLoadState = .loaded
-
-            // If cache is fresh, skip network
-            if cacheService.isWarningFresh(regionId: selectedRegion.Id) {
-                return
-            }
         } else {
             self.warningLoadState = .loading
             self.selectedWarning = nil
