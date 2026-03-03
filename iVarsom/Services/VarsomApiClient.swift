@@ -107,7 +107,9 @@ class VarsomApiClient {
     }
 
     private func getData<T>(url: URL) async throws -> T where T : Codable {
-        let (data, response) = try await URLSession.shared.data(from: url)
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+        let (data, response) = try await URLSession.shared.data(for: request)
 
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw VarsomError.requestError }
 

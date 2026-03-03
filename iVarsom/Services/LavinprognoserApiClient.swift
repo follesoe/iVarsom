@@ -126,7 +126,9 @@ class LavinprognoserApiClient {
         let langKey = useSwedish ? 3 : 2  // 3=Swedish, 2=English
         guard let url = URL(string: overviewPath) else { throw LavinError.invalidUrlError }
 
-        let (data, response) = try await URLSession.shared.data(from: url)
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+        let (data, response) = try await URLSession.shared.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw LavinError.requestError }
 
         let overview = try JSONDecoder().decode(OverviewResponse.self, from: data)
@@ -196,7 +198,9 @@ class LavinprognoserApiClient {
 
         guard let url = URL(string: urlString) else { throw LavinError.invalidUrlError }
 
-        let (data, response) = try await URLSession.shared.data(from: url)
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalCacheData
+        let (data, response) = try await URLSession.shared.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw LavinError.requestError }
 
         let detail = try JSONDecoder().decode(DetailResponse.self, from: data)
