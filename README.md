@@ -42,6 +42,28 @@ The app is also a learning exercise for myself to learn how to build and distrib
     <img src="images/DownloadOnTheMacAppStore.svg" alt="Download on the Mac App Store" />
 </a>
 
+## Screenshots
+
+### iOS
+
+| | | | | | |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| <img src="images/iOS/region_list.webp" alt="Region list" width="160" /> | <img src="images/iOS/region_details.webp" alt="Region details" width="160" /> | <img src="images/iOS/map_overview.webp" alt="Map overview" width="160" /> | <img src="images/iOS/map_zoomed.webp" alt="Map zoomed" width="160" /> | <img src="images/iOS/small_and_medium_widget.webp" alt="Widgets" width="160" /> | <img src="images/iOS/large_widget.webp" alt="Large widget" width="160" /> |
+
+### iPadOS
+
+| | | |
+|:---:|:---:|:---:|
+| <img src="images/iPadOS/map_overview.webp" alt="Map overview" width="320" /> | <img src="images/iPadOS/region_details.webp" alt="Region details" width="320" /> | <img src="images/iPadOS/region_details.webp" alt="Region details 2" width="320" /> |
+| <img src="images/iPadOS/map_details.webp" alt="Map details" width="320" /> | <img src="images/iPadOS/widgets.webp" alt="Widgets" width="320" /> | <img src="images/iPadOS/map_overview_dark.webp" alt="Map overview dark mode" width="320" /> |
+
+### macOS
+
+| | | |
+|:---:|:---:|:---:|
+| <img src="images/macOS/desktop_widgets.webp" alt="Desktop widgets" width="320" /> | <img src="images/macOS/screenshot_2.webp" alt="Region list dark mode" width="320" /> | <img src="images/macOS/screenshot_3.webp" alt="Region details dark mode" width="320" /> |
+| <img src="images/macOS/screenshot_4.webp" alt="Region details dark mode 2" width="320" /> | <img src="images/macOS/screenshot_5.webp" alt="Region list light mode" width="320" /> | <img src="images/macOS/screenshot_6.webp" alt="Map overview light mode" width="320" /> |
+
 ## Siri Shortcuts
 
 You can ask Siri for avalanche warnings using voice commands. The app supports both English and Norwegian phrases:

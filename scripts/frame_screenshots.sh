@@ -71,8 +71,8 @@ mkdir -p "$IOS_OUT" "$IPAD_OUT" "$MAC_OUT"
 # This prevents screenshot corners from poking out past the rounded screen opening.
 MASK_DIR=$(mktemp -d)
 echo "Generating screen masks..."
-magick "$IPHONE_BEZEL" -alpha extract -fill white -floodfill "+735+1500" black "$MASK_DIR/iphone_mask.png"
-magick "$IPAD_BEZEL" -alpha extract -fill white -floodfill "+1500+1150" black "$MASK_DIR/ipad_mask.png"
+magick "$IPHONE_BEZEL" -alpha extract -fill white -floodfill "+735+1500" black -alpha shape "$MASK_DIR/iphone_mask.png"
+magick "$IPAD_BEZEL" -alpha extract -fill white -floodfill "+1500+1150" black -alpha shape "$MASK_DIR/ipad_mask.png"
 trap 'rm -rf "$MASK_DIR"' EXIT
 
 # Extract descriptive name from filename like "1_iphone_region_list.png" -> "region_list"
