@@ -92,5 +92,8 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# Generated Instagram story images
+images/instagram/
+
 # Pixelmator
 *.pxd
