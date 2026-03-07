@@ -88,17 +88,7 @@ class RegionListViewModel: RegionListViewModelProtocol {
     }
 
     func loadRegions() async {
-        // Try loading from cache first
-        let cachedNorway = cacheService.loadRegions(country: .norway)
-        let cachedSweden = cacheService.loadRegions(country: .sweden)
-
-        if let cachedNorway = cachedNorway {
-            self.regions = cachedNorway
-            self.swedenRegions = cachedSweden ?? []
-            self.regionLoadState = .loaded
-        } else {
-            self.regionLoadState = .loading
-        }
+        self.regionLoadState = .loading
 
         // Fetch from network
         do {
@@ -116,9 +106,8 @@ class RegionListViewModel: RegionListViewModelProtocol {
                 self.swedenRegions = swedenRegions
                 cacheService.saveRegions(swedenRegions, country: .sweden)
             } catch {
-                if cachedSweden == nil {
-                    self.swedenRegions = []
-                }
+                let cachedSweden = cacheService.loadRegions(country: .sweden)
+                self.swedenRegions = cachedSweden ?? []
             }
 
             if (locationManager.isAuthorized) {
@@ -127,9 +116,14 @@ class RegionListViewModel: RegionListViewModelProtocol {
 
             self.regionLoadState = .loaded
         } catch {
-            // On failure with cache, stay in .loaded
-            if cachedNorway != nil {
-                // Keep showing cached data
+            // Network failed — fall back to cache
+            let cachedNorway = cacheService.loadRegions(country: .norway)
+            let cachedSweden = cacheService.loadRegions(country: .sweden)
+
+            if let cachedNorway = cachedNorway {
+                self.regions = cachedNorway
+                self.swedenRegions = cachedSweden ?? []
+                self.regionLoadState = .loaded
             } else {
                 self.regionLoadState = .failed
             }
@@ -205,76 +199,64 @@ class RegionListViewModel: RegionListViewModelProtocol {
             return
         }
 
-        // Try loading from cache first
-        let cachedWarnings = cacheService.loadWarningsDetailed(regionId: selectedRegion.Id)
+        self.warningLoadState = .loading
+        self.selectedWarning = nil
+        self.warnings = []
 
-        if let cachedWarnings = cachedWarnings, !cachedWarnings.isEmpty {
-            self.warnings = cachedWarnings
-            self.selectedWarning = selectTodayWarning(from: cachedWarnings)
-            self.warningLoadState = .loaded
-        } else {
-            self.warningLoadState = .loading
-            self.selectedWarning = nil
-            self.warnings = [AvalancheWarningDetailed]()
-        }
-
-        let hasCachedData = cachedWarnings != nil && !(cachedWarnings?.isEmpty ?? true)
+        let regionId = selectedRegion.Id
 
         // Create a task that we can cancel if needed
         loadWarningsTask = Task {
             do {
-                // Check if task was cancelled
                 try Task.checkCancellation()
 
                 let today = Date.current
                 guard let fromDate = Calendar.current.date(byAdding: .day, value: from, to: today),
                       let toDate = Calendar.current.date(byAdding: .day, value: to, to: today) else {
                     await MainActor.run {
-                        if !hasCachedData {
-                            self.warningLoadState = .failed
-                        }
+                        self.warningLoadState = .failed
                     }
                     return
                 }
 
-                // Check if task was cancelled before network call
                 try Task.checkCancellation()
 
                 let loadedWarnings: [AvalancheWarningDetailed]
-                if Country.from(regionId: selectedRegion.Id) == .sweden {
-                    loadedWarnings = try await swedenClient.loadWarningsDetailed(regionId: selectedRegion.Id, daysBefore: 2)
+                if Country.from(regionId: regionId) == .sweden {
+                    loadedWarnings = try await swedenClient.loadWarningsDetailed(regionId: regionId, daysBefore: 2)
                 } else {
                     loadedWarnings = try await client.loadWarningsDetailed(
                         lang: VarsomApiClient.currentLang(),
-                        regionId: selectedRegion.Id,
+                        regionId: regionId,
                         from: fromDate,
                         to: toDate)
                 }
 
-                // Check if task was cancelled after network call
                 try Task.checkCancellation()
 
-                // Update UI on main actor
                 await MainActor.run {
                     self.warnings = loadedWarnings
                     self.selectedWarning = selectTodayWarning(from: loadedWarnings)
                     self.warningLoadState = .loaded
-                    cacheService.saveWarningsDetailed(loadedWarnings, regionId: selectedRegion.Id)
-                    reviewPromptService.recordRegionView(regionId: selectedRegion.Id)
+                    cacheService.saveWarningsDetailed(loadedWarnings, regionId: regionId)
+                    reviewPromptService.recordRegionView(regionId: regionId)
                 }
             } catch is CancellationError {
                 // Task was cancelled, ignore
             } catch {
+                // Network failed — fall back to cache
                 await MainActor.run {
-                    if !hasCachedData {
+                    let cachedWarnings = cacheService.loadWarningsDetailed(regionId: regionId)
+                    if let cachedWarnings = cachedWarnings, !cachedWarnings.isEmpty {
+                        self.warnings = cachedWarnings
+                        self.selectedWarning = selectTodayWarning(from: cachedWarnings)
+                        self.warningLoadState = .loaded
+                    } else {
                         self.warningLoadState = .failed
                     }
                 }
             }
         }
-
-        // Don't await the task - let it run in the background
-        // The task will update properties which will trigger UI updates automatically
     }
 
     func selectRegionById(regionId: Int) async {

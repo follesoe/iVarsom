@@ -17,6 +17,15 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
     var body: some View {
         NavigationSplitView {
             VStack {
+                if vm.regionLoadState == .loading && vm.regions.isEmpty {
+                    Spacer()
+                    ProgressView()
+                    Text("Loading Regions")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.top, 8)
+                    Spacer()
+                } else {
                 List(selection: $vm.selectedRegion) {
                     Section(header: Text("Local warnings")) {
                         if let localRegion = vm.localRegion {
@@ -58,6 +67,7 @@ struct RegionList<ViewModelType: RegionListViewModelProtocol>: View {
                 Text("Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.")
                     .font(.caption2)
                     .padding()
+                }
             }
         } detail: {
             if sizeClass == .regular {
