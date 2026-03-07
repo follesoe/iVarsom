@@ -1,0 +1,2 @@
+"NSLocationWhenInUseUsageDescription" = "La app usa la ubicación para mostrar alertas de avalanchas de la región más cercana";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "La app usa la ubicación para mostrar alertas de avalanchas de la región más cercana";
