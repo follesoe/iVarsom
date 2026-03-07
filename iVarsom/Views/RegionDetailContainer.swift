@@ -1,18 +1,7 @@
 import SwiftUI
 
-#if os(iOS)
-private struct SharePreviewData: Identifiable {
-    let id = UUID()
-    let image: UIImage
-    let filename: String
-}
-#endif
-
 struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
     @Bindable var vm: ViewModelType
-    #if os(iOS)
-    @State private var sharePreview: SharePreviewData? = nil
-    #endif
 
     private var isFavorite: Bool {
         guard let selectedRegion = vm.selectedRegion else { return false }
@@ -20,69 +9,33 @@ struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
     }
 
     var body: some View {
-        Group {
-            if let selectedRegion = vm.selectedRegion {
-                if vm.warningLoadState == .loading {
-                    VStack {
-                        ProgressView()
-                        Text(String(format: NSLocalizedString("Loading warnings for %@", comment: "Loading warnings message with region name"), selectedRegion.Name))
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if vm.warningLoadState == .failed {
-                    VStack {
-                        Text(String(format: NSLocalizedString("Error loading warnings for %@", comment: "Error message when loading warnings fails"), selectedRegion.Name))
-                        Button(NSLocalizedString("Try Again", comment: "Button to retry loading data")) {
-                            Task {
-                                await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
-                            }
+        if let selectedRegion = vm.selectedRegion {
+            if vm.warningLoadState == .loading {
+                VStack {
+                    ProgressView()
+                    Text(String(format: NSLocalizedString("Loading warnings for %@", comment: "Loading warnings message with region name"), selectedRegion.Name))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if vm.warningLoadState == .failed {
+                VStack {
+                    Text(String(format: NSLocalizedString("Error loading warnings for %@", comment: "Error message when loading warnings fails"), selectedRegion.Name))
+                    Button(NSLocalizedString("Try Again", comment: "Button to retry loading data")) {
+                        Task {
+                            await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    RegionDetail(
-                        selectedRegion: $vm.selectedRegion,
-                        selectedWarning: $vm.selectedWarning,
-                        warnings: $vm.warnings
-                    )
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                Text("Select a region")
+                RegionDetail(
+                    selectedRegion: $vm.selectedRegion,
+                    selectedWarning: $vm.selectedWarning,
+                    warnings: $vm.warnings
+                )
             }
+        } else {
+            Text("Select a region")
         }
-        #if os(iOS)
-        .sheet(item: $sharePreview) { preview in
-            NavigationStack {
-                ScrollView {
-                    Image(uiImage: preview.image)
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
-                        .shadow(color: .black.opacity(0.2), radius: 8, y: 4)
-                }
-                .background(Color(.systemGroupedBackground))
-                .navigationTitle(NSLocalizedString("Share preview", comment: "Title for share preview sheet"))
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button {
-                            sharePreview = nil
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                        }
-                    }
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button {
-                            ActivityViewPresenter.present(image: preview.image, filename: preview.filename)
-                        } label: {
-                            Image(systemName: "square.and.arrow.up")
-                        }
-                    }
-                }
-            }
-            .presentationDetents([.medium, .large])
-        }
-        #endif
     }
 
     var favoriteButton: some View {
@@ -127,7 +80,7 @@ struct RegionDetailContainer<ViewModelType: RegionListViewModelProtocol>: View {
             let name = warning.RegionName
                 .replacingOccurrences(of: " ", with: "-")
                 .lowercased()
-            sharePreview = SharePreviewData(image: image, filename: "\(name)-\(date).png")
+            SharePreviewPresenter.present(image: image, filename: "\(name)-\(date).png")
         }
     }
     #endif
