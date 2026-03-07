@@ -1,0 +1,10 @@
+/* Bundle name */
+"CFBundleName" = "Alertas de avalanchas";
+
+"CFBundleDisplayName" = "Alertas de avalanchas";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "La app usa la ubicación para mostrar alertas de avalanchas de la región más cercana";
+
+"NSLocationWhenInUseUsageDescription" = "La app usa la ubicación para mostrar alertas de avalanchas de la región más cercana";
+
+"NSLocationUsageDescription" = "La app usa la ubicación para mostrar alertas de avalanchas de la región más cercana";

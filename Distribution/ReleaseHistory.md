@@ -3,6 +3,7 @@
 ## 5.3.0
 
 - Translate warnings to your language using Apple's on-device translation
+- Now available in Swedish, German, French, Spanish, and Italian
 - App now always loads fresh data from the network, with a loading indicator while refreshing
 - Cached data is used as fallback when offline
 - Fixed map location button sometimes not zooming to user position

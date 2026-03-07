@@ -7,19 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AACAC0022026022100000002 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
-		AACAC0032026022100000003 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
-		AAREV0012026022300000001 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
-		AAREV0022026022300000002 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
-		AACAC0052026022100000005 /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0042026022100000004 /* CacheServiceTests.swift */; };
-		AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */; };
 		10D8A8F89307FE96C21D85D6 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		2C688DFD622C33F1DE47661B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
 		3C4F929D76D547739E19F11D /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4F929D76D547739E19F11C /* AppShortcuts.swift */; };
 		3C4F929D76D547739E19F11E /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4F929D76D547739E19F11C /* AppShortcuts.swift */; };
+		4B2DDF68BC76470283F1808A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
 		5DAB960D3DF346528BA19E95 /* AvalancheWarningSnippetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */; };
 		5DAB960D3DF346528BA19E96 /* AvalancheWarningSnippetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */; };
 		852C84D91368853C31BE7F92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
+		8B15BF6678764E07A2AF041C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
 		A48D0BC92F8F48B9BA91EC4F /* GetAvalancheWarningIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48D0BC92F8F48B9BA91EC4E /* GetAvalancheWarningIntent.swift */; };
 		A48D0BC92F8F48B9BA91EC50 /* GetAvalancheWarningIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48D0BC92F8F48B9BA91EC4E /* GetAvalancheWarningIntent.swift */; };
 		AA059A6C2AF82D4F00E91768 /* Expositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA059A6B2AF82D4F00E91768 /* Expositions.swift */; };
@@ -134,11 +130,11 @@
 		AAA8905C280C6D1200A80394 /* DesignTimeRegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7358D327BD97EA009E3DA1 /* DesignTimeRegionListViewModel.swift */; };
 		AAA8905E280C6E5200A80394 /* RegionSummary.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD172DD2795FEDF009AB089 /* RegionSummary.json */; };
 		AAA89061280D699A00A80394 /* RegionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA89060280D699A00A80394 /* RegionDetailView.swift */; };
+		AAACT0012026022300000001 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACT0002026022300000000 /* ActivityViewController.swift */; };
 		AAB3F4E92AF827B8005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */; };
 		AAB3F4EB2AF82904005F6149 /* AvalancheProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */; };
 		AAB5D4182B0A2A2C007B50A6 /* MainWarningTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */; };
 		AAB5D41A2B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB5D4192B0A2F6D007B50A6 /* AvalancheProblemDetailsView.swift */; };
-		AABB22562F34B93000A2997C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = AABB22552F34B93000A2997C /* AppIcon.icon */; };
 		AABB22572F34B93000A2997C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = AABB22552F34B93000A2997C /* AppIcon.icon */; };
 		AABB22592F34B96200A2997C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = AABB22582F34B96200A2997C /* AppIcon.icon */; };
 		AABE6A8E2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */; };
@@ -153,6 +149,9 @@
 		AAC859322CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
 		AAC859332CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
 		AAC859342CE91F120013594A /* Date+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC859302CE91EFF0013594A /* Date+current.swift */; };
+		AACAC0022026022100000002 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
+		AACAC0032026022100000003 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0012026022100000001 /* CacheService.swift */; };
+		AACAC0052026022100000005 /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACAC0042026022100000004 /* CacheServiceTests.swift */; };
 		AACL00042026020400000004 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = AACL00032026020400000003 /* AppShortcuts.strings */; };
 		AAD172B02795F8F8009AB089 /* iVarsomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */; };
 		AAD172B42795F8F9009AB089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD172B32795F8F9009AB089 /* Assets.xcassets */; };
@@ -175,6 +174,7 @@
 		AAD6138B282AEF8500ABA680 /* DataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138A282AEF8500ABA680 /* DataSourceView.swift */; };
 		AAD6138D282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
 		AAD6138E282AF46F00ABA680 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6138C282AF46F00ABA680 /* LoadState.swift */; };
+		AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADET0002026022100000000 /* RegionDetailContainer.swift */; };
 		AAE572DF295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E0295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
 		AAE572E1295B294800DAB74E /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE572DE295B294800DAB74E /* UrlUtils.swift */; };
@@ -233,35 +233,34 @@
 		AAFA2CB22B0A857E00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
 		AAFA2CB32B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
 		AAFA2CB42B0A857F00CF40DE /* ExposedHeightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */; };
-		B27BBF82D228E8528382CD10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
-		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
-		CEC5EC2159542796944B665A /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
-		CEC5EC2159542796944B665B /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
-		AASHR0012026022300000001 /* ShareableWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AASHR0002026022300000000 /* ShareableWarningView.swift */; };
-		AAACT0012026022300000001 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACT0002026022300000000 /* ActivityViewController.swift */; };
-		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		AAFAV0012026022300000001 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
 		AAFAV0022026022300000002 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
-		E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
-		CC82146628254982923E5B76 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
-		F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
-		8B15BF6678764E07A2AF041C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
-		4B2DDF68BC76470283F1808A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
-		EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
-		DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
-		FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
-		D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
-		AB12345678901234567890AB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
 		AAGEO0012026022100000001 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
 		AAGEO0022026022100000002 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
 		AAGEO0032026022100000003 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
 		AAGEO0042026022100000004 /* RegionGeoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAGEO0002026022100000000 /* RegionGeoData.swift */; };
-		AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP0002026022100000000 /* AvalancheMapView.swift */; };
-		AADET0012026022100000001 /* RegionDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADET0002026022100000000 /* RegionDetailContainer.swift */; };
 		AAGEO0052026022100000005 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
 		AAGEO0062026022100000006 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
 		AAGEO0072026022100000007 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
 		AAGEO0082026022100000008 /* regions.geojson in Resources */ = {isa = PBXBuildFile; fileRef = AAGEO0052026022100000050 /* regions.geojson */; };
+		AAMAP00012026022100000002 /* AvalancheWatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */; };
+		AAMAP0012026022100000001 /* AvalancheMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAMAP0002026022100000000 /* AvalancheMapView.swift */; };
+		AAREV0012026022300000001 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
+		AAREV0022026022300000002 /* ReviewPromptService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAREV0002026022300000000 /* ReviewPromptService.swift */; };
+		AASHR0012026022300000001 /* ShareableWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AASHR0002026022300000000 /* ShareableWarningView.swift */; };
+		AB12345678901234567890AB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		B27BBF82D228E8528382CD10 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
+		CC82146628254982923E5B76 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		CEC5EC2159542796944B6659 /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
+		CEC5EC2159542796944B665A /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
+		CEC5EC2159542796944B665B /* EmergencyWarningBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */; };
+		D33F69FE553F4F8083B0193D /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		D79FDFE9AB606C7E291F217E /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */; };
+		DF182C163B414E14BD360E92 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		E3D6D2AAB76A2C41EB990D1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */; };
+		EF7D73AAED4D40679A03B18B /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
+		F8347F7C57EF459D8DEDA252 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B0DFF5703403492998F2E /* Country.swift */; };
+		FE44CDA3E35449F090F3F123 /* LavinprognoserApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,16 +331,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWatchMapView.swift; sourceTree = "<group>"; };
 		0EABA762E88F4D42C1C6AE67 /* FavoritesService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
-		AACAC0012026022100000001 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
-		AAREV0002026022300000000 /* ReviewPromptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptService.swift; sourceTree = "<group>"; };
-		AACAC0042026022100000004 /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
+		35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserApiClient.swift; sourceTree = "<group>"; };
 		3C4F929D76D547739E19F11C /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		5DAB960D3DF346528BA19E94 /* AvalancheWarningSnippetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningSnippetView.swift; sourceTree = "<group>"; };
 		7443F5D3AA35CE32EDD2928D /* EmergencyWarningBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyWarningBanner.swift; sourceTree = "<group>"; };
-		AASHR0002026022300000000 /* ShareableWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableWarningView.swift; sourceTree = "<group>"; };
-		AAACT0002026022300000000 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		A48D0BC92F8F48B9BA91EC4E /* GetAvalancheWarningIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAvalancheWarningIntent.swift; sourceTree = "<group>"; };
 		AA059A6B2AF82D4F00E91768 /* Expositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expositions.swift; sourceTree = "<group>"; };
 		AA102DFD279D97A800B6492D /* WarningSymbolLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSymbolLevel.swift; sourceTree = "<group>"; };
@@ -391,6 +385,7 @@
 		AAA89053280C586000A80394 /* SelectRegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionListView.swift; sourceTree = "<group>"; };
 		AAA89055280C60BA00A80394 /* RegionWatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionWatchRow.swift; sourceTree = "<group>"; };
 		AAA89060280D699A00A80394 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
+		AAACT0002026022300000000 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		AAB3F4E82AF827B8005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB3F4EA2AF82904005F6149 /* AvalancheProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblemView.swift; sourceTree = "<group>"; };
 		AAB5D4172B0A2A2C007B50A6 /* MainWarningTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWarningTextView.swift; sourceTree = "<group>"; };
@@ -400,12 +395,10 @@
 		AABE6A8C2CE0EC4B0022E5A7 /* RegionConfigOptionAppEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionConfigOptionAppEntity.swift; sourceTree = "<group>"; };
 		AABE6A8D2CE0EC4B0022E5A7 /* SelectRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegion.swift; sourceTree = "<group>"; };
 		AAC859302CE91EFF0013594A /* Date+current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+current.swift"; sourceTree = "<group>"; };
+		AACAC0012026022100000001 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		AACAC0042026022100000004 /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 		AACL00012026020400000001 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		AACL00022026020400000002 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
-		AASV00012026022100000001 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AASV00022026022100000002 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		AASV00032026022100000003 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
-		AASV00042026022100000004 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD172AC2795F8F8009AB089 /* Skredvarsel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skredvarsel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD172AF2795F8F8009AB089 /* iVarsomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVarsomApp.swift; sourceTree = "<group>"; };
 		AAD172B32795F8F9009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -428,11 +421,11 @@
 		AAD172F02796093A009AB089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD172F22796093A009AB089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD172F82796093A009AB089 /* iVarsomWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iVarsomWidgetExtension.entitlements; sourceTree = "<group>"; };
-		AAWENT0012026022300000001 /* SkredvarselWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkredvarselWatch.entitlements; sourceTree = "<group>"; };
 		AAD613872822D88B00ABA680 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD613892822D89300ABA680 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAD6138A282AEF8500ABA680 /* DataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceView.swift; sourceTree = "<group>"; };
 		AAD6138C282AF46F00ABA680 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		AADET0002026022100000000 /* RegionDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailContainer.swift; sourceTree = "<group>"; };
 		AAE572DE295B294800DAB74E /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
 		AAEC4F0D2AF7B46800FA1373 /* AvalancheWarningDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWarningDetailed.swift; sourceTree = "<group>"; };
 		AAEC4F132AF7B55D00FA1373 /* AvalancheProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheProblem.swift; sourceTree = "<group>"; };
@@ -442,13 +435,31 @@
 		AAEC4F2A2AF7DD7600FA1373 /* DetailedWarning.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DetailedWarning.json; sourceTree = "<group>"; };
 		AAEC4F2F2AF7ED9D00FA1373 /* ExposedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeight.swift; sourceTree = "<group>"; };
 		AAFA2CAF2B0A857200CF40DE /* ExposedHeightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposedHeightArrow.swift; sourceTree = "<group>"; };
-		CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D43B0DFF5703403492998F2E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		35A338D93B924AA1817A939A /* LavinprognoserApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserApiClient.swift; sourceTree = "<group>"; };
 		AAGEO0002026022100000000 /* RegionGeoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGeoData.swift; sourceTree = "<group>"; };
 		AAGEO0052026022100000050 /* regions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = regions.geojson; sourceTree = "<group>"; };
+		AAMAP00012026022100000001 /* AvalancheWatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheWatchMapView.swift; sourceTree = "<group>"; };
 		AAMAP0002026022100000000 /* AvalancheMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheMapView.swift; sourceTree = "<group>"; };
-		AADET0002026022100000000 /* RegionDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailContainer.swift; sourceTree = "<group>"; };
+		AAREV0002026022300000000 /* ReviewPromptService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptService.swift; sourceTree = "<group>"; };
+		AASHR0002026022300000000 /* ShareableWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableWarningView.swift; sourceTree = "<group>"; };
+		AASV00012026022100000001 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AASV00022026022100000002 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AASV00032026022100000003 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AASV00042026022100000004 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AATR00012026030700000001 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AATR00012026030700000002 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AATR00012026030700000003 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AATR00012026030700000004 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AATR00012026030700000005 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AATR00012026030700000006 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AATR00012026030700000007 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AATR00012026030700000008 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		AATR00012026030700000009 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AATR0001202603070000000A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AATR0001202603070000000B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AATR0001202603070000000C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAWENT0012026022300000001 /* SkredvarselWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SkredvarselWatch.entitlements; sourceTree = "<group>"; };
+		CF0CBF31FCC98D3F6F52CC8F /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D43B0DFF5703403492998F2E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -715,14 +726,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AAGEO00A2026022100000100 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AAGEO0052026022100000050 /* regions.geojson */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		AAD172E727960939009AB089 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +750,14 @@
 				AA7D7466294618F200AB5155 /* iOSPreviews.swift */,
 			);
 			path = iVarsomWidget;
+			sourceTree = "<group>";
+		};
+		AAGEO00A2026022100000100 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAGEO0052026022100000050 /* regions.geojson */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -890,6 +901,10 @@
 				Base,
 				nb,
 				sv,
+				de,
+				es,
+				it,
+				fr,
 			);
 			mainGroup = AAD172A32795F8F8009AB089;
 			packageReferences = (
@@ -1268,6 +1283,10 @@
 				AA6386062797514E00FD52DA /* en */,
 				AA6386082797518E00FD52DA /* nb */,
 				AASV00022026022100000002 /* sv */,
+				AATR00012026030700000001 /* de */,
+				AATR00012026030700000002 /* es */,
+				AATR00012026030700000003 /* it */,
+				AATR00012026030700000004 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1278,6 +1297,10 @@
 				AACL00012026020400000001 /* en */,
 				AACL00022026020400000002 /* nb */,
 				AASV00032026022100000003 /* sv */,
+				AATR00012026030700000005 /* de */,
+				AATR00012026030700000006 /* es */,
+				AATR00012026030700000007 /* it */,
+				AATR00012026030700000008 /* fr */,
 			);
 			name = AppShortcuts.strings;
 			sourceTree = "<group>";
@@ -1288,6 +1311,10 @@
 				AAD613872822D88B00ABA680 /* en */,
 				AAD613892822D89300ABA680 /* nb */,
 				AASV00042026022100000004 /* sv */,
+				AATR00012026030700000009 /* de */,
+				AATR0001202603070000000A /* es */,
+				AATR0001202603070000000B /* it */,
+				AATR0001202603070000000C /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

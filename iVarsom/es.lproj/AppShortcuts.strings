@@ -1,0 +1,5 @@
+/* App Shortcuts phrases - Spanish */
+"Get avalanche warning in ${applicationName}" = "Obtener alerta de avalanchas en ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Alerta de avalanchas de ${applicationName}";
+"Get avalanche warning for ${region} in ${applicationName}" = "Obtener alerta de avalanchas para ${region} en ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Cuál es el peligro de avalanchas en ${region} con ${applicationName}";

@@ -1,4 +1,5 @@
 - Översätt varningar till ditt språk med Apples inbyggda översättning
+- Finns nu på svenska, tyska, franska, spanska och italienska
 - Hämtar alltid färsk data med laddningsindikator under uppdatering
 - Cachad data används som reserv vid offline
 - Fixat att kartans positionsknapp ibland inte zoomade till användarens position
@@ -8,7 +9,6 @@ Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppda
 - Svenska lavinvarningar från lavinprognoser.se
 - Interaktiv kartvy som visar alla regioner färgade efter faronivå
 - Kartvy på Apple Watch
-- Stöd för svenska
 - Siri-genvägar: Fråga Siri om lavinvarningen
 - Uppdaterad för iOS 26 och watchOS 26
 - Ny extra stor widget för iPad

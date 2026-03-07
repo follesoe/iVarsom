@@ -1,0 +1,10 @@
+/* Bundle name */
+"CFBundleName" = "Lawinenwarnungen";
+
+"CFBundleDisplayName" = "Lawinenwarnungen";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Die App verwendet den Standort, um Lawinenwarnungen für Ihre nächstgelegene Region anzuzeigen";
+
+"NSLocationWhenInUseUsageDescription" = "Die App verwendet den Standort, um Lawinenwarnungen für Ihre nächstgelegene Region anzuzeigen";
+
+"NSLocationUsageDescription" = "Die App verwendet den Standort, um Lawinenwarnungen für Ihre nächstgelegene Region anzuzeigen";

@@ -1,0 +1,10 @@
+/* Bundle name */
+"CFBundleName" = "Avvisi valanghe";
+
+"CFBundleDisplayName" = "Avvisi valanghe";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "L'app utilizza la posizione per mostrare avvisi valanghe dalla regione più vicina";
+
+"NSLocationWhenInUseUsageDescription" = "L'app utilizza la posizione per mostrare avvisi valanghe dalla regione più vicina";
+
+"NSLocationUsageDescription" = "L'app utilizza la posizione per mostrare avvisi valanghe dalla regione più vicina";

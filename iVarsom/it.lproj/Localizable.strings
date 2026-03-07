@@ -1,0 +1,257 @@
+/* Region header */
+"Regions" = "Regioni";
+
+/* List group header for A-regions */
+"A-Regions" = "Regioni A";
+
+/* List group header for location based warnings */
+"Local warnings" = "Avvisi locali";
+
+/* Button text to use location based warnings */
+"Use current location" = "Usa posizione attuale";
+
+/* Button description for location based warnings */
+"Will enable location based warnings in Widgets" = "Attiva gli avvisi valanghe basati sulla posizione nei Widget";
+
+/* Data source description and link */
+"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Dati dal Servizio Norvegese di Allerta Valanghe e www.varsom.no.";
+
+/* Data source description for both services */
+"Data from varsom.no and lavinprognoser.se." = "Dati da varsom.no e lavinprognoser.se.";
+
+/* Data source - Norway only */
+"Data from The Norwegian Avalanche Warning Service." = "Dati dal Servizio Norvegese di Allerta Valanghe.";
+
+/* Data source - Sweden only */
+"Data from Swedish Environmental Protection Agency." = "Dati dall'Agenzia Svedese per la Protezione Ambientale.";
+
+/* Data source - both countries */
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Dati dal Servizio Norvegese di Allerta Valanghe e dall'Agenzia Svedese per la Protezione Ambientale.";
+
+/* Section header for favorites */
+"Favorites" = "Preferiti";
+
+/* Section header for Norwegian regions */
+"Norway" = "Norvegia";
+
+/* Widget Config Display Name */
+"Today's Avalanche Danger Level" = "Livello di pericolo valanghe di oggi";
+
+/* Widget Config Description */
+"Display today's avalanche danger level for selected regions in Norway." = "Mostra il livello di pericolo valanghe di oggi per le regioni selezionate.";
+
+/* Error loading widget */
+"Error" = "Errore";
+
+/* Error loading widget */
+"There was an error updating the widget" = "Si è verificato un errore durante l'aggiornamento del widget";
+
+/* Link to Varsom.no */
+"Read complete warning on Varsom.no" = "Leggi l'avviso completo su Varsom.no";
+
+/* Current position option */
+"Current position" = "Posizione attuale";
+
+/* When no region is selected */
+"Select a region" = "Seleziona una regione";
+
+/* Intent title */
+"Select Region" = "Seleziona regione";
+
+/* Intent description */
+"Select which region you wish to view avalanche warnings from" = "Seleziona la regione di cui vuoi vedere gli avvisi valanghe";
+
+/* To add a region to list */
+"Add Region" = "Aggiungi regione";
+
+/* Loading text on list */
+"Loading Regions" = "Caricamento regioni";
+
+/* Loading text on details view */
+"Loading Details" = "Caricamento dettagli";
+
+/* Loading text for warnings */
+"Loading warnings..." = "Caricamento avvisi...";
+
+/* Loading text for warnings with region name */
+"Loading warnings for %@" = "Caricamento avvisi per %@";
+
+/* Error message */
+"Error Loading Regions" = "Errore nel caricamento delle regioni";
+
+/* Error message for warnings with region name */
+"Error loading warnings for %@" = "Errore nel caricamento degli avvisi per %@";
+
+/* Try loading data after error */
+"Try Again" = "Riprova";
+
+/* Not assessed */
+"Not assessed" = "Non valutato";
+
+/* Low */
+"Low" = "Debole";
+
+/* Moderate */
+"Moderate" = "Moderato";
+
+/* Considerable */
+"Considerable" = "Marcato";
+
+/* High */
+"High" = "Forte";
+
+/* Very high */
+"Very high" = "Molto forte";
+
+/* Published date/time format */
+"Published: %@" = "Pubblicato: %@";
+
+/* Avalanche problem */
+"Avalanche problem" = "Problema valanghivo";
+
+/* Avalanche problems */
+"Avalanche problems" = "Problemi valanghivi";
+
+/* Link text */
+"Read complete warning on Varsom.no." = "Leggi l'avviso completo su Varsom.no.";
+
+/* Link text for Swedish regions */
+"Read complete warning on lavinprognoser.se." = "Leggi l'avviso completo su lavinprognoser.se.";
+
+/* Section header for Swedish regions */
+"Sweden" = "Svezia";
+
+/* Navigation title */
+"Forecast" = "Previsione";
+
+/* Siri Shortcut - Intent title */
+"Get Avalanche Warning" = "Ottieni avviso valanghe";
+
+/* Siri Shortcut - Intent description */
+"Get the current avalanche danger level for a region in Norway" = "Ottieni il livello di pericolo valanghe attuale per una regione in Norvegia";
+
+/* Siri Shortcut - Intent description (with Sweden) */
+"Get the current avalanche danger level for a region in Norway or Sweden" = "Ottieni il livello di pericolo valanghe attuale per una regione in Norvegia o Svezia";
+
+/* Siri Shortcut - Short title */
+"Check warning" = "Controlla avviso";
+
+/* Siri Shortcut phrases - without region (Siri will prompt) */
+"Get avalanche warning in ${applicationName}" = "Ottieni avviso valanghe in ${applicationName}";
+"Avalanche warning from ${applicationName}" = "Avviso valanghe da ${applicationName}";
+
+/* Siri Shortcut phrases - with ${region} parameter */
+"Get avalanche warning for ${region} in ${applicationName}" = "Ottieni avviso valanghe per ${region} in ${applicationName}";
+"What is the avalanche danger in ${region} with ${applicationName}" = "Qual è il pericolo valanghe in ${region} con ${applicationName}";
+
+/* Siri Shortcut - Dialog response */
+"The avalanche danger level in %@ is %@." = "Il livello di pericolo valanghe in %@ è %@.";
+
+/* Siri Shortcut - No warning available */
+"No avalanche warning available for %@ today." = "Nessun avviso valanghe disponibile per %@ oggi.";
+
+/* Siri Shortcut - Location required */
+"Location access is required to get warnings for your current position." = "L'accesso alla posizione è necessario per ottenere avvisi per la posizione attuale.";
+
+/* Siri Shortcut - Location unavailable */
+"Could not determine your current location." = "Impossibile determinare la posizione attuale.";
+
+/* Siri Shortcut - Error messages */
+"Location access required" = "Accesso alla posizione richiesto";
+
+/* Siri Shortcut - Parameter request dialog */
+"Which region do you want the avalanche warning for?" = "Per quale regione vuoi l'avviso valanghe?";
+"Location unavailable" = "Posizione non disponibile";
+"No warning available" = "Nessun avviso disponibile";
+"Service unavailable" = "Servizio non disponibile";
+
+/* Siri Shortcut - Network error messages */
+"No internet connection. Unable to retrieve avalanche warnings." = "Nessuna connessione Internet. Impossibile recuperare gli avvisi valanghe.";
+"Unable to retrieve avalanche warnings. Please try again later." = "Impossibile recuperare gli avvisi valanghe. Riprova più tardi.";
+
+/* Search tab title */
+"Search" = "Cerca";
+
+/* Map tab title */
+"Map" = "Mappa";
+
+/* Emergency warning not given - used to filter out placeholder values from API */
+"EmergencyWarningNotGiven" = "Non emesso";
+
+/* Accessibility - Danger level with number and name */
+"Danger level %@, %@" = "Livello di pericolo %@, %@";
+
+/* Accessibility - Exposed aspects list */
+"Exposed aspects: %@" = "Esposizioni coinvolte: %@";
+
+/* Accessibility - All aspects exposed */
+"All aspects exposed" = "Tutte le esposizioni coinvolte";
+
+/* Accessibility - No aspects exposed */
+"No aspects exposed" = "Nessuna esposizione coinvolta";
+
+/* Accessibility - Above treeline */
+"Above treeline" = "Sopra il limite del bosco";
+
+/* Accessibility - Below treeline */
+"Below treeline" = "Sotto il limite del bosco";
+
+/* Accessibility - Near treeline */
+"Near treeline" = "Vicino al limite del bosco";
+
+/* Accessibility - Above and below treeline */
+"Above and below treeline" = "Sopra e sotto il limite del bosco";
+
+/* Accessibility - Above height */
+"Above %@ meters" = "Sopra %@ metri";
+
+/* Accessibility - Below height */
+"Below %@ meters" = "Sotto %@ metri";
+
+/* Accessibility - Between heights */
+"Between %@ and %@ meters" = "Tra %@ e %@ metri";
+
+/* Accessibility - Region with danger levels */
+"%@, %@" = "%@, %@";
+
+/* Warning detail sheet - title */
+"Avalanche risk assessment" = "Valutazione del rischio valanghe";
+
+/* Warning detail sheet - dismiss button */
+"Dismiss" = "Chiudi";
+
+/* Accessibility - Danger trend */
+"Danger rising" = "Pericolo in aumento";
+"Danger stable" = "Pericolo stabile";
+"Danger falling" = "Pericolo in diminuzione";
+
+/* Share menu option for summary only */
+"Share summary" = "Condividi riepilogo";
+
+/* Share menu option including avalanche problems */
+"Share with avalanche problems" = "Condividi con problemi valanghivi";
+
+/* Title for share preview sheet */
+"Share preview" = "Anteprima";
+
+/* Button to translate warning text */
+"Translate" = "Traduci";
+
+/* Button to show original untranslated text */
+"Show Original" = "Mostra originale";
+
+/* Translation in progress indicator */
+"Translating..." = "Traduzione in corso...";
+
+/* Indicator that text was machine translated from English */
+"Machine translated from English" = "Tradotto automaticamente dall'inglese";
+
+/* Accessibility - Compass directions */
+"North" = "Nord";
+"NorthEast" = "Nord-Est";
+"East" = "Est";
+"SouthEast" = "Sud-Est";
+"South" = "Sud";
+"SouthWest" = "Sud-Ovest";
+"West" = "Ovest";
+"NorthWest" = "Nord-Ovest";

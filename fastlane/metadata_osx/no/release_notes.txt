@@ -1,4 +1,5 @@
 - Oversett varsler til ditt språk med Apples innebygde oversettelse
+- Nå tilgjengelig på svensk, tysk, fransk, spansk og italiensk
 - Henter alltid ferske data med lasteindikator under oppdatering
 - Bufrede data brukes som reserve når du er frakoblet
 
@@ -6,7 +7,6 @@ Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdater
 
 - Svenske snøskredvarsler fra lavinprognoser.se
 - Interaktivt kart som viser alle regioner farget etter farenivå
-- Støtte for svensk språk
 - Siri-snarveier: Spør Siri om skredvarselet
 - Oppdatert for macOS 26
 - Skredproblem-grafikk viser nå representative bilder

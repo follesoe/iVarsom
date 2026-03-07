@@ -1,4 +1,5 @@
 - Translate warnings to your language using Apple's on-device translation
+- Now available in Swedish, German, French, Spanish, and Italian
 - Always loads fresh data with a loading indicator while refreshing
 - Cached data is used as fallback when offline
 
@@ -6,7 +7,6 @@ The Skredvarsel app is ready for its fifth season (2025/2026), with a major upda
 
 - Swedish avalanche warnings from lavinprognoser.se
 - Interactive map view showing all regions colored by danger level
-- Swedish language support
 - Siri Shortcuts: Ask Siri for the avalanche warning
 - Updated for macOS 26
 - Avalanche problem graphics now show representative images
