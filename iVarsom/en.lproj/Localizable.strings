@@ -231,6 +231,9 @@
 /* Share menu option including avalanche problems */
 "Share with avalanche problems" = "Share with avalanche problems";
 
+/* Title for share preview sheet */
+"Share preview" = "Share preview";
+
 /* Accessibility - Compass directions */
 "North" = "North";
 "NorthEast" = "North-East";
