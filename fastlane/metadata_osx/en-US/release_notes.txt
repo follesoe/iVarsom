@@ -1,3 +1,4 @@
+- Translate warnings to your language using Apple's on-device translation
 - Always loads fresh data with a loading indicator while refreshing
 - Cached data is used as fallback when offline
 

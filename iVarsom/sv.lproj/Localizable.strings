@@ -234,6 +234,18 @@
 /* Title for share preview sheet */
 "Share preview" = "Förhandsvisning";
 
+/* Button to translate warning text */
+"Translate" = "Översätt";
+
+/* Button to show original untranslated text */
+"Show Original" = "Visa original";
+
+/* Translation in progress indicator */
+"Translating..." = "Översätter...";
+
+/* Indicator that text was machine translated from English */
+"Machine translated from English" = "Maskinöversatt från engelska";
+
 /* Accessibility - Compass directions */
 "North" = "Nord";
 "NorthEast" = "Nordost";

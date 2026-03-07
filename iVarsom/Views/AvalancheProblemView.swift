@@ -3,8 +3,12 @@ import SwiftUI
 struct AvalancheProblemView: View {
     let problem: AvalancheProblem
     var textLanguageCode: String = "nb"
+    var translatedTexts: [String: String] = [:]
 
     var body: some View {
+        let typeName = translatedTexts[problem.AvalancheProblemTypeName] ?? problem.AvalancheProblemTypeName
+        let triggerText = translatedTexts[problem.TriggerSenitivityPropagationDestuctiveSizeText] ?? problem.TriggerSenitivityPropagationDestuctiveSizeText
+
         HStack {
             Rectangle()
                 .fill(problem.DangerLevelEnum.color)
@@ -12,7 +16,7 @@ struct AvalancheProblemView: View {
                 .padding(.trailing, 8)
                 .accessibilityHidden(true)
             VStack(alignment: .leading) {
-                Text(problem.AvalancheProblemTypeName)
+                Text(typeName)
                     .font(.subheadline)
                     .bold()
                     .speechLocale(textLanguageCode)
@@ -25,7 +29,7 @@ struct AvalancheProblemView: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(15)
                         .frame(width: 78, height: 78)
-                        .accessibilityLabel(problem.AvalancheProblemTypeName)
+                        .accessibilityLabel(typeName)
                         .accessibilityRemoveTraits(.isImage)
                         .speechLocale(textLanguageCode)
                     Expositions(sectors: problem.ValidExpositionsBool)
@@ -46,7 +50,7 @@ struct AvalancheProblemView: View {
                     Spacer()
                 }
 
-                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText)
+                Text(triggerText)
                     .speechLocale(textLanguageCode)
                 #if os(iOS)
                     .textSelection(.enabled)

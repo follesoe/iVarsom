@@ -1,3 +1,4 @@
+- Översätt varningar till ditt språk med Apples inbyggda översättning
 - Hämtar alltid färsk data med laddningsindikator under uppdatering
 - Cachad data används som reserv vid offline
 - Fixat att kartans positionsknapp ibland inte zoomade till användarens position

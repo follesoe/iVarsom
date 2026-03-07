@@ -4,6 +4,7 @@ struct EmergencyWarningBanner: View {
     @Environment(\.colorScheme) private var colorScheme
     let message: String
     var textLanguageCode: String = "nb"
+    var translatedTexts: [String: String] = [:]
     var font: Font = .subheadline
     var verticalPadding: CGFloat = 10
 
@@ -15,12 +16,16 @@ struct EmergencyWarningBanner: View {
         colorScheme == .dark ? .black : .white
     }
 
+    private var displayMessage: String {
+        translatedTexts[message] ?? message
+    }
+
     var body: some View {
         HStack {
             Image(systemName: "exclamationmark.circle.fill")
                 .foregroundColor(foregroundColor)
                 .font(font)
-            Text(message)
+            Text(displayMessage)
                 .foregroundColor(foregroundColor)
                 .font(font)
                 .fontWeight(.medium)

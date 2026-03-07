@@ -7,6 +7,8 @@ struct WarningSummary: View {
     var mainTextLineLimit: Int = .max
     var includeLocationIcon: Bool = false
     var compact: Bool = false
+    var translatedTexts: [String: String] = [:]
+    var translatedLanguageCode: String? = nil
     
     var textColor: Color {
         return warning.DangerLevel == .level5 ? .white : .black
@@ -43,7 +45,7 @@ struct WarningSummary: View {
                     .textSelection(.enabled)
                 #endif
                     .speechLocale(for: warning.RegionId)
-                Text(warning.MainText)
+                Text(translatedTexts[warning.MainText] ?? warning.MainText)
                     .font(mainTextFont)
                     .foregroundColor(textColor)
                     .padding(.bottom, compact ? 2 : 6)
@@ -52,7 +54,7 @@ struct WarningSummary: View {
                     .textSelection(.enabled)
                 #endif
                     .lineLimit(mainTextLineLimit)
-                    .speechLocale(warning.textLanguageCode)
+                    .speechLocale(translatedLanguageCode ?? warning.textLanguageCode)
                 if !compact { Spacer() }
             }
             .padding(.top, compact ? 4 : 12)

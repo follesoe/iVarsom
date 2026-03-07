@@ -234,6 +234,18 @@
 /* Title for share preview sheet */
 "Share preview" = "Share preview";
 
+/* Button to translate warning text */
+"Translate" = "Translate";
+
+/* Button to show original untranslated text */
+"Show Original" = "Show Original";
+
+/* Translation in progress indicator */
+"Translating..." = "Translating...";
+
+/* Indicator that text was machine translated from English */
+"Machine translated from English" = "Machine translated from English";
+
 /* Accessibility - Compass directions */
 "North" = "North";
 "NorthEast" = "North-East";

@@ -1,3 +1,4 @@
+- Oversett varsler til ditt språk med Apples innebygde oversettelse
 - Henter alltid ferske data med lasteindikator under oppdatering
 - Bufrede data brukes som reserve når du er frakoblet
 

@@ -234,6 +234,18 @@
 /* Title for share preview sheet */
 "Share preview" = "Forhåndsvisning";
 
+/* Button to translate warning text */
+"Translate" = "Oversett";
+
+/* Button to show original untranslated text */
+"Show Original" = "Vis original";
+
+/* Translation in progress indicator */
+"Translating..." = "Oversetter...";
+
+/* Indicator that text was machine translated from English */
+"Machine translated from English" = "Maskinoversatt fra engelsk";
+
 /* Accessibility - Compass directions */
 "North" = "Nord";
 "NorthEast" = "Nordøst";
