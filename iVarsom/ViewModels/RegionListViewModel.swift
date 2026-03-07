@@ -182,7 +182,9 @@ class RegionListViewModel: RegionListViewModelProtocol {
         }
         do {
             let location = try await locationManager.updateLocation()
-            self.userLocation = location
+            if let location = location {
+                self.userLocation = location
+            }
             if !wasAuthorized && locationManager.isAuthorized {
                 await loadLocalRegion()
             }

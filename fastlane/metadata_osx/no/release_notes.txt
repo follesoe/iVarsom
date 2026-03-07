@@ -1,3 +1,6 @@
+- Henter alltid ferske data med lasteindikator under oppdatering
+- Bufrede data brukes som reserve når du er frakoblet
+
 Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdatering.
 
 - Svenske snøskredvarsler fra lavinprognoser.se
@@ -8,7 +11,6 @@ Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdater
 - Skredproblem-grafikk viser nå representative bilder
 - Oppdaterte farenivåfarger for å matche de nye offisielle fargene
 - Favorittregioner med iCloud-synkronisering mellom enheter
-- Frakoblet støtte: bufrede data vises umiddelbart ved oppstart, fungerer uten nett
 - Forbedret pålitelighet når appen aktiveres fra bakgrunnen
 
 Med ønske om en fin og trygg topptursesong!

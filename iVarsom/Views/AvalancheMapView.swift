@@ -88,11 +88,17 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    Task {
-                        await vm.requestLocationForMap()
-                        if let location = vm.userLocation {
-                            withAnimation {
-                                cameraPosition = Self.userPosition(location)
+                    if let location = vm.userLocation {
+                        withAnimation {
+                            cameraPosition = Self.userPosition(location)
+                        }
+                    } else {
+                        Task {
+                            await vm.requestLocationForMap()
+                            if let location = vm.userLocation {
+                                withAnimation {
+                                    cameraPosition = Self.userPosition(location)
+                                }
                             }
                         }
                     }

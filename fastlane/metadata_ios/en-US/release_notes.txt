@@ -1,3 +1,7 @@
+- Always loads fresh data with a loading indicator while refreshing
+- Cached data is used as fallback when offline
+- Fixed map location button sometimes not zooming to user position
+
 The Skredvarsel app is ready for its fifth season (2025/2026), with a major update.
 
 - Swedish avalanche warnings from lavinprognoser.se
@@ -12,7 +16,6 @@ The Skredvarsel app is ready for its fifth season (2025/2026), with a major upda
 - Emergency warning banner for critical alerts
 - Share avalanche warnings as images via Messages, AirDrop, and more
 - Favorite regions with iCloud sync across devices
-- Offline support: cached data shows instantly on launch, works without network
 - Improved reliability when returning to the app from the background
 - Widgets and complications automatically refresh when the app is opened
 

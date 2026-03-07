@@ -1,5 +1,11 @@
 # Release History
 
+## 5.3.0
+
+- Appen henter nå alltid ferske data fra nettverket, med lasteindikator under oppdatering
+- Bufrede data brukes som reserve når du er frakoblet
+- Fikset at kartets posisjonsknapp noen ganger ikke zoomet til brukerens posisjon
+
 ## 5.2.0
 
 - Svenske snøskredvarsler fra lavinprognoser.se

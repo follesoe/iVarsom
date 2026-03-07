@@ -1,3 +1,6 @@
+- Hämtar alltid färsk data med laddningsindikator under uppdatering
+- Cachad data används som reserv vid offline
+
 Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppdatering.
 
 - Svenska lavinvarningar från lavinprognoser.se
@@ -8,7 +11,6 @@ Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppda
 - Lavinproblemgrafik visar nu representativa bilder
 - Uppdaterade faronivåfärger för att matcha de nya officiella färgerna
 - Favoritregioner med iCloud-synkronisering mellan enheter
-- Offlinestöd: cachad data visas direkt vid start, fungerar utan nätverk
 - Förbättrad tillförlitlighet när appen aktiveras från bakgrunden
 
 Ha en fin och säker topptursäsong!

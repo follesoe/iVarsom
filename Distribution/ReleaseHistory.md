@@ -1,5 +1,11 @@
 # Release History
 
+## 5.3.0
+
+- App now always loads fresh data from the network, with a loading indicator while refreshing
+- Cached data is used as fallback when offline
+- Fixed map location button sometimes not zooming to user position
+
 ## 5.2.0
 
 - Swedish avalanche warnings from lavinprognoser.se
