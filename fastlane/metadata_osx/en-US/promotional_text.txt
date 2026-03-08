@@ -1,1 +1,1 @@
-New in v5.2: Swedish avalanche warnings from lavinprognoser.se! Interactive map view and Swedish language support.
+New in v5.3: Translate warnings to your language! Now available in Swedish, German, French, Spanish, and Italian.
