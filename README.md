@@ -94,8 +94,8 @@ Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8I
 
 ### Requirements
 
-- Xcode 26+
-- Swift 6
+- Xcode 26.6 (verified locally; includes Swift 6.3.3)
+- Swift 6 language mode
 - iOS 26+ / macOS 26+ / watchOS 26+
 
 ### Building from Source
@@ -106,17 +106,49 @@ cd iVarsom
 open Skredvarsel.xcodeproj
 ```
 
-Dependencies (SwiftLocation) are resolved automatically via Swift Package Manager.
+The app uses Apple frameworks only; no external packages need to be resolved. The macOS application uses Mac Catalyst.
 
 ### Running Tests
 
 ```bash
-xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 16'
+xcodebuild test -project Skredvarsel.xcodeproj -scheme Skredvarsel \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=latest' \
+  CODE_SIGNING_ALLOWED=NO
+```
+
+The same suite also runs on Mac Catalyst:
+
+```bash
+xcodebuild test -scheme Skredvarsel \
+  -destination 'platform=macOS,variant=Mac Catalyst' CODE_SIGNING_ALLOWED=NO
+```
+
+The shared scheme runs deterministic Swift Testing tests and suppresses live app startup services in the unit-test host. Choose an installed simulator using `xcodebuild -showdestinations -scheme Skredvarsel` if the example device is unavailable. Tests use fixture responses, temporary caches and isolated preferences.
+
+```bash
+# iOS/iPadOS app, watch app, and embedded widgets
+xcodebuild build -scheme Skredvarsel -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
+
+# macOS via Mac Catalyst, including its widget
+xcodebuild build -scheme Skredvarsel -destination 'generic/platform=macOS,variant=Mac Catalyst' CODE_SIGNING_ALLOWED=NO
+
+# watchOS app and complication extension
+xcodebuild build -scheme SkredvarselWatch -destination 'generic/platform=watchOS Simulator' CODE_SIGNING_ALLOWED=NO
 ```
 
 ### Architecture
 
-The app uses SwiftUI with MVVM architecture. See [CLAUDE.md](CLAUDE.md) for detailed architecture documentation.
+Each window owns a `RegionBrowserModel`, with separate observable models for warning details and location. Rendering views take values, bindings and focused actions. A `WarningRepository` actor routes requests to the Norwegian or Swedish provider and applies the caller's cache policy; widgets and Siri reuse this routing. Provider response mapping is independent of networking, and previews use the real models with fixture services.
+
+View tasks own asynchronous loading and cancellation. Selection uses IDs, and loading states carry their results. See the [modernization review](docs/modernization.md) for decisions, test coverage and remaining device checks, and [CLAUDE.md](CLAUDE.md) for repository guidance.
+
+### Previewing a winter forecast
+
+In the scheme's **Run → Arguments → Environment Variables**, set `SKREDVARSEL_PREVIEW_DATE` to an ISO 8601 timestamp such as `2026-02-21T12:00:00Z`. This affects the forecast clock in Debug builds only; remove the variable to return to today. It does not change the system clock. Swedish detailed forecasts support dated requests, while their overview endpoint still describes the live season.
+
+### Xcode Cloud
+
+`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (26.6 was verified locally). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
 
 ### Fastlane
 

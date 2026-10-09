@@ -64,3 +64,13 @@ extension AvalancheWarningProtocol {
         }
     }
 }
+
+
+extension Array where Element: AvalancheWarningProtocol {
+    /// Prefer today's bulletin, otherwise the latest available date. Empty API
+    /// responses are normal outside the season and must never create an index of -1.
+    func currentWarningIndex(on date: Date, calendar: Calendar = .current) -> Index? {
+        firstIndex { calendar.isDate($0.ValidFrom, inSameDayAs: date) }
+            ?? indices.max { self[$0].ValidFrom < self[$1].ValidFrom }
+    }
+}

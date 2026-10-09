@@ -1,33 +1,47 @@
-import SwiftUI
 import MapKit
+import SwiftUI
 
 @main
 struct iVarsomApp: App {
-    @State var vm = RegionListViewModel(
-        client: VarsomApiClient(),
-        locationManager: LocationManager())
+    @State private var favorites: FavoritesService?
+
+    init() {
+        // Unit tests exercise injected services; their host must not start live
+        // networking, location prompts or the user's iCloud/preferences store.
+        let isUnitTestHost = ProcessInfo.processInfo.environment["SKREDVARSEL_UNIT_TESTS"] == "1"
+        _favorites = State(initialValue: isUnitTestHost ? nil : FavoritesService())
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView(vm: vm)
+            if let favorites {
+                ContentView(favorites: favorites)
+            } else {
+                Color.clear
+            }
         }
     }
 }
 
 private struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var sizeClass
-    @Bindable var vm: RegionListViewModel
-    @State private var sheetRegion: RegionSummary?
-    @State private var cameraPosition: MapCameraPosition = AvalancheMapView<RegionListViewModel>.overviewPosition
+    @State private var vm: RegionBrowserModel
+
+    init(favorites: FavoritesService) {
+        _vm = State(initialValue: RegionBrowserModel(favorites: favorites))
+    }
+    @State private var isMapDetailPresented = false
+    @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
 
     var body: some View {
         Group {
             if sizeClass == .regular {
-                RegionList<RegionListViewModel>(vm: vm)
+                RegionList(vm: vm)
             } else {
                 TabView {
                     Tab("Regions", systemImage: "list.bullet") {
-                        RegionList<RegionListViewModel>(vm: vm)
+                        RegionList(vm: vm)
                     }
                     Tab("Map", systemImage: "map") {
                         iPhoneMapTab
@@ -35,39 +49,46 @@ private struct ContentView: View {
                 }
             }
         }
+        .task(id: scenePhase == .active ? vm.selectedRegionID : nil) {
+            guard scenePhase == .active else { return }
+            await vm.detail.load()
+        }
         .onOpenURL { url in
             let regionId = UrlUtils.extractParam(url: url, name: "id")
             if let regionId = regionId {
                 Task {
-                    await vm.selectRegionById(regionId: regionId)
-                    await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
+                    await vm.selectRegion(id: regionId)
                 }
             }
         }
     }
 
+    private func locate() async -> Location2D? {
+        if let coordinate = vm.location.coordinate { return coordinate }
+        await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+        return vm.location.coordinate
+    }
+
     private var iPhoneMapTab: some View {
         NavigationStack {
-            AvalancheMapView<RegionListViewModel>(
-                vm: vm,
+            AvalancheMapView(
+                regions: vm.allRegions, searchTerm: vm.searchTerm,
+                locate: locate,
                 onRegionSelected: { region in
-                    vm.selectedRegion = region
-                    sheetRegion = region
-                    Task {
-                        await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
-                    }
+                    vm.selectedRegionID = region.id
+                    isMapDetailPresented = true
                 },
                 cameraPosition: $cameraPosition
             )
             .toolbarBackground(.hidden, for: .navigationBar)
         }
-        .sheet(item: $sheetRegion) { _ in
+        .sheet(isPresented: $isMapDetailPresented) {
             NavigationStack {
-                RegionDetailContainer<RegionListViewModel>(vm: vm)
+                RegionDetailContainer(region: vm.selectedRegion, detail: vm.detail)
                     .toolbar {
                         ToolbarItem(placement: .confirmationAction) {
                             Button {
-                                sheetRegion = nil
+                                isMapDetailPresented = false
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundStyle(.secondary)
@@ -78,10 +99,10 @@ private struct ContentView: View {
             .presentationDetents([.medium, .large])
         }
         .task {
-            await vm.requestLocationForMap()
-            if let location = vm.userLocation {
+            await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+            if let location = vm.location.coordinate {
                 withAnimation {
-                    cameraPosition = AvalancheMapView<RegionListViewModel>.userPosition(location)
+                    cameraPosition = AvalancheMapView.userPosition(location)
                 }
             }
         }

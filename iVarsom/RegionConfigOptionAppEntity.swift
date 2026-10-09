@@ -18,11 +18,11 @@ struct RegionConfigOptionAppEntity: AppEntity {
 
     struct RegionConfigOptionAppEntityQuery: EntityQuery {
         func entities(for identifiers: [RegionConfigOptionAppEntity.ID]) async throws -> [RegionConfigOptionAppEntity] {
-            RegionConfigOptionAppEntity.allRegions().filter { identifiers.contains($0.id) }
+            await RegionConfigOptionAppEntity.allRegions().filter { identifiers.contains($0.id) }
         }
 
         func suggestedEntities() async throws -> [RegionConfigOptionAppEntity] {
-            RegionConfigOptionAppEntity.allRegions()
+            await RegionConfigOptionAppEntity.allRegions()
         }
         
         func defaultResult() async -> RegionConfigOptionAppEntity? {
@@ -30,8 +30,10 @@ struct RegionConfigOptionAppEntity: AppEntity {
         }
     }
     
-    static func allRegions() -> [RegionConfigOptionAppEntity] {
-        let options = LocationManager().isAuthorizedForWidgetUpdates ?
+    @MainActor
+    static func allRegions() async -> [RegionConfigOptionAppEntity] {
+        let authorized = (try? await LocationManager().checkWidgetAuthorization()) ?? false
+        let options = authorized ?
             RegionOption.allOptions : RegionOption.aRegions + RegionOption.swedenRegions
 
         return options.map { region in

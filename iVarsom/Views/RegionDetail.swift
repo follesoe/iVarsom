@@ -2,39 +2,21 @@ import SwiftUI
 import Translation
 
 struct RegionDetail: View {
-    @Binding var selectedRegion: RegionSummary?
-    @Binding var selectedWarning: AvalancheWarningDetailed?
-    @Binding var warnings: [AvalancheWarningDetailed]
+    let selectedRegion: RegionSummary
+    @Binding var selectedWarningID: Int?
+    let warnings: [AvalancheWarningDetailed]
     @State private var showWarningText = false
-    @State private var translatedTexts: [String: String] = [:]
-    @State private var isTranslating = false
-    @State private var downloadConfig: TranslationSession.Configuration?
+    @State private var translation = WarningTranslationModel()
 
-    private var isTranslated: Bool { !translatedTexts.isEmpty }
-
-    private let sourceLanguage = Locale.Language(identifier: "en")
-
-    private var targetLanguage: Locale.Language {
-        guard let preferred = Locale.preferredLanguages.first else {
-            return Locale.Language(identifier: "en")
-        }
-        return Locale(identifier: preferred).language
-    }
-
-    private var targetLanguageCode: String {
-        targetLanguage.languageCode?.identifier ?? "en"
-    }
-
-    private var showTranslateButton: Bool {
-        let code = targetLanguageCode
-        return code != "nb" && code != "nn" && code != "sv" && code != "en"
+    private var selectedWarning: AvalancheWarningDetailed? {
+        warnings.first { $0.id == selectedWarningID }
     }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 if let selectedWarning = selectedWarning {
-                    if showTranslateButton {
+                    if translation.isAvailable {
                         translateButton
                             .padding(.horizontal)
                             .padding(.top, 8)
@@ -44,67 +26,39 @@ struct RegionDetail: View {
                         WarningSummary(
                             warning: selectedWarning,
                             includeLocationIcon: false,
-                            translatedTexts: translatedTexts,
-                            translatedLanguageCode: isTranslated ? targetLanguageCode : nil)
+                            translatedTexts: translation.texts,
+                            translatedLanguageCode: translation.isTranslated ? translation.languageCode : nil)
                         if selectedWarning.hasActiveEmergencyWarning,
-                       let emergencyWarning = selectedWarning.EmergencyWarning {
+                            let emergencyWarning = selectedWarning.EmergencyWarning
+                        {
                             EmergencyWarningBanner(
                                 message: emergencyWarning,
-                                textLanguageCode: isTranslated ? targetLanguageCode : selectedWarning.textLanguageCode,
-                                translatedTexts: translatedTexts)
+                                textLanguageCode: translation.isTranslated
+                                    ? translation.languageCode : selectedWarning.textLanguageCode,
+                                translatedTexts: translation.texts)
                         }
                     }
                     .frame(maxWidth: 600)
                     .cornerRadius(10)
                     .padding()
-                    .sheet(isPresented: $showWarningText, content: {
-                        MainWarningTextView(
-                            selectedWarning: selectedWarning,
-                            isShowingSheet: $showWarningText,
-                            translatedTexts: translatedTexts,
-                            translatedLanguageCode: isTranslated ? targetLanguageCode : nil)
-                    })
+                    .sheet(
+                        isPresented: $showWarningText,
+                        content: {
+                            MainWarningTextView(
+                                selectedWarning: selectedWarning,
+                                isShowingSheet: $showWarningText,
+                                translatedTexts: translation.texts,
+                                translatedLanguageCode: translation.isTranslated ? translation.languageCode : nil)
+                        }
+                    )
                     .onTapGesture(perform: {
                         showWarningText = true
                     })
                 }
 
                 if warnings.count > 1 {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        ScrollViewReader { value in
-                            HStack(spacing: 8) {
-                                ForEach(warnings) { warning in
-                                    let action = {
-                                        withAnimation {
-                                            self.selectedWarning = warning
-                                            value.scrollTo(warning.id)
-                                        }
-                                    }
-
-                                    let isSelected = selectedWarning?.RegId == warning.RegId
-
-                                    let cell = DayCell(
-                                        dangerLevel: warning.DangerLevel,
-                                        date: warning.ValidFrom,
-                                        isSelected: isSelected,
-                                        hasEmergencyWarning: warning.hasActiveEmergencyWarning)
-                                            .padding(.top, 5)
-                                            .id(warning.id)
-
-                                    Button(action: action) { cell }
-                                        .buttonStyle(.plain)
-                                        .speechLocale(for: warning.RegionId)
-                                }
-                                .onAppear {
-                                    if !warnings.isEmpty, let lastWarning = warnings.filter({ $0.id > 0 }).last {
-                                        print("Scroll to \(lastWarning.id)")
-                                        value.scrollTo(lastWarning.id)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
+                    WarningDayPicker(warnings: warnings, selectedWarningID: $selectedWarningID)
+                        .padding()
                 }
                 if let selectedWarning = selectedWarning {
                     if let problems = selectedWarning.AvalancheProblems {
@@ -114,9 +68,11 @@ struct RegionDetail: View {
                             ForEach(problems) { problem in
                                 AvalancheProblemView(
                                     problem: problem,
-                                    textLanguageCode: isTranslated ? targetLanguageCode : selectedWarning.textLanguageCode,
-                                    translatedTexts: translatedTexts)
-                                    .padding()
+                                    textLanguageCode: translation.isTranslated
+                                        ? translation.languageCode : selectedWarning.textLanguageCode,
+                                    translatedTexts: translation.texts
+                                )
+                                .padding()
                             }
                         }
                         .frame(maxWidth: 600)
@@ -131,19 +87,19 @@ struct RegionDetail: View {
                 }
             }
         }
-        .translationTask(downloadConfig) { session in
-            await performTranslation(session: session)
+        .translationTask(translation.configuration) { session in
+            await translation.translate(using: session)
         }
-        .onChange(of: selectedWarning?.RegId) { _, _ in
-            translatedTexts = [:]
+        .onChange(of: selectedWarning.map(WarningIdentity.init), initial: true) { _, _ in
+            translation.select(selectedWarning)
         }
-        .navigationTitle(selectedRegion?.Name ?? "Region")
+        .navigationTitle(selectedRegion.Name)
         .navigationBarTitleDisplayMode(.large)
     }
 
     private var translateButton: some View {
         HStack {
-            if isTranslating {
+            if translation.isTranslating {
                 ProgressView()
                     .controlSize(.small)
                 Text(NSLocalizedString("Translating...", comment: "Translation in progress indicator"))
@@ -151,16 +107,10 @@ struct RegionDetail: View {
                     .foregroundStyle(.secondary)
             } else {
                 Button {
-                    if isTranslated {
-                        translatedTexts = [:]
-                    } else {
-                        Task {
-                            await translateContent()
-                        }
-                    }
+                    translation.toggle()
                 } label: {
                     Label(
-                        isTranslated
+                        translation.isTranslated
                             ? NSLocalizedString("Show Original", comment: "Button to show original untranslated text")
                             : NSLocalizedString("Translate", comment: "Button to translate warning text"),
                         systemImage: "translate"
@@ -169,78 +119,26 @@ struct RegionDetail: View {
                 }
             }
             Spacer()
-            if isTranslated {
-                Text(NSLocalizedString("Machine translated from English", comment: "Indicator that text was machine translated from English"))
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+            if translation.isTranslated {
+                Text(
+                    NSLocalizedString(
+                        "Machine translated from English",
+                        comment: "Indicator that text was machine translated from English")
+                )
+                .font(.caption2)
+                .foregroundStyle(.secondary)
             }
         }
     }
 
-    private func translateContent() async {
-        let availability = LanguageAvailability()
-        let status = await availability.status(from: sourceLanguage, to: targetLanguage)
-
-        switch status {
-        case .installed:
-            // Language pack available — translate silently
-            let session = TranslationSession(
-                installedSource: sourceLanguage,
-                target: targetLanguage
-            )
-            await performTranslation(session: session)
-
-        case .supported:
-            // Language pack needs download — show system dialog
-            downloadConfig = .init(source: sourceLanguage, target: targetLanguage)
-
-        default:
-            break
-        }
-    }
-
-    private func performTranslation(session: TranslationSession) async {
-        guard let warning = selectedWarning else { return }
-        isTranslating = true
-        defer { isTranslating = false }
-
-        nonisolated(unsafe) let session = session
-        var requests: [TranslationSession.Request] = []
-        requests.append(.init(sourceText: warning.MainText))
-        if let danger = warning.AvalancheDanger, !danger.isEmpty {
-            requests.append(.init(sourceText: danger))
-        }
-        if let emergency = warning.EmergencyWarning, !emergency.isEmpty {
-            requests.append(.init(sourceText: emergency))
-        }
-        if let problems = warning.AvalancheProblems {
-            for problem in problems {
-                requests.append(.init(sourceText: problem.AvalancheProblemTypeName))
-                if !problem.TriggerSenitivityPropagationDestuctiveSizeText.isEmpty {
-                    requests.append(.init(sourceText: problem.TriggerSenitivityPropagationDestuctiveSizeText))
-                }
-            }
-        }
-
-        do {
-            let responses = try await session.translations(from: requests)
-            var texts: [String: String] = [:]
-            for response in responses {
-                texts[response.sourceText] = response.targetText
-            }
-            translatedTexts = texts
-        } catch {
-            // Translation failed
-        }
-    }
 }
 
 #Preview("Region Detail") {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
-    return NavigationView {
+    return NavigationStack {
         RegionDetail(
-            selectedRegion: .constant(testRegions[1]),
-            selectedWarning: .constant(warningDetailed[0]),
-            warnings: .constant(warningDetailed))
+            selectedRegion: testRegions[1],
+            selectedWarningID: .constant(warningDetailed[0].id),
+            warnings: warningDetailed)
     }
 }

@@ -8,7 +8,9 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 
 **Language**: Swift 6
 **Framework**: SwiftUI
-**Dependency**: SwiftLocation v6.0.0 (via SPM)
+**Dependencies**: Apple frameworks only
+**Toolchain**: Xcode 26.6 / Swift 6.3.3 compiler, Swift 6 language mode
+**macOS**: Mac Catalyst
 
 ## Build Commands
 
@@ -27,38 +29,58 @@ xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iP
 
 ## Architecture
 
-The app follows MVVM with protocol-based abstractions for testability.
+The app uses focused observable presentation models with protocols at service boundaries. Rendering views receive values, bindings and actions; avoid a generic protocol spanning an entire screen hierarchy.
 
 ### Key Directories
 
 - `iVarsom/` - Main iOS/iPadOS/macOS app
   - `Models/` - Data models (AvalancheWarning*, RegionSummary, DangerLevel, AvalancheProblem)
   - `Views/` - SwiftUI views
-  - `ViewModels/` - RegionListViewModel with reactive state management
-  - `Services/` - VarsomApiClient (API v6.3.0), LocationManager
-  - `Abstractions/` - Protocols for testing/previews
-- `iVarsomWidget/` - iOS/iPadOS widget extension
-- `iVarsomWidgetWatch/` - watchOS widget extension
+  - `ViewModels/` - RegionBrowserModel, WarningDetailModel, RegionLocationModel and WarningTranslationModel
+  - `Services/` - WarningRepository, provider clients/mapping, caching, favorites and native location
+- `iVarsomWidget/` - shared iOS/iPadOS/Catalyst and watchOS widget implementation
 - `iVarsomWatch WatchKit Extension/` - watchOS app
-- `iVarsomTests/` - XCTest unit tests
+- `iVarsomTests/` - deterministic Swift Testing tests (import the app module; do not add production files to this target)
 
 ### Core Services
 
 **VarsomApiClient** (`Services/VarsomApiClient.swift`):
 - Base URL: `https://api01.nve.no/hydrology/forecast/avalanche/v6.3.0/api`
-- Main actor isolated, uses async/await
+- Actor isolated, uses async/await and an injectable HTTPTransport
 - Methods: `loadRegions()`, `loadWarnings()`, `loadWarningsDetailed()`
 - Custom date decoding: `.varsomDate` strategy
 
 **LocationManager** (`Services/LocationManager.swift`):
-- Thread-safe CoreLocation wrapper using SwiftLocation
-- Main actor isolated for permission/update operations
-- `isAuthorized` property safe to call from any thread
+- Native Core Location wrapper isolated entirely to MainActor
+- Cancellation-aware permission/update operations; one-shot location requests time out after 20 seconds
+- Construct and read authorization on MainActor, including in widgets and intents
 
-**RegionListViewModel** (`ViewModels/RegionListViewModel.swift`):
-- Manages regions, warnings, favorites (UserDefaults persistence)
-- LoadState enum: idle, loading, loaded, failed
-- Implements `RegionListViewModelProtocol` for testability
+**RegionBrowserModel** (`ViewModels/RegionBrowserModel.swift`):
+- Per-window region catalog, search and selected region ID; shares FavoritesService
+- Owns separate WarningDetailModel and RegionLocationModel instances
+- Selection is resolved from the current catalog, never retained as a stale region copy
+- LoadState<Value> carries the result alongside its phase
+
+**WarningDetailModel** (`ViewModels/WarningDetailModel.swift`):
+- Owns warning loading, selected warning ID and a single loaded snapshot
+- Runs in the caller's task and rejects obsolete results
+- Receives a WarningRepositoryProviding dependency; no country-routing or disk logic
+
+**WarningRepository** (`Services/WarningRepository.swift`):
+- Actor shared by a window's models; widgets and Siri use the same implementation
+- Preserves partial country results and last-known-data fallback for the app
+- Widgets request network-only detailed warnings; Siri uses lightweight summaries
+- Older requests cannot overwrite newer cached data for the same region
+- LavinprognoserResponse and LavinprognoserMapper separate wire data and pure conversion from HTTP
+
+**Previews** (`ViewModels/PreviewModels.swift`):
+- Use the real browser with fixture services and separate preview preferences
+- Never start location or network services
+- Debug-only `SKREDVARSEL_PREVIEW_DATE` sets the forecast date for manual winter-data checks
+
+### Modernization notes
+
+See [docs/modernization.md](docs/modernization.md) for concurrency boundaries, state ownership, cache behavior and validation guidance.
 
 ### Widget System
 

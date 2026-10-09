@@ -1,41 +1,30 @@
 import SwiftUI
 
-struct SelectRegionListView<ViewModelType: RegionListViewModelProtocol>: View {
+struct SelectRegionListView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(ViewModelType.self) var vm: ViewModelType
+    var addFavorite: (Int) async -> Void
 
     var body: some View {
         List {
             Section("Norway") {
-                ForEach(RegionOption.allOptions.filter { Country.from(regionId: $0.id) != .sweden }) { option in
-                    Text(option.name)
-                        .onTapGesture {
-                            Task {
-                                if (option.id == RegionOption.currentPositionOption.id) {
-                                    await vm.updateLocation()
-                                }
-
-                                vm.addFavorite(id: option.id)
-                                dismiss()
-                            }
-                        }
-                }
+                options(RegionOption.allOptions.filter { Country.from(regionId: $0.id) != .sweden })
             }
-            Section("Sweden") {
-                ForEach(RegionOption.swedenRegions) { option in
-                    Text(option.name)
-                        .onTapGesture {
-                            Task {
-                                vm.addFavorite(id: option.id)
-                                dismiss()
-                            }
-                        }
+            Section("Sweden") { options(RegionOption.swedenRegions) }
+        }
+    }
+
+    private func options(_ values: [RegionOption]) -> some View {
+        ForEach(values) { option in
+            Button(option.name) {
+                Task {
+                    await addFavorite(option.id)
+                    dismiss()
                 }
             }
         }
     }
 }
 
-#Preview("Select Region List View") {
-    return SelectRegionListView<RegionListViewModel>()
+#Preview("Select Region List") {
+    SelectRegionListView { _ in }
 }

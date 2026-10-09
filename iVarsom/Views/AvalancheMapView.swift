@@ -1,9 +1,11 @@
-import SwiftUI
-import MapKit
 import CoreLocation
+import MapKit
+import SwiftUI
 
-struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
-    @Bindable var vm: ViewModelType
+struct AvalancheMapView: View {
+    let regions: [RegionSummary]
+    let searchTerm: String
+    var locate: () async -> Location2D?
     var onRegionSelected: ((RegionSummary) -> Void)?
     @State private var geoData: RegionGeoData?
     @Binding var cameraPosition: MapCameraPosition
@@ -13,24 +15,26 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
     private let zoomedInThreshold: Double = 12
 
     static var overviewPosition: MapCameraPosition {
-        .region(MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 65, longitude: 14),
-            span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
-        ))
+        .region(
+            MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 65, longitude: 14),
+                span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15)
+            ))
     }
 
     static func userPosition(_ location: Location2D) -> MapCameraPosition {
-        .region(MKCoordinateRegion(
-            center: location,
-            span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
-        ))
+        .region(
+            MKCoordinateRegion(
+                center: location,
+                span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
+            ))
     }
 
     var body: some View {
         MapReader { proxy in
             Map(position: $cameraPosition) {
                 if let geoData = geoData {
-                    ForEach(allRegions, id: \.Id) { region in
+                    ForEach(regions, id: \.Id) { region in
                         if let feature = geoData.features.first(where: { $0.id == region.Id }) {
                             let dangerLevel = todaysDangerLevel(for: region)
                             let matches = matchesSearch(region)
@@ -64,12 +68,14 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
                     zoomedIn = delta < zoomedInThreshold
                 }
             }
-            .mapStyle(.standard(
-                elevation: .flat,
-                emphasis: .muted,
-                pointsOfInterest: .excludingAll,
-                showsTraffic: false
-            ))
+            .mapStyle(
+                .standard(
+                    elevation: .flat,
+                    emphasis: .muted,
+                    pointsOfInterest: .excludingAll,
+                    showsTraffic: false
+                )
+            )
             .mapControls {
                 MapScaleView()
                 MapCompass()
@@ -77,7 +83,8 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
             }
             .onTapGesture { screenPoint in
                 guard let geoData = geoData,
-                      let coordinate = proxy.convert(screenPoint, from: .local) else {
+                    let coordinate = proxy.convert(screenPoint, from: .local)
+                else {
                     return
                 }
                 if let tappedRegion = findRegion(at: coordinate, in: geoData) {
@@ -88,18 +95,9 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    if let location = vm.userLocation {
-                        withAnimation {
-                            cameraPosition = Self.userPosition(location)
-                        }
-                    } else {
-                        Task {
-                            await vm.requestLocationForMap()
-                            if let location = vm.userLocation {
-                                withAnimation {
-                                    cameraPosition = Self.userPosition(location)
-                                }
-                            }
+                    Task {
+                        if let location = await locate() {
+                            withAnimation { cameraPosition = Self.userPosition(location) }
                         }
                     }
                 } label: {
@@ -123,7 +121,8 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
 
     func zoomToRegion(_ region: RegionSummary) {
         if let geoData = geoData,
-           let feature = geoData.features.first(where: { $0.id == region.Id }) {
+            let feature = geoData.features.first(where: { $0.id == region.Id })
+        {
             let centroid = RegionGeoData.centroid(of: feature.polygons)
             withAnimation {
                 cameraPosition = .region(
@@ -136,12 +135,8 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         }
     }
 
-    private var allRegions: [RegionSummary] {
-        vm.regions + vm.swedenRegions
-    }
-
     private func matchesSearch(_ region: RegionSummary) -> Bool {
-        vm.searchTerm.isEmpty || region.Name.localizedCaseInsensitiveContains(vm.searchTerm)
+        searchTerm.isEmpty || region.Name.localizedCaseInsensitiveContains(searchTerm)
     }
 
     private func todaysDangerLevel(for region: RegionSummary) -> DangerLevel {
@@ -158,7 +153,7 @@ struct AvalancheMapView<ViewModelType: RegionListViewModelProtocol>: View {
         for feature in geoData.features {
             for polygon in feature.polygons {
                 if RegionGeoData.pointInPolygon(point: coordinate, polygon: polygon) {
-                    return allRegions.first { $0.Id == feature.id }
+                    return regions.first { $0.Id == feature.id }
                 }
             }
         }

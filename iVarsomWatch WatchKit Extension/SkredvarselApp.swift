@@ -2,13 +2,11 @@ import SwiftUI
 
 @main
 struct SkredvarselApp: App {
-    @State var vm = RegionListViewModel(
-        client: VarsomApiClient(),
-        locationManager: LocationManager())
+    @State private var vm = RegionBrowserModel()
 
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            RegionListView<RegionListViewModel>(vm: vm).environment(vm)
+            RegionListView(vm: vm)
         }
     }
 }

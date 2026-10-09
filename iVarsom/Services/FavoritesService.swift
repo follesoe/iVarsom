@@ -1,79 +1,90 @@
 import Foundation
+import Observation
 
-class FavoritesService: @unchecked Sendable {
+@MainActor
+protocol FavoritesCloudStore: AnyObject {
+    func object(forKey key: String) -> Any?
+    func set(_ value: Any?, forKey key: String)
+    @discardableResult func synchronize() -> Bool
+}
+
+extension NSUbiquitousKeyValueStore: FavoritesCloudStore {}
+
+/// One observable source of favorites, shared by the app's windows.
+@Observable
+@MainActor
+final class FavoritesService {
+    private(set) var ids: [Int]
     private let key = "favoriteRegionIds"
     private let defaults: UserDefaults
-    private let cloudStore: NSUbiquitousKeyValueStore
+    private let cloudStore: (any FavoritesCloudStore)?
+    private let notifications: NotificationCenter
+    @ObservationIgnored private var observer: (any NSObjectProtocol)?
 
-    nonisolated(unsafe) static let sharedDefaults: UserDefaults = {
-        let shared = UserDefaults(suiteName: "group.no.follesoe.iVarsom") ?? .standard
-        // Migrate favorites from .standard to shared suite on first use
-        if shared.object(forKey: "favoriteRegionIds") == nil,
-           let existing = UserDefaults.standard.object(forKey: "favoriteRegionIds") as? [Int],
-           !existing.isEmpty {
-            shared.set(existing, forKey: "favoriteRegionIds")
-        }
-        return shared
-    }()
+    // Each caller gets Foundation's thread-safe defaults store without sharing
+    // an unchecked Swift reference across actors. Widgets only read the snapshot.
+    nonisolated static var sharedDefaults: UserDefaults {
+        UserDefaults(suiteName: "group.no.follesoe.iVarsom") ?? .standard
+    }
 
-    init(defaults: UserDefaults = sharedDefaults, cloudStore: NSUbiquitousKeyValueStore = .default) {
+    nonisolated static func savedFavorites() -> [Int] {
+        sharedDefaults.object(forKey: "favoriteRegionIds") as? [Int] ?? []
+    }
+
+    init(defaults: UserDefaults = sharedDefaults,
+         cloudStore: (any FavoritesCloudStore)? = NSUbiquitousKeyValueStore.default,
+         notifications: NotificationCenter = .default,
+         migrateLegacyDefaults: Bool = true) {
         self.defaults = defaults
         self.cloudStore = cloudStore
+        self.notifications = notifications
+        if migrateLegacyDefaults, defaults.object(forKey: key) == nil,
+           let existing = UserDefaults.standard.object(forKey: key) as? [Int] {
+            defaults.set(existing, forKey: key)
+        }
+        ids = defaults.object(forKey: key) as? [Int] ?? []
+        cloudStore?.synchronize()
         syncFromCloud()
+        if let cloudStore {
+            observer = notifications.addObserver(
+                forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                object: cloudStore, queue: .main
+            ) { [weak self] _ in
+                Task { @MainActor [weak self] in self?.syncFromCloud() }
+            }
+        }
     }
 
-    func loadFavorites() -> [Int] {
-        return defaults.object(forKey: key) as? [Int] ?? []
+    isolated deinit {
+        if let observer { notifications.removeObserver(observer) }
     }
 
-    func saveFavorites(_ ids: [Int]) {
+    func addFavorite(_ id: Int) {
+        guard !ids.contains(id) else { return }
+        save(ids + [id])
+    }
+
+    func removeFavorite(_ id: Int) {
+        save(ids.filter { $0 != id })
+    }
+
+    /// Cloud snapshots include removals. Unioning them with local values would
+    /// resurrect deleted favorites every time another device synchronizes.
+    func syncFromCloud() {
+        guard let cloudIDs = cloudStore?.object(forKey: key) as? [Int] else { return }
+        ids = Self.unique(cloudIDs)
         defaults.set(ids, forKey: key)
-        syncToCloud(ids)
     }
 
-    func addFavorite(_ id: Int, to favorites: inout [Int]) {
-        if !favorites.contains(id) {
-            favorites.append(id)
-            saveFavorites(favorites)
-        }
+    private func save(_ values: [Int]) {
+        ids = Self.unique(values)
+        defaults.set(ids, forKey: key)
+        cloudStore?.set(ids, forKey: key)
+        cloudStore?.synchronize()
     }
 
-    func removeFavorite(_ id: Int, from favorites: inout [Int]) {
-        if let index = favorites.firstIndex(of: id) {
-            favorites.remove(at: index)
-            saveFavorites(favorites)
-        }
-    }
-
-    // MARK: - iCloud Sync
-
-    private func syncFromCloud() {
-        cloudStore.synchronize()
-        guard let cloudIds = cloudStore.object(forKey: key) as? [Int] else { return }
-        let localIds = defaults.object(forKey: key) as? [Int] ?? []
-        let merged = Array(Set(localIds).union(Set(cloudIds)))
-        if Set(merged) != Set(localIds) {
-            defaults.set(merged, forKey: key)
-        }
-    }
-
-    private func syncToCloud(_ ids: [Int]) {
-        cloudStore.set(ids, forKey: key)
-        cloudStore.synchronize()
-    }
-
-    func startObservingCloudChanges(onChange: @escaping @Sendable ([Int]) -> Void) {
-        NotificationCenter.default.addObserver(
-            forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-            object: cloudStore,
-            queue: .main
-        ) { [weak self] _ in
-            guard let self else { return }
-            guard let cloudIds = self.cloudStore.object(forKey: self.key) as? [Int] else { return }
-            let localIds = self.defaults.object(forKey: self.key) as? [Int] ?? []
-            let merged = Array(Set(localIds).union(Set(cloudIds)))
-            self.defaults.set(merged, forKey: self.key)
-            onChange(merged)
-        }
+    private static func unique(_ values: [Int]) -> [Int] {
+        var seen = Set<Int>()
+        return values.filter { seen.insert($0).inserted }
     }
 }

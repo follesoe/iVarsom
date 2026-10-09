@@ -1,9 +1,9 @@
 import SwiftUI
 import WidgetKit
 
-struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
+struct RegionListView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @Bindable var vm: ViewModelType
+    @Bindable var vm: RegionBrowserModel
     @State private var showAddRegion = false
 
     // Load warnings from yesterday
@@ -33,14 +33,14 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     var body: some View {
         NavigationSplitView {
             VStack {
-                if (vm.regionLoadState == .loading) {
+                if vm.state.phase == .loading {
                     VStack {
                         ProgressView()
                         Text("Loading Regions")
                             .font(.caption2)
                     }
                 } else {
-                    List(selection: $vm.selectedRegion) {
+                    List(selection: $vm.selectedRegionID) {
                         if hasBothCountries {
                             Section("Norway") {
                                 favoriteRows(for: norwayFavorites)
@@ -50,9 +50,13 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                             }
                         } else {
                             ForEach(vm.favoriteRegions) { region in
-                                let isLocalRegion = region.Id == vm.localRegion?.Id
-                                NavigationLink(value: region) {
-                                    RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+                                let isLocalRegion = region.Id == vm.location.region?.Id
+                                NavigationLink(value: region.id) {
+                                    if let warning = region.AvalancheWarningList.first {
+                                        RegionWatchRow(warning: warning, isLocalRegion: isLocalRegion)
+                                    } else {
+                                        Text(region.Name)
+                                    }
                                 }
                                 .listRowInsets(EdgeInsets())
                                 .listRowBackground(Color.clear)
@@ -69,7 +73,13 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                             showAddRegion = true
                         }
                         NavigationLink {
-                            AvalancheWatchMapView<ViewModelType>(vm: vm)
+                            AvalancheWatchMapView(
+                                regions: vm.allRegions,
+                                selectRegion: { vm.selectedRegionID = $0.id },
+                                locate: {
+                                    await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+                                    return vm.location.coordinate
+                                })
                         } label: {
                             HStack {
                                 Spacer()
@@ -83,46 +93,45 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
                 }
             }
         } detail: {
-            if  let selectedRegion = vm.selectedRegion {
+            if let selectedRegion = vm.selectedRegion {
                 RegionDetailView(
-                    loadingState: vm.warningLoadState,
+                    loadingState: vm.detail.state.phase,
                     selectedRegion: selectedRegion,
-                    selectedWarning: vm.selectedWarning,
-                    warnings: $vm.warnings)
-                .onAppear() {
-                    vm.warnings.removeAll()
-                    Task {
-                        await vm.loadWarnings(from: fromDays, to: toDays)
-                    }
-                }
+                    selectedWarning: vm.detail.selectedWarning,
+                    warnings: vm.detail.warnings)
             } else {
                 Text("No selected region")
             }
         }
-        .sheet(isPresented: $showAddRegion, content: {
-            SelectRegionListView<ViewModelType>()
-        })
-        .task {
-            if (vm.needsRefresh()) {
-                await vm.loadRegions()
+        .sheet(
+            isPresented: $showAddRegion,
+            content: {
+                SelectRegionListView { id in
+                    if id == RegionOption.currentPositionOption.id {
+                        await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+                    }
+                    vm.favorites.addFavorite(id)
+                }
             }
+        )
+        .task(id: scenePhase == .active ? vm.selectedRegionID : nil) {
+            guard scenePhase == .active else { return }
+            await vm.detail.load(from: fromDays, to: toDays)
+        }
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
+            await vm.refreshOnActivation()
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active && oldPhase == .background {
                 WidgetCenter.shared.reloadAllTimelines()
-                Task {
-                    if (vm.needsRefresh()) {
-                        await vm.loadRegions()
-                    }
-                }
             }
         }
         .onOpenURL { url in
             let regionId = UrlUtils.extractParam(url: url, name: "id")
             if let regionId = regionId {
                 Task {
-                    await vm.selectRegionById(regionId: regionId)
-                    await vm.loadWarnings(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
+                    await vm.selectRegion(id: regionId)
                 }
             }
         }
@@ -130,9 +139,13 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
 
     private func favoriteRows(for regions: [RegionSummary]) -> some View {
         ForEach(regions) { region in
-            let isLocalRegion = region.Id == vm.localRegion?.Id
-            NavigationLink(value: region) {
-                RegionWatchRow(warning: region.AvalancheWarningList[0], isLocalRegion: isLocalRegion)
+            let isLocalRegion = region.Id == vm.location.region?.Id
+            NavigationLink(value: region.id) {
+                if let warning = region.AvalancheWarningList.first {
+                    RegionWatchRow(warning: warning, isLocalRegion: isLocalRegion)
+                } else {
+                    Text(region.Name)
+                }
             }
             .listRowInsets(EdgeInsets())
             .listRowBackground(Color.clear)
@@ -141,14 +154,15 @@ struct RegionListView<ViewModelType: RegionListViewModelProtocol>: View {
     }
 
     func removeFavorite(at offsets: IndexSet) {
-        let id = vm.favoriteRegions[offsets.first!].id
-        vm.removeFavorite(id: id)
+        let ids = offsets.compactMap { index in
+            vm.favoriteRegions.indices.contains(index) ? vm.favoriteRegions[index].id : nil
+        }
+        for id in ids { vm.removeFavorite(id: id) }
     }
 }
 
-#Preview("Region List") {
-    return RegionListView(vm: DesignTimeRegionListViewModel(
-        state: .loaded,
-        locationIsAuthorized: false,
-        filteredRegions: testARegions))
-}
+#if DEBUG
+    #Preview("Region List") {
+        RegionListView(vm: PreviewModels.browser())
+    }
+#endif

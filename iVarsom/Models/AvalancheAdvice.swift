@@ -1,6 +1,6 @@
 import Foundation
 
-struct AvalancheAdvice: Codable {
+struct AvalancheAdvice: Sendable, Codable {
     var AdviceID: Int
     var ImageUrl: String
     var Text: String

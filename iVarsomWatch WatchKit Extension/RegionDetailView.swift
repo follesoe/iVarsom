@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct RegionDetailView: View {
-    var loadingState: LoadState
+    var loadingState: LoadPhase
     var selectedRegion: RegionSummary
     var selectedWarning: AvalancheWarningDetailed?
-    @Binding var warnings: [AvalancheWarningDetailed]
+    let warnings: [AvalancheWarningDetailed]
     @State private var showWarningText = false
     @State private var showProblemDetails = false
 
@@ -55,9 +55,18 @@ struct RegionDetailView: View {
                     .navigationTitle("Avalanche problem")
                 }
             } else {
-                VStack {
-                    ProgressView();
-                    Text("Loading Details")
+                Group {
+                    switch loadingState {
+                    case .idle, .loading:
+                        VStack {
+                            ProgressView()
+                            Text("Loading Details")
+                        }
+                    case .failed:
+                        Text("Service unavailable")
+                    case .loaded:
+                        Text("No warning available")
+                    }
                 }.padding()
             }
 
@@ -107,7 +116,7 @@ struct RegionDetailView: View {
 
 #Preview("Region Detail") {
     let warningDetailed: [AvalancheWarningDetailed] = load("DetailedWarning.json")
-    return NavigationView {
-        RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: warningDetailed[0], warnings: .constant(warningDetailed))
+    return NavigationStack {
+        RegionDetailView(loadingState: .loaded, selectedRegion: testRegions[1], selectedWarning: warningDetailed[0], warnings: warningDetailed)
     }
 }

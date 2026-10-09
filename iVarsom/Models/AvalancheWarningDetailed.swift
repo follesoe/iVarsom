@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct AvalancheWarningDetailed: Codable, AvalancheWarningProtocol {
+struct AvalancheWarningDetailed: Sendable, Codable, AvalancheWarningProtocol {
     var PreviousWarningRegId: Int?
     var DangerLevelName: String?
     var UtmZone: Int
@@ -34,5 +34,14 @@ struct AvalancheWarningDetailed: Codable, AvalancheWarningProtocol {
     var hasActiveEmergencyWarning: Bool {
         guard let warning = EmergencyWarning, !warning.isEmpty else { return false }
         return warning != "Not given" && warning != "Ikke gitt"
+    }
+}
+
+extension AvalancheWarningDetailed {
+    var summary: AvalancheWarningSimple {
+        AvalancheWarningSimple(RegId: RegId, RegionId: RegionId, RegionName: RegionName,
+            RegionTypeName: RegionTypeName, ValidFrom: ValidFrom, ValidTo: ValidTo,
+            NextWarningTime: NextWarningTime, PublishTime: PublishTime, DangerLevel: DangerLevel,
+            MainText: MainText, LangKey: LangKey, EmergencyWarning: EmergencyWarning)
     }
 }

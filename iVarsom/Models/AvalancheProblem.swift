@@ -2,7 +2,7 @@ import Foundation
 
 typealias DangerLevelEnumType = DangerLevel
 
-struct AvalancheProblem: Codable {
+struct AvalancheProblem: Sendable, Codable {
     var AvalancheProblemId: Int
     var AvalancheExtId: Int
     var AvalancheExtName: String

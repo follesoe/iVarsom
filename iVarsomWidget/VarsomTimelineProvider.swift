@@ -1,8 +1,8 @@
-import WidgetKit
 import AppIntents
-import SwiftUI
-import Intents
 import CoreLocation
+import Intents
+import SwiftUI
+import WidgetKit
 
 struct MissingLocationAuthorizationError: Error, LocalizedError {
     public var errorDescription: String? {
@@ -12,9 +12,9 @@ struct MissingLocationAuthorizationError: Error, LocalizedError {
 
 struct Provider: AppIntentTimelineProvider {
     typealias Entry = WarningEntry
-    
+
     typealias Intent = SelectRegion
-    
+
     func placeholder(in context: Context) -> WarningEntry {
         let notAssessedText = NSLocalizedString("Not assessed", comment: "B-region with no avalanche rating")
         return WarningEntry(
@@ -37,7 +37,7 @@ struct Provider: AppIntentTimelineProvider {
             hasError: false,
             errorMessage: nil)
     }
-    
+
     func errorEntry(errorMessage: String) -> WarningEntry {
         let errorWarning = AvalancheWarningSimple(
             RegId: 1,
@@ -51,7 +51,7 @@ struct Provider: AppIntentTimelineProvider {
             DangerLevel: .unknown,
             MainText: "There was an error updating the widget",
             LangKey: 2)
-        
+
         return WarningEntry(
             date: Date.current,
             currentWarning: errorWarning,
@@ -61,7 +61,7 @@ struct Provider: AppIntentTimelineProvider {
             hasError: true,
             errorMessage: errorMessage)
     }
-    
+
     private func regionId(for configuration: SelectRegion) -> Int {
         if let region = configuration.region {
             // Prefer the id (always set) over @Property regionId (may not be hydrated)
@@ -78,9 +78,10 @@ struct Provider: AppIntentTimelineProvider {
 
         do {
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
-            guard let firstWarning = warnings.first else {
+            guard let index = warnings.currentWarningIndex(on: Date.current) else {
                 return errorEntry(errorMessage: "No warnings available")
             }
+            let firstWarning = warnings[index]
             return WarningEntry(
                 date: Date.current,
                 currentWarning: firstWarning,
@@ -98,7 +99,8 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(for configuration: SelectRegion, in context: Context) async -> Timeline<WarningEntry> {
         let regionId = regionId(for: configuration)
         do {
-            let from = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysBefore, to: Date.current)!
+            let from = Calendar.current.date(
+                byAdding: .day, value: WarningDateRange.widgetDaysBefore, to: Date.current)!
             let to = Calendar.current.date(byAdding: .day, value: WarningDateRange.widgetDaysAfter, to: Date.current)!
             let warnings = try await getWarnings(regionId: regionId, from: from, to: to)
             return createTimeline(warnings: warnings, configuration: configuration)
@@ -108,9 +110,9 @@ struct Provider: AppIntentTimelineProvider {
             return Timeline(entries: [errorEntry(errorMessage: "\(error)")], policy: .after(afterDate))
         }
     }
-    
+
     func recommendations() -> [AppIntentRecommendation<SelectRegion>] {
-        let favorites = FavoritesService().loadFavorites()
+        let favorites = FavoritesService.savedFavorites()
         let regions: [RegionOption]
         if favorites.isEmpty {
             regions = [RegionOption.currentPositionOption]
@@ -139,80 +141,27 @@ struct Provider: AppIntentTimelineProvider {
             return AppIntentRecommendation(intent: intent, description: region.name)
         }
     }
-    
+
     @MainActor
     func getWarnings(regionId: Int, from: Date, to: Date) async throws -> [AvalancheWarningSimple] {
-        let locationManager = LocationManager()
-        let apiClient = VarsomApiClient()
-        var warnings:[AvalancheWarningSimple]
-        let isAuthorized = locationManager.isAuthorizedForWidgetUpdates
-
-        if (regionId == 1) {
-            guard isAuthorized else {
+        var resolvedID = regionId
+        if regionId == RegionOption.currentPositionOption.id {
+            let locationManager = LocationManager()
+            guard try await locationManager.checkWidgetAuthorization(),
+                let location = try await locationManager.updateLocation(),
+                let feature = RegionGeoData.load()?.findNearestRegion(at: location)
+            else {
                 throw MissingLocationAuthorizationError()
             }
-
-            let location = try await locationManager.updateLocation()
-            guard let location = location else {
-                throw MissingLocationAuthorizationError()
-            }
-
-            if let geoData = RegionGeoData.load(),
-               let feature = geoData.findNearestRegion(at: location) {
-                if Country.from(regionId: feature.id) == .sweden {
-                    let swedenClient = LavinprognoserApiClient()
-                    let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
-                    warnings = try await swedenClient.loadWarnings(regionId: feature.id, daysBefore: max(daysBefore, 1))
-                } else {
-                    warnings = try await Self.loadDetailedAsSimple(
-                        apiClient: apiClient, regionId: feature.id, from: from, to: to)
-                }
-            } else {
-                throw MissingLocationAuthorizationError()
-            }
-        } else if Country.from(regionId: regionId) == .sweden {
-            let swedenClient = LavinprognoserApiClient()
-            let daysBefore = abs(Calendar.current.dateComponents([.day], from: from, to: Date.current).day ?? 1)
-            warnings = try await swedenClient.loadWarnings(regionId: regionId, daysBefore: max(daysBefore, 1))
-        } else {
-            warnings = try await Self.loadDetailedAsSimple(
-                apiClient: apiClient, regionId: regionId, from: from, to: to)
+            resolvedID = feature.id
         }
-
-        return warnings
+        let request = WarningRequest(regionID: resolvedID, from: from, to: to, relativeTo: Date.current)
+        let loaded = try await WarningRepository(cache: nil).loadWarnings(request, cachePolicy: .networkOnly)
+        return loaded.warnings.map(\.summary)
     }
 
-    private static func loadDetailedAsSimple(
-        apiClient: VarsomApiClient, regionId: Int, from: Date, to: Date
-    ) async throws -> [AvalancheWarningSimple] {
-        let detailed = try await apiClient.loadWarningsDetailed(
-            lang: VarsomApiClient.currentLang(),
-            regionId: regionId,
-            from: from,
-            to: to)
-        return detailed.map { d in
-            AvalancheWarningSimple(
-                RegId: d.RegId,
-                RegionId: d.RegionId,
-                RegionName: d.RegionName,
-                RegionTypeName: d.RegionTypeName,
-                ValidFrom: d.ValidFrom,
-                ValidTo: d.ValidTo,
-                NextWarningTime: d.NextWarningTime,
-                PublishTime: d.PublishTime,
-                DangerLevel: d.DangerLevel,
-                MainText: d.MainText,
-                LangKey: d.LangKey,
-                EmergencyWarning: d.EmergencyWarning)
-        }
-    }
-    
     func createTimeline(warnings: [AvalancheWarningSimple], configuration: SelectRegion) -> Timeline<Entry> {
-        // Find warning for today, or fall back to first warning
-        let todayIndex = warnings.firstIndex { Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day) }
-        let index = todayIndex ?? (warnings.count - 1)
-
-        guard index < warnings.count else {
+        guard let index = warnings.currentWarningIndex(on: Date.current) else {
             // No warnings available - return error timeline
             let afterDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date.current)!
             return Timeline(entries: [errorEntry(errorMessage: "No warnings available")], policy: .after(afterDate))
