@@ -3,6 +3,8 @@ import SwiftUI
 struct AvalancheWarningSnippetView: View {
     let warning: AvalancheWarningSimple?
     let error: String?
+    var downloadedAt: Date? = nil
+    var isCached = false
 
     var body: some View {
         if let warning = warning {
@@ -18,6 +20,8 @@ struct AvalancheWarningSnippetView: View {
                 Text(LocalizedStringKey(warning.DangerLevelName))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
+                Text(warning.ValidFrom, style: .date).font(.caption2)
+                if isCached { Text("Saved forecast").font(.caption2) }
             }
             .padding(.vertical, 8)
 #else
@@ -36,6 +40,11 @@ struct AvalancheWarningSnippetView: View {
                     Text(warning.ValidFrom, style: .date)
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
+                    if isCached { Text("Saved forecast").font(.caption2) }
+                    if let downloadedAt {
+                        Text(downloadedAt, format: .dateTime.day().month(.abbreviated).hour().minute())
+                            .font(.caption2)
+                    }
                 }
 
                 Spacer()

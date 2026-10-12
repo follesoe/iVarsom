@@ -21,7 +21,7 @@ struct RegionWatchRow: View {
                 .padding(.leading, 5)
                 .accessibilityHidden(true)
             VStack(alignment: .leading) {
-                let warningDate = warning.ValidFrom.getDayName()
+                let warningDate = warning.formattedForecastDate(.dateTime.weekday(.wide))
                 Text(isLocalRegion ?
                      "\(Image(systemName: "location.fill")) \(warningDate)" :
                         "\(warningDate)")
@@ -40,7 +40,7 @@ struct RegionWatchRow: View {
         }
         .background(warning.DangerLevel.color.gradient)
         .accessibilityElement(children: .combine)
-        .accessibilityValue("\(warning.ValidFrom.getDayName()), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
+        .accessibilityValue("\(warning.formattedForecastDate(.dateTime.weekday(.wide))), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
         .speechLocale(for: warning.RegionId)
     }
 }

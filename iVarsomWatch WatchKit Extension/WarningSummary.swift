@@ -27,7 +27,7 @@ struct WarningSummary: View {
                     .foregroundColor(.white)
             }
             HStack {
-                Text(selectedWarning.ValidFrom.formatted(
+                Text(selectedWarning.formattedForecastDate(
                     Date.FormatStyle()
                         .day(.defaultDigits)
                         .weekday(.wide)

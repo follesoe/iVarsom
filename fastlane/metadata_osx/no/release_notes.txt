@@ -1,17 +1,10 @@
-- Oversett varsler til ditt språk med Apples innebygde oversettelse
-- Nå tilgjengelig på svensk, tysk, fransk, spansk og italiensk
-- Henter alltid ferske data med lasteindikator under oppdatering
-- Bufrede data brukes som reserve når du er frakoblet
+Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
 
-Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdatering.
-
-- Svenske snøskredvarsler fra lavinprognoser.se
-- Interaktivt kart som viser alle regioner farget etter farenivå
-- Siri-snarveier: Spør Siri om skredvarselet
-- Oppdatert for macOS 26
-- Skredproblem-grafikk viser nå representative bilder
-- Oppdaterte farenivåfarger for å matche de nye offisielle fargene
-- Favorittregioner med iCloud-synkronisering mellom enheter
-- Forbedret pålitelighet når appen aktiveres fra bakgrunnen
-
-Med ønske om en fin og trygg topptursesong!
+- Velg gjeldende varsel eller morgendagens publiserte varsel i widgetene dine.
+- Bedre tidspunkt for oppdatering av widgeter når nye varsler ventes, og når du åpner eller oppdaterer appen.
+- Tydeligere varseldatoer og merking av lagrede varsler, med nedlastingstidspunkt i større widgeter. Widgetene viser også når et gyldig varsel mangler.
+- Hent gjeldende varsel eller morgendagens varsel med Siri og Snarveier, og bruk faregrad, varseldato og tekst i egne snarveier.
+- VoiceOver leser nå opp varselteksten og eventuelle aktive nødvarsler i widgetene.
+- Mer pålitelig håndtering av svenske kveldsoppdateringer og lagrede varsler når en nedlasting mislykkes.
+- Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
+- Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.

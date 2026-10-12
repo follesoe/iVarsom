@@ -3,111 +3,35 @@ import Foundation
 
 struct GetAvalancheWarningIntent: AppIntent {
     static let title: LocalizedStringResource = "Get Avalanche Warning"
-    static let description = IntentDescription(
-        LocalizedStringResource("Get the current avalanche danger level for a region in Norway or Sweden"))
+    static let description = IntentDescription("Get a published avalanche forecast for Norway or Sweden.")
+    static let openAppWhenRun = false
 
     @Parameter(title: "Region", requestValueDialog: IntentDialog("Which region do you want the avalanche warning for?"))
     var region: RegionConfigOptionAppEntity
 
+    @Parameter(title: "Forecast day", default: .today)
+    var day: ForecastDay
+
     static var parameterSummary: some ParameterSummary {
-        Summary("Get avalanche warning for \(\.$region)")
+        Summary("Get avalanche warning for \(\.$region)") { \.$day }
     }
 
     @MainActor
-    func perform() async throws -> some IntentResult & ProvidesDialog & ShowsSnippetView {
-        let regionId = region.regionId ?? Int(region.id) ?? RegionOption.defaultOption.id
-        let regionName = region.displayString
-
-        let repository = WarningRepository(cache: nil)
-        let today = Date.current
-
-        let warnings: [AvalancheWarningSimple]
-
-        do {
-            // Check if this is the "current position" option (id = 1)
-            if regionId == RegionOption.currentPositionOption.id {
-                let locationManager = LocationManager()
-
-                guard try await locationManager.checkAuthorization() else {
-                    return .result(
-                        dialog: IntentDialog(
-                            LocalizedStringResource(
-                                "Location access is required to get warnings for your current position."))
-                    ) {
-                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location access required"))
-                    }
-                }
-
-                guard let location = try await locationManager.updateLocation() else {
-                    return .result(
-                        dialog: IntentDialog(LocalizedStringResource("Could not determine your current location."))
-                    ) {
-                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Location unavailable"))
-                    }
-                }
-
-                if let geoData = RegionGeoData.load(),
-                    let feature = geoData.findNearestRegion(at: location)
-                {
-                    warnings = try await repository.loadSummaries(
-                        WarningRequest(regionID: feature.id, date: today, daysBefore: 0, daysAfter: 0))
-                } else {
-                    return .result(
-                        dialog: IntentDialog(LocalizedStringResource("Unable to determine your avalanche region."))
-                    ) {
-                        AvalancheWarningSnippetView(warning: nil, error: String(localized: "Region unavailable"))
-                    }
-                }
-            } else {
-                warnings = try await repository.loadSummaries(
-                    WarningRequest(regionID: regionId, date: today, daysBefore: 0, daysAfter: 0))
-            }
-        } catch {
-            let dialog: IntentDialog
-            if let urlError = error as? URLError, urlError.code == .notConnectedToInternet {
-                dialog = IntentDialog(
-                    LocalizedStringResource("No internet connection. Unable to retrieve avalanche warnings."))
-            } else {
-                dialog = IntentDialog(
-                    LocalizedStringResource("Unable to retrieve avalanche warnings. Please try again later."))
-            }
-            return .result(dialog: dialog) {
-                AvalancheWarningSnippetView(warning: nil, error: String(localized: "Service unavailable"))
-            }
+    func perform() async throws -> some IntentResult & ReturnsValue<AvalancheForecastEntity> & ProvidesDialog & ShowsSnippetView {
+        guard let id = Int(region.id) else { throw ForecastError.invalidRegion }
+        let resolvedID = try await ForecastRegionResolver.resolve(id, requestPermission: true)
+        let loaded = try await ForecastService(store: SharedForecastStore(reloadWidgets: true)).load(regionID: resolvedID)
+        guard let warning = ForecastSelection.warning(in: loaded.snapshot.warnings, day: day, at: Date.current) else {
+            throw ForecastError.noForecast
         }
-
-        guard let index = warnings.currentWarningIndex(on: today) else {
-            let noWarningText = String(
-                format: String(localized: "No avalanche warning available for %@ today."),
-                regionName)
-            return .result(
-                dialog: IntentDialog(stringLiteral: noWarningText)
-            ) {
-                AvalancheWarningSnippetView(warning: nil, error: String(localized: "No warning available"))
-            }
-        }
-
-        let todayWarning = warnings[index]
-        let dangerLevelName = String(localized: LocalizedStringResource(stringLiteral: todayWarning.DangerLevelName))
-        let actualRegionName = todayWarning.RegionName
-        let mainText = todayWarning.MainText.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        let dialog: IntentDialog
-        let baseDialogText = String(
-            format: String(localized: "The avalanche danger level in %@ is %@."),
-            actualRegionName,
-            dangerLevelName)
-
-        if mainText.isEmpty {
-            dialog = IntentDialog(stringLiteral: baseDialogText)
-        } else {
-            dialog = IntentDialog(stringLiteral: "\(baseDialogText) \(mainText)")
-        }
-
-        return .result(dialog: dialog) {
-            AvalancheWarningSnippetView(warning: todayWarning, error: nil)
+        let entity = AvalancheForecastEntity(warning: warning, snapshot: loaded.snapshot, isCached: loaded.isCached)
+        let date = warning.formattedForecastDate(.init(date: .abbreviated, time: .omitted))
+        let text = String(format: String(localized: "The avalanche danger level in %@ for %@ is %@."),
+            warning.RegionName, date, warning.DangerLevel.localizedName)
+        let saved = loaded.isCached ? String(localized: "Saved forecast") + ". " : ""
+        return .result(value: entity, dialog: IntentDialog(stringLiteral: "\(saved)\(text) \(warning.MainText)")) {
+            AvalancheWarningSnippetView(warning: warning, error: nil,
+                downloadedAt: loaded.snapshot.downloadedAt, isCached: loaded.isCached)
         }
     }
-
-    static let openAppWhenRun: Bool = false
 }

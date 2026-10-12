@@ -1,7 +1,5 @@
 import WidgetKit
 import SwiftUI
-import Intents
-import CoreLocation
 
 struct WarningEntry: TimelineEntry {
     let date: Date
@@ -11,6 +9,13 @@ struct WarningEntry: TimelineEntry {
     var relevance: TimelineEntryRelevance?
     let hasError: Bool
     let errorMessage: String?
+    var downloadedAt: Date? = nil
+    var isCached = false
+
+    var accessibilitySummary: String {
+        if hasError { return "\(currentWarning.RegionName). \(errorMessage ?? String(localized: "No warning available"))" }
+        return currentWarning.accessibilitySummary(downloadedAt: downloadedAt, isCached: isCached)
+    }
 }
 
 func getWidgetURL(entry: Provider.Entry) -> URL? {
@@ -25,7 +30,7 @@ struct LocationIconText: View {
     var text: String
     var config: SelectRegion
     var body: some View {
-        Text(config.region?.regionId == 1 ?
+        Text(config.region?.id == "1" ?
             "\(Image(systemName: "location.fill")) \(text)" :
             "\(text)")
     }
@@ -36,16 +41,6 @@ struct SmallWarningWidgetView: View {
     @Environment(\.showsWidgetContainerBackground) var showsWidgetContainerBackground
     @Environment(\.colorScheme) private var colorScheme
     var entry: Provider.Entry
-
-    /// Returns true when widget is in StandBy or CarPlay (background removed in fullColor mode)
-    var isStandByOrCarPlay: Bool {
-        widgetRenderingMode == .fullColor && !showsWidgetContainerBackground
-    }
-
-    /// Returns true when widget is on Lock Screen (vibrant mode with background removed)
-    var isLockScreen: Bool {
-        widgetRenderingMode == .vibrant && !showsWidgetContainerBackground
-    }
 
     var textColor: Color {
         // In vibrant mode (Lock Screen, StandBy night), use primary color
@@ -78,10 +73,15 @@ struct SmallWarningWidgetView: View {
 
             }
             Spacer()
-            LocationIconText(text: entry.date.getDayName(), config: entry.configuration)
+            LocationIconText(text: entry.currentWarning.formattedForecastDate(.dateTime.weekday(.abbreviated).day().month(.abbreviated)), config: entry.configuration)
                 .textCase(.uppercase)
                 .font(.caption2)
                 .foregroundColor(textColor)
+            if entry.isCached {
+                Label("Saved forecast", systemImage: "clock.arrow.circlepath")
+                    .font(.caption2)
+                    .foregroundStyle(textColor)
+            }
             Text(entry.currentWarning.RegionName)
                 .font(.system(size: 18))
                 .fontWeight(.bold)
@@ -121,6 +121,7 @@ struct MediumWarningWidgetView: View {
                 mainTextLineLimit: hasEmergency ? 3 : 4,
                 includeLocationIcon: entry.configuration.region?.regionId == 1,
                 compact: hasEmergency)
+            ForecastDownloadLabel(entry: entry)
             if entry.currentWarning.hasActiveEmergencyWarning,
                let emergencyWarning = entry.currentWarning.EmergencyWarning {
                 EmergencyWarningBanner(message: emergencyWarning,
@@ -149,6 +150,7 @@ struct StandardWarningWidgetView: View {
                 mainTextFont: mainTextFont,
                 includeLocationIcon: entry.configuration.region?.regionId == 1)
                 .frame(height: summaryHeight)
+            ForecastDownloadLabel(entry: entry)
             if entry.currentWarning.hasActiveEmergencyWarning,
                let emergencyWarning = entry.currentWarning.EmergencyWarning {
                 EmergencyWarningBanner(message: emergencyWarning,
@@ -159,11 +161,12 @@ struct StandardWarningWidgetView: View {
             Spacer(minLength: 0)
             HStack {
                 ForEach(entry.warnings) { warning in
-                    let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.current, toGranularity: .day)
+                    let isToday = warning.RegId == entry.currentWarning.RegId
                     DayCell(
                         dangerLevel: warning.DangerLevel,
                         date: warning.ValidFrom,
-                        isSelected: isToday)
+                        isSelected: isToday,
+                        regionID: warning.RegionId)
                 }
             }
             .padding(.bottom, 16)
@@ -203,7 +206,7 @@ struct InlineWidgetView: View {
 
     var body: some View {
         ViewThatFits {
-            Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
+            Text("\(entry.isCached ? "↻ " : "")\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevelName)")
             Text("\(entry.currentWarning.RegionName): \(entry.currentWarning.DangerLevel.description)")
         }
         .widgetURL(getWidgetURL(entry: entry))
@@ -249,17 +252,11 @@ struct RectangleWidgetView: View {
     
     var entry: Provider.Entry
     var body: some View {
-        let filteredWarnings = {
-            let all = entry.warnings.filter {
-                let daysBetween = Calendar.current.numberOfDaysBetween(Date.current, and: $0.ValidFrom)
-                return daysBetween >= -3 && daysBetween <= 2
-            }
-            // Show at most 4 days, preferring the most recent
-            return all.count > 4 ? Array(all.suffix(4)) : all
-        }()
+        // The timeline owns the date window; this compact view shows four days.
+        let filteredWarnings = Array(entry.warnings.suffix(4))
         
         let todayWarning = filteredWarnings.first(where: {
-            Calendar.current.isDate($0.ValidFrom, equalTo: Date.current, toGranularity: .day)
+            $0.RegId == entry.currentWarning.RegId
         })
 
         VStack(alignment: .leading, spacing: 0) {
@@ -273,11 +270,12 @@ struct RectangleWidgetView: View {
                     .font(.system(size: 11))
                     .fontWeight(.bold)
                     .widgetAccentable()
+                if entry.isCached { Text("Saved forecast").font(.system(size: 9)) }
                 HStack(spacing: 0) {
                     ForEach(filteredWarnings) { warning in
-                        let isToday = Calendar.current.isDate(warning.ValidFrom, equalTo: Date.current, toGranularity: .day)
+                        let isToday = warning.RegId == entry.currentWarning.RegId
                         VStack(spacing: 0) {
-                            Text(warning.ValidFrom.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+                            Text(warning.formattedForecastDate(.dateTime.weekday(.abbreviated)).uppercased())
                                 .font(.system(size: 9))
                                 .fontWeight(isToday ? .heavy : .regular)
                             DangerIcon(dangerLevel: warning.DangerLevel, useTintable: widgetRenderingMode != .fullColor)
@@ -326,8 +324,21 @@ struct WarningWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     var entry: Provider.Entry
     
-    @ViewBuilder
     var body: some View {
+        Group {
+            if entry.hasError {
+                UnavailableForecastWidgetView(entry: entry)
+            } else {
+                content
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(entry.accessibilitySummary)
+        .widgetURL(getWidgetURL(entry: entry))
+    }
+
+    @ViewBuilder
+    private var content: some View {
         switch family {
         case .systemSmall:
             SmallWarningWidgetView(entry: entry)
@@ -355,7 +366,6 @@ struct WarningWidgetView: View {
     }
 }
 
-@main
 struct iVarsomWidget: Widget {
     let kind: String = "iVarsomWidget"
 
@@ -367,13 +377,74 @@ struct iVarsomWidget: Widget {
                 WarningWidgetView(entry: entry)
                     .environment(\.accessibilityBridgeDisabled, true)
         }
-        .configurationDisplayName("Today's Avalanche Danger Level")
-        .description("Display today's avalanche danger level for selected regions in Norway.")
+        .configurationDisplayName("Avalanche forecast")
+        .description("Current or tomorrow's published forecast for Norway and Sweden.")
         .contentMarginsDisabled()
         #if os(watchOS)
         .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
         #else
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
+        #endif
+    }
+}
+
+private struct ForecastDownloadLabel: View {
+    let entry: WarningEntry
+
+    var body: some View {
+        if let downloadedAt = entry.downloadedAt {
+            HStack(spacing: 4) {
+                if entry.isCached { Image(systemName: "clock.arrow.circlepath") }
+                Text(entry.isCached ? "Saved forecast" : "Downloaded")
+                Text(downloadedAt, format: .dateTime.day().month(.abbreviated).hour().minute())
+            }
+            .font(.caption2)
+            .foregroundStyle(entry.currentWarning.DangerLevel == .level5 ? .white : .black)
+            .padding(.bottom, 3)
+        }
+    }
+}
+
+private struct UnavailableForecastWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: WarningEntry
+
+    private var isCompact: Bool {
+        #if os(watchOS)
+        return family == .accessoryCircular || family == .accessoryCorner
+        #else
+        return family == .accessoryCircular
+        #endif
+    }
+
+    var body: some View {
+        Group {
+            if family == .accessoryInline {
+                Text("\(entry.currentWarning.RegionName): —")
+            } else if isCompact {
+                Image(systemName: "exclamationmark.triangle")
+            } else {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(entry.currentWarning.RegionName).font(.headline)
+                    Text(entry.configuration.day == .tomorrow ? "Tomorrow" : "Current forecast")
+                        .font(.caption)
+                    Text(entry.errorMessage ?? String(localized: "No warning available"))
+                        .font(.caption)
+                        .minimumScaleFactor(0.8)
+                }
+                .padding()
+            }
+        }
+        .containerBackground(for: .widget) { Color.gray.opacity(0.15) }
+    }
+}
+
+@main
+struct AvalancheWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        iVarsomWidget()
+        #if !targetEnvironment(macCatalyst)
+        OpenForecastControl()
         #endif
     }
 }

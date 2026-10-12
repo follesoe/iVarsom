@@ -96,7 +96,7 @@ struct RegionDetailContainer: View {
             renderer.proposedSize = ProposedViewSize(width: 390, height: nil)
             renderer.scale = 3
             if let image = renderer.uiImage {
-                let date = warning.ValidFrom.formatted(.iso8601.year().month().day())
+                let date = warning.forecastDateIdentifier
                 let name = warning.RegionName
                     .replacingOccurrences(of: " ", with: "-")
                     .lowercased()

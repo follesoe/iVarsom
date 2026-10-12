@@ -255,3 +255,27 @@
 "SouthWest" = "Sydväst";
 "West" = "Väst";
 "NorthWest" = "Nordväst";
+
+/* Forecast widgets and Shortcuts */
+"Forecast day" = "Prognosdag";
+"Current forecast" = "Aktuell prognos";
+"Tomorrow" = "I morgon";
+"Saved forecast" = "Sparad prognos";
+"Downloaded" = "Hämtad";
+"Avalanche forecast" = "Lavinprognos";
+"Forecast date" = "Prognosdatum";
+"Danger level" = "Faronivå";
+"Summary" = "Sammanfattning";
+"Valid until" = "Gäller till";
+"No forecast available for this day" = "Ingen prognos tillgänglig för denna dag";
+"Open avalanche forecast" = "Öppna lavinprognos";
+"Open local forecast" = "Öppna lokal prognos";
+"Open the full bulletin for a region or your current position." = "Öppna hela prognosen för ett område eller din nuvarande position.";
+"Open a selected region, or use your current position." = "Öppna ett valt område eller använd din nuvarande position.";
+"Get a published avalanche forecast for Norway or Sweden." = "Hämta en publicerad lavinprognos för Norge eller Sverige.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Aktuell eller morgondagens publicerade prognos för Norge och Sverige.";
+"The avalanche danger level in %@ for %@ is %@." = "Lavinfaran i %@ för %@ är %@.";
+
+/* Shortcuts parameter summaries */
+"Open forecast for ${target}" = "Öppna prognosen för ${target}";
+"Get avalanche warning for ${region}" = "Hämta lavinprognos för ${region}";

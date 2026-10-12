@@ -1,10 +1,10 @@
 import SwiftUI
-import WidgetKit
 
 struct RegionListView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Bindable var vm: RegionBrowserModel
     @State private var showAddRegion = false
+    @State private var widgetRefreshID: UUID?
 
     // Load warnings from yesterday
     let fromDays = -1
@@ -118,14 +118,29 @@ struct RegionListView: View {
             guard scenePhase == .active else { return }
             await vm.detail.load(from: fromDays, to: toDays)
         }
+        .refreshable {
+            await vm.loadRegions()
+            await vm.detail.load(from: fromDays, to: toDays)
+            guard !Task.isCancelled else { return }
+            widgetRefreshID = UUID()
+        }
+        .task(id: widgetRefreshID) {
+            guard let request = widgetRefreshID else { return }
+            await WidgetForecastRefresher.refresh(forceRefresh: true)
+            if widgetRefreshID == request { widgetRefreshID = nil }
+        }
         .task(id: scenePhase) {
             guard scenePhase == .active else { return }
             await vm.refreshOnActivation()
+            await WidgetForecastRefresher.refresh()
         }
-        .onChange(of: scenePhase) { oldPhase, newPhase in
-            if newPhase == .active && oldPhase == .background {
-                WidgetCenter.shared.reloadAllTimelines()
+        .task(id: scenePhase == .active ? ForecastNavigation.shared.request?.id : nil) {
+            guard scenePhase == .active, let request = ForecastNavigation.shared.claimRequest() else { return }
+            defer {
+                if Task.isCancelled { ForecastNavigation.shared.release(request) }
+                else { ForecastNavigation.shared.finish(request) }
             }
+            await vm.selectRegion(id: request.regionID)
         }
         .onOpenURL { url in
             let regionId = UrlUtils.extractParam(url: url, name: "id")

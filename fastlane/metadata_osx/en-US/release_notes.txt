@@ -1,17 +1,10 @@
-- Translate warnings to your language using Apple's on-device translation
-- Now available in Swedish, German, French, Spanish, and Italian
-- Always loads fresh data with a loading indicator while refreshing
-- Cached data is used as fallback when offline
+Skredvarsel 6.0 starts our sixth winter season: 2026/27.
 
-The Skredvarsel app is ready for its fifth season (2025/2026), with a major update.
-
-- Swedish avalanche warnings from lavinprognoser.se
-- Interactive map view showing all regions colored by danger level
-- Siri Shortcuts: Ask Siri for the avalanche warning
-- Updated for macOS 26
-- Avalanche problem graphics now show representative images
-- Updated danger level colors to match the new official colors
-- Favorite regions with iCloud sync across devices
-- Improved reliability when returning to the app from the background
-
-Stay safe, and happy season!
+- Choose the current forecast or tomorrow's published forecast in your widgets.
+- Improved widget refresh timing when new bulletins are expected and when you open or refresh the app.
+- Clearer forecast dates and saved-data labels, with download times in larger widgets. Widgets also show when no valid forecast is available.
+- Get current or tomorrow's forecasts with Siri and Shortcuts, and use the danger level, forecast date and text in your own shortcuts.
+- Widget VoiceOver labels now include forecast guidance and active emergency warnings.
+- More reliable Swedish evening updates and saved forecasts when a download fails.
+- Forecast dates and links stay on the correct day when you travel to another time zone.
+- Improved reliability when switching regions, updating your location, syncing favorites, translating or sharing forecasts.

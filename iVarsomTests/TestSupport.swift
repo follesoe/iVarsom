@@ -29,6 +29,12 @@ enum Fixtures {
         encoder.dateEncodingStrategy = .formatted(Formatter.varsomDate)
         return try encoder.encode(value)
     }
+
+    static func varsomAPIJSON<T: Encodable>(_ value: T) throws -> Data {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .formatted(Formatter.varsomAPIDate)
+        return try encoder.encode(value)
+    }
 }
 
 final class TemporaryDirectory: Sendable {
@@ -69,10 +75,12 @@ actor StubTransport: HTTPTransport {
 @MainActor
 final class StubNorwayClient: VarsomAPIProviding {
     var regions: Result<[RegionSummary], any Error> = .success([Fixtures.region()])
+    var onLoadRegions: (() async throws -> [RegionSummary])?
     var detailed: (Int) async throws -> [AvalancheWarningDetailed] = { [Fixtures.warning($0)] }
     private(set) var regionRequests = 0
     func loadRegions(lang: VarsomApiClient.Language) async throws -> [RegionSummary] {
         regionRequests += 1
+        if let onLoadRegions { return try await onLoadRegions() }
         return try regions.get()
     }
     private(set) var summaryRegionID: Int?

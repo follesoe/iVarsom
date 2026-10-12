@@ -6,6 +6,11 @@ struct DayCell: View {
     let date: Date
     let isSelected: Bool
     var hasEmergencyWarning: Bool = false
+    var regionID: Int = RegionOption.defaultOption.id
+
+    private func dateText(_ style: Date.FormatStyle) -> String {
+        ForecastSelection.dateText(date, regionID: regionID, style: style)
+    }
 
     var body: some View {
         VStack() {
@@ -21,13 +26,13 @@ struct DayCell: View {
                         EmergencyWarningIcon(colorScheme: colorScheme)
                     }
                 }
-            Text(date.formatted(.dateTime.day(.twoDigits).month(.twoDigits)))
+            Text(dateText(.dateTime.day(.twoDigits).month(.twoDigits)))
                 .font(.system(size: 13))
                 .fontWeight(isSelected ? .heavy : .regular)
                 .foregroundColor(.primary)
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(date.formatted(.dateTime.weekday(.wide).day(.twoDigits).month(.wide))), \(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))")
+        .accessibilityLabel("\(dateText(.dateTime.weekday(.wide).day(.twoDigits).month(.wide))), \(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

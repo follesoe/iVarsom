@@ -69,6 +69,7 @@ actor VarsomApiClient: VarsomAPIProviding {
         argumentDateFormatter.locale = Locale(identifier: "en_US_POSIX")
         argumentDateFormatter.calendar = Calendar(identifier: .gregorian)
         argumentDateFormatter.dateFormat = "yyyy-MM-dd"
+        argumentDateFormatter.timeZone = TimeZone(identifier: "Europe/Oslo")
     }
 
     public func loadRegions(lang: Language) async throws -> [RegionSummary] {
@@ -162,7 +163,7 @@ actor VarsomApiClient: VarsomAPIProviding {
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw VarsomError.requestError }
 
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .varsomDate
+        decoder.dateDecodingStrategy = .varsomAPIDate
         return try decoder.decode(T.self, from: data)
     }
 }

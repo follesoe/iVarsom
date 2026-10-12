@@ -1,5 +1,20 @@
 # Release History
 
+## 6.0.0
+
+Skredvarsel 6.0 starts our sixth winter season: 2026/27.
+
+- Choose the current forecast or tomorrow's published forecast in your widgets.
+- Improved widget refresh timing when new bulletins are expected and when you open or refresh the app.
+- Clearer forecast dates and saved-data labels, with download times in larger widgets. Widgets also show when no valid forecast is available.
+- Add a control to open a selected region or your local forecast from Control Center, the Lock Screen or the Action button on supported devices.
+- Apple Watch can suggest forecasts for your favorite regions in the morning.
+- Get current or tomorrow's forecasts with Siri and Shortcuts, and use the danger level, forecast date and text in your own shortcuts.
+- Widget VoiceOver labels now include forecast guidance and active emergency warnings.
+- More reliable Swedish evening updates and saved forecasts when a download fails.
+- Forecast dates and links stay on the correct day when you travel to another time zone.
+- Improved reliability when switching regions, updating your location, syncing favorites, translating or sharing forecasts.
+
 ## 5.3.0
 
 - Translate warnings to your language using Apple's on-device translation

@@ -1,23 +1,12 @@
-- Översätt varningar till ditt språk med Apples inbyggda översättning
-- Finns nu på svenska, tyska, franska, spanska och italienska
-- Hämtar alltid färsk data med laddningsindikator under uppdatering
-- Cachad data används som reserv vid offline
-- Fixat att kartans positionsknapp ibland inte zoomade till användarens position
+Skredvarsel 6.0 inleder vår sjätte vintersäsong: 2026/27.
 
-Skredvarsel-appen är redo för sin femte säsong (2025/2026), med en stor uppdatering.
-
-- Svenska lavinvarningar från lavinprognoser.se
-- Interaktiv kartvy som visar alla regioner färgade efter faronivå
-- Kartvy på Apple Watch
-- Siri-genvägar: Fråga Siri om lavinvarningen
-- Uppdaterad för iOS 26 och watchOS 26
-- Ny extra stor widget för iPad
-- Lavinproblemgrafik visar nu representativa bilder
-- Uppdaterade faronivåfärger för att matcha de nya officiella färgerna
-- Nödvarningsbanner för kritiska varningar
-- Dela lavinvarningar som bilder via Meddelanden, AirDrop och mer
-- Favoritregioner med iCloud-synkronisering mellan enheter
-- Förbättrad tillförlitlighet när appen aktiveras från bakgrunden
-- Widgets och komplikationer uppdateras automatiskt när appen öppnas
-
-Ha en fin och säker topptursäsong!
+- Välj den aktuella prognosen eller morgondagens publicerade prognos i dina widgetar.
+- Bättre uppdatering av widgetar när nya prognoser väntas och när du öppnar eller uppdaterar appen.
+- Tydligare prognosdatum och märkning av sparade prognoser. Större widgetar visar även när prognosen hämtades, och widgetarna visar när en giltig prognos saknas.
+- Lägg till en kontroll som öppnar ett valt område eller din lokala prognos från Kontrollcenter, låsskärmen eller åtgärdsknappen på enheter som stöds.
+- Apple Watch kan föreslå prognoser för dina favoritområden på morgonen.
+- Hämta den aktuella prognosen eller morgondagens prognos med Siri och Genvägar, och använd faronivå, prognosdatum och text i egna genvägar.
+- VoiceOver läser nu upp prognostexten och eventuella aktiva nödvarningar i widgetarna.
+- Mer tillförlitlig hantering av svenska kvällsuppdateringar och sparade prognoser när en nedladdning misslyckas.
+- Prognosdatum och länkar visar rätt dag även när du reser till en annan tidszon.
+- Mer tillförlitliga områdesbyten, platsuppdateringar, synkronisering av favoriter, översättning och delning av prognoser.

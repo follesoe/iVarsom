@@ -15,10 +15,11 @@ final class RegionBrowserModel {
     private let repository: any WarningRepositoryProviding
     private let now: () -> Date
     @ObservationIgnored private var requestID = UUID()
+    @ObservationIgnored private var navigationID = UUID()
     @ObservationIgnored private var lastRefresh: Date?
 
     init(
-        repository: any WarningRepositoryProviding = WarningRepository(),
+        repository: any WarningRepositoryProviding = WarningRepository.live(),
         locationManager: any LocationProviding = LocationManager(),
         favorites: FavoritesService = FavoritesService(),
         now: @escaping () -> Date = { Date.current }
@@ -34,8 +35,16 @@ final class RegionBrowserModel {
     var swedenRegions: [RegionSummary] { state.value?.sweden ?? [] }
     var allRegions: [RegionSummary] { regions + swedenRegions }
     var selectedRegion: RegionSummary? {
-        allRegions.first { $0.id == selectedRegionID }
-            ?? (location.region?.id == selectedRegionID ? location.region : nil)
+        selectedRegionID.flatMap(region)
+    }
+
+    private func region(id: Int) -> RegionSummary? {
+        if let region = allRegions.first(where: { $0.id == id }) { return region }
+        if let region = location.region, region.id == id { return region }
+        // A deep link can open before (or without) a successful catalog download.
+        // Resolve metadata afresh so the live catalog takes over when it arrives.
+        guard let option = (RegionOption.aRegions + RegionOption.swedenRegions).first(where: { $0.id == id }) else { return nil }
+        return RegionSummary(Id: id, Name: option.name, TypeName: "A", AvalancheWarningList: [])
     }
     var filteredRegions: [RegionSummary] { regions.filter(matchesSearch) }
     var filteredSwedenRegions: [RegionSummary] { swedenRegions.filter(matchesSearch) }
@@ -61,8 +70,10 @@ final class RegionBrowserModel {
     func needsRefresh() -> Bool {
         guard let lastRefresh else { return true }
         let date = now()
+        let forecasts = allRegions.flatMap(\.AvalancheWarningList)
         return !Calendar.current.isDate(date, inSameDayAs: lastRefresh)
-            || date.timeIntervalSince(lastRefresh) >= 4 * 60 * 60 || date < lastRefresh
+            || date >= ForecastRefreshPolicy.nextRefresh(warnings: forecasts, downloadedAt: lastRefresh)
+            || date < lastRefresh
     }
 
     func refreshOnActivation() async {
@@ -99,9 +110,14 @@ final class RegionBrowserModel {
     }
 
     func selectRegion(id: Int) async {
-        if allRegions.isEmpty { await loadRegions() }
-        guard !Task.isCancelled else { return }
-        if allRegions.contains(where: { $0.id == id }) || location.region?.id == id { selectedRegionID = id }
+        let request = UUID()
+        navigationID = request
+        do {
+            let resolvedID = id == RegionOption.currentPositionOption.id
+                ? try await location.regionIDForNavigation() : id
+            guard !Task.isCancelled, navigationID == request, region(id: resolvedID) != nil else { return }
+            selectedRegionID = resolvedID
+        } catch { /* Keep the current selection when location is unavailable. */ }
     }
 
     private func matchesSearch(_ region: RegionSummary) -> Bool {

@@ -3,3 +3,4 @@
 "Avalanche warning from ${applicationName}" = "Alerte avalanches de ${applicationName}";
 "Get avalanche warning for ${region} in ${applicationName}" = "Obtenir l'alerte avalanches pour ${region} dans ${applicationName}";
 "What is the avalanche danger in ${region} with ${applicationName}" = "Quel est le danger d'avalanche dans ${region} avec ${applicationName}";
+"Open my local forecast in ${applicationName}" = "Ouvre ma prévision locale dans ${applicationName}";

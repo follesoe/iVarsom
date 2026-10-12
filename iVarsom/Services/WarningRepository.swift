@@ -26,7 +26,7 @@ struct WarningRequest: Sendable {
         self.regionID = regionID
         self.from = from
         self.to = to
-        let calendar = Calendar.current
+        let calendar = ForecastSelection.calendar(regionID: regionID)
         historyDays = max(
             0,
             calendar.dateComponents(
@@ -36,7 +36,7 @@ struct WarningRequest: Sendable {
     }
 
     init(regionID: Int, date: Date, daysBefore: Int, daysAfter: Int) {
-        let calendar = Calendar.current
+        let calendar = ForecastSelection.calendar(regionID: regionID)
         self.init(
             regionID: regionID,
             from: calendar.date(byAdding: .day, value: -max(0, daysBefore), to: date)!,
@@ -59,17 +59,27 @@ actor WarningRepository: WarningRepositoryProviding {
     private let sweden: any LavinprognoserAPIProviding
     private let cache: (any CacheServiceProtocol)?
     private let language: @Sendable () -> VarsomApiClient.Language
+    private let sharedForecasts: SharedForecastStore?
+    private let now: @Sendable () -> Date
+
+    static func live() -> WarningRepository {
+        WarningRepository(sharedForecasts: SharedForecastStore(reloadWidgets: true))
+    }
 
     init(
         norway: any VarsomAPIProviding = VarsomApiClient(),
         sweden: any LavinprognoserAPIProviding = LavinprognoserApiClient(),
         cache: (any CacheServiceProtocol)? = CacheService(),
-        language: @escaping @Sendable () -> VarsomApiClient.Language = VarsomApiClient.currentLang
+        language: @escaping @Sendable () -> VarsomApiClient.Language = VarsomApiClient.currentLang,
+        sharedForecasts: SharedForecastStore? = nil,
+        now: @escaping @Sendable () -> Date = { Date.current }
     ) {
         self.norway = norway
         self.sweden = sweden
         self.cache = cache
         self.language = language
+        self.sharedForecasts = sharedForecasts
+        self.now = now
     }
 
     func loadRegions() async throws -> RegionCatalog {
@@ -110,12 +120,14 @@ actor WarningRepository: WarningRepositoryProviding {
         try Task.checkCancellation()
         let requestID = UUID()
         warningRequests[request.regionID] = requestID
+        let started = now()
+        let requestLanguage = language()
         do {
             let warnings: [AvalancheWarningDetailed]
             switch Country.from(regionId: request.regionID) {
             case .norway:
                 warnings = try await norway.loadWarningsDetailed(
-                    lang: language(), regionId: request.regionID,
+                    lang: requestLanguage, regionId: request.regionID,
                     from: request.from, to: request.to)
             case .sweden:
                 warnings = try await sweden.loadWarningsDetailed(
@@ -124,6 +136,12 @@ actor WarningRepository: WarningRepositoryProviding {
             try Task.checkCancellation()
             if cachePolicy == .fallback, warningRequests[request.regionID] == requestID {
                 await cache?.saveWarningsDetailed(warnings, regionId: request.regionID)
+            }
+            if warningRequests[request.regionID] == requestID {
+                await sharedForecasts?.save(ForecastSnapshot(
+                    regionID: request.regionID,
+                    language: SharedForecastStore.languageKey(regionID: request.regionID, language: requestLanguage),
+                    requestStartedAt: started, downloadedAt: now(), warnings: warnings.map(\.summary)))
             }
             return LoadedWarnings(warnings: warnings.sorted { $0.ValidFrom < $1.ValidFrom }, source: .network)
         } catch {

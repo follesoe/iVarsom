@@ -1,5 +1,20 @@
 # Release History
 
+## 6.0.0
+
+Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
+
+- Velg gjeldende varsel eller morgendagens publiserte varsel i widgetene dine.
+- Bedre tidspunkt for oppdatering av widgeter når nye varsler ventes, og når du åpner eller oppdaterer appen.
+- Tydeligere varseldatoer og merking av lagrede varsler, med nedlastingstidspunkt i større widgeter. Widgetene viser også når et gyldig varsel mangler.
+- Legg til en kontroll som åpner en valgt region eller ditt lokale varsel fra Kontrollsenter, låseskjermen eller handlingsknappen på støttede enheter.
+- Apple Watch kan foreslå varsler for favorittregionene dine om morgenen.
+- Hent gjeldende varsel eller morgendagens varsel med Siri og Snarveier, og bruk faregrad, varseldato og tekst i egne snarveier.
+- VoiceOver leser nå opp varselteksten og eventuelle aktive nødvarsler i widgetene.
+- Mer pålitelig håndtering av svenske kveldsoppdateringer og lagrede varsler når en nedlasting mislykkes.
+- Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
+- Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.
+
 ## 5.3.0
 
 - Appen henter nå alltid ferske data fra nettverket, med lasteindikator under oppdatering

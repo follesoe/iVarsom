@@ -89,3 +89,7 @@ Final cleanup verification on October 9, 2026 with Xcode 26.6:
 The iPad smoke used the Debug-only date environment variable, without changing the system date. The system share sheet and downloaded translation packs still need manual UI checks. Build checks use signing disabled and do not certify distribution signing. Cross-device iCloud synchronization and watch complications require physical-device checks. Xcode Cloud was reviewed locally; no remote workflow was run.
 
 Review follow-up verification: the watch activation fix adds three regression tests covering travel between regions, a cancelled initial location request, and revoked permission while the catalog remains fresh. All **62 tests in 12 suites passed on both iPad Simulator and Mac Catalyst**. The iPad test build also rebuilt the watch app and validated its embedded widgets. These checks use simulated location services; physical watch lifecycle testing remains a device check.
+
+## iOS 26 platform follow-up
+
+The subsequent [platform integration work](platform-integration.md) adds shared widget snapshots, explicit validity and download times, provider-driven refresh deadlines, foreground reloads, controls, Watch relevance and structured Shortcuts. Its date handling supersedes the earlier widgets/Siri network-only policy described above.

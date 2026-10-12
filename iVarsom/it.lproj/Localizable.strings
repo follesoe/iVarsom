@@ -255,3 +255,27 @@
 "SouthWest" = "Sud-Ovest";
 "West" = "Ovest";
 "NorthWest" = "Nord-Ovest";
+
+/* Forecast widgets and Shortcuts */
+"Forecast day" = "Giorno della previsione";
+"Current forecast" = "Previsione attuale";
+"Tomorrow" = "Domani";
+"Saved forecast" = "Previsione salvata";
+"Downloaded" = "Scaricata";
+"Avalanche forecast" = "Previsione valanghe";
+"Forecast date" = "Data della previsione";
+"Danger level" = "Grado di pericolo";
+"Summary" = "Riepilogo";
+"Valid until" = "Valida fino al";
+"No forecast available for this day" = "Nessuna previsione disponibile per questo giorno";
+"Open avalanche forecast" = "Apri la previsione valanghe";
+"Open local forecast" = "Apri la previsione locale";
+"Open the full bulletin for a region or your current position." = "Apri il bollettino completo per una regione o la tua posizione attuale.";
+"Open a selected region, or use your current position." = "Apri una regione selezionata o usa la tua posizione attuale.";
+"Get a published avalanche forecast for Norway or Sweden." = "Ottieni una previsione valanghe pubblicata per la Norvegia o la Svezia.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Previsione pubblicata attuale o di domani per Norvegia e Svezia.";
+"The avalanche danger level in %@ for %@ is %@." = "Il grado di pericolo valanghe a %@ per il %@ è %@.";
+
+/* Shortcuts parameter summaries */
+"Open forecast for ${target}" = "Apri le previsioni per ${target}";
+"Get avalanche warning for ${region}" = "Ottieni il bollettino valanghe per ${region}";

@@ -19,6 +19,70 @@ struct RegionBrowserModelTests {
             locationManager: location, favorites: preferences.favorites(), now: now)
     }
 
+    @Test("Cold-launch fixed-region navigation does not wait for or compete with a catalog refresh")
+    func navigationDuringCatalogLoad() async {
+        let gate = WarningGate()
+        norway.onLoadRegions = {
+            try await gate.load().map { Fixtures.region($0.RegionId, name: "Refreshed name") }
+        }
+        let vm = model()
+        let activation = Task { await vm.refreshOnActivation() }
+        await gate.waitUntilStarted()
+        await vm.selectRegion(id: 3003)
+        #expect(vm.selectedRegion?.id == 3003)
+        #expect(vm.detail.regionID == 3003)
+        #expect(norway.regionRequests == 1)
+        gate.finish(.success([Fixtures.warning()]))
+        await activation.value
+        #expect(vm.selectedRegion?.Name == "Refreshed name")
+    }
+
+    @Test("Local navigation owns its result even when activation starts another location request",
+          arguments: ["complete", "cancel", "newTarget"])
+    func concurrentLocalNavigation(outcome: String) async {
+        let (events, started) = AsyncStream<Void>.makeStream()
+        var pending: [CheckedContinuation<Location2D?, Never>] = []
+        location.isAuthorized = true
+        location.onUpdateLocation = {
+            await withCheckedContinuation {
+                pending.append($0)
+                started.yield(())
+            }
+        }
+        let vm = model()
+        let navigation = Task { await vm.selectRegion(id: RegionOption.currentPositionOption.id) }
+        var iterator = events.makeAsyncIterator()
+        await iterator.next()
+        let activation = Task { await vm.refreshOnActivation() }
+        await iterator.next()
+        if outcome == "cancel" { navigation.cancel() }
+        if outcome == "newTarget" { await vm.selectRegion(id: 100001) }
+        pending[0].resume(returning: Location2D(latitude: 78.22, longitude: 15.65))
+        await navigation.value
+        let expected: Int? = outcome == "cancel" ? nil : (outcome == "newTarget" ? 100001 : 3003)
+        #expect(vm.selectedRegion?.id == expected)
+        #expect(vm.location.region == nil) // Presentation request is still waiting.
+        pending[1].resume(returning: Location2D(latitude: 69.65, longitude: 18.96))
+        await activation.value
+        #expect(vm.location.region?.id == 3011)
+        #expect(vm.selectedRegion?.id == expected)
+    }
+
+    @Test("Offline catalogs and unknown deep links cannot discard a known selection")
+    func offlineNavigation() async {
+        norway.regions = .failure(TestFailure.offline)
+        sweden.regions = .failure(TestFailure.offline)
+        let vm = model()
+        await vm.loadRegions()
+        await vm.selectRegion(id: 3003)
+        #expect(vm.selectedRegion?.id == 3003)
+        await vm.selectRegion(id: -999)
+        #expect(vm.selectedRegion?.id == 3003)
+        await vm.selectRegion(id: RegionOption.currentPositionOption.id)
+        #expect(vm.selectedRegion?.id == 3003)
+        #expect(location.locationRequests == 0)
+    }
+
     @Test func norwayFailureDoesNotDiscardSweden() async {
         norway.regions = .failure(TestFailure.offline)
         let vm = model()

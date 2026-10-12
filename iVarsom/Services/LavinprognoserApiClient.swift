@@ -47,27 +47,40 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
         // The "current" (no date) endpoint returns the active forecast which
         // may be tomorrow's after 18:00, skipping today entirely.
         let today = now()
+        let calendar = ForecastSelection.calendar(regionID: regionId)
+        let firstDay = calendar.date(byAdding: .day, value: -max(0, daysBefore), to: calendar.startOfDay(for: today))!
+        let endDay = calendar.date(byAdding: .day, value: 2, to: calendar.startOfDay(for: today))!
+        let dates: [Date?] = (0...max(0, daysBefore)).map {
+            calendar.date(byAdding: .day, value: -$0, to: today)
+        } + [nil] // The active endpoint includes the next bulletin after the evening changeover.
         let warnings = try await withThrowingTaskGroup(of: AvalancheWarningDetailed?.self) { group in
-            for day in 0...max(0, daysBefore) {
-                let date = Calendar.current.date(byAdding: .day, value: -day, to: today)!
+            for date in dates {
                 group.addTask {
                     do {
                         return try await self.loadForecast(slug: slug, regionId: regionId, date: date)
                     } catch {
-                        // Missing historical bulletins are normal; cancellation must still propagate.
-                        try Task.checkCancellation()
-                        if error is CancellationError { throw error }
-                        if (error as? URLError)?.code == .cancelled { throw error }
+                        try error.rethrowCancellation()
+                        // Only dated history is optional. Treat an active-endpoint
+                        // failure as a failed refresh so repositories keep saved
+                        // current bulletins instead of replacing them with history.
+                        if date == nil { throw error }
                         return nil
                     }
                 }
             }
             var result = [AvalancheWarningDetailed]()
             for try await warning in group {
-                if let warning { result.append(warning) }
+                // The active endpoint follows the server's clock. Keep it in
+                // the requested window, including tomorrow's evening bulletin.
+                if let warning, warning.ValidFrom >= firstDay, warning.ValidFrom < endDay {
+                    result.append(warning)
+                }
             }
             try Task.checkCancellation()
-            return result.sorted { $0.ValidFrom < $1.ValidFrom }
+            let unique = Dictionary(grouping: result, by: \.RegId).compactMap { _, revisions in
+                revisions.max { $0.PublishTime < $1.PublishTime }
+            }
+            return unique.sorted { $0.ValidFrom < $1.ValidFrom }
         }
 
         guard !warnings.isEmpty else { throw LavinError.requestError }
@@ -87,6 +100,7 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.calendar = Calendar(identifier: .gregorian)
+            dateFormatter.timeZone = TimeZone(identifier: "Europe/Stockholm")
             dateFormatter.dateFormat = "yyyy-MM-dd"
             urlString += "?forecast_date=\(dateFormatter.string(from: date))"
         }

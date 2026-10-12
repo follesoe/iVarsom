@@ -16,7 +16,7 @@ struct LavinprognoserApiClientTests {
     @Test func missingHistoricalDayDoesNotDiscardCurrentForecast() async throws {
         let date = Date(year: 2026, month: 2, day: 21, hour: 12)
         let transport = StubTransport { request in
-            guard request.url?.query?.contains("2026-02-21") == true else { throw TestFailure.offline }
+            guard request.url?.query == nil || request.url?.query?.contains("2026-02-21") == true else { throw TestFailure.offline }
             return Data(#"{"content":{"forecast":{"id":123,"risk":3,"areaId":1,"validFrom":"Friday 20/02-2026 18:00","validTo":"Saturday 21/02-2026 18:00","publishedDate":"2026-02-20","location":"Abisko","assessmentContent":"<p>Wind &amp; snow</p><script>hidden</script>"}}}"#.utf8)
         }
         let warnings = try await LavinprognoserApiClient(transport: transport, now: { date })
@@ -24,7 +24,7 @@ struct LavinprognoserApiClientTests {
         #expect(warnings.count == 1)
         #expect(warnings.first?.MainText == "Wind & snow")
         #expect(warnings.first?.DangerLevel == .level3)
-        #expect(await transport.requests.count == 3)
+        #expect(await transport.requests.count == 4)
     }
 
     @Test func cancellationIsNotConvertedToMissingForecast() async {
@@ -35,9 +35,56 @@ struct LavinprognoserApiClientTests {
     @Test func negativeHistoryDoesNotCreateInvalidRange() async {
         let transport = StubTransport { _ in throw TestFailure.offline }
         let client = LavinprognoserApiClient(transport: transport)
-        await #expect(throws: LavinprognoserApiClient.LavinError.requestError) {
+        await #expect(throws: TestFailure.offline) {
             try await client.loadWarningsDetailed(regionId: 100001, daysBefore: -3)
         }
-        #expect(await transport.requests.count == 1)
+        #expect(await transport.requests.count == 2)
+    }
+
+    @Test func activeForecastFailureIsNotHiddenBySuccessfulHistory() async {
+        let date = ForecastSelection.calendar(regionID: 100001).date(from: DateComponents(year: 2026, month: 2, day: 21, hour: 19))!
+        let transport = StubTransport { request in
+            guard request.url?.query != nil else { throw TestFailure.offline }
+            return Data(#"{"content":{"forecast":{"id":123,"risk":3,"areaId":1,"validFrom":"Friday 20/02-2026 18:00","validTo":"Saturday 21/02-2026 18:00","publishedDate":"2026-02-20","location":"Abisko"}}}"#.utf8)
+        }
+        let client = LavinprognoserApiClient(transport: transport, now: { date })
+        await #expect(throws: TestFailure.offline) {
+            try await client.loadWarningsDetailed(regionId: 100001, daysBefore: 2)
+        }
+    }
+
+    @Test func eveningForecastIncludesTomorrowAndDeduplicatesCurrentDay() async throws {
+        let date = ForecastSelection.calendar(regionID: 100001).date(from: DateComponents(year: 2026, month: 2, day: 21, hour: 19))!
+        let transport = StubTransport { request in
+            let tomorrow = request.url?.query == nil
+            let id = tomorrow ? 124 : 123
+            let from = tomorrow ? "Saturday 21/02-2026 18:00" : "Friday 20/02-2026 18:00"
+            let to = tomorrow ? "Sunday 22/02-2026 18:00" : "Saturday 21/02-2026 18:00"
+            return try JSONSerialization.data(withJSONObject: ["content": ["forecast": [
+                "id": id, "risk": 3, "areaId": 1, "validFrom": from, "validTo": to,
+                "publishedDate": "2026-02-21", "location": "Abisko"
+            ]]])
+        }
+        let warnings = try await LavinprognoserApiClient(transport: transport, now: { date })
+            .loadWarningsDetailed(regionId: 100001, daysBefore: 2)
+        #expect(warnings.count == 2)
+        #expect(ForecastSelection.warning(in: warnings.map(\.summary), day: .today, at: date)?.RegId == 100125)
+        #expect(ForecastSelection.warning(in: warnings.map(\.summary), day: .tomorrow, at: date)?.RegId == 100125)
+    }
+
+    @Test func activeEndpointCannotIntroduceBulletinsOutsideTheRequestedWindow() async throws {
+        let date = ForecastSelection.calendar(regionID: 100001).date(from: DateComponents(year: 2026, month: 2, day: 21, hour: 12))!
+        let transport = StubTransport { request in
+            let active = request.url?.query == nil
+            let from = active ? "Thursday 29/10-2026 18:00" : "Friday 20/02-2026 18:00"
+            let to = active ? "Friday 30/10-2026 18:00" : "Saturday 21/02-2026 18:00"
+            return try JSONSerialization.data(withJSONObject: ["content": ["forecast": [
+                "id": active ? 124 : 123, "risk": 3, "areaId": 1, "validFrom": from, "validTo": to,
+                "publishedDate": active ? "2026-10-29" : "2026-02-20", "location": "Abisko"
+            ]]])
+        }
+        let warnings = try await LavinprognoserApiClient(transport: transport, now: { date })
+            .loadWarningsDetailed(regionId: 100001, daysBefore: 2)
+        #expect(warnings.map(\.RegId) == [100124])
     }
 }

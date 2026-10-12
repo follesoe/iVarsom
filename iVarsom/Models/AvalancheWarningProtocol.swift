@@ -7,6 +7,8 @@ protocol AvalancheWarningProtocol: Identifiable {
     var RegionTypeName: String { get }
     var ValidFrom: Date { get }
     var ValidTo: Date { get }
+    var BulletinValidFrom: Date? { get }
+    var PublishTime: Date { get }
     var DangerLevel: DangerLevel { get }
     var MainText: String { get }
     var LangKey: Int { get }
@@ -14,13 +16,34 @@ protocol AvalancheWarningProtocol: Identifiable {
 
 extension AvalancheWarningProtocol {
     var id: Int { RegId }
+    var validityStart: Date { BulletinValidFrom ?? ValidFrom }
+
+    /// Varsom includes the final second of the regional day. Represent that as
+    /// an exclusive midnight boundary, matching Sweden's exclusive validity end.
+    var validityEnd: Date {
+        guard Country.from(regionId: RegionId) == .norway else { return ValidTo }
+        let calendar = ForecastSelection.calendar(regionID: RegionId)
+        let midnight = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: ValidTo))!
+        return midnight.timeIntervalSince(ValidTo) == 1 ? midnight : ValidTo
+    }
+
+    func formattedForecastDate(_ style: Date.FormatStyle) -> String {
+        ForecastSelection.dateText(ValidFrom, regionID: RegionId, style: style)
+    }
+
+    var forecastDateIdentifier: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.calendar = ForecastSelection.calendar(regionID: RegionId)
+        formatter.timeZone = formatter.calendar.timeZone
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: ValidFrom)
+    }
 
     var VarsomUrl: URL {
         if Country.from(regionId: RegionId) == .sweden {
             let slug = Country.swedishSlug(for: RegionId) ?? ""
-            let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd"
-            let dateParam = df.string(from: ValidFrom)
+            let dateParam = forecastDateIdentifier
             if Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv") {
                 return URL(string: "https://lavinprognoser.se/oversikt-alla-omraden/\(slug)/?forecast_date=\(dateParam)")!
             } else {
@@ -28,9 +51,7 @@ extension AvalancheWarningProtocol {
             }
         }
 
-        let argumentDateFormatter = DateFormatter()
-        argumentDateFormatter.dateFormat = "yyyy-MM-dd"
-        let warningDate = argumentDateFormatter.string(from: ValidFrom)
+        let warningDate = forecastDateIdentifier
         let encodedName = RegionName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         if (Locale.current.identifier.starts(with: "nb") || Locale.current.identifier.starts(with: "sv")) {
@@ -67,10 +88,12 @@ extension AvalancheWarningProtocol {
 
 
 extension Array where Element: AvalancheWarningProtocol {
-    /// Prefer today's bulletin, otherwise the latest available date. Empty API
-    /// responses are normal outside the season and must never create an index of -1.
+    /// Detail screens prefer the currently valid bulletin (including Sweden's
+    /// evening changeover), then retain historical navigation when none is valid.
     func currentWarningIndex(on date: Date, calendar: Calendar = .current) -> Index? {
-        firstIndex { calendar.isDate($0.ValidFrom, inSameDayAs: date) }
+        indices.filter { self[$0].validityStart <= date && self[$0].validityEnd > date && self[$0].PublishTime <= date }
+            .max { self[$0].PublishTime < self[$1].PublishTime }
+            ?? firstIndex { calendar.isDate($0.ValidFrom, inSameDayAs: date) }
             ?? indices.max { self[$0].ValidFrom < self[$1].ValidFrom }
     }
 }

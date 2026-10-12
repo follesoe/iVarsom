@@ -66,7 +66,6 @@
 		AA2ABD772944FD06008819DB /* FormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA18421627B1A9A30097174D /* FormatterExtensions.swift */; };
 		AA2ABD782944FD06008819DB /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
 		AA2ABD792944FD06008819DB /* DangerGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA839D06279D7E9700DF7ACF /* DangerGradient.swift */; };
-		AA2ABD7A2944FD06008819DB /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */; };
 		AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD172E0279605B4009AB089 /* WarningSummary.swift */; };
 		AA2ABD7F2944FD06008819DB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD172EA27960939009AB089 /* SwiftUI.framework */; };
@@ -87,7 +86,6 @@
 		AA5168852820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168862820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
 		AA5168882820695700F86D87 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5168842820695700F86D87 /* StringExtensions.swift */; };
-		AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */; };
 		AA6386022797511E00FD52DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386042797511E00FD52DA /* InfoPlist.strings */; };
 		AA6386052797514E00FD52DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6386072797514E00FD52DA /* Localizable.strings */; };
 		AA63860B2797592700FD52DA /* VarsomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63860A2797592700FD52DA /* VarsomData.swift */; };
@@ -272,6 +270,39 @@
 		DAD404C149DAF1F82FC53D5F /* WarningDetailModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6072554C63A25E1D3281DD /* WarningDetailModelTests.swift */; };
 		F14597626A62DA8FFA31DDB1 /* LavinprognoserMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE708D119D147AC343E803 /* LavinprognoserMapperTests.swift */; };
 		3E6B63C9164A60B2DF259E74 /* PresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6DD4963DA4D42C7E42DAFF /* PresentationTests.swift */; };
+		16885A843A4449F68E256BAC /* SharedForecastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754666A266545AD90ED9592 /* SharedForecastStore.swift */; };
+		9FD43AC8FC654AC2A20EAC81 /* SharedForecastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754666A266545AD90ED9592 /* SharedForecastStore.swift */; };
+		0C87A08FA3E5486996975D55 /* SharedForecastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754666A266545AD90ED9592 /* SharedForecastStore.swift */; };
+		EF6C47A5417649E9AE23B9AC /* SharedForecastStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754666A266545AD90ED9592 /* SharedForecastStore.swift */; };
+		FB65A65CFDA7448799D911F8 /* ForecastSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142003D21FD840028AB5DD44 /* ForecastSelection.swift */; };
+		C137B1AE32324DAAA5D37724 /* ForecastSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142003D21FD840028AB5DD44 /* ForecastSelection.swift */; };
+		1A5793DF4DA34D7C9D868BE2 /* ForecastSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142003D21FD840028AB5DD44 /* ForecastSelection.swift */; };
+		5D2284E4D8FE4C14A9E18CDC /* ForecastSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142003D21FD840028AB5DD44 /* ForecastSelection.swift */; };
+		7557372B57D841C9BAA1F9EC /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311B5EF43884929B3BC3CE0 /* ForecastService.swift */; };
+		0E95519876AA41B69E1BF969 /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311B5EF43884929B3BC3CE0 /* ForecastService.swift */; };
+		EDC14652A6BC4ED99073FEE8 /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311B5EF43884929B3BC3CE0 /* ForecastService.swift */; };
+		27368AA3D5F34CB69CB172F0 /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311B5EF43884929B3BC3CE0 /* ForecastService.swift */; };
+		A18ABBAE25834FC0A0883BCF /* ForecastRefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */; };
+		AB101F7A708A49889D1F4EC3 /* ForecastRefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */; };
+		ADA63E76B3D14D809540CAC1 /* ForecastRefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */; };
+		A0C0BDEFE6174B2988E61581 /* ForecastRefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */; };
+		616691DE05804A488F6FA1A0 /* WidgetForecastRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA720F42490849D1A8FE4B68 /* WidgetForecastRefresher.swift */; };
+		3E976CACB4304D0CB236AC53 /* WidgetForecastRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA720F42490849D1A8FE4B68 /* WidgetForecastRefresher.swift */; };
+		D111C445600B4F96BED8D12D /* ForecastRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */; };
+		142E9EABD8634FDCAAB2C23C /* ForecastRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */; };
+		C1A5CEF4B56D43B1B6F2644B /* ForecastRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */; };
+		49EFAC2A218B47B49A50A036 /* ForecastRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */; };
+		5E0760143D914E76A8B7B9FB /* ForecastNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */; };
+		DB52803FB9D140F7951720F0 /* ForecastNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */; };
+		23B20F580EFC4BB9B61864BB /* ForecastNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */; };
+		96FBC30538BB4EF0AF405282 /* ForecastNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */; };
+		1AA373F953654773A7CE9815 /* AvalancheForecastEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226431FDC7804758BD6726AF /* AvalancheForecastEntity.swift */; };
+		FCD6577EEAF34D84864D3F69 /* AvalancheForecastEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226431FDC7804758BD6726AF /* AvalancheForecastEntity.swift */; };
+		C34F3E7EB20E49C9ACDCABBD /* OpenForecastControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F034E0852D541269D892AF7 /* OpenForecastControl.swift */; };
+		2B59C52371164325AD379BEB /* OpenForecastControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F034E0852D541269D892AF7 /* OpenForecastControl.swift */; };
+		5F81975F8AC641B2BD805789 /* ForecastWidgetRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */; };
+		DAF0756A509444CBACEDC4F4 /* ForecastWidgetRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */; };
+		D7DD714950A44B09B0FD4624 /* ForecastPlatformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,7 +403,6 @@
 		AA345DDB28085B4800B78BDB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		AA461CFD27B0082000425270 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		AA5168842820695700F86D87 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePolicy.swift; sourceTree = "<group>"; };
 		AA6386032797511E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA6386062797514E00FD52DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA6386082797518E00FD52DA /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -486,6 +516,17 @@
 		AB6072554C63A25E1D3281DD /* WarningDetailModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningDetailModelTests.swift; sourceTree = "<group>"; };
 		B2FE708D119D147AC343E803 /* LavinprognoserMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavinprognoserMapperTests.swift; sourceTree = "<group>"; };
 		BE6DD4963DA4D42C7E42DAFF /* PresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTests.swift; sourceTree = "<group>"; };
+		0754666A266545AD90ED9592 /* SharedForecastStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedForecastStore.swift; sourceTree = "<group>"; };
+		142003D21FD840028AB5DD44 /* ForecastSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSelection.swift; sourceTree = "<group>"; };
+		2311B5EF43884929B3BC3CE0 /* ForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
+		0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRefreshPolicy.swift; sourceTree = "<group>"; };
+		DA720F42490849D1A8FE4B68 /* WidgetForecastRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetForecastRefresher.swift; sourceTree = "<group>"; };
+		A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRelevance.swift; sourceTree = "<group>"; };
+		3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastNavigation.swift; sourceTree = "<group>"; };
+		226431FDC7804758BD6726AF /* AvalancheForecastEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvalancheForecastEntity.swift; sourceTree = "<group>"; };
+		9F034E0852D541269D892AF7 /* OpenForecastControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenForecastControl.swift; sourceTree = "<group>"; };
+		0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWidgetRelevance.swift; sourceTree = "<group>"; };
+		DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPlatformTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,6 +575,7 @@
 		AA18420A27B1A3860097174D /* iVarsomTests */ = {
 			isa = PBXGroup;
 			children = (
+				DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */,
 				BE6DD4963DA4D42C7E42DAFF /* PresentationTests.swift */,
 				B2FE708D119D147AC343E803 /* LavinprognoserMapperTests.swift */,
 				AB6072554C63A25E1D3281DD /* WarningDetailModelTests.swift */,
@@ -627,6 +669,10 @@
 		AA461CFC27B007FC00425270 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DA720F42490849D1A8FE4B68 /* WidgetForecastRefresher.swift */,
+				0B7A87FCEB26456EA64F8D9A /* ForecastRefreshPolicy.swift */,
+				2311B5EF43884929B3BC3CE0 /* ForecastService.swift */,
+				0754666A266545AD90ED9592 /* SharedForecastStore.swift */,
 				D052E275616E30506201B889 /* LavinprognoserMapper.swift */,
 				B950CA40344D0581DD7007A8 /* WarningRepository.swift */,
 				AAD172CC2795FCA3009AB089 /* VarsomApiClient.swift */,
@@ -670,6 +716,8 @@
 		AAD172AE2795F8F8009AB089 /* iVarsom */ = {
 			isa = PBXGroup;
 			children = (
+				226431FDC7804758BD6726AF /* AvalancheForecastEntity.swift */,
+				3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */,
 				AABB22552F34B93000A2997C /* AppIcon.icon */,
 				AA809488279E222900A2F192 /* Info.plist */,
 				AA1C67BD279D8A0E0039F8E0 /* Utils */,
@@ -738,6 +786,8 @@
 		AAD172DB2795FDB3009AB089 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0223A662C0A4A08AF8FA939 /* ForecastRelevance.swift */,
+				142003D21FD840028AB5DD44 /* ForecastSelection.swift */,
 				FD438ECD3ED742CAFF075C32 /* LavinprognoserResponse.swift */,
 				AAD172CB2795FCA3009AB089 /* AvalancheWarningSimple.swift */,
 				AAD172C92795FCA3009AB089 /* DataLoader.swift */,
@@ -769,9 +819,10 @@
 		AAD172EC27960939009AB089 /* iVarsomWidget */ = {
 			isa = PBXGroup;
 			children = (
+				0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */,
+				9F034E0852D541269D892AF7 /* OpenForecastControl.swift */,
 				AA19049029461AAB006CF459 /* VarsomTimelineProvider.swift */,
 				AAD172ED27960939009AB089 /* iVarsomWidget.swift */,
-				AA5C5F1227D880F500FE3D72 /* UpdatePolicy.swift */,
 				AAD172EF27960939009AB089 /* iVarsomWidget.intentdefinition */,
 				AAD172F02796093A009AB089 /* Assets.xcassets */,
 				AAD172F22796093A009AB089 /* Info.plist */,
@@ -1022,6 +1073,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7DD714950A44B09B0FD4624 /* ForecastPlatformTests.swift in Sources */,
 				3E6B63C9164A60B2DF259E74 /* PresentationTests.swift in Sources */,
 				F14597626A62DA8FFA31DDB1 /* LavinprognoserMapperTests.swift in Sources */,
 				DAD404C149DAF1F82FC53D5F /* WarningDetailModelTests.swift in Sources */,
@@ -1040,6 +1092,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF0756A509444CBACEDC4F4 /* ForecastWidgetRelevance.swift in Sources */,
+				2B59C52371164325AD379BEB /* OpenForecastControl.swift in Sources */,
+				96FBC30538BB4EF0AF405282 /* ForecastNavigation.swift in Sources */,
+				49EFAC2A218B47B49A50A036 /* ForecastRelevance.swift in Sources */,
+				A0C0BDEFE6174B2988E61581 /* ForecastRefreshPolicy.swift in Sources */,
+				27368AA3D5F34CB69CB172F0 /* ForecastService.swift in Sources */,
+				5D2284E4D8FE4C14A9E18CDC /* ForecastSelection.swift in Sources */,
+				EF6C47A5417649E9AE23B9AC /* SharedForecastStore.swift in Sources */,
 				D06C69A7377B9548CE4E5253 /* LavinprognoserResponse.swift in Sources */,
 				C28568F59B7FA55B488BE6AD /* LavinprognoserMapper.swift in Sources */,
 				3F8560A16811C801FEB702EC /* CacheService.swift in Sources */,
@@ -1075,7 +1135,6 @@
 				AA2ABD782944FD06008819DB /* VarsomData.swift in Sources */,
 				AA7D74652946187600AB5155 /* watchOSPreviews.swift in Sources */,
 				AA2ABD792944FD06008819DB /* DangerGradient.swift in Sources */,
-				AA2ABD7A2944FD06008819DB /* UpdatePolicy.swift in Sources */,
 				AA2ABD7B2944FD06008819DB /* VarsomApiClient.swift in Sources */,
 				AA2ABD7D2944FD06008819DB /* WarningSummary.swift in Sources */,
 				AAC859342CE91F120013594A /* Date+current.swift in Sources */,
@@ -1094,6 +1153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD6577EEAF34D84864D3F69 /* AvalancheForecastEntity.swift in Sources */,
+				DB52803FB9D140F7951720F0 /* ForecastNavigation.swift in Sources */,
+				142E9EABD8634FDCAAB2C23C /* ForecastRelevance.swift in Sources */,
+				3E976CACB4304D0CB236AC53 /* WidgetForecastRefresher.swift in Sources */,
+				AB101F7A708A49889D1F4EC3 /* ForecastRefreshPolicy.swift in Sources */,
+				0E95519876AA41B69E1BF969 /* ForecastService.swift in Sources */,
+				C137B1AE32324DAAA5D37724 /* ForecastSelection.swift in Sources */,
+				9FD43AC8FC654AC2A20EAC81 /* SharedForecastStore.swift in Sources */,
 				D6E7EE607AC68425F83A7C04 /* RegionLocationModel.swift in Sources */,
 				D607D5B23C0FCEEEA74D0D6E /* WarningDetailModel.swift in Sources */,
 				AE6736E763CCCF96121DE3CC /* LavinprognoserResponse.swift in Sources */,
@@ -1158,6 +1225,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AA373F953654773A7CE9815 /* AvalancheForecastEntity.swift in Sources */,
+				5E0760143D914E76A8B7B9FB /* ForecastNavigation.swift in Sources */,
+				D111C445600B4F96BED8D12D /* ForecastRelevance.swift in Sources */,
+				616691DE05804A488F6FA1A0 /* WidgetForecastRefresher.swift in Sources */,
+				A18ABBAE25834FC0A0883BCF /* ForecastRefreshPolicy.swift in Sources */,
+				7557372B57D841C9BAA1F9EC /* ForecastService.swift in Sources */,
+				FB65A65CFDA7448799D911F8 /* ForecastSelection.swift in Sources */,
+				16885A843A4449F68E256BAC /* SharedForecastStore.swift in Sources */,
 				71882EBAADEDDE4AA5705E3E /* WarningDayPicker.swift in Sources */,
 				E7C96D97BCCBD10A3C7FC658 /* WarningTranslationModel.swift in Sources */,
 				52DB10ADA37CD1BF16FF04B8 /* RegionLocationModel.swift in Sources */,
@@ -1229,6 +1304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F81975F8AC641B2BD805789 /* ForecastWidgetRelevance.swift in Sources */,
+				C34F3E7EB20E49C9ACDCABBD /* OpenForecastControl.swift in Sources */,
+				23B20F580EFC4BB9B61864BB /* ForecastNavigation.swift in Sources */,
+				C1A5CEF4B56D43B1B6F2644B /* ForecastRelevance.swift in Sources */,
+				ADA63E76B3D14D809540CAC1 /* ForecastRefreshPolicy.swift in Sources */,
+				EDC14652A6BC4ED99073FEE8 /* ForecastService.swift in Sources */,
+				1A5793DF4DA34D7C9D868BE2 /* ForecastSelection.swift in Sources */,
+				0C87A08FA3E5486996975D55 /* SharedForecastStore.swift in Sources */,
 				EA51C6FE79AB95D3F477E729 /* LavinprognoserResponse.swift in Sources */,
 				7DF933867353DA5A151C4BC2 /* LavinprognoserMapper.swift in Sources */,
 				1D570C21BA1B4D80BE1A652E /* CacheService.swift in Sources */,
@@ -1264,7 +1347,6 @@
 				AA18421827B1A9A30097174D /* FormatterExtensions.swift in Sources */,
 				AA102E01279DA2AB00B6492D /* VarsomData.swift in Sources */,
 				AA839D09279D7EFF00DF7ACF /* DangerGradient.swift in Sources */,
-				AA5C5F1327D880F500FE3D72 /* UpdatePolicy.swift in Sources */,
 				AA102E02279DA2C200B6492D /* VarsomApiClient.swift in Sources */,
 				AA102E00279DA27800B6492D /* WarningSummary.swift in Sources */,
 				AAC859332CE91F120013594A /* Date+current.swift in Sources */,

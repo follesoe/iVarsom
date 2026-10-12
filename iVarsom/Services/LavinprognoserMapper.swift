@@ -85,7 +85,8 @@ struct LavinprognoserMapper {
             NextWarningTime: validTo,
             PublishTime: publishDate,
             MainText: mainText,
-            LangKey: languageKey)
+            LangKey: languageKey,
+            BulletinValidFrom: parseSwedishDate(forecast.validFrom))
     }
 
     // MARK: - Mapping Helpers
@@ -210,6 +211,7 @@ struct LavinprognoserMapper {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = TimeZone(identifier: "Europe/Stockholm")
 
         // Try English format: "Saturday 21/02-2026 18:00"
         formatter.dateFormat = "EEEE dd/MM-yyyy HH:mm"
@@ -234,6 +236,7 @@ struct LavinprognoserMapper {
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = TimeZone(identifier: "Europe/Stockholm")
         return formatter.date(from: dateString)
     }
 

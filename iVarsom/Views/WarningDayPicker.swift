@@ -15,7 +15,8 @@ struct WarningDayPicker: View {
                             DayCell(
                                 dangerLevel: warning.DangerLevel, date: warning.ValidFrom,
                                 isSelected: selectedWarningID == warning.id,
-                                hasEmergencyWarning: warning.hasActiveEmergencyWarning
+                                hasEmergencyWarning: warning.hasActiveEmergencyWarning,
+                                regionID: warning.RegionId
                             )
                             .padding(.top, 5)
                         }

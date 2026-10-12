@@ -255,3 +255,27 @@
 "SouthWest" = "South-West";
 "West" = "West";
 "NorthWest" = "North-West";
+
+/* Forecast widgets and Shortcuts */
+"Forecast day" = "Forecast day";
+"Current forecast" = "Current forecast";
+"Tomorrow" = "Tomorrow";
+"Saved forecast" = "Saved forecast";
+"Downloaded" = "Downloaded";
+"Avalanche forecast" = "Avalanche forecast";
+"Forecast date" = "Forecast date";
+"Danger level" = "Danger level";
+"Summary" = "Summary";
+"Valid until" = "Valid until";
+"No forecast available for this day" = "No forecast available for this day";
+"Open avalanche forecast" = "Open avalanche forecast";
+"Open local forecast" = "Open local forecast";
+"Open the full bulletin for a region or your current position." = "Open the full bulletin for a region or your current position.";
+"Open a selected region, or use your current position." = "Open a selected region, or use your current position.";
+"Get a published avalanche forecast for Norway or Sweden." = "Get a published avalanche forecast for Norway or Sweden.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Current or tomorrow's published forecast for Norway and Sweden.";
+"The avalanche danger level in %@ for %@ is %@." = "The avalanche danger level in %@ for %@ is %@.";
+
+/* Shortcuts parameter summaries */
+"Open forecast for ${target}" = "Open forecast for ${target}";
+"Get avalanche warning for ${region}" = "Get avalanche warning for ${region}";

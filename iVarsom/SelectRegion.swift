@@ -11,13 +11,15 @@ struct SelectRegion: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedA
     @Parameter(title: "Region")
     var region: RegionConfigOptionAppEntity?
 
+    @Parameter(title: "Forecast day", default: .today)
+    var day: ForecastDay
+
     static var parameterSummary: some ParameterSummary {
-        Summary()
+        Summary { \.$region; \.$day }
     }
 
     func perform() async throws -> some IntentResult {
         return .result()
     }
 }
-
 

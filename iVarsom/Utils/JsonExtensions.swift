@@ -1,6 +1,16 @@
 import Foundation
 
 extension JSONDecoder.DateDecodingStrategy {
+    static let varsomAPIDate = custom {
+        let container = try $0.singleValueContainer()
+        let string = try container.decode(String.self)
+        if let date = Formatter.varsomAPIDateWithFractionalSeconds.date(from: string)
+            ?? Formatter.varsomAPIDate.date(from: string) {
+            return date
+        }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid Varsom API date: \(string)")
+    }
+
     static let varsomDate = custom {
         let container = try $0.singleValueContainer()
         let string = try container.decode(String.self)

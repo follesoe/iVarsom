@@ -33,17 +33,18 @@ private struct ContentView: View {
     }
     @State private var isMapDetailPresented = false
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
+    @State private var selectedTab = "regions"
 
     var body: some View {
         Group {
             if sizeClass == .regular {
                 RegionList(vm: vm)
             } else {
-                TabView {
-                    Tab("Regions", systemImage: "list.bullet") {
+                TabView(selection: $selectedTab) {
+                    Tab("Regions", systemImage: "list.bullet", value: "regions") {
                         RegionList(vm: vm)
                     }
-                    Tab("Map", systemImage: "map") {
+                    Tab("Map", systemImage: "map", value: "map") {
                         iPhoneMapTab
                     }
                 }
@@ -53,14 +54,32 @@ private struct ContentView: View {
             guard scenePhase == .active else { return }
             await vm.detail.load()
         }
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
+            await WidgetForecastRefresher.refresh()
+        }
+        .task(id: scenePhase == .active ? ForecastNavigation.shared.request?.id : nil) {
+            guard scenePhase == .active, let request = ForecastNavigation.shared.claimRequest() else { return }
+            defer {
+                if Task.isCancelled { ForecastNavigation.shared.release(request) }
+                else { ForecastNavigation.shared.finish(request) }
+            }
+            await openRegion(request.regionID)
+        }
         .onOpenURL { url in
             let regionId = UrlUtils.extractParam(url: url, name: "id")
             if let regionId = regionId {
                 Task {
-                    await vm.selectRegion(id: regionId)
+                    await openRegion(regionId)
                 }
             }
         }
+    }
+
+    private func openRegion(_ id: Int) async {
+        selectedTab = "regions"
+        isMapDetailPresented = false
+        await vm.selectRegion(id: id)
     }
 
     private func locate() async -> Location2D? {

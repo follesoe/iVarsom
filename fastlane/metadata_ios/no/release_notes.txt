@@ -1,23 +1,12 @@
-- Oversett varsler til ditt språk med Apples innebygde oversettelse
-- Nå tilgjengelig på svensk, tysk, fransk, spansk og italiensk
-- Henter alltid ferske data med lasteindikator under oppdatering
-- Bufrede data brukes som reserve når du er frakoblet
-- Fikset at kartets posisjonsknapp noen ganger ikke zoomet til brukerens posisjon
+Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
 
-Skredvarsel-appen er klar for sin femte sesong (2025/2026), med en stor oppdatering.
-
-- Svenske snøskredvarsler fra lavinprognoser.se
-- Interaktivt kart som viser alle regioner farget etter farenivå
-- Kartvisning på Apple Watch
-- Siri-snarveier: Spør Siri om skredvarselet
-- Oppdatert for iOS 26 og watchOS 26
-- Ny ekstra stor widget for iPad
-- Skredproblem-grafikk viser nå representative bilder
-- Oppdaterte farenivåfarger for å matche de nye offisielle fargene
-- Nødvarslingsbanner for kritiske varsler
-- Del skredvarsler som bilder via Meldinger, AirDrop og mer
-- Favorittregioner med iCloud-synkronisering mellom enheter
-- Forbedret pålitelighet når appen aktiveres fra bakgrunnen
-- Widgeter og komplikasjoner oppdateres automatisk når appen åpnes
-
-Med ønske om en fin og trygg topptursesong!
+- Velg gjeldende varsel eller morgendagens publiserte varsel i widgetene dine.
+- Bedre tidspunkt for oppdatering av widgeter når nye varsler ventes, og når du åpner eller oppdaterer appen.
+- Tydeligere varseldatoer og merking av lagrede varsler, med nedlastingstidspunkt i større widgeter. Widgetene viser også når et gyldig varsel mangler.
+- Legg til en kontroll som åpner en valgt region eller ditt lokale varsel fra Kontrollsenter, låseskjermen eller handlingsknappen på støttede enheter.
+- Apple Watch kan foreslå varsler for favorittregionene dine om morgenen.
+- Hent gjeldende varsel eller morgendagens varsel med Siri og Snarveier, og bruk faregrad, varseldato og tekst i egne snarveier.
+- VoiceOver leser nå opp varselteksten og eventuelle aktive nødvarsler i widgetene.
+- Mer pålitelig håndtering av svenske kveldsoppdateringer og lagrede varsler når en nedlasting mislykkes.
+- Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
+- Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.

@@ -15,7 +15,7 @@ struct WarningSummary: View {
     }
     
     var body: some View {        
-        let warningDate = warning.ValidFrom.formatted(date: .complete, time: .omitted)
+        let warningDate = warning.formattedForecastDate(.init(date: .complete, time: .omitted))
         HStack {
             WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: compact ? 38 : 54)
                 .frame(width: compact ? 70 : 90)

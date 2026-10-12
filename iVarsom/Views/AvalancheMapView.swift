@@ -140,13 +140,7 @@ struct AvalancheMapView: View {
     }
 
     private func todaysDangerLevel(for region: RegionSummary) -> DangerLevel {
-        let today = Date.current
-        if let warning = region.AvalancheWarningList.first(where: {
-            Calendar.current.isDate($0.ValidFrom, equalTo: today, toGranularity: .day)
-        }) {
-            return warning.DangerLevel
-        }
-        return .unknown
+        ForecastSelection.warning(in: region.AvalancheWarningList, day: .today, at: .current)?.DangerLevel ?? .unknown
     }
 
     private func findRegion(at coordinate: CLLocationCoordinate2D, in geoData: RegionGeoData) -> RegionSummary? {

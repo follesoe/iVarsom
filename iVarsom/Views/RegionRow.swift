@@ -5,7 +5,7 @@ struct RegionRow: View {
 
     private var dangerLevelsSummary: String {
         region.AvalancheWarningList.map { warning in
-            let day = warning.ValidFrom.formatted(.dateTime.weekday(.wide))
+            let day = warning.formattedForecastDate(.dateTime.weekday(.wide))
             return "\(day) \(warning.DangerLevel.localizedName)"
         }.joined(separator: ", ")
     }

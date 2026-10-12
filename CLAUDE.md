@@ -58,7 +58,7 @@ The app uses focused observable presentation models with protocols at service bo
 **RegionBrowserModel** (`ViewModels/RegionBrowserModel.swift`):
 - Per-window region catalog, search and selected region ID; shares FavoritesService
 - Owns separate WarningDetailModel and RegionLocationModel instances
-- Selection is resolved from the current catalog, never retained as a stale region copy
+- Selection is resolved from the current catalog, with bundled metadata for cold-launch/offline deep links; never retain a stale region copy
 - LoadState<Value> carries the result alongside its phase
 
 **WarningDetailModel** (`ViewModels/WarningDetailModel.swift`):
@@ -69,7 +69,8 @@ The app uses focused observable presentation models with protocols at service bo
 **WarningRepository** (`Services/WarningRepository.swift`):
 - Actor shared by a window's models; widgets and Siri use the same implementation
 - Preserves partial country results and last-known-data fallback for the app
-- Widgets request network-only detailed warnings; Siri uses lightweight summaries
+- Widgets and Siri use ForecastService with provider-driven refresh deadlines and language-specific shared snapshots
+- The live app repository exports successful detailed downloads to the app-group snapshot cache
 - Older requests cannot overwrite newer cached data for the same region
 - LavinprognoserResponse and LavinprognoserMapper separate wire data and pure conversion from HTTP
 
@@ -80,7 +81,7 @@ The app uses focused observable presentation models with protocols at service bo
 
 ### Modernization notes
 
-See [docs/modernization.md](docs/modernization.md) for concurrency boundaries, state ownership, cache behavior and validation guidance.
+See [docs/modernization.md](docs/modernization.md) for architecture and [docs/platform-integration.md](docs/platform-integration.md) for forecast refresh rules, shared widget storage, controls and Shortcuts.
 
 ### Widget System
 

@@ -255,3 +255,27 @@
 "SouthWest" = "Sørvest";
 "West" = "Vest";
 "NorthWest" = "Nordvest";
+
+/* Forecast widgets and Shortcuts */
+"Forecast day" = "Varseldag";
+"Current forecast" = "Gjeldende varsel";
+"Tomorrow" = "I morgen";
+"Saved forecast" = "Lagret varsel";
+"Downloaded" = "Lastet ned";
+"Avalanche forecast" = "Skredvarsel";
+"Forecast date" = "Varseldato";
+"Danger level" = "Faregrad";
+"Summary" = "Sammendrag";
+"Valid until" = "Gyldig til";
+"No forecast available for this day" = "Ingen varsel tilgjengelig for denne dagen";
+"Open avalanche forecast" = "Åpne skredvarsel";
+"Open local forecast" = "Åpne lokalt varsel";
+"Open the full bulletin for a region or your current position." = "Åpne hele varselet for en region eller din nåværende posisjon.";
+"Open a selected region, or use your current position." = "Åpne en valgt region, eller bruk din nåværende posisjon.";
+"Get a published avalanche forecast for Norway or Sweden." = "Hent et publisert skredvarsel for Norge eller Sverige.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Gjeldende eller morgendagens publiserte varsel for Norge og Sverige.";
+"The avalanche danger level in %@ for %@ is %@." = "Skredfaren i %@ for %@ er %@.";
+
+/* Shortcuts parameter summaries */
+"Open forecast for ${target}" = "Åpne varsel for ${target}";
+"Get avalanche warning for ${region}" = "Hent skredvarsel for ${region}";

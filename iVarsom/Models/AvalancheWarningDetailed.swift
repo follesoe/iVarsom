@@ -30,6 +30,7 @@ struct AvalancheWarningDetailed: Sendable, Codable, AvalancheWarningProtocol {
     var PublishTime: Date
     var MainText: String
     var LangKey: Int
+    var BulletinValidFrom: Date?
 
     var hasActiveEmergencyWarning: Bool {
         guard let warning = EmergencyWarning, !warning.isEmpty else { return false }
@@ -42,6 +43,7 @@ extension AvalancheWarningDetailed {
         AvalancheWarningSimple(RegId: RegId, RegionId: RegionId, RegionName: RegionName,
             RegionTypeName: RegionTypeName, ValidFrom: ValidFrom, ValidTo: ValidTo,
             NextWarningTime: NextWarningTime, PublishTime: PublishTime, DangerLevel: DangerLevel,
-            MainText: MainText, LangKey: LangKey, EmergencyWarning: EmergencyWarning)
+            MainText: MainText, LangKey: LangKey, EmergencyWarning: EmergencyWarning,
+            BulletinValidFrom: BulletinValidFrom)
     }
 }

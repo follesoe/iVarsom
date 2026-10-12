@@ -5,7 +5,7 @@ import CoreLocation
 
 struct VarsomApiClientTests {
     @Test func decodesDetailedWarningsAndBuildsRequest() async throws {
-        let body = try Fixtures.json([Fixtures.warning()])
+        let body = try Fixtures.varsomAPIJSON([Fixtures.warning()])
         let transport = StubTransport { _ in body }
         let client = VarsomApiClient(transport: transport)
         let warnings = try await client.loadWarningsDetailed(lang: .english, regionId: 3003, from: Fixtures.date, to: Fixtures.date)
@@ -21,7 +21,7 @@ struct VarsomApiClientTests {
         var first = Fixtures.warning(); first.RegId = 0
         var second = Fixtures.warning(); second.RegId = 0
         var existing = Fixtures.warning(); existing.RegId = 3004
-        let body = try Fixtures.json([first, second, existing])
+        let body = try Fixtures.varsomAPIJSON([first, second, existing])
         let client = VarsomApiClient(transport: StubTransport { _ in body })
         let warnings = try await client.loadWarningsDetailed(lang: .english, regionId: 3003, from: Fixtures.date, to: Fixtures.date)
         #expect(Set(warnings.map(\.RegId)).count == 3)
@@ -58,6 +58,20 @@ struct VarsomApiClientTests {
         decoder.dateDecodingStrategy = .varsomDate
         let date = try decoder.decode(Date.self, from: Data("\"\(value)\"".utf8))
         #expect(date.timeIntervalSince1970 > 0)
+    }
+
+    @Test(arguments: [
+        ("2026-02-21T16:00:00", "2026-02-21T15:00:00Z"),
+        ("2026-07-21T16:00:00", "2026-07-21T14:00:00Z"),
+        ("2026-02-21T15:49:41.593", "2026-02-21T14:49:41.593Z")
+    ])
+    func apiTimesUseNorwegianLocalTime(value: String, expected: String) throws {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .varsomAPIDate
+        let date = try decoder.decode(Date.self, from: Data("\"\(value)\"".utf8))
+        let iso = ISO8601DateFormatter()
+        iso.formatOptions = expected.contains(".593") ? [.withInternetDateTime, .withFractionalSeconds] : [.withInternetDateTime]
+        #expect(date == iso.date(from: expected))
     }
 }
 

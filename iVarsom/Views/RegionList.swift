@@ -3,7 +3,6 @@ import CoreLocationUI
 import MapKit
 import StoreKit
 import SwiftUI
-import WidgetKit
 
 struct RegionList: View {
     @Environment(\.scenePhase) private var scenePhase
@@ -11,6 +10,7 @@ struct RegionList: View {
     @Environment(\.requestReview) private var requestReview
     @Bindable var vm: RegionBrowserModel
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
+    @State private var widgetRefreshID: UUID?
 
     var reviewPromptService = ReviewPromptService()
 
@@ -99,6 +99,13 @@ struct RegionList: View {
         .refreshable {
             await vm.loadRegions()
             await vm.detail.load(from: WarningDateRange.defaultDaysBefore, to: WarningDateRange.defaultDaysAfter)
+            guard !Task.isCancelled else { return }
+            widgetRefreshID = UUID()
+        }
+        .task(id: widgetRefreshID) {
+            guard let request = widgetRefreshID else { return }
+            await WidgetForecastRefresher.refresh(forceRefresh: true)
+            if widgetRefreshID == request { widgetRefreshID = nil }
         }
         .task(id: scenePhase) {
             guard scenePhase == .active else { return }
@@ -113,7 +120,6 @@ struct RegionList: View {
         .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active && oldPhase == .background {
                 reviewPromptService.recordSession()
-                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         .onChange(of: vm.detail.state.phase) { _, newState in

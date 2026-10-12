@@ -3,3 +3,4 @@
 "Avalanche warning from ${applicationName}" = "Varsel fra ${applicationName}";
 "Get avalanche warning for ${region} in ${applicationName}" = "Hent varsel for ${region} i ${applicationName}";
 "What is the avalanche danger in ${region} with ${applicationName}" = "Hva er skredfaren i ${region} med ${applicationName}";
+"Open my local forecast in ${applicationName}" = "Åpne mitt lokale varsel i ${applicationName}";

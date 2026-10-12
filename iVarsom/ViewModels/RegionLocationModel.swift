@@ -22,6 +22,19 @@ final class RegionLocationModel {
         isAuthorized = manager.isAuthorized
     }
 
+    /// Navigation consumes its own result. A concurrent presentation refresh
+    /// must not supersede it or make it read another request's location state.
+    func regionIDForNavigation() async throws -> Int {
+        guard try await manager.requestPermission() else { throw ForecastError.locationRequired }
+        try Task.checkCancellation()
+        guard let coordinate = try await manager.updateLocation(),
+              let feature = RegionGeoData.load()?.findNearestRegion(at: coordinate) else {
+            throw ForecastError.locationUnavailable
+        }
+        try Task.checkCancellation()
+        return feature.id
+    }
+
     func refresh(regions: [RegionSummary], requestPermission: Bool = false) async {
         let request = UUID()
         requestID = request

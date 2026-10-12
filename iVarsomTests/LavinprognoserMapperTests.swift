@@ -31,4 +31,13 @@ struct LavinprognoserMapperTests {
         #expect(warning.PublishTime == date)
         #expect(warning.ValidFrom == Calendar.current.date(byAdding: .day, value: 1, to: date))
     }
+
+    @Test func actualValidityIsPreservedSeparatelyFromDisplayDay() throws {
+        let warning = LavinprognoserMapper(date: Fixtures.date, languageKey: 3)
+            .warning(from: try forecast(), regionId: 100001)
+        let expected = try #require(ISO8601DateFormatter().date(from: "2026-02-20T17:00:00Z"))
+        #expect(warning.BulletinValidFrom == expected)
+        #expect(warning.summary.validityStart == expected)
+        #expect(warning.ValidFrom == warning.ValidTo)
+    }
 }

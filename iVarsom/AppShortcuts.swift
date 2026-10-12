@@ -13,5 +13,10 @@ struct SkredvarselShortcuts: AppShortcutsProvider {
             shortTitle: LocalizedStringResource("Check warning"),
             systemImageName: "mountain.2"
         )
+        AppShortcut(
+            intent: OpenRegionIntent(region: RegionConfigOptionAppEntity(RegionOption.currentPositionOption)),
+            phrases: ["Open my local forecast in \(.applicationName)"],
+            shortTitle: "Open local forecast",
+            systemImageName: "location.circle")
     }
 }

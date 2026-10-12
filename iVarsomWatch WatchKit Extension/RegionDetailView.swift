@@ -104,13 +104,7 @@ struct RegionDetailView: View {
     }
 
     func formatWarningDay(date: Date) -> String {
-        if (Calendar.current.isDateInYesterday(date) ||
-            Calendar.current.isDateInToday(date) ||
-            Calendar.current.isDateInTomorrow(date)) {
-            return date.getRelativeDayNameAbbr()
-        } else {
-            return date.getDayName().firstUppercased
-        }
+        ForecastSelection.dayLabel(date, regionID: selectedRegion.Id, now: .current)
     }
 }
 
