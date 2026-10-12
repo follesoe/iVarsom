@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 import Testing
 
@@ -153,6 +154,40 @@ struct RegionBrowserModelTests {
         #expect(location.permissionRequests == 1)
     }
 
+    @Test("The location row can distinguish undecided, denied and restricted permission",
+          arguments: [CLAuthorizationStatus.notDetermined, .denied, .restricted])
+    func preservesLocationPermissionState(status: CLAuthorizationStatus) async {
+        let vm = model()
+        location.authorizationStatus = status
+        await vm.location.refresh(regions: [])
+        #expect(vm.location.authorizationStatus == status)
+        #expect(!vm.location.isAuthorized)
+        #expect(!vm.location.isRefreshing)
+        #expect(location.permissionRequests == 0)
+        #expect(location.locationRequests == 0)
+    }
+
+    @Test("An unavailable location ends progress and can be retried", arguments: [false, true])
+    func retriesUnavailableLocation(throwsError: Bool) async {
+        location.isAuthorized = true
+        let vm = model()
+        location.onUpdateLocation = {
+            #expect(vm.location.isRefreshing)
+            if throwsError { throw TestFailure.offline }
+            return nil
+        }
+        await vm.location.refresh(regions: [], requestPermission: true)
+        #expect(vm.location.isAuthorized)
+        #expect(vm.location.region == nil)
+        #expect(!vm.location.isRefreshing)
+
+        location.onUpdateLocation = nil
+        location.coordinate = Location2D(latitude: 78.22, longitude: 15.65)
+        await vm.location.refresh(regions: [Fixtures.region(3003)], requestPermission: true)
+        #expect(vm.location.region?.id == 3003)
+        #expect(!vm.location.isRefreshing)
+    }
+
     @Test("Opening a fixed region and reactivating never asks for location permission", arguments: [false, true])
     func activationUsesExistingLocationPermission(isAuthorized: Bool) async {
         location.isAuthorized = isAuthorized
@@ -225,6 +260,7 @@ struct RegionBrowserModelTests {
         await activation.value
         #expect(!vm.needsRefresh())
         #expect(vm.location.coordinate == nil)
+        #expect(!vm.location.isRefreshing)
         #expect(vm.favoriteRegions.isEmpty)
 
         location.onUpdateLocation = nil

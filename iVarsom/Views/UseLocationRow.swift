@@ -1,27 +1,46 @@
 import SwiftUI
 
 struct UseLocationRow: View {
-    var updateLocationHandler: () -> ()
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    var title: LocalizedStringKey = "Use current location"
+    var systemImage = "location"
+    var isRefreshing = false
+    var action: () -> Void
 
     var body: some View {
-        VStack(alignment: .center) {
-            Button(action: updateLocationHandler) {
-                HStack {
-                    Spacer()
-                    Label("Use current location", systemImage: "location.circle")
+        Button(action: action) {
+            HStack {
+                if dynamicTypeSize.isAccessibilitySize {
+                    Text(title)
+                } else {
+                    Label(title, systemImage: systemImage)
                         .labelStyle(.titleAndIcon)
+                }
+                if isRefreshing {
                     Spacer()
+                    ProgressView()
+                        .accessibilityHidden(true)
                 }
             }
-            Text("Will enable location based warnings in Widgets")
-                .font(.caption)
-                .foregroundColor(.gray)
-                .padding(.top, 2)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
         }
-
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(.isButton)
+        .disabled(isRefreshing)
     }
 }
 
 #Preview("Use Location Row") {
-    return UseLocationRow() {}
+    List {
+        Section {
+            UseLocationRow() {}
+        } header: {
+            Text("Local warnings")
+        } footer: {
+            Text("Show forecasts for the nearest region.")
+        }
+    }
 }

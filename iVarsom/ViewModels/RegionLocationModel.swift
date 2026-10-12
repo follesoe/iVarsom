@@ -1,10 +1,12 @@
+import CoreLocation
 import Foundation
 import Observation
 
 @Observable
 @MainActor
 final class RegionLocationModel {
-    private(set) var isAuthorized: Bool
+    private(set) var authorizationStatus: CLAuthorizationStatus?
+    private(set) var isRefreshing = false
     private(set) var coordinate: Location2D?
     private(set) var region: RegionSummary?
     private let manager: any LocationProviding
@@ -19,8 +21,10 @@ final class RegionLocationModel {
         self.manager = manager
         self.repository = repository
         self.now = now
-        isAuthorized = manager.isAuthorized
+        authorizationStatus = manager.authorizationStatus
     }
+
+    var isAuthorized: Bool { authorizationStatus.map(LocationManager.isAuthorized) ?? false }
 
     /// Navigation consumes its own result. A concurrent presentation refresh
     /// must not supersede it or make it read another request's location state.
@@ -38,11 +42,15 @@ final class RegionLocationModel {
     func refresh(regions: [RegionSummary], requestPermission: Bool = false) async {
         let request = UUID()
         requestID = request
+        isRefreshing = true
+        defer {
+            if requestID == request { isRefreshing = false }
+        }
         do {
             let authorized = try await (requestPermission ? manager.requestPermission() : manager.checkAuthorization())
             try Task.checkCancellation()
             guard requestID == request else { return }
-            isAuthorized = authorized
+            authorizationStatus = manager.authorizationStatus
             guard authorized else {
                 coordinate = nil
                 region = nil

@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Details";
 "Emergency warning" = "Emergency warning";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Open Settings";
+"Finding location…" = "Finding location…";
+"Location access is off. You can enable it in Settings." = "Location access is off. You can enable it in Settings.";
+"Location access is restricted on this device." = "Location access is restricted on this device.";
+"Show forecasts for the nearest region." = "Show forecasts for the nearest region.";

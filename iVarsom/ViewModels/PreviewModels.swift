@@ -1,4 +1,5 @@
 #if DEBUG
+    import CoreLocation
     import Foundation
 
     @MainActor
@@ -30,6 +31,7 @@
 
     @MainActor
     private final class PreviewLocation: LocationProviding {
+        var authorizationStatus: CLAuthorizationStatus? { .notDetermined }
         var isAuthorized: Bool { false }
         func checkAuthorization() async throws -> Bool { false }
         func requestPermission() async throws -> Bool { false }

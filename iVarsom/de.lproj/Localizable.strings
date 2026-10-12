@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Details";
 "Emergency warning" = "Notfallwarnung";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Einstellungen öffnen";
+"Finding location…" = "Standort wird ermittelt…";
+"Location access is off. You can enable it in Settings." = "Der Standortzugriff ist deaktiviert. Du kannst ihn in den Einstellungen aktivieren.";
+"Location access is restricted on this device." = "Der Standortzugriff ist auf diesem Gerät eingeschränkt.";
+"Show forecasts for the nearest region." = "Lawinenprognosen für die nächstgelegene Region anzeigen.";

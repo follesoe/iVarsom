@@ -120,7 +120,11 @@ final class StubSwedenClient: LavinprognoserAPIProviding {
 
 @MainActor
 final class StubLocation: LocationProviding {
-    var isAuthorized = false
+    var authorizationStatus: CLAuthorizationStatus? = .notDetermined
+    var isAuthorized: Bool {
+        get { authorizationStatus.map(LocationManager.isAuthorized) ?? false }
+        set { authorizationStatus = newValue ? .authorizedWhenInUse : .denied }
+    }
     var coordinate: Location2D?
     var onUpdateLocation: (() async throws -> Location2D?)?
     private(set) var locationRequests = 0

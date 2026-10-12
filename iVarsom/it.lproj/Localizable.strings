@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Dettagli";
 "Emergency warning" = "Avviso di emergenza";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Apri Impostazioni";
+"Finding location…" = "Ricerca della posizione…";
+"Location access is off. You can enable it in Settings." = "L’accesso alla posizione è disattivato. Puoi attivarlo in Impostazioni.";
+"Location access is restricted on this device." = "L’accesso alla posizione è limitato su questo dispositivo.";
+"Show forecasts for the nearest region." = "Mostra le previsioni valanghe per la regione più vicina.";

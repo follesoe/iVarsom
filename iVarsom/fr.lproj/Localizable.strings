@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Détails";
 "Emergency warning" = "Alerte urgente";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Ouvrir Réglages";
+"Finding location…" = "Recherche de la position…";
+"Location access is off. You can enable it in Settings." = "L’accès à la position est désactivé. Vous pouvez l’activer dans Réglages.";
+"Location access is restricted on this device." = "L’accès à la position est restreint sur cet appareil.";
+"Show forecasts for the nearest region." = "Afficher les prévisions d’avalanches pour la région la plus proche.";

@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Detaljer";
 "Emergency warning" = "Nødvarsel";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Åpne Innstillinger";
+"Finding location…" = "Finner posisjonen…";
+"Location access is off. You can enable it in Settings." = "Posisjonstilgang er slått av. Du kan slå den på i Innstillinger.";
+"Location access is restricted on this device." = "Posisjonstilgang er begrenset på denne enheten.";
+"Show forecasts for the nearest region." = "Vis skredvarsler for nærmeste region.";

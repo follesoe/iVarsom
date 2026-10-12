@@ -4,6 +4,8 @@ public typealias Location2D = CLLocationCoordinate2D
 
 @MainActor
 protocol LocationProviding: AnyObject {
+    /// Nil until Core Location delivers its first authorization callback.
+    var authorizationStatus: CLAuthorizationStatus? { get }
     var isAuthorized: Bool { get }
     func checkAuthorization() async throws -> Bool
     func requestPermission() async throws -> Bool
@@ -16,7 +18,7 @@ protocol LocationProviding: AnyObject {
 @MainActor
 final class LocationManager: NSObject, LocationProviding, @preconcurrency CLLocationManagerDelegate {
     private let manager: CLLocationManager
-    private var authorizationStatus: CLAuthorizationStatus?
+    private(set) var authorizationStatus: CLAuthorizationStatus?
     private var authorizationRequests: [UUID: CheckedContinuation<CLAuthorizationStatus, any Error>] = [:]
     private var permissionRequests: [UUID: CheckedContinuation<Bool, any Error>] = [:]
     private var locationRequests: [UUID: CheckedContinuation<Location2D?, any Error>] = [:]

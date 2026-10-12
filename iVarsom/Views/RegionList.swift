@@ -1,5 +1,4 @@
 import CoreLocation
-import CoreLocationUI
 import MapKit
 import StoreKit
 import SwiftUI
@@ -9,6 +8,7 @@ struct RegionList: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.requestReview) private var requestReview
+    @Environment(\.openURL) private var openURL
     @Bindable var vm: RegionBrowserModel
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
     @State private var widgetRefreshID: UUID?
@@ -30,21 +30,7 @@ struct RegionList: View {
                     Spacer()
                 } else {
                     List(selection: $vm.selectedRegionID) {
-                        Section(header: Text("Local warnings")) {
-                            if let localRegion = vm.location.region {
-                                NavigationLink(value: localRegion.id) {
-                                    RegionRow(region: localRegion)
-                                }
-                                .speechLocale(for: localRegion.Id)
-                                .listRowInsets(rowInsets)
-                            } else if !vm.location.isAuthorized {
-                                UseLocationRow(updateLocationHandler: {
-                                    Task {
-                                        await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
-                                    }
-                                }).listRowInsets(rowInsets)
-                            }
-                        }
+                        localWarningsSection
                         if !vm.favoriteRegions.isEmpty {
                             favoritesSection
                         }
@@ -145,6 +131,57 @@ struct RegionList: View {
         Text("Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.")
             .font(.caption2)
             .foregroundStyle(.secondary)
+    }
+
+    private var localWarningsSection: some View {
+        Section {
+            if let localRegion = vm.location.region {
+                NavigationLink(value: localRegion.id) {
+                    RegionRow(region: localRegion)
+                }
+                .speechLocale(for: localRegion.Id)
+                .listRowInsets(rowInsets)
+            } else {
+                UseLocationRow(
+                    title: locationActionTitle,
+                    systemImage: vm.location.authorizationStatus == .denied ? "gear" : "location",
+                    isRefreshing: vm.location.isRefreshing
+                ) {
+                    if vm.location.authorizationStatus == .denied {
+                        if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                    } else {
+                        Task { await vm.location.refresh(regions: vm.allRegions, requestPermission: true) }
+                    }
+                }
+                .disabled(vm.location.authorizationStatus == .restricted)
+            }
+        } header: {
+            Text("Local warnings")
+        } footer: {
+            if vm.location.region == nil {
+                Text(locationExplanation)
+            }
+        }
+    }
+
+    private var locationActionTitle: LocalizedStringKey {
+        if vm.location.isRefreshing { return "Finding location…" }
+        switch vm.location.authorizationStatus {
+        case .denied: return "Open Settings"
+        case .restricted: return "Location unavailable"
+        default: return "Use current location"
+        }
+    }
+
+    private var locationExplanation: LocalizedStringKey {
+        switch vm.location.authorizationStatus {
+        case .denied: return "Location access is off. You can enable it in Settings."
+        case .restricted: return "Location access is restricted on this device."
+        case .authorizedAlways, .authorizedWhenInUse:
+            return vm.location.isRefreshing
+                ? "Show forecasts for the nearest region." : "Could not determine your current location."
+        default: return "Show forecasts for the nearest region."
+        }
     }
     private var selectedRegionDetail: some View {
         RegionDetailContainer(

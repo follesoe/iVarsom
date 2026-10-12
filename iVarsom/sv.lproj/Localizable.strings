@@ -283,3 +283,10 @@
 /* Forecast reading controls and accessibility */
 "Details" = "Detaljer";
 "Emergency warning" = "Akut varning";
+
+/* Local forecast permission and progress */
+"Open Settings" = "Öppna Inställningar";
+"Finding location…" = "Söker efter plats…";
+"Location access is off. You can enable it in Settings." = "Platsåtkomst är avstängd. Du kan aktivera den i Inställningar.";
+"Location access is restricted on this device." = "Platsåtkomst är begränsad på den här enheten.";
+"Show forecasts for the nearest region." = "Visa lavinprognoser för närmaste region.";
