@@ -279,3 +279,7 @@
 /* Shortcuts parameter summaries */
 "Open forecast for ${target}" = "Åpne varsel for ${target}";
 "Get avalanche warning for ${region}" = "Hent skredvarsel for ${region}";
+
+/* Forecast reading controls and accessibility */
+"Details" = "Detaljer";
+"Emergency warning" = "Nødvarsel";

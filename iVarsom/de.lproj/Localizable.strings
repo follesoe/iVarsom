@@ -279,3 +279,7 @@
 /* Shortcuts parameter summaries */
 "Open forecast for ${target}" = "Prognose für ${target} öffnen";
 "Get avalanche warning for ${region}" = "Lawinenwarnung für ${region} abrufen";
+
+/* Forecast reading controls and accessibility */
+"Details" = "Details";
+"Emergency warning" = "Notfallwarnung";

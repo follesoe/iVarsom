@@ -118,7 +118,7 @@ private struct ContentView: View {
             .presentationDetents([.medium, .large])
         }
         .task {
-            await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+            await vm.location.refresh(regions: vm.allRegions)
             if let location = vm.location.coordinate {
                 withAnimation {
                     cameraPosition = AvalancheMapView.userPosition(location)

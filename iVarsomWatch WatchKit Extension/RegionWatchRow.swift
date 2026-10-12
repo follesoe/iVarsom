@@ -3,6 +3,7 @@ import SwiftUI
 struct RegionWatchRow: View {
     var warning: AvalancheWarningSimple
     var isLocalRegion:Bool
+    @ScaledMetric(relativeTo: .title2) private var symbolSize = 32.0
     
     var textColor: Color {
         return warning.DangerLevel == .level5 ? .white : .black
@@ -13,35 +14,30 @@ struct RegionWatchRow: View {
     }
 
     var body: some View {
-        HStack {
-            WarningSymbolLevel(dangerLevel: warning.DangerLevel, size: 46.0)
-                .frame(width: 56)
-                .padding(.top, 8)
-                .padding(.bottom, 8)
-                .padding(.leading, 5)
-                .accessibilityHidden(true)
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                DangerIcon(dangerLevel: warning.DangerLevel)
+                    .frame(width: symbolSize, height: symbolSize)
+                Text(warning.DangerLevel.description)
+                    .font(.title2.weight(.heavy))
+                Spacer(minLength: 0)
                 let warningDate = warning.formattedForecastDate(.dateTime.weekday(.wide))
                 Text(isLocalRegion ?
                      "\(Image(systemName: "location.fill")) \(warningDate)" :
                         "\(warningDate)")
-                    .foregroundColor(textColor)
-                    .textCase(.uppercase)
                     .font(.caption2)
-                Text(regionName)
-                    .foregroundColor(textColor)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .lineLimit(3)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 4))
-                    .fixedSize(horizontal: false, vertical: true)
             }
-            Spacer()
+            Text(regionName)
+                .font(.headline)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .padding(12)
+        .foregroundStyle(textColor)
         .background(warning.DangerLevel.color.gradient)
-        .accessibilityElement(children: .combine)
-        .accessibilityValue("\(warning.formattedForecastDate(.dateTime.weekday(.wide))), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
-        .speechLocale(for: warning.RegionId)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(regionName), \(warning.formattedForecastDate(.dateTime.weekday(.wide))), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
+        .accessibilityValue(isLocalRegion ? String(localized: "Current position") : "")
     }
 }
 

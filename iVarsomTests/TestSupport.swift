@@ -124,8 +124,16 @@ final class StubLocation: LocationProviding {
     var coordinate: Location2D?
     var onUpdateLocation: (() async throws -> Location2D?)?
     private(set) var locationRequests = 0
-    func checkAuthorization() async throws -> Bool { isAuthorized }
-    func requestPermission() async throws -> Bool { isAuthorized }
+    private(set) var permissionRequests = 0
+    private(set) var authorizationChecks = 0
+    func checkAuthorization() async throws -> Bool {
+        authorizationChecks += 1
+        return isAuthorized
+    }
+    func requestPermission() async throws -> Bool {
+        permissionRequests += 1
+        return isAuthorized
+    }
     func updateLocation() async throws -> Location2D? {
         locationRequests += 1
         if let onUpdateLocation { return try await onUpdateLocation() }

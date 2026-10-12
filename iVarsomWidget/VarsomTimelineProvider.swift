@@ -81,6 +81,11 @@ struct Provider: AppIntentTimelineProvider {
     }
 
     func recommendations() -> [AppIntentRecommendation<SelectRegion>] {
+        #if os(watchOS)
+        // watchOS 26 presents region/day configuration when no fixed presets
+        // are supplied. Smart Stack suggestions still come from relevance().
+        return []
+        #else
         let favorites = FavoritesService.savedFavorites()
         let regions: [RegionOption]
         if favorites.isEmpty {
@@ -109,6 +114,7 @@ struct Provider: AppIntentTimelineProvider {
             intent.region = regionOption
             return AppIntentRecommendation(intent: intent, description: region.name)
         }
+        #endif
     }
 
     func createTimeline(loaded: LoadedForecast, configuration: SelectRegion, now: Date) -> Timeline<Entry> {

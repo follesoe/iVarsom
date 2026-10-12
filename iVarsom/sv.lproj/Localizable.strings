@@ -279,3 +279,7 @@
 /* Shortcuts parameter summaries */
 "Open forecast for ${target}" = "Öppna prognosen för ${target}";
 "Get avalanche warning for ${region}" = "Hämta lavinprognos för ${region}";
+
+/* Forecast reading controls and accessibility */
+"Details" = "Detaljer";
+"Emergency warning" = "Akut varning";

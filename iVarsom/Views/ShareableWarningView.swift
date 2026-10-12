@@ -7,7 +7,7 @@ struct ShareableWarningView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(spacing: 0) {
-                WarningSummary(warning: warning)
+                ForecastSummaryCard(warning: warning)
                 if warning.hasActiveEmergencyWarning,
                    let emergencyWarning = warning.EmergencyWarning {
                     EmergencyWarningBanner(message: emergencyWarning, textLanguageCode: warning.textLanguageCode)

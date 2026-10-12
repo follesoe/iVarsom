@@ -11,7 +11,7 @@ struct DataSourceView: View {
 
     var body: some View {
         Text(attributionText)
-            .font(.system(size: 11))
+            .font(.footnote)
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets())
     }

@@ -15,6 +15,10 @@ Skredvarsel 6.0 starts our sixth winter season: 2026/27.
 - Forecast dates and links stay on the correct day when you travel to another time zone.
 - Improved reliability when switching regions, updating your location, syncing favorites, translating or sharing forecasts.
 
+- Clearer forecast cards and day labels, with improved readability at larger text sizes.
+- Location permission is requested when you choose a location-based action.
+- Choose a region and forecast day directly when configuring Apple Watch widgets, and read forecasts with clearer contrast and scalable text.
+
 ## 5.3.0
 
 - Translate warnings to your language using Apple's on-device translation

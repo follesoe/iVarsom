@@ -58,6 +58,7 @@ struct RegionListView: View {
                                         Text(region.Name)
                                     }
                                 }
+                                .speechLocale(for: region.Id)
                                 .listRowInsets(EdgeInsets())
                                 .listRowBackground(Color.clear)
                                 .cornerRadius(20)
@@ -65,12 +66,11 @@ struct RegionListView: View {
                             .onDelete(perform: removeFavorite)
                         }
 
-                        HStack {
-                            Spacer()
-                            Label("Add Region", systemImage: "plus")
-                            Spacer()
-                        }.onTapGesture {
+                        Button {
                             showAddRegion = true
+                        } label: {
+                            Label("Add Region", systemImage: "plus")
+                                .frame(maxWidth: .infinity)
                         }
                         NavigationLink {
                             AvalancheWatchMapView(
@@ -162,6 +162,7 @@ struct RegionListView: View {
                     Text(region.Name)
                 }
             }
+            .speechLocale(for: region.Id)
             .listRowInsets(EdgeInsets())
             .listRowBackground(Color.clear)
             .cornerRadius(20)

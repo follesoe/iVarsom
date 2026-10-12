@@ -5,11 +5,13 @@ struct AvalancheProblemDetailsView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText).padding()
+            VStack(alignment: .leading, spacing: 16) {
+                Text(problem.TriggerSenitivityPropagationDestuctiveSizeText)
+                    .font(.body)
                 Text(problem.AvalCauseName)
-                    .font(.system(size: 12)).italic().padding()
+                    .font(.footnote).italic()
             }
+            .scenePadding()
         }
     }
 }

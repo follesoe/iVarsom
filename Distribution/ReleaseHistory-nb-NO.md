@@ -15,6 +15,10 @@ Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
 - Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
 - Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.
 
+- Tydeligere varselkort og dagmerking, med bedre lesbarhet ved større tekststørrelser.
+- Appen ber om tilgang til posisjonen din når du velger en posisjonsbasert handling.
+- Velg region og varseldag direkte når du konfigurerer widgeter på Apple Watch, og les varsler med tydeligere kontrast og tekst som følger valgt tekststørrelse.
+
 ## 5.3.0
 
 - Appen henter nå alltid ferske data fra nettverket, med lasteindikator under oppdatering

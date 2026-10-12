@@ -1,5 +1,65 @@
 import SwiftUI
 
+/// A reading layout for the app and share images. Widgets retain their compact,
+/// fixed-height summary below.
+struct ForecastSummaryCard: View {
+    let warning: any AvalancheWarningProtocol
+    var showsRegionName = true
+    var translatedTexts: [String: String] = [:]
+    var translatedLanguageCode: String? = nil
+    @ScaledMetric(relativeTo: .title) private var symbolSize = 44.0
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 12) {
+                    dangerSymbol
+                    Text(warning.DangerLevel.localizedName).font(.headline)
+                }
+                VStack(alignment: .leading, spacing: 8) {
+                    dangerSymbol
+                    Text(warning.DangerLevel.localizedName).font(.headline)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .foregroundStyle(warning.DangerLevel == .level5 ? .white : .black)
+            .background(warning.DangerLevel.color)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))
+
+            VStack(alignment: .leading, spacing: 12) {
+                if showsRegionName {
+                    Text(warning.RegionName)
+                        .font(.headline)
+                        .speechLocale(for: warning.RegionId)
+                }
+                Text(warning.formattedForecastDate(.init(date: .complete, time: .omitted)))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                Text(translatedTexts[warning.MainText] ?? warning.MainText)
+                    .font(.body)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .speechLocale(translatedLanguageCode ?? warning.textLanguageCode)
+            }
+            .padding([.horizontal, .bottom])
+            #if os(iOS)
+            .textSelection(.enabled)
+            #endif
+        }
+        .background(.background.secondary)
+    }
+
+    private var dangerSymbol: some View {
+        HStack(spacing: 12) {
+            DangerIcon(dangerLevel: warning.DangerLevel)
+                .frame(width: symbolSize, height: symbolSize)
+            Text(warning.DangerLevel.description)
+                .font(.largeTitle.weight(.heavy))
+        }
+    }
+}
+
 struct WarningSummary: View {
     var warning: any AvalancheWarningProtocol
     var mainTextFont: Font = .body

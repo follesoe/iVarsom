@@ -23,9 +23,9 @@ struct RegionDetail: View {
                     }
 
                     VStack(spacing: 0) {
-                        WarningSummary(
+                        ForecastSummaryCard(
                             warning: selectedWarning,
-                            includeLocationIcon: false,
+                            showsRegionName: false,
                             translatedTexts: translation.texts,
                             translatedLanguageCode: translation.isTranslated ? translation.languageCode : nil)
                         if selectedWarning.hasActiveEmergencyWarning,
@@ -54,6 +54,9 @@ struct RegionDetail: View {
                     .onTapGesture(perform: {
                         showWarningText = true
                     })
+                    .accessibilityAction(named: Text("Details")) {
+                        showWarningText = true
+                    }
                 }
 
                 if warnings.count > 1 {

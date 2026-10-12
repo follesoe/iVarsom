@@ -7,6 +7,7 @@ import SwiftUI
 struct RegionList: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.requestReview) private var requestReview
     @Bindable var vm: RegionBrowserModel
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
@@ -54,15 +55,17 @@ struct RegionList: View {
                             norwaySection
                             swedenSection
                         }
+                        if dynamicTypeSize.isAccessibilitySize {
+                            sourceAttribution
+                                .listRowBackground(Color.clear)
+                        }
                     }
                     .navigationTitle("Regions")
                     .searchable(text: $vm.searchTerm)
                     .listStyle(.insetGrouped)
-                    Text(
-                        "Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency."
-                    )
-                    .font(.caption2)
-                    .padding()
+                    if !dynamicTypeSize.isAccessibilitySize {
+                        sourceAttribution.padding()
+                    }
                 }
             }
         } detail: {
@@ -109,8 +112,7 @@ struct RegionList: View {
         }
         .task(id: scenePhase) {
             guard scenePhase == .active else { return }
-            if vm.needsRefresh() { await vm.loadRegions() }
-            await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+            await vm.refreshOnActivation()
             if let location = vm.location.coordinate {
                 withAnimation {
                     cameraPosition = AvalancheMapView.userPosition(location)
@@ -137,6 +139,12 @@ struct RegionList: View {
                 }
             }
         }
+    }
+
+    private var sourceAttribution: some View {
+        Text("Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.")
+            .font(.caption2)
+            .foregroundStyle(.secondary)
     }
     private var selectedRegionDetail: some View {
         RegionDetailContainer(

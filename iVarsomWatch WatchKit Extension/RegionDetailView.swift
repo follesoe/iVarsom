@@ -12,8 +12,7 @@ struct RegionDetailView: View {
         TabView {
             if let selectedWarning = selectedWarning {
                 WarningSummary(selectedWarning: selectedWarning)
-                    .padding(.horizontal)
-                    .containerBackground(selectedWarning.DangerLevel.color.gradient, for: .tabView)
+                    .containerBackground(.black, for: .tabView)
                     .navigationTitle(selectedRegion.Name)
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
@@ -24,7 +23,6 @@ struct RegionDetailView: View {
                                 Label("Details", systemImage: "plus.magnifyingglass")
                                     .labelStyle(.iconOnly)
                             }
-                            .glassEffect(.regular.interactive())
                         }
                     }
                     .sheet(isPresented: $showWarningText, content: {
@@ -44,7 +42,6 @@ struct RegionDetailView: View {
                                         Label("Details", systemImage: "plus.magnifyingglass")
                                             .labelStyle(.iconOnly)
                                     }
-                                    .glassEffect(.regular.interactive())
                                 }
                             }
                             .sheet(isPresented: $showProblemDetails, content: {
@@ -87,9 +84,10 @@ struct RegionDetailView: View {
                                     .frame(width: 34, height: 34)
                                     .padding(.trailing, 8)
                                 Text(warning.DangerLevel.description)
-                                    .font(.system(size: 26))
-                                    .fontWeight(.heavy)
+                                    .font(.title2.weight(.heavy))
                             }
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("\(formatWarningDay(date: warning.ValidFrom)), \(String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)"))")
                             Divider()
                         }
                     }

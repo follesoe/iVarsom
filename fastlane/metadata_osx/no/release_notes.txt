@@ -8,3 +8,5 @@ Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
 - Mer pålitelig håndtering av svenske kveldsoppdateringer og lagrede varsler når en nedlasting mislykkes.
 - Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
 - Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.
+- Tydeligere varselkort og dagmerking, med bedre lesbarhet ved større tekststørrelser.
+- Appen ber om tilgang til posisjonen din når du velger en posisjonsbasert handling.

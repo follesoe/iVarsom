@@ -150,6 +150,37 @@ struct RegionBrowserModelTests {
         await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
         #expect(location.locationRequests == 0)
         #expect(!vm.location.isAuthorized)
+        #expect(location.permissionRequests == 1)
+    }
+
+    @Test("Opening a fixed region and reactivating never asks for location permission", arguments: [false, true])
+    func activationUsesExistingLocationPermission(isAuthorized: Bool) async {
+        location.isAuthorized = isAuthorized
+        location.coordinate = Location2D(latitude: 78.22, longitude: 15.65)
+        let vm = model()
+        await vm.selectRegion(id: 3003)
+        await vm.refreshOnActivation()
+        await vm.refreshOnActivation()
+        #expect(vm.selectedRegion?.id == 3003)
+        #expect(location.permissionRequests == 0)
+        #expect(location.authorizationChecks == 2)
+        #expect(location.locationRequests == (isAuthorized ? 2 : 0))
+    }
+
+    @Test("Explicit current-position actions request permission", arguments: ["map", "navigation"])
+    func explicitLocationActions(action: String) async {
+        location.isAuthorized = true
+        location.coordinate = Location2D(latitude: 78.22, longitude: 15.65)
+        let vm = model()
+        if action == "map" {
+            await vm.location.refresh(regions: [Fixtures.region(3003)], requestPermission: true)
+            #expect(vm.location.region?.id == 3003)
+        } else {
+            await vm.selectRegion(id: RegionOption.currentPositionOption.id)
+            #expect(vm.selectedRegion?.id == 3003)
+        }
+        #expect(location.permissionRequests == 1)
+        #expect(location.locationRequests == 1)
     }
 
     @Test func reactivationUpdatesLocalFavoriteWithoutReloadingFreshCatalog() async {

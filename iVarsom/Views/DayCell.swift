@@ -2,11 +2,13 @@ import SwiftUI
 
 struct DayCell: View {
     @Environment(\.colorScheme) private var colorScheme
+    @ScaledMetric(relativeTo: .headline) private var scaledBadgeSize = 42.0
     let dangerLevel: DangerLevel
     let date: Date
     let isSelected: Bool
     var hasEmergencyWarning: Bool = false
     var regionID: Int = RegionOption.defaultOption.id
+    var showsDayLabel = false
 
     private func dateText(_ style: Date.FormatStyle) -> String {
         ForecastSelection.dateText(date, regionID: regionID, style: style)
@@ -14,8 +16,14 @@ struct DayCell: View {
 
     var body: some View {
         VStack() {
+            if showsDayLabel {
+                Text(ForecastSelection.dayLabel(date, regionID: regionID, now: .current))
+                    .font(.caption)
+                    .fontWeight(isSelected ? .bold : .regular)
+            }
             WarningLevelCell(dangerLevel: dangerLevel)
-                .frame(width: 42, height: 42)
+                .frame(width: showsDayLabel ? scaledBadgeSize : 42,
+                       height: showsDayLabel ? scaledBadgeSize : 42)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.secondary, lineWidth: isSelected ? 4 : 0)
@@ -27,12 +35,13 @@ struct DayCell: View {
                     }
                 }
             Text(dateText(.dateTime.day(.twoDigits).month(.twoDigits)))
-                .font(.system(size: 13))
+                .font(showsDayLabel ? .caption : .system(size: 13))
                 .fontWeight(isSelected ? .heavy : .regular)
                 .foregroundColor(.primary)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(dateText(.dateTime.weekday(.wide).day(.twoDigits).month(.wide))), \(String(localized: "Danger level \(dangerLevel.description), \(dangerLevel.localizedName)"))")
+        .accessibilityValue(hasEmergencyWarning ? String(localized: "Emergency warning") : "")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
