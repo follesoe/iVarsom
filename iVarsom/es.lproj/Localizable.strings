@@ -237,6 +237,7 @@
 "Saved forecast from %@." = "Predicción guardada el %@.";
 "Saved forecast: %@." = "Predicción guardada: %@.";
 "Saved forecast from %@: %@." = "Predicción guardada el %@: %@.";
+"No forecast for %@." = "No hay predicción para %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Región de avalanchas";

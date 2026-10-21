@@ -40,8 +40,26 @@ struct AvalancheForecastEntity: AppEntity {
     }
 
     struct Query: EntityQuery {
+        private let store: SharedForecastStore
+        private let now: @Sendable () -> Date
+        /// The repository for archive bulletins in a provider language.
+        private let archive: @Sendable (VarsomApiClient.Language) -> any WarningRepositoryProviding
+
+        init() {
+            self.init(store: SharedForecastStore()) { language in WarningRepository(cache: nil, language: { language }) }
+        }
+
+        init(
+            store: SharedForecastStore, now: @escaping @Sendable () -> Date = { Date.current },
+            archive: @escaping @Sendable (VarsomApiClient.Language) -> any WarningRepositoryProviding
+        ) {
+            self.store = store
+            self.now = now
+            self.archive = archive
+        }
+
         func entities(for identifiers: [String]) async throws -> [AvalancheForecastEntity] {
-            let store = SharedForecastStore()
+            let now = now()
             var entities: [AvalancheForecastEntity] = []
             for id in identifiers {
                 let parts = id.split(separator: "|")
@@ -50,9 +68,9 @@ struct AvalancheForecastEntity: AppEntity {
                     continue
                 }
                 guard parts.count == 3, let regionID = Int(parts[0]), let warningID = Int(parts[2]),
-                      let snapshot = await store.load(regionID: regionID, language: String(parts[1]), now: Date.current),
+                      let snapshot = await store.load(regionID: regionID, language: String(parts[1]), now: now),
                       let warning = snapshot.warnings.first(where: {
-                          $0.RegId == warningID && $0.validityEnd > Date.current && $0.PublishTime <= Date.current
+                          $0.RegId == warningID && $0.validityEnd > now && $0.PublishTime <= now
                       }) else { continue }
                 entities.append(AvalancheForecastEntity(warning: warning, snapshot: snapshot, isCached: true))
             }
@@ -68,9 +86,8 @@ struct AvalancheForecastEntity: AppEntity {
             // Language keys end in the provider language: 1 is the native bulletin.
             let language: VarsomApiClient.Language = key.hasSuffix("-1") ? .norwegian : .english
             let day = midnight.addingTimeInterval(12 * 3600)
-            let now = Date.current
-            guard let warnings = try? await WarningRepository(cache: nil, language: { language })
-                .loadWarnings(on: day, regionID: regionID),
+            let now = now()
+            guard let warnings = try? await archive(language).loadWarnings(on: day, regionID: regionID),
                 let warning = warnings.first(where: { $0.RegId == warningID })
             else { return nil }
             let snapshot = ForecastSnapshot(

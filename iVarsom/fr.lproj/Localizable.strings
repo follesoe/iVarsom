@@ -237,6 +237,7 @@
 "Saved forecast from %@." = "Bulletin enregistré le %@.";
 "Saved forecast: %@." = "Bulletin enregistré : %@.";
 "Saved forecast from %@: %@." = "Bulletin enregistré le %@ : %@.";
+"No forecast for %@." = "Aucun bulletin pour %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Région d’avalanche";

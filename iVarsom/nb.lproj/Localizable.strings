@@ -237,6 +237,7 @@
 "Saved forecast from %@." = "Lagret varsel fra %@.";
 "Saved forecast: %@." = "Lagret varsel: %@.";
 "Saved forecast from %@: %@." = "Lagret varsel fra %@: %@.";
+"No forecast for %@." = "Ikke noe varsel for %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Varslingsregion";

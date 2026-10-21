@@ -237,6 +237,7 @@
 "Saved forecast from %@." = "Sparad prognos från %@.";
 "Saved forecast: %@." = "Sparad prognos: %@.";
 "Saved forecast from %@: %@." = "Sparad prognos från %@: %@.";
+"No forecast for %@." = "Ingen prognos för %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Prognosområde";

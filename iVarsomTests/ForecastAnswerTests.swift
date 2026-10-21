@@ -80,6 +80,12 @@ struct ForecastAnswerTests {
         #expect(!dialog(warning(emergency: "Not given"), isVoiceOnly: true).contains("Emergency"))
     }
 
+    @Test func voiceOnlySavedForecastSaysDownloadTimeWithoutARating() {
+        let text = dialog(warning(danger: .unknown), isCached: true, isVoiceOnly: true)
+        #expect(text.hasPrefix("Saved forecast from "))
+        #expect(!dialog(warning(danger: .unknown), isCached: true, isVoiceOnly: false).contains("Saved forecast from"))
+    }
+
     @Test func unassessedDangerAvoidsSpeakingAQuestionMark() {
         let text = dialog(warning(danger: .unknown), isVoiceOnly: true)
         #expect(!text.contains("?"))
@@ -154,10 +160,24 @@ struct ForecastLookupTests {
             return warning
         }
         sweden.detailed = { _ in [bulletin(1, endingOn: 21), bulletin(2, endingOn: 22)] }
-        let (lookup, _) = lookup(now: day(21, hour: 19))
+        let now = day(21, hour: 19)
+        let (lookup, store) = lookup(now: now)
         #expect(try await lookup.forecast(regionID: 100001, day: .today).warning.RegId == 2)
-        #expect(try await lookup.forecast(regionID: 100001, on: day(21, hour: 12)).warning.RegId == 1)
-        #expect(try await lookup.forecast(regionID: 100001, on: day(22, hour: 12)).warning.RegId == 2)
+        let today = try await lookup.forecast(regionID: 100001, on: day(21, hour: 12))
+        #expect(today.warning.RegId == 1)
+        let tomorrow = try await lookup.forecast(regionID: 100001, on: day(22, hour: 12))
+        #expect(tomorrow.warning.RegId == 2)
+        #expect(tomorrow.archiveDay == nil)
+
+        // Today's bulletin has expired, so Shortcuts must fetch it from the archive.
+        sweden.archived = { _, _ in bulletin(1, endingOn: 21) }
+        let query = AvalancheForecastEntity.Query(store: store, now: { now }) { _ in lookup.repository }
+        for result in [today, tomorrow] {
+            let entity = AvalancheForecastEntity(
+                warning: result.warning, snapshot: result.snapshot, isCached: result.isCached,
+                archiveDay: result.archiveDay)
+            #expect(try await query.entities(for: [entity.id]).map(\.id) == [entity.id])
+        }
     }
 
     @Test func pastDayComesFromArchiveWithoutReplacingSharedForecast() async throws {
@@ -226,7 +246,7 @@ struct ForecastLookupTests {
 
     private func favorites(_ count: Int, cached: Set<Int> = []) -> [ForecastLookup.Result] {
         (0..<count).map { index in
-            var warning = Fixtures.warning(3003 + index).summary
+            var warning = Fixtures.warning(3003 + index, date: saturday).summary
             warning.RegionName = "Region \(index)"
             let snapshot = ForecastSnapshot(
                 regionID: warning.RegionId, language: "en", requestStartedAt: saturday,
@@ -235,10 +255,29 @@ struct ForecastLookupTests {
         }
     }
 
-    private func summary(_ results: [ForecastLookup.Result], isVoiceOnly: Bool = false) -> String {
+    private func summary(
+        _ results: [ForecastLookup.Result], failed: [String] = [], withoutForecast: [String] = [],
+        isVoiceOnly: Bool = false
+    ) -> String {
         ForecastAnswer.summary(
-            for: results, isVoiceOnly: isVoiceOnly,
-            language: ForecastAnswerLanguage(requestLocale: Locale(identifier: "en-US")))
+            for: results, failed: failed, withoutForecast: withoutForecast, isVoiceOnly: isVoiceOnly,
+            language: ForecastAnswerLanguage(requestLocale: Locale(identifier: "en-US")), now: saturday)
+    }
+
+    @Test func favoritesSummarySaysDaysWhenRegionsDiffer() {
+        var results = favorites(2)
+        #expect(summary(results).hasPrefix("Region 0: level 3, Considerable. Region 1: level 3"))
+        // Sweden's current forecast after 18:00 is tomorrow's.
+        var tomorrow = results[1].warning
+        tomorrow.ValidFrom = saturday.addingTimeInterval(86400)
+        results[1] = ForecastLookup.Result(warning: tomorrow, snapshot: results[1].snapshot, isCached: false)
+        #expect(summary(results).hasPrefix("Region 0 (today): level 3, Considerable. Region 1 (tomorrow): level 3"))
+    }
+
+    @Test func favoritesSummaryNamesRegionsWithoutAnAnswer() {
+        let text = summary(favorites(1), failed: ["Lyngen", "Tromsø"], withoutForecast: ["Abisko"])
+        #expect(text.hasPrefix(
+            "Couldn't load the forecast for Lyngen and Tromsø. No forecast for Abisko. Region 0: level 3"))
     }
 
     @Test func favoritesSummaryListsEmergenciesFirstAndLimitsLength() {

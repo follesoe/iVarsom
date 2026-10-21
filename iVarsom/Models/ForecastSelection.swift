@@ -26,18 +26,25 @@ enum ForecastSelection {
         return style.format(date)
     }
 
-    static func dayLabel(_ date: Date, regionID: Int, now: Date, locale: Locale = .current) -> String {
+    /// "Today", "Tomorrow" or a weekday. `midSentence` keeps the language's own
+    /// capitalization, for example "tomorrow".
+    static func dayLabel(
+        _ date: Date, regionID: Int, now: Date, locale: Locale = .current, midSentence: Bool = false
+    ) -> String {
         let calendar = calendar(regionID: regionID)
         let offset = calendar.dateComponents([.day], from: calendar.startOfDay(for: now),
                                              to: calendar.startOfDay(for: date)).day!
+        let label: String
         if (-1...1).contains(offset) {
             let formatter = RelativeDateTimeFormatter()
             formatter.locale = locale
             formatter.dateTimeStyle = .named
             formatter.unitsStyle = .short
-            return formatter.localizedString(from: DateComponents(day: offset)).firstUppercased
+            label = formatter.localizedString(from: DateComponents(day: offset))
+        } else {
+            label = dateText(date, regionID: regionID, style: .dateTime.weekday(.wide).locale(locale))
         }
-        return dateText(date, regionID: regionID, style: .dateTime.weekday(.wide).locale(locale)).firstUppercased
+        return midSentence ? label : label.firstUppercased
     }
 
     /// Shared snapshots can contain the app's longer history. Each widget entry

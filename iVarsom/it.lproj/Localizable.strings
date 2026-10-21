@@ -237,6 +237,7 @@
 "Saved forecast from %@." = "Bollettino salvato %@.";
 "Saved forecast: %@." = "Bollettino salvato: %@.";
 "Saved forecast from %@: %@." = "Bollettino salvato %@: %@.";
+"No forecast for %@." = "Nessun bollettino per %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Regione valanghe";

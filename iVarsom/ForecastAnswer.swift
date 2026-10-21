@@ -58,7 +58,12 @@ struct ForecastLookup: Sendable {
         case 0, 1:
             // Select by day rather than validity: after 18:00, Sweden's valid
             // bulletin is already tomorrow's.
-            return try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
+            var result = try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
+            // The entity query finds only valid bulletins in the shared store, so
+            // an expired one, such as Sweden's today after 18:00, gets an
+            // archive ID that Shortcuts can fetch again.
+            if result.warning.validityEnd <= now { result.archiveDay = day }
+            return result
         case 2...: throw ForecastError.noForecast  // Not published yet.
         default:
             let warnings: [AvalancheWarningSimple]
@@ -163,24 +168,35 @@ extension ForecastAnswerLanguage {
 /// The dialog for a forecast answer in Siri or Shortcuts.
 enum ForecastAnswer {
     /// A short answer covering several regions, such as the person's favorites.
-    /// Emergency warnings come first, then which regions use a saved forecast;
-    /// at most `limit` regions are read out.
-    /// - Parameter isVoiceOnly: Whether the person only hears the answer. Without
-    ///   the snippet, the answer says when saved forecasts were downloaded.
+    /// Emergency warnings come first, then regions without an answer and regions
+    /// using a saved forecast; at most `limit` regions are read out.
+    /// - Parameters:
+    ///   - isVoiceOnly: Whether the person only hears the answer. Without the
+    ///     snippet, the answer says when saved forecasts were downloaded.
+    ///   - failed: Regions whose forecast couldn't be loaded.
+    ///   - withoutForecast: Regions without a bulletin for the day.
     static func summary(
-        for results: [ForecastLookup.Result], isVoiceOnly: Bool, language: ForecastAnswerLanguage, limit: Int = 4
+        for results: [ForecastLookup.Result], failed: [String] = [], withoutForecast: [String] = [],
+        isVoiceOnly: Bool, language: ForecastAnswerLanguage, limit: Int = 4, now: Date = Date.current
     ) -> String {
         var parts: [String] = []
+        let list = { (names: [String]) in names.formatted(.list(type: .and).locale(language.locale)) }
         let warnings = results.map(\.warning)
         let emergencies = warnings.filter(\.hasActiveEmergencyWarning).map(\.RegionName)
         if !emergencies.isEmpty {
-            parts.append("\(language.string("Emergency warning")): \(emergencies.formatted(.list(type: .and).locale(language.locale))).")
+            parts.append("\(language.string("Emergency warning")): \(list(emergencies)).")
+        }
+        // A region left out silently could hide an emergency warning.
+        if !failed.isEmpty {
+            parts.append(String(format: language.string("Error loading warnings for %@"), list(failed)))
+        }
+        if !withoutForecast.isEmpty {
+            parts.append(String(format: language.string("No forecast for %@."), list(withoutForecast)))
         }
         let saved = results.filter(\.isCached)
         if let oldest = saved.min(by: { $0.snapshot.downloadedAt < $1.snapshot.downloadedAt }) {
             // When every region is saved, the regions go without saying.
-            let regions = saved.count == results.count
-                ? nil : saved.map(\.warning.RegionName).formatted(.list(type: .and).locale(language.locale))
+            let regions = saved.count == results.count ? nil : list(saved.map(\.warning.RegionName))
             let time = savedTime(oldest.snapshot.downloadedAt, regionID: oldest.warning.RegionId, language: language)
             switch (isVoiceOnly, regions) {
             case (true, let regions?):
@@ -190,12 +206,20 @@ enum ForecastAnswer {
             case (false, nil): parts.append(language.string("Saved forecast") + ".")
             }
         }
-        for warning in warnings.prefix(limit) {
+        // After Sweden's 18:00 changeover, a current forecast can be tomorrow's
+        // while Norway's is today's; then each region says its day.
+        let days = warnings.map {
+            ForecastSelection.dayLabel(
+                $0.ValidFrom, regionID: $0.RegionId, now: now, locale: language.locale, midSentence: true)
+        }
+        let showsDays = Set(days).count > 1
+        for (warning, day) in zip(warnings, days).prefix(limit) {
             let danger = warning.DangerLevel.localizedName(in: language.bundle)
+            let region = showsDays ? "\(warning.RegionName) (\(day))" : warning.RegionName
             parts.append(warning.DangerLevel == .unknown
-                ? "\(warning.RegionName): \(danger)."
+                ? "\(region): \(danger)."
                 : String(format: language.string("%@: level %@, %@."),
-                    warning.RegionName, warning.DangerLevel.description, danger))
+                    region, warning.DangerLevel.description, danger))
         }
         if warnings.count > limit {
             parts.append(String(format: language.string("And %lld more."), warnings.count - limit))
@@ -212,11 +236,15 @@ enum ForecastAnswer {
     ) -> String {
         var parts: [String] = []
         let danger = warning.DangerLevel.localizedName(in: language.bundle)
-        if isVoiceOnly, warning.DangerLevel != .unknown {
-            if isCached {
+        if isCached {
+            if isVoiceOnly {
                 let saved = savedTime(downloadedAt, regionID: warning.RegionId, language: language)
                 parts.append(String(format: language.string("Saved forecast from %@."), saved))
+            } else {
+                parts.append(language.string("Saved forecast") + ".")
             }
+        }
+        if isVoiceOnly, warning.DangerLevel != .unknown {
             // Say the year for days more than a week away, such as earlier seasons.
             var style = Date.FormatStyle(locale: language.locale).weekday(.wide).day().month(.wide)
             if abs(warning.ValidFrom.timeIntervalSince(now)) > 7 * 86400 { style = style.year() }
@@ -225,7 +253,6 @@ enum ForecastAnswer {
                 format: language.string("The avalanche danger in %@ for %@ is level %@, %@."),
                 warning.RegionName, date, warning.DangerLevel.description, danger))
         } else {
-            if isCached { parts.append(language.string("Saved forecast") + ".") }
             let date = ForecastSelection.dateText(
                 warning.ValidFrom, regionID: warning.RegionId,
                 style: Date.FormatStyle(date: .abbreviated, time: .omitted, locale: language.locale))

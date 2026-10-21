@@ -117,35 +117,45 @@ struct GetFavoriteForecastsIntent: AppIntent {
         // One widget reload after all regions are saved, not one per favorite.
         let lookup = ForecastLookup.live(language: language.forecastLanguage, reloadWidgets: false)
         let day = day
-        typealias Outcome = Swift.Result<ForecastLookup.Result, any Error>
-        let outcomes = await withTaskGroup(of: (Int, Outcome)?.self) { group in
+        typealias Outcome = (index: Int, regionID: Int, result: Swift.Result<ForecastLookup.Result, any Error>)
+        let outcomes = await withTaskGroup(of: Outcome?.self) { group in
             for (index, id) in favorites.enumerated() {
                 group.addTask {
                     guard let regionID = await Self.regionID(for: id) else { return nil }
-                    do { return (index, .success(try await lookup.forecast(regionID: regionID, day: day))) }
-                    catch { return (index, .failure(error)) }
+                    do { return (index, regionID, .success(try await lookup.forecast(regionID: regionID, day: day))) }
+                    catch { return (index, regionID, .failure(error)) }
                 }
             }
-            var outcomes: [(Int, Outcome)] = []
+            var outcomes: [Outcome] = []
             for await outcome in group {
                 if let outcome { outcomes.append(outcome) }
             }
-            return outcomes.sorted { $0.0 < $1.0 }.map(\.1)
+            return outcomes.sorted { $0.index < $1.index }
         }
         try Task.checkCancellation()
         // The current position can resolve to a region that is also a favorite.
         var seen = Set<Int>()
-        let results = outcomes.compactMap { try? $0.get() }.filter { seen.insert($0.snapshot.regionID).inserted }
-        guard !results.isEmpty else {
-            throw ForecastError.combining(outcomes.compactMap { outcome -> (any Error)? in
-                if case .failure(let error) = outcome { error } else { nil }
-            })
+        let results = outcomes.compactMap { try? $0.result.get() }.filter { seen.insert($0.snapshot.regionID).inserted }
+        let failures = outcomes.compactMap { outcome -> (regionID: Int, error: any Error)? in
+            guard case .failure(let error) = outcome.result, seen.insert(outcome.regionID).inserted else { return nil }
+            return (outcome.regionID, error)
         }
+        guard !results.isEmpty else { throw ForecastError.combining(failures.map(\.error)) }
         WidgetCenter.shared.reloadTimelines(ofKind: "iVarsomWidget")
         let entities = results.map {
             AvalancheForecastEntity(warning: $0.warning, snapshot: $0.snapshot, isCached: $0.isCached)
         }
-        let dialog = ForecastAnswer.summary(for: results, isVoiceOnly: isVoiceOnly, language: language)
+        func names(_ failures: [(regionID: Int, error: any Error)]) -> [String] {
+            failures.compactMap { failure in
+                RegionOption.allOptions.first { $0.id == failure.regionID }?.name
+                    .replacingOccurrences(of: "\u{200B}", with: "")
+            }
+        }
+        let withoutForecast = failures.filter { ($0.error as? ForecastError) == .noForecast }
+        let failed = failures.filter { ($0.error as? ForecastError) != .noForecast }
+        let dialog = ForecastAnswer.summary(
+            for: results, failed: names(failed), withoutForecast: names(withoutForecast),
+            isVoiceOnly: isVoiceOnly, language: language)
         return .result(value: entities, dialog: IntentDialog(stringLiteral: dialog)) {
             FavoriteForecastsSnippetView(results: results)
         }
@@ -170,10 +180,16 @@ struct GetFavoriteForecastsIntent: AppIntent {
     }
 }
 
-/// One row per favorite: danger icon, region, danger level and, for a saved
-/// forecast, when it was downloaded.
+/// One row per favorite: danger icon, region, danger level, forecast day and,
+/// for a saved forecast, when it was downloaded.
+///
+/// `speechLocale` makes VoiceOver pronounce region names in their own language,
+/// as in the app's region list, and also sets the environment locale. The
+/// app-language labels are therefore resolved here as strings, so they don't
+/// switch to Norwegian or Swedish.
 struct FavoriteForecastsSnippetView: View {
     let results: [ForecastLookup.Result]
+    var now = Date.current
 
     private static let downloadFormat = Date.FormatStyle.dateTime.day().month(.abbreviated).hour().minute()
 
@@ -187,14 +203,14 @@ struct FavoriteForecastsSnippetView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(warning.RegionName)
                             .font(.headline)
-                        Text(warning.DangerLevel.localizedName)
+                        Text(verbatim: "\(warning.DangerLevel.localizedName) · \(day(of: warning))")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                         if result.isCached {
                             HStack(spacing: 4) {
                                 Image(systemName: "clock.arrow.circlepath")
-                                Text("Saved forecast")
-                                Text(result.snapshot.downloadedAt, format: Self.downloadFormat)
+                                Text(verbatim: String(localized: "Saved forecast"))
+                                Text(verbatim: result.snapshot.downloadedAt.formatted(Self.downloadFormat))
                             }
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -214,9 +230,14 @@ struct FavoriteForecastsSnippetView: View {
         .padding()
     }
 
+    /// "Today" or "Tomorrow" in the region's calendar and the app's language.
+    private func day(of warning: AvalancheWarningSimple, midSentence: Bool = false) -> String {
+        ForecastSelection.dayLabel(warning.ValidFrom, regionID: warning.RegionId, now: now, midSentence: midSentence)
+    }
+
     private func rowLabel(for result: ForecastLookup.Result) -> String {
         let warning = result.warning
-        var label = "\(warning.RegionName), "
+        var label = "\(warning.RegionName), \(day(of: warning, midSentence: true)), "
             + String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)")
         if warning.hasActiveEmergencyWarning { label += ", " + String(localized: "Emergency warning") }
         if result.isCached {
