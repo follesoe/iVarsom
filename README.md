@@ -94,7 +94,7 @@ Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8I
 
 ### Requirements
 
-- Xcode 26.6 (verified locally; includes Swift 6.3.3)
+- Xcode 27.1 (iOS 27.1 SDK; verified locally; includes Swift 6.4)
 - Swift 6 language mode
 - iOS 26+ / macOS 26+ / watchOS 26+
 
@@ -152,7 +152,7 @@ In the scheme's **Run → Arguments → Environment Variables**, set `SKREDVARSE
 
 ### Xcode Cloud
 
-`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (26.6 was verified locally). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
+`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (27.1 was verified locally; the iOS 27.1 SDK is required for the full iPhone Duo layout). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
 
 ### Fastlane
 

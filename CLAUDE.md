@@ -9,7 +9,7 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 **Language**: Swift 6
 **Framework**: SwiftUI
 **Dependencies**: Apple frameworks only
-**Toolchain**: Xcode 26.6 / Swift 6.3.3 compiler, Swift 6 language mode
+**Toolchain**: Xcode 27.1 (iOS 27.1 SDK) / Swift 6.4 compiler, Swift 6 language mode
 **macOS**: Mac Catalyst
 
 ## Build Commands
@@ -19,7 +19,7 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 
 # Build watch app
-xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm)'
+xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 12 (46mm)'
 
 # Run tests
 xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
