@@ -91,9 +91,6 @@ struct WarningSummary: View {
                     .font(.caption2)
                     .foregroundColor(textColor)
                     .padding(.top, compact ? 2 : 6)
-                #if os(iOS)
-                    .textSelection(.enabled)
-                #endif
                 Text(warning.RegionName)
                     .font(regionNameFont)
                     .fontWeight(.bold)
@@ -101,18 +98,12 @@ struct WarningSummary: View {
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.bottom, 2)
-                #if os(iOS)
-                    .textSelection(.enabled)
-                #endif
                     .speechLocale(for: warning.RegionId)
                 Text(translatedTexts[warning.MainText] ?? warning.MainText)
                     .font(mainTextFont)
                     .foregroundColor(textColor)
                     .padding(.bottom, compact ? 2 : 6)
                     .padding(.trailing, 4)
-                #if os(iOS)
-                    .textSelection(.enabled)
-                #endif
                     .lineLimit(mainTextLineLimit)
                     .speechLocale(translatedLanguageCode ?? warning.textLanguageCode)
                 if !compact { Spacer() }

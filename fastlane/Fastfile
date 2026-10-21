@@ -1,6 +1,9 @@
 # Fastfile for Skredvarsel (iVarsom)
 # https://docs.fastlane.tools
 
+# 2.241.1 adds the APP_IPHONE_DUO screenshot sizes to deliver.
+fastlane_version("2.241.1")
+
 default_platform(:ios)
 
 # Use absolute paths to ensure metadata is found correctly
@@ -11,6 +14,18 @@ SCREENSHOTS_IOS = File.join(FASTLANE_DIR, "screenshots_ios")
 SCREENSHOTS_OSX = File.join(FASTLANE_DIR, "screenshots_osx")
 
 platform :ios do
+  desc "Capture a Duo display (locale:en-US display:outer|inner name:forecast)"
+  lane :capture_duo do |options|
+    UI.user_error!("Specify locale:en-US (or no, sv, etc.) and display:outer|inner") unless options[:locale] && options[:display]
+    sh(
+      File.join(FASTLANE_DIR, "..", "scripts", "screenshots_duo.sh"),
+      "--locale", options[:locale].to_s,
+      "--display", options[:display].to_s,
+      "--device", (options[:device] || "iPhone Duo").to_s,
+      "--", (options[:name] || "screenshot").to_s
+    )
+  end
+
   desc "Download existing metadata from App Store Connect"
   lane :download_metadata do
     sh("cd .. && fastlane deliver download_metadata --use_live_version true --force true")

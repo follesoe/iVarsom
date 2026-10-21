@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios capture_duo
+
+```sh
+[bundle exec] fastlane ios capture_duo
+```
+
+Capture a Duo display (locale:en-US display:outer|inner name:forecast)
+
 ### ios download_metadata
 
 ```sh

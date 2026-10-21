@@ -136,6 +136,14 @@ struct Provider: AppIntentTimelineProvider {
                 errorMessage: warning == nil ? String(localized: "No forecast available for this day") : nil,
                 downloadedAt: snapshot.downloadedAt, isCached: moment.isCached)
         }
+        #if DEBUG
+            // WidgetKit uses the system clock, even when the forecast clock is
+            // historical. Keep the selected moment instead of advancing through
+            // every past entry to an expired forecast during screenshot capture.
+            if Date.previewDate != nil {
+                return Timeline(entries: Array(entries.prefix(1)), policy: .never)
+            }
+        #endif
         return Timeline(entries: entries, policy: .after(plan.refreshAfter))
     }
 }

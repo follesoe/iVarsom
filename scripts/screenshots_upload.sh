@@ -3,8 +3,9 @@
 #
 # iOS/iPadOS: Place screenshots in fastlane/screenshots_ios/<locale>/
 # macOS:      Place screenshots in fastlane/screenshots_osx/<locale>/
-# Locales: en-US, nb-NO, sv-SE
+# Locales: en-US, no, sv (App Store Connect locale names)
 # Fastlane auto-detects device size class from image resolution
+# iPhone Duo requires fastlane >= 2.241.1; see docs/iphone-duo.md.
 #
 # Usage:
 #   ./scripts/screenshots_upload.sh          # Upload iOS + macOS
