@@ -5,10 +5,16 @@
     /// The tall extra-large widget (iOS 27): today's forecast followed by the coming
     /// days' forecast text, which other sizes have no room for.
     struct ExtraLargePortraitWarningWidgetView: View {
+        @Environment(\.widgetRenderingMode) private var widgetRenderingMode
+        @Environment(\.showsWidgetContainerBackground) private var showsWidgetContainerBackground
         var entry: Provider.Entry
 
+        /// The forecast rows have no background of their own: like the small
+        /// widget, use the primary color when vibrant or without the container
+        /// background, and contrast with the danger color otherwise.
         private var textColor: Color {
-            entry.currentWarning.DangerLevel == .level5 ? .white : .black
+            if widgetRenderingMode == .vibrant || !showsWidgetContainerBackground { return .primary }
+            return entry.currentWarning.DangerLevel == .level5 ? .white : .black
         }
 
         var body: some View {

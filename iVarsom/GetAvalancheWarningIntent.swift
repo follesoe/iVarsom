@@ -26,12 +26,16 @@ struct GetAvalancheWarningIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<AvalancheForecastEntity> & ProvidesDialog & ShowsSnippetView {
-        guard let id = Int(region.id) else { throw ForecastError.invalidRegion }
-        let resolvedID = try await ForecastRegionResolver.resolve(id, requestPermission: true)
         let language = answerLanguage
-        let result = try await ForecastLookup.live(language: language.forecastLanguage)
-            .forecast(regionID: resolvedID, day: day)
-        return result.intentResult(isVoiceOnly: isVoiceOnly, language: language)
+        do {
+            guard let id = Int(region.id) else { throw ForecastError.invalidRegion }
+            let resolvedID = try await ForecastRegionResolver.resolve(id, requestPermission: true)
+            let result = try await ForecastLookup.live(language: language.forecastLanguage)
+                .forecast(regionID: resolvedID, day: day)
+            return result.intentResult(isVoiceOnly: isVoiceOnly, language: language)
+        } catch let error as ForecastError {
+            throw error.worded(in: language)
+        }
     }
 }
 

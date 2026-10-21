@@ -77,20 +77,25 @@ struct GetAvalancheWarningForDateIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<AvalancheForecastEntity> & ProvidesDialog & ShowsSnippetView {
-        guard let id = Int(region.id) else { throw ForecastError.invalidRegion }
-        let regionID = try await ForecastRegionResolver.resolve(id, requestPermission: true)
-        let day: Date
-        if let date {
-            day = ForecastLookup.regionDay(for: date, regionID: regionID)
-        } else if let pastDay {
-            day = pastDay.date(before: Date.current, calendar: ForecastSelection.calendar(regionID: regionID))
-        } else {
-            let requested = try await $date.requestValue(IntentDialog("Which day?"))
-            day = ForecastLookup.regionDay(for: requested, regionID: regionID)
-        }
         let language = answerLanguage
-        let result = try await ForecastLookup.live(language: language.forecastLanguage).forecast(regionID: regionID, on: day)
-        return result.intentResult(isVoiceOnly: isVoiceOnly, language: language)
+        do {
+            guard let id = Int(region.id) else { throw ForecastError.invalidRegion }
+            let regionID = try await ForecastRegionResolver.resolve(id, requestPermission: true)
+            let day: Date
+            if let date {
+                day = ForecastLookup.regionDay(for: date, regionID: regionID)
+            } else if let pastDay {
+                day = pastDay.date(before: Date.current, calendar: ForecastSelection.calendar(regionID: regionID))
+            } else {
+                let requested = try await $date.requestValue(IntentDialog("Which day?"))
+                day = ForecastLookup.regionDay(for: requested, regionID: regionID)
+            }
+            let result = try await ForecastLookup.live(language: language.forecastLanguage)
+                .forecast(regionID: regionID, on: day)
+            return result.intentResult(isVoiceOnly: isVoiceOnly, language: language)
+        } catch let error as ForecastError {
+            throw error.worded(in: language)
+        }
     }
 }
 
@@ -111,9 +116,9 @@ struct GetFavoriteForecastsIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<[AvalancheForecastEntity]> & ProvidesDialog & ShowsSnippetView {
-        let favorites = FavoritesService.savedFavorites()
-        guard !favorites.isEmpty else { throw ForecastError.noFavorites }
         let language = answerLanguage
+        let favorites = FavoritesService.savedFavorites()
+        guard !favorites.isEmpty else { throw ForecastError.noFavorites.worded(in: language) }
         // One widget reload after all regions are saved, not one per favorite.
         let lookup = ForecastLookup.live(language: language.forecastLanguage, reloadWidgets: false)
         let day = day
@@ -140,7 +145,7 @@ struct GetFavoriteForecastsIntent: AppIntent {
             guard case .failure(let error) = outcome.result, seen.insert(outcome.regionID).inserted else { return nil }
             return (outcome.regionID, error)
         }
-        guard !results.isEmpty else { throw ForecastError.combining(failures.map(\.error)) }
+        guard !results.isEmpty else { throw ForecastError.combining(failures.map(\.error)).worded(in: language) }
         WidgetCenter.shared.reloadTimelines(ofKind: "iVarsomWidget")
         let entities = results.map {
             AvalancheForecastEntity(warning: $0.warning, snapshot: $0.snapshot, isCached: $0.isCached)

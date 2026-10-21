@@ -145,20 +145,23 @@ struct ForecastLookupTests {
     }
 
     /// After 18:00 Sweden's valid bulletin is tomorrow's; a date still gets its own day.
+    /// A time in February 2026 in Stockholm.
+    private func day(_ day: Int, hour: Int) -> Date {
+        ForecastSelection.calendar(regionID: 100001)
+            .date(from: DateComponents(year: 2026, month: 2, day: day, hour: hour))!
+    }
+
+    /// A Swedish bulletin: they run 18:00 to 18:00 and are dated by their last day.
+    private func bulletin(_ id: Int, endingOn end: Int) -> AvalancheWarningDetailed {
+        var warning = Fixtures.warning(100001, date: day(end, hour: 18))
+        warning.RegId = id
+        warning.ValidTo = day(end, hour: 18)
+        warning.BulletinValidFrom = day(end - 1, hour: 18)
+        warning.PublishTime = day(end - 1, hour: 16)
+        return warning
+    }
+
     @Test func swedishEveningDateAnswersWithThatDaysBulletin() async throws {
-        let stockholm = ForecastSelection.calendar(regionID: 100001)
-        func day(_ day: Int, hour: Int) -> Date {
-            stockholm.date(from: DateComponents(year: 2026, month: 2, day: day, hour: hour))!
-        }
-        // Bulletins run 18:00 to 18:00 and are dated by their last day.
-        func bulletin(_ id: Int, endingOn end: Int) -> AvalancheWarningDetailed {
-            var warning = Fixtures.warning(100001, date: day(end, hour: 18))
-            warning.RegId = id
-            warning.ValidTo = day(end, hour: 18)
-            warning.BulletinValidFrom = day(end - 1, hour: 18)
-            warning.PublishTime = day(end - 1, hour: 16)
-            return warning
-        }
         sweden.detailed = { _ in [bulletin(1, endingOn: 21), bulletin(2, endingOn: 22)] }
         let now = day(21, hour: 19)
         let (lookup, store) = lookup(now: now)
@@ -178,6 +181,28 @@ struct ForecastLookupTests {
                 archiveDay: result.archiveDay)
             #expect(try await query.entities(for: [entity.id]).map(\.id) == [entity.id])
         }
+    }
+
+    /// Today's Swedish bulletin has a request of its own, which can fail after
+    /// 18:00 while tomorrow's loads. That failure isn't a missing bulletin.
+    @Test func todayMissingFromCurrentForecastIsAskedForByDate() async throws {
+        sweden.detailed = { [self] _ in [bulletin(2, endingOn: 22)] }
+        let (lookup, _) = lookup(now: day(21, hour: 19))
+        sweden.archived = { _, _ in throw URLError(.timedOut) }
+        await #expect(throws: ForecastError.unavailable) { try await lookup.forecast(regionID: 100001, on: day(21, hour: 12)) }
+        sweden.archived = { _, _ in throw LavinprognoserApiClient.LavinError.notFound }
+        await #expect(throws: ForecastError.noForecast) { try await lookup.forecast(regionID: 100001, on: day(21, hour: 12)) }
+        sweden.archived = { [self] _, _ in bulletin(1, endingOn: 21) }
+        let today = try await lookup.forecast(regionID: 100001, on: day(21, hour: 12))
+        #expect(today.warning.RegId == 1)
+        #expect(today.archiveDay != nil)
+    }
+
+    @Test func siriErrorsUseTheRequestLanguage() {
+        let swedish = ForecastAnswerLanguage(requestLocale: Locale(identifier: "sv-SE"))
+        #expect(ForecastError.noFavorites.worded(in: swedish).errorDescription
+            == "Lägg först till ett favoritområde i appen.")
+        #expect(ForecastError.unavailable.worded(in: swedish).errorDescription == "Tjänsten är inte tillgänglig")
     }
 
     @Test func pastDayComesFromArchiveWithoutReplacingSharedForecast() async throws {

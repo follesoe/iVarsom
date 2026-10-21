@@ -56,35 +56,47 @@ struct ForecastLookup: Sendable {
             [.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: day)).day ?? 0
         switch offset {
         case 0, 1:
-            // Select by day rather than validity: after 18:00, Sweden's valid
-            // bulletin is already tomorrow's.
-            var result = try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
+            var result: Result
+            do {
+                // Select by day rather than validity: after 18:00, Sweden's valid
+                // bulletin is already tomorrow's.
+                result = try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
+            } catch ForecastError.noForecast where offset == 0 {
+                // Sweden loads today's bulletin with a request of its own, which
+                // can fail while the current forecast loads. Ask for the day, so a
+                // failed request isn't reported as a missing bulletin.
+                return try await archived(regionID: regionID, on: day, now: now)
+            }
             // The entity query finds only valid bulletins in the shared store, so
             // an expired one, such as Sweden's today after 18:00, gets an
             // archive ID that Shortcuts can fetch again.
             if result.warning.validityEnd <= now { result.archiveDay = day }
             return result
         case 2...: throw ForecastError.noForecast  // Not published yet.
-        default:
-            let warnings: [AvalancheWarningSimple]
-            do {
-                warnings = try await repository.loadWarnings(on: day, regionID: regionID)
-            } catch {
-                try error.rethrowCancellation()
-                // Days without a bulletin come back as an empty list (Norway) or
-                // as not found (Sweden). Anything else, including a response the
-                // app can't read, is a failed request.
-                let isMissing = (error as? LavinprognoserApiClient.LavinError) == .notFound
-                throw isMissing ? ForecastError.noForecast : ForecastError.unavailable
-            }
-            guard let warning = ForecastSelection.warning(in: warnings, on: day, at: now) else {
-                throw ForecastError.noForecast
-            }
-            let snapshot = ForecastSnapshot(
-                regionID: regionID, language: SharedForecastStore.languageKey(regionID: regionID, language: language),
-                requestStartedAt: now, downloadedAt: now, warnings: warnings)
-            return Result(warning: warning, snapshot: snapshot, isCached: false, archiveDay: day)
+        default: return try await archived(regionID: regionID, on: day, now: now)
         }
+    }
+
+    /// The bulletin for a day from the provider's archive, which isn't stored.
+    private func archived(regionID: Int, on day: Date, now: Date) async throws -> Result {
+        let warnings: [AvalancheWarningSimple]
+        do {
+            warnings = try await repository.loadWarnings(on: day, regionID: regionID)
+        } catch {
+            try error.rethrowCancellation()
+            // Days without a bulletin come back as an empty list (Norway) or
+            // as not found (Sweden). Anything else, including a response the
+            // app can't read, is a failed request.
+            let isMissing = (error as? LavinprognoserApiClient.LavinError) == .notFound
+            throw isMissing ? ForecastError.noForecast : ForecastError.unavailable
+        }
+        guard let warning = ForecastSelection.warning(in: warnings, on: day, at: now) else {
+            throw ForecastError.noForecast
+        }
+        let snapshot = ForecastSnapshot(
+            regionID: regionID, language: SharedForecastStore.languageKey(regionID: regionID, language: language),
+            requestStartedAt: now, downloadedAt: now, warnings: warnings)
+        return Result(warning: warning, snapshot: snapshot, isCached: false, archiveDay: day)
     }
 
     /// Loads the current forecast, or the saved one offline, and picks a bulletin
@@ -112,7 +124,19 @@ struct ForecastLookup: Sendable {
     }
 }
 
+/// A forecast error worded in a Siri request's language (iOS 27), like the
+/// answers. Siri reads `errorDescription`, which ForecastError gives in the
+/// app's language.
+struct ForecastAnswerError: LocalizedError {
+    let error: ForecastError
+    let errorDescription: String?
+}
+
 extension ForecastError {
+    func worded(in language: ForecastAnswerLanguage) -> ForecastAnswerError {
+        ForecastAnswerError(error: self, errorDescription: language.string(key))
+    }
+
     /// One error for several regions that all failed. Only when every region
     /// has no bulletin is it "no forecast", so a failed connection isn't
     /// reported as a missing forecast.

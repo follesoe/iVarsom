@@ -3,16 +3,19 @@ import Foundation
 enum ForecastError: Error, LocalizedError {
     case invalidRegion, locationRequired, locationUnavailable, unavailable, noForecast, noFavorites
 
-    var errorDescription: String? {
+    /// The `Localizable.strings` key of the description.
+    var key: String {
         switch self {
-        case .invalidRegion: String(localized: "Region unavailable")
-        case .locationRequired: String(localized: "Location access required")
-        case .locationUnavailable: String(localized: "Location unavailable")
-        case .unavailable: String(localized: "Service unavailable")
-        case .noForecast: String(localized: "No forecast available for this day")
-        case .noFavorites: String(localized: "Add a favorite region in the app first.")
+        case .invalidRegion: "Region unavailable"
+        case .locationRequired: "Location access required"
+        case .locationUnavailable: "Location unavailable"
+        case .unavailable: "Service unavailable"
+        case .noForecast: "No forecast available for this day"
+        case .noFavorites: "Add a favorite region in the app first."
         }
     }
+
+    var errorDescription: String? { Bundle.main.localizedString(forKey: key, value: nil, table: nil) }
 }
 
 struct LoadedForecast: Sendable {
