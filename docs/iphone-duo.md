@@ -18,7 +18,7 @@ The hierarchy is the same on both displays, as the HIG asks: the inner display a
 
 Folding switches between the compact `TabView` and the regular `NavigationSplitView`. `AdaptiveBrowserState` (in `ViewModels`) holds what must carry across, and `ContentView` applies it when the size class changes:
 
-- **Map camera**: one camera position shared by both maps. The map stores its camera when a pan ends, so the other map opens at the same place. The map centers on the person's location once per launch; after that it keeps the position they chose, through activations and folds.
+- **Map camera**: one camera position shared by both maps. The map stores its camera when a pan ends, so the other map opens at the same place. The map centers on the person's location once per launch, or when they choose Show My Location; after that it keeps the position they chose, through activations and folds.
 - **Map forecast**: a forecast chosen on the map is a sheet presented from the root, so it stays over the map through a fold. In regular width it uses `presentationPlacement(.leading)` (iOS 27) to keep the map visible; the system keeps sheets out of the fold, giving map-beside-forecast in book pose and map-above-forecast in laptop pose. Before iOS 27, and on the Mac, a map selection in regular width fills the detail column as before.
 - **Tab after folding**: a forecast in the detail column continues in the Regions tab; the map, with or without its sheet, continues in the Map tab. Unfolding from the map shows the map rather than an earlier forecast.
 - **Side effects**: catalog refresh and location re-centering run on scene activation in `ContentView`, so rebuilding a layout doesn't repeat them.

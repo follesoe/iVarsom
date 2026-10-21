@@ -198,6 +198,17 @@ struct ForecastLookupTests {
         #expect(today.archiveDay != nil)
     }
 
+    /// The dated request can answer when Sweden's current forecast fails and nothing is saved.
+    @Test func todayIsAskedForByDateWhenTheCurrentForecastFails() async throws {
+        sweden.detailed = { _ in throw URLError(.badServerResponse) }
+        sweden.archived = { [self] _, _ in bulletin(1, endingOn: 21) }
+        let (lookup, _) = lookup(now: day(21, hour: 19))
+        #expect(try await lookup.forecast(regionID: 100001, on: day(21, hour: 12)).warning.RegId == 1)
+        await #expect(throws: ForecastError.unavailable) {
+            try await lookup.forecast(regionID: 100001, on: day(22, hour: 12))
+        }
+    }
+
     @Test func siriErrorsUseTheRequestLanguage() {
         let swedish = ForecastAnswerLanguage(requestLocale: Locale(identifier: "sv-SE"))
         #expect(ForecastError.noFavorites.worded(in: swedish).errorDescription
@@ -226,8 +237,17 @@ struct ForecastLookupTests {
         #expect(await store.load(regionID: 3003, language: key, now: saturday) != nil)
     }
 
-    @Test func daysAfterTomorrowAreNotPublished() async {
+    /// Norway sometimes publishes the day after tomorrow early; later days are never published.
+    @Test func dayAfterTomorrowIsAnsweredOnceNorwayPublishesIt() async throws {
         let (lookup, _) = lookup(now: saturday)
+        let monday = saturday.addingTimeInterval(2 * 86400)
+        var published = Fixtures.warning(3003, date: monday)
+        published.PublishTime = saturday.addingTimeInterval(-3600)
+        norway.detailed = { _ in [published] }
+        #expect(try await lookup.forecast(regionID: 3003, on: monday).warning.ValidFrom == monday)
+        // An unassessed placeholder carries its own day as the publication time.
+        norway.detailed = { _ in [Fixtures.warning(3010, date: monday)] }
+        await #expect(throws: ForecastError.noForecast) { try await lookup.forecast(regionID: 3010, on: monday) }
         await #expect(throws: ForecastError.noForecast) {
             try await lookup.forecast(regionID: 3003, on: saturday.addingTimeInterval(3 * 86400))
         }

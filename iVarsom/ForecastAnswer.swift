@@ -46,25 +46,26 @@ struct ForecastLookup: Sendable {
         try await current(regionID: regionID) { ForecastSelection.warning(in: $0, day: day, at: $1) }
     }
 
-    /// The bulletin for a calendar day in the region's time zone. Today and
-    /// tomorrow use the current forecast; earlier days come from the provider's
-    /// archive and aren't stored.
+    /// The bulletin for a calendar day in the region's time zone. Today and the
+    /// next two days use the current forecast, which includes the day after
+    /// tomorrow once Norway publishes it early; earlier days come from the
+    /// provider's archive and aren't stored.
     func forecast(regionID: Int, on day: Date) async throws -> Result {
         let now = now()
         let calendar = ForecastSelection.calendar(regionID: regionID)
         let offset = calendar.dateComponents(
             [.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: day)).day ?? 0
         switch offset {
-        case 0, 1:
+        case 0...2:
             var result: Result
             do {
                 // Select by day rather than validity: after 18:00, Sweden's valid
-                // bulletin is already tomorrow's.
+                // bulletin is already tomorrow's. Unpublished days are left out.
                 result = try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
-            } catch ForecastError.noForecast where offset == 0 {
+            } catch let error as ForecastError where offset == 0 && (error == .noForecast || error == .unavailable) {
                 // Sweden loads today's bulletin with a request of its own, which
-                // can fail while the current forecast loads. Ask for the day, so a
-                // failed request isn't reported as a missing bulletin.
+                // can succeed when the current forecast fails, or fail when it
+                // loads. Ask for the day, so its own answer decides.
                 return try await archived(regionID: regionID, on: day, now: now)
             }
             // The entity query finds only valid bulletins in the shared store, so
@@ -72,7 +73,7 @@ struct ForecastLookup: Sendable {
             // archive ID that Shortcuts can fetch again.
             if result.warning.validityEnd <= now { result.archiveDay = day }
             return result
-        case 2...: throw ForecastError.noForecast  // Not published yet.
+        case 3...: throw ForecastError.noForecast  // Not published yet.
         default: return try await archived(regionID: regionID, on: day, now: now)
         }
     }

@@ -121,9 +121,14 @@ private struct ContentView: View {
         await vm.selectRegion(id: id)
     }
 
+    /// Show My Location on either map. Centering on request uses up the
+    /// automatic centering, so a later activation keeps the map where the
+    /// person has since moved it.
     private func locate() async -> Location2D? {
-        if let coordinate = vm.location.coordinate { return coordinate }
-        await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+        if vm.location.coordinate == nil {
+            await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
+        }
+        if vm.location.coordinate != nil { hasCenteredMap = true }
         return vm.location.coordinate
     }
 
