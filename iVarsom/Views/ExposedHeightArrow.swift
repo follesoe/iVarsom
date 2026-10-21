@@ -18,57 +18,51 @@ struct ExposedHeightArrow: View {
         }
     }
 
-    var body: some View {
-        let imageOneName = switch exposedHeightFill {
-        case 1: "arrow.up"
-        case 2: "arrow.down"
-        case 3: "arrow.up"
-        case 4: "arrow.down"
-        default: "ExposedTop"
+    /// Arrows shown above and below the height. Unknown fill values fall back
+    /// to "above", matching ExposedHeight and the accessibility label.
+    private var arrows: (above: String?, below: String?) {
+        switch exposedHeightFill {
+        case 2: (nil, "arrow.down")
+        case 3: ("arrow.up", "arrow.down")
+        case 4: ("arrow.down", "arrow.up")
+        default: ("arrow.up", nil)
         }
+    }
 
-        let imageTwoName = switch exposedHeightFill {
-        case 1: "arrow.up"
-        case 2: "arrow.down"
-        case 3: "arrow.down"
-        case 4: "arrow.up"
-        default: "ExposedTop"
-        }
-        
+    var body: some View {
         let heightText = exposedHeight1 == exposedHeight2 ?
             String(exposedHeight1) :
             "\(String(exposedHeight1))-\(String(exposedHeight2))"
-        
+
         VStack {
-            if (exposedHeightFill != 2) {
-                Image(systemName: imageOneName)
-                    .font(.system(size: fontSize))
-                    .bold()
-                    .foregroundColor(Color("DangerFill"))
-                    #if os(watchOS)
-                    .shadow(color: .black, radius: 3)
-                    #endif
+            if let above = arrows.above {
+                arrow(above)
             }
-                        
+
             Text(heightText)
                 .font(.system(size: 13))
                 .bold()
                 #if os(watchOS)
                 .shadow(color: .black, radius: 3)
                 #endif
-            
-            if (exposedHeightFill != 1) {
-                Image(systemName: imageTwoName)
-                    .font(.system(size: 16))
-                    .bold()
-                    .foregroundColor(Color("DangerFill"))
-                    #if os(watchOS)
-                    .shadow(color: .black, radius: 3)
-                    #endif
+
+            if let below = arrows.below {
+                arrow(below)
             }
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(heightDescription)
+    }
+
+    /// Both arrows use the same size so the up and down arrows always match.
+    private func arrow(_ systemName: String) -> some View {
+        Image(systemName: systemName)
+            .font(.system(size: fontSize))
+            .bold()
+            .foregroundColor(Color("DangerFill"))
+            #if os(watchOS)
+            .shadow(color: .black, radius: 3)
+            #endif
     }
 }
 
