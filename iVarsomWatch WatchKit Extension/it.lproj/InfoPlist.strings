@@ -1,2 +1,2 @@
-"NSLocationWhenInUseUsageDescription" = "L'app utilizza la posizione per mostrare avvisi valanghe dalla regione più vicina";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "L'app utilizza la posizione per mostrare avvisi valanghe dalla regione più vicina";
+"NSLocationWhenInUseUsageDescription" = "L’app usa la tua posizione per mostrare il bollettino valanghe della regione in cui ti trovi.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "L’app usa la tua posizione per mostrare il bollettino valanghe della regione in cui ti trovi.";

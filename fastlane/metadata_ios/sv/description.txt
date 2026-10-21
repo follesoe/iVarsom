@@ -1,5 +1,14 @@
-Se dagens lavinfara för valda regioner i Norge och Sverige, eller baserat på din aktuella position, i appen, som en widget på hemskärmen, eller direkt på handleden med Apple Watch.
+Se lavinfaran i Sverige och Norge med en blick – på hemskärmen, låsskärmen och Apple Watch.
 
-Interaktiv kartvy visar alla lavinregioner färgade efter faronivå. Tryck på en region för att se detaljerad prognos med lavinproblem och rekommendationer.
+Appen visar den dagliga lavinprognosen från Naturvårdsverket (lavinprognoser.se) och Snøskredvarslingen i Norge (varsom.no) för alla prognosområden, eller för området där du befinner dig.
 
-Data levereras av Norges snöskredvarning (varsom.no) och svenska lavinprognoser (lavinprognoser.se).
+• Widgetar för hemskärmen och låsskärmen med dagens eller morgondagens faronivå
+• App och komplikationer för Apple Watch
+• Karta över alla områden, färgad efter faronivå
+• Hela prognosen med lavinproblem, utsatta väderstreck och höjdlägen
+• Tidigare och kommande dagar, akuta varningar och sparade prognoser när du är offline
+• Fråga Siri om dina favoriter eller ett område, även tidigare dagar, och använd prognoserna i Genvägar
+• Maskinöversättning av prognostexten till ditt språk
+• Gjord för iPhone, iPad, Mac och iPhone Duo, med fullt stöd för VoiceOver
+
+Läs alltid hela prognosen och gör dina egna bedömningar i lavinterräng.

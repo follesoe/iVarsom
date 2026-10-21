@@ -1,5 +1,14 @@
-See the daily avalanche warning level for selected regions in Norway and Sweden, or based on your current location in the app, as a widget on your home screen, or directly on your wrist on the Apple Watch.
+Check the avalanche danger in Norway and Sweden at a glance — on your Home Screen, Lock Screen and Apple Watch.
 
-Interactive map view shows all avalanche regions colored by danger level. Tap a region to see the detailed forecast with avalanche problems and recommendations.
+The app shows the daily avalanche forecast from the Norwegian Avalanche Warning Service (varsom.no) and the Swedish Environmental Protection Agency (lavinprognoser.se) for every forecast region, or for the region you’re in.
 
-Data is delivered by the Norwegian Avalanche Warning Service (varsom.no) and the Swedish Avalanche Warning Service (lavinprognoser.se).
+• Widgets for the Home Screen and Lock Screen with today’s or tomorrow’s danger level
+• Apple Watch app and complications
+• A map of all regions, colored by danger level
+• Full forecasts with avalanche problems, exposed aspects and elevations
+• Earlier and coming days, emergency warnings, and saved forecasts when you’re offline
+• Ask Siri about your favorites or any region, including earlier days, and use forecasts in Shortcuts
+• Machine translation of forecast text into your language
+• Designed for iPhone, iPad, Mac and iPhone Duo, with full VoiceOver support
+
+Always read the full forecast and make your own assessment in avalanche terrain.

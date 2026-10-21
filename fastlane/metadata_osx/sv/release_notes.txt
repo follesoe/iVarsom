@@ -1,12 +1,14 @@
 Skredvarsel 6.0 inleder vår sjätte vintersäsong: 2026/27.
 
-- Välj den aktuella prognosen eller morgondagens publicerade prognos i dina widgetar.
-- Bättre uppdatering av widgetar när nya prognoser väntas och när du öppnar eller uppdaterar appen.
-- Tydligare prognosdatum och märkning av sparade prognoser. Större widgetar visar även när prognosen hämtades, och widgetarna visar när en giltig prognos saknas.
-- Hämta den aktuella prognosen eller morgondagens prognos med Siri och Genvägar, och använd faronivå, prognosdatum och text i egna genvägar.
-- VoiceOver läser nu upp prognostexten och eventuella aktiva nödvarningar i widgetarna.
-- Mer tillförlitlig hantering av svenska kvällsuppdateringar och sparade prognoser när en nedladdning misslyckas.
-- Prognosdatum och länkar visar rätt dag även när du reser till en annan tidszon.
-- Mer tillförlitliga områdesbyten, platsuppdateringar, synkronisering av favoriter, översättning och delning av prognoser.
-- Tydligare prognoskort och dagetiketter, med bättre läsbarhet vid större textstorlekar.
-- Appen ber om åtkomst till din plats när du väljer en platsbaserad åtgärd.
+Nytt
+- Fråga Siri om dina favoritområden, morgondagens prognos eller en tidigare dag, som i går eller i lördags. Med Genvägar kan du hämta prognosen för vilket datum som helst, även från tidigare säsonger.
+- Siri svarar på språket du frågar på och ger en uppläst sammanfattning när du inte ser skärmen.
+- En ny hög widget med dagens prognos och de kommande dagarna (macOS 27).
+- Välj aktuell prognos eller morgondagens prognos i widgetar, och breda fönster visar prognosen i två kolumner.
+
+Förbättrat
+- Widgetar uppdateras när nya prognoser väntas, visar tydligare datum och hämtningstid och säger till när en giltig prognos saknas.
+- VoiceOver läser upp prognostexten och aktiva akuta varningar i widgetar.
+- Mer tillförlitliga svenska kvällsuppdateringar, sparade prognoser när en nedladdning misslyckas och rätt prognosdag när du reser.
+- Smidigare byte av område, platsuppdatering, synkronisering av favoriter, översättning och delning.
+- Tydligare prognoskort och bättre läsbarhet med stor text. Appen ber bara om din plats när du väljer en platsbaserad åtgärd.

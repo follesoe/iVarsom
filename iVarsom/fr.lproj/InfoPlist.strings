@@ -3,8 +3,8 @@
 
 "CFBundleDisplayName" = "Alertes avalanches";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "L'app utilise la position pour afficher les alertes avalanches de votre région la plus proche";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "L’app utilise votre position pour afficher le bulletin d’avalanches de la région où vous vous trouvez.";
 
-"NSLocationWhenInUseUsageDescription" = "L'app utilise la position pour afficher les alertes avalanches de votre région la plus proche";
+"NSLocationWhenInUseUsageDescription" = "L’app utilise votre position pour afficher le bulletin d’avalanches de la région où vous vous trouvez.";
 
-"NSLocationUsageDescription" = "L'app utilise la position pour afficher les alertes avalanches de votre région la plus proche";
+"NSLocationUsageDescription" = "L’app utilise votre position pour afficher le bulletin d’avalanches de la région où vous vous trouvez.";

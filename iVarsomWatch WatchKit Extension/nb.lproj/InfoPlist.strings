@@ -1,2 +1,2 @@
-"NSLocationWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker lokasjon til å vise skredvarsel for nærmeste region";
+"NSLocationWhenInUseUsageDescription" = "Appen bruker posisjonen din til å vise skredvarselet for regionen du er i.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen bruker posisjonen din til å vise skredvarselet for regionen du er i.";

@@ -1,5 +1,14 @@
-Se dagens skredfare for valgt region i Norge og Sverige, eller basert på din posisjon i appen, som en widget på hjem-skjermen på din iOS eller iPadOS enhet, eller direkte på håndleddet som en app til Apple Watch.
+Se skredfaren i Norge og Sverige med et blikk – på Hjem-skjermen, låseskjermen og Apple Watch.
 
-Interaktivt kart viser alle skredregioner farget etter farenivå. Trykk på en region for å se detaljert varsel med skredproblemer og anbefalinger.
+Appen viser det daglige skredvarselet fra Snøskredvarslingen (varsom.no) og Naturvårdsverket (lavinprognoser.se) for alle varslingsregioner, eller for regionen du er i.
 
-Varslene er levert av Snøskredvarslingen i Norge (varsom.no) og svenske lavinprognoser (lavinprognoser.se).
+• Widgeter for Hjem-skjermen og låseskjermen med dagens eller morgendagens faregrad
+• App og komplikasjoner for Apple Watch
+• Kart over alle regioner, farget etter faregrad
+• Hele varselet med skredproblemer, utsatte himmelretninger og høyder
+• Tidligere og kommende dager, nødvarsler og lagrede varsler når du er uten nett
+• Spør Siri om favorittene dine eller en region, også tidligere dager, og bruk varslene i Snarveier
+• Maskinoversettelse av varselteksten til ditt språk
+• Laget for iPhone, iPad, Mac og iPhone Duo, med full støtte for VoiceOver
+
+Les alltid hele varselet og gjør dine egne vurderinger i skredterreng.

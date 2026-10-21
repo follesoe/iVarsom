@@ -1,32 +1,20 @@
 /* Region header */
 "Regions" = "Regions";
 
-/* List group header for A-regions */
-"A-Regions" = "A-Regions";
-
 /* List group header for location based warnings */
-"Local warnings" = "Local warnings";
+"Local warnings" = "Local Forecast";
 
 /* Button text to use location based warnings */
-"Use current location" = "Use current location";
-
-/* Button description for location based warnings */
-"Will enable location based warnings in Widgets" = "Will enable location based warnings in Widgets";
-
-/* Data source description and link */
-"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Data from the The Norwegian Avalanche Warning Service and www.varsom.no.";
-
-/* Data source description for both services */
-"Data from varsom.no and lavinprognoser.se." = "Data from varsom.no and lavinprognoser.se.";
+"Use current location" = "Use Current Location";
 
 /* Data source - Norway only */
-"Data from The Norwegian Avalanche Warning Service." = "Data from The Norwegian Avalanche Warning Service.";
+"Data from The Norwegian Avalanche Warning Service." = "Data from the Norwegian Avalanche Warning Service.";
 
 /* Data source - Sweden only */
-"Data from Swedish Environmental Protection Agency." = "Data from Swedish Environmental Protection Agency.";
+"Data from Swedish Environmental Protection Agency." = "Data from the Swedish Environmental Protection Agency.";
 
 /* Data source - both countries */
-"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency.";
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data from the Norwegian Avalanche Warning Service and the Swedish Environmental Protection Agency.";
 
 /* Section header for favorites */
 "Favorites" = "Favorites";
@@ -34,23 +22,11 @@
 /* Section header for Norwegian regions */
 "Norway" = "Norway";
 
-/* Widget Config Display Name */
-"Today's Avalanche Danger Level" = "Today's Avalanche Danger Level";
-
-/* Widget Config Description */
-"Display today's avalanche danger level for selected regions in Norway." = "Display today's avalanche danger level for selected regions in Norway.";
-
 /* Error loading widget */
 "Error" = "Error";
 
-/* Error loading widget */
-"There was an error updating the widget" = "There was an error updating the widget";
-
-/* Link to Varsom.no */
-"Read full warning on Varsom.no" = "Read full warning on Varsom.no";
-
 /* Current position option */
-"Current position" = "Current position";
+"Current position" = "Current Location";
 
 /* When no region is selected */
 "Select a region" = "Select a region";
@@ -59,28 +35,22 @@
 "Select Region" = "Select Region";
 
 /* Intent description */
-"Select which region you wish to view avalanche warnings from" = "Select which region you wish to view avalanche warnings from";
+"Select which region you wish to view avalanche warnings from" = "Choose the region to show the avalanche forecast for.";
 
 /* To add a region to list */
 "Add Region" = "Add Region";
 
 /* Loading text on list view */
-"Loading Regions" = "Loading Regions";
+"Loading Regions" = "Loading regions…";
 
 /* Loading text on details view */
-"Loading Details" = "Loading Details";
-
-/* Loading text for warnings */
-"Loading warnings..." = "Loading warnings...";
+"Loading Details" = "Loading details…";
 
 /* Loading text for warnings with region name */
-"Loading warnings for %@" = "Loading warnings for %@";
-
-/* Error message */
-"Error Loading Regions" = "Error Loading Regions";
+"Loading warnings for %@" = "Loading the forecast for %@…";
 
 /* Error message for warnings with region name */
-"Error loading warnings for %@" = "Error loading warnings for %@";
+"Error loading warnings for %@" = "Couldn't load the forecast for %@.";
 
 /* Try loading data after error */
 "Try Again" = "Try Again";
@@ -113,10 +83,10 @@
 "Avalanche problems" = "Avalanche problems";
 
 /* Link text */
-"Read complete warning on Varsom.no." = "Read complete warning on Varsom.no.";
+"Read complete warning on Varsom.no." = "Read the full forecast on Varsom.no";
 
 /* Link text for Swedish regions */
-"Read complete warning on lavinprognoser.se." = "Read complete warning on lavinprognoser.se.";
+"Read complete warning on lavinprognoser.se." = "Read the full forecast on lavinprognoser.se";
 
 /* Section header for Swedish regions */
 "Sweden" = "Sweden";
@@ -125,58 +95,25 @@
 "Forecast" = "Forecast";
 
 /* Siri Shortcut - Intent title */
-"Get Avalanche Warning" = "Get Avalanche Warning";
-
-/* Siri Shortcut - Intent description */
-"Get the current avalanche danger level for a region in Norway" = "Get the current avalanche danger level for a region in Norway";
-
-/* Siri Shortcut - Intent description (with Sweden) */
-"Get the current avalanche danger level for a region in Norway or Sweden" = "Get the current avalanche danger level for a region in Norway or Sweden";
+"Get Avalanche Warning" = "Get Avalanche Forecast";
 
 /* Siri Shortcut - Short title */
-"Check warning" = "Check warning";
-
-/* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Get avalanche warning in ${applicationName}";
-"Avalanche warning from ${applicationName}" = "Avalanche warning from ${applicationName}";
-
-/* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Get avalanche warning for ${region} in ${applicationName}";
-"What is the avalanche danger in ${region} with ${applicationName}" = "What is the avalanche danger in ${region} with ${applicationName}";
-
-/* Siri Shortcut - Dialog response */
-"The avalanche danger level in %@ is %@." = "The avalanche danger level in %@ is %@.";
-
-/* Siri Shortcut - No warning available */
-"No avalanche warning available for %@ today." = "No avalanche warning available for %@ today.";
-
-/* Siri Shortcut - Location required */
-"Location access is required to get warnings for your current position." = "Location access is required to get warnings for your current position.";
+"Check warning" = "Check Forecast";
 
 /* Siri Shortcut - Location unavailable */
-"Could not determine your current location." = "Could not determine your current location.";
+"Could not determine your current location." = "Couldn't find your current location.";
 
 /* Siri Shortcut - Error messages */
 "Location access required" = "Location access required";
 
 /* Siri Shortcut - Parameter request dialog */
-"Which region do you want the avalanche warning for?" = "Which region do you want the avalanche warning for?";
+"Which region do you want the avalanche warning for?" = "Which region do you want the forecast for?";
 "Location unavailable" = "Location unavailable";
-"No warning available" = "No warning available";
+"No warning available" = "No forecast available";
 "Service unavailable" = "Service unavailable";
-
-/* Siri Shortcut - Network error messages */
-"No internet connection. Unable to retrieve avalanche warnings." = "No internet connection. Unable to retrieve avalanche warnings.";
-"Unable to retrieve avalanche warnings. Please try again later." = "Unable to retrieve avalanche warnings. Please try again later.";
-
-/* Search tab title */
-"Search" = "Search";
 
 /* Map tab title */
 "Map" = "Map";
-
-/* Emergency warning not given - used to filter out placeholder values from API */
-"EmergencyWarningNotGiven" = "Not given";
 
 /* Accessibility - Danger level with number and name */
 "Danger level %@, %@" = "Danger level %@, %@";
@@ -215,22 +152,21 @@
 "%@, %@" = "%@, %@";
 
 /* Warning detail sheet - title */
-"Avalanche risk assessment" = "Avalanche risk assessment";
-
+"Avalanche risk assessment" = "Avalanche Danger Assessment";
 
 /* Accessibility - Danger trend */
-"Danger rising" = "Danger rising";
-"Danger stable" = "Danger stable";
-"Danger falling" = "Danger falling";
+"Danger rising" = "Danger increasing";
+"Danger stable" = "Danger steady";
+"Danger falling" = "Danger decreasing";
 
 /* Share menu option for summary only */
-"Share summary" = "Share summary";
+"Share summary" = "Share Summary";
 
 /* Share menu option including avalanche problems */
-"Share with avalanche problems" = "Share with avalanche problems";
+"Share with avalanche problems" = "Share with Avalanche Problems";
 
 /* Title for share preview sheet */
-"Share preview" = "Share preview";
+"Share preview" = "Share Preview";
 
 /* Button to translate warning text */
 "Translate" = "Translate";
@@ -239,20 +175,20 @@
 "Show Original" = "Show Original";
 
 /* Translation in progress indicator */
-"Translating..." = "Translating...";
+"Translating..." = "Translating…";
 
 /* Indicator that text was machine translated from English */
-"Machine translated from English" = "Machine translated from English";
+"Machine translated from English" = "Machine-translated from English";
 
 /* Accessibility - Compass directions */
 "North" = "North";
-"NorthEast" = "North-East";
+"NorthEast" = "Northeast";
 "East" = "East";
-"SouthEast" = "South-East";
+"SouthEast" = "Southeast";
 "South" = "South";
-"SouthWest" = "South-West";
+"SouthWest" = "Southwest";
 "West" = "West";
-"NorthWest" = "North-West";
+"NorthWest" = "Northwest";
 
 /* Forecast widgets and Shortcuts */
 "Forecast day" = "Forecast day";
@@ -265,18 +201,18 @@
 "Danger level" = "Danger level";
 "Summary" = "Summary";
 "Valid until" = "Valid until";
-"No forecast available for this day" = "No forecast available for this day";
+"No forecast available for this day" = "No forecast is available for this day.";
 "Open avalanche forecast" = "Open avalanche forecast";
 "Open local forecast" = "Open local forecast";
-"Open the full bulletin for a region or your current position." = "Open the full bulletin for a region or your current position.";
-"Open a selected region, or use your current position." = "Open a selected region, or use your current position.";
+"Open the full bulletin for a region or your current position." = "Open the forecast for a region or your current location.";
+"Open a selected region, or use your current position." = "Open a selected region, or use your current location.";
 "Get a published avalanche forecast for Norway or Sweden." = "Get a published avalanche forecast for Norway or Sweden.";
 "Current or tomorrow's published forecast for Norway and Sweden." = "Current or tomorrow's published forecast for Norway and Sweden.";
 "The avalanche danger level in %@ for %@ is %@." = "The avalanche danger level in %@ for %@ is %@.";
 
 /* Shortcuts parameter summaries */
 "Open forecast for ${target}" = "Open forecast for ${target}";
-"Get avalanche warning for ${region}" = "Get avalanche warning for ${region}";
+"Get avalanche warning for ${region}" = "Get avalanche forecast for ${region}";
 
 /* Forecast reading controls and accessibility */
 "Details" = "Details";
@@ -285,7 +221,7 @@
 /* Local forecast permission and progress */
 "Open Settings" = "Open Settings";
 "Finding location…" = "Finding location…";
-"Location access is off. You can enable it in Settings." = "Location access is off. You can enable it in Settings.";
+"Location access is off. You can enable it in Settings." = "Location access is off. You can turn it on in Settings.";
 "Location access is restricted on this device." = "Location access is restricted on this device.";
 "Show forecasts for the nearest region." = "Show forecasts for the nearest region.";
 
@@ -296,9 +232,11 @@
 "Show My Location" = "Show My Location";
 "Show All Regions" = "Show All Regions";
 
-/* Siri answers in the request's language and for voice-only requests */
+/* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
 "The avalanche danger in %@ for %@ is level %@, %@." = "The avalanche danger in %@ for %@ is level %@, %@.";
 "Saved forecast from %@." = "Saved forecast from %@.";
+
+/* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Avalanche region";
 
 /* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
@@ -326,3 +264,9 @@
 "Favorite Forecasts" = "Favorite Forecasts";
 "Yesterday's Forecast" = "Yesterday's Forecast";
 "Earlier Forecast" = "Earlier Forecast";
+
+/* Region parameter and property names in Shortcuts, the region error, and the watch's empty state */
+"Region" = "Region";
+"Region Id" = "Region ID";
+"Region unavailable" = "Region unavailable";
+"No selected region" = "No region selected";

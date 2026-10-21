@@ -108,7 +108,8 @@ URL schemes:
 - Norwegian: `nb.lproj/Localizable.strings`
 - Swedish: `sv.lproj/Localizable.strings`
 - Code defaults to Norwegian if system locale starts with "nb"
-- New user-visible strings must be added to all three locale files
+- New user-visible strings must be added to all seven locale files (en, nb, sv, de, es, fr, it); keep keys in sync
+- Follow the terminology and conventions in [docs/localization.md](docs/localization.md) (for example, English says "forecast", not "warning", for the daily bulletin)
 
 ## Accessibility
 
@@ -119,7 +120,7 @@ When implementing new views or modifying existing ones, always include VoiceOver
 - Use `.accessibilityHidden(true)` on purely decorative elements (gradients, color bars, background shapes)
 - Use `.accessibilityRemoveTraits(.isImage)` on images that serve as labeled diagram/icons (e.g. ExposedHeight) to avoid VoiceOver appending "image"
 - Use `.accessibilityAddTraits(.isSelected)` for selectable items when selected
-- Add localized accessibility strings to all three locale files (`en.lproj`, `nb.lproj`, `sv.lproj`)
+- Add localized accessibility strings to all seven locale files
 - Use `DangerLevel.localizedName` for danger level names in accessibility labels (uses the app's locale automatically)
 - Existing accessibility string keys: "Danger level %@, %@", compass directions, treeline descriptions, height descriptions
 

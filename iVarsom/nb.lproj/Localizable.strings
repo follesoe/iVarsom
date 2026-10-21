@@ -1,23 +1,11 @@
 /* Region header */
 "Regions" = "Regioner";
 
-/* List group header for A-regions */
-"A-Regions" = "A-Regioner";
-
 /* List group header for location based warnings */
 "Local warnings" = "Lokalt skredvarsel";
 
 /* Button text to use location based warnings */
 "Use current location" = "Bruk min posisjon";
-
-/* Button description for location based warnings */
-"Will enable location based warnings in Widgets" = "Lar deg bruke posisjonsbasert skredvarsel i Widgets";
-
-/* Data source description and link */
-"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Varsler fra Snøskredvarslingen i Norge og www.varsom.no.";
-
-/* Data source description for both services */
-"Data from varsom.no and lavinprognoser.se." = "Data fra varsom.no og lavinprognoser.se.";
 
 /* Data source - Norway only */
 "Data from The Norwegian Avalanche Warning Service." = "Data fra Snøskredvarslingen i Norge.";
@@ -34,20 +22,8 @@
 /* Section header for Norwegian regions */
 "Norway" = "Norge";
 
-/* Widget Config Display Name */
-"Today's Avalanche Danger Level" = "Dagens skredfare";
-
-/* Widget Config Description */
-"Display today's avalanche danger level for selected regions in Norway." = "Se dagens faregrad for valgt varslingsregion.";
-
 /* Error loading widget */
 "Error" = "Feil";
-
-/* Error loading widget */
-"There was an error updating the widget" = "Det oppstod en feil under oppdatering av Widget";
-
-/* Link to Varsom.no */
-"Read complete warning on Varsom.no" = "Se komplett skredvarsel på Varsom.no";
 
 /* Current position option */
 "Current position" = "Min posisjon";
@@ -56,31 +32,25 @@
 "Select a region" = "Velg en region";
 
 /* Intent title */
-"Select Region" = "Velg Region";
+"Select Region" = "Velg region";
 
 /* Intent description */
-"Select which region you wish to view avalanche warnings from" = "Velg hvilken region du ønsker å se skredvarsel fra";
+"Select which region you wish to view avalanche warnings from" = "Velg regionen du vil se skredvarsel for.";
 
 /* To add a region to list */
 "Add Region" = "Legg til region";
 
 /* Loading text on list */
-"Loading Regions" = "Laster regioner";
+"Loading Regions" = "Laster inn regioner…";
 
 /* Loading text on details view */
-"Loading Details" = "Laster detaljer";
-
-/* Loading text for warnings */
-"Loading warnings..." = "Laster varsler...";
+"Loading Details" = "Laster inn detaljer…";
 
 /* Loading text for warnings with region name */
-"Loading warnings for %@" = "Laster varsler for %@";
-
-/* Error message */
-"Error Loading Regions" = "Feil under lasting av regioner";
+"Loading warnings for %@" = "Laster inn varsel for %@…";
 
 /* Error message for warnings with region name */
-"Error loading warnings for %@" = "Feil under lasting av varsler for %@";
+"Error loading warnings for %@" = "Kunne ikke hente varsel for %@.";
 
 /* Try loading data after error */
 "Try Again" = "Prøv igjen";
@@ -113,10 +83,10 @@
 "Avalanche problems" = "Skredproblemer";
 
 /* Link text */
-"Read complete warning on Varsom.no." = "Se komplett varsel på Varsom.no.";
+"Read complete warning on Varsom.no." = "Les hele varselet på Varsom.no";
 
 /* Link text for Swedish regions */
-"Read complete warning on lavinprognoser.se." = "Se komplett varsel på lavinprognoser.se.";
+"Read complete warning on lavinprognoser.se." = "Les hele varselet på lavinprognoser.se";
 
 /* Section header for Swedish regions */
 "Sweden" = "Sverige";
@@ -127,68 +97,35 @@
 /* Siri Shortcut - Intent title */
 "Get Avalanche Warning" = "Hent skredvarsel";
 
-/* Siri Shortcut - Intent description */
-"Get the current avalanche danger level for a region in Norway" = "Hent gjeldende faregrad for snøskred i en region i Norge";
-
-/* Siri Shortcut - Intent description (with Sweden) */
-"Get the current avalanche danger level for a region in Norway or Sweden" = "Hent gjeldende faregrad for snøskred i en region i Norge eller Sverige";
-
 /* Siri Shortcut - Short title */
 "Check warning" = "Sjekk varsel";
 
-/* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Hent varsel i ${applicationName}";
-"Avalanche warning from ${applicationName}" = "Varsel fra ${applicationName}";
-
-/* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Hent varsel for ${region} i ${applicationName}";
-"What is the avalanche danger in ${region} with ${applicationName}" = "Hva er skredfaren i ${region} med ${applicationName}";
-
-/* Siri Shortcut - Dialog response */
-"The avalanche danger level in %@ is %@." = "Skredfaren i %@ er %@.";
-
-/* Siri Shortcut - No warning available */
-"No avalanche warning available for %@ today." = "Ingen skredvarsel tilgjengelig for %@ i dag.";
-
-/* Siri Shortcut - Location required */
-"Location access is required to get warnings for your current position." = "Tilgang til posisjon er nødvendig for å hente varsel for din posisjon.";
-
 /* Siri Shortcut - Location unavailable */
-"Could not determine your current location." = "Kunne ikke finne din posisjon.";
+"Could not determine your current location." = "Fant ikke posisjonen din.";
 
 /* Siri Shortcut - Error messages */
 "Location access required" = "Posisjonstilgang kreves";
 
 /* Siri Shortcut - Parameter request dialog */
 "Which region do you want the avalanche warning for?" = "Hvilken region vil du ha skredvarsel for?";
-"Location unavailable" = "Posisjon utilgjengelig";
-"No warning available" = "Ingen varsel tilgjengelig";
-"Service unavailable" = "Tjenesten utilgjengelig";
-
-/* Siri Shortcut - Network error messages */
-"No internet connection. Unable to retrieve avalanche warnings." = "Ingen internettforbindelse. Kan ikke hente skredvarsel.";
-"Unable to retrieve avalanche warnings. Please try again later." = "Kan ikke hente skredvarsel. Vennligst prøv igjen senere.";
-
-/* Search tab title */
-"Search" = "Søk";
+"Location unavailable" = "Posisjonen er ikke tilgjengelig";
+"No warning available" = "Ikke noe varsel tilgjengelig";
+"Service unavailable" = "Tjenesten er ikke tilgjengelig";
 
 /* Map tab title */
 "Map" = "Kart";
-
-/* Emergency warning not given - used to filter out placeholder values from API */
-"EmergencyWarningNotGiven" = "Ikke gitt";
 
 /* Accessibility - Danger level with number and name */
 "Danger level %@, %@" = "Faregrad %@, %@";
 
 /* Accessibility - Exposed aspects list */
-"Exposed aspects: %@" = "Utsatte retninger: %@";
+"Exposed aspects: %@" = "Utsatte himmelretninger: %@";
 
 /* Accessibility - All aspects exposed */
-"All aspects exposed" = "Alle retninger utsatt";
+"All aspects exposed" = "Alle himmelretninger utsatt";
 
 /* Accessibility - No aspects exposed */
-"No aspects exposed" = "Ingen retninger utsatt";
+"No aspects exposed" = "Ingen himmelretninger utsatt";
 
 /* Accessibility - Above treeline */
 "Above treeline" = "Over tregrensen";
@@ -215,13 +152,12 @@
 "%@, %@" = "%@, %@";
 
 /* Warning detail sheet - title */
-"Avalanche risk assessment" = "Snøskredvurdering";
-
+"Avalanche risk assessment" = "Skredfarevurdering";
 
 /* Accessibility - Danger trend */
-"Danger rising" = "Fare økende";
-"Danger stable" = "Fare stabil";
-"Danger falling" = "Fare synkende";
+"Danger rising" = "Økende skredfare";
+"Danger stable" = "Stabil skredfare";
+"Danger falling" = "Synkende skredfare";
 
 /* Share menu option for summary only */
 "Share summary" = "Del sammendrag";
@@ -239,7 +175,7 @@
 "Show Original" = "Vis original";
 
 /* Translation in progress indicator */
-"Translating..." = "Oversetter...";
+"Translating..." = "Oversetter…";
 
 /* Indicator that text was machine translated from English */
 "Machine translated from English" = "Maskinoversatt fra engelsk";
@@ -265,11 +201,11 @@
 "Danger level" = "Faregrad";
 "Summary" = "Sammendrag";
 "Valid until" = "Gyldig til";
-"No forecast available for this day" = "Ingen varsel tilgjengelig for denne dagen";
+"No forecast available for this day" = "Ikke noe varsel tilgjengelig for denne dagen.";
 "Open avalanche forecast" = "Åpne skredvarsel";
 "Open local forecast" = "Åpne lokalt varsel";
-"Open the full bulletin for a region or your current position." = "Åpne hele varselet for en region eller din nåværende posisjon.";
-"Open a selected region, or use your current position." = "Åpne en valgt region, eller bruk din nåværende posisjon.";
+"Open the full bulletin for a region or your current position." = "Åpne varselet for en region eller der du er.";
+"Open a selected region, or use your current position." = "Åpne en valgt region eller bruk posisjonen din.";
 "Get a published avalanche forecast for Norway or Sweden." = "Hent et publisert skredvarsel for Norge eller Sverige.";
 "Current or tomorrow's published forecast for Norway and Sweden." = "Gjeldende eller morgendagens publiserte varsel for Norge og Sverige.";
 "The avalanche danger level in %@ for %@ is %@." = "Skredfaren i %@ for %@ er %@.";
@@ -296,9 +232,11 @@
 "Show My Location" = "Vis min posisjon";
 "Show All Regions" = "Vis alle regioner";
 
-/* Siri answers in the request's language and for voice-only requests */
+/* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
 "The avalanche danger in %@ for %@ is level %@, %@." = "Skredfaren i %@ for %@ er faregrad %@, %@.";
 "Saved forecast from %@." = "Lagret varsel fra %@.";
+
+/* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Varslingsregion";
 
 /* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
@@ -326,3 +264,9 @@
 "Favorite Forecasts" = "Favorittvarsler";
 "Yesterday's Forecast" = "Gårsdagens varsel";
 "Earlier Forecast" = "Tidligere varsel";
+
+/* Region parameter and property names in Shortcuts, the region error, and the watch's empty state */
+"Region" = "Region";
+"Region Id" = "Region-ID";
+"Region unavailable" = "Regionen er ikke tilgjengelig";
+"No selected region" = "Ingen region valgt";

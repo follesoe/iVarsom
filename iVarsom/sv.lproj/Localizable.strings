@@ -1,32 +1,20 @@
 /* Region header */
-"Regions" = "Regioner";
-
-/* List group header for A-regions */
-"A-Regions" = "A-Regioner";
+"Regions" = "Områden";
 
 /* List group header for location based warnings */
-"Local warnings" = "Lokala varningar";
+"Local warnings" = "Lokal prognos";
 
 /* Button text to use location based warnings */
 "Use current location" = "Använd nuvarande plats";
 
-/* Button description for location based warnings */
-"Will enable location based warnings in Widgets" = "Aktiverar platsbaserade lavinvarningar i Widgets";
-
-/* Data source description and link */
-"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Data från Norska Snöskredvarslingstjänsten och www.varsom.no.";
-
-/* Data source description for both services */
-"Data from varsom.no and lavinprognoser.se." = "Data från varsom.no och lavinprognoser.se.";
-
 /* Data source - Norway only */
-"Data from The Norwegian Avalanche Warning Service." = "Data från Norska Snöskredvarslingstjänsten.";
+"Data from The Norwegian Avalanche Warning Service." = "Data från Snøskredvarslingen i Norge.";
 
 /* Data source - Sweden only */
 "Data from Swedish Environmental Protection Agency." = "Data från Naturvårdsverket.";
 
 /* Data source - both countries */
-"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data från Norska Snöskredvarslingstjänsten och Naturvårdsverket.";
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Data från Snøskredvarslingen i Norge och Naturvårdsverket.";
 
 /* Section header for favorites */
 "Favorites" = "Favoriter";
@@ -34,53 +22,35 @@
 /* Section header for Norwegian regions */
 "Norway" = "Norge";
 
-/* Widget Config Display Name */
-"Today's Avalanche Danger Level" = "Dagens lavinfara";
-
-/* Widget Config Description */
-"Display today's avalanche danger level for selected regions in Norway." = "Visa dagens faronivå för vald varningsregion.";
-
 /* Error loading widget */
 "Error" = "Fel";
-
-/* Error loading widget */
-"There was an error updating the widget" = "Det uppstod ett fel vid uppdatering av Widget";
-
-/* Link to Varsom.no */
-"Read complete warning on Varsom.no" = "Se fullständig lavinvarning på Varsom.no";
 
 /* Current position option */
 "Current position" = "Min plats";
 
 /* When no region is selected */
-"Select a region" = "Välj en region";
+"Select a region" = "Välj ett område";
 
 /* Intent title */
-"Select Region" = "Välj region";
+"Select Region" = "Välj område";
 
 /* Intent description */
-"Select which region you wish to view avalanche warnings from" = "Välj vilken region du vill se lavinvarningar från";
+"Select which region you wish to view avalanche warnings from" = "Välj vilket område du vill se lavinprognosen för.";
 
 /* To add a region to list */
-"Add Region" = "Lägg till region";
+"Add Region" = "Lägg till område";
 
 /* Loading text on list */
-"Loading Regions" = "Laddar regioner";
+"Loading Regions" = "Hämtar områden…";
 
 /* Loading text on details view */
-"Loading Details" = "Laddar detaljer";
-
-/* Loading text for warnings */
-"Loading warnings..." = "Laddar varningar...";
+"Loading Details" = "Hämtar detaljer…";
 
 /* Loading text for warnings with region name */
-"Loading warnings for %@" = "Laddar varningar för %@";
-
-/* Error message */
-"Error Loading Regions" = "Fel vid laddning av regioner";
+"Loading warnings for %@" = "Hämtar prognosen för %@…";
 
 /* Error message for warnings with region name */
-"Error loading warnings for %@" = "Fel vid laddning av varningar för %@";
+"Error loading warnings for %@" = "Kunde inte hämta prognosen för %@.";
 
 /* Try loading data after error */
 "Try Again" = "Försök igen";
@@ -113,10 +83,10 @@
 "Avalanche problems" = "Lavinproblem";
 
 /* Link text */
-"Read complete warning on Varsom.no." = "Se fullständig varning på Varsom.no.";
+"Read complete warning on Varsom.no." = "Läs hela prognosen på Varsom.no";
 
 /* Link text for Swedish regions */
-"Read complete warning on lavinprognoser.se." = "Se fullständig varning på lavinprognoser.se.";
+"Read complete warning on lavinprognoser.se." = "Läs hela prognosen på lavinprognoser.se";
 
 /* Section header for Swedish regions */
 "Sweden" = "Sverige";
@@ -125,58 +95,25 @@
 "Forecast" = "Prognos";
 
 /* Siri Shortcut - Intent title */
-"Get Avalanche Warning" = "Hämta lavinvarning";
-
-/* Siri Shortcut - Intent description */
-"Get the current avalanche danger level for a region in Norway" = "Hämta aktuell faronivå för laviner i en region i Norge";
-
-/* Siri Shortcut - Intent description (with Sweden) */
-"Get the current avalanche danger level for a region in Norway or Sweden" = "Hämta aktuell faronivå för laviner i en region i Norge eller Sverige";
+"Get Avalanche Warning" = "Hämta lavinprognos";
 
 /* Siri Shortcut - Short title */
-"Check warning" = "Kolla varning";
-
-/* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Hämta lavinvarning i ${applicationName}";
-"Avalanche warning from ${applicationName}" = "Lavinvarning från ${applicationName}";
-
-/* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Hämta lavinvarning för ${region} i ${applicationName}";
-"What is the avalanche danger in ${region} with ${applicationName}" = "Vad är lavinfaran i ${region} med ${applicationName}";
-
-/* Siri Shortcut - Dialog response */
-"The avalanche danger level in %@ is %@." = "Faronivån för laviner i %@ är %@.";
-
-/* Siri Shortcut - No warning available */
-"No avalanche warning available for %@ today." = "Ingen lavinvarning tillgänglig för %@ idag.";
-
-/* Siri Shortcut - Location required */
-"Location access is required to get warnings for your current position." = "Platsåtkomst krävs för att hämta varningar för din nuvarande plats.";
+"Check warning" = "Kolla prognos";
 
 /* Siri Shortcut - Location unavailable */
-"Could not determine your current location." = "Kunde inte fastställa din nuvarande plats.";
+"Could not determine your current location." = "Kunde inte hitta din plats.";
 
 /* Siri Shortcut - Error messages */
 "Location access required" = "Platsåtkomst krävs";
 
 /* Siri Shortcut - Parameter request dialog */
-"Which region do you want the avalanche warning for?" = "Vilken region vill du ha lavinvarning för?";
-"Location unavailable" = "Plats otillgänglig";
-"No warning available" = "Ingen varning tillgänglig";
-"Service unavailable" = "Tjänsten otillgänglig";
-
-/* Siri Shortcut - Network error messages */
-"No internet connection. Unable to retrieve avalanche warnings." = "Ingen internetanslutning. Kan inte hämta lavinvarningar.";
-"Unable to retrieve avalanche warnings. Please try again later." = "Kan inte hämta lavinvarningar. Försök igen senare.";
-
-/* Search tab title */
-"Search" = "Sök";
+"Which region do you want the avalanche warning for?" = "Vilket område vill du ha lavinprognos för?";
+"Location unavailable" = "Platsen är inte tillgänglig";
+"No warning available" = "Ingen prognos tillgänglig";
+"Service unavailable" = "Tjänsten är inte tillgänglig";
 
 /* Map tab title */
 "Map" = "Karta";
-
-/* Emergency warning not given - used to filter out placeholder values from API */
-"EmergencyWarningNotGiven" = "Ej utfärdad";
 
 /* Accessibility - Danger level with number and name */
 "Danger level %@, %@" = "Faronivå %@, %@";
@@ -215,13 +152,12 @@
 "%@, %@" = "%@, %@";
 
 /* Warning detail sheet - title */
-"Avalanche risk assessment" = "Lavinriskbedömning";
-
+"Avalanche risk assessment" = "Bedömning av lavinfaran";
 
 /* Accessibility - Danger trend */
-"Danger rising" = "Fara ökande";
-"Danger stable" = "Fara stabil";
-"Danger falling" = "Fara sjunkande";
+"Danger rising" = "Ökande lavinfara";
+"Danger stable" = "Oförändrad lavinfara";
+"Danger falling" = "Minskande lavinfara";
 
 /* Share menu option for summary only */
 "Share summary" = "Dela sammanfattning";
@@ -239,7 +175,7 @@
 "Show Original" = "Visa original";
 
 /* Translation in progress indicator */
-"Translating..." = "Översätter...";
+"Translating..." = "Översätter…";
 
 /* Indicator that text was machine translated from English */
 "Machine translated from English" = "Maskinöversatt från engelska";
@@ -265,11 +201,11 @@
 "Danger level" = "Faronivå";
 "Summary" = "Sammanfattning";
 "Valid until" = "Gäller till";
-"No forecast available for this day" = "Ingen prognos tillgänglig för denna dag";
+"No forecast available for this day" = "Ingen prognos är tillgänglig för den här dagen.";
 "Open avalanche forecast" = "Öppna lavinprognos";
 "Open local forecast" = "Öppna lokal prognos";
-"Open the full bulletin for a region or your current position." = "Öppna hela prognosen för ett område eller din nuvarande position.";
-"Open a selected region, or use your current position." = "Öppna ett valt område eller använd din nuvarande position.";
+"Open the full bulletin for a region or your current position." = "Öppna prognosen för ett område eller din plats.";
+"Open a selected region, or use your current position." = "Öppna ett valt område eller använd din plats.";
 "Get a published avalanche forecast for Norway or Sweden." = "Hämta en publicerad lavinprognos för Norge eller Sverige.";
 "Current or tomorrow's published forecast for Norway and Sweden." = "Aktuell eller morgondagens publicerade prognos för Norge och Sverige.";
 "The avalanche danger level in %@ for %@ is %@." = "Lavinfaran i %@ för %@ är %@.";
@@ -285,9 +221,9 @@
 /* Local forecast permission and progress */
 "Open Settings" = "Öppna Inställningar";
 "Finding location…" = "Söker efter plats…";
-"Location access is off. You can enable it in Settings." = "Platsåtkomst är avstängd. Du kan aktivera den i Inställningar.";
+"Location access is off. You can enable it in Settings." = "Platsåtkomst är avstängd. Du kan slå på den i Inställningar.";
 "Location access is restricted on this device." = "Platsåtkomst är begränsad på den här enheten.";
-"Show forecasts for the nearest region." = "Visa lavinprognoser för närmaste region.";
+"Show forecasts for the nearest region." = "Visa lavinprognoser för närmaste område.";
 
 /* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
 "Add to Favorites" = "Lägg till i favoriter";
@@ -296,9 +232,11 @@
 "Show My Location" = "Visa min plats";
 "Show All Regions" = "Visa alla områden";
 
-/* Siri answers in the request's language and for voice-only requests */
+/* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
 "The avalanche danger in %@ for %@ is level %@, %@." = "Lavinfaran i %@ för %@ är faronivå %@, %@.";
 "Saved forecast from %@." = "Sparad prognos från %@.";
+
+/* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Prognosområde";
 
 /* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
@@ -326,3 +264,9 @@
 "Favorite Forecasts" = "Favoritprognoser";
 "Yesterday's Forecast" = "Gårdagens prognos";
 "Earlier Forecast" = "Tidigare prognos";
+
+/* Region parameter and property names in Shortcuts, the region error, and the watch's empty state */
+"Region" = "Område";
+"Region Id" = "Områdes-ID";
+"Region unavailable" = "Området är inte tillgängligt";
+"No selected region" = "Inget område valt";

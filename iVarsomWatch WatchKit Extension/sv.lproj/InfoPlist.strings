@@ -1,2 +1,2 @@
-"NSLocationWhenInUseUsageDescription" = "Appen använder plats för att visa lavinvarningar från din närmaste region";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen använder plats för att visa lavinvarningar från din närmaste region";
+"NSLocationWhenInUseUsageDescription" = "Appen använder din plats för att visa lavinprognosen för området där du befinner dig.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Appen använder din plats för att visa lavinprognosen för området där du befinner dig.";

@@ -1543,8 +1543,8 @@
 				INFOPLIST_FILE = iVarsomWidgetWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWatchWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1578,8 +1578,8 @@
 				INFOPLIST_FILE = iVarsomWidgetWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWatchWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1608,8 +1608,8 @@
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -1640,8 +1640,8 @@
 				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = no.follesoe.iVarsom;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -1811,8 +1811,8 @@
 				INFOPLIST_FILE = iVarsom/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skredvarsel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1853,8 +1853,8 @@
 				INFOPLIST_FILE = iVarsom/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skredvarsel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1891,8 +1891,8 @@
 				INFOPLIST_FILE = iVarsomWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1925,8 +1925,8 @@
 				INFOPLIST_FILE = iVarsomWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iVarsomWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app use location to display avalanche warnings from your nearest region";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location to show the avalanche forecast for the region you’re in.";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

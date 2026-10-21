@@ -1,32 +1,20 @@
 /* Region header */
 "Regions" = "Regionen";
 
-/* List group header for A-regions */
-"A-Regions" = "A-Regionen";
-
 /* List group header for location based warnings */
-"Local warnings" = "Lokale Warnungen";
+"Local warnings" = "Lokale Vorhersage";
 
 /* Button text to use location based warnings */
 "Use current location" = "Aktuellen Standort verwenden";
 
-/* Button description for location based warnings */
-"Will enable location based warnings in Widgets" = "Aktiviert standortbasierte Lawinenwarnungen in Widgets";
-
-/* Data source description and link */
-"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Daten vom Norwegischen Lawinenwarndienst und www.varsom.no.";
-
-/* Data source description for both services */
-"Data from varsom.no and lavinprognoser.se." = "Daten von varsom.no und lavinprognoser.se.";
-
 /* Data source - Norway only */
-"Data from The Norwegian Avalanche Warning Service." = "Daten vom Norwegischen Lawinenwarndienst.";
+"Data from The Norwegian Avalanche Warning Service." = "Daten vom norwegischen Lawinenwarndienst.";
 
 /* Data source - Sweden only */
-"Data from Swedish Environmental Protection Agency." = "Daten von der Schwedischen Umweltschutzbehörde.";
+"Data from Swedish Environmental Protection Agency." = "Daten von der schwedischen Umweltschutzbehörde.";
 
 /* Data source - both countries */
-"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Daten vom Norwegischen Lawinenwarndienst und der Schwedischen Umweltschutzbehörde.";
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Daten vom norwegischen Lawinenwarndienst und von der schwedischen Umweltschutzbehörde.";
 
 /* Section header for favorites */
 "Favorites" = "Favoriten";
@@ -34,20 +22,8 @@
 /* Section header for Norwegian regions */
 "Norway" = "Norwegen";
 
-/* Widget Config Display Name */
-"Today's Avalanche Danger Level" = "Heutige Lawinengefahrenstufe";
-
-/* Widget Config Description */
-"Display today's avalanche danger level for selected regions in Norway." = "Zeigt die heutige Lawinengefahrenstufe für ausgewählte Regionen an.";
-
 /* Error loading widget */
 "Error" = "Fehler";
-
-/* Error loading widget */
-"There was an error updating the widget" = "Beim Aktualisieren des Widgets ist ein Fehler aufgetreten";
-
-/* Link to Varsom.no */
-"Read complete warning on Varsom.no" = "Vollständige Warnung auf Varsom.no lesen";
 
 /* Current position option */
 "Current position" = "Aktueller Standort";
@@ -59,28 +35,22 @@
 "Select Region" = "Region auswählen";
 
 /* Intent description */
-"Select which region you wish to view avalanche warnings from" = "Wählen Sie die Region, für die Sie Lawinenwarnungen sehen möchten";
+"Select which region you wish to view avalanche warnings from" = "Wähle die Region, für die die Lawinenvorhersage angezeigt werden soll.";
 
 /* To add a region to list */
 "Add Region" = "Region hinzufügen";
 
 /* Loading text on list */
-"Loading Regions" = "Regionen werden geladen";
+"Loading Regions" = "Regionen werden geladen …";
 
 /* Loading text on details view */
-"Loading Details" = "Details werden geladen";
-
-/* Loading text for warnings */
-"Loading warnings..." = "Warnungen werden geladen...";
+"Loading Details" = "Details werden geladen …";
 
 /* Loading text for warnings with region name */
-"Loading warnings for %@" = "Warnungen für %@ werden geladen";
-
-/* Error message */
-"Error Loading Regions" = "Fehler beim Laden der Regionen";
+"Loading warnings for %@" = "Vorhersage für %@ wird geladen …";
 
 /* Error message for warnings with region name */
-"Error loading warnings for %@" = "Fehler beim Laden der Warnungen für %@";
+"Error loading warnings for %@" = "Die Vorhersage für %@ konnte nicht geladen werden.";
 
 /* Try loading data after error */
 "Try Again" = "Erneut versuchen";
@@ -113,115 +83,81 @@
 "Avalanche problems" = "Lawinenprobleme";
 
 /* Link text */
-"Read complete warning on Varsom.no." = "Vollständige Warnung auf Varsom.no lesen.";
+"Read complete warning on Varsom.no." = "Vollständige Vorhersage auf Varsom.no lesen";
 
 /* Link text for Swedish regions */
-"Read complete warning on lavinprognoser.se." = "Vollständige Warnung auf lavinprognoser.se lesen.";
+"Read complete warning on lavinprognoser.se." = "Vollständige Vorhersage auf lavinprognoser.se lesen";
 
 /* Section header for Swedish regions */
 "Sweden" = "Schweden";
 
 /* Navigation title */
-"Forecast" = "Prognose";
+"Forecast" = "Vorhersage";
 
 /* Siri Shortcut - Intent title */
-"Get Avalanche Warning" = "Lawinenwarnung abrufen";
-
-/* Siri Shortcut - Intent description */
-"Get the current avalanche danger level for a region in Norway" = "Aktuelle Lawinengefahrenstufe für eine Region in Norwegen abrufen";
-
-/* Siri Shortcut - Intent description (with Sweden) */
-"Get the current avalanche danger level for a region in Norway or Sweden" = "Aktuelle Lawinengefahrenstufe für eine Region in Norwegen oder Schweden abrufen";
+"Get Avalanche Warning" = "Lawinenvorhersage abrufen";
 
 /* Siri Shortcut - Short title */
-"Check warning" = "Warnung prüfen";
-
-/* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Lawinenwarnung in ${applicationName} abrufen";
-"Avalanche warning from ${applicationName}" = "Lawinenwarnung von ${applicationName}";
-
-/* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Lawinenwarnung für ${region} in ${applicationName} abrufen";
-"What is the avalanche danger in ${region} with ${applicationName}" = "Wie ist die Lawinengefahr in ${region} mit ${applicationName}";
-
-/* Siri Shortcut - Dialog response */
-"The avalanche danger level in %@ is %@." = "Die Lawinengefahrenstufe in %@ ist %@.";
-
-/* Siri Shortcut - No warning available */
-"No avalanche warning available for %@ today." = "Keine Lawinenwarnung für %@ heute verfügbar.";
-
-/* Siri Shortcut - Location required */
-"Location access is required to get warnings for your current position." = "Standortzugriff ist erforderlich, um Warnungen für Ihren aktuellen Standort abzurufen.";
+"Check warning" = "Vorhersage abrufen";
 
 /* Siri Shortcut - Location unavailable */
-"Could not determine your current location." = "Ihr aktueller Standort konnte nicht ermittelt werden.";
+"Could not determine your current location." = "Dein aktueller Standort konnte nicht ermittelt werden.";
 
 /* Siri Shortcut - Error messages */
 "Location access required" = "Standortzugriff erforderlich";
 
 /* Siri Shortcut - Parameter request dialog */
-"Which region do you want the avalanche warning for?" = "Für welche Region möchten Sie die Lawinenwarnung?";
+"Which region do you want the avalanche warning for?" = "Für welche Region möchtest du die Vorhersage?";
 "Location unavailable" = "Standort nicht verfügbar";
-"No warning available" = "Keine Warnung verfügbar";
+"No warning available" = "Keine Vorhersage verfügbar";
 "Service unavailable" = "Dienst nicht verfügbar";
-
-/* Siri Shortcut - Network error messages */
-"No internet connection. Unable to retrieve avalanche warnings." = "Keine Internetverbindung. Lawinenwarnungen können nicht abgerufen werden.";
-"Unable to retrieve avalanche warnings. Please try again later." = "Lawinenwarnungen können nicht abgerufen werden. Bitte versuchen Sie es später erneut.";
-
-/* Search tab title */
-"Search" = "Suche";
 
 /* Map tab title */
 "Map" = "Karte";
-
-/* Emergency warning not given - used to filter out placeholder values from API */
-"EmergencyWarningNotGiven" = "Nicht ausgegeben";
 
 /* Accessibility - Danger level with number and name */
 "Danger level %@, %@" = "Gefahrenstufe %@, %@";
 
 /* Accessibility - Exposed aspects list */
-"Exposed aspects: %@" = "Exponierte Hangrichtungen: %@";
+"Exposed aspects: %@" = "Betroffene Hangrichtungen: %@";
 
 /* Accessibility - All aspects exposed */
-"All aspects exposed" = "Alle Hangrichtungen exponiert";
+"All aspects exposed" = "Alle Hangrichtungen betroffen";
 
 /* Accessibility - No aspects exposed */
-"No aspects exposed" = "Keine Hangrichtungen exponiert";
+"No aspects exposed" = "Keine Hangrichtung betroffen";
 
 /* Accessibility - Above treeline */
-"Above treeline" = "Oberhalb der Baumgrenze";
+"Above treeline" = "Oberhalb der Waldgrenze";
 
 /* Accessibility - Below treeline */
-"Below treeline" = "Unterhalb der Baumgrenze";
+"Below treeline" = "Unterhalb der Waldgrenze";
 
 /* Accessibility - Near treeline */
-"Near treeline" = "Nahe der Baumgrenze";
+"Near treeline" = "Im Bereich der Waldgrenze";
 
 /* Accessibility - Above and below treeline */
-"Above and below treeline" = "Ober- und unterhalb der Baumgrenze";
+"Above and below treeline" = "Ober- und unterhalb der Waldgrenze";
 
 /* Accessibility - Above height */
-"Above %@ meters" = "Oberhalb %@ Meter";
+"Above %@ meters" = "Oberhalb von %@ Metern";
 
 /* Accessibility - Below height */
-"Below %@ meters" = "Unterhalb %@ Meter";
+"Below %@ meters" = "Unterhalb von %@ Metern";
 
 /* Accessibility - Between heights */
-"Between %@ and %@ meters" = "Zwischen %@ und %@ Meter";
+"Between %@ and %@ meters" = "Zwischen %@ und %@ Metern";
 
 /* Accessibility - Region with danger levels */
 "%@, %@" = "%@, %@";
 
 /* Warning detail sheet - title */
-"Avalanche risk assessment" = "Lawinenrisikobeurteilung";
-
+"Avalanche risk assessment" = "Beurteilung der Lawinengefahr";
 
 /* Accessibility - Danger trend */
-"Danger rising" = "Gefahr steigend";
-"Danger stable" = "Gefahr stabil";
-"Danger falling" = "Gefahr sinkend";
+"Danger rising" = "Gefahr nimmt zu";
+"Danger stable" = "Gefahr bleibt gleich";
+"Danger falling" = "Gefahr nimmt ab";
 
 /* Share menu option for summary only */
 "Share summary" = "Zusammenfassung teilen";
@@ -239,7 +175,7 @@
 "Show Original" = "Original anzeigen";
 
 /* Translation in progress indicator */
-"Translating..." = "Wird übersetzt...";
+"Translating..." = "Wird übersetzt …";
 
 /* Indicator that text was machine translated from English */
 "Machine translated from English" = "Maschinell aus dem Englischen übersetzt";
@@ -259,24 +195,24 @@
 "Current forecast" = "Aktuelle Vorhersage";
 "Tomorrow" = "Morgen";
 "Saved forecast" = "Gespeicherte Vorhersage";
-"Downloaded" = "Heruntergeladen";
+"Downloaded" = "Abgerufen";
 "Avalanche forecast" = "Lawinenvorhersage";
 "Forecast date" = "Vorhersagedatum";
 "Danger level" = "Gefahrenstufe";
 "Summary" = "Zusammenfassung";
 "Valid until" = "Gültig bis";
-"No forecast available for this day" = "Für diesen Tag ist keine Vorhersage verfügbar";
+"No forecast available for this day" = "Für diesen Tag ist keine Vorhersage verfügbar.";
 "Open avalanche forecast" = "Lawinenvorhersage öffnen";
 "Open local forecast" = "Lokale Vorhersage öffnen";
-"Open the full bulletin for a region or your current position." = "Den vollständigen Bericht für eine Region oder deinen aktuellen Standort öffnen.";
+"Open the full bulletin for a region or your current position." = "Die Vorhersage für eine Region oder deinen aktuellen Standort öffnen.";
 "Open a selected region, or use your current position." = "Eine gewählte Region öffnen oder den aktuellen Standort verwenden.";
 "Get a published avalanche forecast for Norway or Sweden." = "Eine veröffentlichte Lawinenvorhersage für Norwegen oder Schweden abrufen.";
-"Current or tomorrow's published forecast for Norway and Sweden." = "Aktuelle oder für morgen veröffentlichte Vorhersage für Norwegen und Schweden.";
-"The avalanche danger level in %@ for %@ is %@." = "Die Lawinengefahrenstufe in %@ für %@ ist %@.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Die aktuelle oder morgige Lawinenvorhersage für Norwegen und Schweden.";
+"The avalanche danger level in %@ for %@ is %@." = "Die Lawinengefahrenstufe in %@ am %@ ist %@.";
 
 /* Shortcuts parameter summaries */
-"Open forecast for ${target}" = "Prognose für ${target} öffnen";
-"Get avalanche warning for ${region}" = "Lawinenwarnung für ${region} abrufen";
+"Open forecast for ${target}" = "Vorhersage für ${target} öffnen";
+"Get avalanche warning for ${region}" = "Lawinenvorhersage für ${region} abrufen";
 
 /* Forecast reading controls and accessibility */
 "Details" = "Details";
@@ -284,10 +220,10 @@
 
 /* Local forecast permission and progress */
 "Open Settings" = "Einstellungen öffnen";
-"Finding location…" = "Standort wird ermittelt…";
+"Finding location…" = "Standort wird ermittelt …";
 "Location access is off. You can enable it in Settings." = "Der Standortzugriff ist deaktiviert. Du kannst ihn in den Einstellungen aktivieren.";
 "Location access is restricted on this device." = "Der Standortzugriff ist auf diesem Gerät eingeschränkt.";
-"Show forecasts for the nearest region." = "Lawinenprognosen für die nächstgelegene Region anzeigen.";
+"Show forecasts for the nearest region." = "Vorhersagen für die nächstgelegene Region anzeigen.";
 
 /* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
 "Add to Favorites" = "Zu Favoriten hinzufügen";
@@ -296,9 +232,11 @@
 "Show My Location" = "Meinen Standort anzeigen";
 "Show All Regions" = "Alle Regionen anzeigen";
 
-/* Siri answers in the request's language and for voice-only requests */
+/* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
 "The avalanche danger in %@ for %@ is level %@, %@." = "Die Lawinengefahr in %@ am %@ ist Stufe %@, %@.";
 "Saved forecast from %@." = "Gespeicherte Vorhersage vom %@.";
+
+/* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Lawinenregion";
 
 /* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
@@ -326,3 +264,9 @@
 "Favorite Forecasts" = "Vorhersagen für Favoriten";
 "Yesterday's Forecast" = "Vorhersage von gestern";
 "Earlier Forecast" = "Frühere Vorhersage";
+
+/* Region parameter and property names in Shortcuts, the region error, and the watch's empty state */
+"Region" = "Region";
+"Region Id" = "Regions-ID";
+"Region unavailable" = "Region nicht verfügbar";
+"No selected region" = "Keine Region ausgewählt";
