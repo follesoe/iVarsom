@@ -9,11 +9,14 @@ struct RegionConfigOptionAppEntity: AppEntity {
     @Property(title: "Region Id")
     var regionId: Int?
     
-    static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Region Config Option")
+    // Display only: saved shortcuts refer to the type, not this name.
+    static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Avalanche region")
     static let defaultQuery = RegionConfigOptionAppEntityQuery()
     
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(displayString)")
+        // Names contain zero-width spaces as line-break hints for the app; Siri
+        // matches spoken names better without them.
+        DisplayRepresentation(title: "\(displayString.replacingOccurrences(of: "\u{200B}", with: ""))")
     }
 
     struct RegionConfigOptionAppEntityQuery: EntityStringQuery {
@@ -56,13 +59,28 @@ struct RegionConfigOptionAppEntity: AppEntity {
         let options = authorized ?
             RegionOption.allOptions : RegionOption.aRegions + RegionOption.swedenRegions
 
-        return options.map { region in
+        return favoritesFirst(options).map { region in
             let option = RegionConfigOptionAppEntity(
                 id: "\(region.id)",
                 displayString: region.name)
             option.regionId = region.id
             return option
         }
+    }
+
+    /// Siri lists suggestions when it asks for a region; favorites come first.
+    static func favoritesFirst(_ options: [RegionOption], favorites: [Int] = FavoritesService.savedFavorites())
+        -> [RegionOption]
+    {
+        let rank = Dictionary(favorites.enumerated().map { ($1, $0) }, uniquingKeysWith: { first, _ in first })
+        return options.enumerated().sorted { lhs, rhs in
+            switch (rank[lhs.element.id], rank[rhs.element.id]) {
+            case let (l?, r?): l < r
+            case (.some, nil): true
+            case (nil, .some): false
+            case (nil, nil): lhs.offset < rhs.offset
+            }
+        }.map(\.element)
     }
 
     init(id: String, displayString: String) {

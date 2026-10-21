@@ -3,8 +3,8 @@
 
 "CFBundleDisplayName" = "Avalanche Warnings";
 
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "The app uses your location to show the avalanche forecast for the region you’re in.";
 
-"NSLocationWhenInUseUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
+"NSLocationWhenInUseUsageDescription" = "The app uses your location to show the avalanche forecast for the region you’re in.";
 
-"NSLocationUsageDescription" = "The app use location to display avalanche warnings from your nearest region";
+"NSLocationUsageDescription" = "The app uses your location to show the avalanche forecast for the region you’re in.";

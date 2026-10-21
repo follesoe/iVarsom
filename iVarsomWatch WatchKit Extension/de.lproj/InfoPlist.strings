@@ -1,2 +1,2 @@
-"NSLocationWhenInUseUsageDescription" = "Die App verwendet den Standort, um Lawinenwarnungen für Ihre nächstgelegene Region anzuzeigen";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Die App verwendet den Standort, um Lawinenwarnungen für Ihre nächstgelegene Region anzuzeigen";
+"NSLocationWhenInUseUsageDescription" = "Die App verwendet deinen Standort, um die Lawinenvorhersage für die Region anzuzeigen, in der du dich befindest.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Die App verwendet deinen Standort, um die Lawinenvorhersage für die Region anzuzeigen, in der du dich befindest.";

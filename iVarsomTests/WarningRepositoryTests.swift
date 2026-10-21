@@ -12,6 +12,39 @@ struct WarningRepositoryTests {
         WarningRequest(regionID: 3003, date: Fixtures.date, daysBefore: 1, daysAfter: 2)
     }
 
+    @Test func swedishRequestsUseTheRepositoryLanguage() async throws {
+        let repository = WarningRepository(norway: norway, sweden: sweden, cache: nil, language: { .english })
+        _ = try await repository.loadRegions()
+        _ = try await repository.loadWarnings(
+            WarningRequest(regionID: 100001, date: Fixtures.date, daysBefore: 1, daysAfter: 2),
+            cachePolicy: .networkOnly)
+        _ = try await repository.loadSummaries(
+            WarningRequest(regionID: 100001, date: Fixtures.date, daysBefore: 1, daysAfter: 2))
+        #expect(sweden.requestedLanguages == [.english, .english, .english])
+    }
+
+    @Test func archiveRequestsFetchOneSwedishDayAndKeepEmergencyText() async throws {
+        let day = Fixtures.date.addingTimeInterval(-30 * 86400)
+        var detailed = Fixtures.warning(3003, date: day)
+        detailed.EmergencyWarning = "Large natural avalanches expected."
+        norway.detailed = { [detailed] _ in [detailed] }
+        let repository = WarningRepository(norway: norway, sweden: sweden, cache: nil, language: { .english })
+        let norwegian = try await repository.loadWarnings(on: day, regionID: 3003)
+        #expect(norwegian.first?.EmergencyWarning == "Large natural avalanches expected.")
+        let swedish = try await repository.loadWarnings(on: day, regionID: 100001)
+        #expect(swedish.map(\.ValidFrom) == [day])
+        #expect(sweden.requestedDates == [day])
+        #expect(sweden.requestedLanguages == [.english])
+    }
+
+    @Test func archiveRequestsNeverReplaceSharedForecasts() async throws {
+        let store = SharedForecastStore(directory: directory.url)
+        let repository = WarningRepository(norway: norway, sweden: sweden, cache: nil, sharedForecasts: store)
+        _ = try await repository.loadWarnings(on: Fixtures.date.addingTimeInterval(-86400 * 400), regionID: 3003)
+        let key = SharedForecastStore.languageKey(regionID: 3003, language: VarsomApiClient.currentLang())
+        #expect(await store.load(regionID: 3003, language: key, now: Fixtures.date) == nil)
+    }
+
     @Test func networkOnlyDoesNotReadOrOverwriteAppCache() async throws {
         let cache = CacheService(directory: directory.url)
         let cached = Fixtures.warning(danger: .level2)

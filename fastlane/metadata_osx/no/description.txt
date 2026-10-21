@@ -1,5 +1,13 @@
-Se dagens skredfare for valgt region i Norge og Sverige, eller basert på din posisjon i appen, eller som en widget i varslingssenteret.
+Se skredfaren i Norge og Sverige med et blikk, rett på skrivebordet på Macen.
 
-Interaktivt kart viser alle skredregioner farget etter farenivå. Trykk på en region for å se detaljert varsel med skredproblemer og anbefalinger.
+Appen viser det daglige skredvarselet fra Snøskredvarslingen (varsom.no) og Naturvårdsverket (lavinprognoser.se) for alle varslingsregioner, eller for regionen du er i.
 
-Varslene er levert av Snøskredvarslingen i Norge (varsom.no) og svenske lavinprognoser (lavinprognoser.se).
+• Widgeter på skrivebordet og i Varslingssenter med dagens eller morgendagens faregrad
+• Kart over alle regioner, farget etter faregrad
+• Hele varselet med skredproblemer, utsatte himmelretninger og høyder
+• Tidligere og kommende dager, nødvarsler og lagrede varsler når du er uten nett
+• Spør Siri om favorittene dine eller en region, også tidligere dager, og bruk varslene i Snarveier
+• Maskinoversettelse av varselteksten til ditt språk
+• Finnes også for iPhone, iPad og Apple Watch, med full støtte for VoiceOver
+
+Les alltid hele varselet og gjør dine egne vurderinger i skredterreng.

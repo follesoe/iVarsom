@@ -1,15 +1,16 @@
 Skredvarsel 6.0 markerer starten på vår sjette vintersesong: 2026/27.
 
-- Velg gjeldende varsel eller morgendagens publiserte varsel i widgetene dine.
-- Bedre tidspunkt for oppdatering av widgeter når nye varsler ventes, og når du åpner eller oppdaterer appen.
-- Tydeligere varseldatoer og merking av lagrede varsler, med nedlastingstidspunkt i større widgeter. Widgetene viser også når et gyldig varsel mangler.
-- Legg til en kontroll som åpner en valgt region eller ditt lokale varsel fra Kontrollsenter, låseskjermen eller handlingsknappen på støttede enheter.
-- Apple Watch kan foreslå varsler for favorittregionene dine om morgenen.
-- Hent gjeldende varsel eller morgendagens varsel med Siri og Snarveier, og bruk faregrad, varseldato og tekst i egne snarveier.
-- VoiceOver leser nå opp varselteksten og eventuelle aktive nødvarsler i widgetene.
-- Mer pålitelig håndtering av svenske kveldsoppdateringer og lagrede varsler når en nedlasting mislykkes.
-- Varseldatoer og lenker viser riktig dag også når du reiser til en annen tidssone.
-- Mer pålitelig bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling av varsler.
-- Tydeligere varselkort og dagmerking, med bedre lesbarhet ved større tekststørrelser.
-- Appen ber om tilgang til posisjonen din når du velger en posisjonsbasert handling.
-- Velg region og varseldag direkte når du konfigurerer widgeter på Apple Watch, og les varsler med tydeligere kontrast og tekst som følger valgt tekststørrelse.
+Nytt
+- Spør Siri om favorittregionene dine, morgendagens varsel eller en tidligere dag, som i går eller forrige lørdag. Med Snarveier kan du hente varselet for hvilken som helst dato, også fra tidligere sesonger.
+- Siri svarer på språket du spør på, og gir et muntlig sammendrag når du ikke ser skjermen.
+- Laget for iPhone Duo: Du beholder plassen din, kartet og varselet du leser når du bretter telefonen ut eller sammen, og brede skjermer viser varselet i to kolonner.
+- En ny høy widget med dagens varsel og de kommende dagene (iOS 27).
+- Velg gjeldende varsel eller morgendagens varsel i widgetene, og legg til en kontroll som åpner et varsel fra Kontrollsenter, låseskjermen eller handlingsknappen.
+- Apple Watch foreslår varsler for favorittregionene dine om morgenen, og i widgetene kan du velge region og varseldag.
+
+Forbedret
+- Widgetene oppdateres når nye varsler ventes, viser tydeligere datoer og nedlastingstidspunkt, og sier fra når et gyldig varsel mangler.
+- VoiceOver leser opp varselteksten og aktive nødvarsler i widgetene.
+- Mer pålitelige svenske kveldsoppdateringer, lagrede varsler når en nedlasting mislykkes, og riktig varseldag når du reiser.
+- Smidigere bytte av region, posisjonsoppdatering, synkronisering av favoritter, oversettelse og deling.
+- Tydeligere varselkort og bedre lesbarhet med stor tekst. Appen ber bare om posisjonen din når du velger en posisjonsbasert handling.

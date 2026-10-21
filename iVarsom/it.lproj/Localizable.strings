@@ -1,32 +1,20 @@
 /* Region header */
 "Regions" = "Regioni";
 
-/* List group header for A-regions */
-"A-Regions" = "Regioni A";
-
 /* List group header for location based warnings */
-"Local warnings" = "Avvisi locali";
+"Local warnings" = "Bollettino locale";
 
 /* Button text to use location based warnings */
 "Use current location" = "Usa posizione attuale";
 
-/* Button description for location based warnings */
-"Will enable location based warnings in Widgets" = "Attiva gli avvisi valanghe basati sulla posizione nei Widget";
-
-/* Data source description and link */
-"Data from the The Norwegian Avalanche Warning Service and www.varsom.no." = "Dati dal Servizio Norvegese di Allerta Valanghe e www.varsom.no.";
-
-/* Data source description for both services */
-"Data from varsom.no and lavinprognoser.se." = "Dati da varsom.no e lavinprognoser.se.";
-
 /* Data source - Norway only */
-"Data from The Norwegian Avalanche Warning Service." = "Dati dal Servizio Norvegese di Allerta Valanghe.";
+"Data from The Norwegian Avalanche Warning Service." = "Dati del Servizio norvegese di allerta valanghe.";
 
 /* Data source - Sweden only */
-"Data from Swedish Environmental Protection Agency." = "Dati dall'Agenzia Svedese per la Protezione Ambientale.";
+"Data from Swedish Environmental Protection Agency." = "Dati dell’Agenzia svedese per la protezione dell’ambiente.";
 
 /* Data source - both countries */
-"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Dati dal Servizio Norvegese di Allerta Valanghe e dall'Agenzia Svedese per la Protezione Ambientale.";
+"Data from The Norwegian Avalanche Warning Service and Swedish Environmental Protection Agency." = "Dati del Servizio norvegese di allerta valanghe e dell’Agenzia svedese per la protezione dell’ambiente.";
 
 /* Section header for favorites */
 "Favorites" = "Preferiti";
@@ -34,20 +22,8 @@
 /* Section header for Norwegian regions */
 "Norway" = "Norvegia";
 
-/* Widget Config Display Name */
-"Today's Avalanche Danger Level" = "Livello di pericolo valanghe di oggi";
-
-/* Widget Config Description */
-"Display today's avalanche danger level for selected regions in Norway." = "Mostra il livello di pericolo valanghe di oggi per le regioni selezionate.";
-
 /* Error loading widget */
 "Error" = "Errore";
-
-/* Error loading widget */
-"There was an error updating the widget" = "Si è verificato un errore durante l'aggiornamento del widget";
-
-/* Link to Varsom.no */
-"Read complete warning on Varsom.no" = "Leggi l'avviso completo su Varsom.no";
 
 /* Current position option */
 "Current position" = "Posizione attuale";
@@ -59,28 +35,22 @@
 "Select Region" = "Seleziona regione";
 
 /* Intent description */
-"Select which region you wish to view avalanche warnings from" = "Seleziona la regione di cui vuoi vedere gli avvisi valanghe";
+"Select which region you wish to view avalanche warnings from" = "Scegli la regione di cui mostrare il bollettino valanghe.";
 
 /* To add a region to list */
 "Add Region" = "Aggiungi regione";
 
 /* Loading text on list */
-"Loading Regions" = "Caricamento regioni";
+"Loading Regions" = "Caricamento regioni…";
 
 /* Loading text on details view */
-"Loading Details" = "Caricamento dettagli";
-
-/* Loading text for warnings */
-"Loading warnings..." = "Caricamento avvisi...";
+"Loading Details" = "Caricamento dettagli…";
 
 /* Loading text for warnings with region name */
-"Loading warnings for %@" = "Caricamento avvisi per %@";
-
-/* Error message */
-"Error Loading Regions" = "Errore nel caricamento delle regioni";
+"Loading warnings for %@" = "Caricamento del bollettino per %@…";
 
 /* Error message for warnings with region name */
-"Error loading warnings for %@" = "Errore nel caricamento degli avvisi per %@";
+"Error loading warnings for %@" = "Impossibile caricare il bollettino per %@.";
 
 /* Try loading data after error */
 "Try Again" = "Riprova";
@@ -113,45 +83,22 @@
 "Avalanche problems" = "Problemi valanghivi";
 
 /* Link text */
-"Read complete warning on Varsom.no." = "Leggi l'avviso completo su Varsom.no.";
+"Read complete warning on Varsom.no." = "Leggi il bollettino completo su Varsom.no";
 
 /* Link text for Swedish regions */
-"Read complete warning on lavinprognoser.se." = "Leggi l'avviso completo su lavinprognoser.se.";
+"Read complete warning on lavinprognoser.se." = "Leggi il bollettino completo su lavinprognoser.se";
 
 /* Section header for Swedish regions */
 "Sweden" = "Svezia";
 
 /* Navigation title */
-"Forecast" = "Previsione";
+"Forecast" = "Bollettino";
 
 /* Siri Shortcut - Intent title */
-"Get Avalanche Warning" = "Ottieni avviso valanghe";
-
-/* Siri Shortcut - Intent description */
-"Get the current avalanche danger level for a region in Norway" = "Ottieni il livello di pericolo valanghe attuale per una regione in Norvegia";
-
-/* Siri Shortcut - Intent description (with Sweden) */
-"Get the current avalanche danger level for a region in Norway or Sweden" = "Ottieni il livello di pericolo valanghe attuale per una regione in Norvegia o Svezia";
+"Get Avalanche Warning" = "Ottieni bollettino valanghe";
 
 /* Siri Shortcut - Short title */
-"Check warning" = "Controlla avviso";
-
-/* Siri Shortcut phrases - without region (Siri will prompt) */
-"Get avalanche warning in ${applicationName}" = "Ottieni avviso valanghe in ${applicationName}";
-"Avalanche warning from ${applicationName}" = "Avviso valanghe da ${applicationName}";
-
-/* Siri Shortcut phrases - with ${region} parameter */
-"Get avalanche warning for ${region} in ${applicationName}" = "Ottieni avviso valanghe per ${region} in ${applicationName}";
-"What is the avalanche danger in ${region} with ${applicationName}" = "Qual è il pericolo valanghe in ${region} con ${applicationName}";
-
-/* Siri Shortcut - Dialog response */
-"The avalanche danger level in %@ is %@." = "Il livello di pericolo valanghe in %@ è %@.";
-
-/* Siri Shortcut - No warning available */
-"No avalanche warning available for %@ today." = "Nessun avviso valanghe disponibile per %@ oggi.";
-
-/* Siri Shortcut - Location required */
-"Location access is required to get warnings for your current position." = "L'accesso alla posizione è necessario per ottenere avvisi per la posizione attuale.";
+"Check warning" = "Consulta il bollettino";
 
 /* Siri Shortcut - Location unavailable */
 "Could not determine your current location." = "Impossibile determinare la posizione attuale.";
@@ -160,26 +107,16 @@
 "Location access required" = "Accesso alla posizione richiesto";
 
 /* Siri Shortcut - Parameter request dialog */
-"Which region do you want the avalanche warning for?" = "Per quale regione vuoi l'avviso valanghe?";
+"Which region do you want the avalanche warning for?" = "Per quale regione vuoi il bollettino?";
 "Location unavailable" = "Posizione non disponibile";
-"No warning available" = "Nessun avviso disponibile";
+"No warning available" = "Nessun bollettino disponibile";
 "Service unavailable" = "Servizio non disponibile";
-
-/* Siri Shortcut - Network error messages */
-"No internet connection. Unable to retrieve avalanche warnings." = "Nessuna connessione Internet. Impossibile recuperare gli avvisi valanghe.";
-"Unable to retrieve avalanche warnings. Please try again later." = "Impossibile recuperare gli avvisi valanghe. Riprova più tardi.";
-
-/* Search tab title */
-"Search" = "Cerca";
 
 /* Map tab title */
 "Map" = "Mappa";
 
-/* Emergency warning not given - used to filter out placeholder values from API */
-"EmergencyWarningNotGiven" = "Non emesso";
-
 /* Accessibility - Danger level with number and name */
-"Danger level %@, %@" = "Livello di pericolo %@, %@";
+"Danger level %@, %@" = "Grado di pericolo %@, %@";
 
 /* Accessibility - Exposed aspects list */
 "Exposed aspects: %@" = "Esposizioni coinvolte: %@";
@@ -215,14 +152,11 @@
 "%@, %@" = "%@, %@";
 
 /* Warning detail sheet - title */
-"Avalanche risk assessment" = "Valutazione del rischio valanghe";
-
-/* Warning detail sheet - dismiss button */
-"Dismiss" = "Chiudi";
+"Avalanche risk assessment" = "Valutazione del pericolo valanghe";
 
 /* Accessibility - Danger trend */
 "Danger rising" = "Pericolo in aumento";
-"Danger stable" = "Pericolo stabile";
+"Danger stable" = "Pericolo invariato";
 "Danger falling" = "Pericolo in diminuzione";
 
 /* Share menu option for summary only */
@@ -241,10 +175,10 @@
 "Show Original" = "Mostra originale";
 
 /* Translation in progress indicator */
-"Translating..." = "Traduzione in corso...";
+"Translating..." = "Traduzione in corso…";
 
 /* Indicator that text was machine translated from English */
-"Machine translated from English" = "Tradotto automaticamente dall'inglese";
+"Machine translated from English" = "Tradotto automaticamente dall’inglese";
 
 /* Accessibility - Compass directions */
 "North" = "Nord";
@@ -257,27 +191,27 @@
 "NorthWest" = "Nord-Ovest";
 
 /* Forecast widgets and Shortcuts */
-"Forecast day" = "Giorno della previsione";
-"Current forecast" = "Previsione attuale";
+"Forecast day" = "Giorno del bollettino";
+"Current forecast" = "Bollettino attuale";
 "Tomorrow" = "Domani";
-"Saved forecast" = "Previsione salvata";
-"Downloaded" = "Scaricata";
-"Avalanche forecast" = "Previsione valanghe";
-"Forecast date" = "Data della previsione";
+"Saved forecast" = "Bollettino salvato";
+"Downloaded" = "Scaricato";
+"Avalanche forecast" = "Bollettino valanghe";
+"Forecast date" = "Data del bollettino";
 "Danger level" = "Grado di pericolo";
 "Summary" = "Riepilogo";
-"Valid until" = "Valida fino al";
-"No forecast available for this day" = "Nessuna previsione disponibile per questo giorno";
-"Open avalanche forecast" = "Apri la previsione valanghe";
-"Open local forecast" = "Apri la previsione locale";
-"Open the full bulletin for a region or your current position." = "Apri il bollettino completo per una regione o la tua posizione attuale.";
+"Valid until" = "Valido fino al";
+"No forecast available for this day" = "Nessun bollettino disponibile per questo giorno.";
+"Open avalanche forecast" = "Apri il bollettino valanghe";
+"Open local forecast" = "Apri il bollettino locale";
+"Open the full bulletin for a region or your current position." = "Apri il bollettino di una regione o della tua posizione attuale.";
 "Open a selected region, or use your current position." = "Apri una regione selezionata o usa la tua posizione attuale.";
-"Get a published avalanche forecast for Norway or Sweden." = "Ottieni una previsione valanghe pubblicata per la Norvegia o la Svezia.";
-"Current or tomorrow's published forecast for Norway and Sweden." = "Previsione pubblicata attuale o di domani per Norvegia e Svezia.";
+"Get a published avalanche forecast for Norway or Sweden." = "Ottieni un bollettino valanghe pubblicato per la Norvegia o la Svezia.";
+"Current or tomorrow's published forecast for Norway and Sweden." = "Bollettino attuale o di domani per Norvegia e Svezia.";
 "The avalanche danger level in %@ for %@ is %@." = "Il grado di pericolo valanghe a %@ per il %@ è %@.";
 
 /* Shortcuts parameter summaries */
-"Open forecast for ${target}" = "Apri le previsioni per ${target}";
+"Open forecast for ${target}" = "Apri il bollettino di ${target}";
 "Get avalanche warning for ${region}" = "Ottieni il bollettino valanghe per ${region}";
 
 /* Forecast reading controls and accessibility */
@@ -289,4 +223,53 @@
 "Finding location…" = "Ricerca della posizione…";
 "Location access is off. You can enable it in Settings." = "L’accesso alla posizione è disattivato. Puoi attivarlo in Impostazioni.";
 "Location access is restricted on this device." = "L’accesso alla posizione è limitato su questo dispositivo.";
-"Show forecasts for the nearest region." = "Mostra le previsioni valanghe per la regione più vicina.";
+"Show forecasts for the nearest region." = "Mostra i bollettini della regione più vicina.";
+
+/* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
+"Add to Favorites" = "Aggiungi ai preferiti";
+"Remove from Favorites" = "Rimuovi dai preferiti";
+"Share" = "Condividi";
+"Show My Location" = "Mostra la mia posizione";
+"Show All Regions" = "Mostra tutte le regioni";
+
+/* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
+"The avalanche danger in %@ for %@ is level %@, %@." = "Il pericolo valanghe a %@ per %@ è di grado %@, %@.";
+"Saved forecast from %@." = "Bollettino salvato %@.";
+"Saved forecast: %@." = "Bollettino salvato: %@.";
+"Saved forecast from %@: %@." = "Bollettino salvato %@: %@.";
+"No forecast for %@." = "Nessun bollettino per %@.";
+
+/* Shortcuts and Siri name for the region parameter type */
+"Avalanche region" = "Regione valanghe";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Giorno passato";
+"yesterday" = "ieri";
+"last Monday" = "lunedì scorso";
+"last Tuesday" = "martedì scorso";
+"last Wednesday" = "mercoledì scorso";
+"last Thursday" = "giovedì scorso";
+"last Friday" = "venerdì scorso";
+"last Saturday" = "sabato scorso";
+"last Sunday" = "domenica scorsa";
+"Get Avalanche Forecast for Date" = "Ottieni bollettino valanghe per data";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Ottieni il bollettino valanghe pubblicato per un giorno in Norvegia o Svezia, anche delle stagioni passate.";
+"Date" = "Data";
+"Get avalanche forecast for ${region} on ${date}" = "Ottieni bollettino valanghe per ${region} il ${date}";
+"Which day?" = "Per quale giorno?";
+"Get Favorite Avalanche Forecasts" = "Ottieni bollettini valanghe dei preferiti";
+"Get published avalanche forecasts for your favorite regions." = "Ottieni i bollettini valanghe pubblicati per le tue regioni preferite.";
+"Get avalanche forecasts for my favorites" = "Ottieni bollettini valanghe dei miei preferiti";
+"Add a favorite region in the app first." = "Aggiungi prima una regione preferita nell’app.";
+"%@: level %@, %@." = "%@: grado %@, %@.";
+"And %lld more." = "E altri %lld.";
+"Tomorrow's Forecast" = "Bollettino di domani";
+"Favorite Forecasts" = "Bollettini dei preferiti";
+"Yesterday's Forecast" = "Bollettino di ieri";
+"Earlier Forecast" = "Bollettino precedente";
+
+/* Region parameter and property names in Shortcuts, the region error, and the watch's empty state */
+"Region" = "Regione";
+"Region Id" = "ID regione";
+"Region unavailable" = "Regione non disponibile";
+"No selected region" = "Nessuna regione selezionata";

@@ -27,6 +27,21 @@ struct LavinprognoserApiClientTests {
         #expect(await transport.requests.count == 4)
     }
 
+    /// Siri can ask in a different language from the app's (iOS 27).
+    @Test(arguments: [(VarsomApiClient.Language.english, "/en/current-avalanche-bulletins/"),
+                      (.norwegian, "/oversikt-alla-omraden/")])
+    func requestedLanguageSelectsBulletinEndpoint(lang: VarsomApiClient.Language, path: String) async throws {
+        let date = Date(year: 2026, month: 2, day: 21, hour: 12)
+        let transport = StubTransport { _ in
+            Data(#"{"content":{"forecast":{"id":123,"risk":3,"areaId":1,"validFrom":"Friday 20/02-2026 18:00","validTo":"Saturday 21/02-2026 18:00","publishedDate":"2026-02-20","location":"Abisko","assessmentContent":"<p>Text</p>"}}}"#.utf8)
+        }
+        _ = try await LavinprognoserApiClient(transport: transport, now: { date })
+            .loadWarningsDetailed(lang: lang, regionId: 100001, daysBefore: 0)
+        let urls = await transport.requests.compactMap { $0.url?.absoluteString }
+        #expect(!urls.isEmpty)
+        #expect(urls.allSatisfy { $0.contains(path) })
+    }
+
     @Test func cancellationIsNotConvertedToMissingForecast() async {
         let client = LavinprognoserApiClient(transport: StubTransport { _ in throw CancellationError() })
         await #expect(throws: CancellationError.self) { try await client.loadWarningsDetailed(regionId: 100001, daysBefore: 2) }
@@ -70,6 +85,21 @@ struct LavinprognoserApiClientTests {
         #expect(warnings.count == 2)
         #expect(ForecastSelection.warning(in: warnings.map(\.summary), day: .today, at: date)?.RegId == 100125)
         #expect(ForecastSelection.warning(in: warnings.map(\.summary), day: .tomorrow, at: date)?.RegId == 100125)
+    }
+
+    /// Days without a bulletin, such as before the archive starts, have a null forecast.
+    @Test func dayWithoutBulletinIsNotFoundButChangedResponseIsAnError() async {
+        let date = Date(year: 2015, month: 2, day: 1, hour: 12)
+        let missing = LavinprognoserApiClient(transport: StubTransport { _ in
+            Data(#"{"content":{"forecast":null,"missingForecast":{"title":"Missing forecast"}}}"#.utf8)
+        })
+        await #expect(throws: LavinprognoserApiClient.LavinError.notFound) {
+            try await missing.loadWarningDetailed(lang: .english, regionId: 100001, date: date)
+        }
+        let changed = LavinprognoserApiClient(transport: StubTransport { _ in Data(#"{"content":{}}"#.utf8) })
+        await #expect(throws: DecodingError.self) {
+            try await changed.loadWarningDetailed(lang: .english, regionId: 100001, date: date)
+        }
     }
 
     @Test func activeEndpointCannotIntroduceBulletinsOutsideTheRequestedWindow() async throws {

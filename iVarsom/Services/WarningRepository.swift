@@ -50,6 +50,8 @@ protocol WarningRepositoryProviding: Sendable {
     func loadRegions() async throws -> RegionCatalog
     func loadWarnings(_ request: WarningRequest, cachePolicy: WarningCachePolicy) async throws -> LoadedWarnings
     func loadSummaries(_ request: WarningRequest) async throws -> [AvalancheWarningSimple]
+    /// Bulletins for one forecast day, past or upcoming, for Siri and Shortcuts.
+    func loadWarnings(on date: Date, regionID: Int) async throws -> [AvalancheWarningSimple]
 }
 
 actor WarningRepository: WarningRepositoryProviding {
@@ -101,7 +103,7 @@ actor WarningRepository: WarningRepositoryProviding {
             let regions: [RegionSummary]
             switch country {
             case .norway: regions = try await norway.loadRegions(lang: language()).filter { $0.TypeName == "A" }
-            case .sweden: regions = try await sweden.loadRegions()
+            case .sweden: regions = try await sweden.loadRegions(lang: language())
             }
             try Task.checkCancellation()
             if regionRequests[country] == requestID { await cache?.saveRegions(regions, country: country) }
@@ -131,7 +133,7 @@ actor WarningRepository: WarningRepositoryProviding {
                     from: request.from, to: request.to)
             case .sweden:
                 warnings = try await sweden.loadWarningsDetailed(
-                    regionId: request.regionID, daysBefore: request.historyDays)
+                    lang: requestLanguage, regionId: request.regionID, daysBefore: request.historyDays)
             }
             try Task.checkCancellation()
             if cachePolicy == .fallback, warningRequests[request.regionID] == requestID {
@@ -167,10 +169,24 @@ actor WarningRepository: WarningRepositoryProviding {
                 from: request.from, to: request.to)
         case .sweden:
             warnings = try await sweden.loadWarnings(
-                regionId: request.regionID, daysBefore: max(1, request.historyDays))
+                lang: language(), regionId: request.regionID, daysBefore: max(1, request.historyDays))
         }
         try Task.checkCancellation()
         return warnings.sorted { $0.ValidFrom < $1.ValidFrom }
+    }
+
+    /// Uses detailed bulletins so emergency text survives, and never caches: an
+    /// archive request must not replace the app's or widgets' current forecast.
+    func loadWarnings(on date: Date, regionID: Int) async throws -> [AvalancheWarningSimple] {
+        let warnings: [AvalancheWarningDetailed]
+        switch Country.from(regionId: regionID) {
+        case .norway:
+            warnings = try await norway.loadWarningsDetailed(lang: language(), regionId: regionID, from: date, to: date)
+        case .sweden:
+            warnings = [try await sweden.loadWarningDetailed(lang: language(), regionId: regionID, date: date)]
+        }
+        try Task.checkCancellation()
+        return warnings.map(\.summary).sorted { $0.ValidFrom < $1.ValidFrom }
     }
 
     enum RepositoryError: Error { case unavailable }

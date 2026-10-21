@@ -9,7 +9,7 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 **Language**: Swift 6
 **Framework**: SwiftUI
 **Dependencies**: Apple frameworks only
-**Toolchain**: Xcode 26.6 / Swift 6.3.3 compiler, Swift 6 language mode
+**Toolchain**: Xcode 27.1 (iOS 27.1 SDK) / Swift 6.4 compiler, Swift 6 language mode
 **macOS**: Mac Catalyst
 
 ## Build Commands
@@ -19,7 +19,7 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 
 # Build watch app
-xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm)'
+xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 12 (46mm)'
 
 # Run tests
 xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
@@ -83,6 +83,11 @@ The app uses focused observable presentation models with protocols at service bo
 
 See [docs/modernization.md](docs/modernization.md) for architecture and [docs/platform-integration.md](docs/platform-integration.md) for forecast refresh rules, shared widget storage, controls and Shortcuts.
 
+See [docs/iphone-duo.md](docs/iphone-duo.md) for resizable layouts and iPhone Duo:
+- `AdaptiveBrowserState` carries selection, tab and the map's forecast sheet across compact/regular changes (folding); keep such state in `ContentView`, not inside one layout
+- Toolbar items need a title and a symbol (`Label`); close buttons use `Button(role: .close)` in `.cancellationAction`
+- Gate iOS 27 APIs with `#available`, and compile iOS 27.1 APIs (reserved regions, `toolbarVerticalBehavior`, `axisBehavior`) with `#if os(iOS) && !targetEnvironment(macCatalyst)`: the Catalyst 27.0 SDK lacks them. `AdaptiveModifiers.swift` holds shared wrappers
+
 ### Widget System
 
 - Uses AppIntents (iOS 17+) via `SelectRegion` for configuration
@@ -103,7 +108,8 @@ URL schemes:
 - Norwegian: `nb.lproj/Localizable.strings`
 - Swedish: `sv.lproj/Localizable.strings`
 - Code defaults to Norwegian if system locale starts with "nb"
-- New user-visible strings must be added to all three locale files
+- New user-visible strings must be added to all seven locale files (en, nb, sv, de, es, fr, it); keep keys in sync
+- Follow the terminology and conventions in [docs/localization.md](docs/localization.md) (for example, English says "forecast", not "warning", for the daily bulletin)
 
 ## Accessibility
 
@@ -114,7 +120,7 @@ When implementing new views or modifying existing ones, always include VoiceOver
 - Use `.accessibilityHidden(true)` on purely decorative elements (gradients, color bars, background shapes)
 - Use `.accessibilityRemoveTraits(.isImage)` on images that serve as labeled diagram/icons (e.g. ExposedHeight) to avoid VoiceOver appending "image"
 - Use `.accessibilityAddTraits(.isSelected)` for selectable items when selected
-- Add localized accessibility strings to all three locale files (`en.lproj`, `nb.lproj`, `sv.lproj`)
+- Add localized accessibility strings to all seven locale files
 - Use `DangerLevel.localizedName` for danger level names in accessibility labels (uses the app's locale automatically)
 - Existing accessibility string keys: "Danger level %@, %@", compass directions, treeline descriptions, height descriptions
 

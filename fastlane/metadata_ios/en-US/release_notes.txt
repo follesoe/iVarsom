@@ -1,15 +1,16 @@
 Skredvarsel 6.0 starts our sixth winter season: 2026/27.
 
-- Choose the current forecast or tomorrow's published forecast in your widgets.
-- Improved widget refresh timing when new bulletins are expected and when you open or refresh the app.
-- Clearer forecast dates and saved-data labels, with download times in larger widgets. Widgets also show when no valid forecast is available.
-- Add a control to open a selected region or your local forecast from Control Center, the Lock Screen or the Action button on supported devices.
-- Apple Watch can suggest forecasts for your favorite regions in the morning.
-- Get current or tomorrow's forecasts with Siri and Shortcuts, and use the danger level, forecast date and text in your own shortcuts.
-- Widget VoiceOver labels now include forecast guidance and active emergency warnings.
-- More reliable Swedish evening updates and saved forecasts when a download fails.
-- Forecast dates and links stay on the correct day when you travel to another time zone.
-- Improved reliability when switching regions, updating your location, syncing favorites, translating or sharing forecasts.
-- Clearer forecast cards and day labels, with improved readability at larger text sizes.
-- Location permission is requested when you choose a location-based action.
-- Choose a region and forecast day directly when configuring Apple Watch widgets, and read forecasts with clearer contrast and scalable text.
+New
+- Ask Siri about your favorite regions, tomorrow’s forecast or an earlier day, such as yesterday or last Saturday. Shortcuts can get the forecast for any date, including past seasons.
+- Siri answers in the language you ask in, and gives a spoken summary when you can’t see the screen.
+- Made for iPhone Duo: your place, the map and the open forecast stay put when you fold or unfold, and wide screens show the forecast in two columns.
+- A new tall widget with today’s forecast and the coming days (iOS 27).
+- Choose the current or tomorrow’s forecast in widgets, and add a control that opens a forecast from Control Center, the Lock Screen or the Action button.
+- Apple Watch suggests forecasts for your favorite regions in the morning, and its widgets let you choose a region and forecast day.
+
+Improved
+- Widgets refresh when new forecasts are expected, show clearer dates and download times, and tell you when no valid forecast is available.
+- VoiceOver reads forecast text and active emergency warnings in widgets.
+- More reliable Swedish evening updates, saved forecasts when a download fails, and the right forecast day when you travel.
+- Smoother switching between regions, location updates, favorites sync, translation and sharing.
+- Clearer forecast cards and better readability with large text. The app asks for your location only when you choose a location-based action.

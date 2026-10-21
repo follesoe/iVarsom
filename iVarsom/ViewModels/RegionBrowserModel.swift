@@ -59,6 +59,15 @@ final class RegionBrowserModel {
         return result
     }
 
+    var isSelectedRegionFavorite: Bool {
+        selectedRegionID.map(favorites.ids.contains) ?? false
+    }
+
+    func toggleSelectedRegionFavorite() {
+        guard let id = selectedRegionID else { return }
+        if favorites.ids.contains(id) { favorites.removeFavorite(id) } else { favorites.addFavorite(id) }
+    }
+
     func removeFavorite(id: Int) {
         if favorites.ids.contains(id) {
             favorites.removeFavorite(id)

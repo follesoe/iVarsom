@@ -11,6 +11,22 @@ struct MainWarningTextView: View {
     }
 
     var body: some View {
+        // A navigation container gives the close button standard bar placement.
+        // With only Close, a horizontal bar leaves the text the sheet's full
+        // width on iPhone Duo's outer display.
+        NavigationStack {
+            content
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(role: .close) { isShowingSheet = false }
+                    }
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .horizontalSheetBar()
+        }
+    }
+
+    private var content: some View {
         ScrollView {
             let pubTime = selectedWarning.PublishTime.formatted(date: .abbreviated, time: .shortened)
             let mainText = translatedTexts[selectedWarning.MainText] ?? selectedWarning.MainText
@@ -42,8 +58,6 @@ struct MainWarningTextView: View {
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
-
-                Button(String(localized: "Dismiss"), action: { isShowingSheet.toggle() })
             }
             .padding()
         }

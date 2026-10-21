@@ -90,6 +90,14 @@ func createEntry(currentWarning: AvalancheWarningSimple,
                 allWarnings: testWarnings)
 }
 
+@available(iOS 27, *)
+#Preview("Extra Large Portrait", as: .systemExtraLargePortrait) {
+    iVarsomWidget()
+} timeline: {
+    createEntry(currentWarning: testWarnings[0],
+                allWarnings: testWarnings)
+}
+
 // MARK: - StandBy Previews
 
 #Preview("StandBy Small", as: .systemSmall) {

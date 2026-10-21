@@ -94,7 +94,7 @@ Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8I
 
 ### Requirements
 
-- Xcode 26.6 (verified locally; includes Swift 6.3.3)
+- Xcode 27.1 (iOS 27.1 SDK; verified locally; includes Swift 6.4)
 - Swift 6 language mode
 - iOS 26+ / macOS 26+ / watchOS 26+
 
@@ -146,13 +146,17 @@ View tasks own asynchronous loading and cancellation. Selection uses IDs, and lo
 
 Widgets support current and tomorrow’s published forecasts, shared offline fallback, explicit validity and publication-driven refresh scheduling. Opening or refreshing the app updates the regions used by widgets. Configurable controls open regional forecasts, Shortcuts return structured forecast data, and watchOS receives contextual morning suggestions. See [platform integration](docs/platform-integration.md) for behaviour, testing and SDK limitations.
 
+### iPhone Duo
+
+The app fills both iPhone Duo displays with vertical bars on the outer display, keeps the selected forecast, map position and the map's forecast sheet when folding or unfolding, and lays wide forecasts out in two columns that meet at the fold. See [iPhone Duo](docs/iphone-duo.md) for design decisions and a pose checklist.
+
 ### Previewing a winter forecast
 
 In the scheme's **Run → Arguments → Environment Variables**, set `SKREDVARSEL_PREVIEW_DATE` to an ISO 8601 timestamp such as `2026-02-21T12:00:00Z`. This affects the forecast clock in Debug builds only; remove the variable to return to today. It does not change the system clock. Swedish detailed forecasts support dated requests, while their overview endpoint still describes the live season.
 
 ### Xcode Cloud
 
-`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (26.6 was verified locally). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
+`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (27.1 was verified locally; the iOS 27.1 SDK is required for the full iPhone Duo layout). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
 
 ### Fastlane
 

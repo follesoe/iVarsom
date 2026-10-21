@@ -38,6 +38,16 @@ actor VarsomApiClient: VarsomAPIProviding {
         return .english
     }
 
+    /// The bulletin language for a person's locale, such as the language of a
+    /// Siri request: the native-language bulletin (Norwegian for Norway, Swedish
+    /// for Sweden) for Norwegian or Swedish speakers, otherwise English.
+    public nonisolated static func language(for locale: Locale) -> Language {
+        switch locale.language.languageCode?.identifier {
+        case "nb", "no", "sv": .norwegian
+        default: .english
+        }
+    }
+
     public enum Language: Sendable, CustomStringConvertible {
         case norwegian
         case english
