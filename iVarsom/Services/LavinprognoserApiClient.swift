@@ -134,8 +134,8 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
         guard status == 200 else { throw status == 404 ? LavinError.notFound : LavinError.requestError }
 
         let detail = try JSONDecoder().decode(LavinprognoserResponse.DetailResponse.self, from: data)
-        return LavinprognoserMapper(date: now(), languageKey: langKey)
-            .warning(from: detail.content.forecast, regionId: regionId)
+        guard let forecast = detail.content.forecast else { throw LavinError.notFound }
+        return LavinprognoserMapper(date: now(), languageKey: langKey).warning(from: forecast, regionId: regionId)
     }
 
     func loadWarnings(

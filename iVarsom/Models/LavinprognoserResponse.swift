@@ -27,7 +27,15 @@ enum LavinprognoserResponse {
     }
 
     struct DetailContent: Codable {
-        let forecast: LavinForecast
+        /// Null for a day without a bulletin, such as before the archive starts.
+        let forecast: LavinForecast?
+
+        init(from decoder: any Decoder) throws {
+            // The key must be present, so a changed response isn't mistaken
+            // for a day without a bulletin.
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            forecast = try container.decode(LavinForecast?.self, forKey: .forecast)
+        }
     }
 
     struct LavinForecast: Codable {

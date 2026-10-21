@@ -43,13 +43,7 @@ struct ForecastLookup: Sendable {
 
     /// The current or tomorrow's bulletin, falling back to the saved forecast offline.
     func forecast(regionID: Int, day: ForecastDay) async throws -> Result {
-        let language = language
-        let service = ForecastService(repository: repository, store: store, now: now, language: { language })
-        let loaded = try await service.load(regionID: regionID)
-        guard let warning = ForecastSelection.warning(in: loaded.snapshot.warnings, day: day, at: now()) else {
-            throw ForecastError.noForecast
-        }
-        return Result(warning: warning, snapshot: loaded.snapshot, isCached: loaded.isCached)
+        try await current(regionID: regionID) { ForecastSelection.warning(in: $0, day: day, at: $1) }
     }
 
     /// The bulletin for a calendar day in the region's time zone. Today and
@@ -61,8 +55,10 @@ struct ForecastLookup: Sendable {
         let offset = calendar.dateComponents(
             [.day], from: calendar.startOfDay(for: now), to: calendar.startOfDay(for: day)).day ?? 0
         switch offset {
-        case 0: return try await forecast(regionID: regionID, day: .today)
-        case 1: return try await forecast(regionID: regionID, day: .tomorrow)
+        case 0, 1:
+            // Select by day rather than validity: after 18:00, Sweden's valid
+            // bulletin is already tomorrow's.
+            return try await current(regionID: regionID) { ForecastSelection.warning(in: $0, on: day, at: $1) }
         case 2...: throw ForecastError.noForecast  // Not published yet.
         default:
             let warnings: [AvalancheWarningSimple]
@@ -70,9 +66,10 @@ struct ForecastLookup: Sendable {
                 warnings = try await repository.loadWarnings(on: day, regionID: regionID)
             } catch {
                 try error.rethrowCancellation()
-                // Days without a bulletin (such as summer) come back as an empty
-                // list, a 404 or an empty page; anything else is a failed request.
-                let isMissing = error is DecodingError || (error as? LavinprognoserApiClient.LavinError) == .notFound
+                // Days without a bulletin come back as an empty list (Norway) or
+                // as not found (Sweden). Anything else, including a response the
+                // app can't read, is a failed request.
+                let isMissing = (error as? LavinprognoserApiClient.LavinError) == .notFound
                 throw isMissing ? ForecastError.noForecast : ForecastError.unavailable
             }
             guard let warning = ForecastSelection.warning(in: warnings, on: day, at: now) else {
@@ -85,12 +82,40 @@ struct ForecastLookup: Sendable {
         }
     }
 
+    /// Loads the current forecast, or the saved one offline, and picks a bulletin
+    /// from it with `select`, which receives the bulletins and the current time.
+    private func current(
+        regionID: Int, select: ([AvalancheWarningSimple], Date) -> AvalancheWarningSimple?
+    ) async throws -> Result {
+        let language = language
+        let service = ForecastService(repository: repository, store: store, now: now, language: { language })
+        let loaded = try await service.load(regionID: regionID)
+        guard let warning = select(loaded.snapshot.warnings, now()) else { throw ForecastError.noForecast }
+        return Result(warning: warning, snapshot: loaded.snapshot, isCached: loaded.isCached)
+    }
+
     /// The same calendar day in the region's time zone, at noon. Shortcuts
-    /// supplies dates at midnight in the person's own time zone.
-    static func regionDay(for date: Date, regionID: Int, calendar personCalendar: Calendar = .current) -> Date {
+    /// supplies dates at midnight in the person's time zone. The day is read in
+    /// the Gregorian calendar, which the regions use, whatever calendar the
+    /// person has chosen.
+    static func regionDay(for date: Date, regionID: Int, timeZone: TimeZone = .current) -> Date {
+        var personCalendar = Calendar(identifier: .gregorian)
+        personCalendar.timeZone = timeZone
         var components = personCalendar.dateComponents([.year, .month, .day], from: date)
         components.hour = 12
         return ForecastSelection.calendar(regionID: regionID).date(from: components) ?? date
+    }
+}
+
+extension ForecastError {
+    /// One error for several regions that all failed. Only when every region
+    /// has no bulletin is it "no forecast", so a failed connection isn't
+    /// reported as a missing forecast.
+    static func combining(_ errors: [any Error]) -> ForecastError {
+        guard !errors.isEmpty, errors.allSatisfy({ ($0 as? ForecastError) == .noForecast }) else {
+            return .unavailable
+        }
+        return .noForecast
     }
 }
 
@@ -138,14 +163,32 @@ extension ForecastAnswerLanguage {
 /// The dialog for a forecast answer in Siri or Shortcuts.
 enum ForecastAnswer {
     /// A short answer covering several regions, such as the person's favorites.
-    /// Emergency warnings come first; at most `limit` regions are read out.
+    /// Emergency warnings come first, then which regions use a saved forecast;
+    /// at most `limit` regions are read out.
+    /// - Parameter isVoiceOnly: Whether the person only hears the answer. Without
+    ///   the snippet, the answer says when saved forecasts were downloaded.
     static func summary(
-        for warnings: [AvalancheWarningSimple], language: ForecastAnswerLanguage, limit: Int = 4
+        for results: [ForecastLookup.Result], isVoiceOnly: Bool, language: ForecastAnswerLanguage, limit: Int = 4
     ) -> String {
         var parts: [String] = []
+        let warnings = results.map(\.warning)
         let emergencies = warnings.filter(\.hasActiveEmergencyWarning).map(\.RegionName)
         if !emergencies.isEmpty {
             parts.append("\(language.string("Emergency warning")): \(emergencies.formatted(.list(type: .and).locale(language.locale))).")
+        }
+        let saved = results.filter(\.isCached)
+        if let oldest = saved.min(by: { $0.snapshot.downloadedAt < $1.snapshot.downloadedAt }) {
+            // When every region is saved, the regions go without saying.
+            let regions = saved.count == results.count
+                ? nil : saved.map(\.warning.RegionName).formatted(.list(type: .and).locale(language.locale))
+            let time = savedTime(oldest.snapshot.downloadedAt, regionID: oldest.warning.RegionId, language: language)
+            switch (isVoiceOnly, regions) {
+            case (true, let regions?):
+                parts.append(String(format: language.string("Saved forecast from %@: %@."), time, regions))
+            case (true, nil): parts.append(String(format: language.string("Saved forecast from %@."), time))
+            case (false, let regions?): parts.append(String(format: language.string("Saved forecast: %@."), regions))
+            case (false, nil): parts.append(language.string("Saved forecast") + ".")
+            }
         }
         for warning in warnings.prefix(limit) {
             let danger = warning.DangerLevel.localizedName(in: language.bundle)
@@ -171,10 +214,7 @@ enum ForecastAnswer {
         let danger = warning.DangerLevel.localizedName(in: language.bundle)
         if isVoiceOnly, warning.DangerLevel != .unknown {
             if isCached {
-                let saved = ForecastSelection.dateText(
-                    downloadedAt, regionID: warning.RegionId,
-                    style: Date.FormatStyle(locale: language.locale).weekday(.wide).day().month(.wide)
-                        .hour().minute())
+                let saved = savedTime(downloadedAt, regionID: warning.RegionId, language: language)
                 parts.append(String(format: language.string("Saved forecast from %@."), saved))
             }
             // Say the year for days more than a week away, such as earlier seasons.
@@ -199,5 +239,13 @@ enum ForecastAnswer {
         }
         parts.append(warning.MainText)
         return parts.joined(separator: " ")
+    }
+
+    /// When a saved forecast was downloaded, spoken in full, for example
+    /// "Saturday 21 February at 10:00".
+    private static func savedTime(_ date: Date, regionID: Int, language: ForecastAnswerLanguage) -> String {
+        ForecastSelection.dateText(
+            date, regionID: regionID,
+            style: Date.FormatStyle(locale: language.locale).weekday(.wide).day().month(.wide).hour().minute())
     }
 }

@@ -235,6 +235,8 @@
 /* Siri answers heard without a screen: region, spoken date, danger level number and name; when a saved forecast was downloaded */
 "The avalanche danger in %@ for %@ is level %@, %@." = "Die Lawinengefahr in %@ am %@ ist Stufe %@, %@.";
 "Saved forecast from %@." = "Gespeicherte Vorhersage vom %@.";
+"Saved forecast: %@." = "Gespeicherte Vorhersage: %@.";
+"Saved forecast from %@: %@." = "Gespeicherte Vorhersage vom %@: %@.";
 
 /* Shortcuts and Siri name for the region parameter type */
 "Avalanche region" = "Lawinenregion";

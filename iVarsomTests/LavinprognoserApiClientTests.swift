@@ -87,6 +87,21 @@ struct LavinprognoserApiClientTests {
         #expect(ForecastSelection.warning(in: warnings.map(\.summary), day: .tomorrow, at: date)?.RegId == 100125)
     }
 
+    /// Days without a bulletin, such as before the archive starts, have a null forecast.
+    @Test func dayWithoutBulletinIsNotFoundButChangedResponseIsAnError() async {
+        let date = Date(year: 2015, month: 2, day: 1, hour: 12)
+        let missing = LavinprognoserApiClient(transport: StubTransport { _ in
+            Data(#"{"content":{"forecast":null,"missingForecast":{"title":"Missing forecast"}}}"#.utf8)
+        })
+        await #expect(throws: LavinprognoserApiClient.LavinError.notFound) {
+            try await missing.loadWarningDetailed(lang: .english, regionId: 100001, date: date)
+        }
+        let changed = LavinprognoserApiClient(transport: StubTransport { _ in Data(#"{"content":{}}"#.utf8) })
+        await #expect(throws: DecodingError.self) {
+            try await changed.loadWarningDetailed(lang: .english, regionId: 100001, date: date)
+        }
+    }
+
     @Test func activeEndpointCannotIntroduceBulletinsOutsideTheRequestedWindow() async throws {
         let date = ForecastSelection.calendar(regionID: 100001).date(from: DateComponents(year: 2026, month: 2, day: 21, hour: 12))!
         let transport = StubTransport { request in

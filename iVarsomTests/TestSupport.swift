@@ -117,12 +117,13 @@ final class StubSwedenClient: LavinprognoserAPIProviding {
         requestedLanguages.append(lang)
         return [Fixtures.warning(regionId).summary]
     }
+    var detailed: (Int) async throws -> [AvalancheWarningDetailed] = { [Fixtures.warning($0)] }
     func loadWarningsDetailed(lang: VarsomApiClient.Language, regionId: Int, daysBefore: Int) async throws
         -> [AvalancheWarningDetailed]
     {
         requestedDaysBefore = daysBefore
         requestedLanguages.append(lang)
-        return [Fixtures.warning(regionId)]
+        return try await detailed(regionId)
     }
     private(set) var requestedDates: [Date] = []
     func loadWarningDetailed(lang: VarsomApiClient.Language, regionId: Int, date: Date) async throws

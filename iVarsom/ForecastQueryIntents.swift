@@ -117,31 +117,37 @@ struct GetFavoriteForecastsIntent: AppIntent {
         // One widget reload after all regions are saved, not one per favorite.
         let lookup = ForecastLookup.live(language: language.forecastLanguage, reloadWidgets: false)
         let day = day
-        let loaded = await withTaskGroup(of: (Int, ForecastLookup.Result?).self) { group in
+        typealias Outcome = Swift.Result<ForecastLookup.Result, any Error>
+        let outcomes = await withTaskGroup(of: (Int, Outcome)?.self) { group in
             for (index, id) in favorites.enumerated() {
                 group.addTask {
-                    guard let regionID = await Self.regionID(for: id) else { return (index, nil) }
-                    return (index, try? await lookup.forecast(regionID: regionID, day: day))
+                    guard let regionID = await Self.regionID(for: id) else { return nil }
+                    do { return (index, .success(try await lookup.forecast(regionID: regionID, day: day))) }
+                    catch { return (index, .failure(error)) }
                 }
             }
-            var results: [(Int, ForecastLookup.Result)] = []
-            for await (index, result) in group {
-                if let result { results.append((index, result)) }
+            var outcomes: [(Int, Outcome)] = []
+            for await outcome in group {
+                if let outcome { outcomes.append(outcome) }
             }
-            return results.sorted { $0.0 < $1.0 }.map(\.1)
+            return outcomes.sorted { $0.0 < $1.0 }.map(\.1)
         }
+        try Task.checkCancellation()
         // The current position can resolve to a region that is also a favorite.
         var seen = Set<Int>()
-        let results = loaded.filter { seen.insert($0.snapshot.regionID).inserted }
-        guard !results.isEmpty else { throw ForecastError.unavailable }
+        let results = outcomes.compactMap { try? $0.get() }.filter { seen.insert($0.snapshot.regionID).inserted }
+        guard !results.isEmpty else {
+            throw ForecastError.combining(outcomes.compactMap { outcome -> (any Error)? in
+                if case .failure(let error) = outcome { error } else { nil }
+            })
+        }
         WidgetCenter.shared.reloadTimelines(ofKind: "iVarsomWidget")
         let entities = results.map {
             AvalancheForecastEntity(warning: $0.warning, snapshot: $0.snapshot, isCached: $0.isCached)
         }
-        let warnings = results.map(\.warning)
-        let dialog = ForecastAnswer.summary(for: warnings, language: language)
+        let dialog = ForecastAnswer.summary(for: results, isVoiceOnly: isVoiceOnly, language: language)
         return .result(value: entities, dialog: IntentDialog(stringLiteral: dialog)) {
-            FavoriteForecastsSnippetView(warnings: warnings)
+            FavoriteForecastsSnippetView(results: results)
         }
     }
 
@@ -164,13 +170,17 @@ struct GetFavoriteForecastsIntent: AppIntent {
     }
 }
 
-/// One row per favorite: danger icon, region and danger level.
+/// One row per favorite: danger icon, region, danger level and, for a saved
+/// forecast, when it was downloaded.
 struct FavoriteForecastsSnippetView: View {
-    let warnings: [AvalancheWarningSimple]
+    let results: [ForecastLookup.Result]
+
+    private static let downloadFormat = Date.FormatStyle.dateTime.day().month(.abbreviated).hour().minute()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            ForEach(warnings, id: \.RegionId) { warning in
+            ForEach(results, id: \.warning.RegionId) { result in
+                let warning = result.warning
                 HStack(spacing: 12) {
                     DangerIcon(dangerLevel: warning.DangerLevel)
                         .frame(width: 32, height: 32)
@@ -180,6 +190,15 @@ struct FavoriteForecastsSnippetView: View {
                         Text(warning.DangerLevel.localizedName)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
+                        if result.isCached {
+                            HStack(spacing: 4) {
+                                Image(systemName: "clock.arrow.circlepath")
+                                Text("Saved forecast")
+                                Text(result.snapshot.downloadedAt, format: Self.downloadFormat)
+                            }
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        }
                     }
                     Spacer(minLength: 0)
                     if warning.hasActiveEmergencyWarning {
@@ -188,17 +207,22 @@ struct FavoriteForecastsSnippetView: View {
                     }
                 }
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel(rowLabel(for: warning))
+                .accessibilityLabel(rowLabel(for: result))
                 .speechLocale(for: warning.RegionId)
             }
         }
         .padding()
     }
 
-    private func rowLabel(for warning: AvalancheWarningSimple) -> String {
+    private func rowLabel(for result: ForecastLookup.Result) -> String {
+        let warning = result.warning
         var label = "\(warning.RegionName), "
             + String(localized: "Danger level \(warning.DangerLevel.description), \(warning.DangerLevel.localizedName)")
         if warning.hasActiveEmergencyWarning { label += ", " + String(localized: "Emergency warning") }
+        if result.isCached {
+            let downloaded = result.snapshot.downloadedAt.formatted(Self.downloadFormat)
+            label += ". " + String(localized: "Saved forecast from \(downloaded).")
+        }
         return label
     }
 }
