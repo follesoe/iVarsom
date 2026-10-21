@@ -1,7 +1,7 @@
 import Foundation
 
 enum ForecastError: Error, LocalizedError {
-    case invalidRegion, locationRequired, locationUnavailable, unavailable, noForecast
+    case invalidRegion, locationRequired, locationUnavailable, unavailable, noForecast, noFavorites
 
     var errorDescription: String? {
         switch self {
@@ -10,6 +10,7 @@ enum ForecastError: Error, LocalizedError {
         case .locationUnavailable: String(localized: "Location unavailable")
         case .unavailable: String(localized: "Service unavailable")
         case .noForecast: String(localized: "No forecast available for this day")
+        case .noFavorites: String(localized: "Add a favorite region in the app first.")
         }
     }
 }

@@ -27,6 +27,21 @@ struct LavinprognoserApiClientTests {
         #expect(await transport.requests.count == 4)
     }
 
+    /// Siri can ask in a different language from the app's (iOS 27).
+    @Test(arguments: [(VarsomApiClient.Language.english, "/en/current-avalanche-bulletins/"),
+                      (.norwegian, "/oversikt-alla-omraden/")])
+    func requestedLanguageSelectsBulletinEndpoint(lang: VarsomApiClient.Language, path: String) async throws {
+        let date = Date(year: 2026, month: 2, day: 21, hour: 12)
+        let transport = StubTransport { _ in
+            Data(#"{"content":{"forecast":{"id":123,"risk":3,"areaId":1,"validFrom":"Friday 20/02-2026 18:00","validTo":"Saturday 21/02-2026 18:00","publishedDate":"2026-02-20","location":"Abisko","assessmentContent":"<p>Text</p>"}}}"#.utf8)
+        }
+        _ = try await LavinprognoserApiClient(transport: transport, now: { date })
+            .loadWarningsDetailed(lang: lang, regionId: 100001, daysBefore: 0)
+        let urls = await transport.requests.compactMap { $0.url?.absoluteString }
+        #expect(!urls.isEmpty)
+        #expect(urls.allSatisfy { $0.contains(path) })
+    }
+
     @Test func cancellationIsNotConvertedToMissingForecast() async {
         let client = LavinprognoserApiClient(transport: StubTransport { _ in throw CancellationError() })
         await #expect(throws: CancellationError.self) { try await client.loadWarningsDetailed(regionId: 100001, daysBefore: 2) }

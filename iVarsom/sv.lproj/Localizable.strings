@@ -295,3 +295,34 @@
 "Share" = "Dela";
 "Show My Location" = "Visa min plats";
 "Show All Regions" = "Visa alla områden";
+
+/* Siri answers in the request's language and for voice-only requests */
+"The avalanche danger in %@ for %@ is level %@, %@." = "Lavinfaran i %@ för %@ är faronivå %@, %@.";
+"Saved forecast from %@." = "Sparad prognos från %@.";
+"Avalanche region" = "Prognosområde";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Tidigare dag";
+"yesterday" = "i går";
+"last Monday" = "i måndags";
+"last Tuesday" = "i tisdags";
+"last Wednesday" = "i onsdags";
+"last Thursday" = "i torsdags";
+"last Friday" = "i fredags";
+"last Saturday" = "i lördags";
+"last Sunday" = "i söndags";
+"Get Avalanche Forecast for Date" = "Hämta lavinprognos för datum";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Hämta lavinprognosen som publicerades för en dag i Norge eller Sverige, även från tidigare säsonger.";
+"Date" = "Datum";
+"Get avalanche forecast for ${region} on ${date}" = "Hämta lavinprognos för ${region} den ${date}";
+"Which day?" = "Vilken dag?";
+"Get Favorite Avalanche Forecasts" = "Hämta lavinprognoser för favoriter";
+"Get published avalanche forecasts for your favorite regions." = "Hämta publicerade lavinprognoser för dina favoritområden.";
+"Get avalanche forecasts for my favorites" = "Hämta lavinprognoser för mina favoriter";
+"Add a favorite region in the app first." = "Lägg först till ett favoritområde i appen.";
+"%@: level %@, %@." = "%@: faronivå %@, %@.";
+"And %lld more." = "Och %lld till.";
+"Tomorrow's Forecast" = "Prognos för i morgon";
+"Favorite Forecasts" = "Favoritprognoser";
+"Yesterday's Forecast" = "Gårdagens prognos";
+"Earlier Forecast" = "Tidigare prognos";

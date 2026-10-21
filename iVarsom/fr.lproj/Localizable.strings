@@ -295,3 +295,34 @@
 "Share" = "Partager";
 "Show My Location" = "Afficher ma position";
 "Show All Regions" = "Afficher toutes les régions";
+
+/* Siri answers in the request's language and for voice-only requests */
+"The avalanche danger in %@ for %@ is level %@, %@." = "Le danger d’avalanche à %@ pour le %@ est de niveau %@, %@.";
+"Saved forecast from %@." = "Bulletin enregistré le %@.";
+"Avalanche region" = "Région d’avalanche";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Jour passé";
+"yesterday" = "hier";
+"last Monday" = "lundi dernier";
+"last Tuesday" = "mardi dernier";
+"last Wednesday" = "mercredi dernier";
+"last Thursday" = "jeudi dernier";
+"last Friday" = "vendredi dernier";
+"last Saturday" = "samedi dernier";
+"last Sunday" = "dimanche dernier";
+"Get Avalanche Forecast for Date" = "Obtenir le bulletin d’avalanches pour une date";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Obtenir le bulletin d’avalanches publié pour un jour donné en Norvège ou en Suède, y compris pour les saisons passées.";
+"Date" = "Date";
+"Get avalanche forecast for ${region} on ${date}" = "Obtenir le bulletin d’avalanches pour ${region} le ${date}";
+"Which day?" = "Pour quel jour ?";
+"Get Favorite Avalanche Forecasts" = "Obtenir les bulletins d’avalanches des favoris";
+"Get published avalanche forecasts for your favorite regions." = "Obtenir les bulletins d’avalanches publiés pour vos régions favorites.";
+"Get avalanche forecasts for my favorites" = "Obtenir les bulletins d’avalanches de mes favoris";
+"Add a favorite region in the app first." = "Ajoutez d’abord une région favorite dans l’app.";
+"%@: level %@, %@." = "%@ : niveau %@, %@.";
+"And %lld more." = "Et %lld autres.";
+"Tomorrow's Forecast" = "Bulletin de demain";
+"Favorite Forecasts" = "Bulletins des favoris";
+"Yesterday's Forecast" = "Bulletin d’hier";
+"Earlier Forecast" = "Bulletin antérieur";

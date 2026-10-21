@@ -27,6 +27,7 @@
             return LoadedWarnings(warnings: warnings.filter { $0.RegionId == request.regionID }, source: .network)
         }
         func loadSummaries(_ request: WarningRequest) async throws -> [AvalancheWarningSimple] { [] }
+        func loadWarnings(on date: Date, regionID: Int) async throws -> [AvalancheWarningSimple] { [] }
     }
 
     @MainActor

@@ -101,20 +101,36 @@ final class StubNorwayClient: VarsomAPIProviding {
 final class StubSwedenClient: LavinprognoserAPIProviding {
     var regions: Result<[RegionSummary], any Error> = .success([Fixtures.region(100001)])
     private(set) var requestedDaysBefore: Int?
+    private(set) var requestedLanguages: [VarsomApiClient.Language] = []
     private(set) var regionRequests = 0
-    func loadRegions() async throws -> [RegionSummary] {
+    func loadRegions(lang: VarsomApiClient.Language) async throws -> [RegionSummary] {
         regionRequests += 1
+        requestedLanguages.append(lang)
         return try regions.get()
     }
     private(set) var summaryRegionID: Int?
-    func loadWarnings(regionId: Int, daysBefore: Int) async throws -> [AvalancheWarningSimple] {
+    func loadWarnings(lang: VarsomApiClient.Language, regionId: Int, daysBefore: Int) async throws
+        -> [AvalancheWarningSimple]
+    {
         summaryRegionID = regionId
         requestedDaysBefore = daysBefore
+        requestedLanguages.append(lang)
         return [Fixtures.warning(regionId).summary]
     }
-    func loadWarningsDetailed(regionId: Int, daysBefore: Int) async throws -> [AvalancheWarningDetailed] {
+    func loadWarningsDetailed(lang: VarsomApiClient.Language, regionId: Int, daysBefore: Int) async throws
+        -> [AvalancheWarningDetailed]
+    {
         requestedDaysBefore = daysBefore
+        requestedLanguages.append(lang)
         return [Fixtures.warning(regionId)]
+    }
+    private(set) var requestedDates: [Date] = []
+    func loadWarningDetailed(lang: VarsomApiClient.Language, regionId: Int, date: Date) async throws
+        -> AvalancheWarningDetailed
+    {
+        requestedDates.append(date)
+        requestedLanguages.append(lang)
+        return Fixtures.warning(regionId, date: date)
     }
 }
 

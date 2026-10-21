@@ -4,3 +4,11 @@
 "Get avalanche warning for ${region} in ${applicationName}" = "Obtener alerta de avalanchas para ${region} en ${applicationName}";
 "What is the avalanche danger in ${region} with ${applicationName}" = "Cuál es el peligro de avalanchas en ${region} con ${applicationName}";
 "Open my local forecast in ${applicationName}" = "Abre mi pronóstico local en ${applicationName}";
+
+/* Phrases for tomorrow, favorites and earlier days. A phrase holds one parameter; dates come from ${pastDay} */
+"What is the avalanche danger tomorrow in ${region} with ${applicationName}" = "Cuál es el peligro de avalanchas mañana en ${region} con ${applicationName}";
+"Get avalanche warnings for my favorites in ${applicationName}" = "Obtener las predicciones de avalanchas de mis favoritos en ${applicationName}";
+"What is the avalanche danger in my favorites with ${applicationName}" = "Cuál es el peligro de avalanchas en mis favoritos con ${applicationName}";
+"What was the avalanche danger in ${region} yesterday with ${applicationName}" = "Cuál fue el peligro de avalanchas ayer en ${region} con ${applicationName}";
+"What was the avalanche danger ${pastDay} with ${applicationName}" = "Cuál fue el peligro de avalanchas ${pastDay} con ${applicationName}";
+"Get an earlier avalanche warning for ${region} in ${applicationName}" = "Obtener una predicción de avalanchas anterior para ${region} en ${applicationName}";

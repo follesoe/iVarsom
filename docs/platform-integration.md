@@ -66,6 +66,33 @@ Region queries support names, IDs, case/accent-insensitive matching and embedded
 
 **Get Avalanche Warning** accepts the current/tomorrow setting and returns a structured `AvalancheForecastEntity` as well as a spoken response and snippet. Shortcuts can use its region, forecast date, danger level, text, validity, download time and saved status. An unknown danger level is absent, not level zero. There is no generated interpretation of provider text.
 
+## iOS 27 widget and Siri updates (October 2026)
+
+Built with Xcode 27.1; deployment targets stay at iOS/watchOS 26, so each API below is availability-gated.
+
+- **Tall extra-large widget** (`systemExtraLargePortrait`, iOS/Mac Catalyst 27): today's summary, download state and emergency banner, the next two days' forecast text, and the day strip. Widget entries only carry summary bulletins, so it shows forecast text rather than avalanche problems. Its VoiceOver label also reads the coming days. The family is added conditionally in `iVarsomWidget.families`; the system decides where the size is offered.
+- **Background execution**: `GetAvalancheWarningIntent` declares `supportedModes = .background` instead of the deprecated `openAppWhenRun`.
+- **Answers in the request's language** (iOS 27 `IntentSystemContext.locale`): provider text can't be localized afterwards, so the intent requests the Norwegian/Swedish bulletin for Norwegian or Swedish requests and English otherwise, and words the answer with the matching app localization. The shared store keeps one snapshot per language, so this never replaces the widgets' forecast. Earlier systems use the app's language.
+- **Voice-only answers** (iOS 27 `IntentSystemContext.isVoiceOnly`): without the snippet, the answer gives a spoken date, the danger level number with its name, and when a saved forecast was downloaded. Every answer now includes an active emergency warning before the forecast text.
+- The Swedish client takes the bulletin language as a parameter, like the Norwegian client, instead of reading the device language, so a repository's injected language applies to both countries.
+- Shortcuts shows the region parameter type as "Avalanche region" (localized) instead of "Region Config Option".
+
+### Asking about favorites and other days
+
+- **Get Favorite Avalanche Warnings** answers for every favorite region (current or tomorrow's forecast), naming regions with an active emergency warning first and reading at most four regions aloud. It returns one `AvalancheForecastEntity` per region. A current-position favorite is skipped if no location is available, rather than failing the answer.
+- **Get Avalanche Warning for Date** answers for any day: Shortcuts passes a date (`kind: .date`), and Siri phrases pass an "earlier day" (`PastForecastDay`: yesterday or last Monday to Sunday, meaning the most recent such day before today). With neither, it asks which day. Shortcuts dates keep their calendar day in the region's time zone.
+- `ForecastLookup` routes both: today and tomorrow use the current forecast with its offline fallback; earlier days come from the provider's archive through `WarningRepository.loadWarnings(on:regionID:)` (Norway by date range, Sweden by `forecast_date`) and are never stored, so they can't replace the app's or widgets' forecast. Later days aren't published yet. A day without a bulletin, such as in summer, answers "No forecast available for this day"; only connection failures report the service as unavailable. Past-day entities can't be resolved again later, because the entity query reads the shared store.
+- New App Shortcut phrases (in all seven languages): tomorrow in a region, my favorites, yesterday in a region, an earlier day, and an earlier warning for a region. Six of the ten allowed App Shortcuts are used. The existing intent, its `region`/`day` parameters and all shipped phrases are unchanged.
+- When Siri asks for a region, favorites are suggested first, and spoken names no longer contain the zero-width spaces the app uses as line-break hints.
+
+### Siri AI (iOS 27) and what it can't do here
+
+App Shortcut phrases can hold one parameter, which must be an app entity or enum, so a phrase can't contain a free-form date; "earlier day" covers the common spoken cases. Siri AI only runs intents and finds entities that conform to an App Schema, and no schema domain fits avalanche forecasts (there is no weather domain; only `.system.open`/`.system.searchInApp` could apply). Siri AI is also English-only and unavailable on iPhone and Apple Watch in the EU, so most Norwegian and Swedish users get classic Siri with App Shortcuts, which still work with Siri AI. Device checks remain for how classic Siri parses spoken dates in Norwegian and Swedish when it asks "Which day?", and for phrase matching with a preset day.
+
+Worthwhile follow-ups: an interactive snippet with previous/next-day buttons (`SnippetIntent`, iOS 26), donating forecasts viewed in the app so Siri can suggest them (`IntentDonationManager`), region synonyms (`DisplayRepresentation(synonyms:)`), and Spotlight-indexed regions (`IndexedEntity`).
+
+`ForecastAnswerTests` cover the language mapping, localized wording, voice-only phrasing, emergency text and unassessed danger levels; repository and client tests cover the Swedish language plumbing.
+
 ## Testing and remaining checks
 
 Tests use Swift Testing, parameterized cases, injected clocks and providers, isolated temporary stores and deterministic errors. They exercise actual policy, selection, service and query code rather than reproducing it in tests. No test depends on live winter data or the user's cache, GPS or preferences. Existing XCTest UI tooling remains available; AppIntentsTesting requires the newer SDK and is deferred.
@@ -88,6 +115,5 @@ Physical-device checks remain appropriate for StandBy night rendering, Control C
 
 ## Deferred SDK work
 
-- iOS 27's extra-large portrait widget family.
 - New Siri view annotations and AppIntentsTesting.
-- Duo-specific layout/StandBy verification with the new SDK and device.
+- StandBy verification with the new SDK on a device. iPhone Duo layout is covered in [iPhone Duo](iphone-duo.md).

@@ -35,4 +35,17 @@ public enum DangerLevel: String, Codable, Sendable, CustomStringConvertible, Com
         case .level5: return String(localized: "Very high")
         }
     }
+
+    /// The name from a specific localization, such as the language of a Siri request.
+    func localizedName(in bundle: Bundle) -> String {
+        let key = switch self {
+        case .unknown: "Not assessed"
+        case .level1: "Low"
+        case .level2: "Moderate"
+        case .level3: "Considerable"
+        case .level4: "High"
+        case .level5: "Very high"
+        }
+        return bundle.localizedString(forKey: key, value: nil, table: nil)
+    }
 }

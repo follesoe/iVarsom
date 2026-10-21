@@ -295,3 +295,34 @@
 "Share" = "Share";
 "Show My Location" = "Show My Location";
 "Show All Regions" = "Show All Regions";
+
+/* Siri answers in the request's language and for voice-only requests */
+"The avalanche danger in %@ for %@ is level %@, %@." = "The avalanche danger in %@ for %@ is level %@, %@.";
+"Saved forecast from %@." = "Saved forecast from %@.";
+"Avalanche region" = "Avalanche region";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Earlier day";
+"yesterday" = "yesterday";
+"last Monday" = "last Monday";
+"last Tuesday" = "last Tuesday";
+"last Wednesday" = "last Wednesday";
+"last Thursday" = "last Thursday";
+"last Friday" = "last Friday";
+"last Saturday" = "last Saturday";
+"last Sunday" = "last Sunday";
+"Get Avalanche Forecast for Date" = "Get Avalanche Forecast for Date";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Get the avalanche forecast published for a day in Norway or Sweden, including past seasons.";
+"Date" = "Date";
+"Get avalanche forecast for ${region} on ${date}" = "Get avalanche forecast for ${region} on ${date}";
+"Which day?" = "Which day?";
+"Get Favorite Avalanche Forecasts" = "Get Favorite Avalanche Forecasts";
+"Get published avalanche forecasts for your favorite regions." = "Get published avalanche forecasts for your favorite regions.";
+"Get avalanche forecasts for my favorites" = "Get avalanche forecasts for my favorites";
+"Add a favorite region in the app first." = "Add a favorite region in the app first.";
+"%@: level %@, %@." = "%@: level %@, %@.";
+"And %lld more." = "And %lld more.";
+"Tomorrow's Forecast" = "Tomorrow's Forecast";
+"Favorite Forecasts" = "Favorite Forecasts";
+"Yesterday's Forecast" = "Yesterday's Forecast";
+"Earlier Forecast" = "Earlier Forecast";

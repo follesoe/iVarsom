@@ -295,3 +295,34 @@
 "Share" = "Teilen";
 "Show My Location" = "Meinen Standort anzeigen";
 "Show All Regions" = "Alle Regionen anzeigen";
+
+/* Siri answers in the request's language and for voice-only requests */
+"The avalanche danger in %@ for %@ is level %@, %@." = "Die Lawinengefahr in %@ am %@ ist Stufe %@, %@.";
+"Saved forecast from %@." = "Gespeicherte Vorhersage vom %@.";
+"Avalanche region" = "Lawinenregion";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Früherer Tag";
+"yesterday" = "gestern";
+"last Monday" = "letzten Montag";
+"last Tuesday" = "letzten Dienstag";
+"last Wednesday" = "letzten Mittwoch";
+"last Thursday" = "letzten Donnerstag";
+"last Friday" = "letzten Freitag";
+"last Saturday" = "letzten Samstag";
+"last Sunday" = "letzten Sonntag";
+"Get Avalanche Forecast for Date" = "Lawinenvorhersage für ein Datum abrufen";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Die für einen Tag in Norwegen oder Schweden veröffentlichte Lawinenvorhersage abrufen, auch aus früheren Saisons.";
+"Date" = "Datum";
+"Get avalanche forecast for ${region} on ${date}" = "Lawinenvorhersage für ${region} am ${date} abrufen";
+"Which day?" = "Für welchen Tag?";
+"Get Favorite Avalanche Forecasts" = "Lawinenvorhersagen für Favoriten abrufen";
+"Get published avalanche forecasts for your favorite regions." = "Veröffentlichte Lawinenvorhersagen für deine Favoriten abrufen.";
+"Get avalanche forecasts for my favorites" = "Lawinenvorhersagen für meine Favoriten abrufen";
+"Add a favorite region in the app first." = "Füge zuerst in der App eine Region zu deinen Favoriten hinzu.";
+"%@: level %@, %@." = "%@: Stufe %@, %@.";
+"And %lld more." = "Und %lld weitere.";
+"Tomorrow's Forecast" = "Vorhersage für morgen";
+"Favorite Forecasts" = "Vorhersagen für Favoriten";
+"Yesterday's Forecast" = "Vorhersage von gestern";
+"Earlier Forecast" = "Frühere Vorhersage";

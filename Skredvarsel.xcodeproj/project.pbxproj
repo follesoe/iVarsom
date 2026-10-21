@@ -310,6 +310,12 @@
 		B8AF9786A9FF313D48BF479F /* AdaptiveModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */; };
 		673322F0355C6022F6C1459C /* ForecastColumnsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1D14DDEF5FB9E0FD21B3D /* ForecastColumnsLayout.swift */; };
 		B3E4B13A7ED9D8D98D4054F9 /* ForecastColumnsLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */; };
+		86A1F2AE99542CA97AE42C0E /* ExtraLargePortraitWarningWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AC8F9C8409E42B634E769 /* ExtraLargePortraitWarningWidgetView.swift */; };
+		C9F4BE90DD40636957D27AEF /* ForecastAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5674A19E9BE74E618FB28BF9 /* ForecastAnswer.swift */; };
+		6CEEEE5BAFAEF0E4BAA1E9A6 /* ForecastAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5674A19E9BE74E618FB28BF9 /* ForecastAnswer.swift */; };
+		6C2FEAE0FD126774576EDE7A /* ForecastAnswerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB42AC4442233110C092125D /* ForecastAnswerTests.swift */; };
+		E716D6B7238E6CF4A27E7777 /* ForecastQueryIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A129DD6CF5115F0BABE9CEE /* ForecastQueryIntents.swift */; };
+		F5CFE1C60953140420ACC72D /* ForecastQueryIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A129DD6CF5115F0BABE9CEE /* ForecastQueryIntents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +545,10 @@
 		E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveModifiers.swift; sourceTree = "<group>"; };
 		51F1D14DDEF5FB9E0FD21B3D /* ForecastColumnsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastColumnsLayout.swift; sourceTree = "<group>"; };
 		BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastColumnsLayoutTests.swift; sourceTree = "<group>"; };
+		7A0AC8F9C8409E42B634E769 /* ExtraLargePortraitWarningWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargePortraitWarningWidgetView.swift; sourceTree = "<group>"; };
+		5674A19E9BE74E618FB28BF9 /* ForecastAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastAnswer.swift; sourceTree = "<group>"; };
+		AB42AC4442233110C092125D /* ForecastAnswerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastAnswerTests.swift; sourceTree = "<group>"; };
+		9A129DD6CF5115F0BABE9CEE /* ForecastQueryIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastQueryIntents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,6 +597,7 @@
 		AA18420A27B1A3860097174D /* iVarsomTests */ = {
 			isa = PBXGroup;
 			children = (
+				AB42AC4442233110C092125D /* ForecastAnswerTests.swift */,
 				BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */,
 				DC22D68E98A6EEB58063760F /* AdaptiveBrowserStateTests.swift */,
 				DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */,
@@ -731,6 +742,8 @@
 		AAD172AE2795F8F8009AB089 /* iVarsom */ = {
 			isa = PBXGroup;
 			children = (
+				9A129DD6CF5115F0BABE9CEE /* ForecastQueryIntents.swift */,
+				5674A19E9BE74E618FB28BF9 /* ForecastAnswer.swift */,
 				226431FDC7804758BD6726AF /* AvalancheForecastEntity.swift */,
 				3C3A0A9A888A4A6F96E5CB95 /* ForecastNavigation.swift */,
 				AABB22552F34B93000A2997C /* AppIcon.icon */,
@@ -836,6 +849,7 @@
 		AAD172EC27960939009AB089 /* iVarsomWidget */ = {
 			isa = PBXGroup;
 			children = (
+				7A0AC8F9C8409E42B634E769 /* ExtraLargePortraitWarningWidgetView.swift */,
 				0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */,
 				9F034E0852D541269D892AF7 /* OpenForecastControl.swift */,
 				AA19049029461AAB006CF459 /* VarsomTimelineProvider.swift */,
@@ -1090,6 +1104,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C2FEAE0FD126774576EDE7A /* ForecastAnswerTests.swift in Sources */,
 				B3E4B13A7ED9D8D98D4054F9 /* ForecastColumnsLayoutTests.swift in Sources */,
 				C013FF2190E34DB97964C4C9 /* AdaptiveBrowserStateTests.swift in Sources */,
 				D7DD714950A44B09B0FD4624 /* ForecastPlatformTests.swift in Sources */,
@@ -1173,6 +1188,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5CFE1C60953140420ACC72D /* ForecastQueryIntents.swift in Sources */,
+				6CEEEE5BAFAEF0E4BAA1E9A6 /* ForecastAnswer.swift in Sources */,
 				FCD6577EEAF34D84864D3F69 /* AvalancheForecastEntity.swift in Sources */,
 				DB52803FB9D140F7951720F0 /* ForecastNavigation.swift in Sources */,
 				142E9EABD8634FDCAAB2C23C /* ForecastRelevance.swift in Sources */,
@@ -1245,6 +1262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E716D6B7238E6CF4A27E7777 /* ForecastQueryIntents.swift in Sources */,
+				C9F4BE90DD40636957D27AEF /* ForecastAnswer.swift in Sources */,
 				673322F0355C6022F6C1459C /* ForecastColumnsLayout.swift in Sources */,
 				09E70EB9017F27635E135A43 /* AdaptiveModifiers.swift in Sources */,
 				49E9B02A17A6DDFD2790D37C /* AdaptiveBrowserState.swift in Sources */,
@@ -1327,6 +1346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A1F2AE99542CA97AE42C0E /* ExtraLargePortraitWarningWidgetView.swift in Sources */,
 				B8AF9786A9FF313D48BF479F /* AdaptiveModifiers.swift in Sources */,
 				5F81975F8AC641B2BD805789 /* ForecastWidgetRelevance.swift in Sources */,
 				C34F3E7EB20E49C9ACDCABBD /* OpenForecastControl.swift in Sources */,

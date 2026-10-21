@@ -295,3 +295,34 @@
 "Share" = "Del";
 "Show My Location" = "Vis min posisjon";
 "Show All Regions" = "Vis alle regioner";
+
+/* Siri answers in the request's language and for voice-only requests */
+"The avalanche danger in %@ for %@ is level %@, %@." = "Skredfaren i %@ for %@ er faregrad %@, %@.";
+"Saved forecast from %@." = "Lagret varsel fra %@.";
+"Avalanche region" = "Varslingsregion";
+
+/* Siri and Shortcuts: forecasts for a date (including past seasons) and for favorite regions */
+"Earlier day" = "Tidligere dag";
+"yesterday" = "i går";
+"last Monday" = "forrige mandag";
+"last Tuesday" = "forrige tirsdag";
+"last Wednesday" = "forrige onsdag";
+"last Thursday" = "forrige torsdag";
+"last Friday" = "forrige fredag";
+"last Saturday" = "forrige lørdag";
+"last Sunday" = "forrige søndag";
+"Get Avalanche Forecast for Date" = "Hent skredvarsel for dato";
+"Get the avalanche forecast published for a day in Norway or Sweden, including past seasons." = "Hent skredvarselet som ble publisert for en dag i Norge eller Sverige, også fra tidligere sesonger.";
+"Date" = "Dato";
+"Get avalanche forecast for ${region} on ${date}" = "Hent skredvarsel for ${region} den ${date}";
+"Which day?" = "Hvilken dag?";
+"Get Favorite Avalanche Forecasts" = "Hent skredvarsler for favoritter";
+"Get published avalanche forecasts for your favorite regions." = "Hent publiserte skredvarsler for favorittregionene dine.";
+"Get avalanche forecasts for my favorites" = "Hent skredvarsler for favorittene mine";
+"Add a favorite region in the app first." = "Legg først til en favorittregion i appen.";
+"%@: level %@, %@." = "%@: faregrad %@, %@.";
+"And %lld more." = "Og %lld til.";
+"Tomorrow's Forecast" = "Varsel for i morgen";
+"Favorite Forecasts" = "Favorittvarsler";
+"Yesterday's Forecast" = "Gårsdagens varsel";
+"Earlier Forecast" = "Tidligere varsel";

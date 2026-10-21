@@ -61,6 +61,14 @@ enum ForecastSelection {
         }.max { $0.PublishTime < $1.PublishTime }
     }
 
+    /// The latest published bulletin for a forecast day, such as a past date asked
+    /// about in Siri. Days follow the region's calendar.
+    static func warning(in warnings: [AvalancheWarningSimple], on day: Date, at now: Date) -> AvalancheWarningSimple? {
+        warnings.filter { warning in
+            warning.PublishTime <= now && calendar(regionID: warning.RegionId).isDate(warning.ValidFrom, inSameDayAs: day)
+        }.max { $0.PublishTime < $1.PublishTime }
+    }
+
     /// Schedule known transitions, including expiry, without relying on a
     /// network wake-up at midnight. WidgetKit still controls rendering cadence.
     static func transitionDates(in warnings: [AvalancheWarningSimple], after now: Date, regionID: Int) -> [Date] {

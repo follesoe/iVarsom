@@ -1,9 +1,16 @@
 import Foundation
 
+/// `lang` selects Swedish (`.norwegian`, the native-language bulletin) or English,
+/// matching `VarsomAPIProviding`.
 protocol LavinprognoserAPIProviding: Sendable {
-    func loadRegions() async throws -> [RegionSummary]
-    func loadWarnings(regionId: Int, daysBefore: Int) async throws -> [AvalancheWarningSimple]
-    func loadWarningsDetailed(regionId: Int, daysBefore: Int) async throws -> [AvalancheWarningDetailed]
+    func loadRegions(lang: VarsomApiClient.Language) async throws -> [RegionSummary]
+    func loadWarnings(lang: VarsomApiClient.Language, regionId: Int, daysBefore: Int) async throws
+        -> [AvalancheWarningSimple]
+    func loadWarningsDetailed(lang: VarsomApiClient.Language, regionId: Int, daysBefore: Int) async throws
+        -> [AvalancheWarningDetailed]
+    /// The bulletin for one forecast day, including past seasons.
+    func loadWarningDetailed(lang: VarsomApiClient.Language, regionId: Int, date: Date) async throws
+        -> AvalancheWarningDetailed
 }
 
 actor LavinprognoserApiClient: LavinprognoserAPIProviding {
@@ -17,6 +24,8 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
 
     enum LavinError: Error {
         case requestError
+        /// The provider has no bulletin for the requested area and day.
+        case notFound
         case invalidUrlError
         case parseError
     }
@@ -25,8 +34,8 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
 
     // MARK: - Public Methods
 
-    func loadRegions() async throws -> [RegionSummary] {
-        let useSwedish = VarsomApiClient.currentLang() == .norwegian
+    func loadRegions(lang: VarsomApiClient.Language = VarsomApiClient.currentLang()) async throws -> [RegionSummary] {
+        let useSwedish = lang == .norwegian
         let overviewPath = useSwedish ? "\(baseUrl)/.json" : "\(baseUrl)/en.json"
         let langKey = useSwedish ? 3 : 2  // 3=Swedish, 2=English
         guard let url = URL(string: overviewPath) else { throw LavinError.invalidUrlError }
@@ -40,7 +49,9 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
         return LavinprognoserMapper(date: now(), languageKey: langKey).regions(from: overview)
     }
 
-    func loadWarningsDetailed(regionId: Int, daysBefore: Int = 1) async throws -> [AvalancheWarningDetailed] {
+    func loadWarningsDetailed(
+        lang: VarsomApiClient.Language = VarsomApiClient.currentLang(), regionId: Int, daysBefore: Int = 1
+    ) async throws -> [AvalancheWarningDetailed] {
         guard let slug = Country.swedishSlug(for: regionId) else { throw LavinError.invalidUrlError }
 
         // Fetch today + previous days by explicit date to avoid gaps.
@@ -57,7 +68,7 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
             for date in dates {
                 group.addTask {
                     do {
-                        return try await self.loadForecast(slug: slug, regionId: regionId, date: date)
+                        return try await self.loadForecast(slug: slug, regionId: regionId, date: date, lang: lang)
                     } catch {
                         try error.rethrowCancellation()
                         // Only dated history is optional. Treat an active-endpoint
@@ -87,8 +98,17 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
         return warnings
     }
 
-    private func loadForecast(slug: String, regionId: Int, date: Date?) async throws -> AvalancheWarningDetailed {
-        let useSwedish = VarsomApiClient.currentLang() == .norwegian
+    func loadWarningDetailed(lang: VarsomApiClient.Language, regionId: Int, date: Date) async throws
+        -> AvalancheWarningDetailed
+    {
+        guard let slug = Country.swedishSlug(for: regionId) else { throw LavinError.invalidUrlError }
+        return try await loadForecast(slug: slug, regionId: regionId, date: date, lang: lang)
+    }
+
+    private func loadForecast(slug: String, regionId: Int, date: Date?, lang: VarsomApiClient.Language) async throws
+        -> AvalancheWarningDetailed
+    {
+        let useSwedish = lang == .norwegian
         let langKey = useSwedish ? 3 : 2  // 3=Swedish, 2=English
         let basePath =
             useSwedish
@@ -110,15 +130,18 @@ actor LavinprognoserApiClient: LavinprognoserAPIProviding {
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalCacheData
         let (data, response) = try await transport.data(for: request)
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw LavinError.requestError }
+        let status = (response as? HTTPURLResponse)?.statusCode
+        guard status == 200 else { throw status == 404 ? LavinError.notFound : LavinError.requestError }
 
         let detail = try JSONDecoder().decode(LavinprognoserResponse.DetailResponse.self, from: data)
         return LavinprognoserMapper(date: now(), languageKey: langKey)
             .warning(from: detail.content.forecast, regionId: regionId)
     }
 
-    func loadWarnings(regionId: Int, daysBefore: Int = 1) async throws -> [AvalancheWarningSimple] {
-        let detailed = try await loadWarningsDetailed(regionId: regionId, daysBefore: daysBefore)
+    func loadWarnings(
+        lang: VarsomApiClient.Language = VarsomApiClient.currentLang(), regionId: Int, daysBefore: Int = 1
+    ) async throws -> [AvalancheWarningSimple] {
+        let detailed = try await loadWarningsDetailed(lang: lang, regionId: regionId, daysBefore: daysBefore)
         return detailed.map(\.summary)
     }
 

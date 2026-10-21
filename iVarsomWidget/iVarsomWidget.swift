@@ -159,23 +159,31 @@ struct StandardWarningWidgetView: View {
                                        verticalPadding: 6)
             }
             Spacer(minLength: 0)
-            HStack {
-                ForEach(entry.warnings) { warning in
-                    let isToday = warning.RegId == entry.currentWarning.RegId
-                    DayCell(
-                        dangerLevel: warning.DangerLevel,
-                        date: warning.ValidFrom,
-                        isSelected: isToday,
-                        regionID: warning.RegionId)
-                }
-            }
-            .padding(.bottom, 16)
+            WidgetDayStrip(entry: entry)
+                .padding(.bottom, 16)
             Spacer(minLength: 0)
         }
         .containerBackground(for: .widget) {
             DangerGradient(dangerLevel: entry.currentWarning.DangerLevel)
         }
         .widgetURL(getWidgetURL(entry: entry))
+    }
+}
+
+/// Danger levels for each published day, highlighting the current forecast.
+struct WidgetDayStrip: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        HStack {
+            ForEach(entry.warnings) { warning in
+                DayCell(
+                    dangerLevel: warning.DangerLevel,
+                    date: warning.ValidFrom,
+                    isSelected: warning.RegId == entry.currentWarning.RegId,
+                    regionID: warning.RegionId)
+            }
+        }
     }
 }
 
@@ -333,12 +341,41 @@ struct WarningWidgetView: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(entry.accessibilitySummary)
+        .accessibilityLabel(accessibilityLabel)
         .widgetURL(getWidgetURL(entry: entry))
+    }
+
+    /// The tall extra-large family (iOS 27); checked outside the switch because
+    /// its case is newer than the deployment target.
+    private var isExtraLargePortrait: Bool {
+        #if os(iOS)
+            if #available(iOS 27, *) { return family == .systemExtraLargePortrait }
+        #endif
+        return false
+    }
+
+    private var accessibilityLabel: String {
+        #if os(iOS)
+            if isExtraLargePortrait { return entry.extendedAccessibilitySummary }
+        #endif
+        return entry.accessibilitySummary
     }
 
     @ViewBuilder
     private var content: some View {
+        #if os(iOS)
+            if isExtraLargePortrait {
+                ExtraLargePortraitWarningWidgetView(entry: entry)
+            } else {
+                familyContent
+            }
+        #else
+            familyContent
+        #endif
+    }
+
+    @ViewBuilder
+    private var familyContent: some View {
         switch family {
         case .systemSmall:
             SmallWarningWidgetView(entry: entry)
@@ -380,15 +417,24 @@ struct iVarsomWidget: Widget {
         .configurationDisplayName("Avalanche forecast")
         .description("Current or tomorrow's published forecast for Norway and Sweden.")
         .contentMarginsDisabled()
+        .supportedFamilies(Self.families)
+    }
+
+    private static var families: [WidgetFamily] {
         #if os(watchOS)
-        .supportedFamilies([.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular])
+            return [.accessoryInline, .accessoryCircular, .accessoryCorner, .accessoryRectangular]
         #else
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular])
+            var families: [WidgetFamily] = [
+                .systemSmall, .systemMedium, .systemLarge, .systemExtraLarge,
+                .accessoryInline, .accessoryCircular, .accessoryRectangular,
+            ]
+            if #available(iOS 27, *) { families.insert(.systemExtraLargePortrait, at: 4) }
+            return families
         #endif
     }
 }
 
-private struct ForecastDownloadLabel: View {
+struct ForecastDownloadLabel: View {
     let entry: WarningEntry
 
     var body: some View {
