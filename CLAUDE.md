@@ -83,6 +83,11 @@ The app uses focused observable presentation models with protocols at service bo
 
 See [docs/modernization.md](docs/modernization.md) for architecture and [docs/platform-integration.md](docs/platform-integration.md) for forecast refresh rules, shared widget storage, controls and Shortcuts.
 
+See [docs/iphone-duo.md](docs/iphone-duo.md) for resizable layouts and iPhone Duo:
+- `AdaptiveBrowserState` carries selection, tab and the map's forecast sheet across compact/regular changes (folding); keep such state in `ContentView`, not inside one layout
+- Toolbar items need a title and a symbol (`Label`); close buttons use `Button(role: .close)` in `.cancellationAction`
+- Gate iOS 27 APIs with `#available`, and compile iOS 27.1 APIs (reserved regions, `toolbarVerticalBehavior`, `axisBehavior`) with `#if os(iOS) && !targetEnvironment(macCatalyst)`: the Catalyst 27.0 SDK lacks them. `AdaptiveModifiers.swift` holds shared wrappers
+
 ### Widget System
 
 - Uses AppIntents (iOS 17+) via `SelectRegion` for configuration

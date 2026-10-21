@@ -67,6 +67,12 @@ struct AvalancheMapView: View {
                     showAnnotations = delta < annotationThreshold
                     zoomedIn = delta < zoomedInThreshold
                 }
+                // A position set by panning doesn't record where the map is.
+                // Store the camera so another map, such as the one shown after
+                // iPhone Duo folds or unfolds, opens at the same place.
+                if cameraPosition.positionedByUser {
+                    cameraPosition = .camera(context.camera)
+                }
             }
             .mapStyle(
                 .standard(
@@ -93,29 +99,41 @@ struct AvalancheMapView: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    Task {
-                        if let location = await locate() {
-                            withAnimation { cameraPosition = Self.userPosition(location) }
-                        }
-                    }
-                } label: {
-                    Image(systemName: "location")
-                }
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    withAnimation {
-                        cameraPosition = Self.overviewPosition
-                    }
-                } label: {
-                    Image(systemName: "globe.europe.africa")
-                }
+            if #available(iOS 27, *) {
+                ToolbarItem(placement: .primaryAction) { locateButton }
+                    .visibilityPriority(.high)
+                ToolbarItem(placement: .primaryAction) { overviewButton }
+                    .visibilityPriority(.low)
+            } else {
+                ToolbarItem(placement: .primaryAction) { locateButton }
+                ToolbarItem(placement: .primaryAction) { overviewButton }
             }
         }
         .task {
             geoData = RegionGeoData.load()
+        }
+    }
+
+    // Titles matter for iPhone Duo's overflow menu; vertical bars use the icons.
+    private var locateButton: some View {
+        Button {
+            Task {
+                if let location = await locate() {
+                    withAnimation { cameraPosition = Self.userPosition(location) }
+                }
+            }
+        } label: {
+            Label("Show My Location", systemImage: "location")
+        }
+    }
+
+    private var overviewButton: some View {
+        Button {
+            withAnimation {
+                cameraPosition = Self.overviewPosition
+            }
+        } label: {
+            Label("Show All Regions", systemImage: "globe.europe.africa")
         }
     }
 

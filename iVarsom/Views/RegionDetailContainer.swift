@@ -52,17 +52,31 @@ struct RegionDetailContainer: View {
         }
         .toolbar {
             if showsActions {
-                ToolbarItem(placement: .primaryAction) { favoriteButton }
-                ToolbarSpacer(.fixed, placement: .primaryAction)
-                ToolbarItem(placement: .primaryAction) { shareButton }
+                if #available(iOS 27, *) {
+                    // Favoriting is the frequent action; sharing overflows first
+                    // when a narrow or vertical bar runs out of room.
+                    ToolbarItem(placement: .primaryAction) { favoriteButton }
+                        .visibilityPriority(.high)
+                    ToolbarSpacer(.fixed, placement: .primaryAction)
+                    ToolbarItem(placement: .primaryAction) { shareButton }
+                        .visibilityPriority(.low)
+                } else {
+                    ToolbarItem(placement: .primaryAction) { favoriteButton }
+                    ToolbarSpacer(.fixed, placement: .primaryAction)
+                    ToolbarItem(placement: .primaryAction) { shareButton }
+                }
             }
         }
         .sheet(item: $sharePreview) { SharePreviewView(item: $0) }
     }
 
+    // Toolbar items carry a title as well as an icon: iPhone Duo shows icons in
+    // vertical bars and titles in the overflow menu.
     var favoriteButton: some View {
         Button(action: toggleFavorite) {
-            Image(systemName: isFavorite ? "star.fill" : "star")
+            Label(
+                isFavorite ? "Remove from Favorites" : "Add to Favorites",
+                systemImage: isFavorite ? "star.fill" : "star")
         }
     }
 
@@ -85,7 +99,7 @@ struct RegionDetailContainer: View {
                         systemImage: "square.and.arrow.up")
                 }
             } label: {
-                Image(systemName: "square.and.arrow.up")
+                Label("Share", systemImage: "square.and.arrow.up")
             }
         }
 

@@ -217,8 +217,6 @@
 /* Warning detail sheet - title */
 "Avalanche risk assessment" = "Snøskredvurdering";
 
-/* Warning detail sheet - dismiss button */
-"Dismiss" = "Lukk";
 
 /* Accessibility - Danger trend */
 "Danger rising" = "Fare økende";
@@ -290,3 +288,10 @@
 "Location access is off. You can enable it in Settings." = "Posisjonstilgang er slått av. Du kan slå den på i Innstillinger.";
 "Location access is restricted on this device." = "Posisjonstilgang er begrenset på denne enheten.";
 "Show forecasts for the nearest region." = "Vis skredvarsler for nærmeste region.";
+
+/* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
+"Add to Favorites" = "Legg til i favoritter";
+"Remove from Favorites" = "Fjern fra favoritter";
+"Share" = "Del";
+"Show My Location" = "Vis min posisjon";
+"Show All Regions" = "Vis alle regioner";

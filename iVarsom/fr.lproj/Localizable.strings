@@ -217,8 +217,6 @@
 /* Warning detail sheet - title */
 "Avalanche risk assessment" = "Évaluation du risque d'avalanche";
 
-/* Warning detail sheet - dismiss button */
-"Dismiss" = "Fermer";
 
 /* Accessibility - Danger trend */
 "Danger rising" = "Danger en hausse";
@@ -290,3 +288,10 @@
 "Location access is off. You can enable it in Settings." = "L’accès à la position est désactivé. Vous pouvez l’activer dans Réglages.";
 "Location access is restricted on this device." = "L’accès à la position est restreint sur cet appareil.";
 "Show forecasts for the nearest region." = "Afficher les prévisions d’avalanches pour la région la plus proche.";
+
+/* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
+"Add to Favorites" = "Ajouter aux favoris";
+"Remove from Favorites" = "Retirer des favoris";
+"Share" = "Partager";
+"Show My Location" = "Afficher ma position";
+"Show All Regions" = "Afficher toutes les régions";

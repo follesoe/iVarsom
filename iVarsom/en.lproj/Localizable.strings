@@ -217,8 +217,6 @@
 /* Warning detail sheet - title */
 "Avalanche risk assessment" = "Avalanche risk assessment";
 
-/* Warning detail sheet - dismiss button */
-"Dismiss" = "Dismiss";
 
 /* Accessibility - Danger trend */
 "Danger rising" = "Danger rising";
@@ -290,3 +288,10 @@
 "Location access is off. You can enable it in Settings." = "Location access is off. You can enable it in Settings.";
 "Location access is restricted on this device." = "Location access is restricted on this device.";
 "Show forecasts for the nearest region." = "Show forecasts for the nearest region.";
+
+/* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
+"Add to Favorites" = "Add to Favorites";
+"Remove from Favorites" = "Remove from Favorites";
+"Share" = "Share";
+"Show My Location" = "Show My Location";
+"Show All Regions" = "Show All Regions";

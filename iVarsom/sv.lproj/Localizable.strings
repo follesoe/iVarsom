@@ -217,8 +217,6 @@
 /* Warning detail sheet - title */
 "Avalanche risk assessment" = "Lavinriskbedömning";
 
-/* Warning detail sheet - dismiss button */
-"Dismiss" = "Stäng";
 
 /* Accessibility - Danger trend */
 "Danger rising" = "Fara ökande";
@@ -290,3 +288,10 @@
 "Location access is off. You can enable it in Settings." = "Platsåtkomst är avstängd. Du kan aktivera den i Inställningar.";
 "Location access is restricted on this device." = "Platsåtkomst är begränsad på den här enheten.";
 "Show forecasts for the nearest region." = "Visa lavinprognoser för närmaste region.";
+
+/* Toolbar items: iPhone Duo shows the icon in vertical bars and the title in the overflow menu */
+"Add to Favorites" = "Lägg till i favoriter";
+"Remove from Favorites" = "Ta bort från favoriter";
+"Share" = "Dela";
+"Show My Location" = "Visa min plats";
+"Show All Regions" = "Visa alla områden";

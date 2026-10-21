@@ -303,6 +303,13 @@
 		5F81975F8AC641B2BD805789 /* ForecastWidgetRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */; };
 		DAF0756A509444CBACEDC4F4 /* ForecastWidgetRelevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */; };
 		D7DD714950A44B09B0FD4624 /* ForecastPlatformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */; };
+		49E9B02A17A6DDFD2790D37C /* AdaptiveBrowserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD33409713F4EE639FA605 /* AdaptiveBrowserState.swift */; };
+		C013FF2190E34DB97964C4C9 /* AdaptiveBrowserStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC22D68E98A6EEB58063760F /* AdaptiveBrowserStateTests.swift */; };
+		09E70EB9017F27635E135A43 /* AdaptiveModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */; };
+		2EF2E0836F5B316A4E5C0B38 /* AdaptiveModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */; };
+		B8AF9786A9FF313D48BF479F /* AdaptiveModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */; };
+		673322F0355C6022F6C1459C /* ForecastColumnsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1D14DDEF5FB9E0FD21B3D /* ForecastColumnsLayout.swift */; };
+		B3E4B13A7ED9D8D98D4054F9 /* ForecastColumnsLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -527,6 +534,11 @@
 		9F034E0852D541269D892AF7 /* OpenForecastControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenForecastControl.swift; sourceTree = "<group>"; };
 		0EDFB4A8D5A74892AEB339EF /* ForecastWidgetRelevance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWidgetRelevance.swift; sourceTree = "<group>"; };
 		DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPlatformTests.swift; sourceTree = "<group>"; };
+		4CBD33409713F4EE639FA605 /* AdaptiveBrowserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveBrowserState.swift; sourceTree = "<group>"; };
+		DC22D68E98A6EEB58063760F /* AdaptiveBrowserStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveBrowserStateTests.swift; sourceTree = "<group>"; };
+		E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveModifiers.swift; sourceTree = "<group>"; };
+		51F1D14DDEF5FB9E0FD21B3D /* ForecastColumnsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastColumnsLayout.swift; sourceTree = "<group>"; };
+		BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastColumnsLayoutTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,6 +587,8 @@
 		AA18420A27B1A3860097174D /* iVarsomTests */ = {
 			isa = PBXGroup;
 			children = (
+				BD123EFC2FA7433C7BB7661F /* ForecastColumnsLayoutTests.swift */,
+				DC22D68E98A6EEB58063760F /* AdaptiveBrowserStateTests.swift */,
 				DE0FC191731A4B8690FE06EA /* ForecastPlatformTests.swift */,
 				BE6DD4963DA4D42C7E42DAFF /* PresentationTests.swift */,
 				B2FE708D119D147AC343E803 /* LavinprognoserMapperTests.swift */,
@@ -594,6 +608,7 @@
 		AA18421A27B3106B0097174D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4CBD33409713F4EE639FA605 /* AdaptiveBrowserState.swift */,
 				4A757EF766ABD3DFE1FA0CE2 /* WarningTranslationModel.swift */,
 				2D84FE5C225CEB30A9AC9134 /* RegionLocationModel.swift */,
 				046B387F9BF430507CAAE1BE /* WarningDetailModel.swift */,
@@ -757,6 +772,8 @@
 		AAD172D92795FD6B009AB089 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				51F1D14DDEF5FB9E0FD21B3D /* ForecastColumnsLayout.swift */,
+				E5503727FD7C13D995A40B64 /* AdaptiveModifiers.swift */,
 				68FDE40C0E3D2A423537E488 /* WarningDayPicker.swift */,
 				AAMAP0002026022100000000 /* AvalancheMapView.swift */,
 				AAD172D32795FCC2009AB089 /* RegionDetail.swift */,
@@ -1073,6 +1090,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E4B13A7ED9D8D98D4054F9 /* ForecastColumnsLayoutTests.swift in Sources */,
+				C013FF2190E34DB97964C4C9 /* AdaptiveBrowserStateTests.swift in Sources */,
 				D7DD714950A44B09B0FD4624 /* ForecastPlatformTests.swift in Sources */,
 				3E6B63C9164A60B2DF259E74 /* PresentationTests.swift in Sources */,
 				F14597626A62DA8FFA31DDB1 /* LavinprognoserMapperTests.swift in Sources */,
@@ -1092,6 +1111,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF2E0836F5B316A4E5C0B38 /* AdaptiveModifiers.swift in Sources */,
 				DAF0756A509444CBACEDC4F4 /* ForecastWidgetRelevance.swift in Sources */,
 				2B59C52371164325AD379BEB /* OpenForecastControl.swift in Sources */,
 				96FBC30538BB4EF0AF405282 /* ForecastNavigation.swift in Sources */,
@@ -1225,6 +1245,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				673322F0355C6022F6C1459C /* ForecastColumnsLayout.swift in Sources */,
+				09E70EB9017F27635E135A43 /* AdaptiveModifiers.swift in Sources */,
+				49E9B02A17A6DDFD2790D37C /* AdaptiveBrowserState.swift in Sources */,
 				1AA373F953654773A7CE9815 /* AvalancheForecastEntity.swift in Sources */,
 				5E0760143D914E76A8B7B9FB /* ForecastNavigation.swift in Sources */,
 				D111C445600B4F96BED8D12D /* ForecastRelevance.swift in Sources */,
@@ -1304,6 +1327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8AF9786A9FF313D48BF479F /* AdaptiveModifiers.swift in Sources */,
 				5F81975F8AC641B2BD805789 /* ForecastWidgetRelevance.swift in Sources */,
 				C34F3E7EB20E49C9ACDCABBD /* OpenForecastControl.swift in Sources */,
 				23B20F580EFC4BB9B61864BB /* ForecastNavigation.swift in Sources */,

@@ -20,6 +20,20 @@ struct RegionBrowserModelTests {
             locationManager: location, favorites: preferences.favorites(), now: now)
     }
 
+    @Test("The detail column and the map's forecast sheet share one favorite toggle")
+    func togglesSelectedRegionFavorite() {
+        let vm = model()
+        vm.toggleSelectedRegionFavorite()  // No selection: no change.
+        #expect(vm.favorites.ids.isEmpty)
+        vm.selectedRegionID = 3003
+        #expect(!vm.isSelectedRegionFavorite)
+        vm.toggleSelectedRegionFavorite()
+        #expect(vm.isSelectedRegionFavorite)
+        #expect(vm.favorites.ids.contains(3003))
+        vm.toggleSelectedRegionFavorite()
+        #expect(!vm.isSelectedRegionFavorite)
+    }
+
     @Test("Cold-launch fixed-region navigation does not wait for or compete with a catalog refresh")
     func navigationDuringCatalogLoad() async {
         let gate = WarningGate()

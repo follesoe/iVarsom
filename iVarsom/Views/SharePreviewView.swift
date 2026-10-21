@@ -48,19 +48,14 @@
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                        }
+                        Button(role: .close) { dismiss() }
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         ShareLink(
                             item: item.url,
                             preview: SharePreview(item.url.lastPathComponent, image: Image(uiImage: item.image))
                         ) {
-                            Image(systemName: "square.and.arrow.up")
+                            Label("Share", systemImage: "square.and.arrow.up")
                         }
                     }
                 }

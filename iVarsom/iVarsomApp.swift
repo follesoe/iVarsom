@@ -31,23 +31,42 @@ private struct ContentView: View {
     init(favorites: FavoritesService) {
         _vm = State(initialValue: RegionBrowserModel(favorites: favorites))
     }
-    @State private var isMapDetailPresented = false
+    @State private var browser = AdaptiveBrowserState()
+    /// Shared by the compact Map tab and the regular-width detail map, so the
+    /// map stays put when iPhone Duo folds or unfolds.
     @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
-    @State private var selectedTab = "regions"
+    /// The map centers on the person's location once; afterwards it keeps the
+    /// position they chose, across activations and folds.
+    @State private var hasCenteredMap = false
+
+    private var isRegular: Bool { sizeClass == .regular }
 
     var body: some View {
+        // Folding or unfolding iPhone Duo switches between these layouts. State
+        // that must survive the switch (selection, browser state, map camera and
+        // the map's forecast sheet) lives here rather than in either layout.
         Group {
-            if sizeClass == .regular {
-                RegionList(vm: vm)
+            if isRegular {
+                RegionList(vm: vm, browser: $browser, cameraPosition: $cameraPosition)
             } else {
-                TabView(selection: $selectedTab) {
-                    Tab("Regions", systemImage: "list.bullet", value: "regions") {
-                        RegionList(vm: vm)
+                TabView(selection: $browser.tab) {
+                    Tab("Regions", systemImage: "list.bullet", value: BrowserTab.regions) {
+                        RegionList(vm: vm, browser: $browser, cameraPosition: $cameraPosition)
                     }
-                    Tab("Map", systemImage: "map", value: "map") {
-                        iPhoneMapTab
+                    Tab("Map", systemImage: "map", value: BrowserTab.map) {
+                        compactMapTab
                     }
                 }
+            }
+        }
+        // Presented from the root so a forecast chosen on the map stays over the
+        // map when iPhone Duo folds or unfolds.
+        .sheet(isPresented: mapDetailPresentation) { mapDetailSheet }
+        .onChange(of: isRegular) { _, isRegular in
+            if isRegular {
+                if browser.expand() { vm.selectedRegionID = nil }
+            } else {
+                browser.collapse(hasSelection: vm.selectedRegionID != nil)
             }
         }
         .task(id: scenePhase == .active ? vm.selectedRegionID : nil) {
@@ -57,6 +76,12 @@ private struct ContentView: View {
         .task(id: scenePhase) {
             guard scenePhase == .active else { return }
             await WidgetForecastRefresher.refresh()
+        }
+        // Runs on activation only, not when a fold rebuilds the layout.
+        .task(id: scenePhase) {
+            guard scenePhase == .active else { return }
+            await vm.refreshOnActivation()
+            centerMapOnceOnLocation()
         }
         .task(id: scenePhase == .active ? ForecastNavigation.shared.request?.id : nil) {
             guard scenePhase == .active, let request = ForecastNavigation.shared.claimRequest() else { return }
@@ -76,9 +101,23 @@ private struct ContentView: View {
         }
     }
 
+    /// Only a person's dismissal clears the selection, returning to the map.
+    /// Programmatic dismissals (choosing from the list, deep links) keep theirs.
+    private var mapDetailPresentation: Binding<Bool> {
+        Binding(
+            get: { browser.isMapDetailPresented },
+            set: { isPresented in
+                if !isPresented { dismissMapDetail() }
+            })
+    }
+
+    private func dismissMapDetail() {
+        browser.dismissMapDetail()
+        vm.selectedRegionID = nil
+    }
+
     private func openRegion(_ id: Int) async {
-        selectedTab = "regions"
-        isMapDetailPresented = false
+        browser.openForecast()
         await vm.selectRegion(id: id)
     }
 
@@ -88,42 +127,49 @@ private struct ContentView: View {
         return vm.location.coordinate
     }
 
-    private var iPhoneMapTab: some View {
+    private func centerMapOnceOnLocation() {
+        guard !hasCenteredMap, let location = vm.location.coordinate else { return }
+        hasCenteredMap = true
+        withAnimation {
+            cameraPosition = AvalancheMapView.userPosition(location)
+        }
+    }
+
+    private var mapDetailSheet: some View {
+        NavigationStack {
+            RegionDetailContainer(
+                region: vm.selectedRegion, detail: vm.detail,
+                isFavorite: vm.isSelectedRegionFavorite,
+                showsActions: true, toggleFavorite: vm.toggleSelectedRegionFavorite
+            )
+            .toolbar {
+                // Close is navigation, so it leads the bar (and tops a vertical
+                // bar on iPhone Duo's outer display).
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(role: .close) { dismissMapDetail() }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
+        .presentationPlacementBesideMap()
+    }
+
+    private var compactMapTab: some View {
         NavigationStack {
             AvalancheMapView(
                 regions: vm.allRegions, searchTerm: vm.searchTerm,
                 locate: locate,
                 onRegionSelected: { region in
                     vm.selectedRegionID = region.id
-                    isMapDetailPresented = true
+                    browser.showMapDetail(isRegular: false)
                 },
                 cameraPosition: $cameraPosition
             )
             .toolbarBackground(.hidden, for: .navigationBar)
         }
-        .sheet(isPresented: $isMapDetailPresented) {
-            NavigationStack {
-                RegionDetailContainer(region: vm.selectedRegion, detail: vm.detail)
-                    .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button {
-                                isMapDetailPresented = false
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                    }
-            }
-            .presentationDetents([.medium, .large])
-        }
         .task {
             await vm.location.refresh(regions: vm.allRegions)
-            if let location = vm.location.coordinate {
-                withAnimation {
-                    cameraPosition = AvalancheMapView.userPosition(location)
-                }
-            }
+            centerMapOnceOnLocation()
         }
     }
 }

@@ -6,11 +6,11 @@ import SwiftUI
 struct RegionList: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.horizontalSizeClass) private var sizeClass
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.requestReview) private var requestReview
     @Environment(\.openURL) private var openURL
     @Bindable var vm: RegionBrowserModel
-    @State private var cameraPosition: MapCameraPosition = AvalancheMapView.overviewPosition
+    @Binding var browser: AdaptiveBrowserState
+    @Binding var cameraPosition: MapCameraPosition
     @State private var widgetRefreshID: UUID?
 
     var reviewPromptService = ReviewPromptService()
@@ -29,7 +29,7 @@ struct RegionList: View {
                         .padding(.top, 8)
                     Spacer()
                 } else {
-                    List(selection: $vm.selectedRegionID) {
+                    List(selection: listSelection) {
                         localWarningsSection
                         if !vm.favoriteRegions.isEmpty {
                             favoritesSection
@@ -41,28 +41,26 @@ struct RegionList: View {
                             norwaySection
                             swedenSection
                         }
-                        if dynamicTypeSize.isAccessibilitySize {
-                            sourceAttribution
-                                .listRowBackground(Color.clear)
-                        }
+                        // Scrolling with the list keeps every row reachable in short
+                        // windows, such as iPhone Duo's outer display in landscape.
+                        sourceAttribution
+                            .listRowBackground(Color.clear)
                     }
                     .navigationTitle("Regions")
                     .searchable(text: $vm.searchTerm)
                     .listStyle(.insetGrouped)
-                    if !dynamicTypeSize.isAccessibilitySize {
-                        sourceAttribution.padding()
-                    }
                 }
             }
         } detail: {
             if sizeClass == .regular {
                 Group {
-                    if vm.selectedRegion != nil {
+                    if !browser.detailShowsMap(hasSelection: vm.selectedRegion != nil) {
                         selectedRegionDetail
                             .toolbar {
                                 ToolbarItem(placement: .navigation) {
                                     Button {
                                         vm.selectedRegionID = nil
+                                        browser.returnToMap()
                                     } label: {
                                         Label("Map", systemImage: "map")
                                     }
@@ -73,7 +71,12 @@ struct RegionList: View {
                         AvalancheMapView(
                             regions: vm.allRegions, searchTerm: vm.searchTerm,
                             locate: locate,
-                            onRegionSelected: { vm.selectedRegionID = $0.id },
+                            onRegionSelected: { region in
+                                // A sheet beside the map where supported; otherwise
+                                // the forecast replaces the map in this column.
+                                vm.selectedRegionID = region.id
+                                browser.showMapDetail(isRegular: true)
+                            },
                             cameraPosition: $cameraPosition
                         )
                         .toolbarBackground(.hidden, for: .navigationBar)
@@ -95,15 +98,6 @@ struct RegionList: View {
             guard let request = widgetRefreshID else { return }
             await WidgetForecastRefresher.refresh(forceRefresh: true)
             if widgetRefreshID == request { widgetRefreshID = nil }
-        }
-        .task(id: scenePhase) {
-            guard scenePhase == .active else { return }
-            await vm.refreshOnActivation()
-            if let location = vm.location.coordinate {
-                withAnimation {
-                    cameraPosition = AvalancheMapView.userPosition(location)
-                }
-            }
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active && oldPhase == .background {
@@ -186,19 +180,25 @@ struct RegionList: View {
     private var selectedRegionDetail: some View {
         RegionDetailContainer(
             region: vm.selectedRegion, detail: vm.detail,
-            isFavorite: vm.favorites.ids.contains(vm.selectedRegionID ?? 0),
-            showsActions: true, toggleFavorite: toggleFavorite)
+            isFavorite: vm.isSelectedRegionFavorite,
+            showsActions: true, toggleFavorite: vm.toggleSelectedRegionFavorite)
+    }
+
+    /// Choosing a row shows its forecast in the detail column, replacing a
+    /// forecast presented over the map.
+    private var listSelection: Binding<Int?> {
+        Binding(
+            get: { vm.selectedRegionID },
+            set: { id in
+                vm.selectedRegionID = id
+                if id != nil { browser.selectFromList() }
+            })
     }
 
     private func locate() async -> Location2D? {
         if let coordinate = vm.location.coordinate { return coordinate }
         await vm.location.refresh(regions: vm.allRegions, requestPermission: true)
         return vm.location.coordinate
-    }
-
-    private func toggleFavorite() {
-        guard let id = vm.selectedRegionID else { return }
-        if vm.favorites.ids.contains(id) { vm.favorites.removeFavorite(id) } else { vm.favorites.addFavorite(id) }
     }
 
     private var favoritesSection: some View {
@@ -240,16 +240,28 @@ struct RegionList: View {
 
 #if DEBUG
     #Preview("Region List Empty") {
-        RegionList(vm: PreviewModels.browser(regions: []), reviewPromptService: PreviewModels.reviewPrompt())
+        @Previewable @State var camera = AvalancheMapView.overviewPosition
+        @Previewable @State var browser = AdaptiveBrowserState()
+        let vm = PreviewModels.browser(regions: [])
+        RegionList(vm: vm, browser: $browser, cameraPosition: $camera, reviewPromptService: PreviewModels.reviewPrompt())
+            .task { await vm.refreshOnActivation() }
     }
 
     #Preview("Region List Dark") {
-        RegionList(vm: PreviewModels.browser(), reviewPromptService: PreviewModels.reviewPrompt())
+        @Previewable @State var camera = AvalancheMapView.overviewPosition
+        @Previewable @State var browser = AdaptiveBrowserState()
+        let vm = PreviewModels.browser()
+        RegionList(vm: vm, browser: $browser, cameraPosition: $camera, reviewPromptService: PreviewModels.reviewPrompt())
+            .task { await vm.refreshOnActivation() }
             .preferredColorScheme(.dark)
     }
 
     #Preview("Region List Norwegian") {
-        RegionList(vm: PreviewModels.browser(), reviewPromptService: PreviewModels.reviewPrompt())
+        @Previewable @State var camera = AvalancheMapView.overviewPosition
+        @Previewable @State var browser = AdaptiveBrowserState()
+        let vm = PreviewModels.browser()
+        RegionList(vm: vm, browser: $browser, cameraPosition: $camera, reviewPromptService: PreviewModels.reviewPrompt())
+            .task { await vm.refreshOnActivation() }
             .environment(\.locale, Locale(identifier: "nb"))
     }
 #endif

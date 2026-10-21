@@ -146,6 +146,10 @@ View tasks own asynchronous loading and cancellation. Selection uses IDs, and lo
 
 Widgets support current and tomorrow’s published forecasts, shared offline fallback, explicit validity and publication-driven refresh scheduling. Opening or refreshing the app updates the regions used by widgets. Configurable controls open regional forecasts, Shortcuts return structured forecast data, and watchOS receives contextual morning suggestions. See [platform integration](docs/platform-integration.md) for behaviour, testing and SDK limitations.
 
+### iPhone Duo
+
+The app fills both iPhone Duo displays with vertical bars on the outer display, keeps the selected forecast, map position and the map's forecast sheet when folding or unfolding, and lays wide forecasts out in two columns that meet at the fold. See [iPhone Duo](docs/iphone-duo.md) for design decisions and a pose checklist.
+
 ### Previewing a winter forecast
 
 In the scheme's **Run → Arguments → Environment Variables**, set `SKREDVARSEL_PREVIEW_DATE` to an ISO 8601 timestamp such as `2026-02-21T12:00:00Z`. This affects the forecast clock in Debug builds only; remove the variable to return to today. It does not change the system clock. Swedish detailed forecasts support dated requests, while their overview endpoint still describes the live season.

@@ -34,6 +34,11 @@ struct WarningDayPicker: View {
                     withAnimation(reduceMotion ? nil : .default) { proxy.scrollTo(id, anchor: .center) }
                 }
             }
+            // Keep the selected day centered when the width changes, such as when
+            // iPhone Duo folds or unfolds.
+            .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { _ in
+                if let selectedWarningID { proxy.scrollTo(selectedWarningID, anchor: .center) }
+            }
         }
     }
 }
