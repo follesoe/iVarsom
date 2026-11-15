@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios prepare_release
+
+```sh
+[bundle exec] fastlane ios prepare_release
+```
+
+Prepare iOS and macOS release drafts, metadata and screenshots (version:6.0)
+
 ### ios capture_duo
 
 ```sh

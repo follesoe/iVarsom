@@ -8,6 +8,6 @@ The app shows the daily avalanche forecast from the Norwegian Avalanche Warning 
 • Earlier and coming days, emergency warnings, and saved forecasts when you’re offline
 • Ask Siri about your favorites or any region, including earlier days, and use forecasts in Shortcuts
 • Machine translation of forecast text into your language
-• Also on iPhone, iPad and Apple Watch, with full VoiceOver support
+• Full VoiceOver support
 
 Always read the full forecast and make your own assessment in avalanche terrain.

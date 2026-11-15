@@ -9,6 +9,6 @@ Appen visar den dagliga lavinprognosen från Naturvårdsverket (lavinprognoser.s
 • Tidigare och kommande dagar, akuta varningar och sparade prognoser när du är offline
 • Fråga Siri om dina favoriter eller ett område, även tidigare dagar, och använd prognoserna i Genvägar
 • Maskinöversättning av prognostexten till ditt språk
-• Gjord för iPhone, iPad, Mac och iPhone Duo, med fullt stöd för VoiceOver
+• Gjord för iPhone, iPad och iPhone Duo, med fullt stöd för VoiceOver
 
 Läs alltid hela prognosen och gör dina egna bedömningar i lavinterräng.

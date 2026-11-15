@@ -9,6 +9,6 @@ Appen viser det daglige skredvarselet fra Snøskredvarslingen (varsom.no) og Nat
 • Tidligere og kommende dager, nødvarsler og lagrede varsler når du er uten nett
 • Spør Siri om favorittene dine eller en region, også tidligere dager, og bruk varslene i Snarveier
 • Maskinoversettelse av varselteksten til ditt språk
-• Laget for iPhone, iPad, Mac og iPhone Duo, med full støtte for VoiceOver
+• Laget for iPhone, iPad og iPhone Duo, med full støtte for VoiceOver
 
 Les alltid hele varselet og gjør dine egne vurderinger i skredterreng.

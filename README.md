@@ -94,7 +94,7 @@ Join the [beta testing group on TestFlight](https://testflight.apple.com/join/8I
 
 ### Requirements
 
-- Xcode 27.1 (iOS 27.1 SDK; verified locally; includes Swift 6.4)
+- Xcode 27.2 (27B52; iOS 27.2 SDK; verified locally with Swift 6.4.2)
 - Swift 6 language mode
 - iOS 26+ / macOS 26+ / watchOS 26+
 
@@ -108,11 +108,13 @@ open Skredvarsel.xcodeproj
 
 The app uses Apple frameworks only; no external packages need to be resolved. The macOS application uses Mac Catalyst.
 
+The project uses Xcode's JSON configuration format (`Skredvarsel.xcodeproj/project.xcproj`), converted with `xcodebuild -project Skredvarsel.xcodeproj -convert-project 'Xcode Project'`. Keep opening and building `Skredvarsel.xcodeproj`; the shared scheme and project path are unchanged. The JSON format requires Xcode 27 or later.
+
 ### Running Tests
 
 ```bash
 xcodebuild test -project Skredvarsel.xcodeproj -scheme Skredvarsel \
-  -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=latest' \
+  -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest' \
   CODE_SIGNING_ALLOWED=NO
 ```
 
@@ -136,6 +138,8 @@ xcodebuild build -scheme Skredvarsel -destination 'generic/platform=macOS,varian
 xcodebuild build -scheme SkredvarselWatch -destination 'generic/platform=watchOS Simulator' CODE_SIGNING_ALLOWED=NO
 ```
 
+Verified on November 15, 2026 with Xcode 27.2 (27B52): all three Debug builds above passed without compiler warnings, and all 173 tests passed on both iPhone 18 Pro Simulator (iOS 27.2) and Mac Catalyst. After converting to the JSON project format, the same tests and Release archives for iOS (including watchOS) and Mac Catalyst also passed. Signing was disabled; distribution signing and export were not validated.
+
 ### Architecture
 
 Each window owns a `RegionBrowserModel`, with separate observable models for warning details and location. Rendering views take values, bindings and focused actions. A `WarningRepository` actor routes requests to the Norwegian or Swedish provider and applies the caller's cache policy; widgets and Siri reuse this routing. Provider response mapping is independent of networking, and previews use the real models with fixture services.
@@ -156,7 +160,9 @@ In the scheme's **Run → Arguments → Environment Variables**, set `SKREDVARSE
 
 ### Xcode Cloud
 
-`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (27.1 was verified locally; the iOS 27.1 SDK is required for the full iPhone Duo layout). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
+`ci_scripts/ci_post_clone.sh` is an executable diagnostics-only hook. No dependency installation is needed. The shared `Skredvarsel` scheme includes the unit-test target and its isolated host configuration. The hosted workflow must have a Test action using that scheme, plus the desired build/archive actions and a compatible Xcode version (27.2 was verified locally; the iOS 27.1 SDK or later is required for the full iPhone Duo layout). Workflow selection and signing are configured in Xcode Cloud, outside this repository.
+
+Xcode Cloud must use Xcode 27 or later to read `project.xcproj`; Xcode 27.2 is the locally verified toolchain. The configuration format change does not change the Cloud project path (`Skredvarsel.xcodeproj`) or scheme (`Skredvarsel`).
 
 ### Fastlane
 
@@ -168,6 +174,9 @@ Fastlane is used for managing App Store metadata. Metadata is split into platfor
 Available lanes:
 
 ```bash
+# Prepare both release drafts, localized metadata and screenshots (no submission)
+./scripts/prepare_release.sh 6.0
+
 # Upload iOS metadata
 fastlane ios upload_metadata
 

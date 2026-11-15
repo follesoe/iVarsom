@@ -14,6 +14,33 @@ SCREENSHOTS_IOS = File.join(FASTLANE_DIR, "screenshots_ios")
 SCREENSHOTS_OSX = File.join(FASTLANE_DIR, "screenshots_osx")
 
 platform :ios do
+  desc "Prepare iOS and macOS release drafts, metadata and screenshots (version:6.0)"
+  lane :prepare_release do |options|
+    version = options[:version].to_s
+    UI.user_error!("Specify a release version, for example version:6.0") unless version.match?(/\A\d+\.\d+(?:\.\d+)?\z/)
+
+    [
+      ["ios", METADATA_IOS, SCREENSHOTS_IOS],
+      ["osx", METADATA_OSX, SCREENSHOTS_OSX]
+    ].each do |platform, metadata, screenshots|
+      deliver(
+        platform: platform,
+        app_version: version,
+        metadata_path: metadata,
+        screenshots_path: screenshots,
+        edit_live: false,
+        skip_binary_upload: true,
+        skip_screenshots: false,
+        overwrite_screenshots: false,
+        skip_metadata: false,
+        force: true,
+        precheck_include_in_app_purchases: false,
+        submit_for_review: false,
+        automatic_release: false
+      )
+    end
+  end
+
   desc "Capture a Duo display (locale:en-US display:outer|inner name:forecast)"
   lane :capture_duo do |options|
     UI.user_error!("Specify locale:en-US (or no, sv, etc.) and display:outer|inner") unless options[:locale] && options[:display]

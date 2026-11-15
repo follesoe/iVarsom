@@ -9,20 +9,21 @@ iVarsom (App Store name: "Skredvarsel") is a SwiftUI app providing Norwegian and
 **Language**: Swift 6
 **Framework**: SwiftUI
 **Dependencies**: Apple frameworks only
-**Toolchain**: Xcode 27.1 (iOS 27.1 SDK) / Swift 6.4 compiler, Swift 6 language mode
+**Toolchain**: Xcode 27.2 (27B52; iOS 27.2 SDK) / Swift 6.4.2 compiler, Swift 6 language mode
 **macOS**: Mac Catalyst
+**Project format**: Xcode JSON (`Skredvarsel.xcodeproj/project.xcproj`); open and build the `.xcodeproj` bundle. Xcode 27 or later is required to read this format, including on Xcode Cloud.
 
 ## Build Commands
 
 ```bash
 # Build for iOS Simulator
-xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+xcodebuild build -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest'
 
 # Build watch app
-xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 12 (46mm)'
+xcodebuild build -scheme SkredvarselWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 12 (46mm),OS=latest'
 
 # Run tests
-xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+xcodebuild test -scheme Skredvarsel -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest'
 ```
 
 **Xcode shortcuts**: Cmd+B (build), Cmd+U (test), Cmd+R (run)
@@ -86,7 +87,7 @@ See [docs/modernization.md](docs/modernization.md) for architecture and [docs/pl
 See [docs/iphone-duo.md](docs/iphone-duo.md) for resizable layouts and iPhone Duo:
 - `AdaptiveBrowserState` carries selection, tab and the map's forecast sheet across compact/regular changes (folding); keep such state in `ContentView`, not inside one layout
 - Toolbar items need a title and a symbol (`Label`); close buttons use `Button(role: .close)` in `.cancellationAction`
-- Gate iOS 27 APIs with `#available`, and compile iOS 27.1 APIs (reserved regions, `toolbarVerticalBehavior`, `axisBehavior`) with `#if os(iOS) && !targetEnvironment(macCatalyst)`: the Catalyst 27.0 SDK lacks them. `AdaptiveModifiers.swift` holds shared wrappers
+- Gate iOS 27 APIs with `#available`, and compile iOS 27.1 APIs (reserved regions, `toolbarVerticalBehavior`, `axisBehavior`) with `#if os(iOS) && !targetEnvironment(macCatalyst)`: Xcode 27.2 still has a [known Mac Catalyst SDK limitation](https://developer.apple.com/documentation/xcode-release-notes/xcode-27_2-release-notes) for iOS 27.1 APIs. `AdaptiveModifiers.swift` holds shared wrappers
 
 ### Widget System
 
